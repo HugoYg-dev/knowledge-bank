@@ -18,8 +18,7 @@ sources:
 - wiki/sources/为什么用Qwen3_embedding和rerank.md
 - wiki/sources/从BM25到Multi-Vector_6种Embedding演进路线.md
 - wiki/sources/向量数据库原理与应用全解析.md
-- wiki/sources/大模型算法岗面试百问百答.md
-updated: '2026-07-06'
+updated: '2026-09-07'
 ---
 
 # 概念_Embedding与向量检索

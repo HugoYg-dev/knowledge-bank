@@ -8,7 +8,6 @@ summary: 阿里巴巴通义实验室发布的大语言模型系列，在 Qwen3 �
 sources:
 - wiki/sources/2025年七大顶流大模型架构.md
 - wiki/sources/HuggingFace手把手训练大模型实战指南.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/LoRA微调实战_Qwen2.5全流程.md
 - wiki/sources/RL环境与智能体能力金字塔.md
 - wiki/sources/Tongyi DeepResearch的技术报告探秘.md

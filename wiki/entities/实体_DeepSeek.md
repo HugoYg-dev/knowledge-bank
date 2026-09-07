@@ -5,10 +5,10 @@ tags:
 - LLM/arch
 summary: 专注于通用人工智能（AGI）研发的中国 AI 创新机构，代表作包括 DeepSeek-V3/R1 系列大模型及基于 Cordis 微内核的 DeepSeek-Harness 智能体生态。
 sources:
-- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
-- wiki/sources/DeepSeek Agent开发岗三面，再面一轮就offer啦！！！.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
+- wiki/sources/DeepSeek-R1工作原理.md
+- wiki/sources/从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较.md
 updated: "2026-09-07"
 ---
 
@@ -29,9 +29,9 @@ updated: "2026-09-07"
 - **分布式协同（Meta-Harness）**：在单实例 Harness 之外，提出 Meta-Harness 概念，负责多智能体实例间的资源调度、负载均衡与跨实例任务编排。
 - **模型原生 Agent 化路线**：主张通过后训练（SFT/RL）在模型权重内部原生沉淀工具调用、分层早停、主动追问与边界反思能力，使智能体从“能做事”迈向具备分寸感与自我判断力的“会做人”境界。
 
-### 3. 工程系统设计与安全准则
-- **闭环可解释与沙箱控制**：提倡工作区隔离、网络白名单与 cgroup 资源配额的三层工具沙箱；采用 `FailureMemory` 记录操作哈希遏制路径震荡；通过无人值守分级权限与熔断机制构筑安全底盘。
-- **小模型与大模型协同**：坚持“小模型筛选信息，大模型处理信息”原则，用 7B 小模型承担上下文压缩与记忆检索重排，大模型聚焦高阶推理。
+### 3. 系统工程与训练推理极致优化
+- **软硬件协同设计**：针对大规模集群通信瓶颈设计定制化 DualPipe 重叠算法与多副本流水并行，大幅削减通信开销。
+- **MLA 矩阵吸收与显存压缩**：通过低秩投影将 Key/Value 压缩为隐向量，推理阶段将解压缩投影矩阵吸收至 Query 侧，降低显存占用并提升生成吞吐。
 
 ## 关联实体与概念
 
@@ -44,6 +44,5 @@ updated: "2026-09-07"
 - **核心概念**：
   - [[concepts/概念_Harness_Engineering|Harness Engineering]]
   - [[concepts/概念_AI-Native_Infra|AI-Native Infra]]
-  - [[concepts/概念_Agent工具调用沙箱|Agent工具调用沙箱]]
   - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
   - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]

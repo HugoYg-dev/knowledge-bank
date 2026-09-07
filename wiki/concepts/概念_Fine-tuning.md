@@ -5,11 +5,9 @@ tags:
 summary: Fine-tuning（微调）通过在特定领域/任务数据上继续训练大模型，增强 LLM 本身的能力，使其在目标场景上产出更准确/更符合格式的输出。
 sources:
 - wiki/sources/375篇文献_推理大模型后训练技术综述.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/LoRA微调实战_Qwen2.5全流程.md
 - wiki/sources/OpenAI_LLM应用最佳实践.md
-- wiki/sources/大模型算法岗面试百问百答.md
-updated: '2026-07-06'
+updated: '2026-09-07'
 ---
 # 概念_Fine-tuning
 

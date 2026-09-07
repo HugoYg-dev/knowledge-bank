@@ -1,5 +1,13 @@
 # Wiki Log
 
+## [2026-09-07] refactor/governance | 面试 tag 文章实体来源排他性治理与门禁加固（清洗 11 篇实体中的面试来源）
+- **核心治理纪律确立**：遵循用户指示，确立“带有 `面试` tag 的文章不得作为实体（`wiki/entities/`）的信息来源，面经文章只用于生成专题面经总结文档”规则；同步更新 `AGENTS.md` §2.2 并将“面经文章汇总专题”挂载至 `TODO.md` 待办清单。
+- **全库实体来源与正文清洗（11 篇实体）**：
+  - 彻底剥离全库 11 篇实体页面中的面试文章来源：`[[wiki/entities/实体_CLIP|实体_CLIP]]`、`[[wiki/entities/实体_DeepSeek-R1|实体_DeepSeek-R1]]`、`[[wiki/entities/实体_DeepSeek|实体_DeepSeek]]`、`[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`、`[[wiki/entities/实体_HNSW|实体_HNSW]]`、`[[wiki/entities/实体_Pandas|实体_Pandas]]`、`[[wiki/entities/实体_Qwen3|实体_Qwen3]]`、`[[wiki/entities/实体_Qwen3_Embedding|实体_Qwen3_Embedding]]`、`[[wiki/entities/实体_ResNet|实体_ResNet]]`、`[[wiki/entities/实体_vLLM|实体_vLLM]]`、`[[wiki/entities/实体_美团|实体_美团]]`。
+  - 同步重构 `实体_DeepSeek` 与 `实体_美团` 正文，剔除面经具体问答内容，仅保留开源模型架构与官方搜索工程实践。
+- **门禁防线程序化升级**：升级 `scripts/vault_lint.py` Check 0，在来源链校验中增加硬性阻断规则：当 `ptype == 'entity'` 时，引用的 Source 若具有 `面试` tag 则直接报致命错误。
+- **全库健康门禁验证**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint`，全库 0 errors，所有检查 100% 绿灯通过。
+
 ## [2026-09-07] ingest | raw/articles/Manus团队测模型一点微小的经验.md & 模型答错事实题，先分清是没存进去，还是这次没取出来.md -> wiki/sources/ (+ 概念_事实性存储与提取分离诊断范式)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/Manus团队测模型一点微小的经验.md` -> `raw/articles/Manus团队测模型一点微小的经验.md` -> `wiki/sources/Manus团队测模型一点微小的经验.md`（增量更新已有实体 `[[wiki/entities/实体_Manus|实体_Manus]]`，系统收录 Research Bench 深度研究评估实践与过程笔记驱动 Harness 调优；增量更新已有概念 `[[wiki/concepts/概念_LLM应用评估体系|概念_LLM应用评估体系]]`，补充信息量与隐喻率两大可量化信号；增量更新已有概念 `[[wiki/concepts/概念_Deep-Research四大挑战|概念_Deep-Research四大挑战]]`，补充端到端复杂长文研究质量评测破解方案）

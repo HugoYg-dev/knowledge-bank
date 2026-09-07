@@ -11,9 +11,8 @@ sources:
 - wiki/sources/Transformer被挑战_Mamba解析与PyTorch复现.md
 - wiki/sources/一文读懂Mamba_知乎.md
 - wiki/sources/从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较.md
-- wiki/sources/大模型面试面经_简单透彻理解MoE.md
 - wiki/sources/腾讯混元TurboS技术报告.md
-updated: '2026-06-29'
+updated: '2026-09-07'
 ---
 # Mamba
 

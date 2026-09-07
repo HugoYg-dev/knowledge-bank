@@ -9,7 +9,6 @@ sources:
 - wiki/sources/RAG挑战赛冠军方案.md
 - wiki/sources/RAG系统设计_语义搜索与KG驱动选型.md
 - wiki/sources/向量数据库原理与应用全解析.md
-- wiki/sources/大模型算法岗面试百问百答.md
 - wiki/sources/美团搜索查询改写实践.md
 updated: '2026-07-01'
 ---

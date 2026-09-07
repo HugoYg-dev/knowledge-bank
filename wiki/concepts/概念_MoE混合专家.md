@@ -5,12 +5,10 @@ tags:
 summary: MoE（Mixture of Experts，混合专家模型）是一种高效 Scaling 技术，用较少的计算量实现更大模型规模，从而获得更好性能。
 sources:
 - wiki/sources/2025年七大顶流大模型架构.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较.md
-- wiki/sources/大模型面试面经_简单透彻理解MoE.md
 - wiki/sources/手把手教你实现稀疏MoE语言模型.md
 - wiki/sources/腾讯混元TurboS技术报告.md
-updated: '2026-06-29'
+updated: '2026-09-07'
 ---
 
 
@@ -55,7 +53,6 @@ MoE 由两个关键部分组成：
 
 ## 相关来源
 
-- [[大模型面试面经_简单透彻理解MoE]]
 - [[手把手教你实现稀疏MoE语言模型]]
 - [[从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较]]
 - [[腾讯混元TurboS技术报告]]

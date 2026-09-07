@@ -7,7 +7,6 @@ summary: DeepSeek-R1 是深度求索（DeepSeek）发布的推理模型，通过
   相当。
 sources:
 - wiki/sources/DeepSeek-R1工作原理.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/R1复现认知与误区.md
 - wiki/sources/RL_Infra行业全景.md
 - wiki/sources/入局AI_Infra系统设计与挑战.md

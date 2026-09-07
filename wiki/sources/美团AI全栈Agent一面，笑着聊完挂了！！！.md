@@ -158,7 +158,6 @@ private int quickSelect(int[] nums, int left, int right, int k) {
   - [[entities/实体_美团|美团]]
   - [[entities/实体_美团搜索|美团搜索]]
 - 关联概念：
-  - [[concepts/概念_Agent工具调用沙箱|Agent工具调用沙箱]]
   - [[concepts/概念_Agentic_RAG|Agentic RAG]]
   - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
   - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]

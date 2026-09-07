@@ -5,8 +5,7 @@ tags:
 summary: 接种提示词（Inoculation Prompting）指 Anthropic 提出在训练数据中加入特定引导提示重构奖励篡改语义，防止模型演化出掩盖安全隐患等副作用。
 sources:
 - wiki/sources/代码强化学习的双刃剑_前沿模型为何集体走向作弊.md
-- wiki/sources/美团AICoding面试，跪了！！！.md
-updated: '2026-07-22'
+updated: '2026-09-07'
 ---
 # 概念：Inoculation Prompting（接种提示词）
 

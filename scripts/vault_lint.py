@@ -224,9 +224,14 @@ def cmd_lint(workspace):
             raw_files_rel.add(rel)
 
     sources_files_rel = set()
+    source_tags_map = {}
     for rel in all_md_files:
         if rel.startswith('wiki/sources/'):
             sources_files_rel.add(rel)
+            s_content = load_file(all_md_files[rel])
+            s_fm, _ = parse_frontmatter(s_content, rel)
+            if s_fm and isinstance(s_fm.get('tags'), list):
+                source_tags_map[rel] = set(s_fm.get('tags', []))
 
     for rel, abs_p in all_md_files.items():
         if rel.startswith('raw/') or rel.startswith('notes/') or rel.startswith('workdocs/') or rel == 'wiki/index.md' or rel == 'wiki/log.md' or 'verify-' in rel or rel.startswith('Clippings/'):
@@ -330,6 +335,11 @@ def cmd_lint(workspace):
                         elif src not in sources_files_rel:
                             print(f"  ❌ [来源 错误] {rel}: 引用的 Source 摘要不存在 ({src})")
                             has_fatal_errors = True
+                        elif ptype == 'entity':
+                            s_tags = source_tags_map.get(src, set())
+                            if '面试' in s_tags:
+                                print(f"  ❌ [来源 错误] {rel}: 实体严禁以带'面试'tag的文章作为信息来源 (当前: {src})")
+                                has_fatal_errors = True
 
         # Check timeline (only in entity)
         timeline = fm.get('timeline')

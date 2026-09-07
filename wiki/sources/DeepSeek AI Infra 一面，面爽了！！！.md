@@ -138,7 +138,6 @@ class FailureMemory:
   - [[entities/实体_Cordis|Cordis]]
 - 关联概念：
   - [[concepts/概念_Harness_Engineering|Harness Engineering]]
-  - [[concepts/概念_Agent工具调用沙箱|Agent工具调用沙箱]]
   - [[concepts/概念_Agentic_RAG|Agentic RAG]]
   - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
   - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]

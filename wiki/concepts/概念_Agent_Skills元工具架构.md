@@ -5,8 +5,6 @@ tags:
 summary: Agent Skills 元工具架构（Agent Skills Meta-Tool Architecture）是 Claude Code 中扩展
   Agent 能力的一种设计模式：通过一个名为 Skill 的元工具（meta-tool）作为容器，动态加载和调度各个具体技能（skills），技能本质是领...
 sources:
-- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
-- wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md
 - wiki/sources/Claude_Agent_Skills_从第一性原理深入剖析.md
 - wiki/sources/Firecrawl 新工具开源，anydoc，将各种输入转换为md.md
 - wiki/sources/从第一性原理深度拆解_Claude_Agent_Skill_宝玉.md
@@ -97,7 +95,5 @@ references 与 assets 的区别：references 通过 Read 工具加载到 Claude 
 
 ## 来源
 
-- [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]
-- [[sources/美团AI全栈Agent一面，笑着聊完挂了！！！|美团AI全栈Agent一面，笑着聊完挂了！！！]]
 - [[Claude_Agent_Skills_从第一性原理深入剖析]]
 - [[从第一性原理深度拆解_Claude_Agent_Skill_宝玉]]

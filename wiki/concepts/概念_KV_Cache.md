@@ -12,7 +12,6 @@ sources:
 - wiki/sources/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md
 - wiki/sources/DeepSeek_MLA矩阵吸收原理.md
 - wiki/sources/KV_Cache原理图解.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/MCP遇上代码执行.md
 - wiki/sources/Mamba_Explained_Kola_Ayonrinde.md
 - wiki/sources/Manus创始人手把手拆解上下文工程.md
@@ -20,12 +19,11 @@ sources:
 - wiki/sources/Transformer大模型3D可视化_NanoGPT.md
 - wiki/sources/从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较.md
 - wiki/sources/入局AI_Infra系统设计与挑战.md
-- wiki/sources/大模型显存占用单卡分析.md
 - wiki/sources/大模型显存计算公式与优化.md
 - wiki/sources/推测解码Speculative_Decoding综述.md
 - wiki/sources/2026-07-24_Delta-attention-in-Kimi-K3-to-fix-growing-KV-cache_19f962.md
 - wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md
-updated: '2026-08-11'
+updated: '2026-09-07'
 ---
 
 

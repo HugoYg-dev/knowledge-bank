@@ -14,11 +14,8 @@ sources:
 - wiki/sources/为什么用Qwen3_embedding和rerank.md
 - wiki/sources/优图RAG技术详解.md
 - wiki/sources/向量数据库原理与应用全解析.md
-- wiki/sources/大模型算法岗面试百问百答.md
 - wiki/sources/提升RAG问答质量的技术路线.md
-- wiki/sources/月之暗面 Agent开发岗，凉凉！！！.md
-- wiki/sources/高德地图AI应用开发岗一面，我跪了！！！.md
-updated: '2026-08-03'
+updated: '2026-09-07'
 ---
 
 # 概念_重排序Rerank

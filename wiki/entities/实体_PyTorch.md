@@ -13,9 +13,8 @@ sources:
 - wiki/sources/Transformer被挑战_Mamba解析与PyTorch复现.md
 - wiki/sources/入局AI_Infra系统设计与挑战.md
 - wiki/sources/大模型显存计算公式与优化.md
-- wiki/sources/大模型面试面经_简单透彻理解MoE.md
 - wiki/sources/手把手教你实现稀疏MoE语言模型.md
-updated: '2026-06-29'
+updated: '2026-09-07'
 ---
 # 实体：PyTorch
 

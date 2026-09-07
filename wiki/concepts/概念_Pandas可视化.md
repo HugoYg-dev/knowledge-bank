@@ -5,10 +5,8 @@ tags:
 summary: Pandas 通过 DataFrame.plot / Series.plot 一行代码绘制多种图表，并通过 pandas.plotting 提供安德鲁斯曲线、平行坐标等高级可视化。
 sources:
 - wiki/sources/Pandas一行代码绘制25种美图.md
-- wiki/sources/图解Pandas常用操作_NumPy对比与进阶.md
 - wiki/sources/自动探索性数据分析EDA_10个Python包.md
-- wiki/sources/超强图解Pandas操作大全.md
-updated: '2026-06-30'
+updated: '2026-09-07'
 ---
 
 
@@ -50,4 +48,3 @@ Pandas 内置可视化能力，无需直接调用 matplotlib 即可一行代码�
 - [[实体_Pandas]]
 - [[概念_Pandas核心操作图解]]
 - [[Pandas一行代码绘制25种美图]]（来源）
-- [[超强图解Pandas操作大全]]（来源）

@@ -6,9 +6,8 @@ tags:
 summary: Batch Normalization 沿通道在 batch 维度（N,H,W）计算均值方差，强迫数据为均值0方差1分布，缓解 Internal
   Covariate Shift 与梯度消失；用于激活函数之前。
 sources:
-- wiki/sources/Normalization方法总结_BN_LN_IN_GN.md
 - wiki/sources/PyTorch常用代码段合集.md
-updated: '2026-06-26'
+updated: '2026-09-07'
 ---
 
 
@@ -48,5 +47,4 @@ BN（2015）针对每个神经元，使数据进入激活函数前沿通道计�
 
 ## 关联
 
-- [[Normalization方法总结_BN_LN_IN_GN]]（来源）
 - [[概念_Normalization方法对比]]

@@ -9,7 +9,6 @@ sources:
 - wiki/sources/2025年七大顶流大模型架构.md
 - wiki/sources/A_Visual_Guide_to_Mamba_and_SSM.md
 - wiki/sources/Attention复杂度解析与改进方向.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/Transformer大模型3D可视化_NanoGPT.md
 - wiki/sources/Transformer被挑战_Mamba解析与PyTorch复现.md
 - wiki/sources/一文读懂Mamba_知乎.md
@@ -17,7 +16,7 @@ sources:
 - wiki/sources/大模型显存计算公式与优化.md
 - wiki/sources/推测解码Speculative_Decoding综述.md
 - wiki/sources/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md
-updated: '2026-08-03'
+updated: '2026-09-07'
 ---
 
 

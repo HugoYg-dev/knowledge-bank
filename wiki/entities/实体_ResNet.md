@@ -5,7 +5,6 @@ tags:
 summary: ResNet（Deep Residual Learning），通过残差学习与 skip connection 实现超深网络训练，替代 VGG 成为检测标准
   Backbone。
 sources:
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/PyTorch常用代码段合集.md
 - wiki/sources/向量数据库原理与应用全解析.md
 - wiki/sources/目标检测入门_基础网络与分类定位权衡.md

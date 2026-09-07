@@ -7,8 +7,7 @@ summary: 基于论文 "A Comprehensive Survey of Hallucination Mitigation Techni
 sources:
 - wiki/sources/LLM_32种消除幻觉技术综述.md
 - wiki/sources/大模型幻觉陷阱_AGI之路04期.md
-- wiki/sources/大模型算法岗面试百问百答.md
-updated: '2026-07-06'
+updated: '2026-09-07'
 ---
 
 

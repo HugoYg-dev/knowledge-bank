@@ -9,9 +9,8 @@ sources:
 - wiki/sources/RAG检索_Retrieval入门到精通.md
 - wiki/sources/RAG高级优化_检索策略Fusion_HyDE.md
 - wiki/sources/提升RAG问答质量的技术路线.md
-- wiki/sources/高德地图AI应用开发岗一面，我跪了！！！.md
 - wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md
-updated: "2026-09-07"
+updated: '2026-09-07'
 ---
 
 # 概念_Reciprocal_Rank_Fusion
@@ -42,7 +41,7 @@ score(d) = Σ 1 / (k + rank_i(d) + 1)
 ## 工程调参
 
 - `k=60` 是常用默认值而非固定规则，应在业务评测集上验证。
-- 不同检索源可以加权，但权重过大会使其他召回路线失去作用；高德面试复盘提到地名库精确匹配可以获得更高权重，具体值需由线上 A/B 测试确定。
+- 不同检索源可以加权，但权重过大会使其他召回路线失去作用，具体值需由线上 A/B 测试确定。
 
 ## 应用场景
 

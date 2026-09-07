@@ -8,8 +8,7 @@ sources:
 - wiki/sources/HumanInTheLoop用MCP实现.md
 - wiki/sources/OpenAI_构建AI智能体实用指南.md
 - wiki/sources/腾讯ABI工程架构探索与实践.md
-- wiki/sources/美团AICoding面试，跪了！！！.md
-updated: '2026-08-03'
+updated: '2026-09-07'
 ---
 
 
@@ -43,10 +42,6 @@ Human-in-the-Loop（HITL）通过 MCP 协议实现，使 Agent 在服务端执�
 - Agent 意图不清晰时主动向用户澄清（替代直接"打在公屏上"）
 - 执行危险操作前获取人类授权（配合 [[概念_MCP_Proxy]]）
 - 多端协同：任意端作答后其他端自动关闭问询 UI
-
-## 风险分层
-
-美团 AI Coding 面试复盘中的评论审核方案将模型判断与实际操作分离：模型输出类别、置信度、证据和建议动作，服务端执行折叠或删除；疑似违规、涉政、封号和批量删除等高风险情形进入人工确认。其核心是让 HITL 成为风险分层后的明确控制点，而不是在所有请求上无差别阻塞。
 
 ## 来源
 

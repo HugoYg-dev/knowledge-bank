@@ -6,8 +6,7 @@ summary: '- 在原权重矩阵旁路添加低秩可训练矩阵（A: d×r，B: r
 sources:
 - wiki/sources/2026-08-07_8-LLM-precision-formats_19fddf.md
 - wiki/sources/LLM后训练技术全景解读.md
-- wiki/sources/大模型显存占用单卡分析.md
-updated: '2026-08-10'
+updated: '2026-09-07'
 ---
 # 概念：LoRA 与 QLoRA 显存分析
 
@@ -41,7 +40,5 @@ updated: '2026-08-10'
 
 ## 关联
 
-- [[大模型显存占用单卡分析]]
 - [[概念_混合精度训练]]
-- [[概念_显存组成与估算]]
 - [[概念_量化]]

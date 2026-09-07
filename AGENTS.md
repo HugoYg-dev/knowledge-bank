@@ -143,6 +143,7 @@ timeline: # 仅限 Entity 页面使用，用于记录可变状态
 ```
 - **内容要求**：基本信息、行为 / 特征 / 状态、相关事件 / 计划 / 实验链接、来自哪些来源（列出 `sources`）。
 - **`timeline:` 字段**：`timeline:` 是可选字段，**只允许用于 Entity 页**中的可变状态（例如职位、所属机构、产品状态或所在地）。只有来源明确给出状态或状态变化时才记录；不得为静态事实、Source、Concept、Comparison 或 Overview 机械添加。时间不确定时使用 `null`，禁止从发布时间臆测状态生效时间。
+- **面试/面经来源约束（No Interview Sources for Entities）**：带有 `面试` tag 的文章（尤其是面经文章）**严禁作为实体（`wiki/entities/`）的信息来源（sources）**。面试问答中的零散表达、个人回忆或特定场景方案具有主观性与局限性，不得外推沉淀为机构/产品/人物实体的正式属性。面经类文章**只用于聚合生成专题面经总结文档（`wiki/overview/`）**。
 
 ### 2.3 Concept Page（概念页）
 - **路径**：`wiki/concepts/概念_xxx.md`

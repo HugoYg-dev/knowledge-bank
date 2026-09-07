@@ -8,15 +8,10 @@ sources:
 - wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md
 - wiki/sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57.md
 - wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md
-- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
-- wiki/sources/DeepSeek Agent开发岗三面，再面一轮就offer啦！！！.md
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
-- wiki/sources/快手data agent一面，我裂开了！！！.md
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
-- wiki/sources/美团AICoding面试，跪了！！！.md
-- wiki/sources/高德地图AI应用开发岗一面，我跪了！！！.md
 updated: '2026-09-07'
 ---
 # 概念：Harness Engineering
@@ -46,11 +41,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 
 ## 可靠执行控制
 
-两篇 Agent 面试项目复盘补充了生产控制面的具体做法：权限默认最小化，写入与 Shell 执行分级授权；暂时性故障采用有上限的退避重试，权限不足等确定性错误直接返回；循环侧设置最大步数、重复工具调用与状态停滞检测；高风险代码则在限制资源、网络和系统调用的沙箱内运行。
-
-对内容删除等不可逆业务动作，Harness 还应把模型限制在“判断与建议”角色，由服务端依据置信度、风险级别和权限策略执行实际操作，并保留可追溯的决策证据与审计日志。
-
-此外，生产级 Harness 必须明确将**状态（State）与记忆（Memory）解耦管理**。状态绑定于当前 Run，通过在每个超级步骤（Superstep）后写入 Checkpoint 记录执行进度以防意外崩溃，支持中断恢复和新分支分叉（Fork）；而记忆则跨 Runs 留存，多智能体协同下需通过 Scope 机制进行隔离（如 `memory.scope("/agent")`）以防认知冲突。详见 [[概念_Agent内存与状态管理]]。
+生产级 Harness 必须明确将**状态（State）与记忆（Memory）解耦管理**。状态绑定于当前 Run，通过在每个超级步骤（Superstep）后写入 Checkpoint 记录执行进度以防意外崩溃，支持中断恢复和新分支分叉（Fork）；而记忆则跨 Runs 留存，多智能体协同下需通过 Scope 机制进行隔离（如 `memory.scope("/agent")`）以防认知冲突。详见 [[概念_Agent内存与状态管理]]。
 
 ### 分层早停与防路径震荡控制
 
@@ -112,7 +103,6 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 
 ## 来源与参考
 
-- [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]
 - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]

@@ -4,8 +4,6 @@ tags:
 - RAG/retrieval
 summary: Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策略和优化推理过程，提升系统性能。
 sources:
-- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
-- wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md
 - wiki/sources/Agent系统开发经验.md
 - wiki/sources/Anthropic多智能体研究系统构建.md
 - wiki/sources/ES企业AI搜索实践.md
@@ -57,4 +55,4 @@ Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策
 ## 关联
 
 - 相关概念：[[概念_RAG基础流程]]、[[概念_Memory_RAG]]、[[概念_HyDE]]、[[概念_混合检索]]、迭代式检索、[[概念_GraphRAG]]、[[概念_知识图谱RAG]]
-- 来源：[[DeepSeek AI Infra 一面，面爽了！！！]]、[[美团AI全栈Agent一面，笑着聊完挂了！！！]]、RAG综述_中科院2025、[[ES企业AI搜索实践]]、阿里RAG技术演进、[[优图RAG技术详解]]
+- 来源：RAG综述_中科院2025、[[ES企业AI搜索实践]]、阿里RAG技术演进、[[优图RAG技术详解]]

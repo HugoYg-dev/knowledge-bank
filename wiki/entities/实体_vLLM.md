@@ -10,7 +10,6 @@ sources:
 - wiki/sources/R1复现认知与误区.md
 - wiki/sources/Tongyi DeepResearch的技术报告探秘.md
 - wiki/sources/入局AI_Infra系统设计与挑战.md
-- wiki/sources/大模型显存占用单卡分析.md
 - wiki/sources/推测解码Speculative_Decoding综述.md
 - wiki/sources/淘宝直播数字人_TTS语音合成技术.md
 - wiki/sources/2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38.md

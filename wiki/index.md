@@ -274,11 +274,8 @@
 
 - [[概念_事实性存储与提取分离诊断范式]] — 区分大模型事实性错误中存储失败（知识未编码进权重）与访问失败（权重已存但提问无法取出）的诊断范式，提供两把尺子测评方法与四阶工程排查阶梯（LLM/hallucination, LLM/reasoning）
 
-- [[概念_Agent工具调用沙箱]] — 智能体代码执行与工具调用安全隔离环境，结合工作区隔离、网络白名单、cgroup 资源配额、受限运行时与 seccomp 系统调用拦截（AI-Agent/tool-calling）
-
 - [[概念_Agentic_Web_Search]] — 面向大模型智能体的网络搜索架构与供应链解耦范式，将搜索 Stack 拆分为代理层、定向语义索引、上下文精炼与云端运行时四层，并重构排序反馈信号（AI-Agent/deep-research, AI-Agent/infra, RAG/retrieval）
 
-- [[概念_显存组成与估算]] — 显存消耗组成、各组件估算公式、估算误差
 - [[概念_激活值重计算]] — 重计算原理及不同并行组合的激活值公式
 - [[概念_Zero显存优化]] — Zero1/2/3 三种策略与计算公式
 - [[概念_两阶段检测]] — Region-based 两阶段范式：Proposal → 分类回归
@@ -307,7 +304,6 @@
 - [[概念_Normalization方法对比]] — BN/LN/IN/GN 维度与用途对比
 - [[概念_Batch_Normalization]] — BN 动机/算法/作用/问题
 - [[概念_Cholesky分解与DPP]] — Cholesky 分解加速 DPP 贪婪 MAP 推断，O(N·k²)
-- [[概念_特征值分解]] — EVD 方阵分解，特征值/特征向量/几何意义
 - [[概念_奇异值分解SVD]] — 任意矩阵分解 A=UΣV^T，降维/压缩基础工具
 - [[概念_Transformer架构]] — Transformer 5 步流程：Tokenization/Embedding/Attention/FFN/Output
 - [[概念_大模型训练三阶段]] — Pre-train/Instruction FT/RLHF 训练流程
@@ -510,10 +506,8 @@
 - [[概念_LLM幻觉消除技术分类]] — 32 种技术两大分类：提示工程（RAG/反馈/提示微调）vs 模型开发（LLM/hallucination）
 - [[概念_抗幻觉方法]] — RARR/FAVA/Self-RAG/CoVe/FLAME/WebGPT 抵抗方法体系（LLM/hallucination）
 - [[概念_温度参数与幻觉创造力权衡]] — 温度参数控制输出分布平滑度，高温增创意增幻觉，低温保准确减创意（LLM/hallucination, LLM/inference）
-- [[概念_BPE分词算法]] — 迭代合并高频字节对，平衡词汇表大小与序列长度，GPT系列标准分词（LLM/tokenization）
 
 ### LLM/面试/训练/RL（批次9）
-- [[概念_LLM面试知识体系]] — LLM 面试五大模块清单：架构/微调/推理/数学/扩展（LLM, 面试）
 - [[概念_Reward_Hacking]] — 奖励攻陷（Specification Gaming），强化学习中模型找到奖励漏洞以不符合真实意图的方式高频刷分现象（LLM/training/RL）
 - [[概念_AI创业Scaling_Law]] — AI 团队规模与产出效率的悖论：小而精 vs 规模扩张（创业）
 

@@ -6,13 +6,11 @@ tags:
 summary: Google 2017 提出的深度学习模型，通过自注意力机制捕捉序列中各元素之间关系。当前大语言模型的主流架构。
 sources:
 - wiki/sources/Discrete_Tokenization多模态综述.md
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/Transformer大模型3D可视化_NanoGPT.md
 - wiki/sources/向量数据库原理与应用全解析.md
 - wiki/sources/大模型幻觉陷阱_AGI之路04期.md
 - wiki/sources/大模型显存计算公式与优化.md
-- wiki/sources/大模型算法岗面试百问百答.md
-updated: '2026-07-06'
+updated: '2026-09-07'
 ---
 
 # 概念：Transformer 架构

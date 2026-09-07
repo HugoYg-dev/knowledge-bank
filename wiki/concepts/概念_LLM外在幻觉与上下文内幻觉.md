@@ -5,7 +5,6 @@ tags:
 summary: 翁荔（Lilian Weng）将 LLM 幻觉具体化为：模型输出内容是虚构的，并且不基于所提供的上下文或世界知识。
 sources:
 - wiki/sources/大模型幻觉陷阱_AGI之路04期.md
-- wiki/sources/大模型算法岗面试百问百答.md
 - wiki/sources/翁荔_LLM外在幻觉_原因检测抵抗.md
 - wiki/sources/模型答错事实题，先分清是没存进去，还是这次没取出来.md
 updated: '2026-09-07'

@@ -5,7 +5,6 @@ tags:
 summary: DeepSeek 开源的基于 Cordis 微内核的智能体 SDK 与应用框架，采用命令式插件与“一切皆插件”架构，支持 Agent Loop 运行时热替换、四大预设模式、权威
   Session Log 与自进化（Self-Harness）。
 sources:
-- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 updated: '2026-09-07'
@@ -59,4 +58,3 @@ updated: '2026-09-07'
 - **支撑来源**：
   - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
   - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
-  - [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]

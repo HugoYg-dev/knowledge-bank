@@ -5,7 +5,6 @@ tags:
 summary: CLIP（Contrastive Language-Image Pre-training），OpenAI 视觉-语言对齐模型，为 SAM 提供文本
   Prompt 能力。
 sources:
-- wiki/sources/LLM面试50题_MIT_CSAIL.md
 - wiki/sources/PyTorch图像增强方法总结.md
 - wiki/sources/R1复现认知与误区.md
 - wiki/sources/SAM_Segment_Anything模型.md

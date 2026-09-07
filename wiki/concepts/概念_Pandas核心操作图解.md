@@ -7,9 +7,7 @@ tags:
 summary: Pandas 核心操作的图解总结——涵盖选择过滤、排序、分组聚合、连接合并、变形与索引管理，以及与 NumPy 的关键差异。
 sources:
 - wiki/sources/Pandas一行代码绘制25种美图.md
-- wiki/sources/图解Pandas常用操作_NumPy对比与进阶.md
-- wiki/sources/超强图解Pandas操作大全.md
-updated: '2026-06-30'
+updated: '2026-09-07'
 ---
 
 
@@ -88,5 +86,3 @@ Series = NumPy vector + Index 对象，Index 提供 O(1) 元素查找和标签�
 
 - [[实体_Pandas]]
 - [[概念_Pandas可视化]]
-- [[超强图解Pandas操作大全]]（来源）
-- [[图解Pandas常用操作_NumPy对比与进阶]]（来源）

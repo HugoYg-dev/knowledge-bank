@@ -6,7 +6,6 @@ summary: 阿里基于 Qwen3 训练的 SOTA 嵌入（Embedding）与重排模型�
 sources:
 - wiki/sources/Jina_AI创业复盘.md
 - wiki/sources/为什么用Qwen3_embedding和rerank.md
-- wiki/sources/大模型算法岗面试百问百答.md
 updated: '2026-07-01'
 ---
 

@@ -5,13 +5,8 @@ tags:
 summary: Agent 完整轨迹评估（Full Trajectory Evaluation） 是一种面向复杂大模型智能体的评估范式。对智能体从输入到输出的整个决策路径（包含
   Skill 加载、参考读取、工具选择、参数合规与环境清理）进行系统化评估。
 sources:
-- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
-- wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md
-- wiki/sources/DeepSeek Agent开发岗三面，再面一轮就offer啦！！！.md
 - wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md
 - wiki/sources/如何系统评价一个_Agent_Skill.md
-- wiki/sources/月之暗面 Agent开发岗，凉凉！！！.md
-- wiki/sources/美团AICoding面试，跪了！！！.md
 updated: '2026-09-07'
 ---
 # 概念：Agent 完整轨迹评估
@@ -35,13 +30,7 @@ updated: '2026-09-07'
 - **校准 LLM-as-a-Judge**：利用人工标注数据与 [[实体_DSPy]] 等工具，优化裁判模型的提示词，使得自动化评分与专家认知高度吻合。
 - **反事实回放（Counterfactual Replay）**：在离线代表性数据集上对比测试 `With Skill` 与 `Without Skill`（或候选模版与 Baseline）的轨迹轨迹，定量评估边际增量。
 
-## 项目评测分层实例
-
-DeepSeek 面试复盘中的项目把评测拆为四层：检索层使用 Recall@K、MRR、NDCG；生成层关注准确率、幻觉率与引用正确率；链路层以标准 Case 检查端到端完成率；线上层通过 A/B 测试、采纳率和满意度观察实际效果。其 Badcase 还会经过人工修正、SFT、离线回归、灰度发布与线上验证形成闭环。
-
-美团面试复盘中的高风险评论审核测试矩阵覆盖正常样本、变体规避、反讽引用、边界误伤、Prompt 注入及异常输入，并同时观察误删、漏判、人工审核负载和 P95 延迟。这体现了轨迹评估不能只验证分类正确性，还要覆盖权限动作、安全攻击、异常处理与运行成本。
-
-### 长期规划能力 Benchmark 与客观综合评测
+## 长期规划能力 Benchmark 与客观综合评测
 
 在生产级与高并发复杂场景下，轨迹评估进一步延伸至长期规划韧性、压力承受度与客观确定性度量：
 1. **长期规划三维 Benchmark**：
@@ -55,8 +44,6 @@ DeepSeek 面试复盘中的项目把评测拆为四层：检索层使用 Recall@
 
 ## 来源与参考
 
-- [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]
-- [[sources/美团AI全栈Agent一面，笑着聊完挂了！！！|美团AI全栈Agent一面，笑着聊完挂了！！！]]
 - [[sources/Dropbox基于DSPy优化Dash Chat评估与提示词]]
 - [[sources/如何系统评价一个_Agent_Skill]]
 - [[concepts/概念_LLM应用评估体系]]
