@@ -8,6 +8,7 @@ sources:
 - wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md
 - wiki/sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57.md
 - wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md
+- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
 - wiki/sources/DeepSeek Agent开发岗三面，再面一轮就offer啦！！！.md
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
@@ -16,7 +17,7 @@ sources:
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/美团AICoding面试，跪了！！！.md
 - wiki/sources/高德地图AI应用开发岗一面，我跪了！！！.md
-updated: '2026-08-20'
+updated: '2026-09-07'
 ---
 # 概念：Harness Engineering
 
@@ -50,6 +51,13 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 对内容删除等不可逆业务动作，Harness 还应把模型限制在“判断与建议”角色，由服务端依据置信度、风险级别和权限策略执行实际操作，并保留可追溯的决策证据与审计日志。
 
 此外，生产级 Harness 必须明确将**状态（State）与记忆（Memory）解耦管理**。状态绑定于当前 Run，通过在每个超级步骤（Superstep）后写入 Checkpoint 记录执行进度以防意外崩溃，支持中断恢复和新分支分叉（Fork）；而记忆则跨 Runs 留存，多智能体协同下需通过 Scope 机制进行隔离（如 `memory.scope("/agent")`）以防认知冲突。详见 [[概念_Agent内存与状态管理]]。
+
+### 分层早停与防路径震荡控制
+
+在生产级 Agent Loop 设计中，Harness 需具备细粒度的运行时控制机制：
+1. **分层早停（Hierarchical Early Stopping）**：由“模型 Thought 置信度打分”、“连续步信息增益（Embedding 相似度）”和“任务类型步数上限”构成；关键依赖工具返回的**确定性硬信号**（明确答案、非空数据、单元测试通过）作为早停终极锚点，防范模型置信度幻觉。
+2. **失败记忆（Failure Memory）遏制路径震荡**：针对反复调用相同失败 Action 的问题，Harness 在内存中维护带滑动时间窗口（TTL）的 `(tool_name, params_hash)` 失败字典；当窗口期内相同工具及参数连续失败达阈值（如 $\ge 2$ 次），强行阻断执行并注入反思提示词，驱动 Agent 探索替代分支。
+3. **无人值守安全审批矩阵**：将操作分级为只读（自动执行）、低风险（异步报告与事后复核）与高风险（阻断等待人工确认），配合全局 Token/资金预算限额与高危模式自动熔断。
 
 ## 生产级 Harness 的 11 大核心组件
 
@@ -104,6 +112,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 
 ## 来源与参考
 
+- [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]
 - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]

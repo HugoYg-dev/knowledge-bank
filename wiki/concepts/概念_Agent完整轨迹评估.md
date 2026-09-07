@@ -5,12 +5,14 @@ tags:
 summary: Agent 完整轨迹评估（Full Trajectory Evaluation） 是一种面向复杂大模型智能体的评估范式。对智能体从输入到输出的整个决策路径（包含
   Skill 加载、参考读取、工具选择、参数合规与环境清理）进行系统化评估。
 sources:
+- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
+- wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md
 - wiki/sources/DeepSeek Agent开发岗三面，再面一轮就offer啦！！！.md
 - wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md
 - wiki/sources/如何系统评价一个_Agent_Skill.md
 - wiki/sources/月之暗面 Agent开发岗，凉凉！！！.md
 - wiki/sources/美团AICoding面试，跪了！！！.md
-updated: '2026-08-03'
+updated: '2026-09-07'
 ---
 # 概念：Agent 完整轨迹评估
 
@@ -39,8 +41,22 @@ DeepSeek 面试复盘中的项目把评测拆为四层：检索层使用 Recall@
 
 美团面试复盘中的高风险评论审核测试矩阵覆盖正常样本、变体规避、反讽引用、边界误伤、Prompt 注入及异常输入，并同时观察误删、漏判、人工审核负载和 P95 延迟。这体现了轨迹评估不能只验证分类正确性，还要覆盖权限动作、安全攻击、异常处理与运行成本。
 
+### 长期规划能力 Benchmark 与客观综合评测
+
+在生产级与高并发复杂场景下，轨迹评估进一步延伸至长期规划韧性、压力承受度与客观确定性度量：
+1. **长期规划三维 Benchmark**：
+   - **迷宫探索（Maze Exploration）**：考察有障碍与死路状态下的规划最短路径与回溯（Backtracking）收敛效率；
+   - **项目分解（Project Decomposition）**：评测复杂宏观工程分解为 DAG 依赖子任务的完备性与合理度；
+   - **动态调整（Dynamic Re-planning）**：考察在外界接口宕机、Schema 突变时，重规划的响应延迟与任务挽回率。
+2. **逐步加压压力测试（Step-up Load Testing）**：
+   - 线性加压观测系统的 QPS 拐点、P99 延迟突破 SLA（如 2 秒）阈值及错误率激增点，识别瓶颈并防范脉冲流量下的级联雪崩。
+3. **消除主观偏差的综合验证体系**：
+   - 建立由 **客观确定性验证（70%）**（工具返回有效性、JSON Schema、数值与字段断言）+ **用户显式反馈（20%）** + **专家人工抽检（10%）** 构成的加权完成率，解决单纯依靠用户点击主观“已解决”带来的严重评估偏差。
+
 ## 来源与参考
 
+- [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]
+- [[sources/美团AI全栈Agent一面，笑着聊完挂了！！！|美团AI全栈Agent一面，笑着聊完挂了！！！]]
 - [[sources/Dropbox基于DSPy优化Dash Chat评估与提示词]]
 - [[sources/如何系统评价一个_Agent_Skill]]
 - [[concepts/概念_LLM应用评估体系]]

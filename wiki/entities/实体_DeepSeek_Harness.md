@@ -5,9 +5,10 @@ tags:
 summary: DeepSeek 开源的基于 Cordis 微内核的智能体 SDK 与应用框架，采用命令式插件与“一切皆插件”架构，支持 Agent Loop 运行时热替换、四大预设模式、权威
   Session Log 与自进化（Self-Harness）。
 sources:
+- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
-updated: '2026-08-20'
+updated: '2026-09-07'
 ---
 
 # 实体：DeepSeek Harness
@@ -45,11 +46,17 @@ updated: '2026-08-20'
 8. **多形态交付**：
    - 提供 Web UI（127.0.0.1:3080）、终端 TUI、Headless 自动化模式及 ACP 协议 / JSON-RPC / Python SDK 入口。
 
+9. **组合优先与生态解耦（vs LangChain）**：
+   - LangChain 采用“框架优先”理念，高层抽象沉重且升级容易破坏兼容性；DSH 采用“组合优先”理念，依托 Cordis 元框架将适配器、注册表、循环逻辑全量插件化，无特权核心，模块可独立测试与热插拔。
+10. **Meta-Harness 分布式调度**：
+   - Harness 负责单个智能体实例内的模型交互、工具执行与会话状态；上层通过 **Meta-Harness** 统一管理多个 Harness 实例，执行算力资源调度、任务分发与跨实例状态同步。
+
 ## 关联页面
 - **微内核底座**：[[entities/实体_Cordis|Cordis]]
-- **所属团队**：[[entities/实体_DeepSeek-V3|DeepSeek]]
+- **所属团队**：[[entities/实体_DeepSeek|DeepSeek]]
 - **同类智能体系统**：[[entities/实体_Claude_Code|Claude Code]]、[[entities/实体_Codex|Codex]]
 - **核心概念**：[[concepts/概念_Harness_Engineering|Harness Engineering]]、[[concepts/概念_Self-Harness|Self-Harness]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
 - **支撑来源**：
   - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
   - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
+  - [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]

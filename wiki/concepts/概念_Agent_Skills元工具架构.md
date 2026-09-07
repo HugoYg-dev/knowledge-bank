@@ -5,13 +5,15 @@ tags:
 summary: Agent Skills 元工具架构（Agent Skills Meta-Tool Architecture）是 Claude Code 中扩展
   Agent 能力的一种设计模式：通过一个名为 Skill 的元工具（meta-tool）作为容器，动态加载和调度各个具体技能（skills），技能本质是领...
 sources:
+- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
+- wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md
 - wiki/sources/Claude_Agent_Skills_从第一性原理深入剖析.md
 - wiki/sources/Firecrawl 新工具开源，anydoc，将各种输入转换为md.md
 - wiki/sources/从第一性原理深度拆解_Claude_Agent_Skill_宝玉.md
 - wiki/sources/写好CLAUDE.md_HumanLayer最佳实践.md
 - wiki/sources/如何系统评价一个_Agent_Skill.md
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
-updated: '2026-07-06'
+updated: '2026-09-07'
 ---
 # 概念：Agent Skills 元工具架构
 
@@ -79,7 +81,23 @@ references 与 assets 的区别：references 通过 Read 工具加载到 Claude 
 3. **搜索-分析-报告**：代码库分析模式检测
 4. **命令链执行**：CI/CD 类多步骤工作流
 
+## 大规模 Skill 路由与 MCP 协议分层
+
+随着智能体接入能力规模化，工具系统面临上下文膨胀与协议互通的双重挑战：
+
+### 1. 百级 Skill 分层路由选择器（Hierarchical Tool Selector）
+当 Skill 数量突破 100 个时，若全量加载工具描述将导致上下文窗口严重退化。工程上采用三层路由架构：
+- **类别粗排**：用轻量级规则匹配或小模型意图分类器，将全量工具池收敛到特定业务大类（如数据库、搜索、文件系统）；
+- **向量精排**：在命中类别内，利用 Query 与各工具语义描述的 Embedding 计算余弦相似度，动态筛选 Top-5 注入当前 Prompt；
+- **描述缓存**：对高频复用的工具元数据进行 Token 级缓存，大幅削减预处理延迟。
+
+### 2. MCP 协议标准与 Skill 的架构定位区别
+- **MCP（Model Context Protocol）**：标准化**通信契约与交互协议**。统一不同客户端与服务端间的工具发现、参数规范、通信格式与错误代码，解决跨系统复用与中立性问题；
+- **Skill**：具体的**领域业务实现**。承载复杂的领域业务流、上下文注入模板与私有脚本。二者结合构成了“通用标准底座（MCP）+ 业务定制引擎（Skill）”的现代智能体扩展范式。
+
 ## 来源
 
+- [[sources/DeepSeek AI Infra 一面，面爽了！！！|DeepSeek AI Infra 一面，面爽了！！！]]
+- [[sources/美团AI全栈Agent一面，笑着聊完挂了！！！|美团AI全栈Agent一面，笑着聊完挂了！！！]]
 - [[Claude_Agent_Skills_从第一性原理深入剖析]]
 - [[从第一性原理深度拆解_Claude_Agent_Skill_宝玉]]

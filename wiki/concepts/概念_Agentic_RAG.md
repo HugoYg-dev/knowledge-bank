@@ -4,11 +4,13 @@ tags:
 - RAG/retrieval
 summary: Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策略和优化推理过程，提升系统性能。
 sources:
+- wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md
+- wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md
 - wiki/sources/Agent系统开发经验.md
 - wiki/sources/Anthropic多智能体研究系统构建.md
 - wiki/sources/ES企业AI搜索实践.md
 - wiki/sources/优图RAG技术详解.md
-updated: '2026-07-06'
+updated: '2026-09-07'
 ---
 
 # 概念_Agentic_RAG
@@ -34,6 +36,19 @@ Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策
 - PlanRAG："先计划后检索"提升决策能力
 - REAPER：推理增强检索规划
 
+## 动态交互与检索增强实践
+
+### 1. 多轮主动澄清与超时兜底
+面对用户模糊意图（如“找个好吃的”），Agentic RAG 不直接发起无效检索，而是基于核心业务维度（品类、位置、预算、人数等）逐轮澄清；设立**退出阈值（收集齐核心要素）**与**超时兜底（连续多轮未答则降级为热门推荐）**，兼顾精准度与交互体验。
+
+### 2. 短 Query 与长 Chunk 的语义扩写（Query Rewrite）
+短 Query 存在严重的信息稀疏问题，难以在稠密向量空间直接命中长 Chunk。Agentic RAG 采用微调轻量小模型或 Prompt 扩展技术，将“退款流程”扩写为包含系统、入口与操作步骤的密集表述，显著提升跨模态与跨长度匹配度。
+
+### 3. 双索引原子切换与时间衰减加权
+为保证知识库实时更新且消除陈旧数据带来的幻觉：
+- **双索引架构**：维护当前在线服务索引与后台正在构建的增量索引，构建完成通过指针原子切换；
+- **时间衰减加权**：检索评分引入指数衰减函数 $score = 	ext{similarity} 	imes \exp(-\lambda 	imes \Delta t)$，使高时效性内容获得自适应加权。
+
 ## 实践案例（ES）
 
 - 通过 LLM 提取日期等关键信息生成查询，添加时间过滤器（如准确找到 2025 年财务报告）
@@ -42,4 +57,4 @@ Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策
 ## 关联
 
 - 相关概念：[[概念_RAG基础流程]]、[[概念_Memory_RAG]]、[[概念_HyDE]]、[[概念_混合检索]]、迭代式检索、[[概念_GraphRAG]]、[[概念_知识图谱RAG]]
-- 来源：RAG综述_中科院2025、[[ES企业AI搜索实践]]、阿里RAG技术演进、[[优图RAG技术详解]]
+- 来源：[[DeepSeek AI Infra 一面，面爽了！！！]]、[[美团AI全栈Agent一面，笑着聊完挂了！！！]]、RAG综述_中科院2025、[[ES企业AI搜索实践]]、阿里RAG技术演进、[[优图RAG技术详解]]

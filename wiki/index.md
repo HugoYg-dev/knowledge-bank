@@ -4,6 +4,12 @@
 
 ## Sources
 
+- [[Manus团队测模型一点微小的经验]] — Manus 团队针对深度研究 (Deep Research) 场景构建的评测基准 Research Bench，提出信息量与隐喻率两大可量化信号，揭示中间过程研究笔记格式对最终信息量的关键影响并指导 Harness 迭代（AI-Agent/deep-research）
+- [[模型答错事实题，先分清是没存进去，还是这次没取出来]] — Google Research 基于 WikiProfile 数据集研究发现前沿模型已将 95–98% 维基事实存入权重但闭卷提问失败率达 26–34%，系统论证存储缺失与访问受阻两种错误根因并提出四阶排查阶梯（LLM/hallucination, LLM/reasoning）
+
+- [[Anthropic 重磅发布：AI Native 软件开发方法论]] — Anthropic 发布 AI-Native SDLC 手册，以版本控制产物驱动的闭环循环（Loop）重构软件生命周期，通过 CLAUDE.md、Skill 与 Hook 构建三层防线（AI-Agent/coding, Skill/claude-code）
+- [[阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施]] — 阿里开源 local-first 代码搜索基建 zvec-grep (zg)，以 BM25 + Vector + RRF 混合检索桥接自然语言意图与代码标识符，重构 Agent 上下文获取（AI-Agent/coding, AI-Agent/tool-calling, RAG/retrieval）
+
 - [[搜索没有变便宜，但 Agent 把它拆成了新的供应链]] — 鸭哥深度剖析 Agent 时代 Web Search 供应链解耦为代理层、定向语义索引、上下文精炼与云端运行时四层，以及分发渠道向模型 API 运行时迁移（AI-Agent/deep-research, AI-Agent/infra, RAG/retrieval）
 - [[深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]] — 鸭哥深度对比 DeepSeek DSH 命令式微内核与 Codex 声明式插件世界观，剖析 Agent Loop 插件化与自进化基础设施（AI-Agent/harness, AI-Agent/coding）
 
@@ -186,6 +192,8 @@
 - [[月之暗面 Agent开发岗，凉凉！！！]] — Agent 面试复盘：上下文摘要触发、长期记忆召回、工具渐进披露与 RAG 可观测性（AI-Agent/memory, AI-Agent/context-engineering, 面试）
 - [[高德地图AI应用开发岗一面，我跪了！！！]] — AI 应用面试复盘：多轮 RAG、RRF、粗排精排、结构切分、记忆冲突与 Agent Loop（RAG/retrieval, RAG/chunking, 面试）
 - [[美团AICoding面试，跪了！！！]] — AI Coding 面试复盘：将高风险评论审核拆为规则、输入输出、权限和测试四层系统（AI-Agent/coding, AI-Agent/eval, 面试）
+- [[DeepSeek AI Infra 一面，面爽了！！！]] — DeepSeek AI Infra 面试复盘：Harness 插件哲学、早停与防震荡机制、工具沙箱、大小模型协同及多 Agent 协作平台（Infra/AI, AI-Agent/coding, 面试）
+- [[美团AI全栈Agent一面，笑着聊完挂了！！！]] — 美团 AI 全栈 Agent 面试复盘：行程规划工具编排、多轮澄清、Query 改写、Schema 校验、记忆压缩、分布式锁与并发终止（AI-Agent/coding, AI-Agent/tool-calling, 面试）
 - [[读：读代码前先跑的五个 git 命令 - 暗无天日]] — 用 Git 历史识别变更热点、关键维护者、缺陷聚集、提交趋势和救火信号（Skill/linux, AI-Agent/coding）
 - [[2025-01-31_7-Uses-of-Underscore-in-Python_194be0]] — 本文介绍了 Python 中下划线（_）的 7 种主要使用场景，包括获取最后计算值、循环占位符、大数字分隔符以及四种用于命名对象的下划线规范（单前导、单后缀、双前导和双前后导）。（python, python/syntax）
 - [[2025-02-03_4-ways-to-test-ML-models-in-production_194cd4]] — 本文介绍了在生产环境中测试机器学习模型的 4 种经典方法，即 A/B 测试、金丝雀测试、交叉测试（Interleaved）以及影子测试（Shadow），并在其扩展阅读中提及了多臂强盗部署（MAB）。（machinelearning, MLOps, modeltesting）
@@ -263,6 +271,10 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/AI）
 
 ## Concepts
+
+- [[概念_事实性存储与提取分离诊断范式]] — 区分大模型事实性错误中存储失败（知识未编码进权重）与访问失败（权重已存但提问无法取出）的诊断范式，提供两把尺子测评方法与四阶工程排查阶梯（LLM/hallucination, LLM/reasoning）
+
+- [[概念_Agent工具调用沙箱]] — 智能体代码执行与工具调用安全隔离环境，结合工作区隔离、网络白名单、cgroup 资源配额、受限运行时与 seccomp 系统调用拦截（AI-Agent/tool-calling）
 
 - [[概念_Agentic_Web_Search]] — 面向大模型智能体的网络搜索架构与供应链解耦范式，将搜索 Stack 拆分为代理层、定向语义索引、上下文精炼与云端运行时四层，并重构排序反馈信号（AI-Agent/deep-research, AI-Agent/infra, RAG/retrieval）
 
@@ -509,6 +521,7 @@
 - [[概念_数字人文案生成]] — 口语化改写/多步蒸馏/图文一致/测评体系完整框架（LLM）
 
 ### AI-Agent/tool-calling MCP系列（Phase 4 Batch 1）
+- [[概念_AI-Native_SDLC]] — Anthropic 提出的 AI Native 软件开发生命周期方法论，以产物驱动闭环循环（Loop）重构研发流程，融合 CLAUDE.md/Skill/Hook 三层规则防线与五层落地路径（AI-Agent/coding）
 - [[概念_CLAUDE.md最佳实践]] — 编写 CLAUDE.md 工程宪法以约束 Agent 行为的高级指南与规范范式 (AI-Agent/coding)
 - [[概念_MCP协议]] — MCP 定义、CHS 架构、五大原语、传输方式、与 Function Call 关系全景（AI-Agent/tool-calling）
 - [[概念_MCP_CHS架构]] — Client-Host-Server 三组件精确界定：Host 是 AI 智能唯一承载者，Server/Client 是模型无关 RPC 管道（AI-Agent/tool-calling）
@@ -545,6 +558,11 @@
 - [[概念_LLM系统自动优化方法论]] — 介绍了以大模型优化大模型系统的反馈演进闭环，横向对比 OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch 等 6 大自动调优技术。（llm, optimization, auto-prompt, software-evolution）
 
 ## Entities
+
+- [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/AI, LLM/arch）
+- [[实体_美团]] — 中国领先的科技零售与本地生活平台，在搜索理解、推荐系统、AI Coding 与全栈生活服务智能体具有深厚积累（AI-Agent/coding, Recommendation）
+
+- [[实体_zvec-grep]] — 阿里 Zvec 团队开源的 local-first 代码搜索基础设施，结合 BM25 词法检索、局部向量语义检索与 RRF 排名融合，为人类与 Agent 提供高效上下文获取（AI-Agent/coding, AI-Agent/tool-calling, RAG/retrieval）
 
 - [[实体_Tavily]] — 专注于面向 LLM 与 RAG 的 Web Search 搜索引擎供应商，主打网页降噪、正文抽取与高信息密度文本片段压缩（AI-Agent/deep-research, RAG/retrieval）
 - [[实体_Exa]] — 专注于面向 AI 与大模型的定向语义索引搜索引擎，聚焦 GitHub、ArXiv、Wikipedia 等高信息密度站点提供高质量神经搜索（AI-Agent/deep-research, RAG/retrieval）

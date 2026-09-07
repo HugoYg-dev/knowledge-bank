@@ -2,12 +2,14 @@
 type: concept
 tags:
 - AI-Agent/coding
+- AI-Agent/deep-research
 summary: LLM 应用评估体系是指在大模型应用开发全生命周期中，对 Prompt/RAG/Agent 输出质量进行系统性、可重复评估的方法论与工具集合。
 sources:
 - wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md
 - wiki/sources/2026-07-24_11-LLM-evaluation-methods_19f962.md
 - wiki/sources/2026-07-28_Technical-LLM-interview-question!_19faa9.md
-updated: '2026-08-04'
+- wiki/sources/Manus团队测模型一点微小的经验.md
+updated: '2026-09-07'
 ---
 
 
@@ -134,7 +136,13 @@ DigitalOcean 提出了在生产环境中对海量 Agent 交互轨迹进行低成
 11. **Safety Eval (安全评估)**
     - **定义**：并发运行偏见、毒性、PII（个人隐私泄露）等分类器，对模型输出中的违规内容进行实时阻断或打标。
     - **使用局限**：不提供质量打分，仅进行拦截和分类判定。
-    - **最佳实践**：安全评估应作为**独立闸口（Gate）**引入系统，而不是折算到平均综合评分中。任何严重的隐私泄漏或毒性输出应该触发“一票否决”，防止违规行为被亮眼的质量均分所粉饰。
+12. **Deep Research 报告量化评估信号 (Deep Research Evaluation Signals)**
+    - **背景**：针对长篇研究报告、行业调研等非 Coding 场景，缺乏类似单元测试的确定性可验证标准，传统产品易陷入“片面求长”的虚假详实陷阱。
+    - **双维解构**：从「包含哪些信息」（事实覆盖度）与「信息如何组织」（理解成本）两个维度切入，提炼客观量化信号。
+    - **核心信号**：
+      - **信息量（Fact Density）**：采用 Agent as a Judge 抽取报告中客观事实点/数据点总数并横向归一化，剔除主观评价性修饰词。
+      - **隐喻率（Metaphor Rate）**：统计每百句中隐喻表达出现次数，强制要求输出直白字面替换进行反向校验，量化模型文风生硬度与信息映射损耗（$y=f(x)$ 导致信息单向丢失）。
+    - **中间过程记录与 Harness 闭环**：中间研究笔记的记录格式直接决定最终报告质量（Bullet points 优于长文本摘要总结），通过评估反馈反向指导 Agent 系统提示词与 Harness 行为。
 
 ## 幻觉处理
 
@@ -148,3 +156,4 @@ DigitalOcean 提出了在生产环境中对海量 Agent 交互轨迹进行低成
 
 - [[Dropbox基于DSPy优化Dash Chat评估与提示词]]
 - [[2026-07-24_11-LLM-evaluation-methods_19f962]]
+- [[Manus团队测模型一点微小的经验]]

@@ -21,7 +21,9 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/实测腾讯开源的 BrowserSkill：让 AI 直接用你登录好的浏览器.md
 - wiki/sources/浅谈上下文工程_Claude_Code_Manus_Kiro.md
-updated: '2026-07-06'
+- wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md
+- wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md
+updated: "2026-09-07"
 ---
 # 实体：Claude Code
 
@@ -42,7 +44,16 @@ updated: '2026-07-06'
 - **零基建依赖**：直接操作本地文件系统，配合 [[实体_Obsidian]] 实现“可读可编可查”。
 - **IM 远程调用**：通过 `Claude-to-IM` 等开源桥接项目，可与飞书、微信、Slack 打通，实现移动端随时发消息即由工作站后台触发入库与编译。
 
+
+### 3. AI-Native SDLC 原生落地基座
+在 Anthropic 提出的 [[concepts/概念_AI-Native_SDLC|AI-Native SDLC]] 范式中，Claude Code 作为官方参考实现与执行中枢：
+- **计划模式（Plan Mode）**：深入代码库分析改动并生成 `plan.md`，经人类审批后方可动工，严格遵循“计划未过不写代码”纪律。
+- **三层规则落地**：会话初始化加载项目根目录 `CLAUDE.md`（项目宪法），按需装配 `.agents/skills/`（专项操作规程），并受操作触发的 `Hook` 脚本硬性阻断保护。
+- **本地搜索基建接入**：除内置文件搜索外，可接入如 [[entities/实体_zvec-grep|zvec-grep (zg)]] 等本地优先混合检索层，高效桥接自然语言意图与代码标识符，减少无效 Tool Calls 与 Token 浪费。
+
 ## 来源与参考
 
 - [[Claude Code与Obsidian飞书知识库搭建实践]]
+- [[sources/Anthropic 重磅发布：AI Native 软件开发方法论]]
+- [[sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施]]
 - [[概念_LLM_Wiki范式]]

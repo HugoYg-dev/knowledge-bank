@@ -1,5 +1,26 @@
 # Wiki Log
 
+## [2026-09-07] ingest | raw/articles/Manus团队测模型一点微小的经验.md & 模型答错事实题，先分清是没存进去，还是这次没取出来.md -> wiki/sources/ (+ 概念_事实性存储与提取分离诊断范式)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/Manus团队测模型一点微小的经验.md` -> `raw/articles/Manus团队测模型一点微小的经验.md` -> `wiki/sources/Manus团队测模型一点微小的经验.md`（增量更新已有实体 `[[wiki/entities/实体_Manus|实体_Manus]]`，系统收录 Research Bench 深度研究评估实践与过程笔记驱动 Harness 调优；增量更新已有概念 `[[wiki/concepts/概念_LLM应用评估体系|概念_LLM应用评估体系]]`，补充信息量与隐喻率两大可量化信号；增量更新已有概念 `[[wiki/concepts/概念_Deep-Research四大挑战|概念_Deep-Research四大挑战]]`，补充端到端复杂长文研究质量评测破解方案）
+  - `Clippings/模型答错事实题，先分清是没存进去，还是这次没取出来.md` -> `raw/articles/模型答错事实题，先分清是没存进去，还是这次没取出来.md` -> `wiki/sources/模型答错事实题，先分清是没存进去，还是这次没取出来.md`（新建核心概念 `[[wiki/concepts/概念_事实性存储与提取分离诊断范式|概念_事实性存储与提取分离诊断范式]]`，系统建立存储失败 vs 访问失败诊断框架、松严双尺测试法与四阶工程排查阶梯；增量更新已有概念 `[[wiki/concepts/概念_LLM外在幻觉与上下文内幻觉|概念_LLM外在幻觉与上下文内幻觉]]`，解构外在幻觉中访问受阻的本质病因；增量更新已有概念 `[[wiki/concepts/概念_自适应快慢思考|概念_自适应快慢思考]]`，补充 Thinking to Recall 参数记忆翻找机理）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
+## [2026-09-07] ingest | raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md & 美团AI全栈Agent一面，笑着聊完挂了！！！.md -> wiki/sources/ (+ 实体_DeepSeek, 实体_美团, 概念_Agent工具调用沙箱)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/DeepSeek AI Infra 一面，面爽了！！！.md` -> `raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md` -> `wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md`（+ 新建实体 `[[wiki/entities/实体_DeepSeek|实体_DeepSeek]]`，全面梳理基础模型、Harness 微内核生态、原生 Agent 决策化路线与工程安全体系；更新已有实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`，补强组合优先 vs 框架优先哲学及 Meta-Harness 协调调度；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]`，补充分层早停、硬信号锚定、FailureMemory 防震荡及无人值守权限熔断；更新 `[[wiki/concepts/概念_Agentic_RAG|概念_Agentic_RAG]]`、`[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`、`[[wiki/concepts/概念_Agent完整轨迹评估|概念_Agent完整轨迹评估]]`、`[[wiki/concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]`）
+  - `Clippings/美团AI全栈Agent一面，笑着聊完挂了！！！.md` -> `raw/articles/美团AI全栈Agent一面，笑着聊完挂了！！！.md` -> `wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md`（+ 新建实体 `[[wiki/entities/实体_美团|实体_美团]]`，系统整合本地生活搜索理解、全栈 Agent 编排、推荐模型与三道代码安全防线；更新已有实体 `[[wiki/entities/实体_美团搜索|实体_美团搜索]]`；新建概念 `[[wiki/concepts/概念_Agent工具调用沙箱|概念_Agent工具调用沙箱]]`，跨篇沉淀文件系统隔离、网络白名单、cgroup 资源配额、受限运行时及 seccomp 系统调用拦截；增量更新 `[[wiki/concepts/概念_Agentic_RAG|概念_Agentic_RAG]]` 多轮澄清与短 query 扩写、`[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]` 决策信息压缩、`[[wiki/concepts/概念_Agent完整轨迹评估|概念_Agent完整轨迹评估]]` 逐步加压与客观验证标准、`[[wiki/concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]` 大规模路由与 MCP/Skill 分层）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要、1 篇新建 Concept 概念与 2 篇新建 Entity 实体。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
+## [2026-09-07] ingest | raw/articles/Anthropic 重磅发布：AI Native 软件开发方法论.md & 阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md -> wiki/sources/ (+ 实体_zvec-grep, 概念_AI-Native_SDLC)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/Anthropic 重磅发布：AI Native 软件开发方法论.md` -> `raw/articles/Anthropic 重磅发布：AI Native 软件开发方法论.md` -> `wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md`（+ 新建概念 `[[wiki/concepts/概念_AI-Native_SDLC|概念_AI-Native_SDLC]]`，详述六阶段产物驱动闭环、CLAUDE.md/Skill/Hook 三层规则防线与五层落地路线；更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]` 与 `[[wiki/entities/实体_Claude_Code|实体_Claude_Code]]`；更新已有概念 `[[wiki/concepts/概念_CLAUDE.md最佳实践|概念_CLAUDE.md最佳实践]]`）
+  - `Clippings/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md` -> `raw/articles/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md` -> `wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md`（+ 新建实体 `[[wiki/entities/实体_zvec-grep|实体_zvec-grep]]`，解构阿里开源 local-first 代码搜索基础设施与 CLI/MCP 架构；更新已有概念 `[[wiki/concepts/概念_混合检索|概念_混合检索]]`、`[[wiki/concepts/概念_Reciprocal_Rank_Fusion|概念_Reciprocal_Rank_Fusion]]`、`[[wiki/concepts/概念_BM25|概念_BM25]]`、`[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充代码语义检索与 Agent Context Acquisition 机制；更新已有实体 `[[wiki/entities/实体_Coggle|实体_Coggle]]` 与 `[[wiki/entities/实体_Claude_Code|实体_Claude_Code]]`）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要、1 篇新建 Concept 概念与 1 篇新建 Entity 实体。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
 ## [2026-08-26] fix/lint | 修复不用title你怎么介绍自己出链与下游实体死链清理（4 实体解链注销）
 - **Source 页面死链清理**：`[[wiki/sources/不用title你怎么介绍自己.md]]` 作者与关联实体出链降级为普通文本 `Jiabin Lu`，彻底消除已删除实体的残余出链。
 - **下游概念页解链**：`[[wiki/concepts/概念_有限与无限的游戏.md]]` 正文作者出链降级为普通文本，清理已删除关联实体列表。
