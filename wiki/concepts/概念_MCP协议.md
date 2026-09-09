@@ -10,7 +10,8 @@ sources:
 - wiki/sources/MCP五大原语与Web化.md
 - wiki/sources/MCP遇上代码执行.md
 - wiki/sources/别再误会MCP了辟谣指南.md
-updated: '2026-06-29'
+- wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md
+updated: '2026-09-09'
 ---
 
 
@@ -59,6 +60,7 @@ MCP 协议定义了五类原语（Primitive），绝大多数用户只用到 Too
 | **Stdio** | 本地子进程，同机通信 |
 | **SSE（Server-Sent Events）** | 远端 HTTP，单向流式推送 |
 | **Streamable HTTP** | Web 化未来方向，可同步返回 JSON 或开启流式通道 |
+| **WebMCP（浏览器原生）** | 浏览器客户端原生声明，直接在 DOM/页面会话中暴露 Tools 与 JSON Schema（参见 [[concepts/概念_WebMCP|概念_WebMCP]]） |
 
 ## 与 Function Calling 的关系
 
@@ -86,3 +88,4 @@ MCP 不是"更高级的 Function Calling"，两者定位不同：
 - [[别再误会MCP了辟谣指南]] — CHS 架构深度解析（SDK 源码法证）
 - [[MCP五大原语与Web化]] — 五大原语权威解读（MCP 联合创建者）
 - [[MCP遇上代码执行]] — Token 消耗问题与代码执行模式
+- [[wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1|WebMCP by Google, clearly explained!]] — 浏览器端原生 WebMCP 标准与六种交互范式对比

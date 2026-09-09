@@ -4,6 +4,15 @@
 
 ## Sources
 
+- [[2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1]] — 稀疏随机投影（Sparse Random Projection）原理解析：突破 PCA 在超高维空间的三次方复杂度瓶颈，近乎保距压缩与在 VeRA 中的应用（Skill/data-analysis, DeepLearning）
+- [[2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1]] — Superlinked 开源推理服务引擎 SIE 解析：通过多模型单进程共享 GPU 与 LRU 置换机制将自托管推理成本降低约 4 倍（Infra/AI, LLM/inference）
+- [[2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1]] — Google Chrome 与 Edge 团队推出的 WebMCP 协议解析：将网站能力以类型化工具直接暴露给 Agent，对比六种 Agent 应用交互范式（AI-Agent/tool-calling, AI-Agent/UI）
+- [[2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07]] — 解构 LLM 连续批处理的核心调度机理：迭代级调度、选择性批处理、vLLM V1 调度器四步预算算法与抢占重算治理（Infra/AI, LLM/inference）
+- [[2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de]] — 系统解构 LLM 技术栈四种缓存机制（KV Cache、Prefix、Prompt、Semantic）所存底层对象、正确性影响与五大静默失效陷阱（Infra/AI, LLM/inference）
+
+- [[阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程]] — 阿里高德开源长时 Agent 编排框架 LongHorizon-Harness，提出 Manage-Execute-Audit（MEA）三角色循环，将长任务从会话与轨迹中心重构为经审计的环境状态转换（AI-Agent/coding, AI-Agent/context-engineering）
+- [[2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5]] — 揭示 Agent 上下文压缩因破坏 Prefix Caching 导致成本倒挂的物理机制，系统对比 5 种上下文压缩策略与 LMCache 分层解耦复用方案（AI-Agent/context-engineering, LLM/inference）
+
 - [[Manus团队测模型一点微小的经验]] — Manus 团队针对深度研究 (Deep Research) 场景构建的评测基准 Research Bench，提出信息量与隐喻率两大可量化信号，揭示中间过程研究笔记格式对最终信息量的关键影响并指导 Harness 迭代（AI-Agent/deep-research）
 - [[模型答错事实题，先分清是没存进去，还是这次没取出来]] — Google Research 基于 WikiProfile 数据集研究发现前沿模型已将 95–98% 维基事实存入权重但闭卷提问失败率达 26–34%，系统论证存储缺失与访问受阻两种错误根因并提出四阶排查阶梯（LLM/hallucination, LLM/reasoning）
 
@@ -515,6 +524,7 @@
 - [[概念_数字人文案生成]] — 口语化改写/多步蒸馏/图文一致/测评体系完整框架（LLM）
 
 ### AI-Agent/tool-calling MCP系列（Phase 4 Batch 1）
+- [[概念_WebMCP]] — Chrome 与 Edge 团队提出的浏览器原生 Agent 工具声明规范，允许前端网页通过 JS API 或 HTML 扩展属性直接暴露强类型动作与输入 Schema（AI-Agent/tool-calling, AI-Agent/UI）
 - [[概念_AI-Native_SDLC]] — Anthropic 提出的 AI Native 软件开发生命周期方法论，以产物驱动闭环循环（Loop）重构研发流程，融合 CLAUDE.md/Skill/Hook 三层规则防线与五层落地路径（AI-Agent/coding）
 - [[概念_CLAUDE.md最佳实践]] — 编写 CLAUDE.md 工程宪法以约束 Agent 行为的高级指南与规范范式 (AI-Agent/coding)
 - [[概念_MCP协议]] — MCP 定义、CHS 架构、五大原语、传输方式、与 Function Call 关系全景（AI-Agent/tool-calling）
@@ -556,6 +566,7 @@
 - [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/AI, LLM/arch）
 - [[实体_美团]] — 中国领先的科技零售与本地生活平台，在搜索理解、推荐系统、AI Coding 与全栈生活服务智能体具有深厚积累（AI-Agent/coding, Recommendation）
 
+- [[实体_LongHorizon-Harness]] — 阿里高德团队开源的长时 Agent 编排框架，通过 Manage-Execute-Audit (MEA) 循环将长任务重构为审计状态机，包裹原生 Coding Agent 以防状态腐化与虚假完成（AI-Agent/coding, AI-Agent/context-engineering）
 - [[实体_zvec-grep]] — 阿里 Zvec 团队开源的 local-first 代码搜索基础设施，结合 BM25 词法检索、局部向量语义检索与 RRF 排名融合，为人类与 Agent 提供高效上下文获取（AI-Agent/coding, AI-Agent/tool-calling, RAG/retrieval）
 
 - [[实体_Tavily]] — 专注于面向 LLM 与 RAG 的 Web Search 搜索引擎供应商，主打网页降噪、正文抽取与高信息密度文本片段压缩（AI-Agent/deep-research, RAG/retrieval）
@@ -891,6 +902,7 @@
 - [[概念_t-SNE算法]] — t-SNE 是一种流形学习降维与二维可视化算法。其 CPU 计算具有 O(N²) 二次方复杂度瓶颈，大样本下极其缓慢。tSNE-CUDA 可提供高达 700 倍的 GPU 极速提升，但目前硬件上仅支持生成二维投影（n_components=2）。（ML/dimension-reduction, t-SNE, GPU/acceleration）
 - [[概念_不平衡数据的kNN优化]] — 未分类概念摘要（machinelearning, knn, imbalanceddata）
 - [[概念_主成分分析_PCA]] — 未分类概念摘要（machinelearning, dimensionalityreduction, mathematics）
+- [[概念_稀疏随机投影]] — 基于 Johnson-Lindenstrauss 引理的线性降维算法，以稀疏随机矩阵突破 PCA 的三次时间复杂度瓶颈，在超高维场景近乎保持欧氏距离与下游任务质量（Skill/data-analysis, DeepLearning）
 - [[概念_交替注意力_Alternating_Attention]] — 交替注意力（Alternating Attention）是 ModernBERT 采用的记忆体高效注意力机制，通过在每三层交替使用一层全局注意力与滑动窗口局部注意力（128个最近 token），打破了传统 BERT 全局注意力二次方复杂度的瓶颈。（attentionmechanism, modernbert, efficiency）
 - [[概念_倒排文件索引_IVF]] — 倒排文件索引 (Inverted File Index, IVF) 是一种常用的高维向量近似最近邻搜索 (ANNS) 索引方法。它通过聚类将空间划分为若干分区，使得检索时只需搜索最近质心所在的局部胞腔，从而极大降低计算复杂度并提高检索速度。（vector-database, vector-search, indexing, approximate-nearest-neighbor）
 - [[概念_分块阻断技术_Blocking]] — 未分类概念摘要（datadeduplication, computerscience, optimization, algorithm）

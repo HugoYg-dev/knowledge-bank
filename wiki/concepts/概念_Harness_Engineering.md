@@ -12,7 +12,8 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
-updated: '2026-09-07'
+- wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md
+updated: '2026-09-09'
 ---
 # 概念：Harness Engineering
 
@@ -95,11 +96,26 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 6. **Fail-Closed 默认安全原则**：
    - 默认采用 `workspace-write` 沙箱并配合审批机制；当系统无法确认隔离策略完全生效时，主动拒绝执行（Fail-Closed）而非静默降级为无保护运行。
 
+
+## MEA 循环与审计驱动状态转换（LongHorizon-Harness 范式）
+
+针对长时跨界面/长链路复杂任务，[[entities/实体_LongHorizon-Harness|LongHorizon-Harness]] 提出了突破传统单会话轨迹中心模型的 **Manage-Execute-Audit (MEA)** 状态机范式：
+
+1. **从“长上下文轨迹”转向“审计状态机”**：
+   - 传统单会话 Harness 将执行、状态记录与自评全揉在同一条不断变长的轨迹中，引发 Compounding Errors（滚雪球偏差）、Goal Drift（目标漂移）与 [[concepts/概念_Context_Rot|Context Rot]]。
+   - MEA 循环将长任务重定义为**环境状态转换管理**：每轮抛弃上一轮高噪声的原始工具轨迹，仅跨轮沉淀由 Requirement、Artifact、Fact 构成的受审计状态账本。
+2. **三角色结构隔离与外层包裹定位**：
+   - **Manager**：持有状态账本与原始需求，无环境直接操作权限，动态生成有界子任务契约（Subtask Contract）；
+   - **Executor**：唯一被允许修改环境的主体，在每轮全新受限上下文中运行，包裹 [[entities/实体_Claude_Code|Claude Code]] 或 [[entities/实体_Codex|Codex]] 作为底层执行引擎；
+   - **Auditor**：仅具只读权限，从外部物理环境重新取证，基于完成度（Completion）、完整性（Integrity）与契约合规（Contract Audit）三维控制信号硬性决定是否提交状态；
+   - **定位边界**：底层 Coding Agent 负责单轮将代码/操作做出来，MEA 外层循环负责把守状态门禁，决定哪些局部产物有资格累积进长期可信进度。
+
 ## 代表实践
 
 - [[entities/实体_Claude_Code|Claude Code]]：Anthropic CLI 编码智能体，高度集成了 Harness 工程哲学。
 - [[entities/实体_Codex|Codex]]：OpenAI 编码智能体系统，代表了经典的声明式插件模型。
 - [[entities/实体_DeepSeek_Harness|DeepSeek Harness (DSH)]]：DeepSeek 开源的命令式微内核智能体框架。
+- [[entities/实体_LongHorizon-Harness|LongHorizon-Harness]]：阿里高德开源的审计状态机长时 Agent 编排框架，通过 MEA 三角色解耦与外层契约包裹底层 Coding Agent。
 
 ## 来源与参考
 
@@ -111,3 +127,5 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[concepts/概念_Self-Harness|Self-Harness]]
 - [[sources/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a|The Anatomy of an Agent Harness]]
 - [[sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57|Agent memory and state are not the same thing!]]
+- [[wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md]]
+

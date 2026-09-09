@@ -1877,7 +1877,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md",
-          "status": "review",
+          "status": "ingested",
           "title": " Continuous batching in LLMs "
         }
       ],
@@ -1887,7 +1887,7 @@
       "id": "19ffcb7da4673b07",
       "last_error": null,
       "last_seen_at": "2026-09-02T01:07:23+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -1928,7 +1928,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md",
-          "status": "review",
+          "status": "ingested",
           "title": " 5 context compaction strategies for LLM agents "
         },
         {
@@ -1947,7 +1947,7 @@
       "id": "1a03a9b5c46e28a5",
       "last_error": null,
       "last_seen_at": "2026-09-02T01:07:23+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -1972,7 +1972,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md",
-          "status": "review",
+          "status": "ingested",
           "title": " KV vs Prefix vs Prompt vs Semantic Caching "
         },
         {
@@ -1991,7 +1991,7 @@
       "id": "1a044d0b132124de",
       "last_error": null,
       "last_seen_at": "2026-09-02T01:07:23+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2007,7 +2007,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md",
-          "status": "review",
+          "status": "ingested",
           "title": " Researchers built a new AI inference engine "
         },
         {
@@ -2016,7 +2016,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md",
-          "status": "review",
+          "status": "ingested",
           "title": "WebMCP by Google, clearly explained!"
         },
         {
@@ -2025,7 +2025,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md",
-          "status": "review",
+          "status": "ingested",
           "title": " Sparse random projections "
         }
       ],
@@ -2035,7 +2035,7 @@
       "id": "1a0580f9aa7f67f1",
       "last_error": null,
       "last_seen_at": "2026-09-02T01:07:23+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2046,5 +2046,5 @@
   },
   "last_sync_at": "2026-09-02T01:07:23+00:00",
   "schema_version": 2,
-  "updated_at": "2026-09-02T01:07:23+00:00"
+  "updated_at": "2026-09-09T10:08:14+00:00"
 }

@@ -7,7 +7,8 @@ summary: Agent 状态记录单次运行的任务进度并通过逐步检查点�
 sources:
 - wiki/sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
-updated: 2026-08-04
+- wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md
+updated: '2026-09-09'
 ---
 # Agent 内存与状态管理
 

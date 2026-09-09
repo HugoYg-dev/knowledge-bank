@@ -23,7 +23,8 @@ sources:
 - wiki/sources/推测解码Speculative_Decoding综述.md
 - wiki/sources/2026-07-24_Delta-attention-in-Kimi-K3-to-fix-growing-KV-cache_19f962.md
 - wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md
-updated: '2026-09-07'
+- wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md
+updated: '2026-09-09'
 ---
 
 
@@ -76,13 +77,32 @@ $$\text{KV Cache} = 2 \times L \times H \times D \times S \times B \times \text{
 
 传统 KV Cache 由生成它的模型参数决定，模型路由切换后不能直接被另一模型读取。[[概念_跨模型KV缓存转换]] 记录了一种针对同家族稠密全注意力模型的表示映射方案：先在去除 RoPE 位置旋转的空间中拟合跨层线性映射，再恢复目标模型旋转。[原文陈述] 该方案尚未验证跨家族或不匹配 KV 头配置，不能视为通用跨模型缓存互操作方案。
 
+### 四种缓存机制横向解耦 (KV vs Prefix vs Prompt vs Semantic Caching)
+
+在大模型服务技术栈中，四种不同机制常被笼统称为“Caching”，其底层存储对象、命中原理及失效风险存在根本差异：
+
+| 缓存机制 | 存储对象 | 键构造方式 (Key) | 命中与正确性性质 | 典型失效风险 |
+| :--- | :--- | :--- | :--- | :--- |
+| **1. 基础 KV Cache** | 单请求内部各层注意力 K/V 张量 | 序列位置索引 | 精确计算（正确性中立） | 显存容量瓶颈，请求完成即释放 |
+| **2. Prefix Caching** | 服务引擎跨请求复用的 KV 显存块 | Token ID 父子哈希链 (Hash Chain) | 精确匹配（正确性中立，仅影响性能） | 前缀插入动态变量、RAG 块乱序破坏链式哈希 |
+| **3. Prompt Caching** | 云厂商托管的前缀 KV 复用（按差异费率计价） | 渲染后前缀文本精确哈希 | 精确匹配（读取 0.1x，写入 1.25x） | 超过 20 块回溯窗口、修改 Tool Schema 顺序、开启 Thinking |
+| **4. 语义缓存 (Semantic)** | 最终文本回答字符串 (Response String) | Prompt Embedding 余弦相似度 | **模糊匹配（具有置信风险）** | 否定句与肯定句向量过近、相同模板数值微调引发误答 |
+
+#### 生产环境五大静默缓存失效陷阱（Silent Invalidation）
+1. **前缀注入动态变量**：在 System Prompt 头部插入时间戳、Request ID 或动态用户信息，会导致其后所有 Tokens 的链式哈希彻底作废；
+2. **Tool Schema 顺序微调**：工具定义通常置于 System Prompt 之前，任何工具声明的增删改序都会推倒重算；
+3. **渲染配置动态翻转**：切换 Web Search、Citations 开关或改动 `tool_choice` 会改写底层渲染文本；
+4. **历史文本编辑破坏前缀**：应用层压缩摘要会改写历史头部，迫使原本可低成本读取的 Tokens 重新按高费率写入；
+5. **跨模型路由导致冷启动**：由于不同模型隐空间不兼容，路由到轻量模型同样无法复用大模型已有缓存。
+
 ## 关联
 
 - [[入局AI_Infra系统设计与挑战]]（来源）
 - [[KV_Cache原理图解]]（详细图解来源）
+- [[sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de]]（来源）
 - [[概念_MLA低秩KV压缩]]
 - [[MiniMax_vs_Kimi_注意力路线之争]]
-- [[实体_vLLM]]
+- [[entities/实体_vLLM]]
 - [[概念_自注意力复杂度]]
 - [[概念_LLM推理两阶段]]
 - [[概念_解耦式KV缓存与LMCache]]

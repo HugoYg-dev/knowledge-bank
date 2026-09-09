@@ -6,7 +6,8 @@ summary: PCA 通过主成分进行降维，但只有前两个主成分解释了�
 sources:
 - wiki/sources/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md
 - wiki/sources/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md
-updated: '2026-08-03'
+- wiki/sources/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md
+updated: '2026-09-09'
 ---
 # 主成分分析 (Principal Component Analysis, PCA)
 
@@ -68,3 +69,11 @@ plt.show()
 由于 PCA 是线性降维技术，对于具有复杂非线性结构（如流行流形结构）的高维数据，PCA 无法有效展平。若首要目的是进行**低维可视化**，建议选用专门为可视化设计的非线性流形学习算法：
 - **[[wiki/concepts/概念_t-SNE算法]]**：通过概率分布匹配保留数据的局部邻域结构，尤其擅长聚类可视化。
 - **UMAP (Uniform Manifold Approximation and Projection)**：基于黎曼几何和代数拓扑，在保留局部结构的同时能比 t-SNE 更好地保留全局结构，且计算效率更高。
+
+---
+
+## 超高维计算瓶颈与降维替代方案
+
+- **三次时间复杂度限制**：PCA 的时间复杂度约为 $O(\min(d^3, n^3) + d^2 n)$，在特征维度 $d$ 极高（如 $d \ge 1000$）时，协方差矩阵分解或 SVD 计算开销急剧膨胀，在工程上往往导致超时或显存溢出。
+- **超高维线性降维优选**：对于特征维度巨大的海量数据（$d \ge 700+$），推荐使用 [[concepts/概念_稀疏随机投影|概念_稀疏随机投影]]（Sparse Random Projection）。基于 Johnson-Lindenstrauss 引理，它通过轻量稀疏矩阵乘法在保持点对欧几里得距离的同时突破算力瓶颈。
+

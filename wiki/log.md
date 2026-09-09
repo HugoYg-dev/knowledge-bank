@@ -1,5 +1,32 @@
 # Wiki Log
 
+## [2026-09-09] ingest | raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md -> wiki/sources/ (+ 概念_稀疏随机投影)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/emails/dailydoseofds/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_稀疏随机投影|概念_稀疏随机投影]]`，收录基于 Johnson-Lindenstrauss 引理的高维保距投影、轮廓系数实测衰减阶梯、sklearn 工程实现与 VeRA 冻结随机矩阵大模型微调架构；增量更新已有概念 `[[wiki/concepts/概念_主成分分析_PCA|概念_主成分分析_PCA]]`，补充超高维空间三次复杂度算力瓶颈与稀疏投影选型对比）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 1 篇新建 Source 摘要与 1 篇新建 Concept 概念。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
+## [2026-09-09] ingest | raw/articles/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md & 2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md -> wiki/sources/ (+ 概念_WebMCP)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/emails/dailydoseofds/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md`（增量更新已有实体 `[[wiki/entities/实体_Superlinked_Inference_Engine|实体_Superlinked_Inference_Engine]]`，补充 Apache 2.0 开源发布、单进程显存时分复用与 LRU 置换机制、四大统一调用原语 encode/score/extract/generate 与自托管推理成本降低 4x 数据）
+  - `Clippings/emails/dailydoseofds/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_WebMCP|概念_WebMCP]]`，系统收录 Chrome/Edge 团队提出的浏览器端原生 Agent 工具声明规范、Agent 触达应用的六种方式全景对比、零配置/天然会话绑定/动态能力下发优势及 JS/HTML 声明接入范式；增量更新已有概念 `[[wiki/concepts/概念_MCP协议|概念_MCP协议]]`，扩展 WebMCP 浏览器客户端原生传输与交互范式）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
+## [2026-09-09] ingest | raw/articles/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md & 2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md -> wiki/sources/
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/emails/dailydoseofds/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md` -> `raw/articles/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md` -> `wiki/sources/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md`（增量更新已有概念 `[[wiki/concepts/概念_连续批处理|概念_连续批处理]]`，系统解构选择性批处理、vLLM V1 调度器四步算法与抢占重算机制）
+  - `Clippings/emails/dailydoseofds/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` -> `raw/articles/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` -> `wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md`（增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，系统解构四种缓存层次、Prefix Caching 块哈希链机制与五大静默失效陷阱）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
+## [2026-09-09] ingest | raw/articles/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md & 2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md -> wiki/sources/ (+ 实体_LongHorizon-Harness)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md` -> `raw/articles/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md` -> `wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md`（新建实体 `[[wiki/entities/实体_LongHorizon-Harness|实体_LongHorizon-Harness]]`，系统收录阿里高德开源的 MEA 审计状态机长时 Agent 编排框架；增量更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]` 与 `[[wiki/concepts/概念_Agent内存与状态管理|概念_Agent内存与状态管理]]`，详述三角色解耦、任务账本三元组与外层事务协调定位）
+  - `Clippings/emails/dailydoseofds/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md` -> `raw/articles/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md` -> `wiki/sources/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md`（增量更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充五种上下文压缩策略全景对比及前缀编辑破坏 Prefix Caching 导致成本倒挂的反直觉物理机制，结合 LMCache CacheBlend 任意位置缓存复用技术）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Entity 实体。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
 ## [2026-09-07] refactor/governance | 面试 tag 文章实体来源排他性治理与门禁加固（清洗 11 篇实体中的面试来源）
 - **核心治理纪律确立**：遵循用户指示，确立“带有 `面试` tag 的文章不得作为实体（`wiki/entities/`）的信息来源，面经文章只用于生成专题面经总结文档”规则；同步更新 `AGENTS.md` §2.2 并将“面经文章汇总专题”挂载至 `TODO.md` 待办清单。
 - **全库实体来源与正文清洗（11 篇实体）**：
