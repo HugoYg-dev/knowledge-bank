@@ -37,7 +37,7 @@
 	<key>StandardOutPath</key>
 	<string>/Users/ZHao/WorkSpace/knowledge-bank/Clippings/emails/.pipeline/logs/token-keepalive.out.log</string>
 	<key>StartInterval</key>
-	<integer>432000</integer>
+	<integer>14400</integer>
 	<key>WorkingDirectory</key>
 	<string>/Users/ZHao/WorkSpace/knowledge-bank</string>
 </dict>
