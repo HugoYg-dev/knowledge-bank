@@ -1,5 +1,11 @@
 # Wiki Log
 
+## [2026-09-15] ingest | raw/articles/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md -> wiki/sources/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md (+ 实体_EAGLE)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/emails/dailydoseofds/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md` -> `raw/articles/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md` -> `wiki/sources/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md`（新建实体 `[[wiki/entities/实体_EAGLE|实体_EAGLE]]`，收录倒数第二层特征隐状态外推预测、输入前移去歧义与 LLaMA2-70B 上 2.7x-3.5x 加速比；增量更新已有概念 `[[wiki/concepts/概念_推测解码|概念_推测解码]]`，全面梳理双模型独立推测、EAGLE隐层特征预测、Medusa多头树状解码、LayerSkip浅层早退四大变体机制与工程权衡；增量更新已有实体 `[[wiki/entities/实体_Medusa|实体_Medusa]]`，补充 Medusa-1 与 Medusa-2 训练范式对比、树状注意力 Tree Attention 一次验证多分支与树宽调控工程权衡）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 1 篇新建 Source 摘要与 1 篇新建 Entity 实体。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
 ## [2026-09-15] ingest | raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md & 2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md -> wiki/sources/ (+ 概念_GQA分组查询注意力, 概念_MRL套娃表示学习)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/emails/dailydoseofds/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md`（新建概念 `[[wiki/concepts/概念_GQA分组查询注意力|概念_GQA分组查询注意力]]`，收录分组共享 KV 头平衡 MHA 精度与 MQA 显存、主流开源大模型采用现状；增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，补充 70B 模型 128k 上下文在 BF16 下 40GB 显存开销及解码阶段内存带宽瓶颈；增量更新已有概念 `[[wiki/concepts/概念_MLA多头潜在注意力|概念_MLA多头潜在注意力]]`，补充低秩潜向量压缩降至 MHA 5%-13% 显存；增量更新已有概念 `[[wiki/concepts/概念_FlashAttention|概念_FlashAttention]]`，明确其作为底层标准执行内核而非注意力类型的定位；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，详细记录 PagedAttention 虚拟内存分页映射消除 60%-80% 显存碎片机制）

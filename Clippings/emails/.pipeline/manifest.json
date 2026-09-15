@@ -2072,7 +2072,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md",
-          "status": "review",
+          "status": "ingested",
           "title": " Attention Mechanisms in LLMs, clearly explained "
         }
       ],
@@ -2082,7 +2082,7 @@
       "id": "1a068e0f112668fe",
       "last_error": null,
       "last_seen_at": "2026-09-15T05:10:18+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2107,7 +2107,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md",
-          "status": "review",
+          "status": "ingested",
           "title": " 5 embedding compression techniques "
         },
         {
@@ -2126,7 +2126,7 @@
       "id": "1a06e32ac6088201",
       "last_error": null,
       "last_seen_at": "2026-09-15T05:10:18+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2151,7 +2151,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md",
-          "status": "review",
+          "status": "ingested",
           "title": " 4 speculative decoding variants "
         },
         {
@@ -2170,7 +2170,7 @@
       "id": "1a09737e364224e2",
       "last_error": null,
       "last_seen_at": "2026-09-15T05:10:18+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2181,5 +2181,5 @@
   },
   "last_sync_at": "2026-09-15T05:10:18+00:00",
   "schema_version": 2,
-  "updated_at": "2026-09-15T05:33:10+00:00"
+  "updated_at": "2026-09-15T10:08:14+00:00"
 }

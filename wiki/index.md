@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[2026-09-12_4-speculative-decoding-variants_1a09737e364224e2]] — 系统解构推测解码（Speculative Decoding）四大主流变体：双模型独立草稿、EAGLE 隐层特征外推、Medusa 多头并行树状解码与 LayerSkip 浅层早退，对比其机制原理、显存开销与工程权衡（LLM/inference）
 - [[2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe]] — 系统解析 LLM 注意力机制演化与 KV Cache 显存优化：涵盖 MHA、MQA、GQA、MLA 的架构压缩取舍，FlashAttention 计算访存优化，SWA 与 NSA 稀疏机制，以及 PagedAttention 与 RadixAttention 服务引擎管理（LLM/arch/attention, LLM/inference）
 - [[2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201]] — 系统梳理 5 种 Embedding 向量压缩技术：PCA 投影、MRL 前缀截断、SQ 标量量化、BQ 二值量化与 PQ 乘积量化，以及 Over-fetch 粗排配合 Rescoring 精排的两阶段检索范式（RAG/embedding）
 
@@ -495,7 +496,7 @@
 
 ### LLM/inference + reasoning（批次4）
 - [[概念_量化]] — 通过降低权重和激活值的数据位宽以显著减少模型显存占用及加速推理的技术 (LLM/inference)
-- [[概念_推测解码]] — Draft-then-Verify：并行推测+验证实现无损推理加速（LLM/inference）
+- [[概念_推测解码]] — Draft-then-Verify：四大推测草稿变体与无损并行验证加速范式（LLM/inference）
 - [[概念_混合精度训练]] — BF16/FP32混合训练流程，16 bytes/参数显存估算（LLM/inference）
 - [[概念_LoRA与QLoRA显存]] — LoRA 2Φ、QLoRA 0.5Φ显存估算原理（LLM/inference, 面试）
 - [[概念_思维链CoT高级方法]] — CoT/CoT-SC/Decoding CoT/ToT+MCTS 及成本权衡（LLM/reasoning）
@@ -644,7 +645,8 @@
 - [[实体_Kimi_Linear]] — 月之暗面开源 48B 混合注意力：KDA+MLA 3:1，KV Cache 减少 75%（LLM/arch/attention）
 - [[实体_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力，vLLM 已收录（LLM/arch/attention）
 - [[实体_DeepSeek_V2]] — DeepSeek MLA 首发模型（LLM/arch/attention）
-- [[实体_Medusa]] — Medusa 推测解码框架：多 FFN Head Self-Drafting（LLM/inference）
+- [[实体_Medusa]] — Medusa 推测解码框架：多 FFN Head 并行预测与树状注意力验证（LLM/inference）
+- [[实体_EAGLE]] — 基于倒数第二层特征隐状态预测的高效推测解码推理加速框架（LLM/inference）
 - [[实体_Qwen3]] — 阿里 Qwen3：SFT 混合思考 + Thinking Budget 涌现（LLM/reasoning）
 - [[实体_DeepSeek-R1]] — DeepSeek 推理模型，GRPO+四阶段训练，AIME 79.8%，与 o1-1217 相当（LLM/reasoning, LLM/training/RL）
 - [[实体_Unsloth]] — 开源高效 LLM 微调框架，支持 GRPO 训练推理模型，GitHub 4万星（LLM/training/RL, Skill/python）
