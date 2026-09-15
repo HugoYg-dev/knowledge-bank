@@ -2,12 +2,14 @@
 type: concept
 tags:
 - Skill/data-analysis
-summary: PCA 通过主成分进行降维，但只有前两个主成分解释了大部分原始方差时才适合二维可视化，累计解释方差曲线可用于验证并选择保留维数。
+- RAG/embedding
+summary: PCA 通过主成分进行降维，既可用于低维可视化，也可作为 Embedding 向量检索的训练后线性降维压缩手段（需严格对索引与查询同步投影）。
 sources:
 - wiki/sources/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md
 - wiki/sources/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md
 - wiki/sources/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md
-updated: '2026-09-09'
+- wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md
+updated: '2026-09-15'
 ---
 # 主成分分析 (Principal Component Analysis, PCA)
 
@@ -76,4 +78,20 @@ plt.show()
 
 - **三次时间复杂度限制**：PCA 的时间复杂度约为 $O(\min(d^3, n^3) + d^2 n)$，在特征维度 $d$ 极高（如 $d \ge 1000$）时，协方差矩阵分解或 SVD 计算开销急剧膨胀，在工程上往往导致超时或显存溢出。
 - **超高维线性降维优选**：对于特征维度巨大的海量数据（$d \ge 700+$），推荐使用 [[concepts/概念_稀疏随机投影|概念_稀疏随机投影]]（Sparse Random Projection）。基于 Johnson-Lindenstrauss 引理，它通过轻量稀疏矩阵乘法在保持点对欧几里得距离的同时突破算力瓶颈。
+
+---
+
+## 在 Embedding 向量检索与压缩中的应用
+
+在 RAG 与大规模向量检索中，PCA 常被用作训练后（Post-training）的线性降维压缩技术：
+- **维度削减与显存收益**：从代表性语料的向量集合中拟合出方差最大的主成分方向，将 1536 维等稠密向量投影到更低维度（如 256 或 512 维），降低向量数据库内存开销 3x–6x；
+- **强一致性要求**：PCA 投影矩阵必须**严格且一致地同时应用于已建索引的库内向量与在线查询（Query）向量**，否则相似度度量完全失效；
+- **与 MRL 的范式对比**：PCA 属于训练后线性近似，可直接作用于任何现成的黑盒 Embedding 模型；而 [[concepts/概念_MRL套娃表示学习|MRL（套娃表示学习）]] 属于训练期内生优化目标，截断时不损失非线性深层语义，综合检索精度通常显著优于后处理 PCA。
+
+---
+
+## 关联
+
+- **相关概念**: [[concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]、[[concepts/概念_Quantized_Embedding|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
+- **相关来源**: [[wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md]]
 

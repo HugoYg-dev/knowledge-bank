@@ -1,5 +1,12 @@
 # Wiki Log
 
+## [2026-09-15] ingest | raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md & 2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md -> wiki/sources/ (+ 概念_GQA分组查询注意力, 概念_MRL套娃表示学习)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/emails/dailydoseofds/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md`（新建概念 `[[wiki/concepts/概念_GQA分组查询注意力|概念_GQA分组查询注意力]]`，收录分组共享 KV 头平衡 MHA 精度与 MQA 显存、主流开源大模型采用现状；增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，补充 70B 模型 128k 上下文在 BF16 下 40GB 显存开销及解码阶段内存带宽瓶颈；增量更新已有概念 `[[wiki/concepts/概念_MLA多头潜在注意力|概念_MLA多头潜在注意力]]`，补充低秩潜向量压缩降至 MHA 5%-13% 显存；增量更新已有概念 `[[wiki/concepts/概念_FlashAttention|概念_FlashAttention]]`，明确其作为底层标准执行内核而非注意力类型的定位；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，详细记录 PagedAttention 虚拟内存分页映射消除 60%-80% 显存碎片机制）
+  - `Clippings/emails/dailydoseofds/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md` -> `raw/articles/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md` -> `wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md`（新建概念 `[[wiki/concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]`，收录多粒度嵌套损失训练、推理期免微调弹性截断与 OpenAI text-embedding-3 实践；增量更新已有概念 `[[wiki/concepts/概念_主成分分析_PCA|概念_主成分分析_PCA]]`，补充训练后降维投影机制及对索引与查询同步投影的强一致性要求；增量更新已有概念 `[[wiki/concepts/概念_Binary_Embedding|概念_Binary_Embedding]]`，补充 10M 向量 62GB 降至 2GB 的 32x 压缩比与 Over-fetch + Rescoring 两阶段检索范式；增量更新已有概念 `[[wiki/concepts/概念_Quantized_Embedding|概念_Quantized_Embedding]]`，补充 SQ 标量量化 4x 缩减及与 MRL 串联组合范式；增量更新已有概念 `[[wiki/concepts/概念_向量量化|概念_向量量化]]`，补充乘积量化 PQ 子向量切分与聚类 ID 编码查表近似机制）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 2 篇新建 Concept 概念。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
+
 ## [2026-09-15] upgrade | 存量邮件文献官网长文无损升级 (dailydoseofds 6篇重点文章)
 - **官网全量版本覆盖升级 (`raw/articles/`)**：
   - 执行 `uv run scripts/mail_pipeline.py upgrade-article` 覆盖升级 6 篇存量邮件文章，将 `content_tier` 从 `email_fallback` 升级为 `web_canonical`，并注入官方 `canonical_url`：

@@ -24,7 +24,8 @@ sources:
 - wiki/sources/2026-07-24_Delta-attention-in-Kimi-K3-to-fix-growing-KV-cache_19f962.md
 - wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md
 - wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md
-updated: '2026-09-09'
+- wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
+updated: '2026-09-15'
 ---
 
 
@@ -51,21 +52,25 @@ KV Cache 是 LLM 推理优化的核心机制。LLM 自回归生成时，每次�
 - **仅适用于 Decoder 架构**（有 Causal Mask）
 - Encoder 的 K/V 不可缓存，因为输入会整体变化
 
-## 显存代价
+## 显存代价与访存墙
 
 $$\text{KV Cache} = 2 \times L \times H \times D \times S \times B \times \text{bytes}$$
 
-示例：batch=32, head=32, layer=32, dim=4096, seq=2048, float32 → **约 64GB**
+- 示例 1：batch=32, head=32, layer=32, dim=4096, seq=2048, float32 → **约 64GB**
+- 示例 2：70B 模型在 BF16 精度下，单条 128K 超长上下文的 KV Cache 高达 **约 40GB**，已与 4-bit 量化后的模型整机权重相当。
+- 自回归解码瓶颈：生成阶段受制于 GPU 内存带宽（Memory-Bandwidth Bound）而非浮点算力。
 
-## 优化方向
+## 优化方向与技术体系
 
-| 方案 | 原理 |
-|------|------|
-| GQA/MQA | 减少头数，共享 K/V |
-| MLA | 低秩压缩 K/V |
-| Linear Attention | 无需 KV Cache |
-| 量化 | K/V 低精度存储 |
-| 滑动窗口 | 仅保留近邻 K/V |
+| 优化层级 | 方案 | 核心原理与收益 |
+| :--- | :--- | :--- |
+| **架构压缩** | [[概念_GQA分组查询注意力]] (GQA) / MQA | 减少 KV 头数，组内或全局共享 K/V（如 GQA 减少 4x 显存且质量无损） |
+| **架构压缩** | [[概念_MLA多头潜在注意力]] (MLA) | 低秩潜空间压缩 K/V，仅存潜向量并在计算时升维解压，显存降至 MHA 的 5%–13% |
+| **算子内核** | [[概念_FlashAttention]] | 片上 SRAM Tiling 分块与在线增量 Softmax，避免频繁存取 HBM $N \times N$ 矩阵 |
+| **稀疏注意力** | SWA / NSA | 滑动窗口截断或预训练原生稀疏注意力，解决长文本 $O(N^2)$ 计算量 |
+| **显存调度** | PagedAttention | 分页虚拟内存管理，非连续物理块分配，显存浪费从 60%–80% 降至 <4%（如 [[实体_vLLM]]） |
+| **前缀复用** | RadixAttention / Prefix Caching | 基数树前缀匹配与 KV Block 跨请求复用，多轮对话命中率达 75%–95%（如 SGLang） |
+| **数值压缩** | 量化 (K/V Quantization) | K/V 采用 FP8/INT4 等低精度存储 |
 
 ## 生产应用中的挑战与优化演进
 
@@ -110,3 +115,5 @@ $$\text{KV Cache} = 2 \times L \times H \times D \times S \times B \times \text{
 - [[2026-05-03_How-LLM-inference-works-internally_19deee]]
 - [[概念_Delta_Attention与增量矩阵缓存]]
 - [[概念_跨模型KV缓存转换]]
+- [[概念_GQA分组查询注意力]]
+- [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]

@@ -14,14 +14,15 @@ sources:
 - wiki/sources/淘宝直播数字人_TTS语音合成技术.md
 - wiki/sources/2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38.md
 - wiki/sources/2026-08-07_8-LLM-precision-formats_19fddf.md
-updated: '2026-08-10'
+- wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
+updated: '2026-09-15'
 ---
 
 # 实体：vLLM
 
 ## 简介
 
-vLLM 是一个开源 LLM 推理框架（UC Berkeley），以高吞吐量和低延时为目标。在全文中被多次提及作为 KV Cache 和连续批处理的代表实现。
+vLLM 是一个开源 LLM 推理框架（UC Berkeley），以高吞吐量和低延时为目标。在全文中被多次提及作为 KV Cache、PagedAttention 和连续批处理的代表实现。
 
 ## 在本文语境中的角色
 
@@ -29,9 +30,13 @@ vLLM 是一个开源 LLM 推理框架（UC Berkeley），以高吞吐量和低�
 - vLLM 的 Continuous Batching 实现连续批处理
 - [原文陈述] 在 2026-08-05 的多模型服务来源中，vLLM 被作为独立服务进程的代表；该文指出其 `--gpu-memory-utilization` 默认值为 0.9，多进程共用单卡时需要外部协调显存与调度。
 - [原文陈述] 2026-08-07 的精度格式来源将 vLLM 列为 4-bit 格式在本地/推理生态中常见的使用场景之一。
+- [原文陈述] 在 2026-09-03 的注意力机制解析来源中，vLLM 的 **PagedAttention** 机制被详细分析：其借鉴操作系统虚拟内存分页机制，通过 Block Table 将每个请求的逻辑 KV 块映射到离散物理块，彻底消除了传统预分配连续显存导致的 60%–80% 显存碎片浪费，将显存浪费降至 4% 以下。
 
 ## 关联
 
 - [[入局AI_Infra系统设计与挑战]]（来源）
+- [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]（来源）
 - [[概念_KV_Cache]]
 - [[概念_连续批处理]]
+- [[concepts/概念_FlashAttention]]
+

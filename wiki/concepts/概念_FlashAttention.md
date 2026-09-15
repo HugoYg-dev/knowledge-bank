@@ -16,7 +16,8 @@ sources:
 - wiki/sources/大模型显存计算公式与优化.md
 - wiki/sources/推测解码Speculative_Decoding综述.md
 - wiki/sources/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md
-updated: '2026-09-07'
+- wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
+updated: '2026-09-15'
 ---
 
 
@@ -24,7 +25,7 @@ updated: '2026-09-07'
 
 ## 定义
 
-FlashAttention（Tri Dao 等，2022）是一种 I/O 感知（I/O-aware）的注意力优化方法，核心是通过算法重组与硬件协同设计最大限度减少全局显存（HBM）访问，且不做任何近似、保持精度。
+FlashAttention（Tri Dao 等，2022）是一种 I/O 感知（I/O-aware）的精确注意力计算内核优化方法，核心是通过算法重组与硬件协同设计最大限度减少全局显存（HBM）访问，且不做任何数学近似、完全保持计算精度。需要明确的是，**FlashAttention 不是一种新的注意力架构类型，而是底层高效执行任何注意力机制（MHA、GQA、MLA 等）的标准执行内核（Standard Kernel）**。
 
 ## 硬件瓶颈背景 (SRAM 与 HBM)
 
@@ -49,5 +50,8 @@ FlashAttention（Tri Dao 等，2022）是一种 I/O 感知（I/O-aware）的注�
 ## 关联
 
 - [[Attention复杂度解析与改进方向]]（来源）
+- [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]（来源）
 - [[概念_自注意力复杂度]]
+- [[concepts/概念_GQA分组查询注意力]]
+- [[concepts/概念_MLA多头潜在注意力]]
 - [[实体_FlashAttention]]

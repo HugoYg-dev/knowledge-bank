@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe]] — 系统解析 LLM 注意力机制演化与 KV Cache 显存优化：涵盖 MHA、MQA、GQA、MLA 的架构压缩取舍，FlashAttention 计算访存优化，SWA 与 NSA 稀疏机制，以及 PagedAttention 与 RadixAttention 服务引擎管理（LLM/arch/attention, LLM/inference）
+- [[2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201]] — 系统梳理 5 种 Embedding 向量压缩技术：PCA 投影、MRL 前缀截断、SQ 标量量化、BQ 二值量化与 PQ 乘积量化，以及 Over-fetch 粗排配合 Rescoring 精排的两阶段检索范式（RAG/embedding）
+
 - [[2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1]] — 稀疏随机投影（Sparse Random Projection）原理解析：突破 PCA 在超高维空间的三次方复杂度瓶颈，近乎保距压缩与在 VeRA 中的应用（Skill/data-analysis, DeepLearning）
 - [[2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1]] — Superlinked 开源推理服务引擎 SIE 解析：通过多模型单进程共享 GPU 与 LRU 置换机制将自托管推理成本降低约 4 倍（Infra/AI, LLM/inference）
 - [[2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1]] — Google Chrome 与 Edge 团队推出的 WebMCP 协议解析：将网站能力以类型化工具直接暴露给 Agent，对比六种 Agent 应用交互范式（AI-Agent/tool-calling, AI-Agent/UI）
@@ -280,6 +283,9 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/AI）
 
 ## Concepts
+
+- [[概念_GQA分组查询注意力]] — GQA（Grouped-Query Attention）分组共享单组 Key/Value 头，在大幅缩减 KV Cache 显存开销的同时保留接近 MHA 的建模表达力，是现代开源 LLM 的基准注意力架构（LLM/arch/attention, LLM/inference）
+- [[概念_MRL套娃表示学习]] — MRL（Matryoshka Representation Learning）在训练阶段优化多粒度前缀嵌套损失，使向量前 n 维天然保持独立高质量语义，支持推理期免微调按需物理截断维度（RAG/embedding）
 
 - [[概念_事实性存储与提取分离诊断范式]] — 区分大模型事实性错误中存储失败（知识未编码进权重）与访问失败（权重已存但提问无法取出）的诊断范式，提供两把尺子测评方法与四阶工程排查阶梯（LLM/hallucination, LLM/reasoning）
 
