@@ -2,7 +2,7 @@
 type: concept
 tags:
 - AI-Agent/coding
-summary: 循环工程（Loop Engineering）是智能体装备工程（Harness Engineering）的外层控制面，决定了智能体运行的生命周期、任务流转、状态监控及退出机制。
+summary: 循环工程（Loop Engineering）是智能体外层控制面与系统化管理范式，决定了智能体运行的生命周期、任务流转、状态监控及退出机制，涵盖从一阶 AI Manager 到二阶 Senior Manager 的二阶管理动作系统化、边界评估与自收敛控制。
 sources:
 - wiki/sources/2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md
 - wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md
@@ -10,7 +10,8 @@ sources:
 - wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
-updated: 2026-08-04
+- wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md
+updated: "2026-09-15"
 ---
 # 循环工程 (Loop Engineering)
 
@@ -84,6 +85,52 @@ updated: 2026-08-04
 
 ---
 
+## 从 AI Manager 到 Senior Manager：管理动作系统化
+
+Loop Engineering 的核心演进不仅是调度机制的自动化，更是**管理思想的升维**：
+
+1. **一阶管理（AI Manager）与人肉管理环瓶颈**：
+   - 传统使用 AI 时，人类将模型视作会失忆的实习生，需手动提供自包含上下文、清晰问题边界与可客观检验的终点。[[entities/实体_Anthropic|Anthropic]] 对约 40 万条 [[entities/实体_Claude_Code|Claude Code]] 会话的研究证实“表现得像管理者的人更容易成功”；
+   - 但此阶段人类依然深陷在“拆任务、看日志、指引下一步”的**人肉管理环（Human-in-the-Loop）**中，系统的总体吞吐量被人类精力严格锁定。
+2. **二阶管理（Senior Manager）将管理动作写进系统**：
+   - 现代 Coding Agent 的基础自写、自跑、自修（如 Elastic 在 CI 中运行 self-healing loop 月修 24 个 broken PR）在工程上已成立；瓶颈转向跨长任务的高阶决策；
+   - Senior Manager 不追求让人把某个 Bug 修得更快，而是将委派、评估、可观测与辅导（Coaching）等二阶管理动作转化为系统内生组件，交付一个**能持续自我修复与演化的系统**：
+
+| Senior Manager 路线 | Loop Engineering 对应组件 | 系统价值与设计目标 |
+| :--- | :--- | :--- |
+| **将成功经验写成 SOP / Playbook** | **Skills 与知识资产 (`SKILL.md`)** | 让下一轮 Agent 免于重新摸索，将单次人类 Coaching 固化为长期可调用的资产 |
+| **建立可复现的 Evaluation Harness** | **Verifier 与自动化评估器** | 制定样例集、指标刻度与 Baseline，避免依赖人类临场感觉，提供确定性尺子 |
+| **构建 Tracking UI 记录微观 Trace** | **State 与微观可观测性 (Observability)** | 分数仅说明“好不好”，Rationale 与 Trace 才能解释“为什么不好”并定位模型卡点 |
+| **从单兵 Fixer 升维为 Coach** | **Maker / Checker 分立审计回路** | 物理拆分解题者与审题者，消除生成模型自我打分过于宽容的盲区 |
+| **真实使用生成新测试样例** | **Memory 与 Data Flywheel** | 静态测试集终会失效，通过真实交互回流驱动系统长期自我强化 |
+
+3. **关键工程落地载体**：
+   - **时间调度（Time-pacing）**：利用 cron 调度器（如 `/loop` 指令）周期性唤醒执行，或结合 `/goal` 指令由独立 Verifier 裁决是否达成收敛并安全退出；
+   - **分支隔离（Worktree Isolation）**：利用 Git worktree 为并发子 Agent 提供完全隔离的文件沙箱，避免相互踩踏；
+   - **外部连接（MCP Integration）**：通过 MCP 协议挂载 CI/CD、代码仓、Issue 追踪等物理工具链；
+   - **状态外部化（Externalized State）**：将任务状态落盘为物理文件或进度看板，解决跨 Context Window 重置导致的状态丢失。
+
+---
+
+## 决定循环质量的两大硬杠杆
+
+构建一条循环流水线门槛较低，但决定循环能否真正**自收敛而非发散失效**的核心在于以下两个硬杠杆：
+
+### 1. 评估的艺术：为什么 TDD 不是 AI 时代的答案
+- **传统 TDD 的隐含前提出错**：人类遵守 TDD 依赖内在的求真责任心（对线上宕机、夜间告警与 Code Review 的顾忌）；而 AI 没有隐性维护负担，当测试通过成为其唯一目标时，**古德哈特定律（Goodhart’s Law）**立即生效——为跑通测试，模型会倾向于直接硬编码 `return True`。
+- **过度 Mock/Stub 锁死路径确定性**：为防范作弊而编写海量细碎的 Mock 和 Stub，等同于强加了过程确定性枷锁，抹杀了 AI 探索更优架构的自由度。
+- **从路径约束撤退到系统边界约束**：
+  - AI 时代的评估重心必须撤回至系统输入输出的边界；
+  - 采用契约测试（Contract Testing）、属性测试（Property Testing），或引入完全独立的审计 AI 实例根据自然语言规范核对语义共识，以语义灵活性换取系统可靠收敛。
+
+### 2. 任务自动发现的发散性局限与人类防线
+- **自动需求发现的落地误区**：让 AI 全自动扫描 CI 日志或 Bug 跟踪器自行决定“下一步做什么”，在实际生产中往往沦为噱头；
+- **业务上下文与战略缺失**：优先级排布需要公司的中长期战略考量、用户同理心与商业权衡，这些隐性上下文高度动态漂移，AI 极易做出与大局脱节的局部决策；
+- **发散系统与架构屎山风险**：代码实现写错属于局部收敛问题（可由编译报错或测试捕获），而需求发现和架构决策是**发散系统**。一旦方向走偏，Agent 会在错误基石上持续堆砌代码，演化出无法维护的架构负债；因此“决定做什么、以什么顺序做”依然是人类不可让渡的核心防线。
+
+---
+
 ## 关联来源
 - [[wiki/sources/2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md|Loop engineering, clearly explained! (Source 摘要)]]
 - [[wiki/sources/2026-07-14_The-four-types-of-agent-loops_19f617.md|The four types of agent loops (Source 摘要)]]
+- [[wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md|Loop Engineering 详解：从管理执行到设计自收敛的循环 (Source 摘要)]]

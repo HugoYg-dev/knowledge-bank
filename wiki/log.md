@@ -1,5 +1,12 @@
 # Wiki Log
 
+## [2026-09-15] ingest | raw/articles/Loop Engineering 详解：从管理执行到设计自收敛的循环.md & raw/articles/再见RAG！AI知识库还得是SAG，又快又准～.md -> wiki/sources/ (+ 概念_SAG)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/Loop Engineering 详解：从管理执行到设计自收敛的循环.md` -> `raw/articles/Loop Engineering 详解：从管理执行到设计自收敛的循环.md` -> `wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md`（增量更新已有概念 `[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]`，系统收录从一阶 AI Manager 到二阶 Senior Manager 的管理动作系统化演进、Skills/Verifier/Observability/Maker-Checker/Flywheel 五大系统组件映射，以及决定自收敛的两大硬杠杆：系统边界约束优于 TDD 路径约束、任务自动发现的发散性局限与人类核心防线）
+  - `Clippings/再见RAG！AI知识库还得是SAG，又快又准～.md` -> `raw/articles/再见RAG！AI知识库还得是SAG，又快又准～.md` -> `wiki/sources/再见RAG！AI知识库还得是SAG，又快又准～.md`（新建概念 `[[wiki/concepts/概念_SAG|概念_SAG]]`，系统收录基于查询时动态超边的 SQL 检索增强生成架构、入库期事项化与实体结构化建模、查询时基于 SQL JOIN 动态激活动态超边突破多跳推理断链、MuSiQue 4跳基准 80.04% Recall@5 SOTA、对底层弱向量模型的极高鲁棒性与确定性日志排障体系；增量更新已有概念 `[[wiki/concepts/概念_GraphRAG|概念_GraphRAG]]`，补充离线静态全局构图与查询时动态超边构图的成本与扩展性对比；增量更新已有概念 `[[wiki/concepts/概念_知识图谱RAG|概念_知识图谱RAG]]`，补充关系型 SQL 数据库替代图数据库解决千倍构图成本瓶颈的范式）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保 0 errors、0 broken links、100% 索引挂载。
+
 ## [2026-09-15] ingest | raw/articles/How a GPU Actually Works.md & raw/articles/KV Cache Engineering for LLM Serving.md -> wiki/sources/ (+ 概念_Roofline模型与算力强度)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/How a GPU Actually Works.md` -> `raw/articles/How a GPU Actually Works.md` -> `wiki/sources/How_a_GPU_Actually_Works.md`（新建概念 `[[wiki/concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]`，系统收录算力强度公式、硬件平衡阈值拐点、算力天花板与带宽受限区划分及两阶段推理 Roofline 投影；增量更新已有概念 `[[wiki/concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]`，深度解构 GPU SIMT 架构、Warp 调度与分歧惩罚、零成本上下文切换掩盖访存延迟机制及四级存储阶梯；增量更新已有概念 `[[wiki/concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]`，量化分析 70B 模型自回归单 step 1 op/byte 极端带宽受限与 42ms 理论延迟下限，对比 Prefill 算力均摊饱和；增量更新已有概念 `[[wiki/concepts/概念_连续批处理|概念_连续批处理]]`，收录 Roofline 视角下并发批处理线性放大算力强度的系统机制；增量更新已有实体 `[[wiki/entities/实体_NVIDIA|实体_NVIDIA]]`，补充 H100 SXM5 与 H200 硬件平衡阈值演进数据）

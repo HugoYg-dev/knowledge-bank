@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[Loop Engineering 详解：从管理执行到设计自收敛的循环]] — 深度剖析 Loop Engineering 从一阶 AI Manager 到二阶 Senior Manager 的范式升维：将 evaluation harness、observability、SOP、maker/checker 与 data flywheel 固化为系统组件，并阐明边界约束优于 TDD 路径约束以及任务自动发现的发散性局限（AI-Agent/coding, AI-Agent/context-engineering, AI-Agent/tool-calling）
+- [[再见RAG！AI知识库还得是SAG，又快又准～]] — 介绍开源检索架构 SAG（基于查询时动态超边的 SQL 检索增强生成）：将文档提炼为事项卡片与实体存入 SQL 数据库，查询时利用 SQL JOIN 动态激活局部多跳关联网，实现高召回率多跳推理、极低维护成本与确定性排障调优（RAG/retrieval, RAG/query, RAG/chunking）
+
 - [[How_a_GPU_Actually_Works]] — 深入剖析现代 GPU 底层硬件架构（SIMT、Warp 调度、多级存储阶梯）与算力强度/Roofline 性能模型，揭示 LLM 自回归生成受限于内存带宽的根本原因，并将批处理、算子融合、SRAM 分块及量化等优化统一归纳为算存比移动法则（Infra/gpu, Infra/AI, LLM/inference）
 - [[KV_Cache_Engineering_for_LLM_Serving]] — 系统性解构 LLM 推理生产中管理与压缩 KV Cache 的 12 项工程技术，涵盖模型架构共享、局部与稀疏截断、潜空间压缩、固定状态替换、数值量化、块分页、前缀复用与跨层卸载，并建立按削减目标分类的选型决策框架（LLM/inference, Infra/AI, LLM/arch/attention）
 
@@ -290,6 +293,8 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/AI）
 
 ## Concepts
+
+- [[概念_SAG]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
 
 - [[概念_Roofline模型与算力强度]] — 量化评估芯片峰值算力与内存带宽瓶颈的经典模型，通过算力强度（FLOPs/Byte）与硬件平衡拐点划分计算受限与内存带宽受限区，指导大模型推理两阶段的系统调优（Infra/gpu, Infra/AI, LLM/inference）
 - [[概念_Presentation_Tools]] — 表现层工具化：将富交互 UI 组件建模为强类型工具调用，由服务端参数校验与业务状态注入驱动客户端渲染，兼具屏幕布局反向感知与历史重现能力（AI-Agent/UI, AI-Agent/tool-calling）
