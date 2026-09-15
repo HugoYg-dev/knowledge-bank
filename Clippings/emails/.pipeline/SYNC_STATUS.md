@@ -1,6 +1,6 @@
 # Gmail 星标邮件同步状态
 
-> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-14T13:00:03+00:00`。
+> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-15T05:10:18+00:00`。
 
 ## 汇总
 
@@ -16,9 +16,9 @@
 | 路由 | parsed | 59 |
 | 路由 | unhandled | 1 |
 | 路由 | failed | 0 |
-| 文章 | review | 8 |
+| 文章 | review | 3 |
 | 文章 | ingested | 85 |
-| 文章 | rejected | 15 |
+| 文章 | rejected | 20 |
 
 ## 待处理邮件
 
@@ -33,11 +33,6 @@
 
 | 文章 ID | Gmail ID | 来源 | 标题 | 文件 |
 | --- | --- | --- | --- | --- |
-| `1a068e0f112668fe:1` | `1a068e0f112668fe` | dailydoseofds |  InsForge: The first backend built for AI coding agents  | [`2026-09-03_InsForge-The-first-backend-built-for-AI-coding-agents_1a068e0f112668fe.md`](../dailydoseofds/2026-09-03_InsForge-The-first-backend-built-for-AI-coding-agents_1a068e0f112668fe.md) |
 | `1a068e0f112668fe:2` | `1a068e0f112668fe` | dailydoseofds |  Attention Mechanisms in LLMs, clearly explained  | [`2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md`](../dailydoseofds/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md) |
-| `1a06e32ac6088201:1` | `1a06e32ac6088201` | dailydoseofds |  The easiest way to find out which models you can run on your computer  | [`2026-09-04_The-easiest-way-to-find-out-which-models-you-can-run-on-your-computer_1a06e32ac6088201.md`](../dailydoseofds/2026-09-04_The-easiest-way-to-find-out-which-models-you-can-run-on-your-computer_1a06e32ac6088201.md) |
 | `1a06e32ac6088201:2` | `1a06e32ac6088201` | dailydoseofds |  5 embedding compression techniques  | [`2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md`](../dailydoseofds/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md) |
-| `1a06e32ac6088201:3` | `1a06e32ac6088201` | dailydoseofds |  72 techniques to optimize LLMs in production  | [`2026-09-04_72-techniques-to-optimize-LLMs-in-production_1a06e32ac6088201.md`](../dailydoseofds/2026-09-04_72-techniques-to-optimize-LLMs-in-production_1a06e32ac6088201.md) |
-| `1a09737e364224e2:1` | `1a09737e364224e2` | dailydoseofds |  Bringing production context into coding agents  | [`2026-09-12_Bringing-production-context-into-coding-agents_1a09737e364224e2.md`](../dailydoseofds/2026-09-12_Bringing-production-context-into-coding-agents_1a09737e364224e2.md) |
 | `1a09737e364224e2:2` | `1a09737e364224e2` | dailydoseofds |  4 speculative decoding variants  | [`2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md`](../dailydoseofds/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md) |
-| `1a09737e364224e2:3` | `1a09737e364224e2` | dailydoseofds |  Claude Code’s architecture, explained visually!  | [`2026-09-12_Claude-Code’s-architecture,-explained-visually!_1a09737e364224e2.md`](../dailydoseofds/2026-09-12_Claude-Code’s-architecture,-explained-visually!_1a09737e364224e2.md) |

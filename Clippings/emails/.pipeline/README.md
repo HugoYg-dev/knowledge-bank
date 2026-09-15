@@ -13,7 +13,7 @@ Gmail is:starred
 
 ## 目录与状态
 
-- `manifest.json`：机器事实账本。邮件是容器，`articles` 数组中的文章是状态管理和 Ingest 的原子要素。
+- `manifest.json`：机器事实账本。邮件是容器，`articles` 数组中的文章是状态管理和 Ingest 的原子要素；记录每篇文章的 `status`、`content_tier`（`email_fallback` 或 `web_canonical`）与 `canonical_url`。
 - `SYNC_STATUS.md`：自动生成的人工可读状态表，列出待路由邮件和待审文章。
 - `ARCHIVE_INDEX.md`：已归档至 `raw/articles/` 的邮件订阅文章索引。
 - `../<source_key>/*.md`：来源解析器生成的待审文章；当前已注册来源为 `dailydoseofds`。
@@ -22,6 +22,8 @@ Gmail is:starred
 
 ## 使用方法
 
+### 1. 基础同步与路由
+
 ```bash
 # 同步全部 Gmail 星标邮件，登记元数据与差异
 uv run scripts/mail_pipeline.py sync
@@ -29,11 +31,34 @@ uv run scripts/mail_pipeline.py sync
 # 解析已注册来源，生成待审 Markdown；未知来源保持 unhandled
 uv run scripts/mail_pipeline.py route
 
+# 路由同时探测并拉取官网全量长文（若支持）
+uv run scripts/mail_pipeline.py route --fetch-web
+
 # 日常组合命令：逐篇对账 -> 同步 -> 路由
 uv run scripts/mail_pipeline.py run
 
+# 日常组合命令（同时启用官网长文增强）
+uv run scripts/mail_pipeline.py run --fetch-web
+
 # 查看共享状态
 uv run scripts/mail_pipeline.py status
+```
+
+### 2. 官网长文增强与存量升级
+
+针对邮件内容为删节导读（Teaser）、官网提供完整长文的订阅源（如 `dailydoseofds`），管线提供了直接抓取与存量升级工具：
+
+```bash
+# 直接抓取单篇官网长文并生成待审文档（支持完整 URL 或 Slug）
+uv run scripts/mail_pipeline.py fetch-web 'https://www.dailydoseofds.com/p/how-a-gpu-actually-works/'
+uv run scripts/mail_pipeline.py fetch-web 'how-a-gpu-actually-works'
+
+# 扫描库内存量文献，比对官网长文版本并列出升级比对报告（对比字数与代码块）
+uv run scripts/mail_pipeline.py check-web-upgrades
+
+# 拉取官网全量版本覆盖升级指定存量文章（更新正文与 Frontmatter，保留原有邮件元信息）
+uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
+uv run scripts/mail_pipeline.py upgrade-article 'msg-id:1' --force
 ```
 
 ## 筛选与入库约束
@@ -46,6 +71,58 @@ uv run scripts/mail_pipeline.py status
 4. Ingest 完成并将该文章归档至 `raw/articles/` 后，执行 `uv run scripts/mail_pipeline.py reconcile`；该命令只会逐篇回写已存在于 `raw/articles/` 的文章状态。
 
 `run` 不会自动移动、Ingest 或写入 `wiki/`。
+
+## 官网全量长文增强 (Web Canonical Enhancement)
+
+### 1. 设计动机与分层定位
+
+订阅邮件（如 Daily Dose of Data Science）正文往往只提供前置导读（Newsletter Teaser），截断了后续的核心算法推导、可运行 Python 代码块与高清示意图；而官方发布站点（如 Ghost CMS）则公开挂载了无删节的完整长文。
+
+为了在自动化同步阶段直接沉淀高保真事实底座，管线在保留邮件元数据的前提下引入了**官网长文探测与拉取引擎**：
+- **`web_canonical`（官网标准层）**：包含完整代码、公式、高清图集与分级标题的高质量长文。
+- **`email_fallback`（邮件兜底层）**：邮件原生截断版，作为外部网络受限时的可靠保底。
+
+### 2. 四级容灾与决议链路
+
+抓取过程严格遵循四级防故障决议链，保证 100% 容灾，绝不因官网改版或网络波动阻断邮件主流程：
+
+```text
+1. Ghost API Slug 查询   -> 提取邮件内官方外链或将标题转为 Slug 进行精准探测
+       ↓ (未命中)
+2. Ghost NQL 模糊检索    -> 按标题核心词进行 Ghost Content API 过滤搜索
+       ↓ (未命中/异常)
+3. Jina Reader 降级      -> 通过 r.jina.ai 免渲染公开代理拉取长文 Markdown
+       ↓ (仍失败)
+4. 邮件原生 HTML 兜底     -> 降级为邮件解析正文，标记 content_tier: email_fallback
+```
+
+### 3. 富媒体与排版转换能力
+
+Ghost 官方 HTML 解析器内置了专属的富媒体转换适配：
+- **代码块与公式**：精准保留 `<pre><code>` 语言标记与缩进，不截断长代码。
+- **图片与画廊**：支持单个 `<figure class="kg-image-card">` 与 `<figure class="kg-gallery-card">` 多图画廊排版。
+- **视频嵌入**：自动将 Ghost `<video>` 嵌入标签解析为 Markdown 视频预览卡片。
+- **表格保护**：自动净化表格单元格内的 `<br>` 与换行，防止破坏 Markdown 表格结构。
+
+### 4. 存量文章无损升级 SOP
+
+对于早期已归档至 `raw/articles/` 或仍停留在待审区中的删节版邮件文章，可通过两步完成无损升级：
+
+1. **扫描比对**：
+   ```bash
+   uv run scripts/mail_pipeline.py check-web-upgrades
+   ```
+   输出全库比对表格，直观展示本地字符数/代码块数与官网版本的悬殊对比，并给出 `强烈建议升级` 或 `内容已充分` 的建议。
+
+2. **精准覆盖升级**：
+   ```bash
+   uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
+   ```
+   升级操作会自动完成：
+   - 更新 Frontmatter：标记 `content_tier: "web_canonical"` 并注入 `canonical_url`；
+   - 完整保留用户既有手动打上的 `tags:` 与业务标注；
+   - 保留原正文顶部的邮件元信息头（发件人、日期、邮件主题等）；
+   - 同步更新机器账本 `manifest.json` 中该文章的状态记录。
 
 ## 自动同步到本地
 
@@ -67,6 +144,7 @@ Gmail 新邮件或星标变更
 - `__UV_PATH__`：执行 `command -v uv` 得到的路径；
 - `__GWS_PATH__`：执行 `command -v gws` 得到的路径。
 - `__HTTP_PROXY__` / `__HTTPS_PROXY__` / `__ALL_PROXY__`：本机代理地址；没有代理需求时，删除模板中的六个代理环境变量条目。`launchd` 只传递代理地址，不负责启动代理客户端。
+- 若希望后台自动同步时一并拉取官方完整长文，可在 plist 模板的 `ProgramArguments` 中 `run` 之后追加 `<string>--fetch-web</string>`。
 
 随后将文件复制到 `~/Library/LaunchAgents/`，并加载任务：
 

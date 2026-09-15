@@ -11,6 +11,7 @@
     <string>--offline</string>
     <string>scripts/mail_pipeline.py</string>
     <string>run</string>
+    <string>--fetch-web</string>
   </array>
   <key>WorkingDirectory</key>
   <string>__VAULT_PATH__</string>
