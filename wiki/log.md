@@ -1,5 +1,17 @@
 # Wiki Log
 
+## [2026-09-15] upgrade | 存量邮件文献官网长文无损升级 (dailydoseofds 6篇重点文章)
+- **官网全量版本覆盖升级 (`raw/articles/`)**：
+  - 执行 `uv run scripts/mail_pipeline.py upgrade-article` 覆盖升级 6 篇存量邮件文章，将 `content_tier` 从 `email_fallback` 升级为 `web_canonical`，并注入官方 `canonical_url`：
+    1. `raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md`（新增保距投影完整实现代码块，篇幅从 6.6k 扩充至 9.6k）
+    2. `raw/articles/2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md`（新增 Tool Call 循环与状态机代码块 2 个）
+    3. `raw/articles/2026-06-01_Categorization-of-clustering-algorithms_19e84f.md`（篇幅翻倍扩充 +83%，补齐 6 类聚类算法边界对比）
+    4. `raw/articles/2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md`（新增 GEPA 算法 Python 代码块 2 个）
+    5. `raw/articles/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md`（篇幅扩充 +116%，补充 CEV 累计解释方差与高维可视化案例）
+    6. `raw/articles/2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md`（篇幅扩充 +58%，补充 11 类变量工程实例）
+- **管线账本与状态同步**：同步更新 `Clippings/emails/.pipeline/manifest.json` 与 `SYNC_STATUS.md`。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py` 验证通过，全库无断链与损坏。
+
 ## [2026-09-15] ingest | 升级替换 raw 邮件原文为 Clippings 全量网页长文 (Rethinking KV Caching & KV vs Prefix vs Prompt vs Semantic Caching)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/Rethinking KV Caching For Production Inference.md` -> `raw/articles/Rethinking KV Caching For Production Inference.md`：移除原邮件文件 `raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md`，替换为含原生直接外链的排版长文；同步更新 `wiki/sources/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md` 的唯一上游 `sources:` 字段及文末物理文献插链。

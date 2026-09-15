@@ -71,6 +71,8 @@
     "19664020d007efe2": {
       "articles": [
         {
+          "canonical_url": "https://www.dailydoseofds.com/p/11-types-of-variables-in-a-dataset/",
+          "content_tier": "web_canonical",
           "file": "2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md",
           "id": "19664020d007efe2:2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md",
           "reason": null,
@@ -380,6 +382,8 @@
           "title": "A subtle neural network optimization technique"
         },
         {
+          "canonical_url": "https://www.dailydoseofds.com/p/avoid-using-pca-for-visualization-unless/",
+          "content_tier": "web_canonical",
           "file": "2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md",
           "id": "199f91f3eaa6509e:2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md",
           "reason": null,
@@ -993,6 +997,8 @@
           "title": "A tricky LLM interview question for AI Engineers"
         },
         {
+          "canonical_url": "https://www.dailydoseofds.com/p/how-to-beat-grpo-without-touching-model-weights/",
+          "content_tier": "web_canonical",
           "file": "2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md",
           "id": "19de58fc0d126e4b:2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md",
           "reason": null,
@@ -1106,6 +1112,8 @@
     "19e84f32570b4582": {
       "articles": [
         {
+          "canonical_url": "https://www.dailydoseofds.com/p/categorization-of-clustering-algorithms/",
+          "content_tier": "web_canonical",
           "file": "2026-06-01_Categorization-of-clustering-algorithms_19e84f.md",
           "id": "19e84f32570b4582:2026-06-01_Categorization-of-clustering-algorithms_19e84f.md",
           "reason": null,
@@ -1219,6 +1227,8 @@
     "19ef7234678feae5": {
       "articles": [
         {
+          "canonical_url": "https://www.dailydoseofds.com/p/loop-engineering-clearly-explained/",
+          "content_tier": "web_canonical",
           "file": "2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md",
           "id": "19ef7234678feae5:2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md",
           "reason": null,
@@ -2020,6 +2030,8 @@
           "title": "WebMCP by Google, clearly explained!"
         },
         {
+          "canonical_url": "https://www.dailydoseofds.com/p/sparse-random-projections/",
+          "content_tier": "web_canonical",
           "file": "2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md",
           "id": "1a0580f9aa7f67f1:3",
           "reason": null,
@@ -2169,5 +2181,5 @@
   },
   "last_sync_at": "2026-09-15T05:10:18+00:00",
   "schema_version": 2,
-  "updated_at": "2026-09-15T05:10:18+00:00"
+  "updated_at": "2026-09-15T05:33:10+00:00"
 }

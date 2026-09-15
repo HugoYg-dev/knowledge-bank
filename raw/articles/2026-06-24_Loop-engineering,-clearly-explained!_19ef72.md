@@ -11,6 +11,8 @@ tags:
 - AI-Agent/coding
 - AI-Agent/context-engineering
 - AI-Agent/multi-agent
+content_tier: "web_canonical"
+canonical_url: "https://www.dailydoseofds.com/p/loop-engineering-clearly-explained/"
 ---
 
 # Loop engineering, clearly explained!
@@ -19,16 +21,22 @@ tags:
 - **发送人**: Daily Dose of DS <avi@dailydoseofds.com>
 - **日期**: Wed, 24 Jun 2026 00:59:02 +0000
 - **ID**: 19ef7234678feae5
+- **官网长文**: https://www.dailydoseofds.com/p/loop-engineering-clearly-explained/
+- **内容层级**: web_canonical
 
 ---
 
-## [**Loop engineering, clearly explained!**](<https://fff97757.click.kit-mail3.com/lmu9m96v3wcmhn8nzq4s6h8wpev9nsgh32dww/dpheh0he9mqk2ehmh4/aHR0cHM6Ly93d3cuZGFpbHlkb3Nlb2Zkcy5jb20vcC90aGUtYW5hdG9teS1vZi1hbi1hZ2VudC1oYXJuZXNzLw==>)
-
 Every agent, underneath whatever framework you’re using, runs the same loop.
 
-![](https://embed.filekitcdn.com/e/k7YHPN24SoxyM8nGKZnDxa/mDz64TJ1HRaEEXvTaCfyEf/email)   
----  
-  
+```Python
+while True:
+    response = model(context)
+    if response.has_tool_calls():
+        context += run_tools(response.tool_calls)
+    else:
+        break
+```
+
   * Send the context to the model
   * It responds with tool calls
   * Run those tools
@@ -37,15 +45,14 @@ Every agent, underneath whatever framework you’re using, runs the same loop.
 
 It keeps going until the model replies without asking for a tool.
 
-That loop is short, and it’s nearly identical across LangGraph, the OpenAI Agents SDK, and Claude Code, so nobody competes on the while statement. 
+That loop is short, and it’s nearly identical across LangGraph, the OpenAI Agents SDK, and Claude Code, so nobody competes on the while statement.
 
 This is exactly why the engineering effort moved somewhere else.
 
 More specifically, the model and the loop are the parts you don’t write.
 
-![](https://substackcdn.com/image/fetch/$s_!IXQ_!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe73db735-ddb7-4ca2-a88c-8594ca858a52_1341x644.jpeg)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!IXQ_!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe73db735-ddb7-4ca2-a88c-8594ca858a52_1341x644.jpeg)
+
 What you write is everything around it, like when the loop stops, what stays in the context, which tools the model can reach, and how you check the result.
 
 So let’s go through the loop itself, then the four parts of it that are hard to get right.
@@ -54,12 +61,11 @@ So let’s go through the loop itself, then the four parts of it that are hard t
 
 It moved outward, into the layers that wrap the model.
 
-![](https://substackcdn.com/image/fetch/$s_!__Zs!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86e114e0-5516-4951-b39f-c6c6131ab27b_2752x1536.jpeg)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!__Zs!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86e114e0-5516-4951-b39f-c6c6131ab27b_2752x1536.jpeg)
+
   * Prompt engineering is the words you send.
   * Context engineering is everything the model sees on a turn, not just your instructions.
-  * [**Harness engineering**](<https://fff97757.click.kit-mail3.com/lmu9m96v3wcmhn8nzq4s6h8wpev9nsgh32dww/dpheh0he9mqk2ehmh4/aHR0cHM6Ly93d3cuZGFpbHlkb3Nlb2Zkcy5jb20vcC90aGUtYW5hdG9teS1vZi1hbi1hZ2VudC1oYXJuZXNzLw==>) is the code around the model that runs tools, tracks state, and recovers from errors.
+  * Harness engineering is the code around the model that runs tools, tracks state, and recovers from errors.
   * Loop engineering is the outer cycle that decides what the agent works on and when it’s done.
 
 Each layer wraps the one before it, so your prompt is now one input to a much larger system.
@@ -72,16 +78,21 @@ Here’s how these systems break today.
 
 The loop stops on exactly one condition, when the model replies without a tool call. So it ends the moment the model decides it’s finished, which means the model is judging its own completion.
 
-![](https://embed.filekitcdn.com/e/k7YHPN24SoxyM8nGKZnDxa/mDz64TJ1HRaEEXvTaCfyEf/email)   
----  
-  
+```Python
+while True:
+    response = model(context)
+    if response.has_tool_calls():
+        context += run_tools(response.tool_calls)
+    else:
+        break
+```
+
 That judgment is often wrong. A coding agent makes an edit, returns a confident summary with no further tool call, and the loop exits even though it never ran the tests, or ran them and they failed. The turn ended, but the task wasn’t done.
 
 Since you can’t trust the model’s own stop signal, you add conditions it doesn’t control:
 
-![](https://substackcdn.com/image/fetch/$s_!aAgw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5dfbc748-ab50-4347-a37b-6397e810f731_1376x768.jpeg)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!aAgw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5dfbc748-ab50-4347-a37b-6397e810f731_1376x768.jpeg)
+
 Max iterations, a hard cap so a stuck agent can’t run forever.
 
   * Budget and time limits, a ceiling on tokens, money, and wall-clock seconds.
@@ -92,18 +103,16 @@ The completion check is super important, because it’s the only brake that repl
 
 “Done” should mean the tests pass, not the model reporting that it’s done. Claude Code’s `/goal` command works this way, running the loop until a verifiable condition holds and using a separate model to confirm it.
 
-![](https://substackcdn.com/image/fetch/$s_!SaiS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe116ef60-a7e0-4e18-9870-33053eeb8ee7_2335x2208.png)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!SaiS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe116ef60-a7e0-4e18-9870-33053eeb8ee7_2335x2208.png)
+
 #### 2) Context rot and the doom loop
 
 The longer a loop runs, the more its context fills with junk, like old tool outputs, abandoned dead ends, and stale reasoning. Model quality drops as that pile grows, which the field calls context rot.
 
 The loop turns rot into a spiral, where a rotted context produces a worse decision, which adds more noise, which rots the context further.
 
-![](https://substackcdn.com/image/fetch/$s_!EraS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03decd6c-f31e-484d-bd90-bdedb100e8d7_1376x768.jpeg)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!EraS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F03decd6c-f31e-484d-bd90-bdedb100e8d7_1376x768.jpeg)
+
 The community calls this the doom loop, and the agent gets less useful the longer it runs. LangChain added middleware specifically to detect doom loops in their harness.
 
 You solve this by treating context as a budget, not a bucket:
@@ -124,9 +133,8 @@ Give the agent a hundred overlapping tools and it loses track of which one to ca
 
 Anthropic’s rule of thumb is that if a human engineer can’t say for certain which tool fits, neither can the agent.
 
-![](https://substackcdn.com/image/fetch/$s_!3yn8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c2152e3-6ffc-4a9f-9cf6-f5ec8af0c7da_2752x1317.jpeg)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!3yn8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c2152e3-6ffc-4a9f-9cf6-f5ec8af0c7da_2752x1317.jpeg)
+
 Vercel found that cutting an agent’s available tools raised its success rate.
 
 Two more properties matter specifically because this is a loop, not a single call:
@@ -140,14 +148,13 @@ The completion check from earlier is one case of a wider rule.
 
 Whatever decides if the work is good can’t be the same model that produced it. A model asked to grade its own output will usually pass it, so a loop with no outside check is just an agent agreeing with itself.
 
-![](https://substackcdn.com/image/fetch/$s_!trPx!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F800ce59d-2bf5-453a-a3f4-73c2dfc34153_1376x768.jpeg)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!trPx!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F800ce59d-2bf5-453a-a3f4-73c2dfc34153_1376x768.jpeg)
+
 So you separate the maker from the checker. One agent writes the code, and a separate signal grades it, either something hard like a failing test or type error, or a second model running with different instructions.
 
 That check is what lets you actually leave the loop alone, because now something other than the author decides when it’s right.
 
-#### What is the user’s job now?
+#### What is user’s job now?
 
 Prompting steers the agent move by move.
 
@@ -179,11 +186,12 @@ Loop engineering isn’t a framework you install but rather a shift in where you
 
 The model is becoming a commodity, and the loop around it is where the engineering now lives.
 
-![](https://substackcdn.com/image/fetch/$s_!f3sp!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18e5ea0c-2a3b-4f0d-9705-7cf90edf3256_1200x1105.png)   
----  
-  
+![](https://substackcdn.com/image/fetch/$s_!f3sp!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F18e5ea0c-2a3b-4f0d-9705-7cf90edf3256_1200x1105.png)
+
 The builders getting value this year stopped asking what to tell the agent and started asking what system would do the work without them.
 
 👉 Over to you: what’s the first brake you’d add to a loop you already run, a completion check, a budget cap, or a separate verifier?
 
-[**To dive deeper into harness engineering, we covered it in detail here →**](<https://fff97757.click.kit-mail3.com/lmu9m96v3wcmhn8nzq4s6h8wpev9nsgh32dww/dpheh0he9mqk2ehmh4/aHR0cHM6Ly93d3cuZGFpbHlkb3Nlb2Zkcy5jb20vcC90aGUtYW5hdG9teS1vZi1hbi1hZ2VudC1oYXJuZXNzLw==>)
+​[**To dive deeper into harness engineering, we covered it in detail here →**](<https://www.dailydoseofds.com/p/the-anatomy-of-an-agent-harness/>)
+
+Thanks for reading!
