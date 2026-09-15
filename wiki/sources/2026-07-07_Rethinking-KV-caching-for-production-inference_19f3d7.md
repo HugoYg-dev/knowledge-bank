@@ -6,18 +6,18 @@ tags:
 summary: 针对 AI 智能体应用中 62% 的重复 Token 浪费问题，介绍解耦式 KV 缓存架构 LMCache，该架构实现缓存管理与推理引擎进程解耦，并引入
   CacheBlend 算法提速多文档 RAG 场景。
 sources:
-- raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md
-updated: '2026-08-04'
+- raw/articles/Rethinking KV Caching For Production Inference.md
+updated: '2026-09-15'
 ---
 
 # 来源摘要：Rethinking KV caching for production inference
 
 ## 来源信息
 - **标题**: Rethinking KV caching for production inference
-- **来源**: Daily Dose of DS
+- **来源**: Daily Dose of DS (Avi Chawla)
 - **日期**: 2026-07-07
-- **原文链接**: [LMCache GitHub](https://github.com/lmcache/lmcache)
-- **物理文献**: [[raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md]]
+- **原文链接**: [Daily Dose of DS 专栏原文](https://www.dailydoseofds.com/p/rethinking-kv-caching-for-production-inference/) | [LMCache GitHub](https://github.com/lmcache/lmcache)
+- **物理文献**: [[raw/articles/Rethinking KV Caching For Production Inference.md]]
 
 ## 核心要点
 1. **智能体 Token 浪费背景**：斯坦福大学调研表明，AI 智能体在多轮交互中，每次调用发送给模型的 Token 有约 **62%** 是重复的系统 Prompt、工具定义和历史文档。由于 Agent 的每一步交互都是从头输入，即使仅发生微小变化，也需要重新计算所有上下文，导致推理成本暴增。
@@ -39,4 +39,4 @@ updated: '2026-08-04'
 - [[wiki/concepts/概念_解耦式KV缓存与LMCache]]
 
 ---
-> 📎 **物理文献**：[[raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md]]
+> 📎 **物理文献**：[[raw/articles/Rethinking KV Caching For Production Inference.md]]

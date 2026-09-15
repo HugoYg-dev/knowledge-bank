@@ -3,7 +3,16 @@
 # dependencies = ["beautifulsoup4>=4.12", "html2text>=2024.2.26", "PySocks>=1.7.1"]
 # ///
 
-"""多来源 Gmail 星标邮件同步、路由与文章状态对账（基于原生 IMAP + App Password）。"""
+"""多来源 Gmail 星标邮件同步、路由与文章状态对账（基于原生 IMAP + App Password）。
+
+支持：
+- Gmail IMAP 星标邮件拉取与账本同步
+- 来源解析与待审文章生成（支持 --fetch-web 官网长文增强）
+- fetch-web: 独立从官网抓取单篇全量长文
+- check-web-upgrades: 扫描库内存量文章，比对官网长文版本
+- upgrade-article: 拉取官网版本覆盖升级指定文章
+- 逐篇对账与状态统计
+"""
 
 from __future__ import annotations
 
@@ -16,6 +25,7 @@ import email
 from email.header import decode_header
 from email.utils import parseaddr
 import imaplib
+import inspect
 import json
 import os
 from pathlib import Path
@@ -28,7 +38,10 @@ import time
 from typing import Any, Callable
 import urllib.parse
 
-import socks
+try:
+    import socks
+except ImportError:
+    socks = None
 from mail_sources import dailydoseofds
 
 
@@ -54,7 +67,7 @@ class Source:
     key: str
     addresses: tuple[str, ...]
     domains: tuple[str, ...]
-    parser: Callable[[str, dict[str, Any]], tuple[dict[str, str], list[dict[str, str]]]]
+    parser: Callable[..., tuple[dict[str, str], list[dict[str, Any]]]]
 
 
 SOURCES = (
@@ -97,7 +110,9 @@ def empty_manifest() -> dict[str, Any]:
     }
 
 
-def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, Any]:
+def load_manifest(path: Path | None = None) -> dict[str, Any]:
+    if path is None:
+        path = MANIFEST_PATH
     if not path.exists():
         return empty_manifest()
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -106,7 +121,9 @@ def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, Any]:
     return data
 
 
-def save_manifest(data: dict[str, Any], path: Path = MANIFEST_PATH) -> None:
+def save_manifest(data: dict[str, Any], path: Path | None = None) -> None:
+    if path is None:
+        path = MANIFEST_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
     data["updated_at"] = now_iso()
     temporary = path.with_suffix(".json.tmp")
@@ -181,7 +198,7 @@ def load_imap_credentials() -> dict[str, Any]:
 def configure_proxy() -> None:
     """若存在 ALL_PROXY / HTTPS_PROXY / HTTP_PROXY，设置全局 socket 走 SOCKS 或 HTTP 代理。"""
     proxy_url = os.environ.get("ALL_PROXY") or os.environ.get("HTTPS_PROXY") or os.environ.get("HTTP_PROXY")
-    if not proxy_url:
+    if not proxy_url or socks is None:
         return
     parsed = urllib.parse.urlsplit(proxy_url)
     scheme = parsed.scheme.casefold()
@@ -217,7 +234,6 @@ class GmailImapClient:
                 self.credentials["imap_server"],
                 self.credentials["imap_port"],
             )
-            # 设置套接字超时
             if self.mail.sock:
                 self.mail.sock.settimeout(IMAP_TIMEOUT_SECONDS)
             self.mail.login(self.credentials["email"], self.credentials["app_password"])
@@ -336,13 +352,11 @@ class GmailImapClient:
         assert self.mail is not None
         dec_id = int(message_id, 16)
 
-        # 优先在 All Mail 中搜索
         all_box = self.get_all_mail_mailbox()
         self.mail.select(all_box, readonly=True)
         typ, data = self.mail.uid("SEARCH", "X-GM-MSGID", str(dec_id))
         uids = data[0].split() if (typ == "OK" and data and data[0]) else []
 
-        # 若 All Mail 未命中，降级到星标箱
         if not uids:
             star_box = self.get_starred_mailbox()
             self.mail.select(star_box, readonly=True)
@@ -454,7 +468,11 @@ def update_email_lifecycle(record: dict[str, Any]) -> None:
         record["lifecycle"] = "ignored"
 
 
-def route(data: dict[str, Any], client: GmailImapClient | None = None) -> tuple[int, int]:
+def route(
+    data: dict[str, Any],
+    client: GmailImapClient | None = None,
+    fetch_web: bool = False,
+) -> tuple[int, int]:
     processed = article_count = 0
     candidates = [
         record
@@ -478,7 +496,12 @@ def route(data: dict[str, Any], client: GmailImapClient | None = None) -> tuple[
             record["attempts"] += 1
             try:
                 response = client.fetch_raw_message(record["id"])
-                metadata, parsed_articles = source.parser(record["id"], response)
+                sig = inspect.signature(source.parser)
+                if "fetch_web" in sig.parameters:
+                    metadata, parsed_articles = source.parser(record["id"], response, fetch_web=fetch_web)
+                else:
+                    metadata, parsed_articles = source.parser(record["id"], response)
+
                 record.update({key: metadata[key] for key in ("sender", "subject", "date")})
                 record["articles"] = []
                 source_dir = EMAILS_DIR / source.key
@@ -492,6 +515,11 @@ def route(data: dict[str, Any], client: GmailImapClient | None = None) -> tuple[
                     safe_title = article["title"].replace('"', '\\"')
                     safe_subject = metadata["subject"].replace('"', '\\"')
                     safe_sender = metadata["sender"].replace('"', '\\"')
+                    canonical_url = article.get("canonical_url")
+                    content_tier = article.get("content_tier", "email_fallback")
+                    canonical_frontmatter = f'canonical_url: "{canonical_url}"\n' if canonical_url else ""
+                    canonical_line = f"- **官网长文**: {canonical_url}\n" if canonical_url else ""
+
                     header = (
                         "---\n"
                         f'title: "{safe_title}"\n'
@@ -502,6 +530,8 @@ def route(data: dict[str, Any], client: GmailImapClient | None = None) -> tuple[
                         f'email_id: "{record["id"]}"\n'
                         f'article_id: "{article_id}"\n'
                         f'published: "{metadata["formatted_date"]}"\n'
+                        f'content_tier: "{content_tier}"\n'
+                        f"{canonical_frontmatter}"
                         "tags: []\n"
                         "---\n\n"
                         f"# {article['title']}\n\n"
@@ -510,7 +540,9 @@ def route(data: dict[str, Any], client: GmailImapClient | None = None) -> tuple[
                         f"- **发送人**: {metadata['sender']}\n"
                         f"- **日期**: {metadata['date']}\n"
                         f"- **邮件 ID**: {record['id']}\n"
-                        f"- **文章 ID**: {article_id}\n\n---\n\n"
+                        f"- **文章 ID**: {article_id}\n"
+                        f"- **内容层级**: {content_tier}\n"
+                        f"{canonical_line}\n---\n\n"
                     )
                     staging_path.write_text(header + article["body"], encoding="utf-8")
                     record["articles"].append(
@@ -520,6 +552,8 @@ def route(data: dict[str, Any], client: GmailImapClient | None = None) -> tuple[
                             "source_key": source.key,
                             "file": filename,
                             "staging_file": f"{source.key}/{filename}",
+                            "canonical_url": canonical_url,
+                            "content_tier": content_tier,
                             "status": "review",
                             "reason": None,
                         }
@@ -544,13 +578,27 @@ def reconcile(data: dict[str, Any]) -> int:
     reconciled = 0
     for record in data["emails"].values():
         for article in record.get("articles", []):
-            if article.get("status") != "review" or not article.get("file"):
+            if not article.get("file"):
                 continue
-            if (ARCHIVE_DIR / article["file"]).exists():
-                article["status"] = "ingested"
-                article["reason"] = None
-                reconciled += 1
-            elif not (EMAILS_DIR / article.get("staging_file", "")).exists():
+            archived_file = ARCHIVE_DIR / article["file"]
+            if archived_file.exists():
+                if article.get("status") != "ingested":
+                    article["status"] = "ingested"
+                    article["reason"] = None
+                    reconciled += 1
+                try:
+                    raw_text = archived_file.read_text(encoding="utf-8")
+                    if "content_tier:" in raw_text:
+                        m = re.search(r'content_tier:\s*["\']?(.*?)["\']?$', raw_text, re.MULTILINE)
+                        if m:
+                            article["content_tier"] = m.group(1).strip()
+                    if "canonical_url:" in raw_text:
+                        m = re.search(r'canonical_url:\s*["\']?(.*?)["\']?$', raw_text, re.MULTILINE)
+                        if m:
+                            article["canonical_url"] = m.group(1).strip()
+                except Exception:
+                    pass
+            elif article.get("status") == "review" and not (EMAILS_DIR / article.get("staging_file", "")).exists():
                 article["status"] = "rejected"
                 article["reason"] = "manual_delete"
         update_email_lifecycle(record)
@@ -572,6 +620,228 @@ def reject_article(data: dict[str, Any], article_id: str, reason: str) -> None:
             update_email_lifecycle(record)
             return
     raise PipelineError(f"未找到文章: {article_id}")
+
+
+def fetch_web_article(target: str, source_key: str = "dailydoseofds") -> Path:
+    """从官网直接抓取单篇全量长文并生成待审文档。"""
+    if source_key != "dailydoseofds":
+        raise PipelineError(f"目前仅 dailydoseofds 支持 fetch-web，未知来源: {source_key}")
+    slug = dailydoseofds.extract_slug_from_url(target) or dailydoseofds.slugify(target)
+    if not slug:
+        raise PipelineError(f"无法从目标中提取有效 Slug: {target}")
+
+    candidate_urls = [target] if target.startswith("http") else None
+    post = dailydoseofds.fetch_canonical_article(title=slug, candidate_urls=candidate_urls)
+    if not post:
+        raise PipelineError(f"未能从官网成功获取文章: target={target}, slug={slug}")
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    pub_date = post.get("published_at", "")[:10] or today
+    title = post.get("title") or slug
+    filename = f"{pub_date}_{clean_filename(title)}_web.md"
+    target_dir = EMAILS_DIR / source_key
+    target_dir.mkdir(parents=True, exist_ok=True)
+    out_path = target_dir / filename
+
+    safe_title = title.replace('"', '\\"')
+    header = (
+        "---\n"
+        f'title: "{safe_title}"\n'
+        f'source_key: "{source_key}"\n'
+        f'canonical_url: "{post["canonical_url"]}"\n'
+        f'content_tier: "web_canonical"\n'
+        f'published: "{pub_date}"\n'
+        f'article_id: "web:{slug}"\n'
+        "tags: []\n"
+        "---\n\n"
+        f"# {title}\n\n"
+        f"- **来源**: {source_key} (官网直接抓取)\n"
+        f"- **官网长文**: {post['canonical_url']}\n"
+        f"- **抓取日期**: {today}\n"
+        f"- **发布日期**: {pub_date}\n"
+        f"- **内容层级**: web_canonical\n\n---\n\n"
+    )
+    out_path.write_text(header + post["body"] + "\n", encoding="utf-8")
+    return out_path
+
+
+def count_code_blocks(text: str) -> int:
+    return len(re.findall(r"^```", text, re.MULTILINE)) // 2
+
+
+def check_web_upgrades(source_key: str = "dailydoseofds") -> list[dict[str, Any]]:
+    """扫描库内存量文章，比对官网长文版本并生成差异清单。"""
+    results: list[dict[str, Any]] = []
+    if not ARCHIVE_DIR.exists():
+        return results
+
+    for file_path in sorted(ARCHIVE_DIR.glob("*.md")):
+        content = file_path.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
+        if not fm_match:
+            continue
+        fm_text = fm_match.group(1)
+        if f'source_key: "{source_key}"' not in fm_text and f"source_key: {source_key}" not in fm_text:
+            continue
+
+        title_m = re.search(r'title:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+        title = title_m.group(1) if title_m else file_path.stem
+        tier_m = re.search(r'content_tier:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+        current_tier = tier_m.group(1).strip() if tier_m else "email_fallback"
+        url_m = re.search(r'canonical_url:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+        canonical_url = url_m.group(1).strip() if url_m else None
+
+        local_body = content[fm_match.end():]
+        local_chars = len(local_body)
+        local_codes = count_code_blocks(local_body)
+
+        target_urls = [canonical_url] if canonical_url else None
+        web_post = dailydoseofds.fetch_canonical_article(title=title, candidate_urls=target_urls)
+        if not web_post:
+            results.append({
+                "file": file_path.name,
+                "title": title,
+                "local_chars": local_chars,
+                "local_codes": local_codes,
+                "web_chars": 0,
+                "web_codes": 0,
+                "current_tier": current_tier,
+                "status": "not_found_on_web",
+                "recommendation": "保持现状 (官网未收录)",
+            })
+            continue
+
+        web_body = web_post.get("body", "")
+        web_chars = len(web_body)
+        web_codes = count_code_blocks(web_body)
+
+        is_upgrade_needed = False
+        reason_parts = []
+        if current_tier != "web_canonical":
+            if web_codes > local_codes:
+                is_upgrade_needed = True
+                reason_parts.append(f"代码块({local_codes}->{web_codes})")
+            if web_chars > local_chars * 1.3:
+                is_upgrade_needed = True
+                reason_parts.append(f"篇幅扩充({local_chars}->{web_chars})")
+
+        if is_upgrade_needed:
+            rec = f"强烈建议升级 ({', '.join(reason_parts)})"
+            status = "upgrade_available"
+        elif current_tier == "web_canonical":
+            rec = "已是官网长文"
+            status = "up_to_date"
+        else:
+            rec = "内容基本一致"
+            status = "similar"
+
+        results.append({
+            "file": file_path.name,
+            "title": title,
+            "local_chars": local_chars,
+            "local_codes": local_codes,
+            "web_chars": web_chars,
+            "web_codes": web_codes,
+            "current_tier": current_tier,
+            "status": status,
+            "recommendation": rec,
+            "canonical_url": web_post.get("canonical_url"),
+        })
+
+    return results
+
+
+def upgrade_article(data: dict[str, Any], target: str, force: bool = False) -> Path:
+    """拉取官网全量版本覆盖升级指定文章文件。"""
+    target_path = Path(target)
+    if not target_path.is_absolute():
+        if (ROOT / target_path).exists():
+            target_path = ROOT / target_path
+        elif (ARCHIVE_DIR / target_path.name).exists():
+            target_path = ARCHIVE_DIR / target_path.name
+        elif (EMAILS_DIR / "dailydoseofds" / target_path.name).exists():
+            target_path = EMAILS_DIR / "dailydoseofds" / target_path.name
+        else:
+            # 按 article_id 检索
+            matched = None
+            for record in data["emails"].values():
+                for art in record.get("articles", []):
+                    if art.get("id") == target:
+                        f_name = art.get("file")
+                        if f_name and (ARCHIVE_DIR / f_name).exists():
+                            matched = ARCHIVE_DIR / f_name
+                        elif art.get("staging_file") and (EMAILS_DIR / art["staging_file"]).exists():
+                            matched = EMAILS_DIR / art["staging_file"]
+                        break
+            if matched:
+                target_path = matched
+
+    if not target_path.exists():
+        raise PipelineError(f"未找到待升级文件: {target}")
+
+    content = target_path.read_text(encoding="utf-8")
+    fm_match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
+    if not fm_match:
+        raise PipelineError(f"文件缺少有效 YAML Frontmatter: {target_path}")
+
+    fm_text = fm_match.group(1)
+    tier_m = re.search(r'content_tier:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+    current_tier = tier_m.group(1).strip() if tier_m else "email_fallback"
+    if current_tier == "web_canonical" and not force:
+        log_line(f"文章已是 web_canonical 且未指定 --force，跳过升级: {target_path.name}")
+        return target_path
+
+    title_m = re.search(r'title:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+    title = title_m.group(1) if title_m else target_path.stem
+    url_m = re.search(r'canonical_url:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+    candidate_urls = [url_m.group(1).strip()] if url_m and url_m.group(1) else None
+
+    web_post = dailydoseofds.fetch_canonical_article(title=title, candidate_urls=candidate_urls)
+    if not web_post:
+        raise PipelineError(f"未能从官网拉取到对应文章: title='{title}'")
+
+    new_canonical_url = web_post["canonical_url"]
+    if "content_tier:" in fm_text:
+        fm_text = re.sub(r'content_tier:.*$', 'content_tier: "web_canonical"', fm_text, flags=re.MULTILINE)
+    else:
+        fm_text += '\ncontent_tier: "web_canonical"'
+
+    if "canonical_url:" in fm_text:
+        fm_text = re.sub(r'canonical_url:.*$', f'canonical_url: "{new_canonical_url}"', fm_text, flags=re.MULTILINE)
+    else:
+        fm_text += f'\ncanonical_url: "{new_canonical_url}"'
+
+    new_frontmatter = f"---\n{fm_text.strip()}\n---\n\n"
+
+    # 保留原头部邮件信息（若有）
+    body_tail = content[fm_match.end():]
+    divider_m = re.search(r"\n---\n\n", body_tail)
+    header_meta = body_tail[:divider_m.start()] if divider_m else ""
+
+    # 若头部元信息中没有官网长文链接，则追加
+    if header_meta and "官网长文" not in header_meta:
+        header_meta = header_meta.rstrip() + f"\n- **官网长文**: {new_canonical_url}\n- **内容层级**: web_canonical"
+
+    new_full_content = (
+        new_frontmatter + (header_meta.strip() + "\n\n---\n\n" if header_meta else "") + web_post["body"] + "\n"
+    )
+    target_path.write_text(new_full_content, encoding="utf-8")
+
+    # 同步更新 manifest
+    updated_manifest = False
+    for record in data["emails"].values():
+        for article in record.get("articles", []):
+            if (
+                article.get("file") == target_path.name
+                or article.get("staging_file") == f"dailydoseofds/{target_path.name}"
+            ):
+                article["content_tier"] = "web_canonical"
+                article["canonical_url"] = new_canonical_url
+                updated_manifest = True
+    if updated_manifest:
+        save_manifest(data)
+
+    return target_path
 
 
 def rebuild_index(data: dict[str, Any]) -> None:
@@ -706,17 +976,51 @@ def print_summary(data: dict[str, Any]) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="多来源 Gmail 星标邮件同步与路由")
+    parser = argparse.ArgumentParser(description="多来源 Gmail 星标邮件同步、路由与官网长文增强")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("migrate-ddods", help="将旧 DailyDoseOfDS 管线迁移至共享邮件目录")
     commands.add_parser("sync", help="同步全部星标邮件并登记元数据和差异")
-    commands.add_parser("route", help="路由已注册来源并生成待审文章")
+
+    route_cmd = commands.add_parser("route", help="路由已注册来源并生成待审文章")
+    route_cmd.add_argument(
+        "--fetch-web",
+        action="store_true",
+        default=False,
+        help="探测并拉取来源官网长文版本（若支持）",
+    )
+
     commands.add_parser("reconcile", help="按 raw/articles 逐篇对账已入库文章")
     commands.add_parser("status", help="刷新并显示共享账本状态")
-    commands.add_parser("run", help="依次对账、同步和路由已注册来源")
+
+    run_cmd = commands.add_parser("run", help="依次对账、同步和路由已注册来源")
+    run_cmd.add_argument(
+        "--fetch-web",
+        action="store_true",
+        default=False,
+        help="探测并拉取来源官网长文版本（若支持）",
+    )
+
     reject = commands.add_parser("reject", help="拒绝一篇待审文章")
     reject.add_argument("article_id")
     reject.add_argument("--reason", default="manual_reject")
+
+    fetch_web_cmd = commands.add_parser("fetch-web", help="直接从官网抓取单篇全量长文并生成待审文档")
+    fetch_web_cmd.add_argument(
+        "target",
+        help="官网文章完整 URL 或 Slug (如 https://www.dailydoseofds.com/p/how-a-gpu-actually-works/ 或 how-a-gpu-actually-works)",
+    )
+    fetch_web_cmd.add_argument("--source", default="dailydoseofds", help="指定来源标识，默认 dailydoseofds")
+
+    check_upgrades_cmd = commands.add_parser("check-web-upgrades", help="扫描库内存量文献，比对官网长文版本并列出可升级清单")
+    check_upgrades_cmd.add_argument("--source", default="dailydoseofds", help="指定来源，默认 dailydoseofds")
+
+    upgrade_cmd = commands.add_parser("upgrade-article", help="拉取官网长文版本覆盖升级指定文章")
+    upgrade_cmd.add_argument(
+        "target",
+        help="本地待升级 Markdown 文件路径 (例如 raw/articles/xxx.md 或 Clippings/emails/dailydoseofds/xxx.md) 或文章 ID",
+    )
+    upgrade_cmd.add_argument("--force", action="store_true", default=False, help="若已是 web_canonical 是否强制重新抓取覆盖")
+
     return parser
 
 
@@ -727,6 +1031,29 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "migrate-ddods":
             data = migrate_ddods()
             log_line("result migration=dailydoseofds_complete")
+        elif args.command == "fetch-web":
+            out_file = fetch_web_article(args.target, source_key=args.source)
+            log_line(f"result fetch_web_article={out_file}")
+        elif args.command == "check-web-upgrades":
+            upgrades = check_web_upgrades(source_key=args.source)
+            log_line(f"result scanned_articles={len(upgrades)}")
+            print("\n### 官网长文升级比对报告\n")
+            print(
+                "| 序号 | 本地文件名 | 本地字数/代码块 | 官网字数/代码块 | 当前状态 | 升级建议 |"
+            )
+            print("| --- | --- | ---: | ---: | --- | --- |")
+            for idx, item in enumerate(upgrades, 1):
+                loc = f"{item['local_chars']} 字 / {item['local_codes']} 块"
+                web = f"{item['web_chars']} 字 / {item['web_codes']} 块" if item["web_chars"] else "-"
+                print(
+                    f"| {idx} | `{item['file']}` | {loc} | {web} | {item['current_tier']} | **{item['recommendation']}** |"
+                )
+            print("")
+        elif args.command == "upgrade-article":
+            data = load_manifest()
+            upgraded_file = upgrade_article(data, args.target, force=args.force)
+            log_line(f"result upgraded_article={upgraded_file}")
+            refresh_outputs(data)
         else:
             data = load_manifest()
             if args.command == "sync":
@@ -735,7 +1062,7 @@ def main(argv: list[str] | None = None) -> int:
                 log_line(f"result remote_emails={total} newly_registered={added}")
             elif args.command == "route":
                 with GmailImapClient() as client:
-                    emails, articles = route(data, client=client)
+                    emails, articles = route(data, client=client, fetch_web=args.fetch_web)
                 log_line(f"result routed_emails={emails} review_articles={articles}")
             elif args.command == "reconcile":
                 log_line(f"result reconciled_articles={reconcile(data)}")
@@ -746,12 +1073,13 @@ def main(argv: list[str] | None = None) -> int:
                 reconciled = reconcile(data)
                 with GmailImapClient() as client:
                     total, added = sync(data, client=client)
-                    emails, articles = route(data, client=client)
+                    emails, articles = route(data, client=client, fetch_web=args.fetch_web)
                 log_line(
                     f"result reconciled_articles={reconciled} remote_emails={total} newly_registered={added} routed_emails={emails} review_articles={articles}"
                 )
             refresh_outputs(data)
-        print_summary(data)
+        if args.command not in {"fetch-web", "check-web-upgrades"}:
+            print_summary(data)
         log_block(args.command, "END status=ok")
         return 0
     except (PipelineError, OSError, json.JSONDecodeError, ValueError) as exc:

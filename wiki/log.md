@@ -1,5 +1,11 @@
 # Wiki Log
 
+## [2026-09-15] ingest | 升级替换 raw 邮件原文为 Clippings 全量网页长文 (Rethinking KV Caching & KV vs Prefix vs Prompt vs Semantic Caching)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/Rethinking KV Caching For Production Inference.md` -> `raw/articles/Rethinking KV Caching For Production Inference.md`：移除原邮件文件 `raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md`，替换为含原生直接外链的排版长文；同步更新 `wiki/sources/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md` 的唯一上游 `sources:` 字段及文末物理文献插链。
+  - `Clippings/KV vs Prefix vs Prompt vs Semantic Caching.md` -> `raw/articles/KV vs Prefix vs Prompt vs Semantic Caching.md`：移除原精简导读版邮件文件 `raw/articles/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md`，升级为 36KB 全量实战长文；深度更新 `wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` 核心要点，系统收录 `DynamicCache` 内存监控与多轮会话保持、vLLM 16-token 链式哈希算法与多租户 `salt` 隔离、`optimum-quanto` 4-bit 量化、Semantic Cache 余弦相似度对抗边界及 Anthropic `ephemeral` 断点机制。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保全库唯一上游溯源链、双链与 Frontmatter 规则完全合规。
+
 ## [2026-09-09] ingest | raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md -> wiki/sources/ (+ 概念_稀疏随机投影)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/emails/dailydoseofds/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_稀疏随机投影|概念_稀疏随机投影]]`，收录基于 Johnson-Lindenstrauss 引理的高维保距投影、轮廓系数实测衰减阶梯、sklearn 工程实现与 VeRA 冻结随机矩阵大模型微调架构；增量更新已有概念 `[[wiki/concepts/概念_主成分分析_PCA|概念_主成分分析_PCA]]`，补充超高维空间三次复杂度算力瓶颈与稀疏投影选型对比）
