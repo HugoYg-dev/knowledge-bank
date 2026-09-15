@@ -157,6 +157,23 @@ class TestDailydoseofdsSlugAndUrl(unittest.TestCase):
         self.assertEqual(dailydoseofds.decode_tracking_url(tracking_url), original)
         self.assertEqual(dailydoseofds.decode_tracking_url(original), original)
 
+    def test_is_public_article_url(self) -> None:
+        """测试 URL 筛选规则：仅匹配 /p/{article-title}/ 格式为公开文章，非 /p/ 为付费 course 或非文章。"""
+        # 公开文章格式 -> True
+        self.assertTrue(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/p/how-a-gpu-actually-works/"))
+        self.assertTrue(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/p/kv-cache-engineering-for-llm-serving"))
+        self.assertTrue(dailydoseofds.is_public_article_url("http://daily-dose-of-data-science-1.ghost.io/p/continuous-batching-in-llms/"))
+
+        # 非 /p/ 的付费 Course 或非公开页面 -> False
+        self.assertFalse(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/ai-agents-with-langgraph-course-part-1-with-implementation/"))
+        self.assertFalse(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/building-rag-systems-course-part-15-with-implementation/"))
+        self.assertFalse(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/what-is-mcp/"))
+        self.assertFalse(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/archive/"))
+        self.assertFalse(dailydoseofds.is_public_article_url("https://www.dailydoseofds.com/p/"))
+        self.assertFalse(dailydoseofds.is_public_article_url("https://example.com/p/test/"))
+        self.assertFalse(dailydoseofds.is_public_article_url(""))
+        self.assertFalse(dailydoseofds.is_public_article_url(None))  # type: ignore[arg-type]
+
 
 class TestGhostHtmlToMarkdown(unittest.TestCase):
     """测试 Ghost 原生 HTML 到无损 Markdown 的转换规范（含富媒体与格式保护）。"""
@@ -384,6 +401,28 @@ class TestGhostApiClientMock(unittest.TestCase):
             self.assertIsNone(dailydoseofds.search_ghost_post_by_title(""))
             mock_urlopen.assert_not_called()
 
+    def test_fetch_ghost_post_rejects_paid_course_or_non_p_url(self) -> None:
+        """测试当 Ghost API 返回的文章是非 /p/ 格式（付费课程）或 visibility=paid/access=False 时，严格拒绝返回 None。"""
+        paid_course_payload = {
+            "posts": [
+                {
+                    "title": "AI Agents with LangGraph Course",
+                    "slug": "ai-agents-with-langgraph-course-part-1-with-implementation",
+                    "url": "https://www.dailydoseofds.com/ai-agents-with-langgraph-course-part-1-with-implementation/",
+                    "visibility": "paid",
+                    "access": False,
+                    "html": "<p>Preview excerpt only...</p>",
+                }
+            ]
+        }
+        mock_response = MagicMock()
+        mock_response.read.return_value = json.dumps(paid_course_payload).encode("utf-8")
+        mock_response.__enter__.return_value = mock_response
+
+        with patch("urllib.request.urlopen", return_value=mock_response):
+            post = dailydoseofds.fetch_ghost_post_by_slug("ai-agents-with-langgraph-course-part-1-with-implementation")
+            self.assertIsNone(post, "非 /p/ 开头的付费课程应被拒绝")
+
 
 class TestJinaReaderFallback(unittest.TestCase):
     """测试 Jina Reader 免渲染次级降级 (Level 1 Fallback)。"""
@@ -405,6 +444,23 @@ class TestJinaReaderFallback(unittest.TestCase):
             self.assertEqual(post["title"], "KV Cache Engineering for LLM Serving")  # type: ignore[index]
             self.assertIn("DynamicCache", post["body"])  # type: ignore[index]
             self.assertEqual(post["content_tier"], "web_canonical")  # type: ignore[index]
+
+    def test_fetch_jina_reader_rejects_404_error_page(self) -> None:
+        """测试 Jina Reader 抓到 404 错误页及站点通用首页导航模版时被安全拦截，不作为文章返回。"""
+        mock_404_text = (
+            "Title: Daily Dose of Data Science\n\n"
+            "URL Source: https://www.dailydoseofds.com/p/non-existent-slug/\n\n"
+            "Markdown Content:\n"
+            "[Skip to main content](https://www.dailydoseofds.com/p/non-existent-slug/#sx-main)\n\n"
+            "404: Page Not Found. Here are some other articles..."
+        )
+        mock_response = MagicMock()
+        mock_response.read.return_value = mock_404_text.encode("utf-8")
+        mock_response.__enter__.return_value = mock_response
+
+        with patch("urllib.request.urlopen", return_value=mock_response):
+            post = dailydoseofds.fetch_jina_reader_post("non-existent-slug")
+            self.assertIsNone(post, "404 模版页必须被拦截")
 
     def test_fetch_jina_reader_failure_returns_none(self) -> None:
         with patch("urllib.request.urlopen", side_effect=TimeoutError("Jina timed out")):

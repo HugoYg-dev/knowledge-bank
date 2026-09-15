@@ -61,22 +61,32 @@ def slugify(text: str | None) -> str:
     return re.sub(r"-+", "-", cleaned).strip("-").lower()
 
 
-def extract_slug_from_url(url: str | None) -> str | None:
-    """从给定的完整 URL 中提取 Ghost 官网文章 Slug。"""
+def is_public_article_url(url: str | None) -> bool:
+    """校验 URL 是否符合官方公开长文 pattern: https://www.dailydoseofds.com/p/{article-title}/。
+
+    规则：以 /p/ 开头为公开长文；非 /p/ 开头为付费 course 或其它非公开页面。
+    """
     if not url or not isinstance(url, str):
-        return None
+        return False
     try:
         parsed = urllib.parse.urlparse(url)
     except Exception:
-        return None
+        return False
     host = parsed.netloc.casefold()
     if "dailydoseofds.com" not in host and "ghost.io" not in host:
-        return None
+        return False
     path = parsed.path.strip("/")
     parts = path.split("/")
-    if len(parts) == 2 and parts[0] == "p" and parts[1]:
-        return parts[1]
-    return None
+    return len(parts) == 2 and parts[0] == "p" and bool(parts[1])
+
+
+def extract_slug_from_url(url: str | None) -> str | None:
+    """从给定的完整 URL 中提取 Ghost 官网文章 Slug。仅匹配 /p/{article-title}/ 格式。"""
+    if not is_public_article_url(url):
+        return None
+    parsed = urllib.parse.urlparse(url)
+    parts = parsed.path.strip("/").split("/")
+    return parts[1]
 
 
 def convert_html_to_markdown(html_content: str | None) -> str:
@@ -224,7 +234,23 @@ def fetch_ghost_post_by_slug(
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             posts = data.get("posts", [])
-            return posts[0] if posts else None
+            if not posts:
+                return None
+            post = posts[0]
+            # 严格校验：必须是公开长文（url 含 /p/ 且 access 为 True 且 visibility 为 public）
+            post_slug = post.get("slug") or slug
+            post_url = post.get("url") or f"https://www.dailydoseofds.com/p/{post_slug}/"
+            if not is_public_article_url(post_url):
+                logger.info(
+                    "Ghost post '%s' URL '%s' does not match /p/ pattern (paid course or non-article), skipped",
+                    slug,
+                    post_url,
+                )
+                return None
+            if post.get("access") is False or post.get("visibility") == "paid":
+                logger.info("Ghost post '%s' is member-gated (access=False/paid), skipped", slug)
+                return None
+            return post
     except urllib.error.HTTPError as e:
         if e.code == 404:
             return None
@@ -269,13 +295,23 @@ def search_ghost_post_by_title(
             posts = data.get("posts", [])
             if not posts:
                 return None
+            # 严格过滤：仅保留符合 /p/ pattern 且具有完整访问权限的公开长文，排除非 /p/ 的付费 course
+            valid_posts = [
+                p
+                for p in posts
+                if is_public_article_url(p.get("url") or f"https://www.dailydoseofds.com/p/{p.get('slug', '')}/")
+                and p.get("access") is not False
+                and p.get("visibility", "public") == "public"
+            ]
+            if not valid_posts:
+                return None
             target_slug = slugify(title)
-            for post in posts:
+            for post in valid_posts:
                 if post.get("slug") == target_slug:
                     return post
                 if post.get("title", "").casefold() == title.casefold():
                     return post
-            return posts[0]
+            return valid_posts[0]
     except urllib.error.HTTPError as e:
         logger.warning("Ghost API search HTTP %s for title '%s': %s", e.code, title, e.reason)
         return None
@@ -299,6 +335,10 @@ def fetch_jina_reader_post(
         if slug_or_url.startswith("http")
         else f"https://www.dailydoseofds.com/p/{slug_or_url.strip('/')}/"
     )
+    # 严格校验：URL 必须符合 /p/ 公开长文 pattern
+    if not is_public_article_url(target_url):
+        return None
+
     jina_endpoint = f"https://r.jina.ai/{target_url}"
     req = urllib.request.Request(
         jina_endpoint,
@@ -310,10 +350,21 @@ def fetch_jina_reader_post(
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw_text = resp.read().decode("utf-8")
-            if not raw_text or len(raw_text.strip()) < 50:
+            if not raw_text or len(raw_text.strip()) < 80:
                 return None
+            # 过滤 404 错误页及站点通用模版
+            if (
+                "Page not found" in raw_text
+                or "404:" in raw_text
+                or "sx-main" in raw_text
+            ):
+                return None
+
             title_match = re.search(r"^Title:\s*(.+)$", raw_text, re.MULTILINE)
             title = title_match.group(1).strip() if title_match else ""
+            if not title or title.casefold() in {"daily dose of data science", "page not found"}:
+                return None
+
             body = raw_text
             if "Markdown Content:" in raw_text:
                 body = raw_text.split("Markdown Content:", 1)[-1].strip()
@@ -341,19 +392,21 @@ def fetch_canonical_article(
     """探测并拉取 Ghost 官网标准长文版本。
 
     决议链：
-    1. 候选 URL 提取 Slug -> Ghost API
-    2. 标题规范化 Slug -> Ghost API
-    3. 标题前缀模糊检索 -> Ghost API (NQL filter)
-    4. Jina Reader 免渲染抓取 -> Level 1 Fallback
+    1. 候选 URL 提取 Slug -> Ghost API（过滤非 /p/ 课程）
+    2. 标题规范化 Slug -> Ghost API（校验 /p/ 与权限）
+    3. 标题前缀模糊检索 -> Ghost API（校验 /p/ 与权限）
+    4. Jina Reader 免渲染抓取 -> Level 1 Fallback（校验 /p/ 与排除 404）
     5. 若全失败 -> 返回 None (由上层安全降级为 Level 2 邮件原生 HTML)
     """
     try:
         post = None
         target_slug: str | None = None
 
-        # 1. 候选 URL 优先级最高
+        # 1. 候选 URL 优先级最高（必须先经过 is_public_article_url 校验）
         if candidate_urls:
             for url in candidate_urls:
+                if not is_public_article_url(url):
+                    continue
                 slug = extract_slug_from_url(url)
                 if slug:
                     target_slug = slug
@@ -374,10 +427,13 @@ def fetch_canonical_article(
             if post:
                 target_slug = post.get("slug")
 
-        # 4. 若 Ghost API 命中，解析组装
+        # 4. 若 Ghost API 命中，解析组装并最终校验 URL
         if post:
             post_slug = post.get("slug") or slugify(post.get("title", ""))
             canonical_url = post.get("url") or f"https://www.dailydoseofds.com/p/{post_slug}/"
+            if not is_public_article_url(canonical_url):
+                logger.info("Canonical URL '%s' is not /p/ public article, skipped", canonical_url)
+                return None
             raw_html = post.get("html", "")
             markdown_body = convert_html_to_markdown(raw_html)
             return {
