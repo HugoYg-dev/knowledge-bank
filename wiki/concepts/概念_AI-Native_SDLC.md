@@ -5,7 +5,8 @@ tags:
 summary: "AI Native 软件开发生命周期方法论，将传统线性开发流程重构为版本控制产物驱动的闭环循环（Loop），并结合 CLAUDE.md、Skill 与 Hook 三层防护体系"
 sources:
   - "wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md"
-updated: "2026-09-07"
+  - "wiki/sources/AI原生思维_像训练大模型一样训练自己.md"
+updated: "2026-09-15"
 ---
 
 # 概念：AI-Native SDLC
@@ -69,7 +70,9 @@ AI-Native SDLC 明确区分指导性规范与确定性门禁，构建三层同�
 ## 范式转变与人类角色定位
 
 1. **组织资产版本化**：团队工程文化与隐性知识从“个人记忆与零散 Wiki”转变为“随代码仓库版本控制的 `CLAUDE.md`、Skills 与 Hooks 源码资产”。
-2. **人在回路（HITL）的高阶位移**：人类工程师从逐行挑错的“代码打字员与语法审查员”，升级为定义核心问题、权衡系统性架构风险、把控发布权限的“战略裁决者”。
+2. **人在回路（HITL）的高阶位移**：人类工程师从逐行挑错的“代码打字员与语法审查员”，升级为定义核心问题、权衡系统性架构风险、把控发布权限的“战略裁决者与质量测试者”。
+3. **研发瓶颈向代码两侧剧烈转移**：正如宝玉在落地实践中所总结，中间写码环节被 Agent 极度压缩后，软件工程瓶颈全面转向**代码左侧（设计定义、方案确认与高保真原型）**与**代码右侧（功能、性能、安全黑盒验收）**；文档（如 `intent.md` / `spec.md`）升格为跨会话上下文传递的核心接力棒。
+4. **非舒适区技术选型倒逼放手**：采用开发者不熟练的编程语言或框架，能有效打破开发者“试图控制每一行代码”的心态惯性，迫使其彻底将实现交给 Agent、自身退居验收端，从而更纯粹地践行 AI 原生开发模式。
 
 ---
 
@@ -78,11 +81,15 @@ AI-Native SDLC 明确区分指导性规范与确定性门禁，构建三层同�
 - **关联实体**：
   - [[entities/实体_Anthropic|实体_Anthropic]]
   - [[entities/实体_Claude_Code|实体_Claude_Code]]
+  - [[entities/实体_宝玉|实体_宝玉]]
 - **关联概念**：
+  - [[concepts/概念_AI原生思维|概念_AI原生思维]]
   - [[concepts/概念_CLAUDE.md最佳实践|概念_CLAUDE.md最佳实践]]
   - [[concepts/概念_Claude_Code多智能体协同机制|概念_Claude_Code多智能体协同机制]]
   - [[concepts/概念_HITL_MCP|概念_HITL_MCP]]
 
 ---
 
-> 📎 **来源摘要**：[[wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md]]
+> 📎 **来源摘要**：
+> - [[wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md]]
+> - [[wiki/sources/AI原生思维_像训练大模型一样训练自己.md]]

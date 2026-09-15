@@ -1,5 +1,12 @@
 # Wiki Log
 
+## [2026-09-15] ingest | raw/articles/A guide to the anatomy of effective commerce agents.md & raw/articles/AI 原生思维——像训练大模型一样训练自己.md -> wiki/sources/ (+ 概念_Presentation_Tools, 概念_电商智能体架构, 概念_AI原生思维, 实体_宝玉)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/A guide to the anatomy of effective commerce agents.md` -> `raw/articles/A guide to the anatomy of effective commerce agents.md` -> `wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md`（新建概念 `[[wiki/concepts/概念_Presentation_Tools|概念_Presentation_Tools]]`，系统收录将 UI 交互组件建模为强类型工具调用、服务端校验与状态注入驱动客户端渲染、屏幕布局反向感知空间指代及 eager streaming 延迟权衡；新建概念 `[[wiki/concepts/概念_电商智能体架构|概念_电商智能体架构]]`，系统收录单模型结合 Skills 架构、现有系统轻量封装、端到端与感知延迟双前线工程、三段式 Prompt Caching、异步记忆与外围 Harness 硬件安全控制；增量更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]`，补充其在电商智能体系统工程与表现层工具化方面的标准规范；增量更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充 Skills over Subagents 保持上下文完整性、工具结果即上下文与三段式缓存布局；增量更新已有概念 `[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`，补充类型化数据库记录存储、独立后台进程异步抽取写入与三层按需读取范式）
+  - `Clippings/AI 原生思维——像训练大模型一样训练自己.md` -> `raw/articles/AI 原生思维——像训练大模型一样训练自己.md` -> `wiki/sources/AI原生思维_像训练大模型一样训练自己.md`（新建概念 `[[wiki/concepts/概念_AI原生思维|概念_AI原生思维]]`，系统收录以模型能力边界找需求、能力/成本/价值三关过滤、高保真原型与非舒适区语言极速最小验证、围绕 Agent 重构设计三准则、代码两侧瓶颈论与个体自收敛反馈循环；新建实体 `[[wiki/entities/实体_宝玉|实体_宝玉]]`，收录其技术经历、Nano Banana 提示词、BaoCut 字幕工具研发历程、Claude Agent Skill 元工具架构深度解构及 AI 原生工程范式倡导；增量更新已有概念 `[[wiki/concepts/概念_AI-Native_SDLC|概念_AI-Native_SDLC]]`，结合一线实战补充代码两侧瓶颈论、设计文档作为跨会话上下文接力棒及非舒适区选型破局思考）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要、3 篇新建 Concept 概念与 1 篇新建 Entity 实体。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保 0 errors、0 broken links、100% 索引挂载。
+
 ## [2026-09-15] ingest | raw/articles/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md -> wiki/sources/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md (+ 实体_EAGLE)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/emails/dailydoseofds/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md` -> `raw/articles/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md` -> `wiki/sources/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md`（新建实体 `[[wiki/entities/实体_EAGLE|实体_EAGLE]]`，收录倒数第二层特征隐状态外推预测、输入前移去歧义与 LLaMA2-70B 上 2.7x-3.5x 加速比；增量更新已有概念 `[[wiki/concepts/概念_推测解码|概念_推测解码]]`，全面梳理双模型独立推测、EAGLE隐层特征预测、Medusa多头树状解码、LayerSkip浅层早退四大变体机制与工程权衡；增量更新已有实体 `[[wiki/entities/实体_Medusa|实体_Medusa]]`，补充 Medusa-1 与 Medusa-2 训练范式对比、树状注意力 Tree Attention 一次验证多分支与树宽调控工程权衡）

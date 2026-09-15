@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[A_guide_to_the_anatomy_of_effective_commerce_agents]] — Anthropic 官方电商智能体系统工程指南：深入剖析单模型 Skills 架构、Presentation Tools、Prompt Caching 与端到端/感知延迟优化，以及 Harness 硬件安全控制与快照评测实践（AI-Agent/tool-calling, AI-Agent/context-engineering, AI-Agent/UI）
+- [[AI原生思维_像训练大模型一样训练自己]] — 宝玉腾讯内部分享：深度阐述找需求、判边界、最小验证与重设计的一线 AI 原生产品方法论，提出将 App 降级为 Agent 插件、开发瓶颈向代码两侧迁移，以及个体像训练大模型一样推翻旧权重持续进化（AI-Agent/coding, AI-Agent/skill）
+
 - [[2026-09-12_4-speculative-decoding-variants_1a09737e364224e2]] — 系统解构推测解码（Speculative Decoding）四大主流变体：双模型独立草稿、EAGLE 隐层特征外推、Medusa 多头并行树状解码与 LayerSkip 浅层早退，对比其机制原理、显存开销与工程权衡（LLM/inference）
 - [[2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe]] — 系统解析 LLM 注意力机制演化与 KV Cache 显存优化：涵盖 MHA、MQA、GQA、MLA 的架构压缩取舍，FlashAttention 计算访存优化，SWA 与 NSA 稀疏机制，以及 PagedAttention 与 RadixAttention 服务引擎管理（LLM/arch/attention, LLM/inference）
 - [[2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201]] — 系统梳理 5 种 Embedding 向量压缩技术：PCA 投影、MRL 前缀截断、SQ 标量量化、BQ 二值量化与 PQ 乘积量化，以及 Over-fetch 粗排配合 Rescoring 精排的两阶段检索范式（RAG/embedding）
@@ -284,6 +287,10 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/AI）
 
 ## Concepts
+
+- [[概念_Presentation_Tools]] — 表现层工具化：将富交互 UI 组件建模为强类型工具调用，由服务端参数校验与业务状态注入驱动客户端渲染，兼具屏幕布局反向感知与历史重现能力（AI-Agent/UI, AI-Agent/tool-calling）
+- [[概念_电商智能体架构]] — 面向长程高耦合交易场景的电商智能体工程体系：单模型结合技能架构（Skills over Subagents）、核心系统轻量封装、双前线延迟工程、三段式缓存及外围 Harness 硬件安全门禁（AI-Agent/tool-calling, AI-Agent/context-engineering）
+- [[概念_AI原生思维]] — 以模型能力边界为锚点、围绕 Agent 特性重构研发流程并建立个体持续自收敛反馈循环的系统化方法论（AI-Agent/coding, AI-Agent/skill）
 
 - [[概念_GQA分组查询注意力]] — GQA（Grouped-Query Attention）分组共享单组 Key/Value 头，在大幅缩减 KV Cache 显存开销的同时保留接近 MHA 的建模表达力，是现代开源 LLM 的基准注意力架构（LLM/arch/attention, LLM/inference）
 - [[概念_MRL套娃表示学习]] — MRL（Matryoshka Representation Learning）在训练阶段优化多粒度前缀嵌套损失，使向量前 n 维天然保持独立高质量语义，支持推理期免微调按需物理截断维度（RAG/embedding）
@@ -569,6 +576,8 @@
 - [[概念_LLM系统自动优化方法论]] — 介绍了以大模型优化大模型系统的反馈演进闭环，横向对比 OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch 等 6 大自动调优技术。（llm, optimization, auto-prompt, software-evolution）
 
 ## Entities
+
+- [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
 - [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/AI, LLM/arch）
 - [[实体_美团]] — 中国领先的科技零售与本地生活平台，在搜索理解、推荐系统、AI Coding 与全栈生活服务智能体具有深厚积累（AI-Agent/coding, Recommendation）
