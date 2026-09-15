@@ -25,6 +25,7 @@ sources:
 - wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md
 - wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md
 - wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
+- wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md
 updated: '2026-09-15'
 ---
 
@@ -60,17 +61,36 @@ $$\text{KV Cache} = 2 \times L \times H \times D \times S \times B \times \text{
 - 示例 2：70B 模型在 BF16 精度下，单条 128K 超长上下文的 KV Cache 高达 **约 40GB**，已与 4-bit 量化后的模型整机权重相当。
 - 自回归解码瓶颈：生成阶段受制于 GPU 内存带宽（Memory-Bandwidth Bound）而非浮点算力。
 
-## 优化方向与技术体系
+## 优化方向与生产工程体系 (12 项核心技术靶点映射)
 
-| 优化层级 | 方案 | 核心原理与收益 |
-| :--- | :--- | :--- |
-| **架构压缩** | [[概念_GQA分组查询注意力]] (GQA) / MQA | 减少 KV 头数，组内或全局共享 K/V（如 GQA 减少 4x 显存且质量无损） |
-| **架构压缩** | [[概念_MLA多头潜在注意力]] (MLA) | 低秩潜空间压缩 K/V，仅存潜向量并在计算时升维解压，显存降至 MHA 的 5%–13% |
-| **算子内核** | [[概念_FlashAttention]] | 片上 SRAM Tiling 分块与在线增量 Softmax，避免频繁存取 HBM $N \times N$ 矩阵 |
-| **稀疏注意力** | SWA / NSA | 滑动窗口截断或预训练原生稀疏注意力，解决长文本 $O(N^2)$ 计算量 |
-| **显存调度** | PagedAttention | 分页虚拟内存管理，非连续物理块分配，显存浪费从 60%–80% 降至 <4%（如 [[实体_vLLM]]） |
-| **前缀复用** | RadixAttention / Prefix Caching | 基数树前缀匹配与 KV Block 跨请求复用，多轮对话命中率达 75%–95%（如 SGLang） |
-| **数值压缩** | 量化 (K/V Quantization) | K/V 采用 FP8/INT4 等低精度存储 |
+KV Cache 的单序列物理容量可严格拆解为如下乘积公式：
+$$\text{KV Cache 容量} = 2 \times \text{layers} \times \text{kv\_heads} \times \text{head\_dim} \times \text{tokens} \times \text{bytes\_per\_val}$$
+
+大模型生产推理中的 12 项 KV Cache 工程技术精准对应公式中的各个变量，涵盖从模型架构设计到推理引擎调度的全生命周期：
+
+| 优化靶点 | 代表技术 / 机制 | 作用机理与收益 | 工程边界与前置代价 |
+| :--- | :--- | :--- | :--- |
+| **削减 KV 头数 (`heads`)** | [[概念_GQA分组查询注意力|GQA]] / MQA | 多个 Query 头共享单对或少数对 K/V 头（如 Llama 3.1 70B 8 对 KV 头使显存从 320GB 降至 40GB） | 需在模型训练阶段固化，无法在推理期动态启用 |
+| **削减独立层数 (`layers`)** | Cross-Layer Attention (CLA) | 相邻层（如每 2 层）共用同一组已缓存的 K/V 张量，再缩减 2x 层级显存 | 需预训练支持；检查点与推理引擎必须强约定层级所有权 |
+| **截断保留序列 (`tokens`)** | [[概念_滑动窗口注意力|滑动窗口 (SWA)]] | 局部注意力层采用环形缓冲区（Ring Buffer）仅保留最近 $W$ 个 Token（如 Gemma 3 5局部+1全局交替） | 超出窗口的历史上下文无法被局部层直接注意力覆盖 |
+| **淘汰历史序列 (`tokens`)** | 动态淘汰 (Eviction: H2O, SnapKV, PyramidKV) | 在固定预算下基于累积注意力或观察窗口丢弃非重击者（Heavy Hitters） | **不可逆损失**：多轮 Agent 工具调用、结构化 JSON 解析有失效风险 |
+| **压缩表示维度 (`dim`)** | [[概念_MLA多头潜在注意力|MLA (多头潜在注意力)]] | 将隐藏状态压缩为低秩潜向量（Latent Vector），解码时通过吸收投影直接计算，显存压至 MHA 的 5%–13% | 需模型架构原生设计（如 [[entities/实体_DeepSeek|DeepSeek]]），非普通模型推理开关 |
+| **固定状态替代线性增长** | [[概念_线性注意力与混合注意力|混合循环架构 (Hybrid)]] | 引入 Mamba 或 Gated DeltaNet 等固定大小状态矩阵（如 $64 \times 64$），仅保留少数全注意力层承载精确检索 | 架构原生决定（如 Qwen3-Next 1:3 交替、Jamba 1:7 交替） |
+| **降低数值精度 (`bytes`)** | K/V 量化 (Quantization) | 采用 FP8、INT4 或 KIVI（Key 按特征通道、Value 按 Token 的分组非对称量化），显存减少 50%–75% | 存在量化精度损失；[[entities/实体_vLLM|vLLM]] 支持跳过敏感局部窗口层 |
+| **降低访存流量 (不降容量)** | 查询感知稀疏读取 (Quest) | 将缓存分页并记录 Min/Max 边界摘要，Decode 每步先对 Page 估分再仅加载 Top-K 页面，延迟降 7x | **显存容量并未释放**，仅节省 GPU 显存读取带宽与计算量 |
+| **消除内存碎片与浪费** | PagedAttention | 借鉴操作系统虚拟内存分页，以固定大小离散 Block 动态分配，显存浪费从 60%–80% 降至 <4% | 需推理引擎底层支持（如 [[entities/实体_vLLM|vLLM]]） |
+| **跨并发请求复用** | 自动前缀缓存 (Prefix Caching / RadixAttention) | 基于 Token 块哈希链跨并发请求复用 System Prompt 与 Tool Schema，消除重复存储与 Prefill | 前缀注入动态变量（时间戳/UUID）会导致哈希链失效 |
+| **多级存储层级置换** | GPU 到 CPU 内存卸载 (Cache Offloading) | 将被调度挂起或冷会话的 KV 块换出至 Host RAM（如 vLLM `--kv-offloading-size`），按需换回 | 引入 Host-Device 传输延迟；需结合预取与会话亲和性调度 |
+| **算子硬件执行加速** | [[概念_FlashAttention]] | 片上 SRAM Tiling 分块与在线增量 Softmax，避免频繁存取全局显存（HBM） | 不改变显存中持久保留的 KV Cache 尺寸，仅加速注意力算子执行 |
+
+### 技术的正交乘法叠加与决策路径
+- **乘法叠加效应**：不同靶点的技术可复合生效。例如：GQA（40GB） $\times$ CLA（20GB） $\times$ FP8 量化（10GB） $\times$ 50% Token Eviction $\to$ 最终单序列显存可压至 5GB。
+- **生产决策闭环**：
+  1. *模型选型阶段*：重点核查 GQA 头数、MLA 潜向量维度与混合循环层比例；
+  2. *存量模型部署*：首选验证 FP8 量化与稳定 Prompt 前缀（收益直接且无语义丢失）；
+  3. *显存监控排查*：在 PagedAttention 固定显存池机制下，启用量化可能表现为 `nvidia-smi` 显存占用不变，但实际可承载的最大并发 Token 容积成倍提升；
+  4. *冷长会话调度*：结合 CPU Offloading 与旁路缓存解耦（如 [[概念_解耦式KV缓存与LMCache|LMCache]]）释放宝贵 GPU 显存。
+
 
 ## 生产应用中的挑战与优化演进
 
@@ -117,3 +137,4 @@ $$\text{KV Cache} = 2 \times L \times H \times D \times S \times B \times \text{
 - [[概念_跨模型KV缓存转换]]
 - [[概念_GQA分组查询注意力]]
 - [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]
+- [[wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md]]

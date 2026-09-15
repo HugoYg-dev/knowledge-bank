@@ -2,11 +2,12 @@
 type: concept
 tags:
 - Infra/AI
-summary: 本概念定义并横向对比了 CPU、GPU、TPU、NPU 与 LPU 五种主流 AI 计算芯片架构的物理特征、存储层次以及计算调度机制，并分析其在
-  AI 训练与推理场景中的物理限制与权衡。
+- Infra/gpu
+summary: 本概念定义并横向对比了 CPU、GPU、TPU、NPU 与 LPU 五种主流 AI 计算芯片架构的物理特征、存储层次以及计算调度机制，并深度解构 GPU 的 SIMT/Warp 调度、存储阶梯与 Roofline 性能权衡。
 sources:
 - wiki/sources/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md
-updated: '2026-08-04'
+- wiki/sources/How_a_GPU_Actually_Works.md
+updated: '2026-09-15'
 ---
 
 # 概念：AI硬件加速芯片架构
@@ -23,10 +24,15 @@ AI硬件加速芯片架构是指针对人工智能（尤其是深度学习的矩
 - **权衡与适用**：具备极致的通用控制灵活性。但对于深度学习中简单且重复的矩阵乘法而言，其算力利用率和访存带宽完全不足，不适合直接用于大规模 AI 训练或高吞吐推理。
 
 ### 2. GPU (Graphics Processing Unit)
-- **物理特征**：极大弱化了复杂的控制逻辑与分支预测，将芯片面积主要分给成千上万个轻量化的小计算核心。采用 SIMD/SIMT（单指令多数据/多线程）架构。
-- **存储层次**：配备片上寄存器、SRAM（Shared Memory）和极宽位宽的外部高速显存（HBM 或 GDDR）。
-- **调度机制**：硬件级的轻量级多线程调度。
-- **权衡与适用**：超高的并发吞吐能力使其成为 AI 模型训练与大规模推理的行业主导芯片。然而，其巨大的片外显存（HBM）与片上 SRAM 之间的数据搬运速度限制了计算性能，成为典型的 Memory-bound 瓶颈。
+- **物理特征**：极大弱化了复杂的控制逻辑与分支预测，将芯片面积主要置换为成千上万个轻量化的小计算核心（ALU）。采用 **SIMT（单指令多线程）** 架构，硬件调度以 32 个线程组成的 **Warp** 为最小执行单元，共享单一指令译码与发射。若 Warp 内部存在数据分支分歧（Warp Divergence），不同路径必须串行化执行并产生空等惩罚。
+- **存储层次（存储阶梯 Memory Ladder）**：由四级金字塔构成：
+  1. **线程私有寄存器（Register File）**：每个 SM 独占，全芯片总容量极大，用于停放数万常驻线程状态；
+  2. **片上暂存/共享内存（Shared Memory / L1 Cache）**：每个 SM 内部专用，纳秒级超低延迟，可由开发者在 CUDA 内核中显式控制生命周期；
+  3. **芯片级共享 L2 缓存**：位于所有 SM 与内存控制器之间，硬件自动管理；
+  4. **片外全局显存（HBM 或 GDDR）**：容量达数十至上百 GB，但距离最远、延迟最高，且受限于总线物理带宽，是典型的系统性能瓶颈。
+- **调度机制（访存延迟掩盖 Latency Hiding）**：**GPU 并不缩短访存等待，而是通过零成本上下文切换让等待隐形**。片上常驻数十个 Warp，当运行中的 Warp 发起访存停顿（Stall）时，调度器在单时钟周期内无开销切换至已就绪的其他 Warp 执行计算流水线。
+- **合并访存与数据对齐**：Warp 内 32 个线程访问连续对齐的内存地址时可合并为单次内存事务（Memory Coalescing）；散乱跨步访问会导致高达 8x 的带宽浪费。
+- **权衡与适用**：超高并发吞吐使其成为深度学习训练与高吞吐推理的首选。然而，其算力峰值的增长速度数倍于内存带宽，在自回归解码（Decode）等低复用算子下算力强度仅约 1 op/byte，受制于严重的内存带宽瓶颈（参见 [[concepts/概念_Roofline模型与算力强度|Roofline 模型与算力强度]]）。
 
 ### 3. TPU (Tensor Processing Unit)
 - **物理特征**：Google 设计的神经网络专用集成电路（ASIC）。核心计算单元为二维相连的乘加器（MAC）网格——**脉动阵列（Systolic Array）**。
@@ -76,3 +82,16 @@ AI硬件加速芯片架构是指针对人工智能（尤其是深度学习的矩
 - **TPU** 的脉动阵列则通过数据在 MAC 二维网格中的“流动”来减少与内存（HBM）的重复交互，其硬件本身就具备减少 I/O 频繁往返的设计。
 
 这表明，**AI 硬件的物理存储设计与底层算法工程存在深度的协同演进关系**：硬件物理极限决定了算法优化的方向（如 GPU 孕育了 FlashAttention），而极端的硬件重构（如 LPU）则可能直接从物理层消除特定算法优化的需求。
+
+---
+
+## 关联
+
+- [[sources/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9]]（来源）
+- [[sources/How_a_GPU_Actually_Works]]（来源）
+- [[concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]
+- [[concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]
+- [[concepts/概念_FlashAttention|概念_FlashAttention]]
+- [[concepts/概念_连续批处理|概念_连续批处理]]
+- [[concepts/概念_KV_Cache|概念_KV_Cache]]
+- [[entities/实体_NVIDIA|实体_NVIDIA]]

@@ -1,5 +1,12 @@
 # Wiki Log
 
+## [2026-09-15] ingest | raw/articles/How a GPU Actually Works.md & raw/articles/KV Cache Engineering for LLM Serving.md -> wiki/sources/ (+ 概念_Roofline模型与算力强度)
+- **深度阅读与物理归档 (Clippings -> raw/articles/)**：
+  - `Clippings/How a GPU Actually Works.md` -> `raw/articles/How a GPU Actually Works.md` -> `wiki/sources/How_a_GPU_Actually_Works.md`（新建概念 `[[wiki/concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]`，系统收录算力强度公式、硬件平衡阈值拐点、算力天花板与带宽受限区划分及两阶段推理 Roofline 投影；增量更新已有概念 `[[wiki/concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]`，深度解构 GPU SIMT 架构、Warp 调度与分歧惩罚、零成本上下文切换掩盖访存延迟机制及四级存储阶梯；增量更新已有概念 `[[wiki/concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]`，量化分析 70B 模型自回归单 step 1 op/byte 极端带宽受限与 42ms 理论延迟下限，对比 Prefill 算力均摊饱和；增量更新已有概念 `[[wiki/concepts/概念_连续批处理|概念_连续批处理]]`，收录 Roofline 视角下并发批处理线性放大算力强度的系统机制；增量更新已有实体 `[[wiki/entities/实体_NVIDIA|实体_NVIDIA]]`，补充 H100 SXM5 与 H200 硬件平衡阈值演进数据）
+  - `Clippings/KV Cache Engineering for LLM Serving.md` -> `raw/articles/KV Cache Engineering for LLM Serving.md` -> `wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md`（增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，系统建立基于容量乘积公式的 12 项生产工程技术靶点映射表、正交乘法叠加效应与生产决策路径；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，补充其原生 FP8 KV 缓存与局部窗口跳过保护、自动前缀缓存 APC 块哈希链及 CPU 内存卸载 Host-Device 置换生产配置）
+- **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
+- **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保 0 errors、0 broken links、100% 索引挂载。
+
 ## [2026-09-15] ingest | raw/articles/A guide to the anatomy of effective commerce agents.md & raw/articles/AI 原生思维——像训练大模型一样训练自己.md -> wiki/sources/ (+ 概念_Presentation_Tools, 概念_电商智能体架构, 概念_AI原生思维, 实体_宝玉)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/A guide to the anatomy of effective commerce agents.md` -> `raw/articles/A guide to the anatomy of effective commerce agents.md` -> `wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md`（新建概念 `[[wiki/concepts/概念_Presentation_Tools|概念_Presentation_Tools]]`，系统收录将 UI 交互组件建模为强类型工具调用、服务端校验与状态注入驱动客户端渲染、屏幕布局反向感知空间指代及 eager streaming 延迟权衡；新建概念 `[[wiki/concepts/概念_电商智能体架构|概念_电商智能体架构]]`，系统收录单模型结合 Skills 架构、现有系统轻量封装、端到端与感知延迟双前线工程、三段式 Prompt Caching、异步记忆与外围 Harness 硬件安全控制；增量更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]`，补充其在电商智能体系统工程与表现层工具化方面的标准规范；增量更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充 Skills over Subagents 保持上下文完整性、工具结果即上下文与三段式缓存布局；增量更新已有概念 `[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`，补充类型化数据库记录存储、独立后台进程异步抽取写入与三层按需读取范式）

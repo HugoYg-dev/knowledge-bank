@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[How_a_GPU_Actually_Works]] — 深入剖析现代 GPU 底层硬件架构（SIMT、Warp 调度、多级存储阶梯）与算力强度/Roofline 性能模型，揭示 LLM 自回归生成受限于内存带宽的根本原因，并将批处理、算子融合、SRAM 分块及量化等优化统一归纳为算存比移动法则（Infra/gpu, Infra/AI, LLM/inference）
+- [[KV_Cache_Engineering_for_LLM_Serving]] — 系统性解构 LLM 推理生产中管理与压缩 KV Cache 的 12 项工程技术，涵盖模型架构共享、局部与稀疏截断、潜空间压缩、固定状态替换、数值量化、块分页、前缀复用与跨层卸载，并建立按削减目标分类的选型决策框架（LLM/inference, Infra/AI, LLM/arch/attention）
+
 - [[A_guide_to_the_anatomy_of_effective_commerce_agents]] — Anthropic 官方电商智能体系统工程指南：深入剖析单模型 Skills 架构、Presentation Tools、Prompt Caching 与端到端/感知延迟优化，以及 Harness 硬件安全控制与快照评测实践（AI-Agent/tool-calling, AI-Agent/context-engineering, AI-Agent/UI）
 - [[AI原生思维_像训练大模型一样训练自己]] — 宝玉腾讯内部分享：深度阐述找需求、判边界、最小验证与重设计的一线 AI 原生产品方法论，提出将 App 降级为 Agent 插件、开发瓶颈向代码两侧迁移，以及个体像训练大模型一样推翻旧权重持续进化（AI-Agent/coding, AI-Agent/skill）
 
@@ -288,6 +291,7 @@
 
 ## Concepts
 
+- [[概念_Roofline模型与算力强度]] — 量化评估芯片峰值算力与内存带宽瓶颈的经典模型，通过算力强度（FLOPs/Byte）与硬件平衡拐点划分计算受限与内存带宽受限区，指导大模型推理两阶段的系统调优（Infra/gpu, Infra/AI, LLM/inference）
 - [[概念_Presentation_Tools]] — 表现层工具化：将富交互 UI 组件建模为强类型工具调用，由服务端参数校验与业务状态注入驱动客户端渲染，兼具屏幕布局反向感知与历史重现能力（AI-Agent/UI, AI-Agent/tool-calling）
 - [[概念_电商智能体架构]] — 面向长程高耦合交易场景的电商智能体工程体系：单模型结合技能架构（Skills over Subagents）、核心系统轻量封装、双前线延迟工程、三段式缓存及外围 Harness 硬件安全门禁（AI-Agent/tool-calling, AI-Agent/context-engineering）
 - [[概念_AI原生思维]] — 以模型能力边界为锚点、围绕 Agent 特性重构研发流程并建立个体持续自收敛反馈循环的系统化方法论（AI-Agent/coding, AI-Agent/skill）
