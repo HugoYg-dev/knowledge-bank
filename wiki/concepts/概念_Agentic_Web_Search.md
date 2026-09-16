@@ -2,7 +2,7 @@
 type: concept
 tags:
 - AI-Agent/deep-research
-- Infra/AI
+- Infra/platform
 - RAG/retrieval
 summary: 面向大模型智能体的网络搜索架构与供应链解耦范式，将一体化搜索引擎解构为代理层、定向语义索引、上下文精炼与云端运行时四层，并以代码运行成功率等 Agent
   任务信号替代人类点击。

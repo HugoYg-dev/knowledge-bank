@@ -2,7 +2,7 @@
 type: source
 tags:
 - AI-Agent/coding
-- Infra/AI
+- Infra/platform
 summary: 本文详细探讨了 Agent Harness（智能体宿主/外壳）的概念。指出在多步骤任务中，Agent 系统的瓶颈往往在于围绕 LLM 的外壳基础设施。文章定义了
   Harness 的 11 个生产级核心组件，并梳理了单步 TAO 循环以及长周期两阶段协作的 Ralph Loop 模式，最后给出了架构设计中的七个关键抉择。
 sources:

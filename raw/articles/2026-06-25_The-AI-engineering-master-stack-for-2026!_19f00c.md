@@ -8,8 +8,9 @@ email_id: 19f00c2716d4e27d
 article_id: 19f00c2716d4e27d:1
 published: '2026-06-25'
 tags:
-- Infra/AI
+- Infra/platform
 - AI-Agent/coding
+
 ---
 
 # The AI engineering master stack for 2026!

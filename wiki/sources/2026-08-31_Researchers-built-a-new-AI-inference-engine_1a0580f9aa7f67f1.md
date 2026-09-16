@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["Infra/AI", "LLM/inference"]
+tags: ["Infra/serving", "LLM/inference"]
 summary: "Superlinked 开源推理服务引擎 SIE 解析：通过多模型单进程共享 GPU 与 LRU 置换机制将自托管推理成本降低约 4 倍"
 sources: ["raw/articles/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md"]
 updated: "2026-09-09"

@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["Infra/gpu", "Infra/AI", "LLM/inference"]
+tags: ["Infra/gpu", "Infra/serving", "LLM/inference"]
 summary: "深入剖析现代 GPU 底层硬件架构（SIMT、Warp 调度、多级存储阶梯）与算力强度/Roofline 性能模型，揭示 LLM 自回归生成受限于内存带宽的根本原因，并将批处理、算子融合、SRAM 分块及量化等优化统一归纳为算存比移动法则"
 sources: ["raw/articles/How a GPU Actually Works.md"]
 updated: "2026-09-15"

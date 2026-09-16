@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Infra/AI
+- Infra/platform
 summary: AI-Native Infra 是专为 AI（而非人类工程师）设计的基础设施，去掉"人类兜底层"，所有状态/操作/错误都 API 化、结构化、机器可读，让
   AI 能自驱动地完成构建、部署、运维全流程。
 sources:

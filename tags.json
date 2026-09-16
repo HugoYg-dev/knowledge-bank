@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated_at": "2026-08-26",
+  "updated_at": "2026-09-16",
   "governance": {
     "allow_branch_root_in_overview": true,
     "enforce_leaf_for_sources": true
@@ -77,10 +77,14 @@
       ]
     },
     "Infra": {
-      "description": "AI 硬件算力与基础设施",
+      "description": "AI 算力硬件与系统基础设施工程体系",
       "leaves": [
-        "AI",
-        "gpu"
+        "gpu",
+        "serving",
+        "training",
+        "storage",
+        "rl",
+        "platform"
       ]
     }
   }

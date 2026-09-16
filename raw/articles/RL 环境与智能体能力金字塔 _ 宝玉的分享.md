@@ -4,7 +4,7 @@ cubox_url: https://cubox.pro/web/card/7389934316072996414
 url: https://baoyu.io/translations/rl-envs-real-world
 tags:
   - LLM/training/RL
-  - Infra/AI
+  - Infra/rl
 published: 2025-11-13
 ---
 # RL 环境与智能体能力金字塔 | 宝玉的分享

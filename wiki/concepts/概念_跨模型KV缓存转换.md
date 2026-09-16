@@ -2,7 +2,7 @@
 type: concept
 tags:
 - LLM/inference
-- Infra/AI
+- Infra/serving
 summary: 跨模型 KV 缓存转换通过学习源模型与目标模型的 KV 表示映射，尝试在模型切换时复用既有 Prefill 计算；当前证据仅覆盖同家族稠密全注意力模型。
 sources:
 - wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md

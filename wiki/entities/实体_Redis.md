@@ -2,7 +2,7 @@
 type: entity
 tags:
 - RAG/retrieval
-- Infra/AI
+- Infra/storage
 summary: 经典内存键值数据库，通过 RediSearch / Redis Stack 模块变身为内存级超低延迟向量数据库。
 sources:
 - wiki/sources/2026程序员必读的向量数据库原理与选型指南.md

@@ -2,7 +2,7 @@
 type: entity
 tags:
 - LLM/training/RL
-- Infra/AI
+- Infra/rl
 summary: Fireworks AI 是创立三年的 AI Inference Infra 公司，近期将强化微调（RFT）产品化——用户只需提供评分函数，平台处理
   GPU 资源/训练循环/实验管理。客户用其微调开源模型效果追平闭源顶尖模型且推理快 10-40 倍。
 sources:

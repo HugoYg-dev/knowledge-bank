@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Infra/AI
+- Infra/serving
 summary: ONNX模型跨平台部署是一种将模型训练框架与生产环境硬件/运行时解耦的标准方案。通过ONNX定义的统一计算图标准与ONNX Runtime的图优化、算子融合以及Execution
   Providers硬件子图分发机制，实现模型在C++、移动端、GPU等异构环境下的高性能部署，但也伴随着算子兼容性、精度漂移等实际挑战。
 sources:

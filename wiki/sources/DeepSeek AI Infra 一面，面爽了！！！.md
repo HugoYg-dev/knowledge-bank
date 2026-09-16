@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Infra/AI
+- Infra/platform
 - AI-Agent/coding
 - 面试
 summary: DeepSeek AI Infra 一面面经深度复盘，探讨 Harness 插件架构哲学、分层早停机制、工具调用沙箱、路径震荡与失败记忆、小模型协同压缩、大规模 Skill 路由、多 Agent 协作平台及模型原生决策演进路线。

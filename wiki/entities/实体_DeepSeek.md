@@ -1,7 +1,7 @@
 ---
 type: entity
 tags:
-- Infra/AI
+- Infra/platform
 - LLM/arch
 summary: 专注于通用人工智能（AGI）研发的中国 AI 创新机构，代表作包括 DeepSeek-V3/R1 系列大模型及基于 Cordis 微内核的 DeepSeek-Harness 智能体生态。
 sources:

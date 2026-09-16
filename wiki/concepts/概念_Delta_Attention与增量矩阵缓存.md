@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Infra/AI
+- Infra/serving
 - LLM/inference
 - LLM/arch/attention
 summary: Delta Attention（增量注意力）是 Kimi K3 采用的注意力优化机制，将历史 Token 的键值对关联折叠压缩进一个固定大小的矩阵中，通过

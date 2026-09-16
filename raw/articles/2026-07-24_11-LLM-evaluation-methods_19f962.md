@@ -9,7 +9,8 @@ article_id: 19f962933027e3e6:1
 published: '2026-07-24'
 tags:
 - LLM/reasoning
-- Infra/AI
+- Infra/platform
+
 ---
 
 # 11 LLM evaluation methods

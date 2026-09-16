@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Infra/AI
+- Infra/platform
 summary: Result-as-a-Service（结果即服务）是 AI-Native Infra 演化的终极形态：人类只需表达需求和验收结果，AI 负责构建/部署/运维/演化整个系统，人类角色从工程师转变为
   QA。
 sources:

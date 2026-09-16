@@ -7,8 +7,8 @@
 - [[Loop Engineering 详解：从管理执行到设计自收敛的循环]] — 深度剖析 Loop Engineering 从一阶 AI Manager 到二阶 Senior Manager 的范式升维：将 evaluation harness、observability、SOP、maker/checker 与 data flywheel 固化为系统组件，并阐明边界约束优于 TDD 路径约束以及任务自动发现的发散性局限（AI-Agent/coding, AI-Agent/context-engineering, AI-Agent/tool-calling）
 - [[再见RAG！AI知识库还得是SAG，又快又准～]] — 介绍开源检索架构 SAG（基于查询时动态超边的 SQL 检索增强生成）：将文档提炼为事项卡片与实体存入 SQL 数据库，查询时利用 SQL JOIN 动态激活局部多跳关联网，实现高召回率多跳推理、极低维护成本与确定性排障调优（RAG/retrieval, RAG/query, RAG/chunking）
 
-- [[How_a_GPU_Actually_Works]] — 深入剖析现代 GPU 底层硬件架构（SIMT、Warp 调度、多级存储阶梯）与算力强度/Roofline 性能模型，揭示 LLM 自回归生成受限于内存带宽的根本原因，并将批处理、算子融合、SRAM 分块及量化等优化统一归纳为算存比移动法则（Infra/gpu, Infra/AI, LLM/inference）
-- [[KV_Cache_Engineering_for_LLM_Serving]] — 系统性解构 LLM 推理生产中管理与压缩 KV Cache 的 12 项工程技术，涵盖模型架构共享、局部与稀疏截断、潜空间压缩、固定状态替换、数值量化、块分页、前缀复用与跨层卸载，并建立按削减目标分类的选型决策框架（LLM/inference, Infra/AI, LLM/arch/attention）
+- [[How_a_GPU_Actually_Works]] — 深入剖析现代 GPU 底层硬件架构（SIMT、Warp 调度、多级存储阶梯）与算力强度/Roofline 性能模型，揭示 LLM 自回归生成受限于内存带宽的根本原因，并将批处理、算子融合、SRAM 分块及量化等优化统一归纳为算存比移动法则（Infra/gpu, Infra/gpu, Infra/serving, LLM/inference）
+- [[KV_Cache_Engineering_for_LLM_Serving]] — 系统性解构 LLM 推理生产中管理与压缩 KV Cache 的 12 项工程技术，涵盖模型架构共享、局部与稀疏截断、潜空间压缩、固定状态替换、数值量化、块分页、前缀复用与跨层卸载，并建立按削减目标分类的选型决策框架（LLM/inference, Infra/serving, LLM/arch/attention）
 
 - [[A_guide_to_the_anatomy_of_effective_commerce_agents]] — Anthropic 官方电商智能体系统工程指南：深入剖析单模型 Skills 架构、Presentation Tools、Prompt Caching 与端到端/感知延迟优化，以及 Harness 硬件安全控制与快照评测实践（AI-Agent/tool-calling, AI-Agent/context-engineering, AI-Agent/UI）
 - [[AI原生思维_像训练大模型一样训练自己]] — 宝玉腾讯内部分享：深度阐述找需求、判边界、最小验证与重设计的一线 AI 原生产品方法论，提出将 App 降级为 Agent 插件、开发瓶颈向代码两侧迁移，以及个体像训练大模型一样推翻旧权重持续进化（AI-Agent/coding, AI-Agent/skill）
@@ -18,10 +18,10 @@
 - [[2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201]] — 系统梳理 5 种 Embedding 向量压缩技术：PCA 投影、MRL 前缀截断、SQ 标量量化、BQ 二值量化与 PQ 乘积量化，以及 Over-fetch 粗排配合 Rescoring 精排的两阶段检索范式（RAG/embedding）
 
 - [[2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1]] — 稀疏随机投影（Sparse Random Projection）原理解析：突破 PCA 在超高维空间的三次方复杂度瓶颈，近乎保距压缩与在 VeRA 中的应用（Skill/data-analysis, DeepLearning）
-- [[2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1]] — Superlinked 开源推理服务引擎 SIE 解析：通过多模型单进程共享 GPU 与 LRU 置换机制将自托管推理成本降低约 4 倍（Infra/AI, LLM/inference）
+- [[2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1]] — Superlinked 开源推理服务引擎 SIE 解析：通过多模型单进程共享 GPU 与 LRU 置换机制将自托管推理成本降低约 4 倍（Infra/serving, LLM/inference）
 - [[2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1]] — Google Chrome 与 Edge 团队推出的 WebMCP 协议解析：将网站能力以类型化工具直接暴露给 Agent，对比六种 Agent 应用交互范式（AI-Agent/tool-calling, AI-Agent/UI）
-- [[2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07]] — 解构 LLM 连续批处理的核心调度机理：迭代级调度、选择性批处理、vLLM V1 调度器四步预算算法与抢占重算治理（Infra/AI, LLM/inference）
-- [[2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de]] — 系统解构 LLM 技术栈四种缓存机制（KV Cache、Prefix、Prompt、Semantic）所存底层对象、正确性影响与五大静默失效陷阱（Infra/AI, LLM/inference）
+- [[2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07]] — 解构 LLM 连续批处理的核心调度机理：迭代级调度、选择性批处理、vLLM V1 调度器四步预算算法与抢占重算治理（Infra/serving, LLM/inference）
+- [[2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de]] — 系统解构 LLM 技术栈四种缓存机制（KV Cache、Prefix、Prompt、Semantic）所存底层对象、正确性影响与五大静默失效陷阱（Infra/serving, LLM/inference）
 
 - [[阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程]] — 阿里高德开源长时 Agent 编排框架 LongHorizon-Harness，提出 Manage-Execute-Audit（MEA）三角色循环，将长任务从会话与轨迹中心重构为经审计的环境状态转换（AI-Agent/coding, AI-Agent/context-engineering）
 - [[2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5]] — 揭示 Agent 上下文压缩因破坏 Prefix Caching 导致成本倒挂的物理机制，系统对比 5 种上下文压缩策略与 LMCache 分层解耦复用方案（AI-Agent/context-engineering, LLM/inference）
@@ -38,7 +38,7 @@
 - [[Firecrawl 新工具开源，anydoc，将各种输入转换为md]] — Firecrawl 开源纯 Rust 多格式文档转 Markdown 工具 anydoc，中间稿两阶段解析与 Agent Skill 集成（AI-Agent/tool-calling, RAG/chunking）
 - [[刚刚，DeepSeek Harness震撼开源：一切皆插件]] — DeepSeek 开源基于 Cordis 微内核的智能体框架 DeepSeek Harness，主张一切皆插件、权威 Session Log 事件源与生命周期调度管控（AI-Agent/harness, AI-Agent/coding）
 
-- [[2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38]] — 多模型 AI 流水线以统一服务层、共享 GPU 池、按需加载和成本感知分批降低闲置资源（Infra/AI, LLM/inference）
+- [[2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38]] — 多模型 AI 流水线以统一服务层、共享 GPU 池、按需加载和成本感知分批降低闲置资源（Infra/serving, LLM/inference）
 - [[2026-08-07_8-LLM-precision-formats_19fddf]] — FP32/TF32/BF16/FP16/FP8/INT8/INT4/NF4 八种 LLM 精度格式的显存、数值范围与训练推理权衡（LLM/inference, LLM/training, Infra/gpu）
 
 - [[目标检测入门_经典模型]] — R-CNN/Fast/Faster R-CNN、YOLO、SSD 经典检测模型综述（CV/detection）
@@ -55,11 +55,11 @@
 - [[机器学习中SVD总结]] — 特征值分解/SVD 原理、推导与应用（DeepLearning, 面试）
 - [[梯度下降优化器可视化解释]] — Vanilla GD/Momentum/AdaGrad/RMSProp/Adam 对比（DeepLearning）
 - [[PyTorch训练代码模板]] — PyTorch 训练 9 步模板：超参/模型/数据/训练/早停/绘图/预测（DeepLearning, Skill/python/pytorch）
-- [[AI-Native的Infra演化路线L0到L5]] — AI-Native Infra 的 L0-L5 能力成熟度模型与 Result-as-a-Service（Infra/AI）
-- [[入局AI_Infra系统设计与挑战]] — AI Infra vs 传统 Infra：硬件/软件/训练/推理挑战全拆解（Infra/AI）
+- [[AI-Native的Infra演化路线L0到L5]] — AI-Native Infra 的 L0-L5 能力成熟度模型与 Result-as-a-Service（Infra/platform）
+- [[入局AI_Infra系统设计与挑战]] — AI Infra vs 传统 Infra：硬件/软件/训练/推理挑战全拆解（Infra/platform）
 - [[PyTorch常用代码段合集]] — PyTorch 5 大类常用代码段 + 实用 Tips（Skill/python/pytorch, DeepLearning）
-- [[RL_Infra行业全景]] — RL 环境/RLaaS/数据三大模块，RL 的 GPT-3 时刻（LLM/training/RL, Infra/AI）
-- [[RL环境与智能体能力金字塔]] — Surge AI 智能体能力金字塔：工具/规划/适应/接地气/常识推理（LLM/training/RL, Infra/AI）
+- [[RL_Infra行业全景]] — RL 环境/RLaaS/数据三大模块，RL 的 GPT-3 时刻（LLM/training/RL, Infra/rl）
+- [[RL环境与智能体能力金字塔]] — Surge AI 智能体能力金字塔：工具/规划/适应/接地气/常识推理（LLM/training/RL, Infra/rl）
 - [[RAG基础_索引检索生成]] — RAG 基础流程：Indexing/Retrieval/Generation + LangChain/Qdrant 实现（RAG）
 - [[RAG查询翻译_Query_Translation]] — Query Translation：Multi-Query/RAG Fusion/Decomposition/Step-back/HyDE（RAG, RAG/query）
 - [[RAG路由_Routing]] — Routing：Logical/Semantic 路由智能选择检索路径（RAG）
@@ -201,7 +201,7 @@
 - [[Dropbox基于DSPy优化Dash Chat评估与提示词]] — Dropbox Dash Chat 评估驱动实践：人工标注校准 LLM-as-a-Judge + DSPy GEPA 自动迭代系统提示词（AI-Agent/eval, AI-Agent/prompt-engineering）
 - [[MiniMax_vs_Kimi_注意力路线之争]] — MiniMax M2 回归 Full Attention，Kimi 发布开源混合注意力模型 Kimi Linear（KDA+MLA 3:1），两条技术路线的工程视角对比（LLM/arch/attention）
 - [[后训练认知_SFT_vs_RL_记忆与遗忘机制]] — 普林斯顿陈丹琦团队发现 RL 抗遗忘优于 SFT，根源在于 on-policy 数据分布，而非算法形式（LLM/training/post-train）
-- [[2026程序员必读的向量数据库原理与选型指南]] — 系统剖析 ANN 算法（HNSW/IVF/DiskANN）与标量过滤，横向对比 8 大向量数据库选型决策树（RAG/embedding, Infra/AI）
+- [[2026程序员必读的向量数据库原理与选型指南]] — 系统剖析 ANN 算法（HNSW/IVF/DiskANN）与标量过滤，横向对比 8 大向量数据库选型决策树（RAG/embedding, Infra/storage）
 - [[Karpathy推文引发的LLM_Wiki知识库搭建实践]] — Andrej Karpathy 提出的 LLM Wiki 知识编译范式、三层架构、四大核心操作与 80 年思想谱系（Skill/knowledge-bank, AI-Agent/coding）
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]] — Lilian Weng 剖析 Harness Engineering：递归自我改进（RSI）近期的近路不是改模型权重，而是围绕模型搭建的 Harness 系统（AI-Agent/harness, AI-Agent/coding）
 - [[wiki/sources/Vault死链治理与单向推导架构维护复盘]] — Hugo Yang 总结 Obsidian 知识库死链假性鉴别（重定向/去前缀/待建节点）、级联清理行内安全感知与单向推导管线维护纪律（Skill/knowledge-bank）
@@ -214,7 +214,7 @@
 - [[月之暗面 Agent开发岗，凉凉！！！]] — Agent 面试复盘：上下文摘要触发、长期记忆召回、工具渐进披露与 RAG 可观测性（AI-Agent/memory, AI-Agent/context-engineering, 面试）
 - [[高德地图AI应用开发岗一面，我跪了！！！]] — AI 应用面试复盘：多轮 RAG、RRF、粗排精排、结构切分、记忆冲突与 Agent Loop（RAG/retrieval, RAG/chunking, 面试）
 - [[美团AICoding面试，跪了！！！]] — AI Coding 面试复盘：将高风险评论审核拆为规则、输入输出、权限和测试四层系统（AI-Agent/coding, AI-Agent/eval, 面试）
-- [[DeepSeek AI Infra 一面，面爽了！！！]] — DeepSeek AI Infra 面试复盘：Harness 插件哲学、早停与防震荡机制、工具沙箱、大小模型协同及多 Agent 协作平台（Infra/AI, AI-Agent/coding, 面试）
+- [[DeepSeek AI Infra 一面，面爽了！！！]] — DeepSeek AI Infra 面试复盘：Harness 插件哲学、早停与防震荡机制、工具沙箱、大小模型协同及多 Agent 协作平台（Infra/platform, AI-Agent/coding, 面试）
 - [[美团AI全栈Agent一面，笑着聊完挂了！！！]] — 美团 AI 全栈 Agent 面试复盘：行程规划工具编排、多轮澄清、Query 改写、Schema 校验、记忆压缩、分布式锁与并发终止（AI-Agent/coding, AI-Agent/tool-calling, 面试）
 - [[读：读代码前先跑的五个 git 命令 - 暗无天日]] — 用 Git 历史识别变更热点、关键维护者、缺陷聚集、提交趋势和救火信号（Skill/linux, AI-Agent/coding）
 - [[2025-01-31_7-Uses-of-Underscore-in-Python_194be0]] — 本文介绍了 Python 中下划线（_）的 7 种主要使用场景，包括获取最后计算值、循环占位符、大数字分隔符以及四种用于命名对象的下划线规范（单前导、单后缀、双前导和双前后导）。（python, python/syntax）
@@ -275,8 +275,8 @@
 - [[2026-07-03_11-most-important-plots-in-DSML_19f29f]] — 系统归纳了数据科学与机器学习中最重要且必须掌握的 11 种诊断、评估与可解释性图表，简要说明了其物理意义与主要应用准则。（data-science, machine-learning, model-evaluation, model-interpretability）
 - [[2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f]] — 详细拆解了围绕 LLM 运作的四层工程阶梯（Prompt、Context、Harness、Loop Engineering），它们由内而外包裹，各自承担着大模型应用在推理阶段的不同层级优化与控制面职责。（AI-Agent/loop-engineering, AI-Agent/coding）
 - [[2026-07-07_4-LLM-text-generation-strategies_19f3d7]] — 探讨了 LLM 文本生成中的四种核心解码策略（贪婪搜索、多项式采样、束搜索与对比搜索），分析了它们的工作机制以及在流畅度、多样性与重复度等方面的权衡。（LLM/decoding-strategies, LLM/generation）
-- [[2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7]] — 针对 AI 智能体应用中 62% 的重复 Token 浪费问题，介绍解耦式 KV 缓存架构 LMCache，该架构实现缓存管理与推理引擎进程解耦，并引入 CacheBlend 算法提速多文档 RAG 场景。（LLM/inference, Infra/AI, KV-Cache）
-- [[2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617]] — 介绍 NVIDIA 与 MIT 联合提出的 SparDA 架构。该架构在传统 Transformer 的 Q/K/V 投影之上引入第四投影 Forecast，预测下一层所需的 KV 块，从而实现从 CPU 内存异步预取 KV Cache，大幅缓解长文本 CPU offload 传输瓶颈。（LLM/inference, Infra/AI, KV-Cache）
+- [[2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7]] — 针对 AI 智能体应用中 62% 的重复 Token 浪费问题，介绍解耦式 KV 缓存架构 LMCache，该架构实现缓存管理与推理引擎进程解耦，并引入 CacheBlend 算法提速多文档 RAG 场景。（LLM/inference, Infra/serving, KV-Cache）
+- [[2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617]] — 介绍 NVIDIA 与 MIT 联合提出的 SparDA 架构。该架构在传统 Transformer 的 Q/K/V 投影之上引入第四投影 Forecast，预测下一层所需的 KV 块，从而实现从 CPU 内存异步预取 KV Cache，大幅缓解长文本 CPU offload 传输瓶颈。（LLM/inference, Infra/serving, KV-Cache）
 - [[2026-07-14_The-four-types-of-agent-loops_19f617]] — 介绍智能体循环的四种主要设计类型（单步交互式、目标驱动式、时间触发式、事件主动式）及对自主性的分担和职责让渡。（AI-Agent/loop-engineering, AI-Agent/coding）
 - [[2026-07-21_5-LLM-Quantization-Techniques_19f86b]] — 探讨大模型量化技术（Quantization）及其面临 of 离群值（Outliers）挑战，并对比五种主流的量化方法（RTN、GPTQ、AWQ、LLM.int8()、QAT）。（LLM/quantization, LLM/optimization）
 - [[2026-07-24_11-LLM-evaluation-methods_19f962]] — 系统性整理 11 种必知的大模型（LLM）评估方法与指标（BLEU/ROUGE/BERTScore/G-Eval/Judge/Juries/DAG/Trajectory/Multi-turn等），并探讨其使用局限与最佳实践。
@@ -290,13 +290,13 @@
 - [[2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f]] — 介绍了六种在大模型系统中实现自动化优化的前沿方法（OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch），通过大模型自动反馈循环替代人工调优。（llm, optimization, prompt-engineering, auto-tuning）
 - [[2026-07-31_Subagents-vs.-Agent-Teams_19fb9f]] — 对比了 Claude 提供的两种多智能体范式：Sub-agents（基于隔离实现并行与 Context 压缩，单向反馈）和 Agent Teams（基于协同通信与共享状态，双向协作），并从第一性原理探讨了以上下文为中心的分治逻辑。（multi-agent, sub-agents, agent-teams, architecture）
 - [[2026-08-01_Double-Descent-vs.-Bias-Variance-Trade-off_19fbed_part3]] — 介绍机器学习与深度学习中的双下降（Double Descent）现象，该现象对传统的偏差-方差折中理论提出了挑战，指出在模型复杂度跨越临界插值界限后测试误差可能会二次下降。（machine-learning, double-descent, generalization）
-- [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/AI）
+- [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
 
 - [[概念_SAG]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
 
-- [[概念_Roofline模型与算力强度]] — 量化评估芯片峰值算力与内存带宽瓶颈的经典模型，通过算力强度（FLOPs/Byte）与硬件平衡拐点划分计算受限与内存带宽受限区，指导大模型推理两阶段的系统调优（Infra/gpu, Infra/AI, LLM/inference）
+- [[概念_Roofline模型与算力强度]] — 量化评估芯片峰值算力与内存带宽瓶颈的经典模型，通过算力强度（FLOPs/Byte）与硬件平衡拐点划分计算受限与内存带宽受限区，指导大模型推理两阶段的系统调优（Infra/gpu, Infra/gpu, Infra/serving, LLM/inference）
 - [[概念_Presentation_Tools]] — 表现层工具化：将富交互 UI 组件建模为强类型工具调用，由服务端参数校验与业务状态注入驱动客户端渲染，兼具屏幕布局反向感知与历史重现能力（AI-Agent/UI, AI-Agent/tool-calling）
 - [[概念_电商智能体架构]] — 面向长程高耦合交易场景的电商智能体工程体系：单模型结合技能架构（Skills over Subagents）、核心系统轻量封装、双前线延迟工程、三段式缓存及外围 Harness 硬件安全门禁（AI-Agent/tool-calling, AI-Agent/context-engineering）
 - [[概念_AI原生思维]] — 以模型能力边界为锚点、围绕 Agent 特性重构研发流程并建立个体持续自收敛反馈循环的系统化方法论（AI-Agent/coding, AI-Agent/skill）
@@ -373,8 +373,8 @@
 - [[概念_Random_Patches大数据训练]] — 随机贴片在大数据集上训练经典集成模型的机制与方差降低原理
 - [[概念_ONNX模型跨平台部署]] — 模型开发框架与伺服生产环境解耦标准、ORT图优化与硬件子图分发机制
 - [[概念_聚类算法分类综述]] — 系统性梳理聚类算法的 6 大主流家族（基于质心、基于连通性、基于密度、基于图、基于分布和基于压缩/降维），对比硬聚类与软聚类的决策边界，并分析算法对聚类形状和密度的适应差异。（MachineLearning, Clustering）
-- [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理。（LLM/inference, Infra/AI）
-- [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量。（LLM/inference, Infra/AI）
+- [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理。（LLM/inference, Infra/serving）
+- [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量。（LLM/inference, Infra/serving）
 - [[概念_Graph_Engineering图工程]] — 定义图工程（Graph Engineering）的核心内涵以及三大物理要素，展示 5 层嵌套同轴系统架构并拆解四大痛点设计准则。（Architecture, Agent, Multi-Agent, Graph-Engineering）
 - [[概念_扩散大语言模型_dLLMs]] — 定义扩散大语言模型（dLLMs）的物理架构、比对自回归与扩散模型的计算性质差异，详述离散掩码扩散及模型转换加速机制。（Architecture, LLM, Diffusion-LLM, Inference-Optimization）
 - [[概念_AI硬件加速芯片架构]] — 定义并横向对比 CPU、GPU、TPU、NPU 与 LPU 五种主流 AI 计算芯片架构 of 物理特征、存储层次以及计算调度机制。（Architecture, Hardware, Processor, Inference）
@@ -518,8 +518,8 @@
 - [[概念_思维链CoT高级方法]] — CoT/CoT-SC/Decoding CoT/ToT+MCTS 及成本权衡（LLM/reasoning）
 - [[概念_自适应快慢思考]] — 三方案：Qwen3 SFT、AdaCoT Pareto、AdaThinking 约束优化（LLM/reasoning）
 - [[概念_LLM推理两阶段]] — 对比 Prefill 与 Decode 硬件瓶颈，详细介绍 Continuous Batching、Speculative Decoding、PagedAttention 三大优化方案。（LLM/inference）
-- [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理（LLM/inference, Infra/AI）
-- [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量（LLM/inference, Infra/AI）
+- [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理（LLM/inference, Infra/serving）
+- [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量（LLM/inference, Infra/serving）
 - [[概念_LLM量化技术与离群值处理]] — 系统梳理大模型量化数值折算收益，深度剖析激活值离群维度（Outliers）对 naive 舍入精度的压塌机制，并详细对比 RTN、GPTQ、AWQ、LLM.int8()、QAT 五种主流应对方案。（LLM/quantization, LLM/optimization）
 
 ### LLM/reasoning + training/RL（批次5）
@@ -588,7 +588,7 @@
 
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
-- [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/AI, LLM/arch）
+- [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/platform, LLM/arch）
 - [[实体_美团]] — 中国领先的科技零售与本地生活平台，在搜索理解、推荐系统、AI Coding 与全栈生活服务智能体具有深厚积累（AI-Agent/coding, Recommendation）
 
 - [[实体_LongHorizon-Harness]] — 阿里高德团队开源的长时 Agent 编排框架，通过 Manage-Execute-Audit (MEA) 循环将长任务重构为审计状态机，包裹原生 Coding Agent 以防状态腐化与虚假完成（AI-Agent/coding, AI-Agent/context-engineering）
@@ -901,12 +901,12 @@
 - [[实体_DSPy]] — 斯坦福开源的声明式框架，将提示工程转化为程序编译与 GEPA 误差驱动优化（AI-Agent/eval, AI-Agent/prompt-engineering）
 - [[实体_Andrej_Karpathy]] — 著名人工智能科学家与教育者，LLM Wiki 知识编译与复利范式提出者（DeepLearning, AI-Agent/coding）
 - [[实体_Dropbox]] — 知名云同步协作与 AI 工作台公司，在 Dash Chat 中实现对准评估与自动迭代双赢（AI-Agent/eval, AI-Agent/prompt-engineering）
-- [[实体_Milvus]] — 开源云原生分布式向量数据库，存算分离架构，支持十亿级海量向量数据（RAG/embedding, Infra/AI）
+- [[实体_Milvus]] — 开源云原生分布式向量数据库，存算分离架构，支持十亿级海量向量数据（RAG/embedding, Infra/storage）
 - [[实体_pgvector]] — PostgreSQL 开源向量检索扩展插件，支持原生 SQL 向量查询（RAG/retrieval, Skill/python）
-- [[实体_Redis]] — 内存 Key-Value 数据库与 RediSearch 内存级超低延迟向量检索（RAG/retrieval, Infra/AI）
+- [[实体_Redis]] — 内存 Key-Value 数据库与 RediSearch 内存级超低延迟向量检索（RAG/retrieval, Infra/storage）
 - [[实体_Chroma]] — 开源轻量级嵌入式向量数据库，极简 Python 安装，适合本地 PoC（RAG/retrieval, Skill/python）
-- [[实体_Pinecone]] — 商业闭源全托管 SaaS 向量数据库服务，免运维快速上线（RAG/retrieval, Infra/AI）
-- [[实体_Weaviate]] — 开源一体化向量搜索引擎，基于 HNSW 索引与 GraphQL 查询（RAG/retrieval, Infra/AI）
+- [[实体_Pinecone]] — 商业闭源全托管 SaaS 向量数据库服务，免运维快速上线（RAG/retrieval, Infra/storage）
+- [[实体_Weaviate]] — 开源一体化向量搜索引擎，基于 HNSW 索引与 GraphQL 查询（RAG/retrieval, Infra/storage）
 - [[实体_Vannevar_Bush]] — 美国工程师，1945 年提出 Memex 个人知识设备构想，关联性路径鼻祖（Skill/knowledge-bank, DeepLearning）
 - [[实体_Niklas_Luhmann]] — 德国社会学家，卡片盒笔记法 (Zettelkasten) 集大成者，9万张索引卡（Skill/knowledge-bank）
 - [[实体_Thinking_Machines_Lab]] — 前 OpenAI 安全研究 VP Lilian Weng 等联合创办的前沿 AI 研究实验室（AI-Agent/harness）

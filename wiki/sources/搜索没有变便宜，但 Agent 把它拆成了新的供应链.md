@@ -2,7 +2,7 @@
 type: source
 tags:
 - AI-Agent/deep-research
-- Infra/AI
+- Infra/platform
 - RAG/retrieval
 summary: 深度剖析 Agent 时代 Web Search 供应链解耦与商业逻辑：底层全网抓取与索引重活未变，搜索需求从人看网页转为模型吞吐 Token，催生出代理层、定向语义索引、上下文精炼与云端基础设施四层可售服务。
 sources:

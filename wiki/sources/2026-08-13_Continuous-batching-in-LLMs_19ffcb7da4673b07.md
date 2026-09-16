@@ -1,8 +1,8 @@
 ---
 type: "source"
 tags:
-  - "Infra/AI"
-  - "LLM/inference"
+  - Infra/serving
+  - LLM/inference
 summary: "解构 LLM 连续批处理（Continuous Batching）的核心调度机理：迭代级调度（Iteration-level Scheduling）、选择性批处理（Selective Batching）、vLLM V1 调度器四步预算算法与抢占重算（Preemption Recompute）治理"
 sources:
   - "raw/articles/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md"

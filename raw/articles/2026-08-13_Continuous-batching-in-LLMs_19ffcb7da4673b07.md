@@ -7,7 +7,7 @@ email_date: "Thu, 13 Aug 2026 20:02:13 +0000"
 email_id: "19ffcb7da4673b07"
 article_id: "19ffcb7da4673b07:2"
 published: "2026-08-13"
-tags: ["LLM/inference", "Infra/AI"]
+tags: ["LLM/inference", "Infra/serving"]
 ---
 
 # Continuous batching in LLMs

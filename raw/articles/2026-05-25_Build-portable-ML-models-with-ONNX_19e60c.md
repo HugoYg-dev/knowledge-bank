@@ -9,7 +9,8 @@ email_id: 19e60c170373504b
 article_id: 19e60c170373504b:1
 published: '2026-05-25'
 tags:
-- Infra/AI
+- Infra/serving
+
 ---
 
 # Build portable ML models with ONNX

@@ -3,7 +3,7 @@ type: concept
 tags:
 - LLM/training/RL
 - AI-Agent/coding
-- Infra/AI
+- Infra/rl
 summary: Agentic RL 的主要工程瓶颈在环境而非 GRPO 或 PPO 优化器，因为环境必须处理并行 rollout、多轮状态、工具调用、沙箱与奖励校验，而
   NeMo Gym 可将环境逻辑与采用 GRPO 的 Unsloth 训练后端解耦。
 sources:

@@ -2,7 +2,7 @@
 type: source
 tags:
 - LLM/inference
-- Infra/AI
+- Infra/serving
 summary: 同一模型家族内的 KV Cache 可通过无训练的跨层线性映射转换到目标模型，实验报告转换速度为重新 Prefill 的 3-25 倍，但跨家族与不匹配 KV 头配置尚未验证。
 sources:
 - raw/articles/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md

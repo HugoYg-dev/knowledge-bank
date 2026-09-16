@@ -2,7 +2,7 @@
 type: source
 tags:
 - LLM/training/RL
-- Infra/AI
+- Infra/rl
 summary: 海外独角兽 Cage 梳理 RL Infra 行业全景：RL 环境（应用沙盒/浏览器环境/世界模型）、RLaaS（Palantir 模式深度定制）、数据/评估三大模块；论证
   RL Scaling 将把 AI 从"人类数据时代"推向"Agent 体验时代"，迎来 RL 的 GPT-3 时刻。Cubox 高亮重点：Mechanize 复制训练（Replication
   Training）范式。

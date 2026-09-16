@@ -9,7 +9,8 @@ article_id: 19b6bfe2074ca987:1
 published: '2025-12-29'
 tags:
 - Skill/data-analysis
-- Infra/AI
+- Infra/storage
+
 ---
 
 # Identify fuzzy duplicates at scale

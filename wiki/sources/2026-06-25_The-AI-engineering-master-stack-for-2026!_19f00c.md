@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Infra/AI
+- Infra/platform
 - AI-Agent/coding
 summary: 介绍了 2026 年 AI 工程师应掌握的 10 层技术栈全景，从底座模型表征到生产环境的 LLMOps 与安全，勾勒出从单点 Prompt 开发向复杂系统工程演进的宏观技术路径。
 sources:

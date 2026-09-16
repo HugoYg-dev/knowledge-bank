@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Infra/AI
+- Infra/serving
 - LLM/inference
 summary: 针对 AI 智能体应用中 62% 的重复 Token 浪费问题，介绍解耦式 KV 缓存架构 LMCache，该架构实现缓存管理与推理引擎进程解耦，并引入
   CacheBlend 算法提速多文档 RAG 场景。

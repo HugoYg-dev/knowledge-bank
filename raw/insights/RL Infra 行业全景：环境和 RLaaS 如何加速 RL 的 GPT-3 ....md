@@ -4,7 +4,7 @@ cubox_url: https://cubox.pro/web/card/7370768176201599789
 url: https://mp.weixin.qq.com/s/-5lMX9oVHn6x0NI6QEZrrA?scene=1
 tags:
   - LLM/training/RL
-  - Infra/AI
+  - Infra/rl
 published: 2025-09-24
 ---
 # RL Infra 行业全景：环境和 RLaaS 如何加速 RL 的 GPT-3 时刻

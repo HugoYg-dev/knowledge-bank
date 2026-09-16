@@ -7,8 +7,9 @@ published: 2026-08-29
 created: 2026-09-15
 description: "...explained with best practices in production."
 tags:
-  - "Infra/AI"
-  - "LLM/inference"
+  - Infra/serving
+  - LLM/inference
+
 ---
 Four things in an LLM stack store four different objects, and all of them get called caching.
 

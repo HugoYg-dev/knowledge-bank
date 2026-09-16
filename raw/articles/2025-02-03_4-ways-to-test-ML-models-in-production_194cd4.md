@@ -9,7 +9,8 @@ article_id: 194cd43e281f59cc:1
 published: '2025-02-03'
 tags:
 - Skill/data-analysis
-- Infra/AI
+- Infra/platform
+
 ---
 
 # 4 ways to test ML models in production

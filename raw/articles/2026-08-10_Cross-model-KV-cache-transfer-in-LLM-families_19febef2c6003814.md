@@ -9,7 +9,8 @@ article_id: 19febef2c6003814:2
 published: '2026-08-10'
 tags:
 - LLM/inference
-- Infra/AI
+- Infra/serving
+
 ---
 
 #  Cross-model KV cache transfer in LLM families 

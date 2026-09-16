@@ -1,8 +1,8 @@
 ---
 type: "source"
 tags:
-  - "Infra/AI"
-  - "LLM/inference"
+  - Infra/serving
+  - LLM/inference
 summary: "系统横向解构 LLM 技术栈四种常被混淆的缓存机制（KV Cache、Prefix Caching、Prompt Caching、Semantic Caching）所存储的底层对象、正确性影响、Prefix Caching 链式哈希原理与代码实现、多租户 Salt 隔离及五大隐蔽失效陷阱"
 sources:
   - "raw/articles/KV vs Prefix vs Prompt vs Semantic Caching.md"

@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["Infra/AI", "LLM/inference", "AI-Agent/coding"]
+tags: ["Infra/serving", "LLM/inference", "AI-Agent/coding"]
 summary: "以 Superlinked Inference Engine 为例，说明多模型智能体流水线通过共享 GPU 池、按需加载和统一调度降低专用 GPU 闲置成本的服务方式。"
 sources: ["raw/articles/2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38.md"]
 updated: "2026-08-10"

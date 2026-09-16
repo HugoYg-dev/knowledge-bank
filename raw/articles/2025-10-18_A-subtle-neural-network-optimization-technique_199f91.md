@@ -11,7 +11,8 @@ tags:
 - DeepLearning
 - Skill/data-analysis
 - Infra/gpu
-- Infra/AI
+- Infra/training
+
 ---
 
 # A subtle neural network optimization technique

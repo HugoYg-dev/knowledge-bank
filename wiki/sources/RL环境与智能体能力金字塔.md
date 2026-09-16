@@ -2,7 +2,7 @@
 type: source
 tags:
 - LLM/training/RL
-- Infra/AI
+- Infra/rl
 summary: Surge AI 用 9 个模型在自建 RL 环境（Corecraft 客服场景）执行 150 项任务，提出「智能体能力金字塔」：工具使用→规划/目标设定→适应性→接地气（groundedness）→常识推理。GPT-5/Claude
   Sonnet 4.5 遥遥领先但仍失败超 40%；常识推理是 GPT-5 与人类水平的主要差距。
 sources:

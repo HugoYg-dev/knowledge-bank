@@ -2,7 +2,7 @@
 type: entity
 tags:
 - RAG/retrieval
-- Infra/AI
+- Infra/storage
 summary: 使用 Rust 编写的高性能开源向量数据库，原生支持强大的 Payload 标量过滤，单机与中等规模集群性能极其强悍。
 sources:
 - wiki/sources/2026程序员必读的向量数据库原理与选型指南.md

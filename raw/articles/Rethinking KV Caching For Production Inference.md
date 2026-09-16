@@ -7,8 +7,9 @@ published: 2026-07-07
 created: 2026-09-15
 description: "A practitioner's guide to KV cache management in production."
 tags:
-  - "Infra/AI"
-  - "LLM/inference"
+  - Infra/serving
+  - LLM/inference
+
 ---
 Researchers at Stanford studied how AI agents actually spend their inference budgets.
 

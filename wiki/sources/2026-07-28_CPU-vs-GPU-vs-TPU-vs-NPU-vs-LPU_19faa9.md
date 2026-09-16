@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Infra/AI
+- Infra/gpu
 summary: 本文详细介绍了五种主流AI计算硬件架构（CPU、GPU、TPU、NPU和LPU）内部逻辑设计的物理差异与核心权衡，展现了AI计算芯片从通用灵活性向极致专用化的演进过程。
 sources:
 - raw/articles/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md

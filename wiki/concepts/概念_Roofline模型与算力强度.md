@@ -2,7 +2,7 @@
 type: "concept"
 tags:
   - Infra/gpu
-  - Infra/AI
+  - Infra/serving
   - LLM/inference
 summary: "Roofline 模型是量化评估硬件算力峰值与内存带宽瓶颈的经典性能模型。通过算力强度（FLOPs/Byte）与芯片硬件平衡阈值的对比，划分计算密集与内存带宽受限区域，为大模型 Prefill 与 Decode 阶段的系统优化提供统一指导"
 sources:

@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Infra/AI
+- Infra/platform
 summary: 腾讯 QQ 基础架构团队从传统后台工程师视角系统拆解 AI Infra 硬件（GPU 中心化/AI 大型机）、软件（PyTorch/GPU 编程/Python）、训练挑战（显存/模型并行/通信计算重叠）和推理挑战（CUDA
   Graph/KV Cache/流式响应/连续批处理），强调传统 Infra 方法论可无缝迁移到 AI Infra。
 sources:

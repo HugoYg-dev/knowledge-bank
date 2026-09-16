@@ -2,7 +2,7 @@
 type: concept
 tags:
 - LLM/training/RL
-- Infra/AI
+- Infra/rl
 summary: RLaaS（Reinforcement Learning as a Service）是为缺乏 RL 人才的企业提供托管式 RL 训练平台和专业支持的服务模式，深度定制
   Palantir 式方案：奖励建模→自动化评分→模型定制与 RFT，通过专有数据飞轮形成行业护城河。
 sources:

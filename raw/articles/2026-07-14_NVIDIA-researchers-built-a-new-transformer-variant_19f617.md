@@ -8,8 +8,9 @@ email_id: 19f6174c7b5adc67
 article_id: 19f6174c7b5adc67:1
 published: '2026-07-14'
 tags:
-- Infra/AI
+- Infra/serving
 - LLM/inference
+
 ---
 
 # NVIDIA researchers built a new transformer variant

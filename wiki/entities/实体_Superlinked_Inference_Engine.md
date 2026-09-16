@@ -1,6 +1,6 @@
 ---
 type: "entity"
-tags: ["Infra/AI", "LLM/inference"]
+tags: ["Infra/serving", "LLM/inference"]
 summary: "Superlinked Inference Engine（SIE）是面向多模型流水线的 Apache 2.0 开源推理服务引擎，通过单进程共享 GPU、LRU 模型置换与统一 API 将自托管推理成本降低约 4 倍。"
 sources:
   - "wiki/sources/2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38.md"

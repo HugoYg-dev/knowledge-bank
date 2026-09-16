@@ -3,7 +3,7 @@ type: source
 tags:
 - DeepLearning
 - Skill/python
-- Infra/AI
+- Infra/training
 summary: 介绍了在 PyTorch 中使用固定内存（Memory Pinning）技术来加速 CPU-GPU 数据传输的原理和配置方法，通过 pin_memory=True
   和 non_blocking=True 实现 CPU 和 GPU 的异步并行工作。
 sources:

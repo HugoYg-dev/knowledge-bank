@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["LLM/inference", "Infra/AI", "LLM/arch/attention"]
+tags: ["LLM/inference", "Infra/serving", "LLM/arch/attention"]
 summary: "系统性解构 LLM 推理生产中管理与压缩 KV Cache 的 12 项工程技术，涵盖模型架构共享、局部与稀疏截断、潜空间压缩、固定状态替换、数值量化、块分页、前缀复用与跨层卸载，并建立按削减目标分类的选型决策框架"
 sources: ["raw/articles/KV Cache Engineering for LLM Serving.md"]
 updated: "2026-09-15"

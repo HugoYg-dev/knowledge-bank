@@ -8,9 +8,10 @@ email_id: 19fd384eaff45530
 article_id: 19fd384eaff45530:1
 published: '2026-08-05'
 tags:
-- Infra/AI
+- Infra/serving
 - LLM/inference
 - AI-Agent/coding
+
 ---
 
 #  How to serve 5 models on one GPU 

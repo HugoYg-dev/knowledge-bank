@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Infra/AI
+- Infra/serving
 - LLM/inference
 summary: 大语言模型（LLM）推理过程可分为 Prefill（预填充）和 Decode（解码）两个不同的计算阶段。Prefill 阶段是计算密集型（Compute-bound），并行处理输入并填充
   KV Cache；Decode 阶段是内存带宽密集型（Memory-bound），自回归逐字生成 token。

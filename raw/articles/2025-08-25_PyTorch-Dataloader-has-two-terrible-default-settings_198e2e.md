@@ -10,7 +10,8 @@ published: '2025-08-25'
 tags:
 - DeepLearning
 - Skill/python
-- Infra/AI
+- Infra/training
+
 ---
 
 # PyTorch Dataloader has two terrible default settings

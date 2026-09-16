@@ -9,7 +9,8 @@ article_id: 19deeeb458239986:1
 published: '2026-05-03'
 tags:
 - LLM/inference
-- Infra/AI
+- Infra/serving
+
 ---
 
 # How LLM inference works internally

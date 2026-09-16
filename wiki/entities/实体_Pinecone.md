@@ -2,7 +2,7 @@
 type: entity
 tags:
 - RAG/retrieval
-- Infra/AI
+- Infra/storage
 summary: 商业闭源全托管 SaaS 向量数据库服务，提供开箱即用的免运维体验。
 sources:
 - wiki/sources/2026程序员必读的向量数据库原理与选型指南.md

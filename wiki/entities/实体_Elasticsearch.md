@@ -2,7 +2,7 @@
 type: entity
 tags:
 - RAG/retrieval
-- Infra/AI
+- Infra/storage
 summary: 广泛应用的全文分布式搜索引擎，原生支持向量字段与近邻搜索，用于构建混合检索。
 sources:
 - wiki/sources/2026程序员必读的向量数据库原理与选型指南.md

@@ -2,7 +2,7 @@
 type: source
 tags:
 - LLM/reasoning
-- Infra/AI
+- Infra/platform
 summary: 本文详细整理了 11 种必知的大模型（LLM）评估方法，深入探讨了不同评估指标的定义、使用局限以及在实际应用（如翻译、摘要、智能体、多轮对话等）中的最佳实践要点。
 sources:
 - raw/articles/2026-07-24_11-LLM-evaluation-methods_19f962.md

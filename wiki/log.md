@@ -1,5 +1,21 @@
 # Wiki Log
 
+## [2026-09-16] chore/tags | Infra 标签体系治理：下线低语义 Infra/AI，拆解重构为 5 个强语义二级标签
+- **决策与背景**：针对 `Infra/AI` 语义过宽、同义反复（父级 Infra 自身已定义为 AI 基础设施）及违反“细分叶子优先、禁止顶层池化”纪律的问题，经用户确认批准，正式下线 `Infra/AI`，在 `tags.json` 中细化拆解为符合业界系统架构层级的 5 个专业二级标签：
+  - `Infra/serving`：模型推理引擎、Serving 服务化、KV Cache 管理、连续批处理调度与多模型共享
+  - `Infra/training`：分布式训练系统、并行计算（张量/流水线）、通信计算重叠、数据加载优化
+  - `Infra/storage`：AI 专用存储、向量数据库（Milvus/Qdrant/Pinecone/Weaviate/Redis）、特征库与相似度检索
+  - `Infra/rl`：强化学习训练基础设施、RLaaS、Agent 交互沙箱与训练环境
+  - `Infra/platform`：AI-Native 架构、集群运维、L0-L5 能力成熟度、评估与生产测试（LLMOps）
+  - 保留 `Infra/gpu`：专攻芯片硬件微架构、算力瓶颈与物理显存机制
+- **全库级联迁移落盘**：
+  - 更新权威白名单 [`tags.json`](file:///Users/ZHao/WorkSpace/knowledge-bank/tags.json) 与 [`scripts/vault_lint.py`](file:///Users/ZHao/WorkSpace/knowledge-bank/scripts/vault_lint.py) 的 fallback 配置。
+  - 完成全库 84 篇相关 Markdown 文档（63 篇 Wiki 层与 21 篇 Raw 层）Frontmatter `tags:` 的精准语义重映射与原子落盘，全库 `Infra/AI` 脏标签清零。
+  - 同步更新 [`wiki/index.md`](file:///Users/ZHao/WorkSpace/knowledge-bank/wiki/index.md) 中 25 处索引条目的标签引用。
+- **确定性验收**：
+  - 运行 `uv run --with pyyaml python scripts/vault_lint.py lint`，全库健康诊断 100% 通过（0 致命错误、0 死链、100% 索引挂载）。
+  - 运行 33 组单元测试全部通过。
+
 ## [2026-09-15] ingest | raw/articles/Loop Engineering 详解：从管理执行到设计自收敛的循环.md & raw/articles/再见RAG！AI知识库还得是SAG，又快又准～.md -> wiki/sources/ (+ 概念_SAG)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/Loop Engineering 详解：从管理执行到设计自收敛的循环.md` -> `raw/articles/Loop Engineering 详解：从管理执行到设计自收敛的循环.md` -> `wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md`（增量更新已有概念 `[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]`，系统收录从一阶 AI Manager 到二阶 Senior Manager 的管理动作系统化演进、Skills/Verifier/Observability/Maker-Checker/Flywheel 五大系统组件映射，以及决定自收敛的两大硬杠杆：系统边界约束优于 TDD 路径约束、任务自动发现的发散性局限与人类核心防线）

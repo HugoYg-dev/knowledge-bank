@@ -8,7 +8,8 @@ email_id: 19faa9c1ec5cf9ba
 article_id: 19faa9c1ec5cf9ba:1
 published: '2026-07-28'
 tags:
-- Infra/AI
+- Infra/gpu
+
 ---
 
 # CPU vs GPU vs TPU vs NPU vs LPU

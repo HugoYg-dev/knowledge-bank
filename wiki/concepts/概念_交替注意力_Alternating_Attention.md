@@ -3,7 +3,7 @@ type: concept
 tags:
 - LLM/arch/attention
 - DeepLearning
-- Infra/AI
+- Infra/serving
 summary: 交替注意力（Alternating Attention）是 ModernBERT 采用的记忆体高效注意力机制，通过在每三层交替使用一层全局注意力与滑动窗口局部注意力（128个最近
   token），打破了传统 BERT 全局注意力二次方复杂度的瓶颈。
 sources:

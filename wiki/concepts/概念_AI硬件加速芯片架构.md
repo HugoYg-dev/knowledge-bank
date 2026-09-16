@@ -1,7 +1,6 @@
 ---
 type: concept
 tags:
-- Infra/AI
 - Infra/gpu
 summary: 本概念定义并横向对比了 CPU、GPU、TPU、NPU 与 LPU 五种主流 AI 计算芯片架构的物理特征、存储层次以及计算调度机制，并深度解构 GPU 的 SIMT/Warp 调度、存储阶梯与 Roofline 性能权衡。
 sources:

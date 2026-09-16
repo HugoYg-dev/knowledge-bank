@@ -58,7 +58,7 @@ except Exception:
         'RAG': {'embedding', 'query', 'chunking', 'retrieval', 'eval'},
         'Skill': {'python', 'data-analysis', 'claude-code', 'linux'},
         'CV': {'detection', 'data-augmentation', 'arch'},
-        'Infra': {'AI', 'gpu'},
+        'Infra': {'gpu', 'serving', 'training', 'storage', 'rl', 'platform'},
     }
     tm_validate_tag = None
 

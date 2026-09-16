@@ -10,7 +10,8 @@ published: '2025-05-07'
 tags:
 - DeepLearning
 - Skill/python
-- Infra/AI
+- Infra/training
+
 ---
 
 # Memory Pinning to accelerate model training

@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Infra/AI
+- Infra/serving
 - LLM/inference
 summary: CUDA Graph 将多个 GPU 操作（内核启动、内存拷贝、计算）转化为有向无环图（DAG）一次性提交给 GPU 执行，由 GPU 自身管理依赖和执行顺序，减少
   CPU-GPU 交互开销，降低模型推理延时。

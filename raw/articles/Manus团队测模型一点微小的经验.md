@@ -9,7 +9,7 @@ description: 在 Manus 中，深度研究撰写报告是非常基础的用户场
 tags:
   - clippings
   - AI-Agent/deep-research
-  - agent/eval
+  - AI-Agent/eval
 ---
 胡迪是卫衣 葬AI *2026年9月4日 13:05*
 

@@ -2,7 +2,7 @@
 type: source
 tags:
 - LLM/inference
-- Infra/AI
+- Infra/serving
 summary: 本文深入剖析了大模型推理内部的工作原理，详细对比了 Prefill（预填充）和 Decode（解码）两个不同的计算阶段及其硬件瓶颈，并讨论了 KV
   Cache、量化以及 Continuous Batching、Speculative Decoding 和 PagedAttention 等服务层优化技术。
 sources:

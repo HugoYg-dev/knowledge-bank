@@ -36,7 +36,7 @@ Let’s begin!
 
 * * *
 
-#### **#1-2) Independent and dependent variables**
+#### **# 1-2) Independent and dependent variables**
 
 These are the most common and fundamental to ML.
 
@@ -48,7 +48,7 @@ The dependent variable is the outcome that is being predicted. It is also called
 
 * * *
 
-#### **#3-4) Confounding and correlated variables**
+#### **# 3-4) Confounding and correlated variables**
 
 Confounding variables are typically found in a cause-and-effect study (causal inference).
 
@@ -142,7 +142,7 @@ To summarize, the core idea is to study two or more variables together rather th
 
 * * *
 
-#### **#8-9)** Stationary and Non-Stationary variables:
+#### **# 8-9)** Stationary and Non-Stationary variables:
 
 The concept of stationarity often appears in time-series analysis.
 

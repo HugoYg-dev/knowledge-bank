@@ -9,7 +9,8 @@ article_id: 19d64a1fd91e185f:1
 published: '2026-04-06'
 tags:
 - AI-Agent/coding
-- Infra/AI
+- Infra/platform
+
 ---
 
 # The Anatomy of an Agent Harness
