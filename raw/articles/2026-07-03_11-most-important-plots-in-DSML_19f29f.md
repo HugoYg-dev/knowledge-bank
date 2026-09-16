@@ -8,7 +8,8 @@ email_id: 19f29f70428b228f
 article_id: 19f29f70428b228f:1
 published: '2026-07-03'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # 11 most important plots in DS/ML

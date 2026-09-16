@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 梯度提升通过沿损失函数最陡下降方向逐步加入弱学习器构建强模型，并衍生出面向扩展性、类别特征、大规模训练和概率预测的 XGBoost、CatBoost、LightGBM
   与 NGBoost。
 sources:

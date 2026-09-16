@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 介绍在无标签情况下评估聚类质量的三种常用指标：轮廓系数（Silhouette Coefficient）、CH指数（Calinski-Harabasz
   Index）以及基于密度的聚类验证（DBCV），并对比了它们各自的计算开销与适用场景。
 sources:

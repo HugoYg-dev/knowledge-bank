@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- DeepLearning
+- MachineLearning
 - 面试
 summary: 系统总结奇异值分解（SVD）的原理、推导与应用，涵盖特征值分解、SVD 分解及其在降维、压缩、PCA 和推荐系统中的应用。
 sources:

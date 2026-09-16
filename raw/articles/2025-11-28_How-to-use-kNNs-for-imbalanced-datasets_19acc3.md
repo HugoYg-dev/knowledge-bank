@@ -8,7 +8,8 @@ email_id: 19acc373a89bc8c4
 article_id: 19acc373a89bc8c4:1
 published: '2025-11-28'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # How to use kNNs for imbalanced datasets

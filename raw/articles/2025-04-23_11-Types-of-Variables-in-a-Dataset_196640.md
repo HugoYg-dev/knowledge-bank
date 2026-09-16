@@ -8,7 +8,7 @@ email_id: 19664020d007efe2
 article_id: 19664020d007efe2:1
 published: '2025-04-23'
 tags:
-- Skill/data-analysis
+- MachineLearning
 content_tier: "web_canonical"
 canonical_url: "https://www.dailydoseofds.com/p/11-types-of-variables-in-a-dataset/"
 ---

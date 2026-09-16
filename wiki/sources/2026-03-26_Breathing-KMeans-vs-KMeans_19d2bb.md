@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 介绍 Breathing KMeans 算法。该算法克服了传统 KMeans 对初始化敏感和多次随机重训耗时的问题，通过动态吸气（分裂）和呼气（合并）过程优化质心位置，提速达
   50% 并能有效避免质心错位。
 sources:

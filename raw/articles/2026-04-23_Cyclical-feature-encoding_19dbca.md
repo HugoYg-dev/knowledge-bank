@@ -8,7 +8,8 @@ email_id: 19dbca56ab454b95
 article_id: 19dbca56ab454b95:1
 published: '2026-04-23'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # Cyclical feature encoding

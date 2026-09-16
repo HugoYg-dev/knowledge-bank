@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 探讨了 kNN 算法在不平衡数据集上的局限性，并详细介绍了两种改进方案：距离权重 kNN（在 sklearn 中配置 weights='distance'）和动态调整超参数
   k 的算法。
 sources:

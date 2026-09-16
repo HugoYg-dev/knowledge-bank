@@ -8,7 +8,7 @@ email_id: 194cd43e281f59cc
 article_id: 194cd43e281f59cc:1
 published: '2025-02-03'
 tags:
-- Skill/data-analysis
+- MachineLearning
 - Infra/platform
 
 ---

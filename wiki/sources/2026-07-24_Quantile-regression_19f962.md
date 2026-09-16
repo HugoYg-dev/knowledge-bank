@@ -1,8 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
-- DeepLearning
+- MachineLearning
 summary: 本文详细介绍了分位数回归（Quantile Regression）及其核心损失函数分位数损失（Quantile Loss / Pinball Loss）。对比了传统最小二乘（OLS）均值点预测的局限，详细探讨了如何通过不对称的误差加权拉伸来拟合特定的百分位数预测线，并介绍了其在树模型中的工程价值。
 sources:
 - raw/articles/2026-07-24_Quantile-regression_19f962.md

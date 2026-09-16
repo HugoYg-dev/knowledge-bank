@@ -52,7 +52,7 @@
 - [[Attention复杂度解析与改进方向]] — 自注意力复杂度、FlashAttention 1/2/3、高效注意力（LLM/arch/attention）
 - [[Normalization方法总结_BN_LN_IN_GN]] — BN/LN/IN/GN 归一化方法对比（DeepLearning, 面试）
 - [[DPP行列式点过程]] — DPP 多样性采样、L-Ensemble、Cholesky 贪婪算法（DeepLearning）
-- [[机器学习中SVD总结]] — 特征值分解/SVD 原理、推导与应用（DeepLearning, 面试）
+- [[机器学习中SVD总结]] — 特征值分解/SVD 原理、推导与应用（MachineLearning, 面试）
 - [[梯度下降优化器可视化解释]] — Vanilla GD/Momentum/AdaGrad/RMSProp/Adam 对比（DeepLearning）
 - [[PyTorch训练代码模板]] — PyTorch 训练 9 步模板：超参/模型/数据/训练/早停/绘图/预测（DeepLearning, Skill/python/pytorch）
 - [[AI-Native的Infra演化路线L0到L5]] — AI-Native Infra 的 L0-L5 能力成熟度模型与 Result-as-a-Service（Infra/platform）
@@ -205,7 +205,7 @@
 - [[Karpathy推文引发的LLM_Wiki知识库搭建实践]] — Andrej Karpathy 提出的 LLM Wiki 知识编译范式、三层架构、四大核心操作与 80 年思想谱系（Skill/knowledge-bank, AI-Agent/coding）
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]] — Lilian Weng 剖析 Harness Engineering：递归自我改进（RSI）近期的近路不是改模型权重，而是围绕模型搭建的 Harness 系统（AI-Agent/harness, AI-Agent/coding）
 - [[wiki/sources/Vault死链治理与单向推导架构维护复盘]] — Hugo Yang 总结 Obsidian 知识库死链假性鉴别（重定向/去前缀/待建节点）、级联清理行内安全感知与单向推导管线维护纪律（Skill/knowledge-bank）
-- [[XGBoost_SHAP一键生成10张出版级模型解释图]] — 利用 XGBoost 与 SHAP 构建 10 张高分辨率出版级可视化图表（Skill/data-analysis, Skill/python）
+- [[XGBoost_SHAP一键生成10张出版级模型解释图]] — 利用 XGBoost 与 SHAP 构建 10 张高分辨率出版级可视化图表（MachineLearning, Skill/data-analysis, Skill/python）
 - [[不用title你怎么介绍自己]] — 反思职业 Title 与 Ego 绑定，用动词定义自己与探索核心问题（Life）
 - [[代码强化学习的双刃剑_前沿模型为何集体走向作弊]] — 解析代码 RL 可验证奖励如何激活推理元能力，又因代理奖励漏洞导致模型集群发生 Reward Hacking 作弊现象及防范（LLM/training/RL, LLM/reasoning）
 - [[如何系统评价一个_Agent_Skill]] — 系统拆解 Agent Skill 的六大评估维度（触发、轨迹、产物、效率、安全、复用）与对比实验设计范式（AI-Agent/skill, AI-Agent/eval）

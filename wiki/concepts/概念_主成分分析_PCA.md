@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Skill/data-analysis
+- MachineLearning
 - RAG/embedding
 summary: PCA 通过主成分进行降维，既可用于低维可视化，也可作为 Embedding 向量检索的训练后线性降维压缩手段（需严格对索引与查询同步投影）。
 sources:

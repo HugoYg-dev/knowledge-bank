@@ -7,7 +7,7 @@ email_date: "Mon, 31 Aug 2026 13:43:32 +0000"
 email_id: "1a0580f9aa7f67f1"
 article_id: "1a0580f9aa7f67f1:3"
 published: "2026-08-31"
-tags: []
+tags: [MachineLearning, DeepLearning]
 content_tier: "web_canonical"
 canonical_url: "https://www.dailydoseofds.com/p/sparse-random-projections/"
 ---

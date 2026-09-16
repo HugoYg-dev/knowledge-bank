@@ -8,8 +8,9 @@ email_id: 197c7ace7fc9ab0e
 article_id: 197c7ace7fc9ab0e:1
 published: '2025-07-01'
 tags:
-- Skill/data-analysis
+- MachineLearning
 - Infra/gpu
+
 ---
 
 # Accelerate tSNE with GPU

@@ -8,7 +8,8 @@ email_id: 19ce93b00b8a14f0
 article_id: 19ce93b00b8a14f0:1
 published: '2026-03-13'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # How to actually use train, validation, and test sets

@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 类别不平衡会使传统 kNN 的多数投票偏向多数类，可通过距离加权或按局部邻居所含类别的训练样本数动态缩小 k 来缓解多数类支配。
 sources:
 - wiki/sources/2025-11-28_How-to-use-kNNs-for-imbalanced-datasets_19acc3.md

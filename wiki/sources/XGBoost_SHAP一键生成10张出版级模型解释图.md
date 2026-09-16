@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["Skill/data-analysis", "Skill/python"]
+tags: ["MachineLearning", "Skill/data-analysis", "Skill/python"]
 summary: "利用 XGBoost 与 SHAP 库构建端到端模型训练与可解释性分析自动化脚本，一键生成小提琴图、热力图、瀑布图、依赖图等 10 张高分辨率出版级可视化图表。"
 sources: ["raw/articles/XGBoost + SHAP 一键生成 10 张出版级模型解释图.md"]
 updated: "2026-07-22"

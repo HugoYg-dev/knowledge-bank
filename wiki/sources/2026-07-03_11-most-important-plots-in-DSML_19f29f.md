@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 系统归纳了数据科学与机器学习中最重要且必须掌握的 11 种诊断、评估与可解释性图表，简要说明了其物理意义与主要应用准则。
 sources:
 - raw/articles/2026-07-03_11-most-important-plots-in-DSML_19f29f.md

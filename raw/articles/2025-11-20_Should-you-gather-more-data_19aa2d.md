@@ -8,7 +8,8 @@ email_id: 19aa2d674dcfaef6
 article_id: 19aa2d674dcfaef6:1
 published: '2025-11-20'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # Should you gather more data?

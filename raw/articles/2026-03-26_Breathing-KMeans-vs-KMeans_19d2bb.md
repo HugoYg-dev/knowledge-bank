@@ -8,7 +8,8 @@ email_id: 19d2bbc9492d99c6
 article_id: 19d2bbc9492d99c6:1
 published: '2026-03-26'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # Breathing KMeans vs KMeans

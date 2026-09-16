@@ -50,7 +50,7 @@ try:
     STANDARD_TAG_BRANCHES = get_tag_branches(_TAG_CONFIG)
 except Exception:
     STANDARD_TOP_LEVEL_TAGS = {
-        'DeepLearning', 'AIGC', '创业', '面试', 'Life', 'Recommendation', 'TTS'
+        'MachineLearning', 'DeepLearning', 'AIGC', '创业', '面试', 'Life', 'Recommendation', 'TTS'
     }
     STANDARD_TAG_BRANCHES = {
         'LLM': {'arch', 'training', 'inference', 'reasoning', 'hallucination', 'tokenization'},

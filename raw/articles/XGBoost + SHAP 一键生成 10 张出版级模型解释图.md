@@ -8,7 +8,10 @@ created: 2026-07-22
 description: 拒绝算法黑盒！XGBoost + SHAP 一键生成 10 张出版级模型解释图 现在跑机器学习，大家最头疼的往往不是怎么把 R² 刷高，而是被导师或者业务方灵魂拷问：“你这个模型为什么会得出这个结果？哪个特征起决定性作用？”
   像 XGBoost、随机森林这种集成树模型，虽然精度吊打传统回归
 tags:
+- MachineLearning
 - Skill/data-analysis
+- Skill/python
+
 ---
 ## 拒绝算法黑盒！XGBoost + SHAP 一键生成 10 张出版级模型解释图
 

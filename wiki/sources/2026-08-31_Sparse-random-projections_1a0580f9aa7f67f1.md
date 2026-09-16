@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["Skill/data-analysis", "DeepLearning"]
+tags: ["MachineLearning", "DeepLearning"]
 summary: "稀疏随机投影（Sparse Random Projection）原理解析：突破 PCA 在超高维空间的三次方复杂度瓶颈，近乎保距压缩与在 VeRA 中的应用"
 sources: ["raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md"]
 updated: "2026-09-09"

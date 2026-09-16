@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 - Infra/platform
 summary: 本文介绍了在生产环境中测试机器学习模型的 4 种经典方法，即 A/B 测试、金丝雀测试、交叉测试（Interleaved）以及影子测试（Shadow），并在其扩展阅读中提及了多臂强盗部署（MAB）。
 sources:

@@ -8,7 +8,8 @@ email_id: 19a1775d61893cb3
 article_id: 19a1775d61893cb3:1
 published: '2025-10-24'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # Top Gradient Boosting Methods

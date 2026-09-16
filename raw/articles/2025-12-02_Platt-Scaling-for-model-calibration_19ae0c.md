@@ -8,7 +8,8 @@ email_id: 19ae0c67c504face
 article_id: 19ae0c67c504face:1
 published: '2025-12-02'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # Platt Scaling for model calibration

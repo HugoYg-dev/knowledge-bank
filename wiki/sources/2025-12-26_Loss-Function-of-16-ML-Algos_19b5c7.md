@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 - DeepLearning
 summary: 汇总了16种常见机器学习算法所采用的典型损失函数，并分析了部分非参数/贝叶斯算法在训练中不需要损失函数的物理本质。
 sources:

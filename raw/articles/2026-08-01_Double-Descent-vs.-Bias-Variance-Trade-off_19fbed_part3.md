@@ -8,8 +8,9 @@ email_id: 19fbed5d2cd155dd
 article_id: 19fbed5d2cd155dd:1
 published: '2026-08-01'
 tags:
-- Skill/data-analysis
+- MachineLearning
 - DeepLearning
+
 ---
 
 # Double Descent vs. Bias-Variance Trade-off

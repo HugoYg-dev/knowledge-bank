@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 探讨如何通过绘制学习曲线（Learning Curve）来评估是否需要收集更多训练数据。介绍了将数据集划分为多个等分并累加训练来测定模型表现的方法，并详细阐述了未饱和曲线与已饱和曲线的物理意义。
 sources:
 - raw/articles/2025-11-20_Should-you-gather-more-data_19aa2d.md

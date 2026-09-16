@@ -1,5 +1,20 @@
 # Wiki Log
 
+## [2026-09-16] chore/tags | 新增 MachineLearning 独立顶层标签，治理 dailydoseofds 经典机器学习体系
+- **决策与背景**：针对 `dailydoseofds` 来源的大量经典机器学习/统计学习文献（PCA、t-SNE、GBDT、聚类、特征编码、交叉验证、学习曲线等）因缺少专属标签而长期透支/污染 `Skill/data-analysis` 或被强行收编进 `DeepLearning` 的问题，经用户批准，正式在 `tags.json` 的 `top_level_tags` 中新增大驼峰全称独立标签 `MachineLearning`，与 `DeepLearning` 镜像对称并立。
+- **消歧定界规范**：
+  - `MachineLearning`：传统统计学习、监督学习（树模型/线性/非线性/SVM/kNN）、无监督学习（聚类算法、降维 PCA/t-SNE/SVD）、特征工程与模型验证论。
+  - `DeepLearning`：可微神经网络微架构、激活函数、归一化（BN/LN）、优化器与梯度反向传播。
+  - `Skill/data-analysis`：人类日常编码实操、数据清洗与可视化脚本（Pandas/Matplotlib/EDA 工具包）。
+  - 双标协同：对于跨越统计学习与深度神经网络的泛化理论（如双下降现象、损失函数全景），支持同时打 `["MachineLearning", "DeepLearning"]`。
+- **全库级联落盘**：
+  - 更新权威白名单 [`tags.json`](file:///Users/ZHao/WorkSpace/knowledge-bank/tags.json) 及 [`scripts/vault_lint.py`](file:///Users/ZHao/WorkSpace/knowledge-bank/scripts/vault_lint.py) fallback 配置。
+  - 完成全库 62 篇相关 Markdown 文档（24 篇 Sources、14 篇 Concepts、24 篇 Raw 文献）Frontmatter `tags:` 精准重排与落盘。
+  - 同步更新 [`wiki/index.md`](file:///Users/ZHao/WorkSpace/knowledge-bank/wiki/index.md) 条目标签引用。
+- **确定性验收**：
+  - 运行 `uv run --with pyyaml python scripts/vault_lint.py lint` 100% 通过（0 errors、0 broken links、100% index registration）。
+  - 运行 33 组单元测试全部通过。
+
 ## [2026-09-16] chore/tags | Infra 标签体系治理：下线低语义 Infra/AI，拆解重构为 5 个强语义二级标签
 - **决策与背景**：针对 `Infra/AI` 语义过宽、同义反复（父级 Infra 自身已定义为 AI 基础设施）及违反“细分叶子优先、禁止顶层池化”纪律的问题，经用户确认批准，正式下线 `Infra/AI`，在 `tags.json` 中细化拆解为符合业界系统架构层级的 5 个专业二级标签：
   - `Infra/serving`：模型推理引擎、Serving 服务化、KV Cache 管理、连续批处理调度与多模型共享

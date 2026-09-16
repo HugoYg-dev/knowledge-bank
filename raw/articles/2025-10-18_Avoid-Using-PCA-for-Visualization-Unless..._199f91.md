@@ -8,7 +8,7 @@ email_id: 199f91f3eaa6509e
 article_id: 199f91f3eaa6509e:1
 published: '2025-10-18'
 tags:
-- Skill/data-analysis
+- MachineLearning
 content_tier: "web_canonical"
 canonical_url: "https://www.dailydoseofds.com/p/avoid-using-pca-for-visualization-unless/"
 ---

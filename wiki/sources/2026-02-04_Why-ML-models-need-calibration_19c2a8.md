@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 介绍现代神经网络存在过度自信（overconfidence）的问题，说明为什么机器学习模型需要进行校准（calibration），并提供了一个医疗与政府决策的实例来说明非校准模型的潜在危害。
 sources:
 - raw/articles/2026-02-04_Why-ML-models-need-calibration_19c2a8.md

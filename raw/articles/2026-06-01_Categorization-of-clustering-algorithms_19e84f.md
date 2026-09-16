@@ -8,7 +8,7 @@ email_id: 19e84f32570b4582
 article_id: 19e84f32570b4582:1
 published: '2026-06-01'
 tags:
-- Skill/data-analysis
+- MachineLearning
 content_tier: "web_canonical"
 canonical_url: "https://www.dailydoseofds.com/p/categorization-of-clustering-algorithms/"
 ---

@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 介绍了数据集中常见的 11 种变量类型及其定义与应用场景，包括自变量、因变量、混杂变量、控制变量、潜变量、交互变量、平稳/非平稳变量、滞后变量和泄露变量。
 sources:
 - raw/articles/2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md

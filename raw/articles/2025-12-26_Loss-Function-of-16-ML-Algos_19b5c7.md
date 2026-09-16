@@ -8,8 +8,9 @@ email_id: 19b5c7637722a2ba
 article_id: 19b5c7637722a2ba:1
 published: '2025-12-26'
 tags:
-- Skill/data-analysis
+- MachineLearning
 - DeepLearning
+
 ---
 
 # Loss Function of 16 ML Algos

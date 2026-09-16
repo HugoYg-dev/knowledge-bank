@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 探讨主成分分析（PCA）用于数据可视化时的局限性，并介绍如何通过累计解释方差（CEV）曲线来验证 2D PCA 可视化的可信度，最后指出 t-SNE、UMAP
   等专用算法更适合高维数据的可视化任务。
 sources:

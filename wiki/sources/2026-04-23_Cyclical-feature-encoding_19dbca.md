@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- Skill/data-analysis
+- MachineLearning
 summary: 本文详细介绍了机器学习中周期性特征（如时间、星期、季节等）的编码方法。传统的线性编码方法无法体现周期的邻近性，导致信息丢失。通过使用 sine 和
   cosine 三角函数，可以将周期性特征映射到单位圆上，从而在保留物理邻近性（例如 23点 和 0点 等距）的同时进行有效编码。
 sources:

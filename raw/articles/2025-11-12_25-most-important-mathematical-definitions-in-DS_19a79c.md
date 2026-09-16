@@ -8,7 +8,8 @@ email_id: 19a79cbb943dd0f0
 article_id: 19a79cbb943dd0f0:1
 published: '2025-11-12'
 tags:
-- Skill/data-analysis
+- MachineLearning
+
 ---
 
 # 25 most important mathematical definitions in DS

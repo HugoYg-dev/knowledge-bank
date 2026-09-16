@@ -3,7 +3,8 @@ id: "7320348013975569050"
 cubox_url: https://cubox.pro/web/card/7320348013975569050
 url: https://mp.weixin.qq.com/s/Dv51K8JETakIKe5dPBAPVg
 tags:
-  - DeepLearning
+  - MachineLearning
+  - 面试
 published: 2018-05-20
 ---
 # 机器学习中SVD总结
