@@ -126,7 +126,7 @@ Ghost 官方 HTML 解析器内置了专属的富媒体转换适配：
 
 ## 自动同步到本地
 
-推荐在保存此 Vault 且已完成 `gws` Gmail 授权的本机上，用 macOS `launchd` 定时执行邮件同步。调度器只运行 `run`，因此自动化边界始终停留在「拉取 -> 路由 -> 生成待审 Markdown」；它不会选择文章、删除文章、移动至 `raw/` 或写入 `wiki/`。
+推荐在保存此 Vault 且已配置 IMAP 凭据（`~/.config/knowledge-bank/imap_credentials.json`）的本机上，用 macOS `launchd` 定时执行邮件同步。调度器只运行 `run`，因此自动化边界始终停留在「拉取 -> 路由 -> 生成待审 Markdown」；它不会选择文章、删除文章、移动至 `raw/` 或写入 `wiki/`。
 
 ```text
 Gmail 新邮件或星标变更
@@ -142,7 +142,6 @@ Gmail 新邮件或星标变更
 
 - `__VAULT_PATH__`：本仓库的绝对路径；
 - `__UV_PATH__`：执行 `command -v uv` 得到的路径；
-- `__GWS_PATH__`：执行 `command -v gws` 得到的路径。
 - `__HTTP_PROXY__` / `__HTTPS_PROXY__` / `__ALL_PROXY__`：本机代理地址；没有代理需求时，删除模板中的六个代理环境变量条目。`launchd` 只传递代理地址，不负责启动代理客户端。
 - 若希望后台自动同步时一并拉取官方完整长文，可在 plist 模板的 `ProgramArguments` 中 `run` 之后追加 `<string>--fetch-web</string>`。
 
@@ -170,7 +169,7 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.parsonlee.knowledge-
 每次脚本运行均以 UTC ISO-8601 时间戳写入 `START` 与 `END` 区块边界；区块内的结果与汇总不重复标记时间。错误写入独立的 stderr 区块，便于按运行批次阅读和检索。
 
 > [!warning] 前提与边界
-> 电脑休眠或关机时不会即时拉取；下次登录/唤醒后的下一次调度会补拉，`sync` 的差异账本会去重。`launchd` 环境没有交互式 shell 的 `PATH`，所以模板必须使用 `uv` 与 `gws` 的绝对路径。每次 Gmail API 调用最多等待 45 秒，超时后会重试并将失败写入错误日志。Gmail OAuth 凭据保留在本机，严禁提交到仓库或复制到 GitHub Actions Secret。
+> 电脑休眠或关机时不会即时拉取；下次登录/唤醒后的下一次调度会补拉，`sync` 的差异账本会去重。`launchd` 环境没有交互式 shell 的 `PATH`，所以模板必须使用 `uv` 的绝对路径。IMAP 凭据（应用专用密码）存储于 `~/.config/knowledge-bank/imap_credentials.json`（权限 `600`），严禁提交到仓库或复制到 GitHub Actions Secret。
 
 ### 事件触发的取舍
 

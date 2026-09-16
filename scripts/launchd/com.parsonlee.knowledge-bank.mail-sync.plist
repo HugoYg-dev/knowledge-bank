@@ -19,10 +19,6 @@
   <dict>
     <key>PATH</key>
     <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
-    <key>GWS_BIN</key>
-    <string>__GWS_PATH__</string>
-    <key>GWS_TIMEOUT_SECONDS</key>
-    <string>45</string>
     <key>HTTP_PROXY</key>
     <string>__HTTP_PROXY__</string>
     <key>HTTPS_PROXY</key>
