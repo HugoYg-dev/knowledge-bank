@@ -16,3 +16,4 @@
 ## others
 - [ ] workdocs/ 存放了工作期间的项目文档docx，需要解析并入库
 - [ ] wucai的库存同步过来，同时合并目录cubox和notes，统一命名为raw/
+- [ ] secondbrain-skill 合并的记录
