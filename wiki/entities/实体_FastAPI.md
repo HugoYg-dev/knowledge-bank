@@ -43,6 +43,6 @@ CORSMiddleware / GZipMiddleware / TrustedHostMiddleware / slowapi 速率限制�
 
 ## 关联
 
-- [[实体_uv]]
+- [[concepts/概念_uv包管理器|uv]]
 - [[概念_FastAPI项目结构模式]]
 - [[概念_Python_async_await并发]]

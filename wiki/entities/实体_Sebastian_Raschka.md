@@ -28,5 +28,5 @@ updated: '2026-07-06'
 
 ## 关联
 
-- [[实体_gpt-oss]] — 分析对象
+- [[entities/实体_OpenAI|gpt-oss]] — 分析对象
 - gpt-oss架构特征 — 分析内容

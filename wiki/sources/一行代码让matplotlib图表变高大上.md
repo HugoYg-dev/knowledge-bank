@@ -3,7 +3,7 @@ type: source
 tags:
 - Skill/data-analysis
 summary: '`matplotlib` 是 Python 生态中最流行的数据可视化框架，功能强大但默认样式简陋，想做出简洁商务风格图表往往需要编写大量代码调整参数。本文介绍
-  [[实体_dufte]] 库——通过简短代码自动改造默认 matplotlib 图表样式。`pip install dufte` 安装后，将'
+  dufte 库——通过简短代码自动改造默认 matplotlib 图表样式。`pip install dufte` 安装后，将'
 sources:
 - raw/playbooks/一行代码让 matplotlib 图表变高大上.md
 updated: '2026-07-01'
@@ -22,7 +22,7 @@ date_collected: 2023-11-26
 
 ## 概述
 
-`matplotlib` 是 Python 生态中最流行的数据可视化框架，功能强大但默认样式简陋，想做出简洁商务风格图表往往需要编写大量代码调整参数。本文介绍 [[实体_dufte]] 库——通过简短代码自动改造默认 matplotlib 图表样式。`pip install dufte` 安装后，将 dufte 的几个关键 API 穿插进常规 matplotlib 绘图流程即可。
+`matplotlib` 是 Python 生态中最流行的数据可视化框架，功能强大但默认样式简陋，想做出简洁商务风格图表往往需要编写大量代码调整参数。本文介绍 dufte 库——通过简短代码自动改造默认 matplotlib 图表样式。`pip install dufte` 安装后，将 dufte 的几个关键 API 穿插进常规 matplotlib 绘图流程即可。
 
 ## dufte 的四个主要功能
 
@@ -45,7 +45,7 @@ dufte 自带一套图例风格化策略，只需在绘图过程中用 `dufte.leg
 
 ## 关联
 - 概念：[[概念_matplotlib样式美化]]
-- 实体：[[实体_dufte]]、[[实体_Pandas]]（同属 data-analysis 可视化工具链）
+- 实体：dufte、[[实体_Pandas]]（同属 data-analysis 可视化工具链）
 - 相关来源：[[Pandas一行代码绘制25种美图]]
 
 ---

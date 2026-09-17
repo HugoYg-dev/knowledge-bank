@@ -57,3 +57,5 @@ FastAPI 官方对异步编程、并发与并行的完整讲解。
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/Py中的并发 async _ await - FastAPI.md]]
+
+- 关联实体：[[entities/实体_FastAPI|FastAPI]]

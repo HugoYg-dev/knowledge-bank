@@ -53,3 +53,5 @@ updated: '2026-07-06'
 
 - [[概念_Python_async_await并发]]
 - [[概念_uv包管理器]]
+
+- 关联实体：[[entities/实体_FastAPI|FastAPI]]

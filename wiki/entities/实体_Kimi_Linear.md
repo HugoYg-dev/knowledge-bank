@@ -53,7 +53,7 @@ updated: '2026-06-29'
 ## 参见
 
 - [[MiniMax_vs_Kimi_注意力路线之争]]
-- [[实体_Kimi_Delta_Attention]]
+- [[concepts/概念_Kimi_Delta_Attention|Kimi Delta Attention]]
 - [[概念_线性注意力与混合注意力]]
 - [[概念_MLA低秩KV压缩]]
 - [[实体_MiniMax_M2]]

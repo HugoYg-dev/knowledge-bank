@@ -293,6 +293,8 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_DiT|概念_DiT]] — Diffusion Transformer，扩散模型 SOTA 架构（CV/arch）
+- [[concepts/概念_Kimi_Delta_Attention|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）
 
 - [[概念_SAG]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
 
@@ -622,7 +624,6 @@
 - [[实体_SAM]] — Meta AI 图像分割基础模型
 - [[实体_ViT]] — Vision Transformer，SAM 图像编码器
 - [[实体_CLIP]] — 视觉-语言对齐模型，为 SAM 提供文本 Prompt
-- [[实体_DiT]] — Diffusion Transformer，扩散模型 SOTA 架构
 - [[实体_Albumentations]] — Python 图像增强库，OneOf/Compose 组合
 - [[实体_FlashAttention]] — I/O 感知精确注意力，长上下文行业标准
 - [[实体_Adam优化器]] — 一阶矩+二阶矩自适应优化器，深度学习常用选择
@@ -634,7 +635,6 @@
 - [[实体_Qdrant]] — Rust 编写的开源向量数据库/向量搜索引擎（medium）
 - [[实体_ColBERT]] — 斯坦福 token 级细粒度检索模型，MaxSim late interaction
 - [[实体_LlamaIndex]] — LLM/RAG 应用框架，文档加载与切分（medium）
-- [[实体_rank_bm25]] — Python BM25 轻量检索库（medium）
 - [[实体_Qwen3_Embedding]] — Qwen3 系列嵌入/重排模型，MTEB 排名第一，Instruct+LLM化Rerank
 - [[实体_Sentence_Transformers]] — 嵌入模型训练/推理框架，Matryoshka/Instruct 支持
 - [[实体_BGE-M3]] — BAAI 多语言嵌入模型，1024 维，同时支持 dense 和 ColBERT 多向量
@@ -661,7 +661,6 @@
 - [[实体_Qwen3-VL]] — 阿里 DeepStack + MoE 深度融合多模态模型（LLM/arch/VLM）
 - [[实体_MiniMax_M2]] — MiniMax 2025 旗舰，回归 Full Attention，Agent/代码定位（LLM/arch/attention）
 - [[实体_Kimi_Linear]] — 月之暗面开源 48B 混合注意力：KDA+MLA 3:1，KV Cache 减少 75%（LLM/arch/attention）
-- [[实体_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力，vLLM 已收录（LLM/arch/attention）
 - [[实体_DeepSeek_V2]] — DeepSeek MLA 首发模型（LLM/arch/attention）
 - [[实体_Medusa]] — Medusa 推测解码框架：多 FFN Head 并行预测与树状注意力验证（LLM/inference）
 - [[实体_EAGLE]] — 基于倒数第二层特征隐状态预测的高效推测解码推理加速框架（LLM/inference）
@@ -669,14 +668,11 @@
 - [[实体_DeepSeek-R1]] — DeepSeek 推理模型，GRPO+四阶段训练，AIME 79.8%，与 o1-1217 相当（LLM/reasoning, LLM/training/RL）
 - [[实体_Unsloth]] — 开源高效 LLM 微调框架，支持 GRPO 训练推理模型，GitHub 4万星（LLM/training/RL, Skill/python）
 - [[实体_SmolLM3]] — HuggingFace 3B 开源模型，384×H100 训练 11T tokens，GQA+RNoPE 架构（LLM/training/pre-train）
-- [[实体_DEITA]] — SFT 数据筛选方法，复杂性×质量综合评分 + 向量相似度多样性过滤（LLM/training/post-train）
-- [[实体_MoDS]] — 三维度 SFT 数据筛选：奖励模型质量+K-Center-Greedy多样性+必要性过滤（LLM/training/post-train）
 
 ### LLM/面试/创业/RL（批次9）
 - [[实体_Jina_AI]] — 专注搜索底座模型 AI 初创，2020-2025，两次 Pivot 后被 Elastic 收购（创业）
 
 ### LLM/Recommendation + arch（Batch 10）
-- [[实体_gpt-oss]] — OpenAI 首批开放权重推理模型 gpt-oss-20b/120b，Apache 2.0（LLM/arch/MoE）
 - [[实体_Sebastian_Raschka]] — LLM 架构技术博主，《Build a LLM from Scratch》作者（LLM/arch）
 - [[实体_淘天AIGC团队]] — 淘天集团直播AIGC团队，数字人直播完整链路（LLM）
 
@@ -858,7 +854,6 @@
 
 ### Skill/python（Phase 5 Batch 1）
 - [[实体_FastAPI]] — Python 高性能 Web 框架，基于 Starlette/Pydantic，原生 async/await，性能与 Go 不相上下（Skill/python）
-- [[实体_uv]] — Astral 开发的 Rust 编写 Python 包管理器，pip 替代品，约 10x 速度提升（Skill/python）
 - [[概念_Python并发与并行机制]] — 未分类概念摘要（python, concurrency, parallelism, gil, programming）
 - [[概念_Python描述符]] — Python 描述符（Descriptors）是实现底层属性代理的核心机制。通过控制属性的获取、修改和名称绑定，它能有效解决传统 @property getter/setter 机制在多属性校验时的代码冗余，并能在对象初始化时直接进行拦截校验。（python, oop, descriptor）
 - [[概念_Python模块与包管理]] — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
@@ -867,7 +862,6 @@
 ### Skill/data-analysis（Phase 5 Batch 2）
 - [[实体_Pandas]] — Python 数据分析核心库，基于 NumPy，Series/DataFrame + groupby/merge/pivot/plot（Skill/data-analysis, Skill/python）
 - [[实体_Dataprep]] — 开源 Python EDA 包，基于 Pandas+Dask，自动 EDA 中速度最快（Skill/data-analysis, Skill/python）
-- [[实体_dufte]] — matplotlib 样式美化库，dufte.style/legend()/show_bar_values() 三 API（Skill/data-analysis）
 
 ### Life（Phase 6 Batch 5：旅行/驾驶/智能家居）
 

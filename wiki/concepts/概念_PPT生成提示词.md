@@ -49,3 +49,5 @@ DeepSeek V3 0324 的前端能力可实现与 Claude 3.7 接近的封面生成效
 
 - [[Gemini的PPT生成技巧与模板提示词]]
 - [[一套提示词实现封面自由]]
+
+- 关联实体：[[entities/实体_Gemini|Gemini]]

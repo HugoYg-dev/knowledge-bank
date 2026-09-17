@@ -23,3 +23,5 @@ updated: '2026-07-02'
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/Uvicorn、Gunicorn 傻傻分不清？FastAPI 生产部署避坑指南.md]]
+
+- 关联实体：[[entities/实体_FastAPI|FastAPI]]

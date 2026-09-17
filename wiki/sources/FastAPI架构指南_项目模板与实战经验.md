@@ -62,3 +62,5 @@ App 目录为应用核心，包含以下关键模块：
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/FastAPI 架构指南：用这份模版打造可扩展又安全的系统（附实战经验）.md]]
+
+- 关联实体：[[entities/实体_FastAPI|FastAPI]]

@@ -109,3 +109,5 @@ updated: '2026-07-01'
 
 ---
 > 📎 **物理文献**：[[raw/articles/OpenAI_ 构建 AI 智能体实用指南 _ 宝玉的分享.md]]
+
+- 关联实体：[[entities/实体_OpenAI|OpenAI]]

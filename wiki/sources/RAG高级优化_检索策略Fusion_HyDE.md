@@ -71,7 +71,7 @@ def rrf_fusion(rankings, k=60):
 ## 关联
 
 - 概念：[[概念_Fusion_Retrieval]]、[[概念_HyDE]]、[[概念_RAG_Fusion]]、[[概念_BM25]]、[[概念_Reciprocal_Rank_Fusion]]
-- 实体：[[实体_rank_bm25]]、[[实体_LangChain]]
+- 实体：`rank_bm25`、[[实体_LangChain]]
 - 同系列：[[RAG高级优化_query转换之路]]、[[RAG高级优化_问题生成检索增强]]、[[RAG高级优化_检索后处理]]
 
 ---

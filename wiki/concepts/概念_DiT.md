@@ -1,5 +1,5 @@
 ---
-type: entity
+type: "concept"
 tags:
 - CV/arch
 summary: DiT（Diffusion Transformer）是用 Transformer 替换扩散模型 U-Net 的架构，作用于 latent patches；被认为是
@@ -9,7 +9,7 @@ sources:
 updated: '2026-06-26'
 ---
 
-# 实体：DiT（Diffusion Transformer）
+# 概念_DiT（Diffusion Transformer）
 
 ## 简介
 

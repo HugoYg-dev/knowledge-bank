@@ -69,7 +69,7 @@ updated: '2026-07-01'
 - [[概念_KV_Cache]] — KV Cache 原理与内存占用
 - [[实体_MiniMax_M2]] — MiniMax 回归 Full Attention 的 Agent 模型
 - [[实体_Kimi_Linear]] — 月之暗面开源混合注意力模型
-- [[实体_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力
+- [[concepts/概念_Kimi_Delta_Attention|Kimi Delta Attention]] — KDA：channel-wise gate 线性注意力
 - [[Attention复杂度解析与改进方向]]
 
 ---

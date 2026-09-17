@@ -46,8 +46,8 @@ updated: '2026-07-01'
 - [[概念_IFD指令跟随难度]]
 - [[概念_K-Center-Greedy算法]]
 - [[概念_SFT数据三维度]]
-- [[实体_DEITA]]
-- [[实体_MoDS]]
+- DEITA
+- MoDS
 - CaR
 
 ---

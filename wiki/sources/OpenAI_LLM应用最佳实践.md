@@ -76,3 +76,5 @@ updated: '2026-07-01'
 
 ---
 > 📎 **物理文献**：[[raw/articles/Prompt Engineering, Finetune, RAG？：OpenA....md]]
+
+- 关联实体：[[entities/实体_OpenAI|OpenAI]]

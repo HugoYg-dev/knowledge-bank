@@ -1451,3 +1451,10 @@
 ## [2026-08-03] ingest | Clippings/美团AICoding面试，跪了！！！.md + Clippings/读：读代码前先跑的五个 git 命令 - 暗无天日.md -> wiki/sources/（+ 新建 Git 仓库历史诊断；更新 HITL、Agent 完整轨迹评估、Harness Engineering）
 
 ## [2026-08-11] ingest | Clippings/emails/dailydoseofds/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md -> raw/articles/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md -> wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md (+ 新建 概念_跨模型KV缓存转换；更新 概念_KV_Cache)
+
+## [2026-09-17] prune/merge | low-frequency entities governance
+- Pruned low-value entities: 实体_dufte.md, 实体_rank_bm25.md, 实体_DEITA.md, 实体_MoDS.md
+- Migrated concepts: 实体_DiT.md -> 概念_DiT.md, 实体_Kimi_Delta_Attention.md -> 概念_Kimi_Delta_Attention.md
+- Merged & deduplicated: 实体_uv.md -> 概念_uv包管理器.md, 实体_gpt-oss.md -> 实体_OpenAI.md
+- Enhanced backlinks: 实体_FastAPI, 实体_OpenAI, 实体_Gemini
+- Synchronized wiki/index.md and updated link graph

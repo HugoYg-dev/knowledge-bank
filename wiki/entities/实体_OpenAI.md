@@ -39,3 +39,7 @@ updated: '2026-07-06'
 - [[sources/GPT5通用验证器与RL探索]]
 - [[sources/OpenAI_LLM应用最佳实践]]
 - [[sources/OpenAI_构建AI智能体实用指南]]
+
+### gpt-oss 系列（开放权重推理模型）
+- **发布时间**：2025 年 8 月（自 GPT-2 以来首批开放权重模型），采用 Apache 2.0 许可证。
+- **模型规模**：包含 gpt-oss-20b 和 gpt-oss-120b（解码器 Transformer + MoE 架构），聚焦推理与蒸馏。
