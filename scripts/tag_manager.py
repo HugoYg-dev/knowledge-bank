@@ -158,9 +158,69 @@ def cmd_validate(args):
     ptype = args.ptype or "source"
     ok, err = validate_tag(tag, ptype=ptype)
     if ok:
-        print(f"✅ Tag '{tag}' 合规有效 (针对页面类型: {ptype})")
+        print(f"✅ Tag '{tag}' 校验通过 (类型: {ptype})")
+        sys.exit(0)
     else:
-        print(f"❌ Tag '{tag}' 不合规: {err}")
+        print(f"❌ Tag 校验失败: {err}")
+        sys.exit(1)
+
+
+def cmd_scan(args, workspace=None):
+    """全库扫描所有 Markdown 文件的 Tag 是否符合白名单"""
+    if workspace is None:
+        workspace = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    config = load_tag_config()
+
+    print("=" * 60)
+    print("🔍 [Tag 全库合规性扫描]")
+    print("=" * 60)
+
+    scan_dirs = ["wiki"]
+    invalid_records = []
+    total_scanned = 0
+
+    for sdir in scan_dirs:
+        dir_p = os.path.join(workspace, sdir)
+        if not os.path.exists(dir_p):
+            continue
+        for root, _, files in os.walk(dir_p):
+            for file in sorted(files):
+                if not file.endswith(".md"):
+                    continue
+                fpath = os.path.join(root, file)
+                total_scanned += 1
+                try:
+                    with open(fpath, "r", encoding="utf-8", errors="ignore") as fp:
+                        content = fp.read()
+                    m = re.match(r"^(---\n.*?\n---)", content, re.DOTALL)
+                    if not m:
+                        continue
+                    fm_data = yaml.safe_load(m.group(1).strip("- \n"))
+                    if not isinstance(fm_data, dict):
+                        continue
+                    tags = fm_data.get("tags", [])
+                    ptype = fm_data.get("type", "source")
+                    if isinstance(tags, str):
+                        tags = [tags]
+                    elif not isinstance(tags, list):
+                        continue
+
+                    for t in tags:
+                        ok, err = validate_tag(t, ptype=ptype, config=config)
+                        if not ok:
+                            rel = os.path.relpath(fpath, workspace)
+                            invalid_records.append((rel, t, err))
+                except Exception:
+                    continue
+
+    print(f"📊 扫描完成：共扫描 {total_scanned} 篇文档。")
+    if not invalid_records:
+        print("✅ 全库所有 Tag 均符合 tags.json 白名单规范 (0 违规)！")
+        sys.exit(0)
+    else:
+        print(f"❌ 发现 {len(invalid_records)} 处不合规 Tag：")
+        for rel, t, err in invalid_records:
+            print(f"  - [{rel}] '{t}': {err}")
         sys.exit(1)
 
 
@@ -390,6 +450,9 @@ def main():
     p_val.add_argument("tag", help="待校验的 Tag 字符串")
     p_val.add_argument("--ptype", default="source", help="目标页面类型 (source/concept/entity/comparison/overview)")
     p_val.set_defaults(func=cmd_validate)
+
+    p_scan = subparsers.add_parser("scan", help="全库扫描所有文档的 Tag 合规性")
+    p_scan.set_defaults(func=cmd_scan)
 
     p_add = subparsers.add_parser("add", help="新增审批 Tag 到 tags.json")
     p_add.add_argument("tag", help="新增的 Tag 字符串 (如 AI-Agent/embodied)")
