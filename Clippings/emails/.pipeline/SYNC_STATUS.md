@@ -1,6 +1,6 @@
 # Gmail 星标邮件同步状态
 
-> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-16T03:33:27+00:00`。
+> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-17T06:50:44+00:00`。
 
 ## 汇总
 
@@ -11,10 +11,10 @@
 | 邮件 | review | 0 |
 | 邮件 | ingested | 58 |
 | 邮件 | ignored | 12 |
-| 邮件 | unhandled | 1 |
+| 邮件 | unhandled | 0 |
 | 路由 | pending | 11 |
 | 路由 | parsed | 59 |
-| 路由 | unhandled | 1 |
+| 路由 | unhandled | 0 |
 | 路由 | failed | 0 |
 | 文章 | review | 0 |
 | 文章 | ingested | 88 |
@@ -24,7 +24,7 @@
 
 | Gmail ID | 来源 | 状态 | 主题 | 原因 |
 | --- | --- | --- | --- | --- |
-| `1a033f03133d8651` | - | unhandled | [鸭哥 AI 手记] 2026-08-23: Skill 起效靠检查单，不靠知识 | no_registered_parser |
+| - | - | - | 当前没有待处理邮件 | - |
 
 ## 待审文章
 
