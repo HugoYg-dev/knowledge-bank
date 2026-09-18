@@ -9,39 +9,60 @@ import mail_pipeline
 from mail_sources import dailydoseofds
 
 
+class FakeClient:
+    def __init__(self, messages=None, raw_map=None):
+        self.messages = messages or []
+        self.raw_map = raw_map or {}
+        self.closed = False
+
+    def connect(self):
+        pass
+
+    def list_starred_messages(self):
+        return self.messages
+
+    def fetch_raw_message(self, message_id):
+        return self.raw_map.get(message_id, {"raw": ""})
+
+    def close(self):
+        self.closed = True
+
+
 class MailPipelineTest(unittest.TestCase):
     def test_remote_list_follows_all_pages(self):
-        calls = []
-
-        def fake_call(args):
-            params = json.loads(args[args.index("--params") + 1])
-            calls.append(params)
-            if "pageToken" not in params:
-                return {"messages": [{"id": "a"}], "nextPageToken": "next"}
-            return {"messages": [{"id": "b"}]}
-
-        self.assertEqual([item["id"] for item in mail_pipeline.list_starred_messages(fake_call)], ["a", "b"])
-        self.assertEqual(calls[1]["pageToken"], "next")
+        client = mail_pipeline.GmailImapClient(
+            {"email": "test@example.com", "app_password": "pwd", "imap_server": "imap.example.com", "imap_port": 993}
+        )
+        client.mail = unittest.mock.MagicMock()
+        client.get_starred_mailbox = unittest.mock.MagicMock(return_value="[Gmail]/Starred")
+        client.mail.select.return_value = ("OK", [b"100"])
+        # Mock 60 UIDs to trigger batching (> 50)
+        uids = [str(i).encode() for i in range(1, 61)]
+        client.mail.uid.side_effect = [
+            ("OK", [b" ".join(uids)]),  # SEARCH
+            ("OK", [(b'1 (X-GM-MSGID 12345 BODY.PEEK[HEADER.FIELDS (FROM SUBJECT DATE)] {20}', b"From: a@b.com\r\n\r\n")]),  # batch 1
+            ("OK", [(b'2 (X-GM-MSGID 67890 BODY.PEEK[HEADER.FIELDS (FROM SUBJECT DATE)] {20}', b"From: c@d.com\r\n\r\n")]),  # batch 2
+        ]
+        results = client.list_starred_messages()
+        self.assertEqual(len(results), 2)
+        self.assertEqual([r["id"] for r in results], [f"{12345:x}", f"{67890:x}"])
+        self.assertEqual(client.mail.uid.call_count, 3)
 
     def test_sync_marks_unknown_sender_without_raw_fetch(self):
         data = mail_pipeline.empty_manifest()
-        calls = []
+        client = FakeClient(
+            messages=[{
+                "id": "unknown",
+                "sender": "Other <news@example.com>",
+                "subject": "Other",
+                "date": "Mon, 10 Aug 2026 10:00:00 +0000",
+            }]
+        )
 
-        def fake_call(args):
-            calls.append(args)
-            if args[3] == "list":
-                return {"messages": [{"id": "unknown"}]}
-            return {"payload": {"headers": [
-                {"name": "From", "value": "Other <news@example.com>"},
-                {"name": "Subject", "value": "Other"},
-                {"name": "Date", "value": "Mon, 10 Aug 2026 10:00:00 +0000"},
-            ]}}
-
-        self.assertEqual(mail_pipeline.sync(data, fake_call), (1, 1))
+        self.assertEqual(mail_pipeline.sync(data, client), (1, 1))
         record = data["emails"]["unknown"]
         self.assertEqual(record["lifecycle"], "unhandled")
         self.assertIsNone(record["source_key"])
-        self.assertEqual(len(calls), 2)
 
     def test_ddods_parser_filters_membership_footer(self):
         membership = base64.urlsafe_b64encode(b"https://www.dailydoseofds.com/membership").decode().rstrip("=")
@@ -134,7 +155,7 @@ class MailPipelineTest(unittest.TestCase):
             ),
         )
         with patch.object(mail_pipeline, "SOURCES_BY_KEY", {"test": source}):
-            self.assertEqual(mail_pipeline.route(data, lambda _args: {"raw": ""}), (1, 0))
+            self.assertEqual(mail_pipeline.route(data, FakeClient(raw_map={"mail": {"raw": ""}})), (1, 0))
 
         self.assertEqual(record["attempts"], 2)
         self.assertEqual(record["routing"], "parsed")
