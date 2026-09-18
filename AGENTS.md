@@ -317,8 +317,8 @@ AI Agent 在处理日常任务时，必须遵守以下核心操作闭环：
      - **情况 A（剩余被引次数 $\ge 2$）**：说明属于通用核心知识，**保留页面**，仅在其正文末尾 `## 来源` 中摘除指向已删文章的链接。
      - **情况 B（剩余被引次数 $\le 1$）**：说明其为随着具体文章产生的低频冷门产物（如仅出现一次的人名），**触发垃圾回收连带清理**。
    - **第四步（登记操作流水）**：在 `wiki/log.md` 登记 `lint/prune | prune raw/xxx.md (+ Cascading cleanup sources, index & gc entities/concepts)`。
-3. **低频实体专项清理 (`uv run --with pyyaml python scripts/vault_lint.py prune-low-freq-entities`)**：
-   - 可针对全库扫描出来的入度 $\le 1$ 的实体页面（尤其是只出现过 1 次的人名实体）进行批量/定向精简清理，同步从 `wiki/index.md` 剔除，保持图谱的高质量与低噪声。
+3. **低频实体与概念专项清理 (`uv run --with pyyaml python scripts/vault_lint.py prune-low-freq-entities` / `prune-low-freq-concepts`)**：
+   - 可针对全库扫描出来的入度 $\le 1$ 的实体与概念页面（尤其是仅出现过 1 次的人名实体或一次性概念）进行批量/定向精简清理与双链文本降级，同步从 `wiki/index.md` 剔除，保持图谱的高质量与低噪声。
 4. **先提议，再动刀与高危动刀门槛 (`--dry-run` vs `--apply`)**：
    - 删除、Prune、Merge **永远属于 L3 高危操作**，任何影响页数的更改，哪怕仅影响 1 页，都必须向用户提供 Dry-run 预演报告并取得明确批准方可物理执行。14 天只用于候选排序，不作自动授权。
 
