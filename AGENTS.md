@@ -74,7 +74,7 @@ This file provides guidance to Claude Code/Codex/Antigravity and other AI Agents
 
 | 目录 / 文件 | 功能作用与设计意图 | Agent 操作规范 |
 |------|------|------|
-| `scripts/` | **图谱运维与自动化治理库**：为 LLM Wiki 定制的 Python 工具集。包括全库健康诊断与级联清理核心工具 `vault_lint.py`、概念与来源链接校验审查 `concept_source_lint.py`、原始资料重组归档工具 `restructure_raw.py` 等。 | Agent 在执行 `lint`、`prune` 等复杂整顿与级联清理操作时，**强烈推荐直接调用此目录下预置的 Python 工具**，绝不臆造写删逻辑 |
+| `scripts/` | **图谱运维与自动化治理库**：为 LLM Wiki 定制的 Python 工具集。包括全库健康诊断与级联清理核心工具 `vault_lint.py`、标签规范与白名单治理工具 `tag_manager.py`、概念与来源链接校验审查 `concept_source_lint.py` 等。 | Agent 在执行 `lint`、`prune` 等复杂整顿与级联清理操作时，**强烈推荐直接调用此目录下预置的 Python 工具**，绝不臆造写删逻辑 |
 | `tmp/` | **临时缓冲与调试空间**：已被 `.gitignore` 排除的临时文件交换区。存放 Agent 的中间计算产物、临时测试脚本或转码临时缓存。 | 允许 Agent 自由读写与清理，**禁止在此目录中存放任何需要持久化的正文或 Wiki 页面** |
 
 ### 1.5 系统元数据与 Agent 生态层 (Config & Ecosystem Layer)
