@@ -37,7 +37,7 @@ wiki/{entities, concepts, comparisons, overview} (末端知识产物)
 | **`wiki/log.md`** | **运维日志** | AI Agent 与人工对知识库进行变更与精简的操作流水账。 |
 | **`assets/`** | **静态资源库** | 存储本地原创图片/PDF等资源。网页抓取文章保持公网 URL，严禁膨胀 Git 体积。 |
 | **`workdocs/`** | **业务工作文档** | 存放业务交付物、调研报告及 Word 原始文档。 |
-| **`scripts/`** | **自动化工程脚本** | 知识库健康诊断、死链/漏登审查与级联清理核心工具。 |
+| **`scripts/`** | **自动化工程脚本** | 知识库健康诊断、死链/漏登审查、级联清理与标签白名单治理核心工具库（含 `vault_lint.py`, `tag_manager.py`, `vault_utils.py` 等）。 |
 
 ---
 
@@ -66,8 +66,8 @@ wiki/{entities, concepts, comparisons, overview} (末端知识产物)
 # 1. 全库健康度诊断（包含索引挂载率、死链、漏登、Sources 映射审计）
 python3 scripts/vault_lint.py lint
 
-# 2. 原始资料语法净化（行内伪 Tag、矩阵/张量伪双链自动转义）
-python3 scripts/vault_lint.py sanitize-raw
+# 2. 原始资料只读净化视图派生（派生过滤了 HTML 污染的安全临时视图到 tmp/sanitized/）
+python3 scripts/vault_lint.py sanitize-view raw/articles/xxx.md
 
 # 3. 级联精简与清理预览 (Dry-run)
 python3 scripts/vault_lint.py prune raw/articles/xxx.md
@@ -75,8 +75,13 @@ python3 scripts/vault_lint.py prune raw/articles/xxx.md
 # 4. 执行物理级联精简 (确认影响页面 < 5 时使用)
 python3 scripts/vault_lint.py prune raw/articles/xxx.md --apply
 
-# 5. 低频无效果孤立实体专项清理
+# 5. 低频无效果孤立实体/概念专项清理 (支持 entities 与 concepts)
 python3 scripts/vault_lint.py prune-low-freq-entities
+python3 scripts/vault_lint.py prune-low-freq-concepts
+
+# 6. 标签治理与权威白名单审查 (基于 tags.json)
+python3 scripts/tag_manager.py list
+python3 scripts/tag_manager.py validate
 ```
 
 ---

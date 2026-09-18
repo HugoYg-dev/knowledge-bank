@@ -1181,21 +1181,26 @@ def cmd_fetch_published(workspace, apply=False, limit=None, zhihu_only=False):
 
     print(f"\n🎉 首屏批量时间提取完成！成功抓取并写入 {success_count} 篇，失败或无明确时间 {fail_count} 篇。")
 
-def cmd_prune_low_freq_entities(workspace, threshold=1, apply=False):
+def _prune_low_freq_pages(workspace, page_type="entities", threshold=1, apply=False):
+    type_cn = "实体" if page_type == "entities" else "概念"
+    type_en = "Entities" if page_type == "entities" else "Concepts"
+    prefix = "实体_" if page_type == "entities" else "概念_"
+    folder = page_type
+
     print("=" * 60)
-    print(f"✂️ [Prune Low-Frequency Entities with Downgrade SOP] 批量降级并清理全库关联度 <= {threshold} 的低频/孤立实体")
+    print(f"✂️ [Prune Low-Frequency {type_en} with Downgrade SOP] 批量降级并清理全库关联度 <= {threshold} 的低频/孤立{type_cn}")
     print(f"🛡️ 执行模式: {'【直接动刀 (APPLY)】' if apply else '【预演报告 (DRY-RUN)】'}")
     print("=" * 60)
 
     all_md_files = get_all_md_files(workspace)
-    entities_dir = os.path.join(workspace, 'wiki', 'entities')
-    if not os.path.exists(entities_dir):
-        print("❌ 错误：wiki/entities 目录不存在！")
+    target_dir = os.path.join(workspace, 'wiki', folder)
+    if not os.path.exists(target_dir):
+        print(f"❌ 错误：wiki/{folder} 目录不存在！")
         return
 
-    entity_files = [f for f in os.listdir(entities_dir) if f.endswith('.md')]
-    entity_in_degrees = {f: 0 for f in entity_files}
-    entity_referrers = {f: [] for f in entity_files}
+    page_files = [f for f in os.listdir(target_dir) if f.endswith('.md')]
+    in_degrees = {f: 0 for f in page_files}
+    referrers = {f: [] for f in page_files}
     link_regex = re.compile(r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
 
     for rel, abs_p in all_md_files.items():
@@ -1208,30 +1213,30 @@ def cmd_prune_low_freq_entities(workspace, threshold=1, apply=False):
             if not t_base.endswith('.md'):
                 t_base = t_base + '.md'
             file_base = os.path.basename(rel)
-            if t_base in entity_in_degrees and t_base != file_base:
-                entity_in_degrees[t_base] += 1
-                if rel not in entity_referrers[t_base]:
-                    entity_referrers[t_base].append(rel)
+            if t_base in in_degrees and t_base != file_base:
+                in_degrees[t_base] += 1
+                if rel not in referrers[t_base]:
+                    referrers[t_base].append(rel)
 
-    targets = [f for f, deg in entity_in_degrees.items() if deg <= threshold]
+    targets = [f for f, deg in in_degrees.items() if deg <= threshold]
     targets.sort()
 
     index_path = os.path.join(workspace, 'wiki', 'index.md')
     index_content = load_file(index_path)
     index_lines_to_remove = []
-    for e_file in targets:
-        e_base = e_file[:-3]
+    for p_file in targets:
+        p_base = p_file[:-3]
         for line in index_content.split('\n'):
-            if e_base in line and line not in index_lines_to_remove:
+            if p_base in line and line not in index_lines_to_remove:
                 index_lines_to_remove.append(line)
 
-    print(f"\n📑 【低频实体清理与降级清单 (关联度 <= {threshold})】")
-    print(f"1️⃣ 需降级清理的低频实体文件数 : {len(targets)} 篇")
+    print(f"\n📑 【低频{type_cn}清理与降级清单 (关联度 <= {threshold})】")
+    print(f"1️⃣ 需降级清理的低频{type_cn}文件数 : {len(targets)} 篇")
     for t in targets:
         name_no_ext = t[:-3]
-        clean_name = name_no_ext.replace("实体_", "")
-        refs = entity_referrers[t]
-        print(f"    - wiki/entities/{t} (入度: {entity_in_degrees[t]}, 引用页: {refs[:3]}) -> 降级还原为纯文本 '{clean_name}'")
+        clean_name = name_no_ext.replace(prefix, "")
+        refs = referrers[t]
+        print(f"    - wiki/{folder}/{t} (入度: {in_degrees[t]}, 引用页: {refs[:3]}) -> 降级还原为纯文本 '{clean_name}'")
     print(f"2️⃣ 需在总索引 wiki/index.md 中同步剔除的条目数 : {len(index_lines_to_remove)} 行")
     for l in index_lines_to_remove:
         print(f"    - {l.strip()}")
@@ -1239,25 +1244,25 @@ def cmd_prune_low_freq_entities(workspace, threshold=1, apply=False):
     if not apply:
         print("\n" + "-" * 60)
         print("💡 当前为 Dry-run 预演模式，未作实质性修改。")
-        print(f"👉 若确认要降级清理上述 {len(targets)} 个低频实体，请运行: python3 scripts/vault_lint.py prune-low-freq-entities --threshold {threshold} --apply")
+        cmd_name = "prune-low-freq-entities" if page_type == "entities" else "prune-low-freq-concepts"
+        print(f"👉 若确认要降级清理上述 {len(targets)} 个低频{type_cn}，请运行: python3 scripts/vault_lint.py {cmd_name} --threshold {threshold} --apply")
         print("-" * 60)
         return
 
-    print("\n⚡ 正式开始清理低频实体、执行文本降级及更新索引...")
+    print(f"\n⚡ 正式开始清理低频{type_cn}、执行文本降级及更新索引...")
     removed_count = 0
     downgrade_count = 0
 
-    for e_file in targets:
-        name_no_ext = e_file[:-3]
-        clean_name = name_no_ext.replace("实体_", "")
+    for p_file in targets:
+        name_no_ext = p_file[:-3]
+        clean_name = name_no_ext.replace(prefix, "")
 
-        # 降级替换引用文件中的双链为普通文本
-        refs = entity_referrers[e_file]
+        refs = referrers[p_file]
         for ref_rel in refs:
             ref_abs = all_md_files.get(ref_rel)
             if ref_abs and os.path.exists(ref_abs):
                 content = load_file(ref_abs)
-                pattern = r'\[\[(?:wiki/)?(?:entities/)?' + re.escape(name_no_ext) + r'(?:\|([^\]]+))?\]\]'
+                pattern = r'\[\[(?:wiki/)?(?:' + re.escape(folder) + r'/)?' + re.escape(name_no_ext) + r'(?:\|([^\]]+))?\]\]'
                 def replace_func(m):
                     alias = m.group(1)
                     return alias if alias else clean_name
@@ -1267,8 +1272,7 @@ def cmd_prune_low_freq_entities(workspace, threshold=1, apply=False):
                     downgrade_count += 1
                     print(f"  🛠️ 双链降级完成: [{ref_rel}] 中的 [[{name_no_ext}]] -> '{clean_name}'")
 
-        # 删除实体文件
-        abs_p = os.path.join(entities_dir, e_file)
+        abs_p = os.path.join(target_dir, p_file)
         if os.path.exists(abs_p):
             os.remove(abs_p)
             removed_count += 1
@@ -1279,113 +1283,19 @@ def cmd_prune_low_freq_entities(workspace, threshold=1, apply=False):
     log_path = os.path.join(workspace, 'wiki', 'log.md')
     log_content = load_file(log_path)
     today = datetime.now().strftime("%Y-%m-%d")
-    log_msg = f"## {today} lint/prune | 批量降级并清理全库关联度 <={threshold} 的 {removed_count} 个低频孤立实体及 Index 目录 (共完成 {downgrade_count} 处双链降级还原)\n"
+    log_msg = f"## {today} lint/prune | 批量降级并清理全库关联度 <={threshold} 的 {removed_count} 个低频孤立{type_cn}及 Index 目录 (共完成 {downgrade_count} 处双链降级还原)\n"
     new_log = log_content.replace("# 维护日志\n\n", f"# 维护日志\n\n{log_msg}\n")
     save_file(log_path, new_log)
 
-    print(f"✅ 成功清理 {removed_count} 个低频实体、降级 {downgrade_count} 处双链及剔除 {len(index_lines_to_remove)} 行 Index 记录！")
+    print(f"✅ 成功清理 {removed_count} 个低频{type_cn}、降级 {downgrade_count} 处双链及剔除 {len(index_lines_to_remove)} 行 Index 记录！")
+
+
+def cmd_prune_low_freq_entities(workspace, threshold=1, apply=False):
+    return _prune_low_freq_pages(workspace, page_type="entities", threshold=threshold, apply=apply)
+
 
 def cmd_prune_low_freq_concepts(workspace, threshold=1, apply=False):
-    print("=" * 60)
-    print(f"✂️ [Prune Low-Frequency Concepts with Downgrade SOP] 批量降级并清理全库关联度 <= {threshold} 的低频/孤立概念")
-    print(f"🛡️ 执行模式: {'【直接动刀 (APPLY)】' if apply else '【预演报告 (DRY-RUN)】'}")
-    print("=" * 60)
-
-    all_md_files = get_all_md_files(workspace)
-    concepts_dir = os.path.join(workspace, 'wiki', 'concepts')
-    if not os.path.exists(concepts_dir):
-        print("❌ 错误：wiki/concepts 目录不存在！")
-        return
-
-    concept_files = [f for f in os.listdir(concepts_dir) if f.endswith('.md')]
-    concept_in_degrees = {f: 0 for f in concept_files}
-    concept_referrers = {f: [] for f in concept_files}
-    link_regex = re.compile(r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
-
-    for rel, abs_p in all_md_files.items():
-        if rel.startswith('raw/') or rel == 'wiki/index.md' or rel == 'wiki/log.md':
-            continue
-        content = load_file(abs_p)
-        for target in link_regex.findall(content):
-            t_clean = target.strip()
-            t_base = os.path.basename(t_clean)
-            if not t_base.endswith('.md'):
-                t_base = t_base + '.md'
-            file_base = os.path.basename(rel)
-            if t_base in concept_in_degrees and t_base != file_base:
-                concept_in_degrees[t_base] += 1
-                if rel not in concept_referrers[t_base]:
-                    concept_referrers[t_base].append(rel)
-
-    targets = [f for f, deg in concept_in_degrees.items() if deg <= threshold]
-    targets.sort()
-
-    index_path = os.path.join(workspace, 'wiki', 'index.md')
-    index_content = load_file(index_path)
-    index_lines_to_remove = []
-    for c_file in targets:
-        c_base = c_file[:-3]
-        for line in index_content.split('\n'):
-            if c_base in line and line not in index_lines_to_remove:
-                index_lines_to_remove.append(line)
-
-    print(f"\n📑 【低频概念清理与降级清单 (关联度 <= {threshold})】")
-    print(f"1️⃣ 需降级清理的低频概念文件数 : {len(targets)} 篇")
-    for t in targets:
-        name_no_ext = t[:-3]
-        clean_name = name_no_ext.replace("概念_", "")
-        refs = concept_referrers[t]
-        print(f"    - wiki/concepts/{t} (入度: {concept_in_degrees[t]}, 引用页: {refs[:3]}) -> 降级还原为纯文本 '{clean_name}'")
-    print(f"2️⃣ 需在总索引 wiki/index.md 中同步剔除的条目数 : {len(index_lines_to_remove)} 行")
-    for l in index_lines_to_remove:
-        print(f"    - {l.strip()}")
-
-    if not apply:
-        print("\n" + "-" * 60)
-        print("💡 当前为 Dry-run 预演模式，未作实质性修改。")
-        print(f"👉 若确认要降级清理上述 {len(targets)} 个低频概念，请运行: python3 scripts/vault_lint.py prune-low-freq-concepts --threshold {threshold} --apply")
-        print("-" * 60)
-        return
-
-    print("\n⚡ 正式开始清理低频概念、执行文本降级及更新索引...")
-    removed_count = 0
-    downgrade_count = 0
-
-    for c_file in targets:
-        name_no_ext = c_file[:-3]
-        clean_name = name_no_ext.replace("概念_", "")
-
-        refs = concept_referrers[c_file]
-        for ref_rel in refs:
-            ref_abs = all_md_files.get(ref_rel)
-            if ref_abs and os.path.exists(ref_abs):
-                content = load_file(ref_abs)
-                pattern = r'\[\[(?:wiki/)?(?:concepts/)?' + re.escape(name_no_ext) + r'(?:\|([^\]]+))?\]\]'
-                def replace_func(m):
-                    alias = m.group(1)
-                    return alias if alias else clean_name
-                new_content = re.sub(pattern, replace_func, content)
-                if new_content != content:
-                    save_file(ref_abs, new_content)
-                    downgrade_count += 1
-                    print(f"  🛠️ 双链降级完成: [{ref_rel}] 中的 [[{name_no_ext}]] -> '{clean_name}'")
-
-        abs_p = os.path.join(concepts_dir, c_file)
-        if os.path.exists(abs_p):
-            os.remove(abs_p)
-            removed_count += 1
-
-    new_index_lines = [l for l in index_content.split('\n') if l not in index_lines_to_remove]
-    save_file(index_path, '\n'.join(new_index_lines))
-
-    log_path = os.path.join(workspace, 'wiki', 'log.md')
-    log_content = load_file(log_path)
-    today = datetime.now().strftime("%Y-%m-%d")
-    log_msg = f"## {today} lint/prune | 批量降级并清理全库关联度 <={threshold} 的 {removed_count} 个低频孤立概念及 Index 目录 (共完成 {downgrade_count} 处双链降级还原)\n"
-    new_log = log_content.replace("# 维护日志\n\n", f"# 维护日志\n\n{log_msg}\n")
-    save_file(log_path, new_log)
-
-    print(f"✅ 成功清理 {removed_count} 个低频概念、降级 {downgrade_count} 处双链及剔除 {len(index_lines_to_remove)} 行 Index 记录！")
+    return _prune_low_freq_pages(workspace, page_type="concepts", threshold=threshold, apply=apply)
 
 def main():
     parser = argparse.ArgumentParser(description="Knowledge Bank Vault Lint & Prune CLI")
