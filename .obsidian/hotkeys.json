@@ -2,8 +2,8 @@
   "app:toggle-right-sidebar": [
     {
       "modifiers": [
-        "Mod",
-        "Shift"
+        "Alt",
+        "Mod"
       ],
       "key": "B"
     }
