@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[RAG夺命10连问，你能抗住第几问？]] — 全面总结大厂大模型应用方向高频考点：RAG核心原理、与SFT选型对比、切块与检索优化、评估指标体系、高阶纠错机制及Spring AI Alibaba工程落地方案（面试, RAG/retrieval）
 - [[Loop Engineering 详解：从管理执行到设计自收敛的循环]] — 深度剖析 Loop Engineering 从一阶 AI Manager 到二阶 Senior Manager 的范式升维：将 evaluation harness、observability、SOP、maker/checker 与 data flywheel 固化为系统组件，并阐明边界约束优于 TDD 路径约束以及任务自动发现的发散性局限（AI-Agent/coding, AI-Agent/context-engineering, AI-Agent/tool-calling）
 - [[再见RAG！AI知识库还得是SAG，又快又准～]] — 介绍开源检索架构 SAG（基于查询时动态超边的 SQL 检索增强生成）：将文档提炼为事项卡片与实体存入 SQL 数据库，查询时利用 SQL JOIN 动态激活局部多跳关联网，实现高召回率多跳推理、极低维护成本与确定性排障调优（RAG/retrieval, RAG/query, RAG/chunking）
 

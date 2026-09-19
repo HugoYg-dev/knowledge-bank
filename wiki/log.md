@@ -1,5 +1,13 @@
 # Wiki Log
 
+## [2026-09-19] ingest | raw/articles/RAG夺命10连问，你能抗住第几问？.md -> wiki/sources/RAG夺命10连问，你能抗住第几问？.md
+- **物理归档与摘要生成**：
+  - 将 `Clippings/RAG夺命10连问，你能抗住第几问？.md` 归档至 `raw/articles/RAG夺命10连问，你能抗住第几问？.md`。
+  - 创建摘要页 `wiki/sources/RAG夺命10连问，你能抗住第几问？.md`，提炼 RAG 核心痛点解决、与微调选型权衡、分块与混合检索优化、评估指标体系（RAG Triad）、高级自反思纠错机制（Self-RAG/CRAG/Graph RAG）及 Spring AI Alibaba 工程实践。
+- **面试来源约束遵守**：
+  - 本文带有 `面试` 标签，严格遵守 AGENTS.md §2.2 规范，仅作为 Source 摘要归档，严禁将面试题零散表述直接外推作为末端 Concept/Entity 页面的来源，本次无新建 Concept/Entity。
+- **索引挂载**：在 `wiki/index.md` 挂载新 Source 条目。
+
 ## [2026-09-16] chore/tags | 新增 MachineLearning 独立顶层标签，治理 dailydoseofds 经典机器学习体系
 - **决策与背景**：针对 `dailydoseofds` 来源的大量经典机器学习/统计学习文献（PCA、t-SNE、GBDT、聚类、特征编码、交叉验证、学习曲线等）因缺少专属标签而长期透支/污染 `Skill/data-analysis` 或被强行收编进 `DeepLearning` 的问题，经用户批准，正式在 `tags.json` 的 `top_level_tags` 中新增大驼峰全称独立标签 `MachineLearning`，与 `DeepLearning` 镜像对称并立。
 - **消歧定界规范**：
