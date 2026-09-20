@@ -1,3 +1,20 @@
+## [2026-09-20] chore/tags | 新增 RSI 独立顶层标签，将自我进化/改进体系全面归类至 RSI
+- **背景与指令**：用户指示 RSI（递归自我改进）跨越权重微调、外壳工程、记忆与元科研等多个领域；在广义定界下，库内所有“自我进化/自我改进”相关文章与概念统一归类到 `RSI` 标签体系（包括 Lilian Weng 论文、Self-Harness、JitRL、系统自动优化等）。
+- **白名单与代码更新**：
+  - 调用 `tag_manager.py add RSI` 写入 `tags.json` 的 `top_level_tags`。
+  - 同步更新 `scripts/vault_lint.py` 的 fallback 白名单配置。
+- **全库图谱级联落盘**：
+  - **概念页归类**：`概念_RSI递归自我改进.md`（`tags: [RSI]`）、`概念_Self-Harness.md`（补充 `RSI`）、`概念_Harness优化阶梯.md`（补充 `RSI`）、`概念_LLM系统自动优化方法论.md`（补充 `RSI`）。
+  - **来源与博文页归类**：`这是一篇把RSI讲明白的科普级综述.md`（`tags: [RSI]`）、`OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md`（补充 `RSI`）、`深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md`（补充 `RSI`）、`2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md`（补充 `RSI`）、`raw/out-blogs/读论文：JitRL.md`（补充 `tags: [RSI]`）。
+  - **总索引更新**：同步更新 `wiki/index.md` 对应 6 处条目的标签括号标注。
+- **确定性验收**：
+  - `tag_manager.py scan` 796 篇文档 100% 合规（0 违规）。
+  - `vault_lint.py lint` 全库健康扫描通过（0 errors, 0 broken links, 100% 索引挂载）。
+  - 27 组单元测试全量通过。
+
+## [2026-09-20] ingest | raw/articles/新模型Jev 爆红一周：不生成文字、只输出概率，却被玩出了花.md -> wiki/sources/新模型Jev_爆红一周_不生成文字只输出概率却被玩出了花.md (+ wiki/entities/实体_TypeSafe_AI.md, wiki/concepts/概念_RLCD校准决策强化学习.md)
+## [2026-09-20] ingest | raw/articles/这是一篇把RSI讲明白的科普级综述！.md -> wiki/sources/这是一篇把RSI讲明白的科普级综述.md (+ wiki/concepts/概念_RSI递归自我改进.md)
+
 # Wiki Log
 
 ## [2026-09-19] ingest | raw/articles/RAG夺命10连问，你能抗住第几问？.md -> wiki/sources/RAG夺命10连问，你能抗住第几问？.md

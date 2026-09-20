@@ -4,6 +4,7 @@ published: 2026-09-01
 draft: false
 description: ICML 2026 Spotlight 论文 JitRL 研读笔记：基于经验记忆检索与非参数优势估计，在冻结模型权重下实现测试时策略优化。
 tags:
+  - RSI
 ---
 # 读论文：JitRL - 免梯度更新的 LLM Agent 测试时强化学习
 

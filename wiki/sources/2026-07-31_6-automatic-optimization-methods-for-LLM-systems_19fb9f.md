@@ -1,9 +1,9 @@
 ---
 type: source
 tags:
-- LLM/arch
-- Skill/data-analysis
+- RSI
 - AI-Agent/prompt-engineering
+- LLM/arch
 summary: 介绍了六种在大模型系统中实现自动化优化的前沿方法（OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch），通过大模型自动反馈循环替代人工调优。
 sources:
 - raw/articles/2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md

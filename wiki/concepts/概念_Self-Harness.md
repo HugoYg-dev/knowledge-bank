@@ -1,6 +1,7 @@
 ---
 type: concept
 tags:
+- RSI
 - AI-Agent/coding
 summary: 将 AI 自我改进做成工程闭环的范式，通过“弱点挖掘—修改提议—保留集验证”或基于微内核的运行时热插拔（如 DSH Agent Loop 插件化）确保
   Harness 代码持续进化且无性能回归。

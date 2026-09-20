@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated_at": "2026-09-16",
+  "updated_at": "2026-09-20",
   "governance": {
     "allow_branch_root_in_overview": true,
     "enforce_leaf_for_sources": true
@@ -13,7 +13,8 @@
     "面试",
     "Life",
     "Recommendation",
-    "TTS"
+    "TTS",
+    "RSI"
   ],
   "branches": {
     "LLM": {

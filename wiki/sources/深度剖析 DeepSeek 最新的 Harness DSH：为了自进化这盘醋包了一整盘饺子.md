@@ -1,6 +1,7 @@
 ---
 type: source
 tags:
+- RSI
 - AI-Agent/coding
 summary: 深度剖析 DeepSeek DSH（DeepSeek Harness）与 Cordis 运行时的命令式微内核设计：将 Agent Loop 自身作为插件解耦，配合副作用跟踪、依赖响应与事务性
   HMR，为 Agent 运行中自进化（Self-Harness）提供底层基础设施。

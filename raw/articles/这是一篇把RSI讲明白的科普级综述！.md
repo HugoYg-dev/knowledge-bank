@@ -1,11 +1,18 @@
-# 这是一篇把RSI讲明白的科普级综述！
-
-- **作者 / 来源**：赵志民
-- **原文链接**：[https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A](https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A)
-
 ---
+title: 这是一篇把"RSI"讲明白的科普级综述！
+source: https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A
+author:
+  - "[[赵志民]]"
+published: 2026-09-20
+created: 2026-09-20
+description:
+tags:
+  - clippings
+  - RSI
+---
+赵志民 Datawhale *2026年9月19日 22:00*
 
-Datawhale干货 
+Datawhale干货
 
 ****作者：赵志民，Datawhale 成员****
 
@@ -31,8 +38,6 @@ OpenAI 把这项能力列为自我改进（Self-improvement）。GPT-5.6 Sol 得
 
 什么是 RSI：从自我改进到递归增益
 
-  
-
 这些新闻都在谈“自我改进”，却没有说明一个闭环究竟怎样才算合上。
 
 传统意义上的递归自我改进（RSI），指一个 AI 系统利用当前能力，去改进产生这份能力的认知机制。改进后的系统再参与下一轮改进。这里最容易混淆的是：会自我改进，不等于会自我加速。 一个系统可以在固定题库上越做越好，却没有变得更会设计下一轮训练。一家公司也可以因为大量使用智能体而研发提速，却没有形成由改进本身驱动的复利。
@@ -43,15 +48,11 @@ OpenAI 把这项能力列为自我改进（Self-improvement）。GPT-5.6 Sol 得
 
 本文采用下面这套框架。它不是学界唯一的标准定义，而是为了把经常混在一起的主张分开：
 
-![文章配图](https://mmbiz.qpic.cn/mmbiz_png/zW6S9vt0cSicFFMZJhiaia3nLP7h4q4UARCWBQHUZhBCqwRaqlbhUyTAwcrNibGsVdV7esMUsunic9DATKyPeOMUrHjIEqVibN3TCxLEaI8mibRmC4/640?wx_fmt=png&from=appmsg)
-
-  * 持久改进：有效变化能进入权重、记忆、工具、驾具或训练流程，而不是一次回答结束就消失。这里的权重也叫参数，就是模型在训练中不断调整、最终保存下来的那组数字。达成这一条，才谈得上自我改进——本文用这个词泛指输出、记忆、参数或驾具变好。
-
-  * 自主闭环：系统能在划定的边界内发现问题、提出修改、执行实验、评估结果并接纳更好的版本。新版本能在这条边界内参与下一轮改进，本文称为有界 RSI。
-
-  * 递归增益（也叫”点火”，ignition）：新版本不只在任务上分数更高，还比旧版本更擅长产生下一次改进。只有跨过这一条，”改进能力本身”才开始复利，本文称之为递归自我加速。
-
-  * 稳健与可控：增益在固定资源和隐藏评测下持续、能泛化到未见任务，同时不以评估污染、系统复杂度失控、对齐退化或不可审计为代价（对齐指让 AI 的行为符合人类意图和边界，而不只是把某个分数做高）。四条标准全部达成，才接近开放式 RSI。
+![文章配图](https://mmbiz.qpic.cn/mmbiz_png/zW6S9vt0cSicFFMZJhiaia3nLP7h4q4UARCWBQHUZhBCqwRaqlbhUyTAwcrNibGsVdV7esMUsunic9DATKyPeOMUrHjIEqVibN3TCxLEaI8mibRmC4/640?wx_fmt=png&from=appmsg#imgIndex=0)
+- 持久改进：有效变化能进入权重、记忆、工具、驾具或训练流程，而不是一次回答结束就消失。这里的权重也叫参数，就是模型在训练中不断调整、最终保存下来的那组数字。达成这一条，才谈得上自我改进——本文用这个词泛指输出、记忆、参数或驾具变好。
+- 自主闭环：系统能在划定的边界内发现问题、提出修改、执行实验、评估结果并接纳更好的版本。新版本能在这条边界内参与下一轮改进，本文称为有界 RSI。
+- 递归增益（也叫”点火”，ignition）：新版本不只在任务上分数更高，还比旧版本更擅长产生下一次改进。只有跨过这一条，”改进能力本身”才开始复利，本文称之为递归自我加速。
+- 稳健与可控：增益在固定资源和隐藏评测下持续、能泛化到未见任务，同时不以评估污染、系统复杂度失控、对齐退化或不可审计为代价（对齐指让 AI 的行为符合人类意图和边界，而不只是把某个分数做高）。四条标准全部达成，才接近开放式 RSI。
 
 目前，前两条已经出现，第三条尚无充分的公开证据，第四条更远未解决。有界闭环已经出现，不代表递归自我加速已经启动。 只有递归反馈足以抵消研究难度增加、迭代周期变长等阻力，改进才会进入自我放大区间。
 
@@ -65,9 +66,7 @@ OpenAI 把这项能力列为自我改进（Self-improvement）。GPT-5.6 Sol 得
 
 前史（1981—2017 年）：一个天才和他"学会作弊"的 AI
 
-  
-
-![文章配图](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cS9WhMWnDQItz9LX9elDvdpSkaic8pfib3boaPicW1LF5C9MUdePQL5aAC4vsoMibsItkAAzHP6MddylgcYYiaRsjibI9v46gMgTBicb60/640?wx_fmt=png&from=appmsg)
+![文章配图](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cS9WhMWnDQItz9LX9elDvdpSkaic8pfib3boaPicW1LF5C9MUdePQL5aAC4vsoMibsItkAAzHP6MddylgcYYiaRsjibI9v46gMgTBicb60/640?wx_fmt=png&from=appmsg#imgIndex=1)
 
 1981 年，Douglas Lenat 构建了一个名叫 EURISKO 的系统。它不仅用启发式规则解决问题，还能生成、修改和评价新的规则，甚至把这套机制用到自己身上。这在当时相当超前。
 
@@ -93,8 +92,6 @@ EURISKO 发现，提升真实能力并不是获得高分的唯一方式。某条
 
 第一次推进（2022–2023）：让AI从自己的错误中学习
 
-  
-
 前史所有方法卡在同一处：改进方向由人类事先写死。EURISKO 和 AlphaZero 依赖人类给定的评估函数，遗传算法依赖人类设计的适应度函数。系统能进化，却只能沿着人类划好的轨道前进。要往前走，第一步得先问：系统能不能不靠人类逐次介入，自己判断当前输出的好坏，并产生改进方向？这种能指向下一次修改的反馈，本文称为“改进信号”。
 
 这一步在过去做不到，因为机器读不懂“什么叫好答案”。到 2022 年下半年，大语言模型（Large Language Model，LLM）已经既能理解语言，也能评价一段文字的好坏。让系统自己产生语言反馈，第一次成为通用方法。这条路线的关键约束是：全程一个参数都不改，改进主要发生在推理过程和外部记忆里。
@@ -116,8 +113,6 @@ Reflexion 的情景记忆可以跨任务保留，因此已经部分满足“持�
 04
 
 第二次推进（2022–2024）：用自己生成的数据训练自己
-
-  
 
 那就把错题本焊进模型的身体里。这次推进要解决的问题是：让自主产生的改进信号写入参数，形成真正持久的能力提升。 没有这一步，就没有“后继版本比前代更强”的递归结构，也就谈不上 RSI。
 
@@ -145,13 +140,11 @@ STaR 的过滤门槛是固定的，而 SPIN（Self-Play Fine-Tuning）（ICML'24
 
 一句话：系统能自己生成数据、自己作答，却还不能自己批改。只要那支红笔还攥在人类手里，天花板就仍由人类划定。
 
-![文章配图](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cS9j2jScFondMPrSSYcQHBMdJdyawxzRT1Iv6Cfzib8ibnRlafAggV5TShN5ibydibu3Lg8v4wJo0NXT6Hz04jFRFSaqbuaxAhthoKc/640?wx_fmt=png&from=appmsg)
+![文章配图](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cS9j2jScFondMPrSSYcQHBMdJdyawxzRT1Iv6Cfzib8ibnRlafAggV5TShN5ibydibu3Lg8v4wJo0NXT6Hz04jFRFSaqbuaxAhthoKc/640?wx_fmt=png&from=appmsg#imgIndex=2)
 
 05
 
 第三次推进（2022–2025）：把更多打分权交给 AI
-
-  
 
 那支红笔，能不能也交给 AI？只要打分、给反馈还得靠人工标注或人类写的验证器，改进方向就仍然掌握在人类手里。这里的验证器，是能按照预设规则自动判断结果对错的程序。第三次推进要减少的正是这层依赖：更多反馈信号能不能由 AI 自己生成？
 
@@ -183,8 +176,6 @@ CAI 到 Meta-Rewarding：从评价回答到评价评委
 
 第四次推进（2023–2026）：让AI修改自己的运行方式
 
-  
-
 前三次推进主要在改输出、记忆、参数和反馈信号。但一个 AI 系统的能力不只由参数决定，还取决于围绕模型运行的整套控制系统：提示词怎么写、调用哪些工具、按什么流程编排、记忆存在哪、权限到哪、结果怎么评判。
 
 Lilian Weng 在 2026 年的长文中把这一整层称为驾具（harness）。它就像套在马身上的挽具，不只托着模型干活，也约束模型往哪走、怎么走、能走多远。驾具决定了模型能力能否转化为可靠行动。
@@ -197,11 +188,9 @@ Lilian Weng 在 2026 年的长文中把这一整层称为驾具（harness）。�
 
 驾具改进有一条清晰的递进阶梯。被优化的对象从浅到深，一级比一级更接近“系统如何思考”的内核：
 
-  *   *   *   *   * 
-
-    
-    
-    flowchart LR    A["提示词<br/>改措辞"] --> B["上下文结构<br/>改喂什么"]    B --> C["工作流<br/>改步骤"]    C --> D["驾具代码<br/>改整个编排"]    D --> E["优化器代码<br/>改“怎么改”本身"]
+```css
+flowchart LR    A["提示词<br/>改措辞"] --> B["上下文结构<br/>改喂什么"]    B --> C["工作流<br/>改步骤"]    C --> D["驾具代码<br/>改整个编排"]    D --> E["优化器代码<br/>改“怎么改”本身"]
+```
 
 越往里，改动的杠杆越大，也越接近“系统自己重写运行逻辑”。下面就沿着这条阶梯，从浅到深依次来看。
 
@@ -255,8 +244,6 @@ DGM 的改进信号来自固定测试集。MetaClaw（2026）则让智能体在�
 
 第五次推进（2025–2026）：把学习与研究过程放进闭环
 
-  
-
 修改驾具是一条路线，但驾具改的是系统在运行时怎么执行任务——调用哪个工具、走哪条流程、什么时候停。第五次推进改的是更上游的一层：系统用来学习的素材和场地本身——练习题从哪来、练习环境长什么样、训练数据怎么生成。前者决定的是已有能力如何被调用，后者决定的是下一版模型会在什么样的经验上被训练出来。两者的时间线高度重叠，因为很多团队是同时在做这两件事，但改动的对象并不相同：一个动的是推理时的控制结构，一个动的是训练前的输入供给。
 
 于是另一条路线开始扩大闭环所覆盖的范围：整个学习与研究过程能否成为系统的操作对象？ 系统开始自己生成训练材料、选择练习策略、运行实验、修改训练流程，再把结果写回模型或驾具。
@@ -297,9 +284,7 @@ OpenAI 的“自动研究实习生”已经能排障、优化 GPU 内核程序�
 
 2026 年夏：自动研究系统开始改进自身的研究方式
 
-  
-
-![文章配图](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cSichvs80Lic6AQ0KKQ9cry42Y3pTT8Dp4wOwpaOyUKxDibpZXY2wLnLZKODlRrVGD5jP87ua9xwPU0ROB0NL82JhoMt8E81rjmQFU/640?wx_fmt=png&from=appmsg)
+![文章配图](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cSichvs80Lic6AQ0KKQ9cry42Y3pTT8Dp4wOwpaOyUKxDibpZXY2wLnLZKODlRrVGD5jP87ua9xwPU0ROB0NL82JhoMt8E81rjmQFU/640?wx_fmt=png&from=appmsg#imgIndex=3)
 
 前五次推进不断扩大“系统可以修改什么”。2026 年夏天出现的一组工作，则开始正面追问：能不能让自动研究系统去研究并改进自动研究系统本身？
 
@@ -327,11 +312,9 @@ Weco 把这称为第一级（Level 1）：净正改进。这不是行业通用�
 
 统一视角：如何判断RSI走到了哪一步
 
-  
-
 下表右侧两行（元研究闭环）几乎全部来自 2026 年最近数月的 arXiv 预印本，其中 AIDE² 更是团队自报的博客结果，尚未经过同行评审。这些结论应被视为阶段性观察，而不是已经沉淀的共识——它们标出的是“目前最值得认真对待的信号在哪里”，不是“已经证明了什么”。
 
-![](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cSiclchEe5lIpe2ULCHiafTQGFGaEiavhtz9kll9B65uCUxKNicN7tqmFSo2Ve3Takw6BFxm1ZYT83CPuRyW5lHEic7DQwn1lxRnZJtM/640?wx_fmt=png&from=appmsg)
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/zW6S9vt0cSiclchEe5lIpe2ULCHiafTQGFGaEiavhtz9kll9B65uCUxKNicN7tqmFSo2Ve3Takw6BFxm1ZYT83CPuRyW5lHEic7DQwn1lxRnZJtM/640?wx_fmt=png&from=appmsg#imgIndex=4)
 
 表中的 ✅ 表示已有较直接证据，⚠️ 表示只在有限条件下成立或证据仍不充分，❌ 表示尚未展示。
 
@@ -365,8 +348,6 @@ AutoResearchEval 检查了 800 条真实科研轨迹，归纳出 45 类失败。
 
 结语：自我改进闭环已经出现，递归增益仍待证明
 
-  
-
 从 1981 年 EURISKO 学会“自欺欺人”，到 2026 年模型开始参与评估、修改驾具、更新策略和训练后继，更准确的结论是：有界、可测量的自我改进闭环已经出现，甚至开始产生净正收益，但尚无充分公开证据表明，改进后的系统持续提升了自身的改进能力。 因此，闭环合上的方式比闭环合上本身更重要。
 
 一个在评判标准漂移中合上的闭环，会越来越擅长优化它自己扭曲的目标。一个在数据分布坍缩中合上的闭环，会越来越擅长一个越来越窄的任务子集。一个在对齐偏差放大中合上的闭环，会越来越有能力、越来越难以校正。
@@ -379,13 +360,14 @@ AutoResearchEval 检查了 800 条真实科研轨迹，归纳出 45 类失败。
 
 参考文献
 
-  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   *   * 
+```perl
+1. Darwin Among the Machines（Samuel Butler, 1863）：https://en.wikipedia.org/wiki/Darwin_among_the_Machines2. EURISKO：Lenat, D. B. (1982). The Nature of Heuristics. Artificial Intelligence, 19(2), 189–249.3. STaR（NeurIPS 2022）：https://arxiv.org/abs/2203.144654. Constitutional AI（Anthropic, 2022）：https://arxiv.org/abs/2212.080735. Reflexion（NeurIPS 2023）：https://arxiv.org/abs/2303.113666. OPRO（ICLR 2024）：https://arxiv.org/abs/2309.034097. SPIN（ICML 2024）：https://arxiv.org/abs/2401.013358. Self-Rewarding Language Models（ICML 2024）：https://arxiv.org/abs/2401.100209. Meta-Rewarding（2024）：https://arxiv.org/abs/2407.1959410. ADAS（ICLR 2025）：https://arxiv.org/abs/2408.0843511. AFlow（ICLR 2025）：https://arxiv.org/abs/2410.1076212. Darwin Gödel Machine（DGM, 2025）：https://arxiv.org/abs/2505.2295413. Self-Harness（2026）：https://arxiv.org/abs/2606.0949814. WebEvolver（EMNLP 2025）：https://arxiv.org/abs/2504.2102415. SEAL（NeurIPS 2025）：https://arxiv.org/abs/2506.1094316. MetaClaw（arXiv 2026）：https://arxiv.org/abs/2603.1718717. AgentX（快手, 2026）：https://arxiv.org/abs/2606.2685918. Bilevel Autoresearch（2026）：https://arxiv.org/abs/2603.2342019. Recursive Harness Self-Improvement（2026）：https://arxiv.org/abs/2607.1552420. Motus2（2026）：https://arxiv.org/abs/2608.3023721. AI4AI-Bench（2026）：https://arxiv.org/abs/2608.2031822. AutoResearchEval（2026）：https://arxiv.org/abs/2608.1490523. Self-Improvements in Modern Agentic Systems（综述, 2026）：https://arxiv.org/abs/2607.1310424. Recursive Self-Improvement in AI（综述, 2026）：https://arxiv.org/abs/2607.0766325. Recursive Criticality of AI Self-Improvement（2026）：https://arxiv.org/abs/2609.00137新闻与观点来源1. OpenAI GPT-5.6 与 RSI Index：https://openai.com/index/gpt-5-6/2. OpenAI 内部研究加速报告：https://openai.com/index/research-acceleration-view-inside-openai/3. Jakub Pachocki《An Alien Mind》：https://openai.com/index/an-alien-mind/4. Google Gemini 3.8 Flash 与递归模型精炼循环：https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/5. AIDE²：Level 1 RSI 的团队实验报告（Weco AI）：https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement6. 快手 AgentX：推荐系统自我迭代：https://mp.weixin.qq.com/s/7aW9zaGkwq-hzv25U3aN8A7. Lilian Weng：Harness Engineering for Self-Improvement：https://lilianweng.github.io/posts/2026-07-04-harness/
+```
 
-    
-    
-    1. Darwin Among the Machines（Samuel Butler, 1863）：https://en.wikipedia.org/wiki/Darwin_among_the_Machines2. EURISKO：Lenat, D. B. (1982). The Nature of Heuristics. Artificial Intelligence, 19(2), 189–249.3. STaR（NeurIPS 2022）：https://arxiv.org/abs/2203.144654. Constitutional AI（Anthropic, 2022）：https://arxiv.org/abs/2212.080735. Reflexion（NeurIPS 2023）：https://arxiv.org/abs/2303.113666. OPRO（ICLR 2024）：https://arxiv.org/abs/2309.034097. SPIN（ICML 2024）：https://arxiv.org/abs/2401.013358. Self-Rewarding Language Models（ICML 2024）：https://arxiv.org/abs/2401.100209. Meta-Rewarding（2024）：https://arxiv.org/abs/2407.1959410. ADAS（ICLR 2025）：https://arxiv.org/abs/2408.0843511. AFlow（ICLR 2025）：https://arxiv.org/abs/2410.1076212. Darwin Gödel Machine（DGM, 2025）：https://arxiv.org/abs/2505.2295413. Self-Harness（2026）：https://arxiv.org/abs/2606.0949814. WebEvolver（EMNLP 2025）：https://arxiv.org/abs/2504.2102415. SEAL（NeurIPS 2025）：https://arxiv.org/abs/2506.1094316. MetaClaw（arXiv 2026）：https://arxiv.org/abs/2603.1718717. AgentX（快手, 2026）：https://arxiv.org/abs/2606.2685918. Bilevel Autoresearch（2026）：https://arxiv.org/abs/2603.2342019. Recursive Harness Self-Improvement（2026）：https://arxiv.org/abs/2607.1552420. Motus2（2026）：https://arxiv.org/abs/2608.3023721. AI4AI-Bench（2026）：https://arxiv.org/abs/2608.2031822. AutoResearchEval（2026）：https://arxiv.org/abs/2608.1490523. Self-Improvements in Modern Agentic Systems（综述, 2026）：https://arxiv.org/abs/2607.1310424. Recursive Self-Improvement in AI（综述, 2026）：https://arxiv.org/abs/2607.0766325. Recursive Criticality of AI Self-Improvement（2026）：https://arxiv.org/abs/2609.00137新闻与观点来源1. OpenAI GPT-5.6 与 RSI Index：https://openai.com/index/gpt-5-6/2. OpenAI 内部研究加速报告：https://openai.com/index/research-acceleration-view-inside-openai/3. Jakub Pachocki《An Alien Mind》：https://openai.com/index/an-alien-mind/4. Google Gemini 3.8 Flash 与递归模型精炼循环：https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/5. AIDE²：Level 1 RSI 的团队实验报告（Weco AI）：https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement6. 快手 AgentX：推荐系统自我迭代：https://mp.weixin.qq.com/s/7aW9zaGkwq-hzv25U3aN8A7. Lilian Weng：Harness Engineering for Self-Improvement：https://lilianweng.github.io/posts/2026-07-04-harness/
+![图片](https://mmbiz.qpic.cn/mmbiz_png/vI9nYe94fsGxu3P5YibTO899okS0X9WaLmQCtia4U8Eu1xWCz9t8Qtq9PH6T1bTcxibiaCIkGzAxpeRkRFYqibVmwSw/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1&tp=webp#imgIndex=2)
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/vI9nYe94fsGxu3P5YibTO899okS0X9WaLmQCtia4U8Eu1xWCz9t8Qtq9PH6T1bTcxibiaCIkGzAxpeRkRFYqibVmwSw/640?wx_fmt=other&wxfrom=5&wx_lazy=1&wx_co=1&tp=webp#imgIndex=2)**  
-**
+**一起“ **点** **赞”** **三连** ↓**
 
-**一起“**点****赞 ”****三连** ↓**
+闪记
+
+复制 LaTeX 公式

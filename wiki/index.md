@@ -3,6 +3,8 @@
 > 内容索引，每次 ingest 后更新。按类型分组。
 
 ## Sources
+- [[新模型Jev_爆红一周_不生成文字只输出概率却被玩出了花]] — TypeSafe AI 推出非自回归概率决策模型 Jev 与 RLCD 范式（AI-Agent/tool-calling, LLM/inference）
+- [[这是一篇把RSI讲明白的科普级综述]] — 递归自我改进（RSI）从 EURISKO 到元研究系统的四层标准与四大安全门禁（RSI）
 
 - [[RAG夺命10连问，你能抗住第几问？]] — 全面总结大厂大模型应用方向高频考点：RAG核心原理、与SFT选型对比、切块与检索优化、评估指标体系、高阶纠错机制及Spring AI Alibaba工程落地方案（面试, RAG/retrieval）
 - [[Loop Engineering 详解：从管理执行到设计自收敛的循环]] — 深度剖析 Loop Engineering 从一阶 AI Manager 到二阶 Senior Manager 的范式升维：将 evaluation harness、observability、SOP、maker/checker 与 data flywheel 固化为系统组件，并阐明边界约束优于 TDD 路径约束以及任务自动发现的发散性局限（AI-Agent/coding, AI-Agent/context-engineering, AI-Agent/tool-calling）
@@ -34,7 +36,7 @@
 - [[阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施]] — 阿里开源 local-first 代码搜索基建 zvec-grep (zg)，以 BM25 + Vector + RRF 混合检索桥接自然语言意图与代码标识符，重构 Agent 上下文获取（AI-Agent/coding, AI-Agent/tool-calling, RAG/retrieval）
 
 - [[搜索没有变便宜，但 Agent 把它拆成了新的供应链]] — 鸭哥深度剖析 Agent 时代 Web Search 供应链解耦为代理层、定向语义索引、上下文精炼与云端运行时四层，以及分发渠道向模型 API 运行时迁移（AI-Agent/deep-research, AI-Agent/infra, RAG/retrieval）
-- [[深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]] — 鸭哥深度对比 DeepSeek DSH 命令式微内核与 Codex 声明式插件世界观，剖析 Agent Loop 插件化与自进化基础设施（AI-Agent/harness, AI-Agent/coding）
+- [[深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]] — 鸭哥深度对比 DeepSeek DSH 命令式微内核与 Codex 声明式插件世界观，剖析 Agent Loop 插件化与自进化基础设施（RSI, AI-Agent/coding）
 
 - [[Firecrawl 新工具开源，anydoc，将各种输入转换为md]] — Firecrawl 开源纯 Rust 多格式文档转 Markdown 工具 anydoc，中间稿两阶段解析与 Agent Skill 集成（AI-Agent/tool-calling, RAG/chunking）
 - [[刚刚，DeepSeek Harness震撼开源：一切皆插件]] — DeepSeek 开源基于 Cordis 微内核的智能体框架 DeepSeek Harness，主张一切皆插件、权威 Session Log 事件源与生命周期调度管控（AI-Agent/harness, AI-Agent/coding）
@@ -204,7 +206,7 @@
 - [[后训练认知_SFT_vs_RL_记忆与遗忘机制]] — 普林斯顿陈丹琦团队发现 RL 抗遗忘优于 SFT，根源在于 on-policy 数据分布，而非算法形式（LLM/training/post-train）
 - [[2026程序员必读的向量数据库原理与选型指南]] — 系统剖析 ANN 算法（HNSW/IVF/DiskANN）与标量过滤，横向对比 8 大向量数据库选型决策树（RAG/embedding, Infra/storage）
 - [[Karpathy推文引发的LLM_Wiki知识库搭建实践]] — Andrej Karpathy 提出的 LLM Wiki 知识编译范式、三层架构、四大核心操作与 80 年思想谱系（Skill/knowledge-bank, AI-Agent/coding）
-- [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]] — Lilian Weng 剖析 Harness Engineering：递归自我改进（RSI）近期的近路不是改模型权重，而是围绕模型搭建的 Harness 系统（AI-Agent/harness, AI-Agent/coding）
+- [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]] — Lilian Weng 剖析 Harness Engineering：递归自我改进（RSI）近期的近路不是改模型权重，而是围绕模型搭建的 Harness 系统（RSI, AI-Agent/coding）
 - [[wiki/sources/Vault死链治理与单向推导架构维护复盘]] — Hugo Yang 总结 Obsidian 知识库死链假性鉴别（重定向/去前缀/待建节点）、级联清理行内安全感知与单向推导管线维护纪律（Skill/knowledge-bank）
 - [[XGBoost_SHAP一键生成10张出版级模型解释图]] — 利用 XGBoost 与 SHAP 构建 10 张高分辨率出版级可视化图表（MachineLearning, Skill/data-analysis, Skill/python）
 - [[不用title你怎么介绍自己]] — 反思职业 Title 与 Ego 绑定，用动词定义自己与探索核心问题（Life）
@@ -288,12 +290,13 @@
 - [[2026-07-27_The-anatomy-of-diffusion-LLMs_19fa57]] — 介绍了扩散语言模型（dLLMs）的基本原理、物理架构优势（从 memory-bound 转向 compute-bound），以及掩码扩散、Block Diffusion、注意力掩码退火与推理加速技术。（LLM, Diffusion-LLM, Autoregressive, Inference-Optimization）
 - [[2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9]] — 详细介绍了五种主流AI计算硬件架构（CPU、GPU、TPU、NPU和LPU）内部逻辑设计的物理差异与核心权衡，展现了AI计算芯片从通用灵活性向极致专用化的演进过程。（AI-Hardware/Accelerator, Computer-Architecture/Processor）
 - [[2026-07-28_Technical-LLM-interview-question!_19faa9]] — 介绍了 DigitalOcean 提出的基于确定性、轻量化行为信号对生产环境 Agent 交互轨迹进行高效低成本筛选过滤的采样策略，大幅提升了人工标注的效率。（AI-Agent/evaluation, Software-Engineering/Observability）
-- [[2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f]] — 介绍了六种在大模型系统中实现自动化优化的前沿方法（OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch），通过大模型自动反馈循环替代人工调优。（llm, optimization, prompt-engineering, auto-tuning）
+- [[2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f]] — 介绍了六种在大模型系统中实现自动化优化的前沿方法（OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch），通过大模型自动反馈循环替代人工调优。（RSI, AI-Agent/prompt-engineering, LLM/arch）
 - [[2026-07-31_Subagents-vs.-Agent-Teams_19fb9f]] — 对比了 Claude 提供的两种多智能体范式：Sub-agents（基于隔离实现并行与 Context 压缩，单向反馈）和 Agent Teams（基于协同通信与共享状态，双向协作），并从第一性原理探讨了以上下文为中心的分治逻辑。（multi-agent, sub-agents, agent-teams, architecture）
 - [[2026-08-01_Double-Descent-vs.-Bias-Variance-Trade-off_19fbed_part3]] — 介绍机器学习与深度学习中的双下降（Double Descent）现象，该现象对传统的偏差-方差折中理论提出了挑战，指出在模型复杂度跨越临界插值界限后测试误差可能会二次下降。（machine-learning, double-descent, generalization）
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[概念_RLCD校准决策强化学习]] — 面向判别式决策的置信度校准强化学习范式（LLM/training, AI-Agent/tool-calling）
 - [[concepts/概念_DiT|概念_DiT]] — Diffusion Transformer，扩散模型 SOTA 架构（CV/arch）
 - [[concepts/概念_Kimi_Delta_Attention|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）
 
@@ -585,9 +588,10 @@
 - [[概念_Delta_Attention与增量矩阵缓存]] — Kimi K3 采用的注意力优化机制，使用固定大小矩阵与 Delta 规则更新，实现线性计算与 $O(1)$ 空间开销
 - [[概念_分位数回归与Pinball_Loss]] — 弹球损失（Pinball Loss）的定义与不对称几何拉伸推导，及多 percentile 回归与 LightGBM 区间估算的工程价值。（machine-learning, regression, loss-function）
 - [[概念_Agent内存与状态管理]] — 深度对比 State 与 Memory 两个维度的定义与作用边界，构建在宿主系统（Harness Engineering）中单步 Checkpoint 与 Scope 隔离的协作逻辑。（AI-Agent/harness, AI-Agent/memory, state-management）
-- [[概念_LLM系统自动优化方法论]] — 介绍了以大模型优化大模型系统的反馈演进闭环，横向对比 OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch 等 6 大自动调优技术。（llm, optimization, auto-prompt, software-evolution）
+- [[概念_LLM系统自动优化方法论]] — 介绍了以大模型优化大模型系统的反馈演进闭环，横向对比 OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch 等 6 大自动调优技术。（RSI, AI-Agent/prompt-engineering, LLM/arch）
 
 ## Entities
+- [[实体_TypeSafe_AI]] — 由前 OpenAI 成员 Diogo Almeida 创办的非自回归决策模型研发机构（AI-Agent/tool-calling, LLM/inference）
 
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
@@ -806,9 +810,9 @@
 
 ### AI-Agent/harness & Skill/knowledge-bank（Batch 2）
 - [[概念_Harness_Engineering]] — 围绕基础模型构建的宿主与编排系统工程，编排执行/思考/工具/上下文/产物与评估（AI-Agent/harness, AI-Agent/coding）
-- [[概念_RSI递归自我改进]] — AI 系统自我迭代优化机制，现代 Agent 范式通过 Harness 优化而非直接改写权重（AI-Agent/harness, LLM/reasoning）
-- [[概念_Harness优化阶梯]] — Agent 系统优化对象五级演进：Prompt -> 结构化上下文 -> 工作流 -> Harness 代码 -> 优化器代码（AI-Agent/harness, AI-Agent/context-engineering）
-- [[概念_Self-Harness]] — AI 自我改进工程闭环，通过“弱点挖掘—修改提议—保留集验证”确保 Harness 代码持续进化（AI-Agent/harness）
+- [[概念_RSI递归自我改进]] — AI 系统自我迭代优化机制，现代 Agent 范式通过 Harness 优化而非直接改写权重（RSI）
+- [[概念_Harness优化阶梯]] — Agent 系统优化对象五级演进：Prompt -> 结构化上下文 -> 工作流 -> Harness 代码 -> 优化器代码（RSI, AI-Agent/context-engineering）
+- [[概念_Self-Harness]] — AI 自我改进工程闭环，通过“弱点挖掘—修改提议—保留集验证”确保 Harness 代码持续进化（RSI, AI-Agent/coding）
 - [[概念_假性死链鉴别]] — 图谱审计中死链三维甄别法：命名不匹配重定向、多余路径前缀去前缀化、待建节点按需生长（Skill/knowledge-bank）
 - [[概念_级联清理安全边界]] — 物理底座删除时的级联清理红线，包含上下文半衰期解耦与行内安全感知（Inline Safety Sensing）（Skill/knowledge-bank）
 - [[概念_单向推导数据管线]] — LLM Wiki 数据流向纪律：raw/ -> wiki/sources/ -> wiki/entities|concepts，严禁末端产物越级直连 raw/（Skill/knowledge-bank）

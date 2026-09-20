@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- AI-Agent/coding
+- RSI
 - AI-Agent/context-engineering
 summary: Agent 系统优化对象的五级演进阶梯：Prompt -> 结构化上下文 -> 工作流 -> Harness 代码 -> 优化器代码。
 sources:
