@@ -1,5 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 Knowledge Bank Upstream Sources Auditor and Cleaner
 审查并纠偏 wiki/entities/ 与 wiki/concepts/ 页面中的 sources 上游来源字段。

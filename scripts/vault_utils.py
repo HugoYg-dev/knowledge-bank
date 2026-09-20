@@ -1,5 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 scripts/vault_utils.py - 知识库不可变基础工具库 (Pure Infrastructure Layer)
 

@@ -1,5 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 scripts/test_vault_utils.py - vault_utils 基础工具库单元测试套件
 """

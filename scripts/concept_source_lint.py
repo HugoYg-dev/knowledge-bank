@@ -1,5 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 Concept Upstream Sources Analysis and Deep Cleanup Tool
 针对 wiki/concepts/ 目录下的所有概念页面进行「上游来源（Upstream Sources）独立分析与深度清理」

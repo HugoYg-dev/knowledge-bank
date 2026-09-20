@@ -388,19 +388,34 @@ def fetch_canonical_article(
     api_key: str = GHOST_CONTENT_KEY,
     base_url: str = GHOST_API_BASE,
     timeout: float = 10.0,
+    channel: str = "auto",
 ) -> dict[str, Any] | None:
     """探测并拉取 Ghost 官网标准长文版本。
 
-    决议链：
-    1. 候选 URL 提取 Slug -> Ghost API（过滤非 /p/ 课程）
-    2. 标题规范化 Slug -> Ghost API（校验 /p/ 与权限）
-    3. 标题前缀模糊检索 -> Ghost API（校验 /p/ 与权限）
-    4. Jina Reader 免渲染抓取 -> Level 1 Fallback（校验 /p/ 与排除 404）
-    5. 若全失败 -> 返回 None (由上层安全降级为 Level 2 邮件原生 HTML)
+    参数：
+    - channel: 抓取通道决议策略 ("auto", "ghost", "jina")。
+      - "auto": 默认 4 级容灾决议链 (Ghost Slug -> Ghost 标题搜索 -> Jina Reader -> 失败兜底)；
+      - "ghost": 仅尝试 Ghost API，不触发 Jina 降级；
+      - "jina": 跳过 Ghost API，直接走 Jina Reader 抓取。
     """
     try:
+        channel_norm = channel.lower() if isinstance(channel, str) else "auto"
         post = None
         target_slug: str | None = None
+
+        # 若指定纯 Jina 通道，直接解析 slug 并抓取
+        if channel_norm == "jina":
+            if candidate_urls:
+                for url in candidate_urls:
+                    if is_public_article_url(url):
+                        target_slug = extract_slug_from_url(url)
+                        if target_slug:
+                            break
+            if not target_slug and title:
+                target_slug = slugify(title)
+            if target_slug:
+                return fetch_jina_reader_post(target_slug, timeout=timeout)
+            return None
 
         # 1. 候选 URL 优先级最高（必须先经过 is_public_article_url 校验）
         if candidate_urls:
@@ -445,8 +460,8 @@ def fetch_canonical_article(
                 "published_at": post.get("published_at", ""),
             }
 
-        # 5. Level 1 降级：尝试 Jina Reader
-        if target_slug:
+        # 5. Level 1 降级：尝试 Jina Reader (若 channel=="ghost" 则跳过)
+        if channel_norm != "ghost" and target_slug:
             jina_post = fetch_jina_reader_post(target_slug, timeout=timeout)
             if jina_post:
                 logger.info("Jina Reader fallback succeeded for slug '%s'", target_slug)

@@ -1,3 +1,8 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["beautifulsoup4>=4.12", "html2text>=2024.2.26", "PySocks>=1.7.1", "pyyaml>=6.0"]
+# ///
+
 import base64
 import json
 import tempfile

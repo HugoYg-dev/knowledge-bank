@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["beautifulsoup4>=4.12", "html2text>=2024.2.26", "PySocks>=1.7.1"]
+# dependencies = ["beautifulsoup4>=4.12", "html2text>=2024.2.26", "PySocks>=1.7.1", "pyyaml>=6.0"]
 # ///
 
 """Daily Dose of Data Science (dailydoseofds) 官网长文增强测试套件。
@@ -739,6 +739,101 @@ class TestMailPipelineWebEnhancement(unittest.TestCase):
         self.assertEqual(art["status"], "ingested")
         self.assertEqual(art["content_tier"], "web_canonical")
         self.assertEqual(art["canonical_url"], "https://www.dailydoseofds.com/p/gpu/")
+
+    def test_check_web_upgrades_single_target_and_pending_only(self) -> None:
+        """测试 check_web_upgrades 支持单篇 target 与 pending_only 增量跳过。"""
+        # 创建两篇归档文章：一篇已是 web_canonical，另一篇是 email_fallback
+        f1 = self.archive_dir / "2026-08-01_Article-One_111.md"
+        f1.write_text(
+            '---\nsource_key: "dailydoseofds"\ntitle: "Article One"\ncontent_tier: "web_canonical"\ncanonical_url: "https://www.dailydoseofds.com/p/article-one/"\n---\n\n## Section 1\nSome body\n',
+            encoding="utf-8",
+        )
+        f2 = self.archive_dir / "2026-08-02_Article-Two_222.md"
+        f2.write_text(
+            '---\nsource_key: "dailydoseofds"\ntitle: "Article Two"\ncontent_tier: "email_fallback"\n---\n\nShort email body\n',
+            encoding="utf-8",
+        )
+
+        with unittest.mock.patch.object(mail_pipeline.dailydoseofds, "fetch_canonical_article") as mock_fetch:
+            mock_fetch.return_value = {
+                "title": "Article Two",
+                "slug": "article-two",
+                "canonical_url": "https://www.dailydoseofds.com/p/article-two/",
+                "body": "## Section 1\nExpanded body with code:\n```python\nprint(1)\n```\n",
+                "content_tier": "web_canonical",
+            }
+
+            # 1. 测试 pending_only: f1 已是 web_canonical，应跳过 mock_fetch 调用
+            results = mail_pipeline.check_web_upgrades(pending_only=True)
+            self.assertEqual(len(results), 2)
+            res1 = next(r for r in results if r["file"] == f1.name)
+            self.assertEqual(res1["status"], "up_to_date")
+            self.assertIn("已跳过网络检测", res1["recommendation"])
+
+            # mock_fetch 只应针对 f2 触发 1 次，而不是 2 次
+            self.assertEqual(mock_fetch.call_count, 1)
+
+            # 2. 测试单篇 target 过滤
+            mock_fetch.reset_mock()
+            single_res = mail_pipeline.check_web_upgrades(target=f2.name)
+            self.assertEqual(len(single_res), 1)
+            self.assertEqual(single_res[0]["file"], f2.name)
+            self.assertEqual(single_res[0]["status"], "upgrade_available")
+            self.assertEqual(mock_fetch.call_count, 1)
+
+    def test_diff_web_article_headings_and_diff(self) -> None:
+        """测试 diff_web_article 正确提取章节目录结构及 Unified Diff。"""
+        f = self.archive_dir / "2026-08-03_Diff-Test_333.md"
+        f.write_text(
+            '---\nsource_key: "dailydoseofds"\ntitle: "Diff Test"\ncontent_tier: "email_fallback"\n---\n\n## Local Section 1\nOld content\n',
+            encoding="utf-8",
+        )
+
+        with unittest.mock.patch.object(mail_pipeline.dailydoseofds, "fetch_canonical_article") as mock_fetch:
+            mock_fetch.return_value = {
+                "title": "Diff Test",
+                "slug": "diff-test",
+                "canonical_url": "https://www.dailydoseofds.com/p/diff-test/",
+                "body": "## Web Section 1\nNew content\n\n### Web Subsection\nDetail",
+                "content_tier": "web_canonical",
+            }
+
+            diff_data = mail_pipeline.diff_web_article(target=str(f))
+            self.assertEqual(diff_data["file"], f.name)
+            self.assertEqual(diff_data["local_headings"], ["## Local Section 1"])
+            self.assertEqual(diff_data["web_headings"], ["## Web Section 1", "### Web Subsection"])
+            self.assertGreater(len(diff_data["diff_lines"]), 0)
+            diff_text = "".join(diff_data["diff_lines"])
+            self.assertIn("-Old content", diff_text)
+            self.assertIn("+New content", diff_text)
+
+    def test_upgrade_article_dry_run_and_diff(self) -> None:
+        """测试 upgrade_article 的 --dry-run 预览机制不修改文件。"""
+        f = self.archive_dir / "2026-08-04_Dryrun-Test_444.md"
+        original_content = (
+            '---\nsource_key: "dailydoseofds"\ntitle: "Dryrun Test"\ncontent_tier: "email_fallback"\n---\n\nOriginal body\n'
+        )
+        f.write_text(original_content, encoding="utf-8")
+        data = {"schema_version": 2, "emails": {}}
+
+        with unittest.mock.patch.object(mail_pipeline.dailydoseofds, "fetch_canonical_article") as mock_fetch:
+            mock_fetch.return_value = {
+                "title": "Dryrun Test",
+                "slug": "dryrun-test",
+                "canonical_url": "https://www.dailydoseofds.com/p/dryrun-test/",
+                "body": "New full web body",
+                "content_tier": "web_canonical",
+            }
+
+            # 执行 dry_run
+            mail_pipeline.upgrade_article(data, target=str(f), dry_run=True, show_diff=True)
+            # 验证文件并未被物理覆盖
+            self.assertEqual(f.read_text(encoding="utf-8"), original_content)
+
+            # 执行物理升级
+            mail_pipeline.upgrade_article(data, target=str(f), dry_run=False)
+            self.assertIn("content_tier: \"web_canonical\"", f.read_text(encoding="utf-8"))
+            self.assertIn("New full web body", f.read_text(encoding="utf-8"))
 
 
 class TestLiveGhostApi(unittest.TestCase):

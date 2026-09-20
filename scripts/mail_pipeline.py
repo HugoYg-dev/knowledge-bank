@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["beautifulsoup4>=4.12", "html2text>=2024.2.26", "PySocks>=1.7.1"]
+# dependencies = ["beautifulsoup4>=4.12", "html2text>=2024.2.26", "PySocks>=1.7.1", "pyyaml>=6.0"]
 # ///
 
 """多来源 Gmail 星标邮件同步、路由与文章状态对账（基于原生 IMAP + App Password）。
@@ -21,6 +21,7 @@ import base64
 from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import difflib
 import email
 from email.header import decode_header
 from email.utils import parseaddr
@@ -669,13 +670,60 @@ def count_code_blocks(text: str) -> int:
     return len(re.findall(r"^```", text, re.MULTILINE)) // 2
 
 
-def check_web_upgrades(source_key: str = "dailydoseofds") -> list[dict[str, Any]]:
-    """扫描库内存量文章，比对官网长文版本并生成差异清单。"""
-    results: list[dict[str, Any]] = []
-    if not ARCHIVE_DIR.exists():
-        return results
+def extract_headings(text: str) -> list[str]:
+    """提取 Markdown 正文中的标题列表 (如 '# Title', '## Subheading')。"""
+    return [
+        line.strip()
+        for line in text.splitlines()
+        if re.match(r"^#{1,6}\s+", line.strip())
+    ]
 
-    for file_path in sorted(ARCHIVE_DIR.glob("*.md")):
+
+def resolve_target_article(target: str, data: dict[str, Any] | None = None) -> Path:
+    """解析目标文件路径（支持绝对路径、相对路径、文件名或文章 ID）。"""
+    target_path = Path(target)
+    if not target_path.is_absolute():
+        if (ROOT / target_path).exists():
+            return ROOT / target_path
+        elif (ARCHIVE_DIR / target_path.name).exists():
+            return ARCHIVE_DIR / target_path.name
+        elif (EMAILS_DIR / "dailydoseofds" / target_path.name).exists():
+            return EMAILS_DIR / "dailydoseofds" / target_path.name
+        elif data:
+            for record in data.get("emails", {}).values():
+                for art in record.get("articles", []):
+                    if art.get("id") == target:
+                        f_name = art.get("file")
+                        if f_name and (ARCHIVE_DIR / f_name).exists():
+                            return ARCHIVE_DIR / f_name
+                        elif art.get("staging_file") and (EMAILS_DIR / art["staging_file"]).exists():
+                            return EMAILS_DIR / art["staging_file"]
+    if target_path.exists():
+        return target_path
+    raise PipelineError(f"未找到待处理文章文件或有效文章 ID: {target}")
+
+
+def check_web_upgrades(
+    source_key: str = "dailydoseofds",
+    target: str | None = None,
+    pending_only: bool = False,
+    data: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """比对本地文章与官网长文版本并生成差异清单。
+
+    支持：
+    - target 指定单篇（文件路径或文章 ID）；
+    - pending_only: 若已是 web_canonical 则跳过远端网络请求，大幅提升批量检查性能。
+    """
+    results: list[dict[str, Any]] = []
+
+    candidate_files: list[Path] = []
+    if target:
+        candidate_files = [resolve_target_article(target, data)]
+    elif ARCHIVE_DIR.exists():
+        candidate_files = sorted(ARCHIVE_DIR.glob("*.md"))
+
+    for file_path in candidate_files:
         content = file_path.read_text(encoding="utf-8")
         fm_match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
         if not fm_match:
@@ -694,6 +742,22 @@ def check_web_upgrades(source_key: str = "dailydoseofds") -> list[dict[str, Any]
         local_body = content[fm_match.end():]
         local_chars = len(local_body)
         local_codes = count_code_blocks(local_body)
+
+        # 增量优化：若指定了 pending_only 且当前已是官网长文，则跳过耗时的网络探测
+        if pending_only and current_tier == "web_canonical":
+            results.append({
+                "file": file_path.name,
+                "title": title,
+                "local_chars": local_chars,
+                "local_codes": local_codes,
+                "web_chars": local_chars,
+                "web_codes": local_codes,
+                "current_tier": current_tier,
+                "status": "up_to_date",
+                "recommendation": "已是官网长文 (已跳过网络检测)",
+                "canonical_url": canonical_url,
+            })
+            continue
 
         target_urls = [canonical_url] if canonical_url else None
         web_post = dailydoseofds.fetch_canonical_article(title=title, candidate_urls=target_urls)
@@ -751,34 +815,88 @@ def check_web_upgrades(source_key: str = "dailydoseofds") -> list[dict[str, Any]
     return results
 
 
-def upgrade_article(data: dict[str, Any], target: str, force: bool = False) -> Path:
-    """拉取官网全量版本覆盖升级指定文章文件。"""
-    target_path = Path(target)
-    if not target_path.is_absolute():
-        if (ROOT / target_path).exists():
-            target_path = ROOT / target_path
-        elif (ARCHIVE_DIR / target_path.name).exists():
-            target_path = ARCHIVE_DIR / target_path.name
-        elif (EMAILS_DIR / "dailydoseofds" / target_path.name).exists():
-            target_path = EMAILS_DIR / "dailydoseofds" / target_path.name
-        else:
-            # 按 article_id 检索
-            matched = None
-            for record in data["emails"].values():
-                for art in record.get("articles", []):
-                    if art.get("id") == target:
-                        f_name = art.get("file")
-                        if f_name and (ARCHIVE_DIR / f_name).exists():
-                            matched = ARCHIVE_DIR / f_name
-                        elif art.get("staging_file") and (EMAILS_DIR / art["staging_file"]).exists():
-                            matched = EMAILS_DIR / art["staging_file"]
-                        break
-            if matched:
-                target_path = matched
+def diff_web_article(
+    target: str,
+    source_key: str = "dailydoseofds",
+    channel: str = "auto",
+    data: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """比对单篇本地文章与官网长文版本，生成详细结构差异与 Diff。"""
+    target_path = resolve_target_article(target, data)
+    content = target_path.read_text(encoding="utf-8")
+    fm_match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
+    if not fm_match:
+        raise PipelineError(f"文件缺少有效 YAML Frontmatter: {target_path}")
 
-    if not target_path.exists():
-        raise PipelineError(f"未找到待升级文件: {target}")
+    fm_text = fm_match.group(1)
+    title_m = re.search(r'title:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+    title = title_m.group(1) if title_m else target_path.stem
+    tier_m = re.search(r'content_tier:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+    current_tier = tier_m.group(1).strip() if tier_m else "email_fallback"
+    url_m = re.search(r'canonical_url:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
+    canonical_url = url_m.group(1).strip() if url_m else None
 
+    local_body = content[fm_match.end():]
+    divider_m = re.search(r"\n---\n\n", local_body)
+    pure_local_body = local_body[divider_m.end():] if divider_m else local_body
+
+    candidate_urls = [canonical_url] if canonical_url else None
+    web_post = dailydoseofds.fetch_canonical_article(
+        title=title,
+        candidate_urls=candidate_urls,
+        channel=channel,
+    )
+    if not web_post:
+        raise PipelineError(f"未能从官网拉取到对应长文: title='{title}'")
+
+    web_body = web_post.get("body", "")
+    local_headings = extract_headings(pure_local_body)
+    web_headings = extract_headings(web_body)
+
+    local_lines = pure_local_body.splitlines(keepends=True)
+    web_lines = web_body.splitlines(keepends=True)
+    diff = list(
+        difflib.unified_diff(
+            local_lines,
+            web_lines,
+            fromfile=f"local:{target_path.name}",
+            tofile=f"web:{web_post.get('canonical_url', 'canonical')}",
+            n=3,
+        )
+    )
+
+    return {
+        "file": target_path.name,
+        "path": str(target_path),
+        "title": title,
+        "current_tier": current_tier,
+        "canonical_url": web_post.get("canonical_url"),
+        "local_chars": len(pure_local_body),
+        "web_chars": len(web_body),
+        "local_codes": count_code_blocks(pure_local_body),
+        "web_codes": count_code_blocks(web_body),
+        "local_headings": local_headings,
+        "web_headings": web_headings,
+        "diff_lines": diff,
+    }
+
+
+def upgrade_article(
+    data: dict[str, Any],
+    target: str,
+    force: bool = False,
+    dry_run: bool = False,
+    show_diff: bool = False,
+    channel: str = "auto",
+) -> Path:
+    """拉取官网全量版本覆盖升级指定文章文件。
+
+    支持：
+    - dry_run: 仅模拟计算，不写盘不改 manifest；
+    - show_diff: 打印变更前后的 unified diff；
+    - channel: 指定抓取策略通道 ("auto", "ghost", "jina")。
+    """
+    target_path = resolve_target_article(target, data)
     content = target_path.read_text(encoding="utf-8")
     fm_match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
     if not fm_match:
@@ -796,22 +914,26 @@ def upgrade_article(data: dict[str, Any], target: str, force: bool = False) -> P
     url_m = re.search(r'canonical_url:\s*["\']?(.*?)["\']?$', fm_text, re.MULTILINE)
     candidate_urls = [url_m.group(1).strip()] if url_m and url_m.group(1) else None
 
-    web_post = dailydoseofds.fetch_canonical_article(title=title, candidate_urls=candidate_urls)
+    web_post = dailydoseofds.fetch_canonical_article(
+        title=title,
+        candidate_urls=candidate_urls,
+        channel=channel,
+    )
     if not web_post:
         raise PipelineError(f"未能从官网拉取到对应文章: title='{title}'")
 
     new_canonical_url = web_post["canonical_url"]
     if "content_tier:" in fm_text:
-        fm_text = re.sub(r'content_tier:.*$', 'content_tier: "web_canonical"', fm_text, flags=re.MULTILINE)
+        new_fm_text = re.sub(r'content_tier:.*$', 'content_tier: "web_canonical"', fm_text, flags=re.MULTILINE)
     else:
-        fm_text += '\ncontent_tier: "web_canonical"'
+        new_fm_text = fm_text + '\ncontent_tier: "web_canonical"'
 
-    if "canonical_url:" in fm_text:
-        fm_text = re.sub(r'canonical_url:.*$', f'canonical_url: "{new_canonical_url}"', fm_text, flags=re.MULTILINE)
+    if "canonical_url:" in new_fm_text:
+        new_fm_text = re.sub(r'canonical_url:.*$', f'canonical_url: "{new_canonical_url}"', new_fm_text, flags=re.MULTILINE)
     else:
-        fm_text += f'\ncanonical_url: "{new_canonical_url}"'
+        new_fm_text += f'\ncanonical_url: "{new_canonical_url}"'
 
-    new_frontmatter = f"---\n{fm_text.strip()}\n---\n\n"
+    new_frontmatter = f"---\n{new_fm_text.strip()}\n---\n\n"
 
     # 保留原头部邮件信息（若有）
     body_tail = content[fm_match.end():]
@@ -825,11 +947,34 @@ def upgrade_article(data: dict[str, Any], target: str, force: bool = False) -> P
     new_full_content = (
         new_frontmatter + (header_meta.strip() + "\n\n---\n\n" if header_meta else "") + web_post["body"] + "\n"
     )
+
+    if show_diff or dry_run:
+        diff = list(
+            difflib.unified_diff(
+                content.splitlines(keepends=True),
+                new_full_content.splitlines(keepends=True),
+                fromfile=f"before:{target_path.name}",
+                tofile=f"after:{target_path.name}",
+                n=3,
+            )
+        )
+        print(f"\n--- Unified Diff for {target_path.name} ---")
+        if diff:
+            print("".join(diff[:60]))
+            if len(diff) > 60:
+                print(f"... [Diff 截断显示，总计 {len(diff)} 行] ...\n")
+        else:
+            print("内容完全一致，无差异。\n")
+
+    if dry_run:
+        log_line(f"[Dry-run] 升级预演完成，未物理写入: {target_path.name}")
+        return target_path
+
     target_path.write_text(new_full_content, encoding="utf-8")
 
     # 同步更新 manifest
     updated_manifest = False
-    for record in data["emails"].values():
+    for record in data.get("emails", {}).values():
         for article in record.get("articles", []):
             if (
                 article.get("file") == target_path.name
@@ -1011,8 +1156,33 @@ def build_parser() -> argparse.ArgumentParser:
     )
     fetch_web_cmd.add_argument("--source", default="dailydoseofds", help="指定来源标识，默认 dailydoseofds")
 
+    diff_web_cmd = commands.add_parser("diff-web", help="针对单篇本地文章比对官网长文版本，输出章节树与统一 Diff")
+    diff_web_cmd.add_argument(
+        "target",
+        help="本地文章文件路径 (例如 raw/articles/xxx.md 或 Clippings/emails/dailydoseofds/xxx.md) 或文章 ID",
+    )
+    diff_web_cmd.add_argument("--source", default="dailydoseofds", help="指定来源，默认 dailydoseofds")
+    diff_web_cmd.add_argument(
+        "--channel",
+        choices=["auto", "ghost", "jina"],
+        default="auto",
+        help="抓取决议通道：auto (默认 4 级链路), ghost (仅 Ghost API), jina (直连 Jina Reader)",
+    )
+
     check_upgrades_cmd = commands.add_parser("check-web-upgrades", help="扫描库内存量文献，比对官网长文版本并列出可升级清单")
+    check_upgrades_cmd.add_argument(
+        "target",
+        nargs="?",
+        default=None,
+        help="可选：指定单篇文章路径或文章 ID。若未指定则全量扫描",
+    )
     check_upgrades_cmd.add_argument("--source", default="dailydoseofds", help="指定来源，默认 dailydoseofds")
+    check_upgrades_cmd.add_argument(
+        "--pending-only",
+        action="store_true",
+        default=False,
+        help="增量优化：若已是 web_canonical 则跳过外部网络检测，大幅提升批量扫描性能",
+    )
 
     upgrade_cmd = commands.add_parser("upgrade-article", help="拉取官网长文版本覆盖升级指定文章")
     upgrade_cmd.add_argument(
@@ -1020,6 +1190,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="本地待升级 Markdown 文件路径 (例如 raw/articles/xxx.md 或 Clippings/emails/dailydoseofds/xxx.md) 或文章 ID",
     )
     upgrade_cmd.add_argument("--force", action="store_true", default=False, help="若已是 web_canonical 是否强制重新抓取覆盖")
+    upgrade_cmd.add_argument("--dry-run", action="store_true", default=False, help="仅模拟升级过程并预览差异，不物理写盘")
+    upgrade_cmd.add_argument("--diff", action="store_true", default=False, help="打印前后正文的 Unified Diff")
+    upgrade_cmd.add_argument(
+        "--channel",
+        choices=["auto", "ghost", "jina"],
+        default="auto",
+        help="抓取决议通道：auto (默认 4 级链路), ghost (仅 Ghost API), jina (直连 Jina Reader)",
+    )
 
     return parser
 
@@ -1034,8 +1212,44 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "fetch-web":
             out_file = fetch_web_article(args.target, source_key=args.source)
             log_line(f"result fetch_web_article={out_file}")
+        elif args.command == "diff-web":
+            data = load_manifest()
+            diff_res = diff_web_article(args.target, source_key=args.source, channel=args.channel, data=data)
+            log_line(f"result diff_article={diff_res['file']}")
+            print(f"\n### 官网长文对比报告: `{diff_res['file']}`\n")
+            print(f"- **文章标题**: {diff_res['title']}")
+            print(f"- **当前层级**: {diff_res['current_tier']}")
+            print(f"- **官网链接**: {diff_res['canonical_url']}")
+            print(f"- **篇幅字数**: 本地 {diff_res['local_chars']} 字 vs 官网 {diff_res['web_chars']} 字")
+            print(f"- **代码块数**: 本地 {diff_res['local_codes']} 块 vs 官网 {diff_res['web_codes']} 块")
+            print("\n#### 章节目录结构对比 (Headings)")
+            print("| 序号 | 本地章节 | 官网章节 |")
+            print("| --- | --- | --- |")
+            max_h = max(len(diff_res["local_headings"]), len(diff_res["web_headings"]))
+            if max_h == 0:
+                print("| - | 无章节标题 | 无章节标题 |")
+            else:
+                for idx in range(max_h):
+                    loc_h = diff_res["local_headings"][idx] if idx < len(diff_res["local_headings"]) else "-"
+                    web_h = diff_res["web_headings"][idx] if idx < len(diff_res["web_headings"]) else "-"
+                    print(f"| {idx+1} | {loc_h} | {web_h} |")
+            print("\n#### Unified Diff 差异片段 (前 80 行)")
+            if diff_res["diff_lines"]:
+                print("```diff")
+                print("".join(diff_res["diff_lines"][:80]).rstrip())
+                print("```")
+                if len(diff_res["diff_lines"]) > 80:
+                    print(f"\n*(Diff 截断显示，总计 {len(diff_res['diff_lines'])} 行差异)*\n")
+            else:
+                print("内容完全一致，无正文差异。\n")
         elif args.command == "check-web-upgrades":
-            upgrades = check_web_upgrades(source_key=args.source)
+            data = load_manifest()
+            upgrades = check_web_upgrades(
+                source_key=args.source,
+                target=args.target,
+                pending_only=args.pending_only,
+                data=data,
+            )
             log_line(f"result scanned_articles={len(upgrades)}")
             print("\n### 官网长文升级比对报告\n")
             print(
@@ -1051,9 +1265,17 @@ def main(argv: list[str] | None = None) -> int:
             print("")
         elif args.command == "upgrade-article":
             data = load_manifest()
-            upgraded_file = upgrade_article(data, args.target, force=args.force)
+            upgraded_file = upgrade_article(
+                data,
+                args.target,
+                force=args.force,
+                dry_run=args.dry_run,
+                show_diff=args.diff,
+                channel=args.channel,
+            )
             log_line(f"result upgraded_article={upgraded_file}")
-            refresh_outputs(data)
+            if not args.dry_run:
+                refresh_outputs(data)
         else:
             data = load_manifest()
             if args.command == "sync":
@@ -1078,7 +1300,7 @@ def main(argv: list[str] | None = None) -> int:
                     f"result reconciled_articles={reconciled} remote_emails={total} newly_registered={added} routed_emails={emails} review_articles={articles}"
                 )
             refresh_outputs(data)
-        if args.command not in {"fetch-web", "check-web-upgrades"}:
+        if args.command not in {"fetch-web", "check-web-upgrades", "diff-web"} and not getattr(args, "dry_run", False):
             print_summary(data)
         log_block(args.command, "END status=ok")
         return 0

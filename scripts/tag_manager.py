@@ -1,15 +1,20 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 Knowledge Bank Tag Manager & Governance Tool
 遵循 AGENTS.md 规范，基于根目录 tags.json 权威配置提供 Tag 白名单查询、门禁校验与 CRUD 治理工具。
 
 用法:
-  uv run --with pyyaml python scripts/tag_manager.py list                         # 查看全量标签树
-  uv run --with pyyaml python scripts/tag_manager.py validate <tag> [--ptype ...] # 校验单个 Tag 合规性
-  uv run --with pyyaml python scripts/tag_manager.py add <tag> [--desc ...]       # 新增 Tag 审批入库
-  uv run --with pyyaml python scripts/tag_manager.py rename <old> <new> [--apply] # 全库级联重命名 Tag
-  uv run --with pyyaml python scripts/tag_manager.py delete <tag> [--apply]       # 全库级联删除/下线 Tag
+  uv run scripts/tag_manager.py list                         # 查看全量标签树
+  uv run scripts/tag_manager.py validate <tag> [--ptype ...] # 校验单个 Tag 合规性
+  uv run scripts/tag_manager.py add <tag> [--desc ...]       # 新增 Tag 审批入库
+  uv run scripts/tag_manager.py rename <old> <new> [--apply] # 全库级联重命名 Tag
+  uv run scripts/tag_manager.py delete <tag> [--apply]       # 全库级联删除/下线 Tag
 """
 
 import os

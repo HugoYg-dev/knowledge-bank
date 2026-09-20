@@ -46,19 +46,33 @@ uv run scripts/mail_pipeline.py status
 
 ### 2. 官网长文增强与存量升级
 
-针对邮件内容为删节导读（Teaser）、官网提供完整长文的订阅源（如 `dailydoseofds`），管线提供了直接抓取与存量升级工具：
+针对邮件内容为删节导读（Teaser）、官网提供完整长文的订阅源（如 `dailydoseofds`），管线提供了单篇比对、Diff 预览、增量检测与安全替换工具：
 
 ```bash
-# 直接抓取单篇官网长文并生成待审文档（支持完整 URL 或 Slug）
+# 1. 直接抓取单篇官网长文并生成待审文档（支持完整 URL 或 Slug）
 uv run scripts/mail_pipeline.py fetch-web 'https://www.dailydoseofds.com/p/how-a-gpu-actually-works/'
 uv run scripts/mail_pipeline.py fetch-web 'how-a-gpu-actually-works'
 
-# 扫描库内存量文献，比对官网长文版本并列出升级比对报告（对比字数与代码块）
+# 2. 单篇或批量升级比对报告（对比字数与代码块）
+# 全量扫描存量文章
 uv run scripts/mail_pipeline.py check-web-upgrades
+# 增量扫描：跳过已是 web_canonical 的文章（大幅优化网络开销）
+uv run scripts/mail_pipeline.py check-web-upgrades --pending-only
+# 靶向单篇文章比对
+uv run scripts/mail_pipeline.py check-web-upgrades 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
 
-# 拉取官网全量版本覆盖升级指定存量文章（更新正文与 Frontmatter，保留原有邮件元信息）
-uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
-uv run scripts/mail_pipeline.py upgrade-article 'msg-id:1' --force
+# 3. 深度对比单篇差异 (Diff & Heading Tree)
+# 针对归档库或暂存区文章输出章节目录对比与 Unified Diff
+uv run scripts/mail_pipeline.py diff-web 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
+uv run scripts/mail_pipeline.py diff-web 'Clippings/emails/dailydoseofds/2026-09-18_xxx.md'
+
+# 4. 安全升级与覆盖替换
+# 预览升级差异（Dry-run 模式，不写盘）
+uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/xxx.md' --dry-run --diff
+# 物理覆盖升级并打印差异
+uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/xxx.md' --diff
+# 指定通道抓取 (auto: 默认4级容灾链路 / ghost: 纯Ghost API / jina: 直连Jina Reader)
+uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/xxx.md' --channel jina
 ```
 
 ## 筛选与入库约束
@@ -104,19 +118,40 @@ Ghost 官方 HTML 解析器内置了专属的富媒体转换适配：
 - **视频嵌入**：自动将 Ghost `<video>` 嵌入标签解析为 Markdown 视频预览卡片。
 - **表格保护**：自动净化表格单元格内的 `<br>` 与换行，防止破坏 Markdown 表格结构。
 
-### 4. 存量文章无损升级 SOP
+### 4. 存量文章无损升级与差异审查 SOP
 
-对于早期已归档至 `raw/articles/` 或仍停留在待审区中的删节版邮件文章，可通过两步完成无损升级：
+对于早期已归档至 `raw/articles/` 或仍停留在待审区中的删节版邮件文章，推荐按以下四步精细化 SOP 完成对比、审查与无损升级：
 
-1. **扫描比对**：
+1. **快速扫描与增量排查**：
    ```bash
-   uv run scripts/mail_pipeline.py check-web-upgrades
+   # 全量增量扫描：跳过已是 web_canonical 的文章（大幅优化网络开销与速度）
+   uv run scripts/mail_pipeline.py check-web-upgrades --pending-only
+
+   # 或针对单篇文章快速比对指标
+   uv run scripts/mail_pipeline.py check-web-upgrades 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
    ```
-   输出全库比对表格，直观展示本地字符数/代码块数与官网版本的悬殊对比，并给出 `强烈建议升级` 或 `内容已充分` 的建议。
+   输出对比指标（本地 vs 官网的字数、代码块数），给出 `强烈建议升级`、`已是官网长文` 或 `保持现状` 的明确建议。
 
-2. **精准覆盖升级**：
+2. **单篇深度差异审查 (Heading Tree & Diff)**：
    ```bash
-   uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
+   # 深度对比单篇差异：输出章节目录树对比与行级 Unified Diff 片段
+   uv run scripts/mail_pipeline.py diff-web 'raw/articles/2026-03-26_Breathing-KMeans_123.md'
+   ```
+   直观比对新增的推导章节、算法步骤、公式图表与代码增补行，杜绝“盲盒式覆盖”。
+
+3. **安全预览 (Dry-run 模式)**：
+   ```bash
+   # 模拟升级，在控制台高亮预览变更 Diff，绝不物理修改磁盘或账本
+   uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md' --dry-run --diff
+   ```
+
+4. **精准覆盖升级与通道决议**：
+   ```bash
+   # 执行物理覆盖升级（并输出变更 diff）
+   uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md' --diff
+
+   # 若遇到官网特定限制，可指定抓取通道 (auto / ghost / jina)
+   uv run scripts/mail_pipeline.py upgrade-article 'raw/articles/2026-03-26_Breathing-KMeans_123.md' --channel jina
    ```
    升级操作会自动完成：
    - 更新 Frontmatter：标记 `content_tier: "web_canonical"` 并注入 `canonical_url`；

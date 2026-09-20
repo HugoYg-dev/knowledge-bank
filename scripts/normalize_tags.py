@@ -1,13 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 Knowledge Bank Tag Normalization & Cleanup Tool
 遵循 AGENTS.md §5 规范的全局 Tag 规范化、去噪与 Frontmatter 清洗工具。
 
 用法:
-  uv run --with pyyaml python scripts/normalize_tags.py           # 默认 Dry-run 预演
-  uv run --with pyyaml python scripts/normalize_tags.py --dry-run # 显式 Dry-run 预演
-  uv run --with pyyaml python scripts/normalize_tags.py --apply   # 确认执行全库清洗与落盘
+  uv run scripts/normalize_tags.py           # 默认 Dry-run 预演
+  uv run scripts/normalize_tags.py --dry-run # 显式 Dry-run 预演
+  uv run scripts/normalize_tags.py --apply   # 确认执行全库清洗与落盘
 """
 
 import os
@@ -222,7 +227,7 @@ def main():
     if not apply:
         print("\n" + "=" * 60)
         print("✅ Dry-run 预演完成！若确认无误，请运行以下命令正式执行落盘:")
-        print("   uv run --with pyyaml python scripts/normalize_tags.py --apply")
+        print("   uv run scripts/normalize_tags.py --apply")
         print("=" * 60)
     else:
         print("\n" + "=" * 60)

@@ -216,7 +216,7 @@ Vault 内运行了 **Local REST API with MCP** 插件。当桌面端 Obsidian �
 - **认证**：Bearer token 在 `.mcp.json` 中
 - **前提**：桌面端 Obsidian 运行中，Local REST API 插件已启用
 - **降级与并发锁机制**：MCP 离线时允许降级到本地文件系统的读写流程。**注意**：Obsidian MCP 的 active file 只能作为“用户可能正在编辑”的冲突提示，不能充当文件锁。任何直接写入必须执行 SHA-256 哈希前置检查，避免并发冲突。
-- **环境要求**：根目录 Python 脚本必须使用 `uv run --with pyyaml python <script>.py` 执行；Second Brain 自带脚本必须使用 `uv run --directory .agents/skills/obsidian-second-brain python <script>.py`，不得依赖系统全局 Python。
+- **环境要求**：根目录 Python 脚本必须使用 `uv run scripts/<script>.py (已内嵌 PEP 723 依赖声明)` 执行；Second Brain 自带脚本必须使用 `uv run --directory .agents/skills/obsidian-second-brain python <script>.py`，不得依赖系统全局 Python。
 
 > [!tip] 工具选择与权衡边界
 > AI Agent 在选择操作方式时，必须严格区分 **MCP 工具** 与 **本地 Python/Shell 脚本** 的适用场景：
@@ -276,7 +276,7 @@ AI Agent 在处理日常任务时，必须遵守以下核心操作闭环：
 4. **主 Agent 逐批调度独立 Auditor 进行验收与现场修复**：
    - 批次内部允许并行做只读提取或审计，但所有文件变更必须由一个 Writer 串行提交补丁。`wiki/index.md` 与 `wiki/log.md` 永远由同一写入者在批次末统一更新。
    - 每个任务完成后，主 Agent 必须立即调用独立 Auditor 对产物进行验收：
-     - **系统层 Lint 扫描**：运行 `uv run --with pyyaml python scripts/vault_lint.py lint`，核验索引、YAML、死链等；
+     - **系统层 Lint 扫描**：运行 `uv run scripts/vault_lint.py lint`，核验索引、YAML、死链等；
      - **句级物理事实性核查**：由独立 Auditor 严格对照 `raw/` 物理原文（而非 `tmp/`）进行 1:1 事实比对，核查专名、数据、逻辑等。
      - **创建产出比审查**：审查过度创建，对不符合门槛的产物予以清理。
      - **主 Agent 现场修复与复审**：发现问题时主 Agent 亲自进行文本修复，但修复完成后**必须由 Auditor 重新复审**。
@@ -303,13 +303,13 @@ AI Agent 在处理日常任务时，必须遵守以下核心操作闭环：
 普通问答、单次解释、未经来源支撑的头脑风暴和 Agent 常识补充默认**不写入 Vault**。对话中出现值得保存的线索时可以提出建议，但不得以“每次交互都必须落库”为由制造低价值页面。
 
 ### 4.4 Lint & Prune（健康检查、精简与图谱垃圾回收）
-当用户要求对知识库进行「Lint / 健康检查 / 精简 / 冲突审查 / 删除收藏」时，**强烈推荐使用项目中预置的自动化脚本工具 `uv run --with pyyaml python scripts/vault_lint.py`**：
+当用户要求对知识库进行「Lint / 健康检查 / 精简 / 冲突审查 / 删除收藏」时，**强烈推荐使用项目中预置的自动化脚本工具 `uv run scripts/vault_lint.py`**：
 
 1. **常规扫描诊断 (`lint`)**：
    - **确定性结构检查**：脚本仅提供针对死链、漏登、YAML Schema 及文件路径的确定性审计。它不负责自动发现语义矛盾或主张过期。
    - **低频与候选报告**：低频提及实体（如入度<=1）、无来源页面、越级来源、过期页面仅只进入报告或 Dry-run 候选。页面年龄（如 14 天）仅作排序或保护信号，删除决策绝不能由年龄或入度单独自动触发。
    - **语法污染与视图派生 (`sanitize-view`)**：原有直接修改原文的 `sanitize-raw` 废弃。新的 `sanitize-view` 仅负责从原始文件中派生出过滤了 HTML 注释等污染的临时只读视图到 `tmp/sanitized/`。
-2. **精简与级联清理机制（`uv run --with pyyaml python scripts/vault_lint.py prune <raw_path>` / Cascading Pruning SOP）**：
+2. **精简与级联清理机制（`uv run scripts/vault_lint.py prune <raw_path>` / Cascading Pruning SOP）**：
    当用户主动要求删除或清理最上游原始层资料（如 `raw/xxx.md` 或 `Clippings/xxx.md`），或对全库执行精简垃圾回收时，**必须执行严密的图谱级联清理链条**：
    - **第一步（精准清理摘要页）**：删除目标物理源文件时，读取所有 `wiki/sources/*.md` 的 Frontmatter，只要 `sources:` 列表中命中被删源路径，将对应的 Source 摘要页连带删除。
    - **第二步（同步更新总索引）**：打开 `wiki/index.md`，将对应分类下指向已删 Source 摘要页的索引条目自动精准剔除。
@@ -317,7 +317,7 @@ AI Agent 在处理日常任务时，必须遵守以下核心操作闭环：
      - **情况 A（剩余被引次数 $\ge 2$）**：说明属于通用核心知识，**保留页面**，仅在其正文末尾 `## 来源` 中摘除指向已删文章的链接。
      - **情况 B（剩余被引次数 $\le 1$）**：说明其为随着具体文章产生的低频冷门产物（如仅出现一次的人名），**触发垃圾回收连带清理**。
    - **第四步（登记操作流水）**：在 `wiki/log.md` 登记 `lint/prune | prune raw/xxx.md (+ Cascading cleanup sources, index & gc entities/concepts)`。
-3. **低频实体与概念专项清理 (`uv run --with pyyaml python scripts/vault_lint.py prune-low-freq-entities` / `prune-low-freq-concepts`)**：
+3. **低频实体与概念专项清理 (`uv run scripts/vault_lint.py prune-low-freq-entities` / `prune-low-freq-concepts`)**：
    - 可针对全库扫描出来的入度 $\le 1$ 的实体与概念页面（尤其是仅出现过 1 次的人名实体或一次性概念）进行批量/定向精简清理与双链文本降级，同步从 `wiki/index.md` 剔除，保持图谱的高质量与低噪声。
 4. **先提议，再动刀与高危动刀门槛 (`--dry-run` vs `--apply`)**：
    - 删除、Prune、Merge **永远属于 L3 高危操作**，任何影响页数的更改，哪怕仅影响 1 页，都必须向用户提供 Dry-run 预演报告并取得明确批准方可物理执行。14 天只用于候选排序，不作自动授权。

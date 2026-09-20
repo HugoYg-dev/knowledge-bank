@@ -1,5 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 Knowledge Bank Daily Scan Tool
 遵循 AGENTS.md 规范的确定性每日健康巡检与待处理扫描工具。
@@ -12,7 +17,7 @@ Knowledge Bank Daily Scan Tool
 5. 在终端输出一句话要点摘要。
 
 用法：
-  uv run --with pyyaml python scripts/daily_scan.py
+  uv run scripts/daily_scan.py
 """
 
 import sys
@@ -25,7 +30,7 @@ from pathlib import Path
 
 def run_vault_lint(workspace_dir: Path) -> tuple[bool, str, dict]:
     """运行 vault_lint.py 并解析关键指标"""
-    cmd = ["uv", "run", "--with", "pyyaml", "python", "scripts/vault_lint.py", "lint"]
+    cmd = ["uv", "run", "scripts/vault_lint.py", "lint"]
     env = dict(os.environ)
     env["PATH"] = f"{Path.home()}/.local/bin:{Path.home()}/.cargo/bin:/opt/homebrew/bin:{env.get('PATH', '')}"
     try:
@@ -71,7 +76,7 @@ def run_vault_lint(workspace_dir: Path) -> tuple[bool, str, dict]:
 
 def run_tag_scan(workspace_dir: Path) -> tuple[bool, str]:
     """运行 tag_manager.py scan 检查全库 Tag 白名单合规性"""
-    cmd = ["uv", "run", "--with", "pyyaml", "python", "scripts/tag_manager.py", "scan"]
+    cmd = ["uv", "run", "scripts/tag_manager.py", "scan"]
     env = dict(os.environ)
     env["PATH"] = f"{Path.home()}/.local/bin:{Path.home()}/.cargo/bin:/opt/homebrew/bin:{env.get('PATH', '')}"
     try:
@@ -83,7 +88,7 @@ def run_tag_scan(workspace_dir: Path) -> tuple[bool, str]:
 
 def run_concept_source_lint(workspace_dir: Path) -> tuple[bool, str]:
     """运行 concept_source_lint.py 检查概念页上游溯源规范"""
-    cmd = ["uv", "run", "--with", "pyyaml", "python", "scripts/concept_source_lint.py"]
+    cmd = ["uv", "run", "scripts/concept_source_lint.py"]
     env = dict(os.environ)
     env["PATH"] = f"{Path.home()}/.local/bin:{Path.home()}/.cargo/bin:/opt/homebrew/bin:{env.get('PATH', '')}"
     try:

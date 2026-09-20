@@ -1,22 +1,27 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml>=6.0",
+# ]
+# ///
+
 """
 Knowledge Bank Vault Lint & Cascading Pruning Tool
 遵循 AGENTS.md 规范的自动化图谱健康检查与级联清理脚本。
 
 用法:
-  uv run --with pyyaml python scripts/vault_lint.py lint # 执行确定性图谱与 Schema 诊断
-  uv run --with pyyaml python scripts/vault_lint.py sanitize-raw # 已废弃，明确失败且不修改原文
-  uv run --with pyyaml python scripts/vault_lint.py sanitize-view <path> # 派生临时净化视图
-  python3 scripts/vault_lint.py prune <raw_path> # 预演（Dry-run）单篇原始资料的 4 步级联精简报告
-  python3 scripts/vault_lint.py prune <raw_path> --apply # 确认执行单篇级联精简清理
-  python3 scripts/vault_lint.py prune-orphans    # 预演批量清理已删 raw 物理文件对应的下游孤立 Source 与 Index
-  python3 scripts/vault_lint.py prune-orphans --apply # 确认批量清理下游孤立页面
-  python3 scripts/vault_lint.py recover-dates    # 预演为缺失时间的 raw/ 文章自动捞回并溯源创建时间
-  python3 scripts/vault_lint.py recover-dates --apply # 确认执行时间捞回与注入
-  python3 scripts/vault_lint.py fetch-published  # 预演利用 BrowserSkill 首屏极速提取真实发表时间
-  python3 scripts/vault_lint.py fetch-published --apply # 确认启动真实浏览器批量抓取发布时间并注入
-  python3 scripts/vault_lint.py fetch-published --apply --zhihu-only # 仅处理知乎文章
+  uv run scripts/vault_lint.py lint # 执行确定性图谱与 Schema 诊断
+  uv run scripts/vault_lint.py sanitize-raw # 已废弃，明确失败且不修改原文
+  uv run scripts/vault_lint.py sanitize-view <path> # 派生临时净化视图
+  uv run scripts/vault_lint.py prune <raw_path> # 预演（Dry-run）单篇原始资料的 4 步级联精简报告
+  uv run scripts/vault_lint.py prune <raw_path> --apply # 确认执行单篇级联精简清理
+  uv run scripts/vault_lint.py prune-orphans    # 预演批量清理已删 raw 物理文件对应的下游孤立 Source 与 Index
+  uv run scripts/vault_lint.py prune-orphans --apply # 确认批量清理下游孤立页面
+  uv run scripts/vault_lint.py recover-dates    # 预演为缺失时间的 raw/ 文章自动捞回并溯源创建时间
+  uv run scripts/vault_lint.py recover-dates --apply # 确认执行时间捞回与注入
+  uv run scripts/vault_lint.py fetch-published  # 预演利用 BrowserSkill 首屏极速提取真实发表时间
+  uv run scripts/vault_lint.py fetch-published --apply # 确认启动真实浏览器批量抓取发布时间并注入
+  uv run scripts/vault_lint.py fetch-published --apply --zhihu-only # 仅处理知乎文章
 """
 
 import os
@@ -492,7 +497,7 @@ def cmd_lint(workspace):
 def cmd_sanitize(workspace):
     print("❌ 错误：`sanitize-raw` 命令已废弃！")
     print("依据 AGENTS.md §4.4，严禁直接修改 raw/ 或 Clippings/ 中的原文。")
-    print("请使用 `uv run --with pyyaml python scripts/vault_lint.py sanitize-view <path>` 生成临时只读净化视图。")
+    print("请使用 `uv run scripts/vault_lint.py sanitize-view <path>` 生成临时只读净化视图。")
     sys.exit(1)
 
 def cmd_sanitize_view(workspace, input_path):
