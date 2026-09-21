@@ -3,6 +3,7 @@
 > 内容索引，每次 ingest 后更新。按类型分组。
 
 ## Sources
+- [[Everyone is building LLM routers, we deprecated ours]] — Manifest 团队反思并废弃其 LLM 模型路由器的实践经验：复杂度无法单凭 Prompt 判断、前缀缓存收益远高于路由分流，且不可预测性增加了 Agent 系统的维护代价（LLM/inference, Infra/serving）
 - [[新模型Jev_爆红一周_不生成文字只输出概率却被玩出了花]] — TypeSafe AI 推出非自回归概率决策模型 Jev 与 RLCD 范式（AI-Agent/tool-calling, LLM/inference）
 - [[这是一篇把RSI讲明白的科普级综述]] — 递归自我改进（RSI）从 EURISKO 到元研究系统的四层标准与四大安全门禁（RSI）
 
@@ -296,6 +297,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
 - [[概念_RLCD校准决策强化学习]] — 面向判别式决策的置信度校准强化学习范式（LLM/training, AI-Agent/tool-calling）
 - [[concepts/概念_DiT|概念_DiT]] — Diffusion Transformer，扩散模型 SOTA 架构（CV/arch）
 - [[concepts/概念_Kimi_Delta_Attention|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）

@@ -1,3 +1,13 @@
+## [2026-09-21] ingest | raw/articles/Everyone is building LLM routers, we deprecated ours.md -> wiki/sources/Everyone is building LLM routers, we deprecated ours.md (+ wiki/concepts/概念_LLM模型路由.md)
+- **物理归档与摘要生成**：
+  - 将 `Clippings/Everyone is building LLM routers, we deprecated ours.md` 归档至 `raw/articles/Everyone is building LLM routers, we deprecated ours.md`。
+  - 创建摘要页 `wiki/sources/Everyone is building LLM routers, we deprecated ours.md`，提炼 Manifest 废弃模型路由器的工程反思：复杂度无法单凭 Prompt 静态评估、Prefix Cache 降本效应（75%-90%）远超路由分流、工程师工具掌握度下降以及 Agent 系统维护不确定性成本过高。
+- **概念联动与新建**：
+  - 新建 `wiki/concepts/概念_LLM模型路由.md`，梳理网关层模型路由机制与前缀缓存、稳定性之间的工程权衡。
+  - 关联现有概念 `[[concepts/概念_KV_Cache]]`。
+- **索引更新**：
+  - `wiki/index.md` 挂载 Source 摘要与新建 Concept。
+
 ## [2026-09-20] chore/tags | 新增 RSI 独立顶层标签，将自我进化/改进体系全面归类至 RSI
 - **背景与指令**：用户指示 RSI（递归自我改进）跨越权重微调、外壳工程、记忆与元科研等多个领域；在广义定界下，库内所有“自我进化/自我改进”相关文章与概念统一归类到 `RSI` 标签体系（包括 Lilian Weng 论文、Self-Harness、JitRL、系统自动优化等）。
 - **白名单与代码更新**：
