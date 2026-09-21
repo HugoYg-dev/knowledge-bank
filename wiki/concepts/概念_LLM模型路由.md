@@ -2,7 +2,9 @@
 type: "concept"
 tags: ["LLM/inference", "Infra/serving"]
 summary: "在 LLM 网关层依据输入请求的复杂度或规则将请求分发给不同成本与能力模型的调度机制，但面临前缀缓存冲突与不确定性成本挑战"
-sources: ["wiki/sources/Everyone is building LLM routers, we deprecated ours.md"]
+sources:
+- "wiki/sources/Everyone is building LLM routers, we deprecated ours.md"
+- "wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md"
 updated: "2026-09-21"
 ---
 
@@ -35,3 +37,5 @@ LLM 模型路由（Model Router）是部署在 LLM 网关（LLM Gateway）或智
 - [[concepts/概念_KV_Cache_键值缓存]]：推理缓存核心机制，前缀缓存（Prefix Cache）对长上下文成本优化具有显著优势。
 - [[concepts/概念_MoE_Router_专家路由门控网络]]：模型内部层级（Token 级）的稀疏专家路由，区别于网关层的整体请求路由。
 - [[concepts/概念_RAG_Routing_检索智能路由]]：检索增强生成中针对不同知识库或查询类型的路由分发。
+- [[concepts/概念_Decision_Model_专用判断模型]]：利用无生成的轻量判断模型进行快速确定性分支路由与工具前置拦截。
+- [[entities/实体_Jev]]：商业化判断接口在 Agent 路由中的工程实践。

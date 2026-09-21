@@ -7,6 +7,7 @@ summary: Chrome 与 Edge 团队提出的浏览器原生 Agent 工具声明规范
   暴露强类型动作与输入 Schema。
 sources:
 - wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md
+- wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md
 updated: '2026-09-21'
 aliases:
 - WebMCP
@@ -99,14 +100,26 @@ document.modelContext.registerTool({
 
 ---
 
-## 5. 关联概念与实体
+## 5. 工程实测：表征改造对 Agent 性能的跃升
+
+在开源桌面/浏览器自动化框架（如 WindTunnel 与 [[concepts/概念_Decision_Model_专用判断模型|专用判断模型]] 结合的场景）的实测对照中：
+- **原始 DOM 控件表**：同一模型面对未优化的 DOM 时，任务完成率仅为 25/49，单步中位耗时为 5.4 秒；
+- **切换到 WebMCP 结构化接口**：任务完成率立即跃升至 49/49（100%），中位耗时压缩至 3.2 秒。
+- **工程启示**：端到端 Agent 的性能跃升中，**感知端输入表征的优化改造拉开了 44 个百分点的差距，远超过后端不同决策模型之间 3.8 个百分点的微小差距**。这证实了 WebMCP 原生暴露强类型结构化 Schema 对降低 Agent 推理歧义的决定性作用。
+
+---
+
+## 6. 关联概念与实体
 
 - 关联概念：[[concepts/概念_MCP协议|概念_MCP协议]]（MCP 协议体系的浏览器端原生落地）
 - 关联概念：[[concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]（Agent 工具层架构与可发现性）
 - 关联概念：[[concepts/概念_MCP代码执行模式|概念_MCP代码执行模式]]（客户端工具调用与代码执行模式的演进对比）
+- 关联概念：[[concepts/概念_Decision_Model_专用判断模型|概念_Decision_Model_专用判断模型]]（浏览器操作中感知、判断与执行三解耦架构）
+- 关联实体：[[entities/实体_Jev|实体_Jev]]（动作判断模型评测基线）
 
 ---
 
-## 6. 支撑来源
+## 7. 支撑来源
 
 - [[wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1|wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1]]
+- [[wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机|更好的替代品早已存在，Jev 留给研究的只剩时机]]
