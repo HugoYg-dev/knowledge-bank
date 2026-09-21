@@ -44,7 +44,7 @@ dufte 自带一套图例风格化策略，只需在绘图过程中用 `dufte.leg
 - 文中评价 dufte 是处于开发初期的库，未来会加入更多实用功能。
 
 ## 关联
-- 概念：[[概念_matplotlib样式美化]]
+- 概念：matplotlib样式美化
 - 实体：dufte、[[实体_Pandas]]（同属 data-analysis 可视化工具链）
 - 相关来源：[[Pandas一行代码绘制25种美图]]
 

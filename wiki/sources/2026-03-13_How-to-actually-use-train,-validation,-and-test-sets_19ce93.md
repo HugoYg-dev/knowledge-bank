@@ -41,6 +41,6 @@ updated: '2026-08-03'
 
 ## 关联概念/实体
 
-- **关联概念**：[[wiki/concepts/概念_训练验证测试集划分]]
+- **关联概念**：训练验证测试集划分
 
 > 📎 **物理文献**：[[raw/articles/2026-03-13_How-to-actually-use-train,-validation,-and-test-sets_19ce93.md]]

@@ -36,6 +36,6 @@ updated: '2026-08-04'
 
 ## 关联概念/实体
 
-- **关联概念**：[[wiki/concepts/概念_AI工程技术栈全景_2026]]
+- **关联概念**：AI工程技术栈全景_2026
 
 > 📎 **物理文献**：[[raw/articles/2026-06-25_The-AI-engineering-master-stack-for-2026!_19f00c.md]]

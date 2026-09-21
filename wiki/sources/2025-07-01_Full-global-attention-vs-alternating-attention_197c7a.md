@@ -27,7 +27,7 @@ updated: 2026-08-03
 - **生动读书比喻**：原文将此机制比喻为读书。理解一句话往往只需关注当前章节（局部注意力），只有在特定时刻才需要回想其与整本书主线剧情的关联（全局注意力）。
 
 ## 关联概念/实体
-- 概念: [[wiki/concepts/概念_交替注意力_Alternating_Attention|交替注意力 (Alternating Attention)]]
+- 概念: 交替注意力 (Alternating Attention)
 
 ## 关键引文
 > Conceptually, the reason this works is pretty simple: Picture yourself reading a book. For every sentence you read, do you need to be fully aware of the entire plot to understand most of it (full global attention)? Or is awareness of the current chapter enough (local attention), as long as you occasionally think back on its significance to the main plot (global attention)? In the vast majority of cases, it’s the latter.

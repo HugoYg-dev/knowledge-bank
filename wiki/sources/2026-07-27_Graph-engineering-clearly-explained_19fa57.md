@@ -15,7 +15,7 @@ updated: 2026-08-04
 - **日期**: 2026-07-27
 - **原文链接**: [[raw/articles/2026-07-27_Graph-engineering-clearly-explained_19fa57.md]]
 - **关联概念**:
-  - [[concepts/概念_Graph_Engineering图工程]]
+  - [[concepts/概念_Loop_Engineering循环工程]]
   - [[concepts/概念_Loop_Engineering循环工程]]
   - [[concepts/概念_Harness_Engineering]]
 

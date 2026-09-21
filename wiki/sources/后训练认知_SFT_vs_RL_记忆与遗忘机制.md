@@ -37,7 +37,7 @@ updated: '2026-07-01'
 
 - [[概念_on-policy与off-policy数据]]
 - [[概念_灾难性遗忘]]
-- [[概念_alignment_tax]]
+- alignment_tax
 - Forward_KL与Reverse_KL
 - [[概念_GRPO强化学习]]
 - Llama-3

@@ -18,7 +18,7 @@ updated: 2026-08-03
 - **原始物理文献**: [[raw/articles/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md]]
 
 # 联动概念
-- [[wiki/concepts/概念_稀疏注意力|稀疏注意力]]
+- 稀疏注意力
 - [[wiki/concepts/概念_FlashAttention|Flash Attention]]
 - [[wiki/concepts/概念_自注意力复杂度|自注意力复杂度]]
 

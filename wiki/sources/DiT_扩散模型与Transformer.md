@@ -60,7 +60,7 @@ updated: '2026-07-01'
 
 ## 关联实体
 
-- [[concepts/概念_DiT|DiT]]
+- DiT
 - [[实体_ViT]]
 
 ---

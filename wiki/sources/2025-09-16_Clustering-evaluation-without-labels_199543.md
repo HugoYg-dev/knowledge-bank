@@ -36,7 +36,7 @@ updated: '2026-08-03'
 - *"Silhouette score and Calinski-Harabasz index are typically higher for globular (spherical in the case of 3D) clusters. Thus, using them on density-based clustering can produce misleading results."*
 
 ## 相关联动
-- 概念页：[[concepts/概念_无标签聚类评估指标]]
+- 概念页：无标签聚类评估指标
 
 ---
 > 📎 **物理文献**：[[raw/articles/2025-09-16_Clustering-evaluation-without-labels_199543.md]]

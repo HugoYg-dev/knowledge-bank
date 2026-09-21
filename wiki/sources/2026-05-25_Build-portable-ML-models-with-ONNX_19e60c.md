@@ -31,6 +31,6 @@ updated: '2026-08-04'
 - "ONNX simplifies deployment significantly, but it doesn’t remove the need for careful validation before going to production."
 
 ## 联动概念
-- [[wiki/concepts/概念_ONNX模型跨平台部署]]
+- ONNX模型跨平台部署
 
 > 📎 **物理文献**：[[raw/articles/2026-05-25_Build-portable-ML-models-with-ONNX_19e60c.md]]

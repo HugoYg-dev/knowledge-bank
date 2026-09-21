@@ -53,7 +53,7 @@ updated: '2026-07-01'
 - [[概念_MCP传输方式]]
 - [[概念_HITL_MCP]]
 - [[概念_MCP_Proxy]]
-- [[实体_Agent_TARS]]
+- Agent_TARS
 - [[别再误会MCP了辟谣指南]]
 - [[MCP五大原语与Web化]]
 

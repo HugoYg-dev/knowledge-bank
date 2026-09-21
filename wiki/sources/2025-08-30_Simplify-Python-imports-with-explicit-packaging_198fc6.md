@@ -37,7 +37,7 @@ updated: 2026-08-03
 > "In other words, specifying the `__init__.py` file lets you treat your package like a module. This simplifies your imports."
 
 ## 联动概念
-- [[wiki/concepts/概念_Python模块与包管理]]
+- Python模块与包管理
 
 ---
 > 📎 **物理文献**：[[raw/articles/2025-08-30_Simplify-Python-imports-with-explicit-packaging_198fc6.md]]

@@ -38,7 +38,7 @@ updated: '2026-07-01'
 
 ## 关联概念
 
-- [[概念_torchvision图像增强]]
+- torchvision图像增强
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/实战｜13个Pytorch 图像增强方法总结（附代码）.md]]

@@ -64,7 +64,7 @@ updated: '2026-07-01'
 ## 关联
 
 - [[概念_Agent开发范式三级进化]]
-- [[概念_Agentic设计模式分类]]
+- Agentic设计模式分类
 - [[实体_LangChain]]
 - AI_Workflow与Agent对比
 - AI_Agent四种类型

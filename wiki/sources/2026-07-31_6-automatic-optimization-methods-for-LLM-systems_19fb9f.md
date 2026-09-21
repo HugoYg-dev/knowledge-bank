@@ -28,7 +28,7 @@ updated: 2026-08-04
 - **AutoResearch (Karpathy 实践)**：运行于 ML 训练脚本上的自主实验循环。编码 Agent 修改代码后进行 5 分钟实验，成功则 Git commit 锁死演进，失败则 Git reset 回滚。限制在于无法退回以获取更大收益，易陷入局部最优。
 
 ## 关联概念/实体
-- 关联概念：[[wiki/concepts/概念_LLM系统自动优化方法论]]
+- 关联概念：[[concepts/概念_Agent系统自动优化闭环]]
 
 ## 关键引文
 > "Tuning an AI system no longer means training it. Several methods now improve a system by editing its text, the prompt, the code, sometimes the training loop itself, and all of it runs automatically."

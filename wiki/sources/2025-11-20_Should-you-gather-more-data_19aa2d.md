@@ -15,7 +15,7 @@ updated: 2026-08-03
 - **链接**: [Daily Dose of DS](https://www.dailydoseofds.com/object-oriented-programming-with-python-for-data-scientists/)
 
 # 关联概念与实体
-- [[wiki/concepts/概念_学习曲线|学习曲线]]
+- 学习曲线
 
 # 核心要点
 1. **模型性能瓶颈的诊断**: 当特征工程和更换模型仅带来微小提升时，通常意味着数据量不足。但由于收集新数据成本高，需要科学的方法来决策。

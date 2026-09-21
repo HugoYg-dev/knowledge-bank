@@ -16,7 +16,7 @@ updated: 2026-08-04
 - **原始文章链接**: [Cyclical feature encoding](https://www.dailydoseofds.com/11-powerful-techniques-to-supercharge-your-ml-models/)
 
 # 关联概念与实体
-- [[wiki/concepts/概念_周期性特征编码|概念: 周期性特征编码]]
+- 概念: 周期性特征编码
 
 # 核心要点
 - **周期性特征的特点**：诸如一天中的小时（0-23）、星期几（周一到周日）、月份、风向和季节等特征具有周期性的循环规律，不同于传统的单向连续数值或普通的类别特征。

@@ -1,8 +1,4 @@
 ---
-type: concept
-tags:
-- AI-Agent/coding
-summary: 循环工程（Loop Engineering）是智能体外层控制面与系统化管理范式，决定了智能体运行的生命周期、任务流转、状态监控及退出机制，涵盖从一阶 AI Manager 到二阶 Senior Manager 的二阶管理动作系统化、边界评估与自收敛控制。
 sources:
 - wiki/sources/2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md
 - wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md
@@ -11,7 +7,12 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md
-updated: "2026-09-15"
+summary: Loop Engineering（循环工程）是将大语言模型驱动的智能体系统从简单单次执行提升为自主闭环的核心方法论；涵盖单循环五大组件固化、自收敛两大杠杆，以及多
+  Agent 协同中的图工程（Graph Engineering）拓扑编排架构。
+tags:
+- AI-Agent/coding
+type: concept
+updated: '2026-09-21'
 ---
 # 循环工程 (Loop Engineering)
 
@@ -134,3 +135,19 @@ Loop Engineering 的核心演进不仅是调度机制的自动化，更是**管�
 - [[wiki/sources/2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md|Loop engineering, clearly explained! (Source 摘要)]]
 - [[wiki/sources/2026-07-14_The-four-types-of-agent-loops_19f617.md|The four types of agent loops (Source 摘要)]]
 - [[wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md|Loop Engineering 详解：从管理执行到设计自收敛的循环 (Source 摘要)]]
+
+
+---
+
+## 多智能体协同进阶：图工程（Graph Engineering）拓扑编排
+
+当系统复杂度从“单个自主循环”演进至“多个专业子循环协同（Multi-Agent Loops）”时，单纯的线性执行将面临路由失控与状态污染。**图工程（Graph Engineering）** 即利用有向图（Graph）拓扑结构对多个 Loops 进行高阶编排的工程学科：
+
+### 核心物理要素
+1. **节点（Nodes）**：代表具体的自主循环（如规划 Loop、编码 Loop、审查 Loop）或纯确定性计算节点。
+2. **边（Edges）与条件路由**：定义执行顺序、并行分支合并、条件回退与跨循环断言。
+3. **共享全局状态（Shared State）**：在节点间传递受严格架构约束的上下文黑板，防止不可控的状态扩散。
+
+### 工程设计准则
+- **非必要勿建图**：仅在存在明确的“角色专业分工（Specialization）”或“故障爆炸半径隔离（Failure Isolation）”时才引入图拓扑；简单的线性步骤严禁过度图工程化。
+- **循环自收敛前置**：每个子节点必须首先是自收敛（Self-converging）的稳定闭环，避免发散错误沿着拓扑边放大。

@@ -35,7 +35,7 @@ updated: '2026-08-03'
 > "Most RL workflows today tightly couple this logic into the training pipeline, which makes it painful to iterate on environment design without touching the optimizer code."
 
 ## 关联概念与实体
-- 概念: [[wiki/concepts/概念_Agentic_RL环境与GRPO.md|Agentic RL 环境与 GRPO]]
+- 概念: Agentic RL 环境与 GRPO
 
 ---
 > 📎 **物理文献**：[[raw/articles/2026-03-13_What-are-RL-environments,-and-how-to-build-them_19ce93.md]]

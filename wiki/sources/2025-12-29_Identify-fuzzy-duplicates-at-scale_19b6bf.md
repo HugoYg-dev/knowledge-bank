@@ -20,7 +20,7 @@ updated: '2026-08-03'
 - **归档物理文献**: [[raw/articles/2025-12-29_Identify-fuzzy-duplicates-at-scale_19b6bf.md]]
 
 ## 关联概念/实体
-- [[concepts/概念_分块阻断技术_Blocking]]
+- 分块阻断技术_Blocking
 
 ## 核心要点
 1. **数据去重痛点**：对于精确重复，Pandas 的 `drop_duplicates()` 能够高效处理，但对模糊重复数据（如拼写略有不同、地址相似但有细微差异的记录）无能为力。

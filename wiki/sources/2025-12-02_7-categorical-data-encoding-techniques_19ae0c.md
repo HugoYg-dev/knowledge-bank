@@ -25,7 +25,7 @@ updated: 2026-08-03
 - **扩展实现**：推荐使用 Python 的 `category-encoders` 库以方便地在工程中实践各种编码策略。
 
 ## 关联知识
-- 核心概念：[[wiki/concepts/概念_类别特征编码技术]]
+- 核心概念：类别特征编码技术
 
 ## 关键引文
 > "Label encoding introduces an inherent ordering between categories, which may not be the case."
