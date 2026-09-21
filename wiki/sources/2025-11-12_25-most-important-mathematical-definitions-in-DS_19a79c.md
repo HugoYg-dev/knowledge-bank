@@ -32,7 +32,7 @@ updated: 2026-08-03
   - **拉格朗日乘子法 (Lagrange Multipliers)**：用于求解带约束条件的优化问题的数学技术，例如在从零推导 PCA 算法时的约束优化。
 
 ## 关联概念
-- 核心概念：[[wiki/concepts/概念_数据科学核心数学定义]]
+- 核心概念：数据科学核心数学定义
 - 关联概念：[[wiki/concepts/概念_t-SNE算法]]、[[wiki/concepts/概念_奇异值分解SVD]]、[[wiki/concepts/概念_主成分分析_PCA]]
 
 ## 关键引文

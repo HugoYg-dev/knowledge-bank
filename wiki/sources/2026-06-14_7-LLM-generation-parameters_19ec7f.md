@@ -36,6 +36,6 @@ updated: 2026-08-04
 - "Stop sequences: Custom list of tokens that immediately halt generation. Critical in structured outputs (e.g., JSON), preventing spillover text."
 
 ## 联动概念
-- [[wiki/concepts/概念_LLM文本生成解码参数]]
+- LLM文本生成解码参数
 
 > 📎 **物理文献**：[[raw/articles/2026-06-14_7-LLM-generation-parameters_19ec7f.md]]

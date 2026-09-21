@@ -29,6 +29,6 @@ updated: 2026-08-04
 - "The strength of ReLU lies not in itself but in an entire army of ReLUs embedded in the network. This is why having a few ReLU units in a network may not yield satisfactory results."
 
 ## 联动概念
-- [[wiki/concepts/概念_ReLU激活函数非线性拟合本质]]
+- ReLU激活函数非线性拟合本质
 
 > 📎 **物理文献**：[[raw/articles/2026-06-08_An-intuitive-guide-to-non-linearity-of-ReLU_19ea91.md]]

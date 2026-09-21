@@ -299,7 +299,6 @@
 ## Concepts
 - [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
 - [[概念_RLCD校准决策强化学习]] — 面向判别式决策的置信度校准强化学习范式（LLM/training, AI-Agent/tool-calling）
-- [[concepts/概念_DiT|概念_DiT]] — Diffusion Transformer，扩散模型 SOTA 架构（CV/arch）
 - [[concepts/概念_Kimi_Delta_Attention|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）
 
 - [[概念_SAG]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
@@ -338,7 +337,7 @@
 - [[概念_扩散模型]] — 前向加噪 + 反向去噪生成；DDPM 开创
 - [[概念_Latent_Diffusion]] — 先 AutoEncoder 压缩到 latent 再训扩散模型
 - [[概念_OCR数据增强]] — OCR 形态学/噪声/变换 + OneOf 组合
-- [[概念_torchvision图像增强]] — torchvision.transforms 增强 API 清单
+- torchvision图像增强 — torchvision.transforms 增强 API 清单
 - [[概念_自注意力复杂度]] — 自注意力 O(N²d)/O(N²)，瓶颈在内存 I/O
 - [[概念_FlashAttention]] — I/O 感知精确注意力，分块 + 在线 Softmax
 - [[概念_Normalization方法对比]] — BN/LN/IN/GN 维度与用途对比
@@ -356,10 +355,10 @@
 - [[概念_Result-as-a-Service]] — 人类只表达需求验收结果、AI 负责全实现的终极形态
 - [[概念_KV_Cache]] — 缓存 K/V 已计算结果，空间换时间避免重复计算
 - [[概念_跨模型KV缓存转换]] — 以跨层表示映射在模型路由切换时复用 KV Cache；当前仅验证同家族模型
-- [[概念_CUDA_Graph]] — 多 GPU 操作转 DAG 一次性提交，减少 CPU-GPU 交互
+- CUDA_Graph — 多 GPU 操作转 DAG 一次性提交，减少 CPU-GPU 交互
 - [[概念_模型并行]] — 拆分大模型到多 GPU，解决单机存不下
 - [[概念_连续批处理]] — 动态批处理，短请求完成即释放、新请求随时加入
-- [[概念_通信计算重叠]] — 用 GPU stream 令计算与通信时间上重叠
+- 通信计算重叠 — 用 GPU stream 令计算与通信时间上重叠
 - [[概念_Label_Smoothing]] — 软化硬标签缓解过度自信（medium）
 - [[概念_Mixup训练]] — Beta 分布插值混合样本图像与标签（medium）
 - [[概念_学习率调度]] — ReduceLROnPlateau/Cosine/MultiStep/Warmup 调度器
@@ -371,20 +370,19 @@
 - [[概念_K-Center-Greedy算法]] — 基于核心集策略的贪心样本选择算法
 - [[概念_Reward_Hacking]] — 奖励黑客：利用奖励模型漏洞取高分而非真正满足意图
 - [[概念_SFT数据三维度]] — 规模/质量/多样性三维度评估与数据选型配比
-- [[概念_alignment_tax]] — 对齐税：安全与偏好对齐导致的模型通用能力或基础性能下降
+- alignment_tax — 对齐税：安全与偏好对齐导致的模型通用能力或基础性能下降
 - [[概念_on-policy与off-policy数据]] — 强化学习训练中采样模型与目标优化策略的同源匹配关系
 - [[概念_多阶段训练策略]] — 从通用领域到垂直任务能力的退火精调流转路径
 - [[概念_灾难性遗忘]] — 微调新任务时导致原有预训练通用知识与能力退化
 - [[概念_智能体能力金字塔]] — 工具/规划/适应/接地气/常识推理五层能力
 - [[概念_接地气Groundedness]] — 智能体紧贴上下文、不幻觉不捏造的能力
-- [[概念_Git仓库历史诊断]] — 用变更热点、维护者、缺陷聚集、提交趋势与救火信号建立陌生代码库阅读路径（Skill/linux, AI-Agent/coding）
-- [[概念_Random_Patches大数据训练]] — 随机贴片在大数据集上训练经典集成模型的机制与方差降低原理
-- [[概念_ONNX模型跨平台部署]] — 模型开发框架与伺服生产环境解耦标准、ORT图优化与硬件子图分发机制
+- Git仓库历史诊断 — 用变更热点、维护者、缺陷聚集、提交趋势与救火信号建立陌生代码库阅读路径（Skill/linux, AI-Agent/coding）
+- Random_Patches大数据训练 — 随机贴片在大数据集上训练经典集成模型的机制与方差降低原理
+- ONNX模型跨平台部署 — 模型开发框架与伺服生产环境解耦标准、ORT图优化与硬件子图分发机制
 - [[概念_聚类算法分类综述]] — 系统性梳理聚类算法的 6 大主流家族（基于质心、基于连通性、基于密度、基于图、基于分布和基于压缩/降维），对比硬聚类与软聚类的决策边界，并分析算法对聚类形状和密度的适应差异。（MachineLearning, Clustering）
 - [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理。（LLM/inference, Infra/serving）
 - [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量。（LLM/inference, Infra/serving）
-- [[概念_Graph_Engineering图工程]] — 定义图工程（Graph Engineering）的核心内涵以及三大物理要素，展示 5 层嵌套同轴系统架构并拆解四大痛点设计准则。（Architecture, Agent, Multi-Agent, Graph-Engineering）
-- [[概念_扩散大语言模型_dLLMs]] — 定义扩散大语言模型（dLLMs）的物理架构、比对自回归与扩散模型的计算性质差异，详述离散掩码扩散及模型转换加速机制。（Architecture, LLM, Diffusion-LLM, Inference-Optimization）
+- [[concepts/概念_Loop_Engineering循环工程]] — 定义图工程（Graph Engineering）的核心内涵以及三大物理要素，展示 5 层嵌套同轴系统架构并拆解四大痛点设计准则。（Architecture, Agent, Multi-Agent, Graph-Engineering）
 - [[概念_AI硬件加速芯片架构]] — 定义并横向对比 CPU、GPU、TPU、NPU 与 LPU 五种主流 AI 计算芯片架构 of 物理特征、存储层次以及计算调度机制。（Architecture, Hardware, Processor, Inference）
 - [[概念_机器学习双下降现象]] — 阐述在过度参数化区域由于隐式正则化作用测试误差发生二次下降的现象，分析临界插值界限与偏置-方差折中理论的物理差异。（MachineLearning, Double-Descent, Generalization）
 
@@ -413,14 +411,14 @@
 - [[概念_Fusion_Retrieval]] — 稀疏(BM25)+稠密(向量)双路检索融合
 - [[概念_Reciprocal_Rank_Fusion]] — RRF 排序融合多路检索结果
 - [[概念_BM25]] — 经典稀疏检索算法，词频+文档长度惩罚
-- [[概念_BM25检索算法]] — 定义 BM25 基石地位，数学公式拆解（IDF/TF饱和度/文档长度惩罚）与混合检索架构（RAG）
+- BM25检索算法 — 定义 BM25 基石地位，数学公式拆解（IDF/TF饱和度/文档长度惩罚）与混合检索架构（RAG）
 - [[概念_检索后处理]] — 检索后重排/压缩/Long-text Reorder
 - [[概念_Contextual_Compression]] — LLM 提取检索文档中与查询相关的片段
 - [[概念_Long-text_Reorder]] — 长文本检索结果重排，重要文档置首尾
 - [[概念_查询重写]] — LLM 改写用户查询提升检索效果
 - [[概念_子查询分解]] — 复杂查询拆为子查询分别检索再合并
 - [[概念_Step-back提示]] — 退一步生成更抽象的查询获取更广泛上下文
-- [[概念_Markdown标题切分]] — 按 Markdown 标题层级结构化切分文档
+- Markdown标题切分 — 按 Markdown 标题层级结构化切分文档
 - [[概念_Matryoshka表示学习]] — MRL 嵌套学习多粒度表征，可截断维度保留语义
 - [[概念_Sparse_Embedding]] — 关键词式稀疏向量（TF-IDF/BM25/SPLADE）
 - [[概念_Dense_Embedding]] — 语义级稠密向量，通用语义搜索首选
@@ -468,7 +466,7 @@
 #### 语义搜索/系统设计/评估概念（批次8）
 - [[概念_Semantic_Search本质]] — metric embedding，document as index，无结构即灵活
 - [[概念_Multi-Vector检索]] — 用代理表示（自然语言/总结）索引低资源/长文件
-- [[概念_距离函数选择]] — 余弦(非度量)/欧氏(度量)距离选型与三角不等式
+- 距离函数选择 — 余弦(非度量)/欧氏(度量)距离选型与三角不等式
 - [[概念_Lazy_Graph_RAG]] — 语义搜索弥补 KG 不足，索引成本降至 0.1%（medium）
 - [[概念_迭代式表格推理]] — TableRAG 在线推理：拆解/检索/SQL/组合四步
 - [[概念_融合知识库]] — 多元异构数据统一逻辑存储，物理存储不变
@@ -493,7 +491,7 @@
 - [[概念_MambaBlock架构]] — 投影+1DConv+SelectiveSSM+残差，Mamba1/2 Block 结构（LLM/arch/Mamba）
 - [[概念_状态空间对偶SSD]] — Mamba2 核心：SSM 与线性 Attention 数学等价（LLM/arch/Mamba）
 - [[概念_半可分离矩阵]] — SSM 变换矩阵的代数结构，SSD 算法分块分解基础（LLM/arch/Mamba）
-- [[概念_State_Swapping]] — Mamba 特有推理范式：预生成 state 复用，无需 few-shot（LLM/arch/Mamba）
+- State_Swapping — Mamba 特有推理范式：预生成 state 复用，无需 few-shot（LLM/arch/Mamba）
 
 ### LLM/arch/MoE（批次 MoE+arch）
 - [[概念_MoE混合专家]] — 稀疏专家层替换 FFN，相同计算预算实现更大模型容量（LLM/arch/MoE）
@@ -510,7 +508,7 @@
 
 ### LLM/arch/VLM（批次3）
 - [[概念_MLLM三位一体架构]] — 视觉编码器 + 连接器 + LLM 通用框架（LLM/arch/VLM）
-- [[概念_视觉基础模型统一范式]] — Prompt 驱动 Seq2Seq，一套权重统一多视觉任务（LLM/arch/VLM）
+- 视觉基础模型统一范式 — Prompt 驱动 Seq2Seq，一套权重统一多视觉任务（LLM/arch/VLM）
 - [[概念_AnyRes高分辨率处理]] — LLaVA 系列全局+局部双路高分辨率策略（LLM/arch/VLM）
 - [[概念_DeepStack深度视觉融合]] — Qwen3-VL ViT 多中间层特征注入 LLM 浅层（LLM/arch/VLM）
 
@@ -526,15 +524,12 @@
 - [[概念_思维链CoT高级方法]] — CoT/CoT-SC/Decoding CoT/ToT+MCTS 及成本权衡（LLM/reasoning）
 - [[概念_自适应快慢思考]] — 三方案：Qwen3 SFT、AdaCoT Pareto、AdaThinking 约束优化（LLM/reasoning）
 - [[概念_LLM推理两阶段]] — 对比 Prefill 与 Decode 硬件瓶颈，详细介绍 Continuous Batching、Speculative Decoding、PagedAttention 三大优化方案。（LLM/inference）
-- [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理（LLM/inference, Infra/serving）
-- [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量（LLM/inference, Infra/serving）
-- [[概念_LLM量化技术与离群值处理]] — 系统梳理大模型量化数值折算收益，深度剖析激活值离群维度（Outliers）对 naive 舍入精度的压塌机制，并详细对比 RTN、GPTQ、AWQ、LLM.int8()、QAT 五种主流应对方案。（LLM/quantization, LLM/optimization）
 
 ### LLM/reasoning + training/RL（批次5）
 - [[概念_DeepSeek-R1训练管道]] — 冷启动SFT→推理RL→拒绝采样SFT→全场景RL四阶段，规则奖励无奖励黑客（LLM/training/RL）
 - [[概念_PPO近端策略优化]] — 生成策略+参考策略+价值模型三组件，RLHF 核心算法（LLM/training/RL）
 - [[概念_RLHF基于人类反馈的强化学习]] — 人类偏好→奖励模型→PPO 对齐流程，RLVR 演进方向（LLM/training/RL）
-- [[概念_奖励函数与验证器]] — 验证器判对错、奖励函数给分值，GRPO 奖励设计原则（LLM/training/RL）
+- [[concepts/概念_Verifiable_Reward]] — 验证器判对错、奖励函数给分值，GRPO 奖励设计原则（LLM/training/RL）
 - [[概念_Agent感知记忆推理三能力]] — CoT 赋能 Agent：感知CoT/记忆CoT（树搜索+矢量检索）/推理CoT（AI-Agent, LLM/reasoning）
 
 ### LLM/training + hallucination（批次7）
@@ -545,10 +540,9 @@
 - [[概念_幻觉检测方法]] — FActScore/SAFE/SelfCheckGPT/TruthfulQA 检测体系（LLM/hallucination）
 - [[概念_LLM幻觉消除技术分类]] — 32 种技术两大分类：提示工程（RAG/反馈/提示微调）vs 模型开发（LLM/hallucination）
 - [[概念_抗幻觉方法]] — RARR/FAVA/Self-RAG/CoVe/FLAME/WebGPT 抵抗方法体系（LLM/hallucination）
-- [[概念_温度参数与幻觉创造力权衡]] — 温度参数控制输出分布平滑度，高温增创意增幻觉，低温保准确减创意（LLM/hallucination, LLM/inference）
+- [[concepts/概念_LLM文本生成解码策略|]] — 温度参数控制输出分布平滑度，高温增创意增幻觉，低温保准确减创意（LLM/hallucination, LLM/inference）
 
 ### LLM/面试/训练/RL（批次9）
-- [[概念_Reward_Hacking]] — 奖励攻陷（Specification Gaming），强化学习中模型找到奖励漏洞以不符合真实意图的方式高频刷分现象（LLM/training/RL）
 - [[概念_AI创业Scaling_Law]] — AI 团队规模与产出效率的悖论：小而精 vs 规模扩张（创业）
 
 ### LLM/Recommendation + arch（Batch 10）
@@ -562,7 +556,7 @@
 - [[概念_MCP_CHS架构]] — Client-Host-Server 三组件精确界定：Host 是 AI 智能唯一承载者，Server/Client 是模型无关 RPC 管道（AI-Agent/tool-calling）
 - [[概念_MCP六大原语]] — Tool/Prompt/Resource/Sampling/Roots/Elicitations 六类原语：触发方、用途、高阶玩法与 Web 化方向（AI-Agent/tool-calling）
 - [[概念_MCP传输方式]] — Stdio/SSE/Streamable HTTP 三种传输方式对比与选型（AI-Agent/tool-calling）
-- [[概念_MCP与Function_Call对比]] — 协议 vs 模型特性、静态 vs 动态、碎片化痛点与 MCP 解法（AI-Agent/tool-calling）
+- MCP与Function_Call对比 — 协议 vs 模型特性、静态 vs 动态、碎片化痛点与 MCP 解法（AI-Agent/tool-calling）
 - [[概念_MCP代码执行模式]] — CodeAgent 模式：按需加载工具定义，Token 消耗减少 98.7%，含隐私保护与 Skills 沉淀（AI-Agent/tool-calling）
 - [[概念_HITL_MCP]] — send_inquiry 挂起等待人类答复，MCP Notification 传凭条，HTTP 接口收答复，多端协同（AI-Agent/tool-calling）
 - [[概念_MCP_Proxy]] — 代理模式在 tool/call 前植入确认逻辑，现有 MCP Server 零改动（AI-Agent/tool-calling）
@@ -572,12 +566,11 @@
 - [[概念_LLM_Wiki范式]] — Andrej Karpathy 提出的知识管理范式，在摄入端预先结构化与关联，实现高复利知识编译（Skill/knowledge-bank）
 - [[概念_Agent三段式记忆演进]] — Storage -> Reflection -> Experience 三阶段演进框架及驱动演进的三大根本动力（AI-Agent/memory）
 - [[概念_Agent完整轨迹评估]] — 面向复杂智能体多步规划、检索与多轮会话的高度对准人工监督与全轨迹评估（AI-Agent/eval）
-- [[概念_提示词自动优化闭环]] — 利用 DSPy GEPA/MIPROv2 算法与回放验证闭环，全自动优化系统提示词（AI-Agent/prompt-engineering）
+- [[概念_Agent系统自动优化闭环]] — 利用 DSPy GEPA/MIPROv2 算法与回放验证闭环，全自动优化系统提示词（AI-Agent/prompt-engineering）
 - [[概念_RAG与LLM_Wiki对比]] — RAG 适用大规模被动检索 vs LLM Wiki 适用知识积累与高复利主动编译（Skill/knowledge-bank）
-- [[概念_知识编译与复利]] — LLM 担任知识库编译器，解决信息存储孤岛痛点并释放连接复利（Skill/knowledge-bank）
+- 知识编译与复利 — LLM 担任知识库编译器，解决信息存储孤岛痛点并释放连接复利（Skill/knowledge-bank）
 - [[概念_渐进式披露]] — 按总览到细节的层级动态展示信息，降低用户与大模型认知及上下文负荷（AI-Agent/UI, AI-Agent/context-engineering）
 - [[概念_系统提示词四层架构]] — 核心定义、交互接口、内部处理与全局约束四层架构，解决规则扁平堆砌痛点（AI-Agent/prompt-engineering）
-- [[概念_灾难性遗忘]] — 持续学习中新任务学习导致旧知识退化的经典难题及Agent分层存储应对（AI-Agent/memory, DeepLearning）
 - [[概念_LLM_as_a_Judge校准]] — 引入专家黄金集、失败编码与解释理由，用对齐框架确保AI裁判评分一致（AI-Agent/eval）
 - [[概念_标量过滤]] — 向量数据库中结合元数据标量属性过滤与向量检索的混合查询机制（RAG/embedding, RAG/retrieval）
 - [[概念_DiskANN]] — 微软开源基于 SSD 磁盘的高性能 ANN 检索算法，突破内存限制（RAG/embedding, RAG/retrieval）
@@ -585,15 +578,13 @@
 - [[概念_Memex]] — Vannevar Bush 于 1945 年提出的个人机电知识设备构想，关联性路径鼻祖（Skill/knowledge-bank）
 - [[概念_卡片盒笔记法]] — Zettelkasten 知识管理方法论，原子化卡片与网络化交叉引用（Skill/knowledge-bank）
 - [[概念_Ingest入库闭环]] — LLM Wiki 范式中的标准化入库 SOP 操作（阅读/摘要/实体概念联动/索引日志）（Skill/knowledge-bank, AI-Agent/coding）
-- [[概念_Wiki健康检查]] — LLM Wiki 范式中的 Lint 体检与图谱垃圾回收（Skill/knowledge-bank, AI-Agent/coding）
+- Wiki健康检查 — LLM Wiki 范式中的 Lint 体检与图谱垃圾回收（Skill/knowledge-bank, AI-Agent/coding）
 - [[概念_Claude_Code多智能体协同机制]] — 拆解并对比 Claude Code 的三大协同原语（Subagents、Agent Teams、Dynamic Workflows），详述动态工作流在 JS 编排执行、并发扇出、上下文解耦和抗灾恢复力方面的机制，并阐述对抗性验证（Adversarial Verification）的收敛逻辑。（ClaudeCode, Multi-Agent, Orchestration）
 - [[概念_Delta_Attention与增量矩阵缓存]] — Kimi K3 采用的注意力优化机制，使用固定大小矩阵与 Delta 规则更新，实现线性计算与 $O(1)$ 空间开销
 - [[概念_分位数回归与Pinball_Loss]] — 弹球损失（Pinball Loss）的定义与不对称几何拉伸推导，及多 percentile 回归与 LightGBM 区间估算的工程价值。（machine-learning, regression, loss-function）
 - [[概念_Agent内存与状态管理]] — 深度对比 State 与 Memory 两个维度的定义与作用边界，构建在宿主系统（Harness Engineering）中单步 Checkpoint 与 Scope 隔离的协作逻辑。（AI-Agent/harness, AI-Agent/memory, state-management）
-- [[概念_LLM系统自动优化方法论]] — 介绍了以大模型优化大模型系统的反馈演进闭环，横向对比 OPRO, MIPROv2, TextGrad, GEPA, AlphaEvolve, AutoResearch 等 6 大自动调优技术。（RSI, AI-Agent/prompt-engineering, LLM/arch）
 
 ## Entities
-- [[实体_TypeSafe_AI]] — 由前 OpenAI 成员 Diogo Almeida 创办的非自回归决策模型研发机构（AI-Agent/tool-calling, LLM/inference）
 
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
@@ -680,7 +671,6 @@
 - [[实体_Jina_AI]] — 专注搜索底座模型 AI 初创，2020-2025，两次 Pivot 后被 Elastic 收购（创业）
 
 ### LLM/Recommendation + arch（Batch 10）
-- [[实体_Sebastian_Raschka]] — LLM 架构技术博主，《Build a LLM from Scratch》作者（LLM/arch）
 - [[实体_淘天AIGC团队]] — 淘天集团直播AIGC团队，数字人直播完整链路（LLM）
 
 ### LLM/training + hallucination（批次7）
@@ -709,14 +699,13 @@
 - [[概念_私域知识工程]] — 将项目专属知识系统化文档化，解决 AI 与真实项目信息不对称，三板斧：入职培训/知识驱动编程/自动维护（AI-Agent/coding）
 - [[概念_LLM应用评估体系]] — LLM 应用评估方法论：断言式单元测试/LLM 裁判最佳实践/实习生测试/古德哈特定律（AI-Agent/coding）
 - [[概念_Agent_Skills元工具架构]] — Skills = 提示词模板+上下文注入+执行上下文修改，纯 LLM 推理选择，双消息 isMeta 机制，渐进式披露（AI-Agent/skill）
-- [[概念_Agentic设计模式分类]] — 21种 Agent 设计模式四大类：核心（提示链/路由/并行化/反思/工具/规划/多智能体）/高级/集成/生产（AI-Agent/skill）
+- Agentic设计模式分类 — 21种 Agent 设计模式四大类：核心（提示链/路由/并行化/反思/工具/规划/多智能体）/高级/集成/生产（AI-Agent/skill）
 
 ### AI-Agent/memory（Phase 4 Batch 7）
 - [[概念_AI_Agent记忆策略]] — 8 种主要策略原理（全量/滑动窗口/相关性过滤/摘要/向量DB/知识图谱/分层/类OS），翁荔学术分类框架与前沿系统（AI-Agent/memory）
 
 ### AI-Agent/prompt-engineering（Phase 4 Batch 7）
-- [[概念_编程提示工程实战]] — 程序员向 10 种技巧+7 条基础原则+调试/重构/功能三场景策略+常见反模式（AI-Agent/prompt-engineering）
-- [[概念_系统提示词四层架构]] — 核心定义/交互接口/内部处理/全局约束四层，解决规则冲突/维护困难/行为不可预测（AI-Agent/prompt-engineering）
+- 编程提示工程实战 — 程序员向 10 种技巧+7 条基础原则+调试/重构/功能三场景策略+常见反模式（AI-Agent/prompt-engineering）
 
 ### AI-Agent/AI-BI（Phase 4 Batch 8）
 
@@ -736,21 +725,20 @@
 - [[概念_Python进阶特性]] — suppress/setrecursionlimit/Literal/__missing__/__subclasshook__（Skill/python）
 - [[概念_Python并发与并行机制]] — 未分类概念摘要（python, concurrency, parallelism, gil, programming）
 - [[概念_Python描述符]] — Python 描述符（Descriptors）是实现底层属性代理的核心机制。通过控制属性的获取、修改和名称绑定，它能有效解决传统 @property getter/setter 机制在多属性校验时的代码冗余，并能在对象初始化时直接进行拦截校验。（python, oop, descriptor）
-- [[概念_Python模块与包管理]] — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
-- [[概念_Python魔术方法]] — Python 魔术方法（Dunder 方法）是实现 Python 对象协议与重载内置行为的核心机制。本文整理分类了 20 种最常用魔术方法，详细解析了 __new__ 与 __init__ 的本质差异与调用时序，展示了利用 __new__ 实现单例模式，并关联了描述符机制。（python, oop）
+- Python模块与包管理 — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
 
 ### Skill/data-analysis（Phase 5 Batch 2）
 - [[概念_自动EDA工具]] — 10 个自动 EDA 包四类分类（报告/可视化/定制/ML 集成）与选型建议（Skill/data-analysis, Skill/python）
 - [[概念_Pandas可视化]] — DataFrame.plot/Series.plot 内置绘图 + pandas.plotting 高级可视化（Skill/data-analysis）
 - [[概念_Pandas核心操作图解]] — 选择/排序/分组/合并/变形/索引 + NumPy 对比关键差异（Skill/data-analysis, Skill/python, 面试）
-- [[概念_matplotlib样式美化]] — dufte 主题/图例/柱标注三 API，一行代码商务风图表（Skill/data-analysis）
+- matplotlib样式美化 — dufte 主题/图例/柱标注三 API，一行代码商务风图表（Skill/data-analysis）
 
 ### Skill/linux（Phase 5 Batch 3）
-- [[概念_Linux命令分类速查]] — 28 大类 600 条 Linux 命令按场景分组速查体系（Skill/linux）
+- Linux命令分类速查 — 28 大类 600 条 Linux 命令按场景分组速查体系（Skill/linux）
 
 ### Life（Phase 5 Batch 3）
-- [[概念_幸福积分模型]] — 幸福总量=曲线下面积（积分），时间度量衡，等周不等式类比（Life）
-- [[概念_天职Calling]] — 本身能带来快乐的工作，三条筛选标准，天职不是"钱多事少离家近"（Life）
+- 幸福积分模型 — 幸福总量=曲线下面积（积分），时间度量衡，等周不等式类比（Life）
+- 天职Calling — 本身能带来快乐的工作，三条筛选标准，天职不是"钱多事少离家近"（Life）
 
 ### Life（Phase 6 Batch 5：旅行/驾驶/投资/驱蚊/智能家居）
 - [[概念_投资反馈机制]] — 选正常市场获有效反馈，不正常市场无法纠错成长（Life）
@@ -766,7 +754,7 @@
 - [[概念_PPT生成提示词]] — 用结构化提示词控制 AI 生成 PPT/封面的风格/配色/排版，三维度描述法（AIGC）
 - [[概念_HTML代码方式生成视觉物料]] — LLM 输出 HTML+CSS 代码渲染视觉物料，可控性强、可复用（AIGC）
 - [[概念_AI_PPT工具路径]] — AI 原生派（Gamma 对话生成）vs 传统革新派（WPS AI 润物细无声）（AIGC）
-- [[概念_AI产品最后一公里]] — AI PPT 从「能用」到「可交付」的 gap：二次编辑+格式导出兼容（AIGC）
+- AI产品最后一公里 — AI PPT 从「能用」到「可交付」的 gap：二次编辑+格式导出兼容（AIGC）
 
 ### AIGC（Phase 6 Batch 2）
 - [[概念_Nano_Banana_Pro论文绘图工作流]] — 架构师→渲染器→编辑器三步工作流；VISUAL SCHEMA 五种布局原型；禁止用于实验数据图表（AIGC）
@@ -801,7 +789,7 @@
 - [[概念_研究型创始人崛起]] — 86% 技术创始人/82% 技术 CEO，研究型创始人预判能力突破（创业）
 
 ### 创业（Phase 6 Batch 5：AI 独立开发）
-- [[概念_AI独立开发方法论]] — 艾逗笔五条感悟（快/精/小切入/造血/流量）+ 出海 SOP + 四 all in 方向（创业）
+- AI独立开发方法论 — 艾逗笔五条感悟（快/精/小切入/造血/流量）+ 出海 SOP + 四 all in 方向（创业）
 
 ### AI-Agent/deep-research（Phase 4 Batch 6）
 - [[概念_Deep-Research-Agent定义与分类]] — DR Agent 定义、与 RAG/Tool Use 的边界、规划策略三模式（Planning-Only/Intent-to-Planning/Unified）（AI-Agent/deep-research）
@@ -818,12 +806,10 @@
 - [[概念_假性死链鉴别]] — 图谱审计中死链三维甄别法：命名不匹配重定向、多余路径前缀去前缀化、待建节点按需生长（Skill/knowledge-bank）
 - [[概念_级联清理安全边界]] — 物理底座删除时的级联清理红线，包含上下文半衰期解耦与行内安全感知（Inline Safety Sensing）（Skill/knowledge-bank）
 - [[概念_单向推导数据管线]] — LLM Wiki 数据流向纪律：raw/ -> wiki/sources/ -> wiki/entities|concepts，严禁末端产物越级直连 raw/（Skill/knowledge-bank）
-- [[概念_Loop_Engineering循环工程]] — 智能体装备工程（Harness Engineering）的外层控制面，决定了智能体运行的生命周期、任务流转、状态监控及退出机制。（AI-Agent/loop-engineering, AI-Agent/harness）
-- [[概念_AI工程技术栈全景_2026]] — 系统梳理并详细阐释 2026 年 AI 工程师的 10 层技术栈全景与核心组件，总结从单点 Prompt 调试向 Harness & Loop 架构体系演进的宏观趋势。（AI-Engineering, LLMOps, System-Architecture）
+- AI工程技术栈全景_2026 — 系统梳理并详细阐释 2026 年 AI 工程师的 10 层技术栈全景与核心组件，总结从单点 Prompt 调试向 Harness & Loop 架构体系演进的宏观趋势。（AI-Engineering, LLMOps, System-Architecture）
 
 ### 代码强化学习与 Reward Hacking（Ingest Batch 4）
 - [[概念_代码强化学习]] — 利用测试套件 pass/fail 可验证奖励进后训练，激活长程规划元能力但易诱发作弊（LLM/training/RL, AI-Agent/coding）
-- [[概念_Verifiable_Reward]] — 自动化测试套件 pass/fail 可验证奖励，信号干净成本低但易被模型攻击刷分（LLM/training/RL）
 - [[概念_Hardened_Sandbox]] — 移走 `.git` 版本历史与物理隔离断网的强化沙盒评测规范，防范模型检索与历史提交作弊（LLM/training/RL, AI-Agent/eval）
 - [[概念_Inoculation_Prompting]] — Anthropic 提出训练集中注入接种提示词重构奖励篡改语义，消除安全掩盖副作用（LLM/training/RL）
 
@@ -833,9 +819,7 @@
 - [[概念_Skill误触发与漏触发评价]] — 兼顾评估漏触发（False Negative）与误触发（False Positive），结合 Precision/Recall 权衡（AI-Agent/skill, AI-Agent/eval）
 
 ### AI-Agent/tool-calling MCP系列（Phase 4 Batch 1）
-- [[实体_Agent_TARS]] — 字节跳动开源多模态 Agent，内置 Function Call + 用户自定义 MCP Server 双轨设计（AI-Agent/tool-calling）
 - [[实体_David_Soria_Parra]] — Anthropic 工程师，MCP 协议联合创建者，五大原语与 Web 化主导者（AI-Agent/tool-calling）
-- [[实体_CherryStudio]] — 开源 MCP Host 应用，MCPService.ts（Client）+ ApiService.ts（Host）CHS 架构典型案例（AI-Agent/tool-calling）
 - [[实体_Anthropic_Research系统]] — Anthropic Claude Research 多智能体研究系统，Opus 4 + Sonnet 4 orchestrator-worker（AI-Agent/multi-agent）
 
 ### AI-Agent/context-engineering（Phase 4 Batch 3）
@@ -861,10 +845,7 @@
 
 ### Skill/python（Phase 5 Batch 1）
 - [[实体_FastAPI]] — Python 高性能 Web 框架，基于 Starlette/Pydantic，原生 async/await，性能与 Go 不相上下（Skill/python）
-- [[概念_Python并发与并行机制]] — 未分类概念摘要（python, concurrency, parallelism, gil, programming）
-- [[概念_Python描述符]] — Python 描述符（Descriptors）是实现底层属性代理的核心机制。通过控制属性的获取、修改和名称绑定，它能有效解决传统 @property getter/setter 机制在多属性校验时的代码冗余，并能在对象初始化时直接进行拦截校验。（python, oop, descriptor）
-- [[概念_Python模块与包管理]] — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
-- [[概念_Python魔术方法]] — Python 魔术方法（Dunder 方法）是实现 Python 对象协议与重载内置行为的核心机制。本文整理分类了 20 种最常用魔术方法，详细解析了 __new__ 与 __init__ 的本质差异与调用时序，展示了利用 __new__ 实现单例模式，并关联了描述符机制。（python, oop）
+- Python模块与包管理 — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
 
 ### Skill/data-analysis（Phase 5 Batch 2）
 - [[实体_Pandas]] — Python 数据分析核心库，基于 NumPy，Series/DataFrame + groupby/merge/pivot/plot（Skill/data-analysis, Skill/python）
@@ -927,43 +908,41 @@
 
 ### 机器学习与数据科学基础（Batch Ingest）
 - [[概念_t-SNE算法]] — t-SNE 是一种流形学习降维与二维可视化算法。其 CPU 计算具有 O(N²) 二次方复杂度瓶颈，大样本下极其缓慢。tSNE-CUDA 可提供高达 700 倍的 GPU 极速提升，但目前硬件上仅支持生成二维投影（n_components=2）。（ML/dimension-reduction, t-SNE, GPU/acceleration）
-- [[概念_不平衡数据的kNN优化]] — 未分类概念摘要（machinelearning, knn, imbalanceddata）
+- 不平衡数据的kNN优化 — 未分类概念摘要（machinelearning, knn, imbalanceddata）
 - [[概念_主成分分析_PCA]] — 未分类概念摘要（machinelearning, dimensionalityreduction, mathematics）
 - [[概念_稀疏随机投影]] — 基于 Johnson-Lindenstrauss 引理的线性降维算法，以稀疏随机矩阵突破 PCA 的三次时间复杂度瓶颈，在超高维场景近乎保持欧氏距离与下游任务质量（Skill/data-analysis, DeepLearning）
-- [[概念_交替注意力_Alternating_Attention]] — 交替注意力（Alternating Attention）是 ModernBERT 采用的记忆体高效注意力机制，通过在每三层交替使用一层全局注意力与滑动窗口局部注意力（128个最近 token），打破了传统 BERT 全局注意力二次方复杂度的瓶颈。（attentionmechanism, modernbert, efficiency）
+- 交替注意力_Alternating_Attention — 交替注意力（Alternating Attention）是 ModernBERT 采用的记忆体高效注意力机制，通过在每三层交替使用一层全局注意力与滑动窗口局部注意力（128个最近 token），打破了传统 BERT 全局注意力二次方复杂度的瓶颈。（attentionmechanism, modernbert, efficiency）
 - [[概念_倒排文件索引_IVF]] — 倒排文件索引 (Inverted File Index, IVF) 是一种常用的高维向量近似最近邻搜索 (ANNS) 索引方法。它通过聚类将空间划分为若干分区，使得检索时只需搜索最近质心所在的局部胞腔，从而极大降低计算复杂度并提高检索速度。（vector-database, vector-search, indexing, approximate-nearest-neighbor）
-- [[概念_分块阻断技术_Blocking]] — 未分类概念摘要（datadeduplication, computerscience, optimization, algorithm）
+- 分块阻断技术_Blocking — 未分类概念摘要（datadeduplication, computerscience, optimization, algorithm）
 - [[概念_分类模型校准]] — 未分类概念摘要（machine-learning, deep-learning, model-calibration, probability-estimation）
 - [[概念_双编码器与交叉编码器]] — 阐述了成对句子评分（Pairwise Sentence Scoring）中双编码器（Bi-encoders）与交叉编码器（Cross-encoders）的机制差异、优劣势及应用场景，并简要介绍了结合两者的 AugSBERT 架构。（sentencesimilarity, biencoder, crossencoder, nlp）
 - [[概念_固定内存_Memory_Pinning]] — 未分类概念摘要（deep-learning, pytorch, gpu, performance-tuning）
-- [[概念_学习曲线]] — 学习曲线（Learning Curve）是评估机器学习模型表现是否随数据量增加而提升的重要诊断工具。它能帮助开发者科学决策是否需要投入成本收集更多数据，诊断模型当前是处于高方差还是高偏差阶段。（machinelearning, modeldiagnostics, learningcurve）
-- [[概念_数据科学核心数学定义]] — 整理并阐述了数据科学与机器学习中常用的核心数学定义，包括极大似然估计 (MLE)、标准分数 (Z-score)、最小二乘法 (OLS)、熵 (Entropy)、特征值与特征向量、R方系数 (R-squared)、KL散度、奇异值分解 (SVD) 以及拉格朗日乘子法。（data-science, mathematics, statistics, linear-algebra）
-- [[概念_数据集变量分类]] — 未分类概念摘要（statistics, machine-learning, variable-types）
-- [[概念_无标签聚类评估指标]] — 系统总结和对比了三种无标签（无监督）聚类评估指标：轮廓系数（Silhouette Coefficient）、Calinski-Harabasz 指数（CH指数）以及基于密度的聚类验证（DBCV），分析了它们的物理含义、数学算式、计算复杂度及适用场景。（machinelearning, clustering, evaluation, unsupervisedlearning）
+- 学习曲线 — 学习曲线（Learning Curve）是评估机器学习模型表现是否随数据量增加而提升的重要诊断工具。它能帮助开发者科学决策是否需要投入成本收集更多数据，诊断模型当前是处于高方差还是高偏差阶段。（machinelearning, modeldiagnostics, learningcurve）
+- 数据科学核心数学定义 — 整理并阐述了数据科学与机器学习中常用的核心数学定义，包括极大似然估计 (MLE)、标准分数 (Z-score)、最小二乘法 (OLS)、熵 (Entropy)、特征值与特征向量、R方系数 (R-squared)、KL散度、奇异值分解 (SVD) 以及拉格朗日乘子法。（data-science, mathematics, statistics, linear-algebra）
+- 数据集变量分类 — 未分类概念摘要（statistics, machine-learning, variable-types）
+- 无标签聚类评估指标 — 系统总结和对比了三种无标签（无监督）聚类评估指标：轮廓系数（Silhouette Coefficient）、Calinski-Harabasz 指数（CH指数）以及基于密度的聚类验证（DBCV），分析了它们的物理含义、数学算式、计算复杂度及适用场景。（machinelearning, clustering, evaluation, unsupervisedlearning）
 - [[概念_机器学习损失函数]] — 未分类概念摘要（machinelearning, lossfunction, optimization）
-- [[概念_机器学习模型生产环境测试]] — 机器学习模型在生产环境中的五种主流测试与部署策略，包括 A/B 测试、金丝雀测试、交叉测试、影子测试以及多臂强盗（MAB）部署，旨在降低新模型上线风险并评估真实环境表现。（MLOps, machinelearning, modeltesting）
-- [[概念_梯度提升决策树_GBDT]] — 未分类概念摘要（machinelearning, ensemblelearning, gbdt, supervisedlearning）
+- 机器学习模型生产环境测试 — 机器学习模型在生产环境中的五种主流测试与部署策略，包括 A/B 测试、金丝雀测试、交叉测试、影子测试以及多臂强盗（MAB）部署，旨在降低新模型上线风险并评估真实环境表现。（MLOps, machinelearning, modeltesting）
+- 梯度提升决策树_GBDT — 未分类概念摘要（machinelearning, ensemblelearning, gbdt, supervisedlearning）
 - [[概念_梯度累积_Gradient_Accumulation]] — 梯度累积（Gradient Accumulation）是一种在硬件显存受限时，通过多次前向和反向传播累积梯度，再统一执行一次参数更新，从而在逻辑上等效实现大 Batch Size 训练的优化技术。（deeplearning, pytorch, optimization, training）
 - [[概念_神经网络训练优化综述]] — 汇总并分类总结了神经网络训练中的16种常见优化技术，涵盖硬件加速、混合精度、并行策略、显存管理、动量优化及 I/O 加载等维度，旨在建立起神经网络优化的大图景。（deeplearning, neuralnetwork, optimization, training）
-- [[概念_稀疏注意力]] — 未分类概念摘要（deeplearning, llm, attentionmechanism, sparseattention）
-- [[概念_类别特征编码技术]] — 未分类概念摘要（machine-learning, feature-engineering, data-preprocessing, representation-learning）
-- [[概念_训练验证测试集划分]] — 规范化阐述机器学习中训练集、验证集和测试集的三阶段划分职责，分析验证集过拟合瓶颈，介绍 K 折交叉验证与嵌套交叉验证（Nested CV）的原理流向，并针对时序、不平衡、分组及数据预处理等复杂场景给出具体的防泄漏划分准则。（machinelearning/evaluation, machinelearning/methodology）
-- [[概念_跨模型嵌入对比局限]] — 未分类概念摘要（machinelearning, embedding, vectorspace, representationlearning）
+- 稀疏注意力 — 未分类概念摘要（deeplearning, llm, attentionmechanism, sparseattention）
+- 类别特征编码技术 — 未分类概念摘要（machine-learning, feature-engineering, data-preprocessing, representation-learning）
+- 训练验证测试集划分 — 规范化阐述机器学习中训练集、验证集和测试集的三阶段划分职责，分析验证集过拟合瓶颈，介绍 K 折交叉验证与嵌套交叉验证（Nested CV）的原理流向，并针对时序、不平衡、分组及数据预处理等复杂场景给出具体的防泄漏划分准则。（machinelearning/evaluation, machinelearning/methodology）
+- 跨模型嵌入对比局限 — 未分类概念摘要（machinelearning, embedding, vectorspace, representationlearning）
 
 ### 机器学习与数据科学基础（Batch Ingest）
-- [[概念_Agentic_RL环境与GRPO]] — 未分类概念摘要（ReinforcementLearning, AIAgents, Infrastructure, GRPO）
+- Agentic_RL环境与GRPO — 未分类概念摘要（ReinforcementLearning, AIAgents, Infrastructure, GRPO）
 - [[概念_Claude_Code核心配置与原语]] — 未分类概念摘要（ClaudeCode, AITools, ConfigArchitecture）
-- [[概念_周期性特征编码]] — 周期性特征在时序中的表现，传统线性编码的边界缺陷，Sine/Cosine 双通道单位圆投影映射及其等距几何优势推导。
-- [[概念_LoRA与QLoRA微调]] — LoRA 冻结 W 并更新 A/B 低秩分解矩阵的数学机制，多租户架构下共享底座大模型的存储与成本对比，及 Adapter 热插拔运行逻辑。
-- [[概念_大模型蒸馏的容量匹配法则]] — 在微调/蒸馏小模型时，使用顶级大模型作为教师生成合成数据，其效果反而可能比不上中等教师模型这一“反直觉”容量匹配法则。（distillation, knowledge-transfer, fine-tuning）
+- 周期性特征编码 — 周期性特征在时序中的表现，传统线性编码的边界缺陷，Sine/Cosine 双通道单位圆投影映射及其等距几何优势推导。
+- 大模型蒸馏的容量匹配法则 — 在微调/蒸馏小模型时，使用顶级大模型作为教师生成合成数据，其效果反而可能比不上中等教师模型这一“反直觉”容量匹配法则。（distillation, knowledge-transfer, fine-tuning）
 - [[概念_GEPA提示词进化算法]] — 详细定义 GEPA 无梯度提示词进化算法，阐述其如何通过自然语言反思与 Pareto 采样避免强化学习的标量信号压缩瓶颈，并横向对比其他提示词优化技术。（gepa, prompt-tuning, rl, dspy）
 
 ### 机器学习与数据科学基础（Batch Ingest）
 - [[概念_Breathing_KMeans算法]] — Breathing KMeans 是一种解决传统 KMeans 初始化敏感和重训高耗时的聚类算法。它通过动态的“吸气”（在误差大的质心附近分裂出新质心）和“呼气”（合并并删除低效用的紧邻质心）循环，实现速度和准确性的双重提升。（MachineLearning, Clustering, KMeans, BreathingKMeans）
 - [[概念_REFRAG_RAG压缩与过滤]] — REFRAG 是 Meta AI 提出的一种在向量层面进行压缩与过滤的 RAG 检索优化框架，能够显著提高首字生成时间（TTFT），并减少冗余 token 开销。（RAG, MetaAI, REFRAG, InformationRetrieval）
-- [[概念_ReLU激活函数非线性拟合本质]] — 详细推导单个神经元 ReLU(wx + b) 相当于平移折线基底，多神经元加权累加的本质是分段线性插值，以及宽/深网络对 “Army of ReLUs” 的必然要求。
-- [[概念_LLM文本生成解码参数]] — 系统定义并解构 Max tokens、Temperature、Top-k、Top-p、Frequency/Presence Penalty 以及 Stop Sequences 等 7 个关键解码参数的作用与原理。
-- [[概念_LLM文本生成解码策略]] — 详尽对比 LLM 文本生成的贪婪搜索、多项式采样、束搜索与对比搜索四大解码策略，分析其在计算资源、多样性与准确性上的权衡。
+- ReLU激活函数非线性拟合本质 — 详细推导单个神经元 ReLU(wx + b) 相当于平移折线基底，多神经元加权累加的本质是分段线性插值，以及宽/深网络对 “Army of ReLUs” 的必然要求。
+- LLM文本生成解码参数 — 系统定义并解构 Max tokens、Temperature、Top-k、Top-p、Frequency/Presence Penalty 以及 Stop Sequences 等 7 个关键解码参数的作用与原理。
 - [[概念_机器学习诊断分析图表]] — 将 11 种高频关键的 DS/ML 诊断及可解释性分析图表进行系统性分类归纳，简练指出每个图表的物理含义与应用准则。（Machine-Learning, Model-Evaluation, Model-Interpretability, Data-Science）
 
 ## Comparisons

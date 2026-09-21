@@ -1,14 +1,14 @@
 ---
-type: concept
-tags:
-- Skill/python
-summary: Python 描述符（Descriptors）是实现底层属性代理的核心机制。通过控制属性的获取、修改和名称绑定，它能有效解决传统 @property
-  getter/setter 机制在多属性校验时的代码冗余，并能在对象初始化时直接进行拦截校验。
 sources:
 - wiki/sources/2025-11-20_Descriptors-in-Python_19aa2d.md
-updated: '2026-08-03'
+- wiki/sources/2026-04-12_20-most-common-magic-methods_19d838.md
+summary: Python 描述符（Descriptors）与魔术方法（Dunder Methods）是实现底层属性代理、对象协议重载与面向对象行为定制的核心机制。深入剖析
+  __new__ 与 __init__ 生命周期、正数校验描述符及 20 种常用对象协议魔术方法。
+tags:
+- Skill/python
+type: concept
+updated: '2026-09-21'
 ---
-
 # 概念_Python描述符
 
 ## 定义
@@ -117,3 +117,19 @@ if __name__ == "__main__":
 
 ## 关联
 - [[概念_Python进阶特性]]
+
+
+---
+
+## 扩展：Python 对象协议与常用魔术方法（Dunder Methods）全景
+
+描述符本身即是特定魔术方法（`__get__`、`__set__`、`__delete__`、`__set_name__`）的实例化协议。在 Python 面向对象生态中，魔术方法定义了类与语言内置操作（运算符、类型转换、生命周期、容器访问等）的绑定规范：
+
+### 1. 生命周期分配与初始化区别
+- **`__new__(cls, *args, **kwargs)`**：负责**内存物理分配**，是类级别静态构造器，必须显式返回实例对象；可用于底层内存拦截或实现单例（Singleton）模式。
+- **`__init__(self, *args, **kwargs)`**：负责**属性初始化**，在 `__new__` 返回实例后被触发，无返回值。
+
+### 2. 常用对象协议分类速查
+- **对象表示与转换**：`__str__`（人类可读展示）、`__repr__`（调试机读表示）、`__int__`、`__bool__`、`__len__`。
+- **容器协议**：`__getitem__`（索引取值）、`__setitem__`（索引赋值）、`__delitem__`、`__contains__`（`in` 操作符）、`__iter__`（可迭代循环）。
+- **运算符重载**：`__eq__` / `__ne__` / `__lt__`（逻辑比较）、`__add__` / `__mul__`（算术运算）、`__call__`（可调用对象）。

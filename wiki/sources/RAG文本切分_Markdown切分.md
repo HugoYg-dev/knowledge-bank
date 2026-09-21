@@ -62,7 +62,7 @@ splits = RecursiveCharacterTextSplitter(chunk_size, chunk_overlap).split_documen
 
 ## 关联
 
-- 概念：[[概念_文档结构切分]]、[[概念_Markdown标题切分]]、[[概念_文本切分五层级]]、[[概念_递归字符切分]]
+- 概念：[[概念_文档结构切分]]、Markdown标题切分、[[概念_文本切分五层级]]、[[概念_递归字符切分]]
 - 实体：[[实体_LangChain]]
 - 同系列：[[RAG文本切分_JSON文档切分]]、[[RAG文本切分_语义切分]]
 

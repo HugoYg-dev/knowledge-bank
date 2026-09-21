@@ -23,7 +23,7 @@ updated: 2026-08-03
   - **跨模型对齐训练 (Alignment Training)**：通过特定的损失函数约束，在共同数据上显式对齐不同模型的嵌入空间。
 
 # 关联概念与实体
-- [[wiki/concepts/概念_跨模型嵌入对比局限|概念：跨模型嵌入对比局限]]
+- 概念：跨模型嵌入对比局限
 
 # 关键引文
 > This is because even though these embeddings have the same length (or dimensions), they are not in the same space, i.e., they are out of space.

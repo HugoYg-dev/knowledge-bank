@@ -16,7 +16,7 @@ updated: 2026-08-04
 - **日期**: 2026-07-27
 - **原文链接**: [[raw/articles/2026-07-27_The-anatomy-of-diffusion-LLMs_19fa57.md]]
 - **关联概念**:
-  - [[concepts/概念_扩散大语言模型_dLLMs]]
+  - [[concepts/概念_扩散模型]]
   - [[concepts/概念_LLM推理两阶段]]
 
 # 核心要点

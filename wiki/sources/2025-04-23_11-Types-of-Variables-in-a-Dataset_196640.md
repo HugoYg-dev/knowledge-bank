@@ -27,7 +27,7 @@ updated: 2026-08-03
 - **泄露变量**：提供了预测时无法获取的目标变量信息，这会导致模型在训练时表现过于乐观，但在新数据上无法泛化（例如前向滞后特征）。
 
 ## 关联知识
-- 核心概念：[[concepts/概念_数据集变量分类]]
+- 核心概念：数据集变量分类
 
 ## 关键引文
 > "It is due to the confounding variables that we say, 'Correlation does not imply causation.'"

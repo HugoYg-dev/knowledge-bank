@@ -26,7 +26,7 @@ updated: '2026-08-04'
 - **实践建议**: 建议遵循容量与任务复杂度两匹配原则，针对 3B/8B 模型使用中等强度的教师模型通常能产出更适配的数据。
 
 ## 关联概念
-- [[wiki/concepts/概念_大模型蒸馏的容量匹配法则]]
+- 大模型蒸馏的容量匹配法则
 
 ## 关键引文
 > "A stronger teacher model can produce worse fine-tuning results. This sounds counterintuitive, but it is a well-documented effect in knowledge distillation research."

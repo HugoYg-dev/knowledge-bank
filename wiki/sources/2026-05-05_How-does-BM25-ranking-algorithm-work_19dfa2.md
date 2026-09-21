@@ -31,6 +31,6 @@ updated: '2026-08-04'
 - "Top RAG systems today combine BM25 with vector search. You get the best of both worlds: semantic understanding AND precise keyword matching."
 
 ## 联动概念
-- [[wiki/concepts/概念_BM25检索算法]]
+- BM25检索算法
 
 > 📎 **物理文献**：[[raw/articles/2026-05-05_How-does-BM25-ranking-algorithm-work_19dfa2.md]]

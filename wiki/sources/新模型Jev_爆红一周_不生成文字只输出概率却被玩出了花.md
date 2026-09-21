@@ -26,7 +26,7 @@ updated: "2026-09-20"
 
 ## 关联实体与概念
 
-- 机构与人物：[[entities/实体_TypeSafe_AI]]
+- 机构与人物：TypeSafe_AI
 - 关联概念：[[concepts/概念_RLCD校准决策强化学习]]、[[concepts/概念_Harness_Engineering]]
 
 > 📎 **物理文献**：[[raw/articles/新模型Jev 爆红一周：不生成文字、只输出概率，却被玩出了花.md]]

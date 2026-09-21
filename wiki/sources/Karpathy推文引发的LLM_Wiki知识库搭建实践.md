@@ -53,7 +53,7 @@ published: '2026-06-25'
 ## 涉及主题与概念
 
 - 核心思想：[[concepts/概念_LLM_Wiki范式]]、[[concepts/概念_RAG与LLM_Wiki对比]]、[[concepts/概念_Memex]]、[[concepts/概念_卡片盒笔记法]]
-- 核心操作：[[concepts/概念_Ingest入库闭环]]、[[concepts/概念_Wiki健康检查]]
+- 核心操作：[[concepts/概念_Ingest入库闭环]]、Wiki健康检查
 - 实体与工具：[[entities/实体_Andrej_Karpathy]]、[[entities/实体_Vannevar_Bush]]、[[entities/实体_Niklas_Luhmann]]、[[entities/实体_Claude_Code]]、[[entities/实体_Obsidian]]、qmd
 
 > 📎 **物理文献**：[[raw/articles/Karpathy发了一条推文2000万人看了，我照着他的方法搭了个知识库.md]]

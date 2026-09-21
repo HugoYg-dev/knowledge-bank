@@ -34,6 +34,6 @@ updated: '2026-08-03'
 
 ---
 关联概念：
-- [[wiki/concepts/概念_梯度提升决策树_GBDT]]
+- 梯度提升决策树_GBDT
 
 > 📎 **物理文献**：[[raw/articles/2025-10-24_Top-Gradient-Boosting-Methods_19a177.md]]

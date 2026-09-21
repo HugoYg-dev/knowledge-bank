@@ -41,7 +41,7 @@ updated: '2026-07-01'
 - [[概念_状态空间模型SSM]] — SSM 数学基础
 - [[概念_SSM离散化]] — ZOH 离散化与步长 Δ
 - [[概念_Mamba硬件感知算法]] — 弥补选择机制丧失卷积加速的效率损失
-- [[概念_State_Swapping]] — Mamba 特有的新推理范式
+- State_Swapping — Mamba 特有的新推理范式
 - [[实体_Mamba]] — Mamba 模型
 
 ---

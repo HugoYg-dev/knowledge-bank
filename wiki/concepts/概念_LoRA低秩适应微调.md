@@ -1,13 +1,15 @@
 ---
-type: concept
-tags:
-- LLM/training/post-train
-summary: Low-Rank Adaptation（LoRA）是一种参数高效微调（PEFT）方法，通过在预训练权重旁注入低秩分解矩阵，只训练极少量参数即可实现领域适配。
 sources:
 - wiki/sources/LLM后训练技术全景解读.md
 - wiki/sources/LoRA微调实战_Qwen2.5全流程.md
 - wiki/sources/淘宝直播数字人_LLM文案生成技术.md
-updated: '2026-09-07'
+- wiki/sources/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md
+summary: Low-Rank Adaptation（LoRA）与 QLoRA 是主流参数高效微调方法。通过冻结预训练权重并注入低秩分解矩阵，极大降低算力开销；在工程多租户服务中，单个
+  Adapter 仅 20-25MB，支持多客户共享单物理底座与动态热插拔。
+tags:
+- LLM/training/post-train
+type: concept
+updated: '2026-09-21'
 ---
 # 概念：LoRA 低秩适应微调
 
@@ -45,3 +47,12 @@ Low-Rank Adaptation（LoRA）是一种参数高效微调（PEFT）方法，通�
 - [[概念_Fine-tuning]] — 微调方法全览对比
 - [[概念_LoRA与QLoRA显存]] — LoRA/QLoRA 显存估算
 - [[实体_PEFT库]] — HuggingFace PEFT 实现
+
+---
+
+## 多租户服务（Multi-tenant Serving）与工业落地价值
+
+在平台级模型服务架构中，LoRA 呈现出全参数微调无法比拟的工程与商业优势：
+
+1. **存储极致压缩**：每个微调用户仅需保存低秩适配层权重（通常仅 20~25MB），对比全参数模型单副本几十至数百 GB，实现千倍存储节省。
+2. **显存多租户时分复用**：多个业务租户共享同一块 GPU 上长驻的物理基座大模型（Base Model），仅需在显存中按需动态挂载活跃用户的轻量 LoRA 权重，彻底解决模型切换的冷启动延迟与显存瓶颈。

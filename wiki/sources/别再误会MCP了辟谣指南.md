@@ -44,8 +44,8 @@ updated: '2026-07-01'
 
 - [[概念_MCP协议]] — MCP 基础概念
 - [[概念_MCP_CHS架构]] — 本文核心：Client-Host-Server 三组件
-- [[概念_MCP与Function_Call对比]] — 概念边界
-- [[实体_CherryStudio]] — 文中解剖的开源 Host 实现案例
+- MCP与Function_Call对比 — 概念边界
+- CherryStudio — 文中解剖的开源 Host 实现案例
 
 ---
 > 📎 **物理文献**：[[raw/articles/别再误会MCP了！一篇写给AI工程师的硬核“辟谣”指南.md]]

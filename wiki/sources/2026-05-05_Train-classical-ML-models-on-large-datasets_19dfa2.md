@@ -31,6 +31,6 @@ updated: '2026-08-04'
 - "In this case, the dataset overlap between two trees will be less than that in a typical random forest. This aids in the Bagging objective and leads to a more robust model."
 
 ## 联动概念
-- [[wiki/concepts/概念_Random_Patches大数据训练]]
+- Random_Patches大数据训练
 
 > 📎 **物理文献**：[[raw/articles/2026-05-05_Train-classical-ML-models-on-large-datasets_19dfa2.md]]
