@@ -37,6 +37,6 @@ Sentence Transformers（sbert.net）是一个常用于训练和使用嵌入模�
 
 ## 关联
 
-- 相关概念：[[概念_Matryoshka表示学习]]、[[概念_Instruct_Embedding]]、[[概念_Sentence-BERT]]、[[概念_Embedding与向量检索]]
+- 相关概念：[[概念_Matryoshka表示学习]]、[[概念_Instruct_Embedding_指令增强向量嵌入]]、[[概念_Sentence_BERT_孪生网络句向量]]、[[概念_Embedding与向量检索]]
 - 实体：[[实体_Qwen3_Embedding]]
 - 来源：[[Matryoshka嵌入模型概述_HuggingFace]]、[[一文详尽之Embedding]]、[[为什么用Qwen3_embedding和rerank]]

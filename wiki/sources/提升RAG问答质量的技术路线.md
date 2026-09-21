@@ -80,7 +80,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_Query_Translation]]、[[概念_RAG_Fusion]]、[[概念_HyDE]]、[[概念_子查询分解]]、[[概念_Step-back提示]]、[[概念_RAG_Routing]]、[[概念_Query_Construction]]、[[概念_Multi-representation_Indexing]]、[[概念_RAPTOR索引]]、[[概念_ColBERT]]、[[概念_混合检索]]、[[概念_重排序Rerank]]、[[概念_CRAG]]、[[概念_Self-RAG]]、[[概念_Adaptive-RAG]]、[[概念_Reciprocal_Rank_Fusion]]、[[概念_语义切分]]
+- 相关概念：[[概念_Query_Translation_查询改写与翻译]]、[[概念_RAG_Fusion_多查询融合生成]]、[[概念_HyDE_假设文档嵌入]]、[[概念_子查询分解]]、[[概念_Step_Back_回退提示]]、[[概念_RAG_Routing_检索智能路由]]、[[概念_Query_Construction_查询构建]]、[[概念_Multi_Representation_Indexing_多表征索引]]、[[概念_RAPTOR_递归树状检索索引]]、[[概念_ColBERT_多向量延迟交互检索]]、[[概念_混合检索]]、[[概念_Rerank_重排序]]、[[概念_CRAG_纠正性检索增强生成]]、[[概念_Self_RAG_自省式检索增强生成]]、[[概念_Adaptive_RAG_自适应检索增强生成]]、[[概念_RRF_互易秩融合]]、[[概念_语义切分]]
 - 实体：[[实体_ColBERT]]
 - 相关来源：[[RAG查询翻译_Query_Translation]]、[[RAG路由_Routing]]、[[RAG查询构造_Query_Construction]]、[[RAG索引进阶_Indexing]]
 

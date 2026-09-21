@@ -72,12 +72,12 @@ AI硬件加速芯片架构是指针对人工智能（尤其是深度学习的矩
 
 根据 GPU 和 CPU 的存储层级设计，片上 SRAM 的读取速度是片外全局显存 HBM 的 8-15 倍。在传统的 GPU 架构中，自注意力机制（Self-Attention）计算需要在 HBM 和 SRAM 之间多次读写 $N \times N$ 的中间得分矩阵，造成严重的访存瓶颈（Memory-bound）。
 
-为克服这一硬件局限，催生了 `[[概念_FlashAttention]]` 这种 I/O 感知的精确注意力算法：
-- `[[概念_FlashAttention]]` 充分利用了 GPU 的片上高速 **SRAM**，通过**分块计算（Tiling）**和**在线 Softmax（Online Softmax）**机制，在 SRAM 内部完成注意力的局部块乘积并实时计算归一化分子分母。
+为克服这一硬件局限，催生了 `[[概念_FlashAttention_快速注意力]]` 这种 I/O 感知的精确注意力算法：
+- `[[概念_FlashAttention_快速注意力]]` 充分利用了 GPU 的片上高速 **SRAM**，通过**分块计算（Tiling）**和**在线 Softmax（Online Softmax）**机制，在 SRAM 内部完成注意力的局部块乘积并实时计算归一化分子分母。
 - 这使得计算过程不需要在 HBM 中“物化”出完整的 $N \times N$ 矩阵，只需要在最后写回输出矩阵。它通过算法的重新排期，将内存密集型（Memory-bound）的注意力计算转变为计算密集型（Compute-bound）。
 
 相比之下，**LPU** 的硬件设计则更为极端：
-- LPU 直接从硬件设计上干掉了片外 HBM，把所有模型权重全部放入片上 SRAM。这意味着 LPU 在硬件级别消除了 SRAM-HBM 的搬运限制，这使得类似 `[[概念_FlashAttention]]` 这种针对 HBM 读写瓶颈而做的分块算法在其架构上失去了物理意义。
+- LPU 直接从硬件设计上干掉了片外 HBM，把所有模型权重全部放入片上 SRAM。这意味着 LPU 在硬件级别消除了 SRAM-HBM 的搬运限制，这使得类似 `[[概念_FlashAttention_快速注意力]]` 这种针对 HBM 读写瓶颈而做的分块算法在其架构上失去了物理意义。
 - **TPU** 的脉动阵列则通过数据在 MAC 二维网格中的“流动”来减少与内存（HBM）的重复交互，其硬件本身就具备减少 I/O 频繁往返的设计。
 
 这表明，**AI 硬件的物理存储设计与底层算法工程存在深度的协同演进关系**：硬件物理极限决定了算法优化的方向（如 GPU 孕育了 FlashAttention），而极端的硬件重构（如 LPU）则可能直接从物理层消除特定算法优化的需求。
@@ -90,7 +90,7 @@ AI硬件加速芯片架构是指针对人工智能（尤其是深度学习的矩
 - [[sources/How_a_GPU_Actually_Works]]（来源）
 - [[concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]
 - [[concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]
-- [[concepts/概念_FlashAttention|概念_FlashAttention]]
+- [[concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]
 - [[concepts/概念_连续批处理|概念_连续批处理]]
-- [[concepts/概念_KV_Cache|概念_KV_Cache]]
+- [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
 - [[entities/实体_NVIDIA|实体_NVIDIA]]

@@ -12,6 +12,7 @@
 - [x] entites、concepts的frontmatter中的上游sources需要仔细审查（编写 scripts/audit_upstream_sources.py 完成 77 篇页面的虚假来源清洗与真实双链回填）
 - [x] 治理历史遗留的 26 个来源死链错误（恢复 23 篇 raw/playbooks 物理文献，清理 2 篇废弃概念与实体，Vault Lint 100% 绿灯通过）
 - [ ] 面经文章汇总：全库带有「面试」tag 的面经文章仅用于生成一篇体系化的面经总结文档（Overview），不作为实体（entities）的信息来源；需完成全库面经梳理并生成专题总结。
+- [x] 概念命名标准化迁移：参考 [[docs/plans/concept_naming_migration_plan.md]] 已全量完成存量概念规范化治理（Phase 1 倒置纠偏 26 篇、Phase 2 纯英文补全 69 篇、Phase 3 分界符标准化 20 篇全部完成，0 错误 0 死链通过门禁）
 
 ## others
 - [ ] workdocs/ 存放了工作期间的项目文档docx，需要解析并入库

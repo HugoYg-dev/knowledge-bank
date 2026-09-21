@@ -76,7 +76,7 @@ model.eval() 后直接预测，或定义预测集 Dataloader。
 
 ## 相关概念
 
-- [[概念_早停EarlyStopping]]
+- [[概念_Early_Stopping_早停机制]]
 - [[概念_PyTorch训练循环]]
 
 ## 相关实体

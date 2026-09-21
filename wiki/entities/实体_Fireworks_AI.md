@@ -26,4 +26,4 @@ Fireworks AI 是创立三年的 AI Inference Infra 公司，近期把强化微�
 ## 关联
 
 - [[RL_Infra行业全景]]（来源）
-- [[概念_RLaaS]]
+- [[概念_RLaaS_强化学习即服务]]

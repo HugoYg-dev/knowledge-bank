@@ -31,12 +31,12 @@ BERT 各向异性（Anisotropy）指 BERT 等 Transformer 预训练模型产生�
 
 ## 优化方法
 
-1. **有监督优化**：通过标注语料构建双塔/单塔 BERT 微调（代表：[[概念_Sentence-BERT]]）
+1. **有监督优化**：通过标注语料构建双塔/单塔 BERT 微调（代表：[[概念_Sentence_BERT_孪生网络句向量]]）
 2. **无监督优化**：
    - 线性变换：Bert-flow（流式生成模型映射到标准高斯分布）、Bert-whitening（白化操作）
-   - 对比学习：[[概念_SimCSE]]（Dropout mask 增广 + 对比学习）
+   - 对比学习：[[概念_SimCSE_简单对比学习句向量]]（Dropout mask 增广 + 对比学习）
 
 ## 关联
 
-- 相关概念：[[概念_Embedding与向量检索]]、[[概念_词向量]]、[[概念_Sentence-BERT]]、[[概念_SimCSE]]
+- 相关概念：[[概念_Embedding与向量检索]]、[[概念_词向量]]、[[概念_Sentence_BERT_孪生网络句向量]]、[[概念_SimCSE_简单对比学习句向量]]
 - 来源：[[一文详尽之Embedding]]

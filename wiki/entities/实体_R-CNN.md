@@ -35,4 +35,4 @@ R-CNN（Rich Feature Hierarchies for Accurate Object Detection and Semantic Segm
 - [[目标检测入门_经典模型]]（来源）
 - [[概念_两阶段检测]]
 - [[概念_Anchor机制]]
-- [[概念_RoI_Pooling]]
+- [[概念_RoI_Pooling_候选区域池化]]

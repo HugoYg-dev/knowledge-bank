@@ -30,7 +30,7 @@ updated: "2026-08-03"
 - [[concepts/概念_Agent三层记忆体系]]
 - [[concepts/概念_上下文工程]]
 - [[concepts/概念_渐进式披露]]
-- [[concepts/概念_重排序Rerank]]
+- [[concepts/概念_Rerank_重排序]]
 - [[concepts/概念_Agent完整轨迹评估]]
 
 > 📎 **物理文献**：[[raw/articles/月之暗面 Agent开发岗，凉凉！！！.md]]

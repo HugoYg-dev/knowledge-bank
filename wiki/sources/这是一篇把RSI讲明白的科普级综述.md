@@ -36,6 +36,6 @@ updated: "2026-09-20"
 
 ## 关联实体与概念
 
-- 关联概念：[[concepts/概念_RSI递归自我改进]]、[[concepts/概念_Harness_Engineering]]、[[concepts/概念_Self-Harness]]
+- 关联概念：[[concepts/概念_RSI递归自我改进]]、[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Self_Harness_自主进化宿主系统]]
 
 > 📎 **物理文献**：[[raw/articles/这是一篇把RSI讲明白的科普级综述！.md]]

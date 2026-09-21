@@ -47,6 +47,6 @@ AI Agent 开发模式从简单到复杂的三个阶段，每个阶段解决不�
 
 ## 关联
 
-- [[概念_orchestrator-worker模式]]
+- [[概念_Orchestrator_Worker_编排工模式]]
 - [[概念_多智能体协调]]
-- [[概念_HITL_MCP]]
+- [[概念_HITL_MCP_人机协同协议架构]]

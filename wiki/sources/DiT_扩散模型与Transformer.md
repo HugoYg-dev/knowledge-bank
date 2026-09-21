@@ -53,10 +53,10 @@ updated: '2026-07-01'
 ## 关联概念
 
 - [[概念_扩散模型]]
-- [[概念_Latent_Diffusion]]
+- [[概念_Latent_Diffusion_潜空间扩散模型]]
 - Patchify
 - adaLN_Zero
-- [[概念_Vision_Transformer]]
+- [[概念_Vision_Transformer_视觉Transformer]]
 
 ## 关联实体
 

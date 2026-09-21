@@ -37,6 +37,6 @@ updated: '2026-08-04'
 
 ## 联动概念
 - [[wiki/concepts/概念_LLM推理两阶段]]
-- [[wiki/concepts/概念_KV_Cache]]
+- [[wiki/concepts/概念_KV_Cache_键值缓存]]
 
 > 📎 **物理文献**：[[raw/articles/2026-05-03_How-LLM-inference-works-internally_19deee.md]]

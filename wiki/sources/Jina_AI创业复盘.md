@@ -94,8 +94,8 @@ updated: '2026-07-01'
 - [[实体_BGE-M3]]
 - [[实体_Elasticsearch]]
 - [[概念_Embedding训练管线]]
-- [[概念_重排序Rerank]]
-- [[概念_AI创业Scaling_Law]]
+- [[概念_Rerank_重排序]]
+- [[概念_Scaling_Law_AI团队扩展律]]
 
 ---
 > 📎 **物理文献**：[[raw/insights/Jina AI创业复盘：AI团队的Scaling Law是什么.md]]

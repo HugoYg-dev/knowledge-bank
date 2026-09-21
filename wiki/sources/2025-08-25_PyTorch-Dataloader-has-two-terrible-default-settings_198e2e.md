@@ -37,7 +37,7 @@ updated: 2026-08-03
 > "Ideally, you can transfer batch 2 when the GPU is training the model on batch 1. Enabling this is quite simple in PyTorch."
 
 ## 联动概念
-- [[wiki/concepts/概念_固定内存_Memory_Pinning]]
+- [[wiki/concepts/概念_Memory_Pinning_固定内存]]
 - [[wiki/concepts/概念_神经网络训练优化综述]]
 
 ---

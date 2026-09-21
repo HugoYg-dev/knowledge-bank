@@ -17,7 +17,7 @@ updated: '2026-07-06'
 - 在 Google 期间为挽救一个停滞三年的项目（Google Meet 前身）设计出 Design Sprint 方法论
 - 加入 Google Ventures 后与 John Zeratsky 将其与数百家创业公司实践，提炼为标准化五天流程
 - 离开 GV 后与 John 共同创立 [[实体_Character_Capital]]
-- 2021-2022 年创造 [[概念_Foundation_Sprint]]，专注"0 阶段"超早期项目
+- 2021-2022 年创造 [[概念_Foundation_Sprint_基础冲刺]]，专注"0 阶段"超早期项目
 
 ## 著作
 
@@ -26,8 +26,8 @@ updated: '2026-07-06'
 ## 关联
 
 - [[实体_Character_Capital]]
-- [[概念_Design_Sprint]]
-- [[概念_Foundation_Sprint]]
+- [[概念_Design_Sprint_设计冲刺]]
+- [[概念_Foundation_Sprint_基础冲刺]]
 
 ## 来源
 

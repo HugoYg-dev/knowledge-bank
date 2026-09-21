@@ -18,7 +18,7 @@ updated: '2026-08-04'
 - **原始文献**：[[raw/articles/2026-06-24_Recursive-language-models_19ef72.md]]
 
 ## 核心要点
-1. **Context Rot（上下文衰减）问题**：即便在模型的最大上下文窗口内，随着对话或上下文长度的增长，LLM 召回和推理的能力也会显著下降，这就是 [[concepts/概念_Context_Rot|Context Rot]] 现象。
+1. **Context Rot（上下文衰减）问题**：即便在模型的最大上下文窗口内，随着对话或上下文长度的增长，LLM 召回和推理的能力也会显著下降，这就是 [[concepts/概念_Context_Rot_上下文衰退|Context Rot]] 现象。
 2. **RLM（递归语言模型）架构**：MIT 研究者提出将数据与指令解耦。Context 不直接输入 LLM，而是缓存在 Python REPL 变量中。
 3. **工具化上下文探索**：LLM 无法直接看到全部 Context，但可以通过工具在 Python 沙箱中执行 `Peek`（预览）、`Grep`（正则/关键词过滤，例如将 5000 级降为 50 级）和 `Partition`（切分）操作。
 4. **自上而下的分治（Recursive Calls）**：模型对切分后的子块发起递归子调用，解决子问题后将结果返回给父 LLM，使其自身的上下文始终保持在极小规模。
@@ -31,7 +31,7 @@ updated: '2026-08-04'
 
 ## 联动概念
 - [[concepts/概念_RLM递归语言模型|概念：RLM递归语言模型]]
-- [[concepts/概念_Context_Rot|概念：Context Rot]]
+- [[concepts/概念_Context_Rot_上下文衰退|概念：Context Rot]]
 
 ---
 > 📎 **物理文献**：[[raw/articles/2026-06-24_Recursive-language-models_19ef72.md]]

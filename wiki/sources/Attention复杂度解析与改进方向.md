@@ -63,7 +63,7 @@ FlashAttention 不改变模型结构，通过算法与硬件协同（分块、�
 ## 关联概念
 
 - [[概念_自注意力复杂度]]
-- [[概念_FlashAttention]]
+- [[概念_FlashAttention_快速注意力]]
 
 ## 关联实体
 

@@ -26,7 +26,7 @@ updated: '2026-09-15'
 
 | 维度 | Prefill 阶段 (预填充) | Decode 阶段 (解码) |
 | :--- | :--- | :--- |
-| **工作内容** | 一次性处理用户输入的所有 Prompt tokens，计算对应的注意力 Key 和 Value，并填充到 KV 缓存（[[concepts/概念_KV_Cache|KV Cache]]），同时生成首个输出 token。 | 自回归地逐个生成后续 tokens。每步仅将新生成的单个 token 输入模型计算其 QKV，并结合 KV Cache 里的历史 K/V 进行注意力计算。 |
+| **工作内容** | 一次性处理用户输入的所有 Prompt tokens，计算对应的注意力 Key 和 Value，并填充到 KV 缓存（[[concepts/概念_KV_Cache_键值缓存|KV Cache]]），同时生成首个输出 token。 | 自回归地逐个生成后续 tokens。每步仅将新生成的单个 token 输入模型计算其 QKV，并结合 KV Cache 里的历史 K/V 进行注意力计算。 |
 | **硬件瓶颈** | **计算绑定（Compute-bound）**<br>所有输入 tokens 并行计算，以大矩阵相乘的形式在 GPU 运行，算力吞吐量（Throughput）是主要约束。 | **内存带宽绑定（Memory-bound）**<br>由于是一步步串行计算单向量与全权重的矩阵乘法，GPU 每一生成步都必须将全部权重从显存重新加载到 SRAM 中，算力极大闲置（利用率常低于 30%）。 |
 | **算力强度 (Work per Byte)** | **$\gg 300$ ops/byte**<br>单次加载的权重在 Prompt 的 $N$ 个 token 上并行复用，算力强度高。 | **$\approx 1$ op/byte**<br>以 70B 模型在 BF16（140GB）为例：单步生成 1 个 token 产生约 1400 亿次浮点运算（140 GFLOPs），访存量为 140GB，算力强度仅 1 op/byte。 |
 | **硬件平衡线对比** | 远高于 [[entities/实体_NVIDIA|NVIDIA]] H100（~295 ops/byte）平衡阈值，落在 [[concepts/概念_Roofline模型与算力强度|Roofline 模型]] 的算力天花板区。 | 比 H100 平衡阈值低约 **300 倍**，理论生成延迟下限被显存带宽锁死：$140\text{GB} / 3.3\text{TB/s} \approx 42\text{ms/token}$（单卡单序列极限约 24 tokens/s）。 |
@@ -46,7 +46,7 @@ updated: '2026-09-15'
 ### 2. 削减访存搬运字节（Decrease Bytes Fetched，降低延迟下限）
 - **权重与 KV 缓存量化（Quantization）**：将权重压缩为 FP8 或 INT4，直接将单步读取显存量减半（从 140GB 降至 70GB），使 70B 模型解码的理论时延下限从 42ms 压缩至 21ms（吞吐上限翻倍至 48 tok/s）。
 - **PagedAttention 分页管理**：以固定大小物理块分配显存，消除内部碎片，支持更大并发 Batch Size。
-- **[[concepts/概念_FlashAttention|FlashAttention]]**：利用 SRAM Tiling 分块与在线增量 Softmax，避免频繁存取 HBM $N \times N$ 矩阵。
+- **[[concepts/概念_FlashAttention_快速注意力|FlashAttention]]**：利用 SRAM Tiling 分块与在线增量 Softmax，避免频繁存取 HBM $N \times N$ 矩阵。
 
 ---
 
@@ -57,9 +57,9 @@ updated: '2026-09-15'
 - [[sources/KV_Cache_Engineering_for_LLM_Serving]]（来源）
 - [[concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]
 - [[concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]
-- [[concepts/概念_KV_Cache|概念_KV_Cache]]
+- [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
 - [[concepts/概念_连续批处理|概念_连续批处理]]
 - [[concepts/概念_推测解码|概念_推测解码]]
-- [[concepts/概念_FlashAttention|概念_FlashAttention]]
+- [[concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]
 - [[entities/实体_NVIDIA|实体_NVIDIA]]
 - [[entities/实体_vLLM|实体_vLLM]]

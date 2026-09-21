@@ -60,7 +60,7 @@ MCP 协议定义了五类原语（Primitive），绝大多数用户只用到 Too
 | **Stdio** | 本地子进程，同机通信 |
 | **SSE（Server-Sent Events）** | 远端 HTTP，单向流式推送 |
 | **Streamable HTTP** | Web 化未来方向，可同步返回 JSON 或开启流式通道 |
-| **WebMCP（浏览器原生）** | 浏览器客户端原生声明，直接在 DOM/页面会话中暴露 Tools 与 JSON Schema（参见 [[concepts/概念_WebMCP|概念_WebMCP]]） |
+| **WebMCP（浏览器原生）** | 浏览器客户端原生声明，直接在 DOM/页面会话中暴露 Tools 与 JSON Schema（参见 [[concepts/概念_WebMCP_浏览器原生工具协议|概念_WebMCP]]） |
 
 ## 与 Function Calling 的关系
 

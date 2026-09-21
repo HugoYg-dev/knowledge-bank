@@ -17,7 +17,7 @@ updated: '2026-09-21'
 # 循环工程 (Loop Engineering)
 
 ## 定义与定位
-在智能体系统设计中，**循环工程（Loop Engineering）**处于智能体架构的最外层控制面。它包裹着底层 Prompt 工程、Context（上下文）工程以及运行工具、追踪状态与错误恢复的 [[wiki/concepts/概念_Harness_Engineering.md|Harness Engineering]]。
+在智能体系统设计中，**循环工程（Loop Engineering）**处于智能体架构的最外层控制面。它包裹着底层 Prompt 工程、Context（上下文）工程以及运行工具、追踪状态与错误恢复的 [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]。
 循环工程的核心职责在于决定智能体“在每一轮大循环中应该专注于什么任务”以及“在何种条件下应当安全退出循环”，是控制智能体自主性与规避其失控的核心保障。
 
 ---

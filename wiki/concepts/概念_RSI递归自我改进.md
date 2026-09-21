@@ -28,7 +28,7 @@ updated: '2026-09-20'
 1. **推理与记忆反思（2022-2023）**：以 Reflexion 为代表，模型参数冻结，通过自然语言事后复盘构建外部情景记忆（错题本）；
 2. **自生成数据与参数微调（2022-2024）**：以 STaR（推理链自举）与 SPIN（与历史策略自博弈微调）为代表，将改进信号固化写入模型权重；
 3. **评判权移交与元评判（2022-2025）**：从 Constitutional AI 到 Self-Rewarding 与 Meta-Rewarding，逐步将打分权交由模型自身，但伴随严重的“尺子变弯”与评判标准漂移挑战；
-4. **驾具代码自修改（2023-2026）**：通过 [[concepts/概念_Harness_Engineering|Harness Engineering]] 与代码生成，以 [[concepts/概念_Self-Harness|Self-Harness]]、达尔文哥德尔机（DGM）及工业级 AgentX 为代表，让智能体在固定底座模型上搜索优化运行代码与工具编排；
+4. **驾具代码自修改（2023-2026）**：通过 [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]] 与代码生成，以 [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]、达尔文哥德尔机（DGM）及工业级 AgentX 为代表，让智能体在固定底座模型上搜索优化运行代码与工具编排；
 5. **学习与研究过程闭环（2025-2026）**：涵盖自适应学习（SEAL）、环境沙盘（WebEvolver）、真实物理控制（Motus2）乃至双层元研究架构（Bilevel Autoresearch、AIDE²），使科研流程本身成为优化对象。
 
 ## 核心挑战与四道安全门禁
@@ -43,5 +43,5 @@ updated: '2026-09-20'
 
 - [[wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[wiki/sources/这是一篇把RSI讲明白的科普级综述]]
-- [[concepts/概念_Harness_Engineering]]
-- [[concepts/概念_Self-Harness]]
+- [[concepts/概念_Harness_Engineering_宿主编排工程]]
+- [[concepts/概念_Self_Harness_自主进化宿主系统]]

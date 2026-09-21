@@ -56,9 +56,9 @@ updated: '2026-07-01'
 
 ## 关联概念
 
-- [[概念_AI-Native_Infra]]
-- [[概念_L0-L5能力成熟度模型]]
-- [[概念_Result-as-a-Service]]
+- [[概念_AI_Native_Infra_AI原生基建]]
+- [[概念_L0_L5_能力成熟度模型]]
+- [[概念_Result_as_a_Service_结果即服务]]
 
 ## 关联实体
 

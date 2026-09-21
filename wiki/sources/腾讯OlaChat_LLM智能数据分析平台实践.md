@@ -78,7 +78,7 @@ LLM 对数据分析的四点改进：语言能力 / 工具使用 / 逻辑推理 
 
 - [[实体_腾讯OlaChat]] — 本文主体平台
 - FlattenedRAG与StructuredRAG — 元数据检索两种方案
-- [[概念_Text2SQL]] — 自然语言转 SQL
+- [[概念_Text2SQL_自然语言转SQL]] — 自然语言转 SQL
 - [[腾讯ABI工程架构探索与实践]] — 工程架构配套文章
 - 元数据RAG — 结构化数据 RAG 特殊性
 

@@ -35,7 +35,7 @@ updated: '2026-07-01'
 - [[概念_MCP协议]] — MCP 基础
 - [[概念_MCP代码执行模式]] — 本文核心模式
 - Agent技能沉淀 — Skills 概念
-- [[概念_KV_Cache]] — Token 消耗背景
+- [[概念_KV_Cache_键值缓存]] — Token 消耗背景
 - [[实体_Anthropic_Research系统]] — 本文作者所在公司
 - Cloudflare — 独立发现相同方法
 

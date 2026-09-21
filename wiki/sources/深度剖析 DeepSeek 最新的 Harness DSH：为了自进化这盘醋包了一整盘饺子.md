@@ -67,7 +67,7 @@ updated: '2026-08-20'
 ## 4. 关联实体与概念
 - **作者实体**：[[entities/实体_鸭哥|鸭哥]]
 - **核心系统实体**：[[entities/实体_DeepSeek_Harness|DeepSeek Harness (DSH)]]、[[entities/实体_Cordis|Cordis]]、[[entities/实体_Codex|Codex]]
-- **核心工程概念**：[[concepts/概念_Self-Harness|Self-Harness（自主外壳进化）]]、[[concepts/概念_Harness_Engineering|Harness Engineering]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
+- **核心工程概念**：[[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness（自主外壳进化）]]、[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
 - **对比与参考来源**：[[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]、[[sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重|OpenAI前VP Lilian Weng：AI自我改进的近路不是改权重]]
 
 > 📎 **物理文献**：[[raw/articles/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md]]

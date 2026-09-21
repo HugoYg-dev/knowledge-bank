@@ -38,7 +38,7 @@ updated: "2026-09-15"
 3. **两阶段检索与正交压缩组合**：
    - **粗排加速**：在第一阶段使用截断的 MRL 低维向量（如 256 维）配合向量数据库索引（如 HNSW）极速筛选候选 Top-K；
    - **精排复原**：在第二阶段加载更高维向量（如 1536 维）对候选集进行高精度重打分（Rescore）；
-   - **正交组合**：MRL 缩减维度可与 [[concepts/概念_Quantized_Embedding|SQ 标量量化]] 或 [[concepts/概念_Binary_Embedding|BQ 二值量化]] 自由叠加，例如“MRL 256 维 + Int8 量化”，同时获得维度与位宽的双重压缩。
+   - **正交组合**：MRL 缩减维度可与 [[concepts/概念_Quantized_Embedding_量化向量嵌入|SQ 标量量化]] 或 [[concepts/概念_Binary_Embedding_二进制向量嵌入|BQ 二值量化]] 自由叠加，例如“MRL 256 维 + Int8 量化”，同时获得维度与位宽的双重压缩。
 
 ---
 
@@ -52,5 +52,5 @@ updated: "2026-09-15"
 
 ## 关联
 
-- **相关概念**: [[concepts/概念_主成分分析_PCA|概念_主成分分析_PCA]]、[[concepts/概念_Quantized_Embedding|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
+- **相关概念**: [[concepts/概念_PCA_主成分分析|概念_主成分分析_PCA]]、[[concepts/概念_Quantized_Embedding_量化向量嵌入|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding_二进制向量嵌入|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
 - **相关来源**: [[wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md]]

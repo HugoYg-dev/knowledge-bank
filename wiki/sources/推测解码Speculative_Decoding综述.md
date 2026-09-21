@@ -38,8 +38,8 @@ updated: '2026-07-01'
 
 - [[概念_推测解码]] — Draft-then-Verify 推理加速范式
 - 自回归解码 — 推测解码的加速对象
-- [[概念_KV_Cache]] — 推理显存优化的互补技术
-- [[概念_FlashAttention]] — 推理加速另一关键方向
+- [[概念_KV_Cache_键值缓存]] — 推理显存优化的互补技术
+- [[概念_FlashAttention_快速注意力]] — 推理加速另一关键方向
 - [[实体_Medusa]] — Self-Drafting 代表工作，多 FFN Head 并行解码
 - [[实体_vLLM]] — 工业界推理框架，集成推测解码等加速手段
 

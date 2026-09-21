@@ -38,5 +38,5 @@ Embedding 训练管线（Training Pipeline）是指通过多阶段策略逐步�
 
 ## 关联
 
-- 相关概念：[[概念_Dense_Embedding]]、[[概念_Instruct_Embedding]]、[[概念_Matryoshka表示学习]]
+- 相关概念：[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Instruct_Embedding_指令增强向量嵌入]]、[[概念_Matryoshka表示学习]]
 - 来源：[[优图RAG技术详解]]

@@ -69,8 +69,8 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_Deep-Research-Agent定义与分类]]
-- [[概念_Deep-Research四大挑战]]
+- [[概念_Deep_Research_Agent_定义与分类]]
+- [[概念_Deep_Research_四大挑战]]
 - Deep-Research规划策略三模式
 
 ---

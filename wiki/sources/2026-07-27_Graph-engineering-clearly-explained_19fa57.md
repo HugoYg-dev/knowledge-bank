@@ -17,7 +17,7 @@ updated: 2026-08-04
 - **关联概念**:
   - [[concepts/概念_Loop_Engineering循环工程]]
   - [[concepts/概念_Loop_Engineering循环工程]]
-  - [[concepts/概念_Harness_Engineering]]
+  - [[concepts/概念_Harness_Engineering_宿主编排工程]]
 
 # 核心要点
 1. **多智能体协调挑战**：当多个自主循环（Loops）需要协同工作时，协调问题即随之产生，图（Graph）成为描述和控制这种协调的工程工具。

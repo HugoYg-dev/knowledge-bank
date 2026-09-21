@@ -60,7 +60,7 @@ updated: '2026-07-01'
 ## 关联概念
 
 - [[概念_Normalization方法对比]]
-- [[概念_Batch_Normalization]]
+- [[概念_Batch_Normalization_批归一化]]
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/常用 Normalization 方法的总结与思考：BN、LN、IN、GN.md]]

@@ -18,7 +18,7 @@ updated: '2026-08-04'
 - **作者/发布者**: Daily Dose of DS (Avi)
 - **发布日期**: 2026-07-24
 - **原始链接**: [Kimi K3 Official Announcement Blog](https://kimi.com/blog/kimi-k3)
-- **关联概念**: [[概念_Delta_Attention与增量矩阵缓存]], [[概念_KV_Cache]]
+- **关联概念**: [[概念_Delta_Attention与增量矩阵缓存]], [[概念_KV_Cache_键值缓存]]
 
 ## 核心要点
 - **KV 缓存的容量危机**：传统 Attention 需要将每一个 Token 的键值对（KV）保存在列表中（即 KV Cache），随着输入序列的增长，KV 缓存呈线性累积，且多轮注意力扫描带来二次方复杂度计算与严重的内存膨胀。

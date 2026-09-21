@@ -15,7 +15,7 @@ updated: '2026-08-04'
 - **作者/发布者**: Daily Dose of DS (Avi)
 - **发布日期**: 2026-07-24
 - **原始链接**: [Daily Dose of DS - Quantile regression](https://www.dailydoseofds.com/generalized-linear-models-glms-the-supercharged-linear-regression/)
-- **关联概念**: [[概念_分位数回归与Pinball_Loss]], [[概念_机器学习损失函数]]
+- **关联概念**: [[概念_Pinball_Loss_分位数回归]], [[概念_机器学习损失函数]]
 
 ## 核心要点
 - **均值回归的局限**：传统的普通最小二乘法（OLS）回归模型通常只生成一个标量点估计（Point Estimate），代表特定输入下输出的均值。但在实际应用（如薪资预测、预测区间评估等）中，单一点估计无法捕获目标变量的概率分布。

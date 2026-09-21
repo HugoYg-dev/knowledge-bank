@@ -55,10 +55,10 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_MLA多头潜在注意力]] — DeepSeek MLA 压缩 KV Cache
+- [[概念_MLA_多头潜在注意力]] — DeepSeek MLA 压缩 KV Cache
 - [[概念_MoE混合专家]] — MoE 架构原理
 - [[概念_滑动窗口注意力]] — Gemma 3 局部注意力
-- [[概念_QK_Norm]] — OLMo 2 训练稳定化
+- [[概念_QK_Norm_注意力查询键归一化]] — OLMo 2 训练稳定化
 - [[概念_NoPE无位置嵌入]] — SmolLM3 位置编码缺失实验
 - [[概念_Muon优化器]] — Kimi K2 训练创新
 - [[实体_DeepSeek-V3]] — DeepSeek 模型实体

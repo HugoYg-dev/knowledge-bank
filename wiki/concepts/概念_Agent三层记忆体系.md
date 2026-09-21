@@ -65,7 +65,7 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
 - [[concepts/概念_电商智能体架构]]
 - [[concepts/概念_上下文工程]]
 - [[entities/实体_Anthropic]]
-- [[概念_Context_Rot]]
+- [[概念_Context_Rot_上下文衰退]]
 
 ---
 

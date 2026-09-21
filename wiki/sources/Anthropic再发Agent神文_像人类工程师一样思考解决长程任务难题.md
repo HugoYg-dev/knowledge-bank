@@ -77,7 +77,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_orchestrator-worker模式]]
+- [[概念_Orchestrator_Worker_编排工模式]]
 - [[概念_Agent感知记忆推理三能力]]
 - [[实体_Anthropic_Research系统]]
 - [[概念_MCP代码执行模式]]

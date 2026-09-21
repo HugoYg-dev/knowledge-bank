@@ -38,9 +38,9 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_状态空间对偶SSD]] — SSD 框架核心
+- [[概念_SSD_状态空间对偶]] — SSD 框架核心
 - [[概念_半可分离矩阵]] — SSM 的矩阵代数基础
-- [[概念_状态空间模型SSM]] — SSM 基础
+- [[概念_SSM_状态空间模型]] — SSM 基础
 - [[概念_Mamba选择机制]] — Selective SSM 基础
 - [[概念_MambaBlock架构]] — Mamba2 Block 改进
 - [[实体_Mamba2]] — Mamba2 模型

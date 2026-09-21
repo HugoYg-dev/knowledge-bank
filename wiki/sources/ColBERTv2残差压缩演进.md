@@ -20,7 +20,7 @@ updated: '2026-07-01'
 
 | 类型 | 代表 | 编码方式 | 查询复杂度 | 可否预计算 | 精度 |
 |------|------|----------|-----------|-----------|------|
-| 表示模型（Representation） | [[概念_Sentence-BERT|Sentence-BERT]] | 独立编码为固定向量 | O(1) | 可预计算 | 较低 |
+| 表示模型（Representation） | [[概念_Sentence_BERT_孪生网络句向量|Sentence-BERT]] | 独立编码为固定向量 | O(1) | 可预计算 | 较低 |
 | 交互模型（Interaction） | BERT Cross-Encoder | 拼接查询+文档，深度交互 | O(n·m) | 不可预存 | 最高 |
 
 ## ColBERT（Stanford）
@@ -29,7 +29,7 @@ updated: '2026-07-01'
 - 文档可预先索引到 FAISS 中（见 [[实体_Faiss]]）。
 - 精度接近 cross-encoder，延迟从秒级降至数十毫秒。
 
-详见 [[ColBERT原理与延迟交互机制]] 与 [[概念_ColBERT]]。
+详见 [[ColBERT原理与延迟交互机制]] 与 [[概念_ColBERT_多向量延迟交互检索]]。
 
 ## ColBERTv2（SIGIR 2021）
 
@@ -71,7 +71,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_ColBERT]]、[[概念_ColBERTv2残差压缩]]、[[概念_向量量化]]、[[概念_Sentence-BERT]]
+- 相关概念：[[概念_ColBERT_多向量延迟交互检索]]、[[概念_ColBERTv2残差压缩]]、[[概念_向量量化]]、[[概念_Sentence_BERT_孪生网络句向量]]
 - 实体：[[实体_ColBERT]]、[[实体_BGE-M3]]、[[实体_Faiss]]
 - 来源：[[ColBERT原理与延迟交互机制]]
 

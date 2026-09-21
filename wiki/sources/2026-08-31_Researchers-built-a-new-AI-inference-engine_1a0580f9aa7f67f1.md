@@ -50,7 +50,7 @@ updated: "2026-09-09"
 ## 关联实体与概念
 
 - 关联实体：[[entities/实体_Superlinked_Inference_Engine|实体_Superlinked_Inference_Engine]]、[[entities/实体_vLLM|实体_vLLM]]
-- 关联概念：[[concepts/概念_连续批处理|概念_连续批处理]]、[[concepts/概念_KV_Cache|概念_KV_Cache]]
+- 关联概念：[[concepts/概念_连续批处理|概念_连续批处理]]、[[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
 
 ---
 

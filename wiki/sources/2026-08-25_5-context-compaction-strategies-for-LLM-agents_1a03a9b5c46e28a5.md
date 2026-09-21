@@ -88,10 +88,10 @@ flowchart TD
 
 - **关联概念**：
   - [[concepts/概念_上下文工程|概念_上下文工程]]：包含 Reduce（压缩）与 Offload（卸载）的核心方法论。
-  - [[concepts/概念_Prompt_Compression|概念_Prompt_Compression]]：包含 LLMLingua / LLMLingua-2 等基于小型编码器打分的 Token 剪枝技术。
-  - [[concepts/概念_KV_Cache|概念_KV_Cache]]：大模型推理显存与自回归生成的核心加速结构。
-  - [[concepts/概念_解耦式KV缓存与LMCache|概念_解耦式KV缓存与LMCache]]：CacheBlend 跨位置缓存块复用与分层卸载架构。
-  - [[concepts/概念_Context_Rot|概念_Context_Rot]]：长上下文性能衰减现象，触发 Compaction 的核心动因。
+  - [[concepts/概念_Prompt_Compression_提示词压缩|概念_Prompt_Compression]]：包含 LLMLingua / LLMLingua-2 等基于小型编码器打分的 Token 剪枝技术。
+  - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]：大模型推理显存与自回归生成的核心加速结构。
+  - [[concepts/概念_LMCache_解耦式KV缓存|概念_解耦式KV缓存与LMCache]]：CacheBlend 跨位置缓存块复用与分层卸载架构。
+  - [[concepts/概念_Context_Rot_上下文衰退|概念_Context_Rot]]：长上下文性能衰减现象，触发 Compaction 的核心动因。
 - **关联实体**：
   - [[entities/实体_Anthropic|实体_Anthropic]]：Prompt Caching 差异化计费规范制定者（10% Read vs 125% Write）。
 

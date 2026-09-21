@@ -58,9 +58,9 @@ updated: "2026-09-15"
 
 - **核心概念**：
   - [[concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]：循环工程外层控制面、二阶管理动作与收敛机制。
-  - [[concepts/概念_Harness_Engineering|概念_Harness_Engineering]]：外壳工程组件、状态与记忆解耦、Ralph Loop 跨上下文工程。
-  - [[concepts/概念_AI-Native_SDLC|概念_AI-Native_SDLC]]：版本控制产物驱动的闭环自转模型、代码两侧瓶颈与三层防御。
-  - [[concepts/概念_Self-Harness|概念_Self-Harness]]：智能体自进化与外壳优化阶梯。
+  - [[concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]：外壳工程组件、状态与记忆解耦、Ralph Loop 跨上下文工程。
+  - [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期|概念_AI-Native_SDLC]]：版本控制产物驱动的闭环自转模型、代码两侧瓶颈与三层防御。
+  - [[concepts/概念_Self_Harness_自主进化宿主系统|概念_Self-Harness]]：智能体自进化与外壳优化阶梯。
   - [[concepts/概念_CLAUDE.md最佳实践|概念_CLAUDE.md最佳实践]]：项目级背景与约束外部化标准。
 - **关联实体**：
   - [[entities/实体_Claude_Code|实体_Claude_Code]]：Anthropic CLI 编码智能体，支持 `/loop` 时间起搏器与多 Agent 协同。

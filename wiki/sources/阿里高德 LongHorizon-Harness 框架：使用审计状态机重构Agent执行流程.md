@@ -92,8 +92,8 @@ Auditor 的审查结果非二元“通过/不通过”，而是输出三维控�
   - [[entities/实体_Codex|实体_Codex]]：可作为 Executor 被 MEA 外层包裹的工程 Agent 平台。
   - [[entities/实体_Coggle|实体_Coggle]]：技术解读与分析报告发布方。
 - **关联概念**：
-  - [[concepts/概念_Harness_Engineering|概念_Harness_Engineering]]：LongHorizon-Harness 代表的外壳工程与长任务状态提交范式。
-  - [[concepts/概念_Context_Rot|概念_Context_Rot]]：长时交互中信息稀释与推理退化的物理机制。
+  - [[concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]：LongHorizon-Harness 代表的外壳工程与长任务状态提交范式。
+  - [[concepts/概念_Context_Rot_上下文衰退|概念_Context_Rot]]：长时交互中信息稀释与推理退化的物理机制。
   - [[concepts/概念_Agent内存与状态管理|概念_Agent内存与状态管理]]：状态（State）与记忆（Memory）解耦及任务账本沉淀机制。
   - [[concepts/概念_上下文工程|概念_上下文工程]]：通过轮间上下文重置与隔离（Isolate）遏制噪声膨胀。
 

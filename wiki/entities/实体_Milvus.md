@@ -18,7 +18,7 @@ updated: '2026-07-22'
 
 ## 核心特性与优势
 
-- **索引丰富**：支持最多的向量索引类型，包括 [[entities/实体_HNSW|HNSW]]、[[concepts/概念_IVF倒排索引|IVF]]、[[concepts/概念_DiskANN|DiskANN]]、PQ 等。
+- **索引丰富**：支持最多的向量索引类型，包括 [[entities/实体_HNSW|HNSW]]、[[concepts/概念_IVF_倒排索引|IVF]]、[[concepts/概念_DiskANN_磁盘图向量索引|DiskANN]]、PQ 等。
 - **海量扩展**：横向扩展能力极强，轻松支持千万级至十亿级（Billion-scale）数据规模。
 - **混合查询**：支持高效的标量属性过滤与向量检索结合。
 - **生态完善**：提供 PyMilvus SDK，与 LangChain、LlamaIndex 等 AI 框架无缝适配。
@@ -30,5 +30,5 @@ updated: '2026-07-22'
 
 ## 关联
 
-- 相关概念：[[concepts/概念_向量数据库]]、[[concepts/概念_DiskANN]]、[[concepts/概念_IVF倒排索引]]、[[concepts/概念_标量过滤]]
+- 相关概念：[[concepts/概念_向量数据库]]、[[concepts/概念_DiskANN_磁盘图向量索引]]、[[concepts/概念_IVF_倒排索引]]、[[concepts/概念_标量过滤]]
 - 来源：[[2026程序员必读的向量数据库原理与选型指南]]、[[向量数据库原理与应用全解析]]

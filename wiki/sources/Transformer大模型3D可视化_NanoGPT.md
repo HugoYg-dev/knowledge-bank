@@ -54,8 +54,8 @@ updated: '2026-07-01'
 ### 概念
 - [[概念_Transformer架构]] — Transformer 5步流程与本文逐层拆解直接对应
 - [[概念_自注意力复杂度]] — 自注意力计算复杂度原理
-- [[概念_FlashAttention]] — 自注意力的I/O优化
-- [[概念_KV_Cache]] — K/V缓存推理加速机制
+- [[概念_FlashAttention_快速注意力]] — 自注意力的I/O优化
+- [[概念_KV_Cache_键值缓存]] — K/V缓存推理加速机制
 - [[概念_Normalization方法对比]] — LayerNorm在Transformer中的位置
 - [[概念_梯度下降优化器]] — 模型训练所用优化器
 

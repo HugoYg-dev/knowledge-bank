@@ -34,7 +34,7 @@ updated: '2026-08-04'
 - > "Because prefetch hides the offload cost, most of the KV cache can live in CPU RAM, and the freed GPU memory fits much bigger batches, pushing decode throughput up to 5.3x..."
 
 ## 相关实体与概念
-- [[wiki/concepts/概念_KV_Cache]]
+- [[wiki/concepts/概念_KV_Cache_键值缓存]]
 - [[wiki/concepts/概念_SparDA预测式KV缓存预取]]
 - [[wiki/concepts/概念_LLM推理两阶段]]
 

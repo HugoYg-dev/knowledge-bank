@@ -42,5 +42,5 @@ OpenAI 前 VP、安全研究负责人，Thinking Machines Lab 联合创始人，
 
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]] — Harness Engineering 综述摘要
 - [[翁荔_LLM外在幻觉_原因检测抵抗]] — 幻觉 Blog source 页
-- [[概念_Harness_Engineering]] — Harness Engineering 概念
+- [[概念_Harness_Engineering_宿主编排工程]] — Harness Engineering 概念
 - [[概念_LLM外在幻觉与上下文内幻觉]] — 幻觉定义框架

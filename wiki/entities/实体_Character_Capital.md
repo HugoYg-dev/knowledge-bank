@@ -16,7 +16,7 @@ updated: '2026-07-06'
 
 - 专注"0 阶段"超早期项目（通常无产品、无收入）
 - 重心是帮助被投项目在最早阶段奠定坚实战略基础
-- 在此期间（2021-2022 年）创造了 [[概念_Foundation_Sprint]]
+- 在此期间（2021-2022 年）创造了 [[概念_Foundation_Sprint_基础冲刺]]
 
 ## 方法论
 
@@ -27,8 +27,8 @@ updated: '2026-07-06'
 ## 关联
 
 - [[实体_Jake_Knapp]]
-- [[概念_Foundation_Sprint]]
-- [[概念_Design_Sprint]]
+- [[概念_Foundation_Sprint_基础冲刺]]
+- [[概念_Design_Sprint_设计冲刺]]
 
 ## 来源
 

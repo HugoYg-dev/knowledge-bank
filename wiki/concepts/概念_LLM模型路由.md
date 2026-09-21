@@ -32,6 +32,6 @@ LLM 模型路由（Model Router）是部署在 LLM 网关（LLM Gateway）或智
 
 ## 关联概念与实体
 
-- [[concepts/概念_KV_Cache]]：推理缓存核心机制，前缀缓存（Prefix Cache）对长上下文成本优化具有显著优势。
-- [[concepts/概念_MoE_Router]]：模型内部层级（Token 级）的稀疏专家路由，区别于网关层的整体请求路由。
-- [[concepts/概念_RAG_Routing]]：检索增强生成中针对不同知识库或查询类型的路由分发。
+- [[concepts/概念_KV_Cache_键值缓存]]：推理缓存核心机制，前缀缓存（Prefix Cache）对长上下文成本优化具有显著优势。
+- [[concepts/概念_MoE_Router_专家路由门控网络]]：模型内部层级（Token 级）的稀疏专家路由，区别于网关层的整体请求路由。
+- [[concepts/概念_RAG_Routing_检索智能路由]]：检索增强生成中针对不同知识库或查询类型的路由分发。

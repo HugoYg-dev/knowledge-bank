@@ -12,7 +12,7 @@ updated: '2026-09-09'
 ---
 # Agent 内存与状态管理
 
-在设计和构建生产级的 AI 智能体宿主系统（[[概念_Harness_Engineering]]）时，**状态（State）**与**记忆（Memory）**是两个本质不同却常被混淆的核心维度。将两者清晰解耦并分别管理，是构建高可靠性、长生命周期智能体系统的基石。
+在设计和构建生产级的 AI 智能体宿主系统（[[概念_Harness_Engineering_宿主编排工程]]）时，**状态（State）**与**记忆（Memory）**是两个本质不同却常被混淆的核心维度。将两者清晰解耦并分别管理，是构建高可靠性、长生命周期智能体系统的基石。
 
 ---
 
@@ -49,7 +49,7 @@ updated: '2026-09-09'
 
 ## 4. 状态与记忆在 Harness 中的并行协作逻辑
 
-在 [[概念_Harness_Engineering]] 的架构中，状态和记忆共同构成了智能体的“生存支架”。它们在运行周期中的协作关系如下：
+在 [[概念_Harness_Engineering_宿主编排工程]] 的架构中，状态和记忆共同构成了智能体的“生存支架”。它们在运行周期中的协作关系如下：
 
 1. **会话初始化**：Harness 启动时，首先加载全局及当前 Agent Scope 的**长期记忆（Memory）**；同时检查是否存在待恢复的**执行状态（State）**。
 2. **循环迭代期**：
@@ -61,5 +61,5 @@ updated: '2026-09-09'
 ---
 
 ## 关联 Concepts 与 Sources
-- **关联概念**：[[概念_Harness_Engineering]]
+- **关联概念**：[[概念_Harness_Engineering_宿主编排工程]]
 - **关联 Sources**：[[wiki/sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57|Source: Agent memory and state are not the same thing!]]

@@ -40,7 +40,7 @@ published: '2026-06-25'
 - **健康检查（Lint）**：体检矛盾、孤立节点、过时内容与占位符页面。
 
 ### 5. 80 年知识管理思想谱系
-- **1945 年 Vannevar Bush ([[entities/实体_Vannevar_Bush|Vannevar Bush]])** 提出 [[concepts/概念_Memex|Memex]]：构想私有、主动策划、具备关联路径的知识设备。
+- **1945 年 Vannevar Bush ([[entities/实体_Vannevar_Bush|Vannevar Bush]])** 提出 [[concepts/概念_Memex_个人机电知识扩展系统|Memex]]：构想私有、主动策划、具备关联路径的知识设备。
 - **1950 年代 Niklas Luhmann ([[entities/实体_Niklas_Luhmann|Niklas Luhmann]])** 实践 [[concepts/概念_卡片盒笔记法|卡片盒笔记法 (Zettelkasten)]]：用 9 万张原子化索引卡与交叉编号打造“对话伙伴”。
 - **2026 年 Andrej Karpathy ([[entities/实体_Andrej_Karpathy|Andrej Karpathy]])** 引入 LLM：用 AI 自动化接管了最繁重的维护记账工作，使 Wiki 维护成本接近于零。
 
@@ -52,7 +52,7 @@ published: '2026-06-25'
 
 ## 涉及主题与概念
 
-- 核心思想：[[concepts/概念_LLM_Wiki范式]]、[[concepts/概念_RAG与LLM_Wiki对比]]、[[concepts/概念_Memex]]、[[concepts/概念_卡片盒笔记法]]
+- 核心思想：[[concepts/概念_LLM_Wiki范式]]、[[concepts/概念_RAG与LLM_Wiki对比]]、[[concepts/概念_Memex_个人机电知识扩展系统]]、[[concepts/概念_卡片盒笔记法]]
 - 核心操作：[[concepts/概念_Ingest入库闭环]]、Wiki健康检查
 - 实体与工具：[[entities/实体_Andrej_Karpathy]]、[[entities/实体_Vannevar_Bush]]、[[entities/实体_Niklas_Luhmann]]、[[entities/实体_Claude_Code]]、[[entities/实体_Obsidian]]、qmd
 

@@ -52,7 +52,7 @@ updated: '2026-08-20'
 ## 4. 关联实体与概念
 - **作者实体**：[[entities/实体_鸭哥|鸭哥]]
 - **代表性搜索供应商实体**：[[entities/实体_Exa|Exa]]、[[entities/实体_Tavily|Tavily]]
-- **核心概念**：[[concepts/概念_Agentic_Web_Search|Agentic Web Search（Agent 网络搜索供应链）]]
-- **相关工程概念**：[[concepts/概念_Harness_Engineering|Harness Engineering]]、[[concepts/概念_上下文工程|上下文工程]]、[[concepts/概念_Agent_Skills元工具架构|Agent Skills 元工具架构]]
+- **核心概念**：[[concepts/概念_Agentic_Web_Search_智能体网络搜索|Agentic Web Search（Agent 网络搜索供应链）]]
+- **相关工程概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_上下文工程|上下文工程]]、[[concepts/概念_Agent_Skills元工具架构|Agent Skills 元工具架构]]
 
 > 📎 **物理文献**：[[raw/articles/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md]]

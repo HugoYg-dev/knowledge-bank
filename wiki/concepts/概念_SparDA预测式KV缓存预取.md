@@ -38,6 +38,6 @@ SparDA 通过解耦“块选择驱动源”来解决上述痛点：
 - **推理准确率**：在长文本推理评测中不仅没有精度损失，甚至因为有效的注意力保留，在长推理（Long-reasoning）准确率上提升了 **6.5 点**。
 
 ## 关联
-- [[概念_KV_Cache]]
+- [[概念_KV_Cache_键值缓存]]
 - [[概念_LLM推理两阶段]]
 - [[wiki/sources/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617]]（直接来源）

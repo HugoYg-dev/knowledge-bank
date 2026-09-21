@@ -54,8 +54,8 @@ IterResearch 模式对核心报告质量有严重依赖：若报告生成模块�
 
 ## 关联
 
-- [[概念_Deep-Research-Agent定义与分类]]
-- [[概念_Context_Rot]]
+- [[概念_Deep_Research_Agent_定义与分类]]
+- [[概念_Context_Rot_上下文衰退]]
 - [[实体_通义DeepResearch]]
 
 ## 来源

@@ -87,7 +87,7 @@ P_peak |-------------------\========================= (算力峰值天花板 Com
 2. **垂直抬升 / 削减分母（直接减少从 HBM 传输的 Bytes）**：
    - **低精度量化（Quantization）**：将模型权重从 FP16（2 字节）压缩为 INT8（1 字节）或 INT4（0.5 字节），直接将分母 Memory Traffic 削减 50%–75%，使单请求生成延迟理论下限直接压缩至 $21\text{ms}$（~48 tok/s）或更快；
    - **算子融合（Operator Fusion）**：将连续 Element-wise 算子串联执行，中间变量驻留在片上寄存器，避免往返写入与读取全局显存；
-   - **[[concepts/概念_FlashAttention|FlashAttention]]**：利用在线 Softmax 与 SRAM Tiling，避免在全局显存 HBM 中物化庞大的 $N \times N$ 注意力矩阵；
+   - **[[concepts/概念_FlashAttention_快速注意力|FlashAttention]]**：利用在线 Softmax 与 SRAM Tiling，避免在全局显存 HBM 中物化庞大的 $N \times N$ 注意力矩阵；
    - **连续合并访存（Memory Coalescing）**：对齐 Warp 线程访问的物理地址，避免非对齐访存造成的有效带宽折损。
 
 ---
@@ -98,6 +98,6 @@ P_peak |-------------------\========================= (算力峰值天花板 Com
 - [[concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]
 - [[concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]
 - [[concepts/概念_连续批处理|概念_连续批处理]]
-- [[concepts/概念_FlashAttention|概念_FlashAttention]]
-- [[concepts/概念_KV_Cache|概念_KV_Cache]]
+- [[concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]
+- [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
 - [[entities/实体_NVIDIA|实体_NVIDIA]]

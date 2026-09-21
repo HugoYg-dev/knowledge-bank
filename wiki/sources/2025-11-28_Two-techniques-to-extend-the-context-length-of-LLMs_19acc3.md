@@ -19,7 +19,7 @@ updated: 2026-08-03
 
 # 联动概念
 - 稀疏注意力
-- [[wiki/concepts/概念_FlashAttention|Flash Attention]]
+- [[wiki/concepts/概念_FlashAttention_快速注意力|Flash Attention]]
 - [[wiki/concepts/概念_自注意力复杂度|自注意力复杂度]]
 
 # 核心要点

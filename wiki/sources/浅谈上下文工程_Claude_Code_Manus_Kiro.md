@@ -94,8 +94,8 @@ updated: '2026-07-01'
 - [[Context_Engineering_LangChain_Manus_NotebookLM]] — LangChain视角
 - [[也许当前最好的上下文工程讲解_LangChain联合Manus]] — 同主题更深细节
 - [[概念_上下文工程]]
-- [[概念_Context_Rot]]
-- [[概念_Spec_Driven_Development]]
+- [[概念_Context_Rot_上下文衰退]]
+- [[概念_Spec_Driven_Development_规范驱动开发]]
 - [[实体_Claude_Code]]
 - [[实体_Manus]]
 - Kiro

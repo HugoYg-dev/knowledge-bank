@@ -40,5 +40,5 @@ OpenAI DevDay 将 RAG 定位为 **Context Optimization** 手段：集成外部�
 ## 关联
 
 - 相关概念：[[概念_Embedding与向量检索]]、[[概念_向量数据库]]、RAG四大基础范式、RAG五类提升方法、[[概念_LLM应用优化两轴]]
-- 进阶技巧：[[概念_Query_Translation]]、[[概念_RAG_Routing]]、[[概念_Query_Construction]]、[[概念_Multi-representation_Indexing]]
+- 进阶技巧：[[概念_Query_Translation_查询改写与翻译]]、[[概念_RAG_Routing_检索智能路由]]、[[概念_Query_Construction_查询构建]]、[[概念_Multi_Representation_Indexing_多表征索引]]
 - 来源：[[RAG基础_索引检索生成]]、RAG综述_北大AIGC2024、[[OpenAI_LLM应用最佳实践]]

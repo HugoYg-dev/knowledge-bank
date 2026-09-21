@@ -46,7 +46,7 @@ updated: "2026-09-07"
 
 
 ### 3. AI-Native SDLC 原生落地基座
-在 Anthropic 提出的 [[concepts/概念_AI-Native_SDLC|AI-Native SDLC]] 范式中，Claude Code 作为官方参考实现与执行中枢：
+在 Anthropic 提出的 [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期|AI-Native SDLC]] 范式中，Claude Code 作为官方参考实现与执行中枢：
 - **计划模式（Plan Mode）**：深入代码库分析改动并生成 `plan.md`，经人类审批后方可动工，严格遵循“计划未过不写代码”纪律。
 - **三层规则落地**：会话初始化加载项目根目录 `CLAUDE.md`（项目宪法），按需装配 `.agents/skills/`（专项操作规程），并受操作触发的 `Hook` 脚本硬性阻断保护。
 - **本地搜索基建接入**：除内置文件搜索外，可接入如 [[entities/实体_zvec-grep|zvec-grep (zg)]] 等本地优先混合检索层，高效桥接自然语言意图与代码标识符，减少无效 Tool Calls 与 Token 浪费。

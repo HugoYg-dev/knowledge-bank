@@ -24,7 +24,7 @@ updated: "2026-09-15"
 - **Agent Skills 架构**：在 Claude Code 中开创了通过提示词模板与元工具扩展智能体能力的 Agent Skills 设计范式。
 - **接种提示词（Inoculation Prompting）**：针对强化学习 Reward Hacking 提出在训练数据中嵌入接种提示词重构语义，防范作弊与对齐假象。
 - **AI-Native SDLC 方法论与三层规则体系**：提出以版本控制产物驱动的闭环自转（The Loop）重构研发流程，确立 `CLAUDE.md`（项目总则）、`Skill`（任务规程）与 `Hook`（确定性硬门禁）的三层防御体系，倡导计划先行（Plan Mode）与子智能体（Subagents）上下文解耦。
-- **电商智能体系统工程与表现层工具化**：针对高耦合长程交易场景，系统化确立了单模型结合技能架构（Skills over Subagents）、表现层工具化（[[concepts/概念_Presentation_Tools|Presentation Tools]]）、三段式 Prompt Caching、异步三层记忆与 Harness 确定性安全门禁（Staging 机制与服务端白名单 ID）的完整落地规范。
+- **电商智能体系统工程与表现层工具化**：针对高耦合长程交易场景，系统化确立了单模型结合技能架构（Skills over Subagents）、表现层工具化（[[concepts/概念_Presentation_Tools_表现层工具化|Presentation Tools]]）、三段式 Prompt Caching、异步三层记忆与 Harness 确定性安全门禁（Staging 机制与服务端白名单 ID）的完整落地规范。
 
 ## 来源
 

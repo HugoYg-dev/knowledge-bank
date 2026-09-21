@@ -17,7 +17,7 @@ updated: '2026-08-04'
 - **作者/发布者**: Daily Dose of DS (Avi)
 - **发布日期**: 2026-07-27
 - **原始链接**: [Daily Dose of DS - CrewAI Agent Harness](https://github.com/crewAIInc/crewAI)
-- **关联概念**: [[概念_Agent内存与状态管理]], [[概念_Harness_Engineering]]
+- **关联概念**: [[概念_Agent内存与状态管理]], [[概念_Harness_Engineering_宿主编排工程]]
 
 ## 核心要点
 - **状态与记忆的核心区别**：

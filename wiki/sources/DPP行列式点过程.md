@@ -40,7 +40,7 @@ updated: '2026-07-01'
 
 - k-DPP 问题（选 k 个使 det 最大）是 NP-Hard
 - 暴力求解复杂度 O(N·k⁴)
-- [[概念_Cholesky分解与DPP]] 利用 Cholesky 分解降至 O(N·k²)
+- [[概念_DPP_Cholesky分解加速]] 利用 Cholesky 分解降至 O(N·k²)
 - 核心思想：增量更新，每步选择使 d_i² 最大的元素
 - d_i² 可通过上一轮的 c 向量增量更新
 
@@ -58,7 +58,7 @@ updated: '2026-07-01'
 
 ## 相关概念
 
-- [[概念_Cholesky分解与DPP]]
+- [[概念_DPP_Cholesky分解加速]]
 - 行列式与多样性采样
 
 ## 相关实体

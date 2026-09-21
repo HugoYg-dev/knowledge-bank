@@ -82,7 +82,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_Sparse_Embedding]]、[[概念_Dense_Embedding]]、[[概念_Quantized_Embedding]]、[[概念_Binary_Embedding]]、[[概念_Matryoshka表示学习]]、[[概念_ColBERT]]、[[概念_BM25]]、[[概念_Embedding与向量检索]]
+- 相关概念：[[概念_Sparse_Embedding_稀疏向量嵌入]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Quantized_Embedding_量化向量嵌入]]、[[概念_Binary_Embedding_二进制向量嵌入]]、[[概念_Matryoshka表示学习]]、[[概念_ColBERT_多向量延迟交互检索]]、[[概念_BM25_最佳匹配25算法]]、[[概念_Embedding与向量检索]]
 - 实体：[[实体_ColBERT]]
 
 ---

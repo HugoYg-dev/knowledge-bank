@@ -43,6 +43,6 @@ updated: '2026-07-06'
 
 ## 关联
 
-- 相关概念：[[概念_ColBERT]]、[[概念_Quantized_Embedding]]、[[概念_向量量化]]
+- 相关概念：[[概念_ColBERT_多向量延迟交互检索]]、[[概念_Quantized_Embedding_量化向量嵌入]]、[[概念_向量量化]]
 - 实体：[[实体_ColBERT]]、[[实体_BGE-M3]]
 - 来源：[[ColBERTv2残差压缩演进]]

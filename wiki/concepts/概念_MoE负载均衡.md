@@ -48,4 +48,4 @@ total_loss = cross_entropy_loss + lambda_balance * balance_loss
 ## 关联概念
 
 - [[概念_MoE混合专家]] — MoE 整体架构
-- [[概念_MoE_Router]] — 门控网络机制
+- [[概念_MoE_Router_专家路由门控网络]] — 门控网络机制

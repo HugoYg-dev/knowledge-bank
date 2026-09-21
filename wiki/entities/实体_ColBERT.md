@@ -21,7 +21,7 @@ ColBERT（Contextualized Late Interaction over BERT）是斯坦福 FutureData �
 - MaxSim 最大池化操作
 - 基于上下文的 token 嵌入
 
-详见概念页 [[概念_ColBERT]]。
+详见概念页 [[概念_ColBERT_多向量延迟交互检索]]。
 
 ## 版本
 
@@ -36,5 +36,5 @@ ColBERT（Contextualized Late Interaction over BERT）是斯坦福 FutureData �
 
 ## 关联
 
-- 相关概念：[[概念_ColBERT]]、[[概念_ColBERTv2残差压缩]]、[[概念_Embedding与向量检索]]
+- 相关概念：[[概念_ColBERT_多向量延迟交互检索]]、[[概念_ColBERTv2残差压缩]]、[[概念_Embedding与向量检索]]
 - 来源：[[RAG索引进阶_Indexing]]、[[从BM25到Multi-Vector_6种Embedding演进路线]]、[[ColBERT原理与延迟交互机制]]、[[ColBERTv2残差压缩演进]]

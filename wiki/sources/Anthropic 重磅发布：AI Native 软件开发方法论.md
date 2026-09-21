@@ -67,7 +67,7 @@ updated: "2026-09-07"
   - [[entities/实体_Anthropic|实体_Anthropic]]：方法论发布机构，前沿 AI 安全与大模型研发实验室。
   - [[entities/实体_Claude_Code|实体_Claude_Code]]：Anthropic 官方推出的终端级 AI Coding Agent，也是 CLAUDE.md、Skill、Hook 与 Subagent 机制的参考实现基座。
 - **关联概念**：
-  - [[concepts/概念_AI-Native_SDLC|概念_AI-Native_SDLC]]：本篇核心方法论，以产物驱动闭环与三层防护为核心的软件开发生命周期范式。
+  - [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期|概念_AI-Native_SDLC]]：本篇核心方法论，以产物驱动闭环与三层防护为核心的软件开发生命周期范式。
   - [[concepts/概念_CLAUDE.md最佳实践|概念_CLAUDE.md最佳实践]]：三层规则中基础层文件的工程化配置规范。
   - [[concepts/概念_Claude_Code多智能体协同机制|概念_Claude_Code多智能体协同机制]]：Subagents 与任务解耦的底层协同机制。
 

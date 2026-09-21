@@ -36,4 +36,4 @@ FlashAttention 由 Tri Dao 等人于 2022 年提出，是一种 I/O 感知的精
 ## 关联
 
 - [[Attention复杂度解析与改进方向]]（来源）
-- [[概念_FlashAttention]]
+- [[概念_FlashAttention_快速注意力]]

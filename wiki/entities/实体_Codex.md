@@ -38,7 +38,7 @@ updated: '2026-08-20'
 
 ## 关联页面
 - **同类编码系统**：[[entities/实体_Claude_Code|Claude Code]]、[[entities/实体_DeepSeek_Harness|DeepSeek Harness]]
-- **核心概念**：[[concepts/概念_Harness_Engineering|Harness Engineering]]、[[concepts/概念_Self-Harness|Self-Harness]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
+- **核心概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
 - **相关工具**：[[entities/实体_Tavily|Tavily]]
 
 ## 来源与参考

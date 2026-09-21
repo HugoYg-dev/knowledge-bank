@@ -12,7 +12,7 @@ updated: '2026-08-04'
 
 ## 定义
 
-**RLM（Recursive Language Models，递归语言模型）** 是由 MIT 研究团队提出的一种应对超长文本和 [[concepts/概念_Context_Rot|Context Rot（上下文腐化）]] 的全新架构。该架构将上下文数据视为“可编程探索的外部数据”，而不是一次性塞入模型窗口的黑盒。
+**RLM（Recursive Language Models，递归语言模型）** 是由 MIT 研究团队提出的一种应对超长文本和 [[concepts/概念_Context_Rot_上下文衰退|Context Rot（上下文腐化）]] 的全新架构。该架构将上下文数据视为“可编程探索的外部数据”，而不是一次性塞入模型窗口的黑盒。
 
 ## 核心机制
 

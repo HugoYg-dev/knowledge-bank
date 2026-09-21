@@ -48,7 +48,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 概念：[[概念_Multi-representation_Indexing]]、[[概念_RAPTOR索引]]、[[概念_ColBERT]]
+- 概念：[[概念_Multi_Representation_Indexing_多表征索引]]、[[概念_RAPTOR_递归树状检索索引]]、[[概念_ColBERT_多向量延迟交互检索]]
 - 实体：[[实体_LangChain]]、[[实体_ColBERT]]
 - 系列上一篇：[[RAG查询构造_Query_Construction]]
 

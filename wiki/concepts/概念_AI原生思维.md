@@ -65,7 +65,7 @@ graph TD
 
 ## 关联
 
-- [[concepts/概念_AI-Native_SDLC]]
+- [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期]]
 - [[concepts/概念_CLAUDE.md最佳实践]]
 - [[concepts/概念_Agent系统化工程]]
 - [[entities/实体_宝玉]]

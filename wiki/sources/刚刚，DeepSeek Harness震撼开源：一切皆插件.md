@@ -47,6 +47,6 @@ DeepSeek Harness 将系统抽象为一个 Cordis Context，不同包向 Context 
 
 ## 关联实体与概念
 - **相关实体**：[[entities/实体_DeepSeek_Harness|DeepSeek Harness]]、[[entities/实体_Cordis|Cordis]]、[[entities/实体_Claude_Code|Claude Code]]、[[entities/实体_Codex|Codex]]、[[entities/实体_DeepSeek-V3|DeepSeek-V3]]、[[entities/实体_DeepSeek-R1|DeepSeek-R1]]
-- **相关概念**：[[concepts/概念_Harness_Engineering|Harness Engineering]]、[[concepts/概念_Self-Harness|Self-Harness]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]、[[concepts/概念_上下文工程|上下文工程]]
+- **相关概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]、[[concepts/概念_上下文工程|上下文工程]]
 
 > 📎 **物理文献**：[[raw/articles/刚刚，DeepSeek Harness震撼开源：一切皆插件.md]]

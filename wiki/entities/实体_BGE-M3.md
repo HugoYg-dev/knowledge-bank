@@ -34,5 +34,5 @@ BGE-M3 是 BAAI（北京智源）推出的多语言嵌入模型，支持多种�
 
 ## 关联
 
-- 相关概念：[[概念_ColBERT]]、[[概念_ColBERTv2残差压缩]]、[[概念_Dense_Embedding]]
+- 相关概念：[[概念_ColBERT_多向量延迟交互检索]]、[[概念_ColBERTv2残差压缩]]、[[概念_Dense_Embedding_稠密向量嵌入]]
 - 来源：[[ColBERT原理与延迟交互机制]]、[[ColBERTv2残差压缩演进]]

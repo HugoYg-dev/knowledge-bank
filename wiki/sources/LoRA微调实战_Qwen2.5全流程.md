@@ -26,8 +26,8 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_LoRA低秩适应微调]] — LoRA 低秩分解原理
-- [[概念_Fine-tuning]] — 微调方法对比
+- [[概念_LoRA_低秩适应微调]] — LoRA 低秩分解原理
+- [[概念_Fine_Tuning_模型微调]] — 微调方法对比
 - [[概念_大模型训练三阶段]] — 训练阶段概述
 - Qwen系列模型 — Qwen2.5/Qwen3 系列
 - [[实体_PEFT库]] — HuggingFace PEFT，LoRA 实现库

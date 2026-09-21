@@ -28,7 +28,7 @@ updated: '2026-07-01'
   1. 基于相似度的排序：余弦相似度、点积等度量
   2. 基于深度学习的排序模型：BERT/T5 等预训练模型评估文档-查询相关性
   3. 使用回归模型：文档特征（长度、相似度、标题等）输入回归模型预测重要性得分
-- RAG Fusion：生成多个用户查询检索多篇文档，利用 [[概念_Reciprocal_Rank_Fusion|RRF]] 对检索结果重新排名
+- RAG Fusion：生成多个用户查询检索多篇文档，利用 [[概念_RRF_互易秩融合|RRF]] 对检索结果重新排名
 
 ### Refinement（检索细化）
 
@@ -55,7 +55,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_重排序Rerank]]、[[概念_CRAG]]、[[概念_Self-RAG]]、[[概念_RAG_Fusion]]、[[概念_Reciprocal_Rank_Fusion]]
+- 相关概念：[[概念_Rerank_重排序]]、[[概念_CRAG_纠正性检索增强生成]]、[[概念_Self_RAG_自省式检索增强生成]]、[[概念_RAG_Fusion_多查询融合生成]]、[[概念_RRF_互易秩融合]]
 - 系列前篇：[[RAG查询翻译_Query_Translation]]、[[RAG路由_Routing]]、[[RAG查询构造_Query_Construction]]、[[RAG索引进阶_Indexing]]
 - 实体：[[实体_LangChain]]、[[实体_Qdrant]]
 

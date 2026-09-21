@@ -49,7 +49,7 @@ updated: '2026-07-01'
 ## 关联
 
 - [[概念_MLA低秩KV压缩]] — MLA 完整原理：低秩压缩 + 矩阵吸收
-- [[概念_KV_Cache]] — MLA 矩阵吸收减少 KV Cache 显存的机制
+- [[概念_KV_Cache_键值缓存]] — MLA 矩阵吸收减少 KV Cache 显存的机制
 - 多头注意力变体 — MHA/MQA/GQA/MLA 对比
 - [[实体_DeepSeek_V2]] — MLA 首次提出的模型
 - [[MiniMax_vs_Kimi_注意力路线之争]]

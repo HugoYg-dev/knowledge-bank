@@ -31,7 +31,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 概念：[[概念_Query_Construction]]
+- 概念：[[概念_Query_Construction_查询构建]]
 - 实体：[[实体_LangChain]]
 - 系列上一篇：[[RAG路由_Routing]]
 - 系列下一篇：[[RAG索引进阶_Indexing]]

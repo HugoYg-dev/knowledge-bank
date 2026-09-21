@@ -35,8 +35,8 @@ updated: '2026-09-15'
 - > "CacheBlend exploits this by identifying just those few tokens and selectively recomputing only them. Everything else gets reused as-is from the independent caches."
 
 ## 相关实体与概念
-- [[wiki/concepts/概念_KV_Cache]]
-- [[wiki/concepts/概念_解耦式KV缓存与LMCache]]
+- [[wiki/concepts/概念_KV_Cache_键值缓存]]
+- [[wiki/concepts/概念_LMCache_解耦式KV缓存]]
 
 ---
 > 📎 **物理文献**：[[raw/articles/Rethinking KV Caching For Production Inference.md]]

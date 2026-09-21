@@ -54,9 +54,9 @@ updated: "2026-09-15"
 ## 关联概念与实体
 
 - **关联概念**：
-  - [[concepts/概念_KV_Cache|概念_KV_Cache]]：自回归自注意力张量缓存核心原理与显存特征。
+  - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]：自回归自注意力张量缓存核心原理与显存特征。
   - [[concepts/概念_上下文工程|概念_上下文工程]]：前缀稳定、追加式交互与断点设计规范。
-  - [[concepts/概念_解耦式KV缓存与LMCache|概念_解耦式KV缓存与LMCache]]：跨请求跨位置的缓存块解耦复用与 CacheBlend。
+  - [[concepts/概念_LMCache_解耦式KV缓存|概念_解耦式KV缓存与LMCache]]：跨请求跨位置的缓存块解耦复用与 CacheBlend。
 - **关联实体**：
   - [[entities/实体_vLLM|实体_vLLM]]：Prefix Caching 块哈希链与内存淘汰算法的开源参考实现。
   - [[entities/实体_Anthropic|实体_Anthropic]]：Prompt Caching 差异化计费规范与 20 块回溯窗口设计者。

@@ -89,9 +89,9 @@ updated: '2026-07-01'
 ## 关联概念
 
 - [[概念_PyTorch训练循环]]
-- [[概念_早停EarlyStopping]]
-- [[概念_Batch_Normalization]]
-- [[概念_Label_Smoothing]]
+- [[概念_Early_Stopping_早停机制]]
+- [[概念_Batch_Normalization_批归一化]]
+- [[概念_Label_Smoothing_标签平滑]]
 - [[概念_Mixup训练]]
 - [[概念_学习率调度]]
 

@@ -36,13 +36,13 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_状态空间模型SSM]] — SSM 数学基础（两方程/A/B/C/D）
+- [[概念_SSM_状态空间模型]] — SSM 数学基础（两方程/A/B/C/D）
 - [[概念_Mamba选择机制]] — input-dependent B/C/Δ 实现内容感知
 - [[概念_HiPPO矩阵]] — Legendre 多项式压缩历史状态
 - [[概念_SSM三种表示]] — 连续/循环/卷积表示及训推切换
 - [[概念_SSM离散化]] — ZOH + 步长 Δ 将连续 SSM 转为离散
 - [[概念_Mamba硬件感知算法]] — kernel fusion + recomputation
-- [[概念_线性时不变LTI]] — LTI 局限与选择机制动机
+- [[概念_LTI_线性时不变]] — LTI 局限与选择机制动机
 - [[实体_Mamba]] — Mamba 模型整体
 - [[实体_S4]] — Structured State Space for Sequences
 

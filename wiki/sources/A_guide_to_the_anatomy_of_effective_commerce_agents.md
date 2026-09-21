@@ -26,7 +26,7 @@ updated: "2026-09-15"
 电商交互本质上是单次高耦合、多意图、多轮次且需要深度共享状态（购物车、用户偏好、浏览历史）的会话。采用“每个领域一个子智能体”（Subagent-per-domain）设计存在严重的痛点：每次转交（handoff）都是有损状态操作（state-lossy），不仅极易损害回复质量，还会成倍消耗 Token 并增加数秒延迟。实践证明，**单一模型在标准 Agent 循环中运行，并配合按需加载的 [[concepts/概念_Agent_Skills元工具架构|Agent Skills]] 处理长尾能力**，在质量、成本和延迟上全面优于单大 Prompt 或多子代理方案。仅在深层独立研究（Deep Research）或对接既有独立合规系统时，才将子代理作为隔离工具调用或交接。
 系统 Prompt 与 Skill 按频率划分：覆盖三分之一以上高频流量的核心逻辑（如商品搜索、购物车与结账语义、基础规则）常驻系统提示词，其余长尾功能（售后服务、选购调研、记忆偏好等）由 Skill 动态承载。
 
-### 2. 表现层工具化与结构化渲染（[[concepts/概念_Presentation_Tools|Presentation Tools]]）
+### 2. 表现层工具化与结构化渲染（[[concepts/概念_Presentation_Tools_表现层工具化|Presentation Tools]]）
 大多数电商交互产物并非长篇文字，而是富交互 UI 组件（商品轮播、行程卡片、座位图表）。在提示词中生成自定义标签并在客户端解析的做法，极易引发格式崩坏、系统提示词膨胀和会话历史不可重用。工业级解法是**将每个 UI 组件建模为强类型工具**（如 `present_products`、`present_itinerary`），模型输出类型化参数，服务端校验并注入业务数据后触发客户端事件渲染。
 该架构带来两大红利：
 - **布局上下文感知**：组件参数以原生工具调用形式持久化在会话消息中，当用户发出“左边第三个”、“第一家酒店”等空间指代时，模型能直接对照布局历史理解上下文；
@@ -75,7 +75,7 @@ updated: "2026-09-15"
 
 - [[entities/实体_Anthropic]]
 - [[concepts/概念_电商智能体架构]]
-- [[concepts/概念_Presentation_Tools]]
+- [[concepts/概念_Presentation_Tools_表现层工具化]]
 - [[concepts/概念_上下文工程]]
 - [[concepts/概念_Agent三层记忆体系]]
 - [[concepts/概念_Agent系统化工程]]

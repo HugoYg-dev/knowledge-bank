@@ -26,7 +26,7 @@ updated: '2026-07-06'
 
 ### 2. 核心架构：编排器-工作者模式（Orchestrator-Worker）
 - **职责划分**：主智能体（Lead Researcher）负责整体规划与协调，将其拆解为子任务；并行的专职子智能体（Subagents）通过迭代调用搜索工具收集信息并筛选。
-- **动态检索对比静态 RAG**：不同于传统的静态检索增强生成（[[概念_RAG基础流程|Naive RAG]]），该架构能够实时评估搜索结果、动态调整方向并综合推理生成高质量答案（即 [[概念_Agentic_RAG|Agentic RAG]]）。
+- **动态检索对比静态 RAG**：不同于传统的静态检索增强生成（[[概念_RAG基础流程|Naive RAG]]），该架构能够实时评估搜索结果、动态调整方向并综合推理生成高质量答案（即 [[概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]）。
 - **引文归因（CitationAgent）**：在完成研究循环后，由专门的引文智能体对报告和原始文档进行比对，精确标注来源。
 
 ### 3. 提示词工程与系统治理八大原则
@@ -39,12 +39,12 @@ updated: '2026-07-06'
 
 ### 4. 生产级评估（Evals）与稳定性挑战
 - **评估框架**：采用 LLM-as-a-Judge 针对事实准确性、引文正确性、来源质量与工具效率进行多维度打分；结合人工测试捕获边缘情况。
-- **状态管理与长周期容错**：长时间运行的智能体面临状态累积错误，需要依赖外部记忆（[[概念_Memory_RAG|Memory RAG]]）保存研究计划（Plan）及断点恢复机制。
+- **状态管理与长周期容错**：长时间运行的智能体面临状态累积错误，需要依赖外部记忆（[[概念_Memory_RAG_显式记忆增强检索|Memory RAG]]）保存研究计划（Plan）及断点恢复机制。
 - **异步与文件系统落地**：为了减少经过主智能体中转带来的“传话筒效应（Game of telephone）”，子智能体直接将结构化报告和代码写入外部文件系统，仅回传轻量级引用。
 
 ## 关联概念与实体
 
-- **概念**：[[概念_orchestrator-worker模式|orchestrator-worker模式]]、[[概念_Agentic_RAG|Agentic RAG]]、[[概念_Memory_RAG|Memory RAG]]、[[概念_LLM_as_a_Judge校准|LLM-as-a-Judge]]
+- **概念**：[[概念_Orchestrator_Worker_编排工模式|orchestrator-worker模式]]、[[概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]、[[概念_Memory_RAG_显式记忆增强检索|Memory RAG]]、[[概念_LLM_as_a_Judge校准|LLM-as-a-Judge]]
 - **实体**：[[实体_Anthropic_Research系统|Anthropic]]、[[实体_Claude_Code|Claude]]
 
 ---

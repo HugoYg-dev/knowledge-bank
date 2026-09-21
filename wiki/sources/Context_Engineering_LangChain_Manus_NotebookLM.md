@@ -76,7 +76,7 @@ confidence: high
 - [[Manus创始人手把手拆解上下文工程]] — Peak 亲写的 Manus 官方上下文工程总结
 - [[浅谈上下文工程_Claude_Code_Manus_Kiro]] — 三产品实践对比
 - [[概念_上下文工程]] 
-- [[概念_Context_Rot]]
+- [[概念_Context_Rot_上下文衰退]]
 - [[概念_分层行动空间]]
 - [[实体_Peak_Ji_季逸超]]
 - [[实体_LangChain]]

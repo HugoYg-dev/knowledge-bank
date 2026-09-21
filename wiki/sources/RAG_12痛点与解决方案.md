@@ -27,7 +27,7 @@ updated: '2026-07-01'
 - 问题：正确文档未进入 top-k 返回结果
 - 方案：
   - 超参调优：chunk_size 和 similarity_top_k（LlamaIndex ParamTuner）
-  - [[概念_重排序Rerank|重排序]]：先检索 top-10 再用 CohereRerank 返回 top-2
+  - [[概念_Rerank_重排序|重排序]]：先检索 top-10 再用 CohereRerank 返回 top-2
 
 ### Pain Point 3：上下文不足（Not in Context）
 
@@ -64,7 +64,7 @@ updated: '2026-07-01'
 - 问题：部分回答正确但遗漏细节，尤其比较类问题
 - 方案：
   - 查询转换（Query Transformations）：Routing / Query-Rewriting / Sub-Questions / ReAct Agent Tool Selection
-  - [[概念_HyDE|HyDE]]：生成假设文档再检索
+  - [[概念_HyDE_假设文档嵌入|HyDE]]：生成假设文档再检索
 
 ### Pain Point 8：数据摄取扩展性（Data Ingestion Scalability）
 
@@ -97,7 +97,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_重排序Rerank]]、[[概念_HyDE]]、[[概念_检索后处理]]、[[概念_Long-text_Reorder]]、[[概念_Contextual_Compression]]、[[概念_Query_Translation]]、[[概念_RAG基础流程]]、[[概念_Prompt_Compression]]、[[概念_LLM重排序]]、[[概念_RAG_Routing]]
+- 相关概念：[[概念_Rerank_重排序]]、[[概念_HyDE_假设文档嵌入]]、[[概念_检索后处理]]、[[概念_Long_Text_Reorder_长文本位置重排序]]、[[概念_Contextual_Compression_上下文压缩]]、[[概念_Query_Translation_查询改写与翻译]]、[[概念_RAG基础流程]]、[[概念_Prompt_Compression_提示词压缩]]、[[概念_LLM重排序]]、[[概念_RAG_Routing_检索智能路由]]
 - 实体：[[实体_LlamaIndex]]、[[实体_LangChain]]、[[实体_Cohere_Rerank]]
 - 相关来源：[[RAG高级优化_检索后处理]]、[[RAG查询翻译_Query_Translation]]
 

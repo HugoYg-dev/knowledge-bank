@@ -77,9 +77,9 @@ updated: '2026-07-01'
 - [[Context_Engineering_LangChain_Manus_NotebookLM]] — 同一作者在 LangChain 对话中的进一步阐述
 - [[也许当前最好的上下文工程讲解_LangChain联合Manus]] — 更详细的对话实录
 - [[浅谈上下文工程_Claude_Code_Manus_Kiro]] — 对 Manus 实践的外部分析
-- [[概念_KV_Cache]]
+- [[概念_KV_Cache_键值缓存]]
 - [[概念_上下文工程]]
-- [[概念_Context_Rot]]
+- [[概念_Context_Rot_上下文衰退]]
 - [[实体_Peak_Ji_季逸超]]
 - [[实体_Manus]]
 

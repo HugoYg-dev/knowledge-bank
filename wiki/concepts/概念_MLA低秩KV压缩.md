@@ -50,7 +50,7 @@ MLA 继承了 MQA 的 KV 共享优势，KV Cache 仅存 `compressed_kv`（低秩
 
 ## 参见
 
-- [[概念_KV_Cache]]
+- [[概念_KV_Cache_键值缓存]]
 - [[DeepSeek_MLA矩阵吸收原理]]
 - [[MiniMax_vs_Kimi_注意力路线之争]] — Kimi Linear 中 MLA 作为混合架构组件
 - [[实体_DeepSeek_V2]]

@@ -31,4 +31,4 @@ Mixup 是一种数据增强方法，对成对样本的图像和标签做线性�
 ## 关联
 
 - [[PyTorch常用代码段合集]]（来源）
-- [[概念_Label_Smoothing]]
+- [[概念_Label_Smoothing_标签平滑]]

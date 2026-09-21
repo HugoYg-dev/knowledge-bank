@@ -24,10 +24,10 @@ updated: "2026-09-15"
      $$\text{KV Cache} = 2 \times \text{layers} \times \text{kv\_heads} \times \text{head\_dim} \times \text{tokens} \times \text{bytes\_per\_val}$$
    - 以 Llama 3.1 70B 为例，单条 128K 上下文在 BF16 精度下需要约 **40 GB** 显存；4 条并发全长序列将膨胀至 **160 GB**，远超模型权重自身的显存需求。
    - 生产中的 12 项优化技术精准对应公式中的各个变量：
-     - 削减 KV 头数：[[concepts/概念_GQA分组查询注意力|GQA]] 与 MQA；
+     - 削减 KV 头数：[[concepts/概念_GQA_分组查询注意力|GQA]] 与 MQA；
      - 削减独立层数：跨层注意力（Cross-Layer Attention, CLA）；
      - 削减保留 Token 数：[[concepts/概念_滑动窗口注意力|滑动窗口（Sliding Window）]] 与显式淘汰（Eviction）；
-     - 压缩表示维度：[[concepts/概念_MLA多头潜在注意力|MLA（多头潜在注意力）]]；
+     - 压缩表示维度：[[concepts/概念_MLA_多头潜在注意力|MLA（多头潜在注意力）]]；
      - 降低存储精度：数值量化（FP8, INT4, KIVI）；
      - 消除线性增长：[[concepts/概念_线性注意力与混合注意力|混合循环架构（Hybrid Recurrent Layers）]]；
      - 消除碎片与重复：块分页（PagedAttention）与自动前缀复用（Prefix Reuse）；
@@ -47,7 +47,7 @@ updated: "2026-09-15"
    - *风险边界*：淘汰具有不可逆的上下文损失风险，在 Agent 多轮工具调用、结构化 JSON 解析与延迟引用（Delayed Reference）场景下易产生静默失效。
 
 4. **潜空间低秩压缩与混合循环模型（MLA 与 Hybrid Architectures）**：
-   - **[[concepts/概念_MLA多头潜在注意力|MLA（Multi-head Latent Attention）]]**：不直接缓存完整的 Key 和 Value，而是将隐状态投影压缩为极低维度的潜向量（Latent Vector）及解耦 RoPE Key。[[entities/实体_DeepSeek|DeepSeek-V2/V3]] 借此实现 93.3% 的 KV Cache 显存缩减与 5.76x 吞吐提升。
+   - **[[concepts/概念_MLA_多头潜在注意力|MLA（Multi-head Latent Attention）]]**：不直接缓存完整的 Key 和 Value，而是将隐状态投影压缩为极低维度的潜向量（Latent Vector）及解耦 RoPE Key。[[entities/实体_DeepSeek|DeepSeek-V2/V3]] 借此实现 93.3% 的 KV Cache 显存缩减与 5.76x 吞吐提升。
    - **混合架构（Hybrid Recurrent）**：引入 Mamba 或 Gated DeltaNet 等线性循环层，其内部状态为固定大小矩阵（如 $64 \times 64$），不随序列长度增长。Qwen3-Next（3 个 DeltaNet 层交替 1 个全注意力层）将 128K 上下文的增长型缓存从 12 GB 压低至 3 GB；Jamba（1:7 比例交替）在 256K 序列下仅需 4 GB 缓存（对比 Mixtral 的 32 GB）。
 
 5. **稀疏读取与数值量化（Quest Sparse Reads 与 K/V Quantization）**：
@@ -65,7 +65,7 @@ updated: "2026-09-15"
      1. **模型选型期**：审视 KV 头数、局部/全局层比例、MLA 潜向量维度及循环层交替模式；
      2. **存量模型部署**：首选 FP8 量化与标准前缀对齐（无精度损失风险）；
      3. **显存监控假象**：固定大小显存池（Fixed Block Pool）下启用 FP8 可能不会改变 `nvidia-smi` 显存占用，但可容纳的并发 Token 数量翻倍；
-     4. **长尾与冷会话处理**：引入 CPU Offload 与预测预取机制（如 [[concepts/概念_解耦式KV缓存与LMCache|LMCache]] 与 [[concepts/概念_SparDA预测式KV缓存预取|SparDA]]）。
+     4. **长尾与冷会话处理**：引入 CPU Offload 与预测预取机制（如 [[concepts/概念_LMCache_解耦式KV缓存|LMCache]] 与 [[concepts/概念_SparDA预测式KV缓存预取|SparDA]]）。
 
 ---
 
@@ -84,13 +84,13 @@ updated: "2026-09-15"
 ## 关联页面与实体图谱
 
 - **核心概念**：
-  - [[concepts/概念_KV_Cache|概念_KV_Cache]]（KV Cache 基础原理、显存公式与生产治理总览）
-  - [[concepts/概念_GQA分组查询注意力|概念_GQA分组查询注意力]]（组内共享 KV 头设计与 MHA/MQA 平衡）
-  - [[concepts/概念_MLA多头潜在注意力|概念_MLA多头潜在注意力]]（低秩潜向量压缩与矩阵吸收机制）
+  - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]（KV Cache 基础原理、显存公式与生产治理总览）
+  - [[concepts/概念_GQA_分组查询注意力|概念_GQA分组查询注意力]]（组内共享 KV 头设计与 MHA/MQA 平衡）
+  - [[concepts/概念_MLA_多头潜在注意力|概念_MLA多头潜在注意力]]（低秩潜向量压缩与矩阵吸收机制）
   - [[concepts/概念_滑动窗口注意力|概念_滑动窗口注意力]]（局部注意力环形缓冲区与全局层混合架构）
   - [[concepts/概念_线性注意力与混合注意力|概念_线性注意力与混合注意力]]（Mamba / Gated DeltaNet 固定状态矩阵演进）
   - [[concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]（Prefill 与 Decode 阶段对 KV Cache 的读写特征）
-  - [[concepts/概念_解耦式KV缓存与LMCache|概念_解耦式KV缓存与LMCache]]（跨节点/层级的 KV 缓存旁路解耦与重计算）
+  - [[concepts/概念_LMCache_解耦式KV缓存|概念_解耦式KV缓存与LMCache]]（跨节点/层级的 KV 缓存旁路解耦与重计算）
 - **核心实体**：
   - [[entities/实体_vLLM|实体_vLLM]]（PagedAttention、FP8 量化、前缀复用与 CPU 卸载的开源参考实现）
   - [[entities/实体_DeepSeek|实体_DeepSeek]]（MLA 与压缩稀疏注意力的开创实践）

@@ -17,10 +17,10 @@ updated: '2026-07-22'
 
 ## 核心贡献与思想
 
-- **Memex 构想**：1945 年 7 月在《大西洋月刊》发表名篇《As We May Think》（如我们所想），提出了一种名为 [[concepts/概念_Memex|Memex]] 的机电化个人知识存储设备。
+- **Memex 构想**：1945 年 7 月在《大西洋月刊》发表名篇《As We May Think》（如我们所想），提出了一种名为 [[concepts/概念_Memex_个人机电知识扩展系统|Memex]] 的机电化个人知识存储设备。
 - **关联性路径**：Memex 的核心突破是“关联性路径（Associative Trails）”，主张人类大脑按关联而非索引工作，用户可以永久将任意两份文件链接起来，这直接启发了 Ted Nelson 的超文本理念与 Tim Berners-Lee 的万维网（Web）。
 
 ## 关联
 
-- 相关概念：[[concepts/概念_Memex]]、[[concepts/概念_LLM_Wiki范式]]
+- 相关概念：[[concepts/概念_Memex_个人机电知识扩展系统]]、[[concepts/概念_LLM_Wiki范式]]
 - 来源：[[Karpathy推文引发的LLM_Wiki知识库搭建实践]]

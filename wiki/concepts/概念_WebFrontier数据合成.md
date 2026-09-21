@@ -66,7 +66,7 @@ WebWalker → WebSailor/WebSailor-V2 → WebShaper → WebFrontier
 ## 关联
 
 - [[概念_IterResearch范式]]
-- [[概念_Deep-Research-Agent定义与分类]]
+- [[概念_Deep_Research_Agent_定义与分类]]
 - [[实体_通义DeepResearch]]
 
 ## 来源

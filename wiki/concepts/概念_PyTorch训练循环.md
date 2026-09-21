@@ -23,7 +23,7 @@ PyTorch 深度学习模型标准训练流程，包含训练/验证/预测三阶�
 1. **导入包 + 随机种子**：torch.manual_seed / np.random.seed / random.seed 保证可复现
 2. **超参定义**：用类承载 epochs, learning_rate, patience, hidden_size, input_size, device
 3. **模型定义**：继承 nn.Module，实现 `__init__` 和 `forward`
-4. **早停类**：[[概念_早停EarlyStopping]]，可省略
+4. **早停类**：[[概念_Early_Stopping_早停机制]]，可省略
 5. **数据集**：继承 Dataset 实现 `__getitem__` / `__len__`；DataLoader 包装（batch_size, shuffle）
 6. **实例化**：model.to(device)、criterion（如 MSELoss）、optimizer（如 Adam）
 7. **训练循环**：

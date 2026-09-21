@@ -54,7 +54,7 @@ updated: "2026-09-15"
      - **分块计算（Tiling）**：将数据切块加载至片上 Shared Memory 进行高阶复用。
    - **直接减少访存搬运字节（Decrease Bytes Fetched）**：
      - **算子融合（Operator Fusion）**：将连续 Element-wise 操作串联，中间激活值留在寄存器中，避免多次往返 HBM；
-     - **[[concepts/概念_FlashAttention|FlashAttention]]**：利用 SRAM Tiling 和在线 Softmax，避免将 $N \times N$ 注意力矩阵写入和重读 HBM；
+     - **[[concepts/概念_FlashAttention_快速注意力|FlashAttention]]**：利用 SRAM Tiling 和在线 Softmax，避免将 $N \times N$ 注意力矩阵写入和重读 HBM；
      - **低精度量化（Quantization）**：将权重从 16-bit 降至 8-bit 或 4-bit，直接将每次生成需搬运的显存字节削减 50%–75%，使 70B 模型的单序列生成上限从 24 tok/s 提升至 48 tok/s 甚至更高；
      - **连续合并访存（Memory Coalescing）**：保证 Warp 内 32 个线程访问连续内存地址，避免非对齐或跨步访问造成高达 8x 的无谓带宽放大浪费。
 
@@ -84,8 +84,8 @@ updated: "2026-09-15"
   - [[concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]（算力强度定义与平衡分界点）
   - [[concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]（Prefill 计算受限 vs Decode 显存带宽受限机制）
   - [[concepts/概念_连续批处理|概念_连续批处理]]（通过高并发请求重叠提升 Work per Byte）
-  - [[concepts/概念_FlashAttention|概念_FlashAttention]]（片上 SRAM Tiling 避免中间注意力矩阵回写 HBM）
-  - [[concepts/概念_KV_Cache|概念_KV_Cache]]（推理阶段显存与访存的主要动态来源）
+  - [[concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]（片上 SRAM Tiling 避免中间注意力矩阵回写 HBM）
+  - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]（推理阶段显存与访存的主要动态来源）
 - **核心实体**：
   - [[entities/实体_NVIDIA|实体_NVIDIA]]（H100 SXM5 与 H200 硬件性能规格与算存平衡点演进）
 

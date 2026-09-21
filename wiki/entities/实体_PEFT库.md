@@ -37,5 +37,5 @@ model = model.merge_and_unload()
 ## 相关资源
 
 - [[LoRA微调实战_Qwen2.5全流程]] — 完整实战代码
-- [[概念_LoRA低秩适应微调]] — LoRA 原理
+- [[概念_LoRA_低秩适应微调]] — LoRA 原理
 - [[概念_LoRA与QLoRA显存]] — 显存估算

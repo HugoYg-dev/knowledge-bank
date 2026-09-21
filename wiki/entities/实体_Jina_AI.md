@@ -49,5 +49,5 @@ updated: '2026-06-29'
 ## 来源
 
 - [[Jina_AI创业复盘]]
-- [[概念_AI创业Scaling_Law]]
+- [[概念_Scaling_Law_AI团队扩展律]]
 - 相关实体：[[实体_Elasticsearch]] | [[实体_BGE-M3]] | [[实体_Qwen3_Embedding]]

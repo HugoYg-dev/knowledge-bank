@@ -46,8 +46,8 @@ updated: '2026-07-01'
 
 - [[概念_图像分割]]
 - [[概念_Prompt驱动分割]]
-- [[概念_Focal_Loss]]
-- [[概念_Vision_Transformer]]
+- [[概念_Focal_Loss_焦点损失]]
+- [[概念_Vision_Transformer_视觉Transformer]]
 
 ## 关联实体
 

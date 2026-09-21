@@ -51,8 +51,8 @@ updated: '2026-07-01'
 - [[概念_MCP_CHS架构]]
 - [[概念_MCP六大原语]]
 - [[概念_MCP传输方式]]
-- [[概念_HITL_MCP]]
-- [[概念_MCP_Proxy]]
+- [[概念_HITL_MCP_人机协同协议架构]]
+- [[概念_MCP_Proxy_代理拦截模式]]
 - Agent_TARS
 - [[别再误会MCP了辟谣指南]]
 - [[MCP五大原语与Web化]]

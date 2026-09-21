@@ -69,7 +69,7 @@ WebWalker → WebDancer → WebSailor → WebShaper → WebWatcher → WebResear
 
 - [[概念_IterResearch范式]]
 - [[概念_WebFrontier数据合成]]
-- [[概念_Deep-Research-Agent定义与分类]]
+- [[概念_Deep_Research_Agent_定义与分类]]
 
 ## 来源
 

@@ -28,7 +28,7 @@ updated: "2026-09-15"
    - 传统 RAG 调优极度依赖切块大小、重叠比、向量模型与重排分数的经验调整，属于高耦合的“炼丹式”调试，容易陷入“按下葫芦浮起瓢”的噪音权衡陷阱。
 
 2. **GraphRAG 的离线高成本与动态维护困境**：
-   - [[concepts/概念_GraphRAG|GraphRAG]] 与 HippoRAG 2 等方案通过离线全量提取三元组并构建全局知识图谱突破多跳瓶颈；
+   - [[concepts/概念_Graph_RAG_知识图谱增强检索|GraphRAG]] 与 HippoRAG 2 等方案通过离线全量提取三元组并构建全局知识图谱突破多跳瓶颈；
    - 但其离线构图的 LLM 调用成本巨大（中等数据集需数万元），且图谱一旦构建，面对频繁新增、删除文档时的动态重算与维护开销极高，对于中小型企业轻量级知识库过于沉重。
 
 3. **SAG 核心范式：查询时动态超边（Query-Time Dynamic Hyperedges）**：
@@ -53,11 +53,11 @@ updated: "2026-09-15"
 ## 关联概念与实体
 
 - **核心概念**：
-  - [[concepts/概念_SAG|概念_SAG]]：基于查询时动态超边的 SQL 检索增强生成架构。
-  - [[concepts/概念_GraphRAG|概念_GraphRAG]]：以图结构组织知识的检索增强生成方法对比。
-  - [[concepts/概念_知识图谱RAG|概念_知识图谱RAG]]：知识图谱在 RAG 中的应用与离线/在线构图权衡。
+  - [[concepts/概念_SAG_动态超边结构化检索增强生成|概念_SAG]]：基于查询时动态超边的 SQL 检索增强生成架构。
+  - [[concepts/概念_Graph_RAG_知识图谱增强检索|概念_GraphRAG]]：以图结构组织知识的检索增强生成方法对比。
+  - [[concepts/概念_Graph_RAG_知识图谱增强检索|概念_知识图谱RAG]]：知识图谱在 RAG 中的应用与离线/在线构图权衡。
   - [[concepts/概念_RAG基础流程|概念_RAG基础流程]]：传统文本切分、向量化、检索召回与重排全景。
-  - [[concepts/概念_Lazy_Graph_RAG|概念_Lazy_Graph_RAG]]：语义搜索与低成本图谱构建结合的演进路径。
+  - [[concepts/概念_Lazy_Graph_RAG_惰性知识图谱增强检索|概念_Lazy_Graph_RAG]]：语义搜索与低成本图谱构建结合的演进路径。
 - **关联实体**：
   - [[entities/实体_Claude_Code|实体_Claude_Code]]：可通过 MCP 协议将 SAG 作为多跳检索底座的本地 Coding Agent。
   - [[entities/实体_Codex|实体_Codex]]：支持 MCP 接入的本地智能体开发环境。

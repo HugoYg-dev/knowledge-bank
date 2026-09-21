@@ -28,5 +28,5 @@ Mask R-CNN（arXiv:1703.06870）在 Faster R-CNN 基础上增加并行 mask 预�
 ## 关联
 
 - [[目标检测入门_评测与训练技巧]]（来源）
-- [[概念_RoI_Pooling]]
+- [[概念_RoI_Pooling_候选区域池化]]
 - [[实体_R-CNN]]

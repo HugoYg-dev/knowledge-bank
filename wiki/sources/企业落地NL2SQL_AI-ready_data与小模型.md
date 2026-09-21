@@ -84,10 +84,10 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_Text2SQL]]
-- [[概念_AI-ready_data]]
-- [[概念_Schema_Linking]]
-- [[概念_M-Schema]]
+- [[概念_Text2SQL_自然语言转SQL]]
+- [[概念_AI_Ready_Data_AI就绪数据]]
+- [[概念_Schema_Linking_数据库模式联接]]
+- [[概念_M_Schema_增强元数据模式]]
 - AST约束解码
 - [[实体_Qwen2.5-Coder]]
 - MatrixOne

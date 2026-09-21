@@ -35,7 +35,7 @@ updated: '2026-07-01'
 ## 关联
 
 - [[概念_MoE混合专家]] — MoE 架构原理
-- [[概念_MoE_Router]] — Top-k Router 门控机制
+- [[概念_MoE_Router_专家路由门控网络]] — Top-k Router 门控机制
 - [[概念_MoE负载均衡]] — 噪声门控与负载均衡
 - [[大模型面试面经_简单透彻理解MoE]] — MoE 理论基础
 - [[概念_PyTorch训练循环]] — 训练循环模板

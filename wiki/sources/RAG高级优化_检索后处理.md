@@ -49,7 +49,7 @@ url: https://mp.weixin.qq.com/s?__biz=Mzk0NTcyNTMzNw==&mid=2247484209&idx=1&sn=0
 
 ## 关联
 
-- 概念：[[概念_检索后处理]]、[[概念_Long-text_Reorder]]、[[概念_Contextual_Compression]]
+- 概念：[[概念_检索后处理]]、[[概念_Long_Text_Reorder_长文本位置重排序]]、[[概念_Contextual_Compression_上下文压缩]]
 - 实体：[[实体_LangChain]]
 - 同系列：[[RAG高级优化_query转换之路]]、[[RAG高级优化_检索策略Fusion_HyDE]]、[[RAG高级优化_问题生成检索增强]]
 

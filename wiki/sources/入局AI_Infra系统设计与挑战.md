@@ -84,8 +84,8 @@ AI Infra 面对的工程挑战（计算/存储/通信）大部分是新时代的
 
 ## 关联概念
 
-- [[概念_AI-Native_Infra]]
-- [[概念_KV_Cache]]
+- [[概念_AI_Native_Infra_AI原生基建]]
+- [[概念_KV_Cache_键值缓存]]
 - CUDA_Graph
 - [[概念_模型并行]]
 - [[概念_连续批处理]]

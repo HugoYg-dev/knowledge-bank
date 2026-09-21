@@ -41,6 +41,6 @@ Qwen2.5-Coder 是阿里巴巴通义团队发布的代码专用大模型系列，
 ## 关联
 
 - [[企业落地NL2SQL_AI-ready_data与小模型]]
-- [[概念_Text2SQL]]
-- [[概念_Schema_Linking]]
+- [[概念_Text2SQL_自然语言转SQL]]
+- [[概念_Schema_Linking_数据库模式联接]]
 - [[实体_通义千问]]

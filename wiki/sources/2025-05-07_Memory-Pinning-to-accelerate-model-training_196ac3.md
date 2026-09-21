@@ -30,7 +30,7 @@ updated: 2026-08-03
   - 对于小张量，数据拷贝耗时极短，固定内存优化的效果几乎可以忽略不计。
 
 ## 关联知识
-- 核心概念：[[concepts/概念_固定内存_Memory_Pinning]]
+- 核心概念：[[concepts/概念_Memory_Pinning_固定内存]]
 
 ## 关键引文
 > "Memory pinning is used to speed up the data transfer from the CPU to the GPU by making the training workflow asynchronous."

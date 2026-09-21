@@ -27,8 +27,8 @@ updated: '2026-08-11'
 - [待验证] 文中仅覆盖同家族的稠密全注意力模型；跨家族迁移、KV 头数量或单头维度不匹配、滑动窗口与注意力递归混合架构仍未测试。
 
 ## 关联概念
-- [[concepts/概念_KV_Cache]]
-- [[concepts/概念_跨模型KV缓存转换]]
+- [[concepts/概念_KV_Cache_键值缓存]]
+- [[concepts/概念_KV_跨模型缓存转换]]
 - [[concepts/概念_LLM推理两阶段]]
 
 > 📎 **物理文献**：[[raw/articles/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md]]

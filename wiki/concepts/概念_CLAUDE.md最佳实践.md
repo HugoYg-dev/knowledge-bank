@@ -19,14 +19,14 @@ CLAUDE.md 是在 AI Agent 代码生成和协助场景下，为 LLM（如 Claude 
 - **模板与约束**：为生成不同类型文档或代码提供强类型的格式模板和段落结构约束，减少输出的随机性和发散。
 
 ## 与 Skill、Hook 的三层协同体系
-根据 Anthropic 发布的 [[concepts/概念_AI-Native_SDLC|AI-Native SDLC 方法论]]，团队工程规则分为清晰的三层防线：
+根据 Anthropic 发布的 [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期|AI-Native SDLC 方法论]]，团队工程规则分为清晰的三层防线：
 1. **基础指南层（CLAUDE.md）**：位于项目根目录，规定工程全貌、构建与测试指令、目录职责与避坑清单，AI 开工前必读，属于全局指导性规则。
 2. **专项操作层（Skill）**：聚焦具体某一类垂直任务的操作规程（如“对外接口鉴权”、“数据库迁移 SOP”），按需加载，属于操作级指导性规则。
 3. **确定性门禁层（Hook）**：按操作自动触发的拦截脚本（如修改敏感文件、泄露密钥、未经批准执行发布），直接在终端层级硬性阻断，属于不可逾越的强制性安全底线。
 
 ## 关联实体 / 概念
 - 实体：[[entities/实体_Anthropic]]、[[entities/实体_Claude_Code]]
-- 概念：[[concepts/概念_AI-Native_SDLC]]、[[concepts/概念_HITL_MCP]]
+- 概念：[[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期]]、[[concepts/概念_HITL_MCP_人机协同协议架构]]
 
 ## 来源
 - [[sources/写好CLAUDE.md_HumanLayer最佳实践]]

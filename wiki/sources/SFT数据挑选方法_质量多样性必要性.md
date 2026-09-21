@@ -44,7 +44,7 @@ updated: '2026-07-01'
 ## 关联
 
 - [[概念_IFD指令跟随难度]]
-- [[概念_K-Center-Greedy算法]]
+- [[概念_K_Center_Greedy_中心贪婪算法]]
 - [[概念_SFT数据三维度]]
 - DEITA
 - MoDS

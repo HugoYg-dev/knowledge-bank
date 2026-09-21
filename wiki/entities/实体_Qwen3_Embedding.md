@@ -27,12 +27,12 @@ Qwen3 Embedding 与 Qwen3 Reranker 是基于 Qwen3 大语言模型训练的嵌�
 
 ## 核心能力
 
-- **Instruct 机制**：编码查询时附带任务指令，支持多维度检索（详见 [[概念_Instruct_Embedding]]）
-- **Reranker LLM 化**：用 system prompt 生成 yes/no，`score = P("yes")/(P("yes")+P("no"))`（详见 [[概念_重排序Rerank]]）
+- **Instruct 机制**：编码查询时附带任务指令，支持多维度检索（详见 [[概念_Instruct_Embedding_指令增强向量嵌入]]）
+- **Reranker LLM 化**：用 system prompt 生成 yes/no，`score = P("yes")/(P("yes")+P("no"))`（详见 [[概念_Rerank_重排序]]）
 - 代码检索为强项
 
 ## 关联
 
-- 相关概念：[[概念_Instruct_Embedding]]、[[概念_重排序Rerank]]、[[概念_Embedding与向量检索]]
+- 相关概念：[[概念_Instruct_Embedding_指令增强向量嵌入]]、[[概念_Rerank_重排序]]、[[概念_Embedding与向量检索]]
 - 实体：[[实体_Sentence_Transformers]]
 - 来源：[[为什么用Qwen3_embedding和rerank]]

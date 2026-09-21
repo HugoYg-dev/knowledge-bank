@@ -34,6 +34,6 @@ SAM（Segment Anything Model）由 Meta AI 开发，是图像分割的基础模�
 - [[SAM_Segment_Anything模型]]（来源）
 - [[概念_Prompt驱动分割]]
 - [[概念_图像分割]]
-- [[概念_Focal_Loss]]
+- [[概念_Focal_Loss_焦点损失]]
 - [[实体_ViT]]
 - [[实体_CLIP]]

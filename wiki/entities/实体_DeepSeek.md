@@ -42,7 +42,7 @@ updated: "2026-09-07"
   - [[entities/实体_DeepSeek_Harness|DeepSeek Harness]]
   - [[entities/实体_Cordis|Cordis]]
 - **核心概念**：
-  - [[concepts/概念_Harness_Engineering|Harness Engineering]]
-  - [[concepts/概念_AI-Native_Infra|AI-Native Infra]]
+  - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
+  - [[concepts/概念_AI_Native_Infra_AI原生基建|AI-Native Infra]]
   - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
   - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]

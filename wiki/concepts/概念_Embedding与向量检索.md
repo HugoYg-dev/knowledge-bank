@@ -47,5 +47,5 @@ updated: '2026-09-07'
 
 ## 关联
 
-- 相关概念：[[概念_RAG基础流程]]、[[概念_向量数据库]]、[[概念_ColBERT]]、[[概念_语义切分]]、[[概念_词向量]]、[[概念_BERT各向异性]]、[[概念_Sentence-BERT]]、[[概念_SimCSE]]、[[概念_Dense_Embedding]]、[[概念_Sparse_Embedding]]、[[概念_Matryoshka表示学习]]、[[概念_Instruct_Embedding]]
+- 相关概念：[[概念_RAG基础流程]]、[[概念_向量数据库]]、[[概念_ColBERT_多向量延迟交互检索]]、[[概念_语义切分]]、[[概念_词向量]]、[[概念_BERT各向异性]]、[[概念_Sentence_BERT_孪生网络句向量]]、[[概念_SimCSE_简单对比学习句向量]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Sparse_Embedding_稀疏向量嵌入]]、[[概念_Matryoshka表示学习]]、[[概念_Instruct_Embedding_指令增强向量嵌入]]
 - 来源：[[RAG基础_索引检索生成]]、[[RAG文本切分_语义切分]]、[[一文详尽之Embedding]]、[[从BM25到Multi-Vector_6种Embedding演进路线]]、[[MRL_俄罗斯套娃表示学习]]、[[为什么用Qwen3_embedding和rerank]]

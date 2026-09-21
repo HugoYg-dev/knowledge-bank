@@ -57,4 +57,4 @@ updated: "2026-09-21"
 - [[wiki/sources/2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md|6 automatic optimization methods for LLM systems]]
 - [[concepts/概念_LLM应用评估体系]]
 - [[concepts/概念_Loop_Engineering循环工程]]
-- [[concepts/概念_Self-Harness]]
+- [[concepts/概念_Self_Harness_自主进化宿主系统]]

@@ -58,6 +58,6 @@ Matryoshka Representation Learning (MRL) 是一种嵌入训练方法，通过以
 
 ## 关联
 
-- 相关概念：[[概念_Embedding与向量检索]]、[[概念_Dense_Embedding]]
+- 相关概念：[[概念_Embedding与向量检索]]、[[概念_Dense_Embedding_稠密向量嵌入]]
 - 实体：[[实体_Sentence_Transformers]]
 - 来源：[[MRL_俄罗斯套娃表示学习]]、[[Matryoshka嵌入模型概述_HuggingFace]]、[[从BM25到Multi-Vector_6种Embedding演进路线]]

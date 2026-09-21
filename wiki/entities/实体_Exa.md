@@ -23,7 +23,7 @@ updated: "2026-08-20"
    - 在编程代码、前沿论文、专业技术文档和深度调研等高价值场景下检索准确率极高，显著降低了 Agent 在长程推理中的幻觉与错误信息引入。
 
 ## 关联页面
-- **核心概念**：[[concepts/概念_Agentic_Web_Search|Agentic Web Search（Agent 网络搜索架构）]]、[[concepts/概念_Semantic_Search本质|Semantic Search（语义搜索本质）]]、[[concepts/概念_Harness_Engineering|Harness Engineering]]
+- **核心概念**：[[concepts/概念_Agentic_Web_Search_智能体网络搜索|Agentic Web Search（Agent 网络搜索架构）]]、[[concepts/概念_Semantic_Search本质|Semantic Search（语义搜索本质）]]、[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
 - **同类搜索服务**：[[entities/实体_Tavily|Tavily]]
 
 ## 来源与参考

@@ -91,7 +91,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_Embedding与向量检索]]、[[概念_词向量]]、[[概念_BERT各向异性]]、[[概念_Sentence-BERT]]、[[概念_SimCSE]]
+- 相关概念：[[概念_Embedding与向量检索]]、[[概念_词向量]]、[[概念_BERT各向异性]]、[[概念_Sentence_BERT_孪生网络句向量]]、[[概念_SimCSE_简单对比学习句向量]]
 - 实体：[[实体_Sentence_Transformers]]
 
 ---

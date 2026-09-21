@@ -38,7 +38,7 @@ Selective SSM（S6）包含：
 
 - **并行参数投影**：A、B、C、X 通过单次投影并行产生（类比 QKV 一起投影），减少参数量，支持 Megatron 张量并行
 - **额外归一化层**：在输出投影前加 LayerNorm / GroupNorm / RMSNorm，防止大模型训练不稳定
-- SSD 层（状态空间对偶）替代 S6，见 [[概念_状态空间对偶SSD]]
+- SSD 层（状态空间对偶）替代 S6，见 [[概念_SSD_状态空间对偶]]
 
 ## PyTorch 实现要点（Mamba1）
 

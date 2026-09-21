@@ -81,7 +81,7 @@ Qwen3 Embedding 在 MTEB 排行榜上开源闭源现在都是第一，Rerank 同
 
 ## 关联
 
-- 相关概念：[[概念_Embedding与向量检索]]、[[概念_Instruct_Embedding]]、[[概念_Sentence-BERT]]、[[概念_重排序Rerank]]
+- 相关概念：[[概念_Embedding与向量检索]]、[[概念_Instruct_Embedding_指令增强向量嵌入]]、[[概念_Sentence_BERT_孪生网络句向量]]、[[概念_Rerank_重排序]]
 - 实体：[[实体_Qwen3_Embedding]]、[[实体_Sentence_Transformers]]
 
 ---

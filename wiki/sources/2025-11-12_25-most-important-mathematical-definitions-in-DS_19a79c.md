@@ -33,7 +33,7 @@ updated: 2026-08-03
 
 ## 关联概念
 - 核心概念：数据科学核心数学定义
-- 关联概念：[[wiki/concepts/概念_t-SNE算法]]、[[wiki/concepts/概念_奇异值分解SVD]]、[[wiki/concepts/概念_主成分分析_PCA]]
+- 关联概念：[[wiki/concepts/概念_t_SNE_降维算法]]、[[wiki/concepts/概念_SVD_奇异值分解]]、[[wiki/concepts/概念_PCA_主成分分析]]
 
 ## 关键引文
 > "MLE (Maximum Likelihood Estimation): A method for estimating the parameters of a statistical model by maximizing the likelihood of the observed data."

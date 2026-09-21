@@ -299,31 +299,31 @@
 ## Concepts
 - [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
 - [[概念_RLCD校准决策强化学习]] — 面向判别式决策的置信度校准强化学习范式（LLM/training, AI-Agent/tool-calling）
-- [[concepts/概念_Kimi_Delta_Attention|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）
+- [[concepts/概念_Kimi_Delta_Attention_增量注意力|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）
 
-- [[概念_SAG]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
+- [[概念_SAG_动态超边结构化检索增强生成]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
 
 - [[概念_Roofline模型与算力强度]] — 量化评估芯片峰值算力与内存带宽瓶颈的经典模型，通过算力强度（FLOPs/Byte）与硬件平衡拐点划分计算受限与内存带宽受限区，指导大模型推理两阶段的系统调优（Infra/gpu, Infra/gpu, Infra/serving, LLM/inference）
-- [[概念_Presentation_Tools]] — 表现层工具化：将富交互 UI 组件建模为强类型工具调用，由服务端参数校验与业务状态注入驱动客户端渲染，兼具屏幕布局反向感知与历史重现能力（AI-Agent/UI, AI-Agent/tool-calling）
+- [[概念_Presentation_Tools_表现层工具化]] — 表现层工具化：将富交互 UI 组件建模为强类型工具调用，由服务端参数校验与业务状态注入驱动客户端渲染，兼具屏幕布局反向感知与历史重现能力（AI-Agent/UI, AI-Agent/tool-calling）
 - [[概念_电商智能体架构]] — 面向长程高耦合交易场景的电商智能体工程体系：单模型结合技能架构（Skills over Subagents）、核心系统轻量封装、双前线延迟工程、三段式缓存及外围 Harness 硬件安全门禁（AI-Agent/tool-calling, AI-Agent/context-engineering）
 - [[概念_AI原生思维]] — 以模型能力边界为锚点、围绕 Agent 特性重构研发流程并建立个体持续自收敛反馈循环的系统化方法论（AI-Agent/coding, AI-Agent/skill）
 
-- [[概念_GQA分组查询注意力]] — GQA（Grouped-Query Attention）分组共享单组 Key/Value 头，在大幅缩减 KV Cache 显存开销的同时保留接近 MHA 的建模表达力，是现代开源 LLM 的基准注意力架构（LLM/arch/attention, LLM/inference）
+- [[概念_GQA_分组查询注意力]] — GQA（Grouped-Query Attention）分组共享单组 Key/Value 头，在大幅缩减 KV Cache 显存开销的同时保留接近 MHA 的建模表达力，是现代开源 LLM 的基准注意力架构（LLM/arch/attention, LLM/inference）
 - [[概念_MRL套娃表示学习]] — MRL（Matryoshka Representation Learning）在训练阶段优化多粒度前缀嵌套损失，使向量前 n 维天然保持独立高质量语义，支持推理期免微调按需物理截断维度（RAG/embedding）
 
 - [[概念_事实性存储与提取分离诊断范式]] — 区分大模型事实性错误中存储失败（知识未编码进权重）与访问失败（权重已存但提问无法取出）的诊断范式，提供两把尺子测评方法与四阶工程排查阶梯（LLM/hallucination, LLM/reasoning）
 
-- [[概念_Agentic_Web_Search]] — 面向大模型智能体的网络搜索架构与供应链解耦范式，将搜索 Stack 拆分为代理层、定向语义索引、上下文精炼与云端运行时四层，并重构排序反馈信号（AI-Agent/deep-research, AI-Agent/infra, RAG/retrieval）
+- [[概念_Agentic_Web_Search_智能体网络搜索]] — 面向大模型智能体的网络搜索架构与供应链解耦范式，将搜索 Stack 拆分为代理层、定向语义索引、上下文精炼与云端运行时四层，并重构排序反馈信号（AI-Agent/deep-research, AI-Agent/infra, RAG/retrieval）
 
 - [[概念_激活值重计算]] — 重计算原理及不同并行组合的激活值公式
 - [[概念_Zero显存优化]] — Zero1/2/3 三种策略与计算公式
 - [[概念_两阶段检测]] — Region-based 两阶段范式：Proposal → 分类回归
 - [[概念_单阶段检测]] — Region-free 单阶段范式：YOLO/SSD 直接回归
 - [[概念_Anchor机制]] — 多尺度多宽高比参考框，检测回归基准
-- [[概念_RoI_Pooling]] — 候选区域映射为等长特征向量；RoIAlign 消除量化误差
+- [[概念_RoI_Pooling_候选区域池化]] — 候选区域映射为等长特征向量；RoIAlign 消除量化误差
 - [[概念_检测评测指标]] — IoU/mAP(VOC/COCO)/FPS
 - [[概念_多尺度检测]] — 多尺度输入/特征图提升检测鲁棒性
-- [[概念_NMS与Soft_NMS]] — 非极大抑制与软化版本
+- [[概念_NMS_非极大值抑制与Soft_NMS]] — 非极大抑制与软化版本
 - [[概念_数据增强_检测]] — 检测任务数据增强需同步变换标注框
 - [[概念_Backbone设计范式]] — Repeat/Multi-path/Skip-connection 三范式
 - [[概念_通道注意力]] — SENet Squeeze-Excitation 通道注意力
@@ -332,55 +332,55 @@
 - [[概念_特征金字塔网络]] — FPN 自顶向下多尺度融合及变体
 - [[概念_图像分割]] — 语义/实例/交互式分割，SAM 统一为 Prompt 驱动
 - [[概念_Prompt驱动分割]] — SAM 多种 Prompt 类型驱动分割
-- [[概念_Vision_Transformer]] — ViT 将图像 patch 化输入 Transformer
-- [[概念_Focal_Loss]] — 下调简单样本权重解决类别不平衡
+- [[概念_Vision_Transformer_视觉Transformer]] — ViT 将图像 patch 化输入 Transformer
+- [[概念_Focal_Loss_焦点损失]] — 下调简单样本权重解决类别不平衡
 - [[概念_扩散模型]] — 前向加噪 + 反向去噪生成；DDPM 开创
-- [[概念_Latent_Diffusion]] — 先 AutoEncoder 压缩到 latent 再训扩散模型
+- [[概念_Latent_Diffusion_潜空间扩散模型]] — 先 AutoEncoder 压缩到 latent 再训扩散模型
 - [[概念_OCR数据增强]] — OCR 形态学/噪声/变换 + OneOf 组合
 - torchvision图像增强 — torchvision.transforms 增强 API 清单
 - [[概念_自注意力复杂度]] — 自注意力 O(N²d)/O(N²)，瓶颈在内存 I/O
-- [[概念_FlashAttention]] — I/O 感知精确注意力，分块 + 在线 Softmax
+- [[概念_FlashAttention_快速注意力]] — I/O 感知精确注意力，分块 + 在线 Softmax
 - [[概念_Normalization方法对比]] — BN/LN/IN/GN 维度与用途对比
-- [[概念_Batch_Normalization]] — BN 动机/算法/作用/问题
-- [[概念_Cholesky分解与DPP]] — Cholesky 分解加速 DPP 贪婪 MAP 推断，O(N·k²)
-- [[概念_奇异值分解SVD]] — 任意矩阵分解 A=UΣV^T，降维/压缩基础工具
+- [[概念_Batch_Normalization_批归一化]] — BN 动机/算法/作用/问题
+- [[概念_DPP_Cholesky分解加速]] — Cholesky 分解加速 DPP 贪婪 MAP 推断，O(N·k²)
+- [[概念_SVD_奇异值分解]] — 任意矩阵分解 A=UΣV^T，降维/压缩基础工具
 - [[概念_Transformer架构]] — Transformer 5 步流程：Tokenization/Embedding/Attention/FFN/Output
 - [[概念_大模型训练三阶段]] — Pre-train/Instruction FT/RLHF 训练流程
 - [[概念_Prompt工程方法]] — 有效 Prompt 方法：补充前提/范例/拆解/自我反省/Self-Consistency
 - [[概念_梯度下降优化器]] — Vanilla GD/Momentum/AdaGrad/RMSProp/Adam 原理对比
-- [[概念_早停EarlyStopping]] — 监控 val_loss 提前停止训练避免过拟合
+- [[概念_Early_Stopping_早停机制]] — 监控 val_loss 提前停止训练避免过拟合
 - [[概念_PyTorch训练循环]] — PyTorch 标准训练 9 步流程模板
-- [[概念_AI-Native_Infra]] — 专为 AI 设计、去掉人类兜底层的基础设施范式
-- [[概念_L0-L5能力成熟度模型]] — AI 从模仿人类到掌控 OS 的 L0-L5 演进
-- [[概念_Result-as-a-Service]] — 人类只表达需求验收结果、AI 负责全实现的终极形态
-- [[概念_KV_Cache]] — 缓存 K/V 已计算结果，空间换时间避免重复计算
-- [[概念_跨模型KV缓存转换]] — 以跨层表示映射在模型路由切换时复用 KV Cache；当前仅验证同家族模型
+- [[概念_AI_Native_Infra_AI原生基建]] — 专为 AI 设计、去掉人类兜底层的基础设施范式
+- [[概念_L0_L5_能力成熟度模型]] — AI 从模仿人类到掌控 OS 的 L0-L5 演进
+- [[概念_Result_as_a_Service_结果即服务]] — 人类只表达需求验收结果、AI 负责全实现的终极形态
+- [[概念_KV_Cache_键值缓存]] — 缓存 K/V 已计算结果，空间换时间避免重复计算
+- [[概念_KV_跨模型缓存转换]] — 以跨层表示映射在模型路由切换时复用 KV Cache；当前仅验证同家族模型
 - CUDA_Graph — 多 GPU 操作转 DAG 一次性提交，减少 CPU-GPU 交互
 - [[概念_模型并行]] — 拆分大模型到多 GPU，解决单机存不下
 - [[概念_连续批处理]] — 动态批处理，短请求完成即释放、新请求随时加入
 - 通信计算重叠 — 用 GPU stream 令计算与通信时间上重叠
-- [[概念_Label_Smoothing]] — 软化硬标签缓解过度自信（medium）
+- [[概念_Label_Smoothing_标签平滑]] — 软化硬标签缓解过度自信（medium）
 - [[概念_Mixup训练]] — Beta 分布插值混合样本图像与标签（medium）
 - [[概念_学习率调度]] — ReduceLROnPlateau/Cosine/MultiStep/Warmup 调度器
 - [[概念_RL环境]] — Agent 学习的虚拟世界：状态/任务/奖励三要素
-- [[概念_RLaaS]] — 强化学习即服务，Palantir 式企业深度定制
+- [[概念_RLaaS_强化学习即服务]] — 强化学习即服务，Palantir 式企业深度定制
 - [[概念_复制训练]] — 复现现有软件作为 RL 任务，单元测试验证奖励
-- [[概念_RLVR]] — 可自动验证奖励的强化学习
+- [[概念_RLVR_可验证奖励强化学习]] — 可自动验证奖励的强化学习
 - [[概念_IFD指令跟随难度]] — Instruction-Following Difficulty，通过困惑度挑选高价值 SFT 样本
-- [[概念_K-Center-Greedy算法]] — 基于核心集策略的贪心样本选择算法
-- [[概念_Reward_Hacking]] — 奖励黑客：利用奖励模型漏洞取高分而非真正满足意图
+- [[概念_K_Center_Greedy_中心贪婪算法]] — 基于核心集策略的贪心样本选择算法
+- [[概念_Reward_Hacking_奖励攻陷与作弊]] — 奖励黑客：利用奖励模型漏洞取高分而非真正满足意图
 - [[概念_SFT数据三维度]] — 规模/质量/多样性三维度评估与数据选型配比
 - alignment_tax — 对齐税：安全与偏好对齐导致的模型通用能力或基础性能下降
-- [[概念_on-policy与off-policy数据]] — 强化学习训练中采样模型与目标优化策略的同源匹配关系
+- [[概念_On_Policy_与_Off_Policy_策略数据]] — 强化学习训练中采样模型与目标优化策略的同源匹配关系
 - [[概念_多阶段训练策略]] — 从通用领域到垂直任务能力的退火精调流转路径
 - [[概念_灾难性遗忘]] — 微调新任务时导致原有预训练通用知识与能力退化
 - [[概念_智能体能力金字塔]] — 工具/规划/适应/接地气/常识推理五层能力
-- [[概念_接地气Groundedness]] — 智能体紧贴上下文、不幻觉不捏造的能力
+- [[概念_Groundedness_事实接地性]] — 智能体紧贴上下文、不幻觉不捏造的能力
 - Git仓库历史诊断 — 用变更热点、维护者、缺陷聚集、提交趋势与救火信号建立陌生代码库阅读路径（Skill/linux, AI-Agent/coding）
 - Random_Patches大数据训练 — 随机贴片在大数据集上训练经典集成模型的机制与方差降低原理
 - ONNX模型跨平台部署 — 模型开发框架与伺服生产环境解耦标准、ORT图优化与硬件子图分发机制
 - [[概念_聚类算法分类综述]] — 系统性梳理聚类算法的 6 大主流家族（基于质心、基于连通性、基于密度、基于图、基于分布和基于压缩/降维），对比硬聚类与软聚类的决策边界，并分析算法对聚类形状和密度的适应差异。（MachineLearning, Clustering）
-- [[概念_解耦式KV缓存与LMCache]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理。（LLM/inference, Infra/serving）
+- [[概念_LMCache_解耦式KV缓存]] — 旁路独立进程实现缓存管理与推理引擎解耦，辅以 CacheBlend 选择性重计算，大幅提速多文档与 Agent 推理。（LLM/inference, Infra/serving）
 - [[概念_SparDA预测式KV缓存预取]] — 引入 Forecast 跨层预测及双 CUDA stream 异步预取机制，有效重叠长文本下 CPU offload 传输与 GPU 推理计算，大涨吞吐量。（LLM/inference, Infra/serving）
 - [[concepts/概念_Loop_Engineering循环工程]] — 定义图工程（Graph Engineering）的核心内涵以及三大物理要素，展示 5 层嵌套同轴系统架构并拆解四大痛点设计准则。（Architecture, Agent, Multi-Agent, Graph-Engineering）
 - [[概念_AI硬件加速芯片架构]] — 定义并横向对比 CPU、GPU、TPU、NPU 与 LPU 五种主流 AI 计算芯片架构 of 物理特征、存储层次以及计算调度机制。（Architecture, Hardware, Processor, Inference）
@@ -392,119 +392,119 @@
 - [[概念_RAG基础流程]] — RAG 三步：Indexing/Retrieval/Generation
 - [[概念_Embedding与向量检索]] — 文本转嵌入向量，按相似度检索 top-k
 - [[概念_向量数据库]] — 专用于存储向量化表示的系统，ANN 索引+相似度查询
-- [[概念_Query_Translation]] — 查询翻译：改写/分解/退一步提升检索
-- [[概念_RAG_Fusion]] — 多查询 + RRF 排序融合检索结果
-- [[概念_HyDE]] — 生成假设文档作为检索输入
-- [[概念_RAG_Routing]] — 逻辑路由/语义路由智能选择检索路径
-- [[概念_Query_Construction]] — 自然语言转元数据结构化查询
-- [[概念_Multi-representation_Indexing]] — 摘要+原文多表示索引（Proposition Indexing）
-- [[概念_RAPTOR索引]] — 树状分层索引：GMM/UMAP/多尺度聚类递归摘要
-- [[概念_ColBERT]] — token 级嵌入 late interaction 细粒度检索
+- [[概念_Query_Translation_查询改写与翻译]] — 查询翻译：改写/分解/退一步提升检索
+- [[概念_RAG_Fusion_多查询融合生成]] — 多查询 + RRF 排序融合检索结果
+- [[概念_HyDE_假设文档嵌入]] — 生成假设文档作为检索输入
+- [[概念_RAG_Routing_检索智能路由]] — 逻辑路由/语义路由智能选择检索路径
+- [[概念_Query_Construction_查询构建]] — 自然语言转元数据结构化查询
+- [[概念_Multi_Representation_Indexing_多表征索引]] — 摘要+原文多表示索引（Proposition Indexing）
+- [[概念_RAPTOR_递归树状检索索引]] — 树状分层索引：GMM/UMAP/多尺度聚类递归摘要
+- [[概念_ColBERT_多向量延迟交互检索]] — token 级嵌入 late interaction 细粒度检索
 - [[概念_文本切分五层级]] — 文本切分 Level 1-5 框架：字符/递归/文档/语义/Agentic
 - [[概念_字符切分]] — Level 1 简单字符长度切分
-- [[概念_Chunk_Size与Overlap]] — 块大小与块重叠两个基础参数
+- [[概念_Chunk_Size_分块大小与重叠]] — 块大小与块重叠两个基础参数
 - [[概念_递归字符切分]] — Level 2 分隔符递归合并，实践首选
 - [[概念_Token切分优化]] — 按 token 而非字符计长度，对齐模型处理
 - [[概念_文档结构切分]] — Level 3 适配 JSON/Markdown/代码等格式
 - [[概念_语义切分]] — Level 4 向量差异超阈值切分，四种阈值方法
 - [[概念_问题生成检索增强]] — LLM 为文本片段生成问题，增强向量检索匹配
-- [[概念_Fusion_Retrieval]] — 稀疏(BM25)+稠密(向量)双路检索融合
-- [[概念_Reciprocal_Rank_Fusion]] — RRF 排序融合多路检索结果
-- [[概念_BM25]] — 经典稀疏检索算法，词频+文档长度惩罚
+- [[概念_Fusion_Retrieval_融合检索]] — 稀疏(BM25)+稠密(向量)双路检索融合
+- [[概念_RRF_互易秩融合]] — RRF 排序融合多路检索结果
+- [[概念_BM25_最佳匹配25算法]] — 经典稀疏检索算法，词频+文档长度惩罚
 - BM25检索算法 — 定义 BM25 基石地位，数学公式拆解（IDF/TF饱和度/文档长度惩罚）与混合检索架构（RAG）
 - [[概念_检索后处理]] — 检索后重排/压缩/Long-text Reorder
-- [[概念_Contextual_Compression]] — LLM 提取检索文档中与查询相关的片段
-- [[概念_Long-text_Reorder]] — 长文本检索结果重排，重要文档置首尾
+- [[概念_Contextual_Compression_上下文压缩]] — LLM 提取检索文档中与查询相关的片段
+- [[概念_Long_Text_Reorder_长文本位置重排序]] — 长文本检索结果重排，重要文档置首尾
 - [[概念_查询重写]] — LLM 改写用户查询提升检索效果
 - [[概念_子查询分解]] — 复杂查询拆为子查询分别检索再合并
-- [[概念_Step-back提示]] — 退一步生成更抽象的查询获取更广泛上下文
+- [[概念_Step_Back_回退提示]] — 退一步生成更抽象的查询获取更广泛上下文
 - Markdown标题切分 — 按 Markdown 标题层级结构化切分文档
 - [[概念_Matryoshka表示学习]] — MRL 嵌套学习多粒度表征，可截断维度保留语义
-- [[概念_Sparse_Embedding]] — 关键词式稀疏向量（TF-IDF/BM25/SPLADE）
-- [[概念_Dense_Embedding]] — 语义级稠密向量，通用语义搜索首选
-- [[概念_Quantized_Embedding]] — float32→int8 压缩，省内存磁盘
-- [[概念_Binary_Embedding]] — 0/1 二值化极致压缩，设备端离线快搜
+- [[概念_Sparse_Embedding_稀疏向量嵌入]] — 关键词式稀疏向量（TF-IDF/BM25/SPLADE）
+- [[概念_Dense_Embedding_稠密向量嵌入]] — 语义级稠密向量，通用语义搜索首选
+- [[概念_Quantized_Embedding_量化向量嵌入]] — float32→int8 压缩，省内存磁盘
+- [[概念_Binary_Embedding_二进制向量嵌入]] — 0/1 二值化极致压缩，设备端离线快搜
 - [[概念_词向量]] — Word2Vec/GloVe/FastText 静态词向量及其局限
 - [[概念_BERT各向异性]] — BERT 词向量锥形分布导致相似度失效及优化
-- [[概念_Sentence-BERT]] — 孪生/三级网络微调 BERT 优化句向量相似度
-- [[概念_SimCSE]] — Dropout mask 增广 + 对比学习优化句向量
-- [[概念_Instruct_Embedding]] — 编码查询时附带任务指令引导多维度检索
-- [[概念_重排序Rerank]] — 检索后相关性精排，Qwen3 LLM 化 yes/no 打分
+- [[概念_Sentence_BERT_孪生网络句向量]] — 孪生/三级网络微调 BERT 优化句向量相似度
+- [[概念_SimCSE_简单对比学习句向量]] — Dropout mask 增广 + 对比学习优化句向量
+- [[概念_Instruct_Embedding_指令增强向量嵌入]] — 编码查询时附带任务指令引导多维度检索
+- [[概念_Rerank_重排序]] — 检索后相关性精排，Qwen3 LLM 化 yes/no 打分
 - [[概念_ColBERTv2残差压缩]] — k-means 聚类+残差量化，存储减 6-10 倍性能损失 1-2%
 - [[概念_混合检索]] — 稀疏+稠密+BM25 多路召回融合(RRF/加权)
 - [[概念_近似最近邻搜索]] — ANNS：哈希/树/图/量化四类加速方法
 - [[概念_向量索引方法]] — Flat/Tree/LSH/IVF-PQ/HNSW 索引类型对比
 - [[概念_向量相似度度量]] — L2/L1/余弦/内积/汉明/杰卡德距离度量
 - [[概念_向量量化]] — float32→int8/INT4/BBQ/PQ/残差量化压缩方法
-- [[概念_Agentic_RAG]] — 智能体+RAG：查询规划/工具利用/推理优化
-- [[概念_Memory_RAG]] — 显式记忆增强 RAG：Memory3/MemoRAG/CAG
-- [[概念_DOS_RAG]] — 保留文档原始结构：检索后按原文顺序排列片段
-- [[概念_DMQR-RAG]] — 多样化多查询改写：GQR/KWR/PAR/CCE 四策略 + 自适应选择
+- [[概念_Agentic_RAG_智能体检索增强生成]] — 智能体+RAG：查询规划/工具利用/推理优化
+- [[概念_Memory_RAG_显式记忆增强检索]] — 显式记忆增强 RAG：Memory3/MemoRAG/CAG
+- [[概念_DOS_RAG_动态操作空间检索]] — 保留文档原始结构：检索后按原文顺序排列片段
+- [[概念_DMQR_RAG_动态多查询改写检索]] — 多样化多查询改写：GQR/KWR/PAR/CCE 四策略 + 自适应选择
 - [[概念_LLM重排序]] — 让 LLM 给文本相关性打分(0~1)的精排方法
 - [[概念_父页面检索]] — 小块检索定位、完整父页面入上下文
 - [[概念_表格序列化]] — 大表格转一系列上下文独立字符串
 - [[概念_多查询路由]] — 路由到数据库/提示词/复合查询拆解
 - [[概念_结构化输出]] — 强制 LLM 按 schema 输出 JSON，与 CoT 结合
-- [[概念_Prompt_Compression]] — 检索后压缩上下文，LongLLMLingua（medium）
-- [[概念_CRAG]] — 纠正型 RAG：评估文档相关性触发额外检索（medium）
-- [[概念_Self-RAG]] — 自我反思 RAG：生成后自检决定是否补检索（medium）
-- [[概念_Adaptive-RAG]] — 自适应 RAG：按查询复杂度选择检索生成策略（medium）
+- [[概念_Prompt_Compression_提示词压缩]] — 检索后压缩上下文，LongLLMLingua（medium）
+- [[概念_CRAG_纠正性检索增强生成]] — 纠正型 RAG：评估文档相关性触发额外检索（medium）
+- [[概念_Self_RAG_自省式检索增强生成]] — 自我反思 RAG：生成后自检决定是否补检索（medium）
+- [[概念_Adaptive_RAG_自适应检索增强生成]] — 自适应 RAG：按查询复杂度选择检索生成策略（medium）
 
 #### 阿里/美团/优图实践概念（批次7）
-- [[概念_知识图谱RAG]] — 图结构组织知识，多跳推理跨文档关联检索
+- [[概念_Graph_RAG_知识图谱增强检索]] — 图结构组织知识，多跳推理跨文档关联检索
 - [[概念_SMT查询改写]] — 统计翻译模型查询改写，噪声信道+BeamSearch+XGBoost
-- [[概念_强化学习NMT改写]] — NMT 改写以搜索系统为环境强化学习优化
+- [[概念_NMT_强化学习查询改写]] — NMT 改写以搜索系统为环境强化学习优化
 - [[概念_向量化召回改写]] — 双塔向量从候选池 ANN 召回改写词（模糊改写）
 - [[概念_协同训练]] — NMT-BERT 半监督互训提升数据和模型质量
 - [[概念_分层知识蒸馏]] — Reranker 多层输出约束，支持层级输出能力
 - [[概念_Embedding训练管线]] — 多阶段对比学习+精细数据工程+多任务均衡
-- [[概念_Text2SQL]] — 自然语言转 SQL，MAC-SQL 多智能体框架
-- [[概念_GraphRAG]] — 图/树结构组织知识的检索增强生成
+- [[概念_Text2SQL_自然语言转SQL]] — 自然语言转 SQL，MAC-SQL 多智能体框架
+- [[概念_Graph_RAG_知识图谱增强检索]] — 图/树结构组织知识的检索增强生成
 - [[概念_知识树结构]] — 融合图与树优点的四级知识粒度树型图谱
 - [[概念_S2Dual社区检测]] — Structure+Semantics 双感知社区检测，超越 Leiden
 
 #### 语义搜索/系统设计/评估概念（批次8）
 - [[概念_Semantic_Search本质]] — metric embedding，document as index，无结构即灵活
-- [[概念_Multi-Vector检索]] — 用代理表示（自然语言/总结）索引低资源/长文件
+- [[概念_Multi_Vector_多向量检索]] — 用代理表示（自然语言/总结）索引低资源/长文件
 - 距离函数选择 — 余弦(非度量)/欧氏(度量)距离选型与三角不等式
-- [[概念_Lazy_Graph_RAG]] — 语义搜索弥补 KG 不足，索引成本降至 0.1%（medium）
+- [[概念_Lazy_Graph_RAG_惰性知识图谱增强检索]] — 语义搜索弥补 KG 不足，索引成本降至 0.1%（medium）
 - [[概念_迭代式表格推理]] — TableRAG 在线推理：拆解/检索/SQL/组合四步
 - [[概念_融合知识库]] — 多元异构数据统一逻辑存储，物理存储不变
 - [[概念_统一知识图谱]] — 多模态元素统一图谱，N度扩展查询提取子图
-- [[概念_RAG评估框架RAGAS]] — RAGAS 检索侧/生成侧多维评估指标
+- [[概念_RAGAS_RAG评估框架]] — RAGAS 检索侧/生成侧多维评估指标
 
 #### 腾讯QO/北大综述/OpenAI最佳实践概念（Phase2 收尾）
 - [[概念_查询扩展]] — 内部扩展(LLM知识)+外部扩展(知识库)提高检索效果
 - [[概念_查询消歧]] — 识别消除查询歧义，确保单一精确解释
 - [[概念_查询抽象]] — 提炼核心概念创建高层次表示，Step-back 为具体实现
 - [[概念_LLM应用优化两轴]] — Context Optimization(RAG) + LLM Optimization(FT) 两轴并行迭代（LLM）
-- [[概念_Fine-tuning]] — 微调增强 LLM 特定领域/任务能力，蒸馏降本（LLM）
+- [[概念_Fine_Tuning_模型微调]] — 微调增强 LLM 特定领域/任务能力，蒸馏降本（LLM）
 
 ### LLM/arch/Mamba（批次 Mamba）
-- [[概念_状态空间模型SSM]] — SSM 两方程：状态方程/输出方程，A/B/C/D 矩阵（LLM/arch/Mamba）
+- [[概念_SSM_状态空间模型]] — SSM 两方程：状态方程/输出方程，A/B/C/D 矩阵（LLM/arch/Mamba）
 - [[概念_SSM三种表示]] — 连续/循环/卷积三种等价表示，训练用卷积、推理用循环（LLM/arch/Mamba）
 - [[概念_SSM离散化]] — ZOH 离散化 + 步长参数 Δ，连续 SSM 转为离散序列模型（LLM/arch/Mamba）
 - [[概念_HiPPO矩阵]] — Legendre 多项式系数构造矩阵 A，压缩并记忆长程历史（LLM/arch/Mamba）
-- [[概念_线性时不变LTI]] — LTI 局限：A/B/C 固定导致无内容感知，选择机制的动机（LLM/arch/Mamba）
+- [[概念_LTI_线性时不变]] — LTI 局限：A/B/C 固定导致无内容感知，选择机制的动机（LLM/arch/Mamba）
 - [[概念_Mamba选择机制]] — B/C/Δ 输入依赖，实现 content-aware 推理（LLM/arch/Mamba）
 - [[概念_Mamba硬件感知算法]] — parallel scan + kernel fusion + recomputation，GPU 高效实现（LLM/arch/Mamba）
 - [[概念_MambaBlock架构]] — 投影+1DConv+SelectiveSSM+残差，Mamba1/2 Block 结构（LLM/arch/Mamba）
-- [[概念_状态空间对偶SSD]] — Mamba2 核心：SSM 与线性 Attention 数学等价（LLM/arch/Mamba）
+- [[概念_SSD_状态空间对偶]] — Mamba2 核心：SSM 与线性 Attention 数学等价（LLM/arch/Mamba）
 - [[概念_半可分离矩阵]] — SSM 变换矩阵的代数结构，SSD 算法分块分解基础（LLM/arch/Mamba）
 - State_Swapping — Mamba 特有推理范式：预生成 state 复用，无需 few-shot（LLM/arch/Mamba）
 
 ### LLM/arch/MoE（批次 MoE+arch）
 - [[概念_MoE混合专家]] — 稀疏专家层替换 FFN，相同计算预算实现更大模型容量（LLM/arch/MoE）
-- [[概念_MoE_Router]] — Top-k 门控网络/路由机制，决定 Token 路由到哪些专家（LLM/arch/MoE）
+- [[概念_MoE_Router_专家路由门控网络]] — Top-k 门控网络/路由机制，决定 Token 路由到哪些专家（LLM/arch/MoE）
 - [[概念_MoE负载均衡]] — 噪声 Top-k / 辅助损失 / 专家容量限制防止专家坍塌（LLM/arch/MoE）
-- [[概念_混合Mamba架构]] — Hybrid Transformer-Mamba：AMF/MF 交错模块，O(n) 长序列处理（LLM/arch/Mamba, LLM/arch/MoE）
-- [[概念_自适应长短CoT]] — 根据问题复杂度自动切换快速/深度推理模式（LLM/arch）
-- [[概念_MLA多头潜在注意力]] — K/V 压缩进低维潜在空间，KV Cache 最小化（LLM/arch）
+- [[概念_Mamba_混合架构]] — Hybrid Transformer-Mamba：AMF/MF 交错模块，O(n) 长序列处理（LLM/arch/Mamba, LLM/arch/MoE）
+- [[概念_CoT_自适应长短思考]] — 根据问题复杂度自动切换快速/深度推理模式（LLM/arch）
+- [[概念_MLA_多头潜在注意力]] — K/V 压缩进低维潜在空间，KV Cache 最小化（LLM/arch）
 - [[概念_滑动窗口注意力]] — 局部注意力机制，大幅降低 KV Cache 内存（LLM/arch）
-- [[概念_QK_Norm]] — Q/K 在 RoPE 前各加 RMSNorm，稳定大模型训练（LLM/arch）
+- [[概念_QK_Norm_注意力查询键归一化]] — Q/K 在 RoPE 前各加 RMSNorm，稳定大模型训练（LLM/arch）
 - [[概念_NoPE无位置嵌入]] — 不使用位置编码，因果掩码隐式学习序列顺序（LLM/arch）
 - [[概念_Muon优化器]] — 替代 AdamW 的新优化器，Kimi K2 首次在 1T 参数规模使用（LLM/training）
-- [[概念_GRPO强化学习]] — 组相对策略优化，混元 TurboS 后训练 RL 算法（LLM/training/RL）
+- [[概念_GRPO_群组相对策略优化]] — 组相对策略优化，混元 TurboS 后训练 RL 算法（LLM/training/RL）
 
 ### LLM/arch/VLM（批次3）
 - [[概念_MLLM三位一体架构]] — 视觉编码器 + 连接器 + LLM 通用框架（LLM/arch/VLM）
@@ -521,20 +521,20 @@
 - [[概念_推测解码]] — Draft-then-Verify：四大推测草稿变体与无损并行验证加速范式（LLM/inference）
 - [[概念_混合精度训练]] — BF16/FP32混合训练流程，16 bytes/参数显存估算（LLM/inference）
 - [[概念_LoRA与QLoRA显存]] — LoRA 2Φ、QLoRA 0.5Φ显存估算原理（LLM/inference, 面试）
-- [[概念_思维链CoT高级方法]] — CoT/CoT-SC/Decoding CoT/ToT+MCTS 及成本权衡（LLM/reasoning）
+- [[概念_CoT_高级思维链方法]] — CoT/CoT-SC/Decoding CoT/ToT+MCTS 及成本权衡（LLM/reasoning）
 - [[概念_自适应快慢思考]] — 三方案：Qwen3 SFT、AdaCoT Pareto、AdaThinking 约束优化（LLM/reasoning）
 - [[概念_LLM推理两阶段]] — 对比 Prefill 与 Decode 硬件瓶颈，详细介绍 Continuous Batching、Speculative Decoding、PagedAttention 三大优化方案。（LLM/inference）
 
 ### LLM/reasoning + training/RL（批次5）
-- [[概念_DeepSeek-R1训练管道]] — 冷启动SFT→推理RL→拒绝采样SFT→全场景RL四阶段，规则奖励无奖励黑客（LLM/training/RL）
-- [[概念_PPO近端策略优化]] — 生成策略+参考策略+价值模型三组件，RLHF 核心算法（LLM/training/RL）
-- [[概念_RLHF基于人类反馈的强化学习]] — 人类偏好→奖励模型→PPO 对齐流程，RLVR 演进方向（LLM/training/RL）
-- [[concepts/概念_Verifiable_Reward]] — 验证器判对错、奖励函数给分值，GRPO 奖励设计原则（LLM/training/RL）
+- [[概念_DeepSeek_R1_训练管道]] — 冷启动SFT→推理RL→拒绝采样SFT→全场景RL四阶段，规则奖励无奖励黑客（LLM/training/RL）
+- [[概念_PPO_近端策略优化]] — 生成策略+参考策略+价值模型三组件，RLHF 核心算法（LLM/training/RL）
+- [[概念_RLHF_基于人类反馈的强化学习]] — 人类偏好→奖励模型→PPO 对齐流程，RLVR 演进方向（LLM/training/RL）
+- [[concepts/概念_Verifiable_Reward_可验证奖励机制]] — 验证器判对错、奖励函数给分值，GRPO 奖励设计原则（LLM/training/RL）
 - [[概念_Agent感知记忆推理三能力]] — CoT 赋能 Agent：感知CoT/记忆CoT（树搜索+矢量检索）/推理CoT（AI-Agent, LLM/reasoning）
 
 ### LLM/training + hallucination（批次7）
 - [[概念_训练并行策略]] — 解决大规模语言模型训练内存与计算瓶颈的基础并行化方法集合（含 DP/TP/PP） (LLM/training)
-- [[概念_LoRA低秩适应微调]] — LoRA 低秩分解原理、r/alpha/dropout 超参、QLoRA 变体与端侧适用场景（LLM/training/post-train）
+- [[概念_LoRA_低秩适应微调]] — LoRA 低秩分解原理、r/alpha/dropout 超参、QLoRA 变体与端侧适用场景（LLM/training/post-train）
 - [[概念_Scaling_Law三大规律]] — 预训练/后训练/推理三大 Scaling Law 定义、技术手段与 Kaplan/Chinchilla 关系（LLM/training）
 - [[概念_LLM外在幻觉与上下文内幻觉]] — 翁荔框架：两种幻觉类型、预训练/微调新知识两大根因（LLM/hallucination）
 - [[概念_幻觉检测方法]] — FActScore/SAFE/SelfCheckGPT/TruthfulQA 检测体系（LLM/hallucination）
@@ -543,14 +543,14 @@
 - [[concepts/概念_LLM文本生成解码策略|]] — 温度参数控制输出分布平滑度，高温增创意增幻觉，低温保准确减创意（LLM/hallucination, LLM/inference）
 
 ### LLM/面试/训练/RL（批次9）
-- [[概念_AI创业Scaling_Law]] — AI 团队规模与产出效率的悖论：小而精 vs 规模扩张（创业）
+- [[概念_Scaling_Law_AI团队扩展律]] — AI 团队规模与产出效率的悖论：小而精 vs 规模扩张（创业）
 
 ### LLM/Recommendation + arch（Batch 10）
 - [[概念_数字人文案生成]] — 口语化改写/多步蒸馏/图文一致/测评体系完整框架（LLM）
 
 ### AI-Agent/tool-calling MCP系列（Phase 4 Batch 1）
-- [[概念_WebMCP]] — Chrome 与 Edge 团队提出的浏览器原生 Agent 工具声明规范，允许前端网页通过 JS API 或 HTML 扩展属性直接暴露强类型动作与输入 Schema（AI-Agent/tool-calling, AI-Agent/UI）
-- [[概念_AI-Native_SDLC]] — Anthropic 提出的 AI Native 软件开发生命周期方法论，以产物驱动闭环循环（Loop）重构研发流程，融合 CLAUDE.md/Skill/Hook 三层规则防线与五层落地路径（AI-Agent/coding）
+- [[概念_WebMCP_浏览器原生工具协议]] — Chrome 与 Edge 团队提出的浏览器原生 Agent 工具声明规范，允许前端网页通过 JS API 或 HTML 扩展属性直接暴露强类型动作与输入 Schema（AI-Agent/tool-calling, AI-Agent/UI）
+- [[概念_AI_Native_SDLC_AI原生软件开发生命周期]] — Anthropic 提出的 AI Native 软件开发生命周期方法论，以产物驱动闭环循环（Loop）重构研发流程，融合 CLAUDE.md/Skill/Hook 三层规则防线与五层落地路径（AI-Agent/coding）
 - [[概念_CLAUDE.md最佳实践]] — 编写 CLAUDE.md 工程宪法以约束 Agent 行为的高级指南与规范范式 (AI-Agent/coding)
 - [[概念_MCP协议]] — MCP 定义、CHS 架构、五大原语、传输方式、与 Function Call 关系全景（AI-Agent/tool-calling）
 - [[概念_MCP_CHS架构]] — Client-Host-Server 三组件精确界定：Host 是 AI 智能唯一承载者，Server/Client 是模型无关 RPC 管道（AI-Agent/tool-calling）
@@ -558,10 +558,10 @@
 - [[概念_MCP传输方式]] — Stdio/SSE/Streamable HTTP 三种传输方式对比与选型（AI-Agent/tool-calling）
 - MCP与Function_Call对比 — 协议 vs 模型特性、静态 vs 动态、碎片化痛点与 MCP 解法（AI-Agent/tool-calling）
 - [[概念_MCP代码执行模式]] — CodeAgent 模式：按需加载工具定义，Token 消耗减少 98.7%，含隐私保护与 Skills 沉淀（AI-Agent/tool-calling）
-- [[概念_HITL_MCP]] — send_inquiry 挂起等待人类答复，MCP Notification 传凭条，HTTP 接口收答复，多端协同（AI-Agent/tool-calling）
-- [[概念_MCP_Proxy]] — 代理模式在 tool/call 前植入确认逻辑，现有 MCP Server 零改动（AI-Agent/tool-calling）
+- [[概念_HITL_MCP_人机协同协议架构]] — send_inquiry 挂起等待人类答复，MCP Notification 传凭条，HTTP 接口收答复，多端协同（AI-Agent/tool-calling）
+- [[概念_MCP_Proxy_代理拦截模式]] — 代理模式在 tool/call 前植入确认逻辑，现有 MCP Server 零改动（AI-Agent/tool-calling）
 - [[概念_Agent思考工具]] — think/plan/action 工具强制结构化规划，航空客服提升 54%，优于纯 Prompt（AI-Agent/tool-calling）
-- [[概念_orchestrator-worker模式]] — 主智能体规划分解，子智能体并行执行，多智能体 vs 单智能体提升 90.2%（AI-Agent/multi-agent）
+- [[概念_Orchestrator_Worker_编排工模式]] — 主智能体规划分解，子智能体并行执行，多智能体 vs 单智能体提升 90.2%（AI-Agent/multi-agent）
 - [[概念_多智能体协调]] — 多智能体协调挑战、提示词 8 原则、评测策略与生产可靠性（AI-Agent/multi-agent）
 - [[概念_LLM_Wiki范式]] — Andrej Karpathy 提出的知识管理范式，在摄入端预先结构化与关联，实现高复利知识编译（Skill/knowledge-bank）
 - [[概念_Agent三段式记忆演进]] — Storage -> Reflection -> Experience 三阶段演进框架及驱动演进的三大根本动力（AI-Agent/memory）
@@ -573,15 +573,15 @@
 - [[概念_系统提示词四层架构]] — 核心定义、交互接口、内部处理与全局约束四层架构，解决规则扁平堆砌痛点（AI-Agent/prompt-engineering）
 - [[概念_LLM_as_a_Judge校准]] — 引入专家黄金集、失败编码与解释理由，用对齐框架确保AI裁判评分一致（AI-Agent/eval）
 - [[概念_标量过滤]] — 向量数据库中结合元数据标量属性过滤与向量检索的混合查询机制（RAG/embedding, RAG/retrieval）
-- [[概念_DiskANN]] — 微软开源基于 SSD 磁盘的高性能 ANN 检索算法，突破内存限制（RAG/embedding, RAG/retrieval）
-- [[概念_IVF倒排索引]] — 基于聚类空间划分的倒排文件向量索引算法（RAG/embedding, RAG/retrieval）
-- [[概念_Memex]] — Vannevar Bush 于 1945 年提出的个人机电知识设备构想，关联性路径鼻祖（Skill/knowledge-bank）
+- [[概念_DiskANN_磁盘图向量索引]] — 微软开源基于 SSD 磁盘的高性能 ANN 检索算法，突破内存限制（RAG/embedding, RAG/retrieval）
+- [[概念_IVF_倒排索引]] — 倒排文件索引 (Inverted File Index)，基于聚类空间划分的高维向量近似最近邻搜索 (ANNS) 算法（RAG/embedding, RAG/retrieval）
+- [[概念_Memex_个人机电知识扩展系统]] — Vannevar Bush 于 1945 年提出的个人机电知识设备构想，关联性路径鼻祖（Skill/knowledge-bank）
 - [[概念_卡片盒笔记法]] — Zettelkasten 知识管理方法论，原子化卡片与网络化交叉引用（Skill/knowledge-bank）
 - [[概念_Ingest入库闭环]] — LLM Wiki 范式中的标准化入库 SOP 操作（阅读/摘要/实体概念联动/索引日志）（Skill/knowledge-bank, AI-Agent/coding）
 - Wiki健康检查 — LLM Wiki 范式中的 Lint 体检与图谱垃圾回收（Skill/knowledge-bank, AI-Agent/coding）
 - [[概念_Claude_Code多智能体协同机制]] — 拆解并对比 Claude Code 的三大协同原语（Subagents、Agent Teams、Dynamic Workflows），详述动态工作流在 JS 编排执行、并发扇出、上下文解耦和抗灾恢复力方面的机制，并阐述对抗性验证（Adversarial Verification）的收敛逻辑。（ClaudeCode, Multi-Agent, Orchestration）
 - [[概念_Delta_Attention与增量矩阵缓存]] — Kimi K3 采用的注意力优化机制，使用固定大小矩阵与 Delta 规则更新，实现线性计算与 $O(1)$ 空间开销
-- [[概念_分位数回归与Pinball_Loss]] — 弹球损失（Pinball Loss）的定义与不对称几何拉伸推导，及多 percentile 回归与 LightGBM 区间估算的工程价值。（machine-learning, regression, loss-function）
+- [[概念_Pinball_Loss_分位数回归]] — 弹球损失（Pinball Loss）的定义与不对称几何拉伸推导，及多 percentile 回归与 LightGBM 区间估算的工程价值。（machine-learning, regression, loss-function）
 - [[概念_Agent内存与状态管理]] — 深度对比 State 与 Memory 两个维度的定义与作用边界，构建在宿主系统（Harness Engineering）中单步 Checkpoint 与 Scope 隔离的协作逻辑。（AI-Agent/harness, AI-Agent/memory, state-management）
 
 ## Entities
@@ -678,7 +678,7 @@
 - [[实体_PEFT库]] — HuggingFace 参数高效微调库，LoRA/QLoRA/Adapter/Prefix 支持（LLM/training/post-train）
 
 ### LLM/training/post-train（批次6）
-- [[概念_DPO]] — 直接偏好优化，无需显式训练奖励模型，直接通过人类偏好数据优化策略模型 (LLM/training/post-train)
+- [[概念_DPO_直接偏好优化]] — 直接偏好优化，无需显式训练奖励模型，直接通过人类偏好数据优化策略模型 (LLM/training/post-train)
 - [[HuggingFace手把手训练大模型实战指南]] — SmolLM3 端到端训练实战：Why→What→How + 架构/数据/基础设施全链路（LLM/training/pre-train, post-train）
 - [[SFT数据挑选方法_质量多样性必要性]] — SFT 数据三维度筛选：MoDS/DEITA/CaR 方法梳理（LLM/training/post-train）
 - [[375篇文献_推理大模型后训练技术综述]] — 后训练三分类综述：微调/RL/测试时扩展（LLM/training/post-train）
@@ -686,9 +686,9 @@
 
 ### AI-Agent/context-engineering（Phase 4 Batch 3）
 - [[概念_上下文工程]] — 动态系统填充恰好合适的信息给LLM，四类操作：Offload/Retrieve/Reduce/Isolate（AI-Agent/context-engineering）
-- [[概念_Context_Rot]] — 上下文腐化：长度增长导致性能下降，预腐化阈值128K-200K，触发压缩/总结（AI-Agent/context-engineering）
+- [[概念_Context_Rot_上下文衰退]] — 上下文腐化：长度增长导致性能下降，预腐化阈值128K-200K，触发压缩/总结（AI-Agent/context-engineering）
 - [[概念_分层行动空间]] — Manus三层工具架构：函数调用/沙盒工具集/软件包API，稳定接口+无限能力（AI-Agent/context-engineering）
-- [[概念_Spec_Driven_Development]] — 规范驱动开发：Prompt→Requirements→Design→Tasks→Code，Kiro 实现（AI-Agent/context-engineering）
+- [[概念_Spec_Driven_Development_规范驱动开发]] — 规范驱动开发：Prompt→Requirements→Design→Tasks→Code，Kiro 实现（AI-Agent/context-engineering）
 - [[概念_RLM递归语言模型]] — 介绍由 MIT 提出的递归语言模型架构，核心是将数据与指令解耦，通过 REPL 缓存上下文，LLM 采用 Peek/Grep/Partition 进行自上而下的递归调用分治，解决 Context Rot。（AI-Agent/recursive-language-models, AI-Agent/context-engineering）
 
 ### AI-Agent/coding（Phase 4 Batch 4）
@@ -712,9 +712,9 @@
 ### AI-Agent 综合 + AI-BI（Phase 4 Batch 9）
 - [[概念_Agent系统化工程]] — 三层复杂度+LLM放大效应+Level 0-4认知演化+系统化方法论（AI-Agent）
 - [[概念_LLM不确定性放大]] — 多步调用的指数级错误放大数学模型及三类放大维度（AI-Agent）
-- [[概念_AI-ready_data]] — NL2SQL落地第一性问题：元数据/业务语义/权限/样例SQL的系统化准备（AI-Agent/AI-BI）
-- [[概念_M-Schema]] — NL2SQL增强Schema表示：补充类型/中文释义/真实值示例+约束池（AI-Agent/AI-BI）
-- [[概念_Schema_Linking]] — BM25粗排+SIC精排两级联接，从全量Schema筛选相关表列，幻觉率-78%（AI-Agent/AI-BI）
+- [[概念_AI_Ready_Data_AI就绪数据]] — NL2SQL落地第一性问题：元数据/业务语义/权限/样例SQL的系统化准备（AI-Agent/AI-BI）
+- [[概念_M_Schema_增强元数据模式]] — NL2SQL增强Schema表示：补充类型/中文释义/真实值示例+约束池（AI-Agent/AI-BI）
+- [[概念_Schema_Linking_数据库模式联接]] — BM25粗排+SIC精排两级联接，从全量Schema筛选相关表列，幻觉率-78%（AI-Agent/AI-BI）
 
 ### Skill/python（Phase 5 Batch 1）
 - [[概念_FastAPI项目结构模式]] — Routers/Schemas/Services 三层分离 + 安全中间件 + pydantic-settings（Skill/python）
@@ -728,7 +728,7 @@
 - Python模块与包管理 — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
 
 ### Skill/data-analysis（Phase 5 Batch 2）
-- [[概念_自动EDA工具]] — 10 个自动 EDA 包四类分类（报告/可视化/定制/ML 集成）与选型建议（Skill/data-analysis, Skill/python）
+- [[概念_EDA_自动化分析工具]] — 10 个自动 EDA 包四类分类（报告/可视化/定制/ML 集成）与选型建议（Skill/data-analysis, Skill/python）
 - [[概念_Pandas可视化]] — DataFrame.plot/Series.plot 内置绘图 + pandas.plotting 高级可视化（Skill/data-analysis）
 - [[概念_Pandas核心操作图解]] — 选择/排序/分组/合并/变形/索引 + NumPy 对比关键差异（Skill/data-analysis, Skill/python, 面试）
 - matplotlib样式美化 — dufte 主题/图例/柱标注三 API，一行代码商务风图表（Skill/data-analysis）
@@ -765,15 +765,15 @@
 - [[概念_视频美学控制词典]] — Wan2.2 九大维度完整词典：光源/光线/时间/景别/构图/焦段/运镜/风格/特效（AIGC）
 
 ### TTS（Phase 6 Batch 2）
-- [[概念_直播TTS数据处理管线]] — 语音信号处理/语音理解/说话人聚类三环节漏斗；利用直播回放替代录制素材（TTS）
+- [[概念_TTS_直播数据处理管线]] — 语音信号处理/语音理解/说话人聚类三环节漏斗；利用直播回放替代录制素材（TTS）
 - [[概念_TTS两阶段架构]] — 前端文本归一化+后端语言模型/声学模型/声码器；Encodec偏声学/HuBERT偏语义（TTS）
-- [[概念_韵律情感拟人化TTS]] — 显式停顿@/拖音→标签控制韵律；参考音频情感注入高低音变化；个性化韵律表（TTS）
+- [[概念_TTS_韵律情感拟人化]] — 显式停顿@/拖音→标签控制韵律；参考音频情感注入高低音变化；个性化韵律表（TTS）
 
 ### Recommendation（Phase 6 Batch 2）
 
 ### 创业（Phase 6 Batch 3）
-- [[概念_Foundation_Sprint]] — Jake Knapp 超早期项目战略奠基流程：10 小时三阶段，产出创始假设（创业）
-- [[概念_Design_Sprint]] — 五天产品验证冲刺：Map/Sketch/Decide/Prototype/Test + Scorecard 计分卡（创业）
+- [[概念_Foundation_Sprint_基础冲刺]] — Jake Knapp 超早期项目战略奠基流程：10 小时三阶段，产出创始假设（创业）
+- [[概念_Design_Sprint_设计冲刺]] — 五天产品验证冲刺：Map/Sketch/Decide/Prototype/Test + Scorecard 计分卡（创业）
 - [[概念_差异化2x2分析]] — Foundation Sprint 差异化工具：经典+自定义因素，2x2 独占右上角避开"失败者村"（创业）
 - [[概念_Magic_Lenses魔术镜头]] — 五种专家视角（客户/务实/增长/财务/差异化）评估执行路径（创业）
 - [[概念_先思考再行动]] — AI 时代先做战略思考再开发：快是陷阱、AI 致平庸、思考不可外包（创业）
@@ -784,7 +784,7 @@
 - [[概念_Bundle理论]] — Shishir Mehrotra：三种用户/MCC 分成/刚需错开非刚需重叠/2x2 矩阵（创业）
 - [[概念_Unbundle_Rebundle规律]] — 技术 unbundle 切入市场/商业 rebundle 捕获价值/集装箱类比 AI（创业）
 - [[概念_AI初创高人效模式]] — Leonis AI 100：极简扁平团队人均百万美元 ARR，轻人力重算力数据（创业）
-- [[概念_倒漏斗GTM模式]] — AI 初创：PLG 先行验证价值，销售后置正式化已存在需求（创业）
+- [[概念_GTM_倒漏斗模式]] — AI 初创：PLG 先行验证价值，销售后置正式化已存在需求（创业）
 - [[概念_AI市场阈值解锁]] — AI 市场按序爆发：模型突破关键阈值才解锁新品类（创业）
 - [[概念_研究型创始人崛起]] — 86% 技术创始人/82% 技术 CEO，研究型创始人预判能力突破（创业）
 
@@ -792,17 +792,17 @@
 - AI独立开发方法论 — 艾逗笔五条感悟（快/精/小切入/造血/流量）+ 出海 SOP + 四 all in 方向（创业）
 
 ### AI-Agent/deep-research（Phase 4 Batch 6）
-- [[概念_Deep-Research-Agent定义与分类]] — DR Agent 定义、与 RAG/Tool Use 的边界、规划策略三模式（Planning-Only/Intent-to-Planning/Unified）（AI-Agent/deep-research）
-- [[概念_Deep-Research四大挑战]] — 信息窄门/幻觉不可靠/线性效率瓶颈/评测错位，及对应未来方向（AI-Agent/deep-research）
-- [[概念_Deep-Research实现架构四类]] — 单体/流水线/多智能体/混合四种架构对比与代表系统（AI-Agent/deep-research）
+- [[概念_Deep_Research_Agent_定义与分类]] — DR Agent 定义、与 RAG/Tool Use 的边界、规划策略三模式（Planning-Only/Intent-to-Planning/Unified）（AI-Agent/deep-research）
+- [[概念_Deep_Research_四大挑战]] — 信息窄门/幻觉不可靠/线性效率瓶颈/评测错位，及对应未来方向（AI-Agent/deep-research）
+- [[概念_Deep_Research_四类实现架构]] — 单体/流水线/多智能体/混合四种架构对比与代表系统（AI-Agent/deep-research）
 - [[概念_IterResearch范式]] — 通义 DeepResearch 创新范式：精简工作空间+核心报告迭代重构，解决上下文认知瓶颈（AI-Agent/deep-research）
 - [[概念_WebFrontier数据合成]] — 种子-扩展-评估三步数据合成，知识图谱随机游走+原子操作难度建模（AI-Agent/deep-research）
 
 ### AI-Agent/harness & Skill/knowledge-bank（Batch 2）
-- [[概念_Harness_Engineering]] — 围绕基础模型构建的宿主与编排系统工程，编排执行/思考/工具/上下文/产物与评估（AI-Agent/harness, AI-Agent/coding）
+- [[概念_Harness_Engineering_宿主编排工程]] — 围绕基础模型构建的宿主与编排系统工程，编排执行/思考/工具/上下文/产物与评估（AI-Agent/harness, AI-Agent/coding）
 - [[概念_RSI递归自我改进]] — AI 系统自我迭代优化机制，现代 Agent 范式通过 Harness 优化而非直接改写权重（RSI）
 - [[概念_Harness优化阶梯]] — Agent 系统优化对象五级演进：Prompt -> 结构化上下文 -> 工作流 -> Harness 代码 -> 优化器代码（RSI, AI-Agent/context-engineering）
-- [[概念_Self-Harness]] — AI 自我改进工程闭环，通过“弱点挖掘—修改提议—保留集验证”确保 Harness 代码持续进化（RSI, AI-Agent/coding）
+- [[概念_Self_Harness_自主进化宿主系统]] — AI 自我改进工程闭环，通过“弱点挖掘—修改提议—保留集验证”确保 Harness 代码持续进化（RSI, AI-Agent/coding）
 - [[概念_假性死链鉴别]] — 图谱审计中死链三维甄别法：命名不匹配重定向、多余路径前缀去前缀化、待建节点按需生长（Skill/knowledge-bank）
 - [[概念_级联清理安全边界]] — 物理底座删除时的级联清理红线，包含上下文半衰期解耦与行内安全感知（Inline Safety Sensing）（Skill/knowledge-bank）
 - [[概念_单向推导数据管线]] — LLM Wiki 数据流向纪律：raw/ -> wiki/sources/ -> wiki/entities|concepts，严禁末端产物越级直连 raw/（Skill/knowledge-bank）
@@ -810,8 +810,8 @@
 
 ### 代码强化学习与 Reward Hacking（Ingest Batch 4）
 - [[概念_代码强化学习]] — 利用测试套件 pass/fail 可验证奖励进后训练，激活长程规划元能力但易诱发作弊（LLM/training/RL, AI-Agent/coding）
-- [[概念_Hardened_Sandbox]] — 移走 `.git` 版本历史与物理隔离断网的强化沙盒评测规范，防范模型检索与历史提交作弊（LLM/training/RL, AI-Agent/eval）
-- [[概念_Inoculation_Prompting]] — Anthropic 提出训练集中注入接种提示词重构奖励篡改语义，消除安全掩盖副作用（LLM/training/RL）
+- [[概念_Hardened_Sandbox_强化隔离沙盒]] — 移走 `.git` 版本历史与物理隔离断网的强化沙盒评测规范，防范模型检索与历史提交作弊（LLM/training/RL, AI-Agent/eval）
+- [[概念_Inoculation_Prompting_接种提示词]] — Anthropic 提出训练集中注入接种提示词重构奖励篡改语义，消除安全掩盖副作用（LLM/training/RL）
 
 ### Agent Skill 系统化评价（Ingest Batch 4）
 - [[概念_Agent_Skill系统化评价框架]] — 覆盖触发路由、执行轨迹、产物质量、效率成本、安全权限、可复用性六维评估体系（AI-Agent/skill, AI-Agent/eval）
@@ -907,16 +907,15 @@
 - [[实体_Anthropic]] — 安全导向前沿 AI 研究实验室，研发 Claude 系列模型、Agent Skills 元工具架构与接种提示词（AI-Agent/skill, LLM/arch）
 
 ### 机器学习与数据科学基础（Batch Ingest）
-- [[概念_t-SNE算法]] — t-SNE 是一种流形学习降维与二维可视化算法。其 CPU 计算具有 O(N²) 二次方复杂度瓶颈，大样本下极其缓慢。tSNE-CUDA 可提供高达 700 倍的 GPU 极速提升，但目前硬件上仅支持生成二维投影（n_components=2）。（ML/dimension-reduction, t-SNE, GPU/acceleration）
+- [[概念_t_SNE_降维算法]] — t-SNE 是一种流形学习降维与二维可视化算法。其 CPU 计算具有 O(N²) 二次方复杂度瓶颈，大样本下极其缓慢。tSNE-CUDA 可提供高达 700 倍的 GPU 极速提升，但目前硬件上仅支持生成二维投影（n_components=2）。（ML/dimension-reduction, t-SNE, GPU/acceleration）
 - 不平衡数据的kNN优化 — 未分类概念摘要（machinelearning, knn, imbalanceddata）
-- [[概念_主成分分析_PCA]] — 未分类概念摘要（machinelearning, dimensionalityreduction, mathematics）
+- [[概念_PCA_主成分分析]] — 未分类概念摘要（machinelearning, dimensionalityreduction, mathematics）
 - [[概念_稀疏随机投影]] — 基于 Johnson-Lindenstrauss 引理的线性降维算法，以稀疏随机矩阵突破 PCA 的三次时间复杂度瓶颈，在超高维场景近乎保持欧氏距离与下游任务质量（Skill/data-analysis, DeepLearning）
 - 交替注意力_Alternating_Attention — 交替注意力（Alternating Attention）是 ModernBERT 采用的记忆体高效注意力机制，通过在每三层交替使用一层全局注意力与滑动窗口局部注意力（128个最近 token），打破了传统 BERT 全局注意力二次方复杂度的瓶颈。（attentionmechanism, modernbert, efficiency）
-- [[概念_倒排文件索引_IVF]] — 倒排文件索引 (Inverted File Index, IVF) 是一种常用的高维向量近似最近邻搜索 (ANNS) 索引方法。它通过聚类将空间划分为若干分区，使得检索时只需搜索最近质心所在的局部胞腔，从而极大降低计算复杂度并提高检索速度。（vector-database, vector-search, indexing, approximate-nearest-neighbor）
 - 分块阻断技术_Blocking — 未分类概念摘要（datadeduplication, computerscience, optimization, algorithm）
 - [[概念_分类模型校准]] — 未分类概念摘要（machine-learning, deep-learning, model-calibration, probability-estimation）
 - [[概念_双编码器与交叉编码器]] — 阐述了成对句子评分（Pairwise Sentence Scoring）中双编码器（Bi-encoders）与交叉编码器（Cross-encoders）的机制差异、优劣势及应用场景，并简要介绍了结合两者的 AugSBERT 架构。（sentencesimilarity, biencoder, crossencoder, nlp）
-- [[概念_固定内存_Memory_Pinning]] — 未分类概念摘要（deep-learning, pytorch, gpu, performance-tuning）
+- [[概念_Memory_Pinning_固定内存]] — 未分类概念摘要（deep-learning, pytorch, gpu, performance-tuning）
 - 学习曲线 — 学习曲线（Learning Curve）是评估机器学习模型表现是否随数据量增加而提升的重要诊断工具。它能帮助开发者科学决策是否需要投入成本收集更多数据，诊断模型当前是处于高方差还是高偏差阶段。（machinelearning, modeldiagnostics, learningcurve）
 - 数据科学核心数学定义 — 整理并阐述了数据科学与机器学习中常用的核心数学定义，包括极大似然估计 (MLE)、标准分数 (Z-score)、最小二乘法 (OLS)、熵 (Entropy)、特征值与特征向量、R方系数 (R-squared)、KL散度、奇异值分解 (SVD) 以及拉格朗日乘子法。（data-science, mathematics, statistics, linear-algebra）
 - 数据集变量分类 — 未分类概念摘要（statistics, machine-learning, variable-types）
@@ -924,7 +923,7 @@
 - [[概念_机器学习损失函数]] — 未分类概念摘要（machinelearning, lossfunction, optimization）
 - 机器学习模型生产环境测试 — 机器学习模型在生产环境中的五种主流测试与部署策略，包括 A/B 测试、金丝雀测试、交叉测试、影子测试以及多臂强盗（MAB）部署，旨在降低新模型上线风险并评估真实环境表现。（MLOps, machinelearning, modeltesting）
 - 梯度提升决策树_GBDT — 未分类概念摘要（machinelearning, ensemblelearning, gbdt, supervisedlearning）
-- [[概念_梯度累积_Gradient_Accumulation]] — 梯度累积（Gradient Accumulation）是一种在硬件显存受限时，通过多次前向和反向传播累积梯度，再统一执行一次参数更新，从而在逻辑上等效实现大 Batch Size 训练的优化技术。（deeplearning, pytorch, optimization, training）
+- [[概念_Gradient_Accumulation_梯度累积]] — 梯度累积（Gradient Accumulation）是一种在硬件显存受限时，通过多次前向和反向传播累积梯度，再统一执行一次参数更新，从而在逻辑上等效实现大 Batch Size 训练的优化技术。（deeplearning, pytorch, optimization, training）
 - [[概念_神经网络训练优化综述]] — 汇总并分类总结了神经网络训练中的16种常见优化技术，涵盖硬件加速、混合精度、并行策略、显存管理、动量优化及 I/O 加载等维度，旨在建立起神经网络优化的大图景。（deeplearning, neuralnetwork, optimization, training）
 - 稀疏注意力 — 未分类概念摘要（deeplearning, llm, attentionmechanism, sparseattention）
 - 类别特征编码技术 — 未分类概念摘要（machine-learning, feature-engineering, data-preprocessing, representation-learning）

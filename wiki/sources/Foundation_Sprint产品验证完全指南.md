@@ -2,7 +2,7 @@
 type: source
 tags:
 - 创业
-summary: '**从 Design Sprint 到 Foundation Sprint**（详见 [[概念_Design_Sprint]]、[[概念_Foundation_Sprint]]）'
+summary: '**从 Design Sprint 到 Foundation Sprint**（详见 [[概念_Design_Sprint_设计冲刺]]、[[概念_Foundation_Sprint_基础冲刺]]）'
 sources:
 - raw/articles/7天验证产品思路、10小时找到基础共识：来自谷歌的“Foundation Spr....md
 updated: '2026-07-01'
@@ -17,11 +17,11 @@ updated: '2026-07-01'
 - **URL**：https://mp.weixin.qq.com/s?__biz=MzI0NTAwMzU1MA==&mid=2247504197&idx=1&sn=11698be60ec593a151706720934656fe
 
 
-前 Google Ventures、Design Sprint 创造者 Jake Knapp 与 John Zeratsky 设计的 [[概念_Foundation_Sprint]]：一个仅需约 10 小时、帮助超早期项目在动手开发之前奠定坚实战略基础的"前传"流程，最终产出可被 [[概念_Design_Sprint]] 验证的"创始假设"。
+前 Google Ventures、Design Sprint 创造者 Jake Knapp 与 John Zeratsky 设计的 [[概念_Foundation_Sprint_基础冲刺]]：一个仅需约 10 小时、帮助超早期项目在动手开发之前奠定坚实战略基础的"前传"流程，最终产出可被 [[概念_Design_Sprint_设计冲刺]] 验证的"创始假设"。
 
 ## Key Points
 
-- **从 Design Sprint 到 Foundation Sprint**（详见 [[概念_Design_Sprint]]、[[概念_Foundation_Sprint]]）
+- **从 Design Sprint 到 Foundation Sprint**（详见 [[概念_Design_Sprint_设计冲刺]]、[[概念_Foundation_Sprint_基础冲刺]]）
   - Design Sprint 诞生于 [[实体_Jake_Knapp]] 在 Google 挽救停滞三年项目（Google Meet 前身）的实验，提炼为五天标准流程：描绘路径(Map)→构思草图(Sketch)→做出决策(Decide)→构建原型(Prototype)→用户测试(Test)
   - Jake 和 John 离开 GV 创立 [[实体_Character_Capital]]，专注"0 阶段"超早期项目（无产品、无收入），发现 Design Sprint 之前缺少更关键的起点，于 2021-2022 年间创造 Foundation Sprint
   - Foundation Sprint：核心成员清空日程，约 10 小时（通常分两天，每天 4-6 小时），拍板所有关键决策，得出统一的"创始假设"(Founding Hypothesis)
@@ -42,7 +42,7 @@ updated: '2026-07-01'
     - 第二步 Magic Lenses 魔术镜头：客户专家/务实专家/增长专家/财务专家/差异化视角五种视角评估方案，可自定义镜头（Mellow 公司加了"信念"视角）
     - 第三步 权衡选择最重要的"镜头"做决策
 
-- **从假设到验证**（详见 [[概念_Design_Sprint]]）
+- **从假设到验证**（详见 [[概念_Design_Sprint_设计冲刺]]）
   - 创始假设固定句式："如果我们用[某个方法]为[某类客户]解决[某个问题]，我们相信他们会因为[差异化因素一]和[差异化因素二]而选择我们，而不是[竞争对手]。"
   - Design Sprint 用 Scorecard（计分卡）红/黄/绿三色打分：客户/问题/方法/差异化/共鸣(Click)
   - Latchet 案例：三次 Design Sprint 迭代（首次全红→出现黄色→全绿），将 3-4 个月工作压缩到三周
@@ -56,8 +56,8 @@ updated: '2026-07-01'
 
 ## Related Concepts
 
-- [[概念_Foundation_Sprint]]
-- [[概念_Design_Sprint]]
+- [[概念_Foundation_Sprint_基础冲刺]]
+- [[概念_Design_Sprint_设计冲刺]]
 - [[概念_差异化2x2分析]]
 - [[概念_Magic_Lenses魔术镜头]]
 - [[概念_先思考再行动]]

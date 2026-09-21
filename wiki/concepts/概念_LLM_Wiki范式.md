@@ -43,7 +43,7 @@ updated: '2026-07-22'
 
 ## 80 年知识管理思想谱系
 
-- **1945 年**：[[entities/实体_Vannevar_Bush|Vannevar Bush]] 提出 [[concepts/概念_Memex|Memex]] 构想，开创“关联性路径”与个人知识设备视角。
+- **1945 年**：[[entities/实体_Vannevar_Bush|Vannevar Bush]] 提出 [[concepts/概念_Memex_个人机电知识扩展系统|Memex]] 构想，开创“关联性路径”与个人知识设备视角。
 - **1950 年代**：[[entities/实体_Niklas_Luhmann|Niklas Luhmann]] 打造 [[concepts/概念_卡片盒笔记法|卡片盒笔记法 (Zettelkasten)]]，通过 9 万张索引卡建立“对话伙伴”。
 - **2026 年**：[[entities/实体_Andrej_Karpathy|Andrej Karpathy]] 引入 LLM 自动化维护，使知识库的记账与维基编织成本接近于零。
 

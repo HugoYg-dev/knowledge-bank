@@ -18,7 +18,7 @@ updated: 2026-08-04
 - **原始文章链接**: [LoRA/QLoRA explained from a business lens](https://www.dailydoseofds.com/implementing-lora-from-scratch-for-fine-tuning-llms/)
 
 # 关联概念与实体
-- [[concepts/概念_LoRA低秩适应微调|概念: LoRA与QLoRA微调]]
+- [[concepts/概念_LoRA_低秩适应微调|概念: LoRA与QLoRA微调]]
 
 # 核心要点
 - **传统全参数微调在大模型时代不可行**：

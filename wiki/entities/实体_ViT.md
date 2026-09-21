@@ -29,6 +29,6 @@ ViT（Vision Transformer）将图像分割为 patch，作为序列 token 输入�
 ## 关联
 
 - [[SAM_Segment_Anything模型]]（来源）
-- [[概念_Vision_Transformer]]
+- [[概念_Vision_Transformer_视觉Transformer]]
 - [[实体_SAM]]
 - [[实体_CLIP]]

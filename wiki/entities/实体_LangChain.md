@@ -57,5 +57,5 @@ LangChain 是构建 LLM/RAG 应用的框架，贯穿本 RAG 系列全部 5 篇�
 
 ## 关联
 
-- 相关概念：[[概念_RAG基础流程]]、[[概念_RAG_Routing]]、[[概念_Query_Construction]]、[[概念_文本切分五层级]]
+- 相关概念：[[概念_RAG基础流程]]、[[概念_RAG_Routing_检索智能路由]]、[[概念_Query_Construction_查询构建]]、[[概念_文本切分五层级]]
 - 来源：[[RAG基础_索引检索生成]]、[[RAG查询翻译_Query_Translation]]、[[RAG路由_Routing]]、[[RAG查询构造_Query_Construction]]、[[RAG索引进阶_Indexing]]、[[RAG文本切分_字符切分]]、[[RAG文本切分_递归字符切分]]、[[RAG文本切分_token优化]]、[[RAG文本切分_JSON文档切分]]、[[RAG文本切分_语义切分]]、[[RAG_12痛点与解决方案]]

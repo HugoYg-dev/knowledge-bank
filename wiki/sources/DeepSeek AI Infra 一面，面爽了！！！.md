@@ -137,8 +137,8 @@ class FailureMemory:
   - [[entities/实体_DeepSeek_Harness|DeepSeek Harness]]
   - [[entities/实体_Cordis|Cordis]]
 - 关联概念：
-  - [[concepts/概念_Harness_Engineering|Harness Engineering]]
-  - [[concepts/概念_Agentic_RAG|Agentic RAG]]
+  - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
+  - [[concepts/概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]
   - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
   - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]
   - [[concepts/概念_Agent_Skills元工具架构|Agent Skills元工具架构]]

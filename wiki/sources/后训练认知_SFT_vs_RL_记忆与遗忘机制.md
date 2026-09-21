@@ -35,11 +35,11 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_on-policy与off-policy数据]]
+- [[概念_On_Policy_与_Off_Policy_策略数据]]
 - [[概念_灾难性遗忘]]
 - alignment_tax
 - Forward_KL与Reverse_KL
-- [[概念_GRPO强化学习]]
+- [[概念_GRPO_群组相对策略优化]]
 - Llama-3
 - [[实体_Qwen2.5-Coder]]
 

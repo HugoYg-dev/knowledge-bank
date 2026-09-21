@@ -54,7 +54,7 @@ if layer_past is not None:
 
 ## 关联
 
-- [[概念_KV_Cache]] — KV Cache 原理、显存估算、适用条件
+- [[概念_KV_Cache_键值缓存]] — KV Cache 原理、显存估算、适用条件
 - [[概念_MLA低秩KV压缩]] — MLA 通过低秩压缩减少 KV Cache 显存
 - [[概念_线性注意力与混合注意力]] — Linear Attention 无需 KV Cache 的方案
 - [[大模型显存计算公式与优化]]

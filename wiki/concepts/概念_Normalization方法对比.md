@@ -35,4 +35,4 @@ updated: '2026-09-07'
 
 ## 关联
 
-- [[概念_Batch_Normalization]]
+- [[概念_Batch_Normalization_批归一化]]

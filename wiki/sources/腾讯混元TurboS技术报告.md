@@ -38,10 +38,10 @@ updated: '2026-07-01'
 
 ## 关联
 
-- [[概念_混合Mamba架构]] — Hybrid Transformer-Mamba 架构设计
+- [[概念_Mamba_混合架构]] — Hybrid Transformer-Mamba 架构设计
 - [[概念_MoE混合专家]] — FFN 层替换为 MoE
-- [[概念_自适应长短CoT]] — 动态切换推理深度的机制
-- [[概念_GRPO强化学习]] — Group Relative Policy Optimization
+- [[概念_CoT_自适应长短思考]] — 动态切换推理深度的机制
+- [[概念_GRPO_群组相对策略优化]] — Group Relative Policy Optimization
 - [[实体_腾讯混元TurboS]] — 混元 TurboS 模型实体
 - [[实体_Mamba2]] — Mamba2 SSM 架构组件
 - [[A_Visual_Guide_to_Mamba_and_SSM]] — Mamba 架构基础

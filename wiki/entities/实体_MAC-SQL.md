@@ -28,6 +28,6 @@ MAC-SQL（Multi-Agent Collaborative Framework for Text-to-SQL）是腾讯优图�
 
 ## 关联
 
-- 相关概念：[[概念_Text2SQL]]
+- 相关概念：[[概念_Text2SQL_自然语言转SQL]]
 - 实体：[[实体_优图实验室]]
 - 来源：[[优图RAG技术详解]]

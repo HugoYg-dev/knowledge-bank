@@ -39,7 +39,7 @@ Jeremy Hadfield, Barry Zhang, Kenneth Lien, Florian Scholz, Jeremy Fox, Daniel F
 
 ## 相关概念
 
-- [[概念_orchestrator-worker模式]]
+- [[概念_Orchestrator_Worker_编排工模式]]
 - [[概念_多智能体协调]]
 - [[概念_Agent思考工具]]
 

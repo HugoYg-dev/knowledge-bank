@@ -19,7 +19,7 @@ Selective State Space，Mamba 的核心创新，通过让 SSM 参数依赖输入
 
 ## 动机
 
-传统 SSM（S4）是线性时不变的——A/B/C 固定，无法区分不同输入内容，见 [[概念_线性时不变LTI]]。Mamba 要在保持 SSM 效率的同时获得 Transformer 的内容感知能力。
+传统 SSM（S4）是线性时不变的——A/B/C 固定，无法区分不同输入内容，见 [[概念_LTI_线性时不变]]。Mamba 要在保持 SSM 效率的同时获得 Transformer 的内容感知能力。
 
 ## 做法
 

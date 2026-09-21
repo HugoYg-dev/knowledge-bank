@@ -1,3 +1,29 @@
+## [2026-09-21] refactor/concepts | 概念命名标准化迁移 (Phase 3: 20 篇标点与分界符统一标准化) (+ index & backlinks)
+- **命名标准化与分界符规范化 (20 篇)**：
+  - 全量清理连字符 - 与中英无缝紧贴命名，统一采用标准下划线 _ 分界符规范化。
+  - 自动向目标概念页 YAML Frontmatter 注入标准 aliases 别名矩阵（覆盖英文缩写、英文全称、核心中文名与旧文件名），激活未链接提及。
+- **全库双链与总索引原子更新**：
+  - 遍历全库 Markdown 文档，完成对应双链引用的精准正则原子替换，确保 0 死链。
+  - 同步更新 `wiki/index.md`，对齐最新规范概念名称与去重。
+
+## [2026-09-21] refactor/concepts | 概念命名标准化迁移 (Phase 2: 69 篇纯英文概念补全核心中文名规范化) (+ index & backlinks)
+- **命名标准化补齐与重命名 (69 篇)**：
+  - 全量补全存量纯英文概念的核心中文释义，统一迁移为「英文缩写/专名 + 中文核心名」规范格式。
+  - 自动向目标概念页 YAML Frontmatter 注入标准 aliases 别名矩阵（覆盖英文缩写、英文全称、核心中文名与旧文件名），激活未链接提及。
+  - 深度合并冗余概念：`概念_GraphRAG` 整合并入已有的 `[[concepts/概念_Graph_RAG_知识图谱增强检索]]`。
+- **全库双链与总索引原子更新**：
+  - 遍历全库 Markdown 文档，完成对应双链引用的精准正则原子替换，确保 0 死链。
+  - 同步更新 `wiki/index.md`，对齐最新规范概念名称与去重。
+
+## [2026-09-21] refactor/concepts | 概念命名标准化迁移 (Phase 1): 26 篇中英倒置概念重命名规范化 (+ index & backlinks)
+- **命名标准化纠偏与重命名 (26 篇)**：
+  - 全量纠正存量概念中英倒置命名问题，统一迁移为「英文缩写/专名 + 中文核心名」规范格式。
+  - 自动向目标概念页 YAML Frontmatter 注入标准 aliases 别名矩阵（覆盖英文缩写、英文全称、核心中文名与旧文件名），激活未链接提及。
+  - 深度合并冗余概念对：`概念_倒排文件索引_IVF` 与 `概念_IVF倒排索引` 整合为 `[[concepts/概念_IVF_倒排索引]]`。
+- **全库双链与总索引原子更新**：
+  - 遍历全库 Markdown 文档，完成 103 个文件内对应双链引用的精准正则原子替换，确保 0 死链。
+  - 同步更新 `wiki/index.md`，对齐最新规范概念名称与去重。
+
 ## [2026-09-21] refactor/governance | 周度图谱治理：孤立实体降级、低频概念清理、7组概念深度合并与「Agent系统自动优化闭环」架构重构
 - **实体精简与降级 (4 篇)**：
   - 移除孤立实体 `实体_Sebastian_Raschka.md`；将 `实体_TypeSafe_AI.md`、`实体_Agent_TARS.md`、`实体_CherryStudio.md` 安全降级为引用页纯文本并剔除物理文件与总索引；保留 `DeepMind`、`LangSmith`、`Thinking_Machines_Lab`、`Unsloth` 四大核心基石实体。
@@ -5,8 +31,8 @@
   - 将全库 44 篇入度 <= 1 的经典机器学习单点技巧、工具命令及单篇特定提法概念在全库引用处安全替换为纯文本，清理概念文件并同步总索引。
 - **现成成熟概念深度无损合并吸收 (7 组)**：
   1. `概念_Python魔术方法` -> 并入 `[[concepts/概念_Python描述符]]`（增补 20 种常用对象协议与 `__new__`/`__init__` 生命周期对比）。
-  2. `概念_奖励函数与验证器` -> 并入 `[[concepts/概念_Verifiable_Reward]]`（增补验证器布尔判断 vs 奖励函数数值评分架构解耦与 R1 规则验证实践）。
-  3. `概念_LoRA与QLoRA微调` -> 并入 `[[concepts/概念_LoRA低秩适应微调]]`（增补多租户单底座共享与 25MB Adapter 动态热插拔工程优势）。
+  2. `概念_奖励函数与验证器` -> 并入 `[[concepts/概念_Verifiable_Reward_可验证奖励机制]]`（增补验证器布尔判断 vs 奖励函数数值评分架构解耦与 R1 规则验证实践）。
+  3. `概念_LoRA与QLoRA微调` -> 并入 `[[concepts/概念_LoRA_低秩适应微调]]`（增补多租户单底座共享与 25MB Adapter 动态热插拔工程优势）。
   4. `概念_LLM量化技术与离群值处理` -> 并入 `[[concepts/概念_量化]]`（增补高维激活值离群点机制及 RTN/GPTQ/AWQ/LLM.int8()/QAT 五方案全景对比）。
   5. `概念_扩散大语言模型_dLLMs` -> 并入 `[[concepts/概念_扩散模型]]`（跨领域延伸至 NLP 文本全掩码并行去噪生成及算力受限优势）。
   6. `概念_Graph_Engineering图工程` -> 并入 `[[concepts/概念_Loop_Engineering循环工程]]`（增补多 Agent 自主循环拓扑编排、条件路由与状态共享）。
@@ -22,7 +48,7 @@
   - 创建摘要页 `wiki/sources/Everyone is building LLM routers, we deprecated ours.md`，提炼 Manifest 废弃模型路由器的工程反思：复杂度无法单凭 Prompt 静态评估、Prefix Cache 降本效应（75%-90%）远超路由分流、工程师工具掌握度下降以及 Agent 系统维护不确定性成本过高。
 - **概念联动与新建**：
   - 新建 `wiki/concepts/概念_LLM模型路由.md`，梳理网关层模型路由机制与前缀缓存、稳定性之间的工程权衡。
-  - 关联现有概念 `[[concepts/概念_KV_Cache]]`。
+  - 关联现有概念 `[[concepts/概念_KV_Cache_键值缓存]]`。
 - **索引更新**：
   - `wiki/index.md` 挂载 Source 摘要与新建 Concept。
 
@@ -87,21 +113,21 @@
 ## [2026-09-15] ingest | raw/articles/Loop Engineering 详解：从管理执行到设计自收敛的循环.md & raw/articles/再见RAG！AI知识库还得是SAG，又快又准～.md -> wiki/sources/ (+ 概念_SAG)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/Loop Engineering 详解：从管理执行到设计自收敛的循环.md` -> `raw/articles/Loop Engineering 详解：从管理执行到设计自收敛的循环.md` -> `wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md`（增量更新已有概念 `[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]`，系统收录从一阶 AI Manager 到二阶 Senior Manager 的管理动作系统化演进、Skills/Verifier/Observability/Maker-Checker/Flywheel 五大系统组件映射，以及决定自收敛的两大硬杠杆：系统边界约束优于 TDD 路径约束、任务自动发现的发散性局限与人类核心防线）
-  - `Clippings/再见RAG！AI知识库还得是SAG，又快又准～.md` -> `raw/articles/再见RAG！AI知识库还得是SAG，又快又准～.md` -> `wiki/sources/再见RAG！AI知识库还得是SAG，又快又准～.md`（新建概念 `[[wiki/concepts/概念_SAG|概念_SAG]]`，系统收录基于查询时动态超边的 SQL 检索增强生成架构、入库期事项化与实体结构化建模、查询时基于 SQL JOIN 动态激活动态超边突破多跳推理断链、MuSiQue 4跳基准 80.04% Recall@5 SOTA、对底层弱向量模型的极高鲁棒性与确定性日志排障体系；增量更新已有概念 `[[wiki/concepts/概念_GraphRAG|概念_GraphRAG]]`，补充离线静态全局构图与查询时动态超边构图的成本与扩展性对比；增量更新已有概念 `[[wiki/concepts/概念_知识图谱RAG|概念_知识图谱RAG]]`，补充关系型 SQL 数据库替代图数据库解决千倍构图成本瓶颈的范式）
+  - `Clippings/再见RAG！AI知识库还得是SAG，又快又准～.md` -> `raw/articles/再见RAG！AI知识库还得是SAG，又快又准～.md` -> `wiki/sources/再见RAG！AI知识库还得是SAG，又快又准～.md`（新建概念 `[[wiki/concepts/概念_SAG_动态超边结构化检索增强生成|概念_SAG]]`，系统收录基于查询时动态超边的 SQL 检索增强生成架构、入库期事项化与实体结构化建模、查询时基于 SQL JOIN 动态激活动态超边突破多跳推理断链、MuSiQue 4跳基准 80.04% Recall@5 SOTA、对底层弱向量模型的极高鲁棒性与确定性日志排障体系；增量更新已有概念 `[[wiki/concepts/概念_Graph_RAG_知识图谱增强检索|概念_GraphRAG]]`，补充离线静态全局构图与查询时动态超边构图的成本与扩展性对比；增量更新已有概念 `[[wiki/concepts/概念_Graph_RAG_知识图谱增强检索|概念_知识图谱RAG]]`，补充关系型 SQL 数据库替代图数据库解决千倍构图成本瓶颈的范式）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保 0 errors、0 broken links、100% 索引挂载。
 
 ## [2026-09-15] ingest | raw/articles/How a GPU Actually Works.md & raw/articles/KV Cache Engineering for LLM Serving.md -> wiki/sources/ (+ 概念_Roofline模型与算力强度)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/How a GPU Actually Works.md` -> `raw/articles/How a GPU Actually Works.md` -> `wiki/sources/How_a_GPU_Actually_Works.md`（新建概念 `[[wiki/concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]`，系统收录算力强度公式、硬件平衡阈值拐点、算力天花板与带宽受限区划分及两阶段推理 Roofline 投影；增量更新已有概念 `[[wiki/concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]`，深度解构 GPU SIMT 架构、Warp 调度与分歧惩罚、零成本上下文切换掩盖访存延迟机制及四级存储阶梯；增量更新已有概念 `[[wiki/concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]`，量化分析 70B 模型自回归单 step 1 op/byte 极端带宽受限与 42ms 理论延迟下限，对比 Prefill 算力均摊饱和；增量更新已有概念 `[[wiki/concepts/概念_连续批处理|概念_连续批处理]]`，收录 Roofline 视角下并发批处理线性放大算力强度的系统机制；增量更新已有实体 `[[wiki/entities/实体_NVIDIA|实体_NVIDIA]]`，补充 H100 SXM5 与 H200 硬件平衡阈值演进数据）
-  - `Clippings/KV Cache Engineering for LLM Serving.md` -> `raw/articles/KV Cache Engineering for LLM Serving.md` -> `wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md`（增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，系统建立基于容量乘积公式的 12 项生产工程技术靶点映射表、正交乘法叠加效应与生产决策路径；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，补充其原生 FP8 KV 缓存与局部窗口跳过保护、自动前缀缓存 APC 块哈希链及 CPU 内存卸载 Host-Device 置换生产配置）
+  - `Clippings/KV Cache Engineering for LLM Serving.md` -> `raw/articles/KV Cache Engineering for LLM Serving.md` -> `wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md`（增量更新已有概念 `[[wiki/concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]`，系统建立基于容量乘积公式的 12 项生产工程技术靶点映射表、正交乘法叠加效应与生产决策路径；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，补充其原生 FP8 KV 缓存与局部窗口跳过保护、自动前缀缓存 APC 块哈希链及 CPU 内存卸载 Host-Device 置换生产配置）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保 0 errors、0 broken links、100% 索引挂载。
 
 ## [2026-09-15] ingest | raw/articles/A guide to the anatomy of effective commerce agents.md & raw/articles/AI 原生思维——像训练大模型一样训练自己.md -> wiki/sources/ (+ 概念_Presentation_Tools, 概念_电商智能体架构, 概念_AI原生思维, 实体_宝玉)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/A guide to the anatomy of effective commerce agents.md` -> `raw/articles/A guide to the anatomy of effective commerce agents.md` -> `wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md`（新建概念 `[[wiki/concepts/概念_Presentation_Tools|概念_Presentation_Tools]]`，系统收录将 UI 交互组件建模为强类型工具调用、服务端校验与状态注入驱动客户端渲染、屏幕布局反向感知空间指代及 eager streaming 延迟权衡；新建概念 `[[wiki/concepts/概念_电商智能体架构|概念_电商智能体架构]]`，系统收录单模型结合 Skills 架构、现有系统轻量封装、端到端与感知延迟双前线工程、三段式 Prompt Caching、异步记忆与外围 Harness 硬件安全控制；增量更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]`，补充其在电商智能体系统工程与表现层工具化方面的标准规范；增量更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充 Skills over Subagents 保持上下文完整性、工具结果即上下文与三段式缓存布局；增量更新已有概念 `[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`，补充类型化数据库记录存储、独立后台进程异步抽取写入与三层按需读取范式）
-  - `Clippings/AI 原生思维——像训练大模型一样训练自己.md` -> `raw/articles/AI 原生思维——像训练大模型一样训练自己.md` -> `wiki/sources/AI原生思维_像训练大模型一样训练自己.md`（新建概念 `[[wiki/concepts/概念_AI原生思维|概念_AI原生思维]]`，系统收录以模型能力边界找需求、能力/成本/价值三关过滤、高保真原型与非舒适区语言极速最小验证、围绕 Agent 重构设计三准则、代码两侧瓶颈论与个体自收敛反馈循环；新建实体 `[[wiki/entities/实体_宝玉|实体_宝玉]]`，收录其技术经历、Nano Banana 提示词、BaoCut 字幕工具研发历程、Claude Agent Skill 元工具架构深度解构及 AI 原生工程范式倡导；增量更新已有概念 `[[wiki/concepts/概念_AI-Native_SDLC|概念_AI-Native_SDLC]]`，结合一线实战补充代码两侧瓶颈论、设计文档作为跨会话上下文接力棒及非舒适区选型破局思考）
+  - `Clippings/A guide to the anatomy of effective commerce agents.md` -> `raw/articles/A guide to the anatomy of effective commerce agents.md` -> `wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md`（新建概念 `[[wiki/concepts/概念_Presentation_Tools_表现层工具化|概念_Presentation_Tools]]`，系统收录将 UI 交互组件建模为强类型工具调用、服务端校验与状态注入驱动客户端渲染、屏幕布局反向感知空间指代及 eager streaming 延迟权衡；新建概念 `[[wiki/concepts/概念_电商智能体架构|概念_电商智能体架构]]`，系统收录单模型结合 Skills 架构、现有系统轻量封装、端到端与感知延迟双前线工程、三段式 Prompt Caching、异步记忆与外围 Harness 硬件安全控制；增量更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]`，补充其在电商智能体系统工程与表现层工具化方面的标准规范；增量更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充 Skills over Subagents 保持上下文完整性、工具结果即上下文与三段式缓存布局；增量更新已有概念 `[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`，补充类型化数据库记录存储、独立后台进程异步抽取写入与三层按需读取范式）
+  - `Clippings/AI 原生思维——像训练大模型一样训练自己.md` -> `raw/articles/AI 原生思维——像训练大模型一样训练自己.md` -> `wiki/sources/AI原生思维_像训练大模型一样训练自己.md`（新建概念 `[[wiki/concepts/概念_AI原生思维|概念_AI原生思维]]`，系统收录以模型能力边界找需求、能力/成本/价值三关过滤、高保真原型与非舒适区语言极速最小验证、围绕 Agent 重构设计三准则、代码两侧瓶颈论与个体自收敛反馈循环；新建实体 `[[wiki/entities/实体_宝玉|实体_宝玉]]`，收录其技术经历、Nano Banana 提示词、BaoCut 字幕工具研发历程、Claude Agent Skill 元工具架构深度解构及 AI 原生工程范式倡导；增量更新已有概念 `[[wiki/concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期|概念_AI-Native_SDLC]]`，结合一线实战补充代码两侧瓶颈论、设计文档作为跨会话上下文接力棒及非舒适区选型破局思考）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要、3 篇新建 Concept 概念与 1 篇新建 Entity 实体。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，确保 0 errors、0 broken links、100% 索引挂载。
 
@@ -113,8 +139,8 @@
 
 ## [2026-09-15] ingest | raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md & 2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md -> wiki/sources/ (+ 概念_GQA分组查询注意力, 概念_MRL套娃表示学习)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/emails/dailydoseofds/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md`（新建概念 `[[wiki/concepts/概念_GQA分组查询注意力|概念_GQA分组查询注意力]]`，收录分组共享 KV 头平衡 MHA 精度与 MQA 显存、主流开源大模型采用现状；增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，补充 70B 模型 128k 上下文在 BF16 下 40GB 显存开销及解码阶段内存带宽瓶颈；增量更新已有概念 `[[wiki/concepts/概念_MLA多头潜在注意力|概念_MLA多头潜在注意力]]`，补充低秩潜向量压缩降至 MHA 5%-13% 显存；增量更新已有概念 `[[wiki/concepts/概念_FlashAttention|概念_FlashAttention]]`，明确其作为底层标准执行内核而非注意力类型的定位；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，详细记录 PagedAttention 虚拟内存分页映射消除 60%-80% 显存碎片机制）
-  - `Clippings/emails/dailydoseofds/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md` -> `raw/articles/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md` -> `wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md`（新建概念 `[[wiki/concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]`，收录多粒度嵌套损失训练、推理期免微调弹性截断与 OpenAI text-embedding-3 实践；增量更新已有概念 `[[wiki/concepts/概念_主成分分析_PCA|概念_主成分分析_PCA]]`，补充训练后降维投影机制及对索引与查询同步投影的强一致性要求；增量更新已有概念 `[[wiki/concepts/概念_Binary_Embedding|概念_Binary_Embedding]]`，补充 10M 向量 62GB 降至 2GB 的 32x 压缩比与 Over-fetch + Rescoring 两阶段检索范式；增量更新已有概念 `[[wiki/concepts/概念_Quantized_Embedding|概念_Quantized_Embedding]]`，补充 SQ 标量量化 4x 缩减及与 MRL 串联组合范式；增量更新已有概念 `[[wiki/concepts/概念_向量量化|概念_向量量化]]`，补充乘积量化 PQ 子向量切分与聚类 ID 编码查表近似机制）
+  - `Clippings/emails/dailydoseofds/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `raw/articles/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md` -> `wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md`（新建概念 `[[wiki/concepts/概念_GQA_分组查询注意力|概念_GQA分组查询注意力]]`，收录分组共享 KV 头平衡 MHA 精度与 MQA 显存、主流开源大模型采用现状；增量更新已有概念 `[[wiki/concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]`，补充 70B 模型 128k 上下文在 BF16 下 40GB 显存开销及解码阶段内存带宽瓶颈；增量更新已有概念 `[[wiki/concepts/概念_MLA_多头潜在注意力|概念_MLA多头潜在注意力]]`，补充低秩潜向量压缩降至 MHA 5%-13% 显存；增量更新已有概念 `[[wiki/concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]`，明确其作为底层标准执行内核而非注意力类型的定位；增量更新已有实体 `[[wiki/entities/实体_vLLM|实体_vLLM]]`，详细记录 PagedAttention 虚拟内存分页映射消除 60%-80% 显存碎片机制）
+  - `Clippings/emails/dailydoseofds/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md` -> `raw/articles/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md` -> `wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md`（新建概念 `[[wiki/concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]`，收录多粒度嵌套损失训练、推理期免微调弹性截断与 OpenAI text-embedding-3 实践；增量更新已有概念 `[[wiki/concepts/概念_PCA_主成分分析|概念_主成分分析_PCA]]`，补充训练后降维投影机制及对索引与查询同步投影的强一致性要求；增量更新已有概念 `[[wiki/concepts/概念_Binary_Embedding_二进制向量嵌入|概念_Binary_Embedding]]`，补充 10M 向量 62GB 降至 2GB 的 32x 压缩比与 Over-fetch + Rescoring 两阶段检索范式；增量更新已有概念 `[[wiki/concepts/概念_Quantized_Embedding_量化向量嵌入|概念_Quantized_Embedding]]`，补充 SQ 标量量化 4x 缩减及与 MRL 串联组合范式；增量更新已有概念 `[[wiki/concepts/概念_向量量化|概念_向量量化]]`，补充乘积量化 PQ 子向量切分与聚类 ID 编码查表近似机制）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 2 篇新建 Concept 概念。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
@@ -138,27 +164,27 @@
 
 ## [2026-09-09] ingest | raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md -> wiki/sources/ (+ 概念_稀疏随机投影)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/emails/dailydoseofds/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_稀疏随机投影|概念_稀疏随机投影]]`，收录基于 Johnson-Lindenstrauss 引理的高维保距投影、轮廓系数实测衰减阶梯、sklearn 工程实现与 VeRA 冻结随机矩阵大模型微调架构；增量更新已有概念 `[[wiki/concepts/概念_主成分分析_PCA|概念_主成分分析_PCA]]`，补充超高维空间三次复杂度算力瓶颈与稀疏投影选型对比）
+  - `Clippings/emails/dailydoseofds/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_Sparse-random-projections_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_稀疏随机投影|概念_稀疏随机投影]]`，收录基于 Johnson-Lindenstrauss 引理的高维保距投影、轮廓系数实测衰减阶梯、sklearn 工程实现与 VeRA 冻结随机矩阵大模型微调架构；增量更新已有概念 `[[wiki/concepts/概念_PCA_主成分分析|概念_主成分分析_PCA]]`，补充超高维空间三次复杂度算力瓶颈与稀疏投影选型对比）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 1 篇新建 Source 摘要与 1 篇新建 Concept 概念。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
 ## [2026-09-09] ingest | raw/articles/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md & 2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md -> wiki/sources/ (+ 概念_WebMCP)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/emails/dailydoseofds/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_Researchers-built-a-new-AI-inference-engine_1a0580f9aa7f67f1.md`（增量更新已有实体 `[[wiki/entities/实体_Superlinked_Inference_Engine|实体_Superlinked_Inference_Engine]]`，补充 Apache 2.0 开源发布、单进程显存时分复用与 LRU 置换机制、四大统一调用原语 encode/score/extract/generate 与自托管推理成本降低 4x 数据）
-  - `Clippings/emails/dailydoseofds/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_WebMCP|概念_WebMCP]]`，系统收录 Chrome/Edge 团队提出的浏览器端原生 Agent 工具声明规范、Agent 触达应用的六种方式全景对比、零配置/天然会话绑定/动态能力下发优势及 JS/HTML 声明接入范式；增量更新已有概念 `[[wiki/concepts/概念_MCP协议|概念_MCP协议]]`，扩展 WebMCP 浏览器客户端原生传输与交互范式）
+  - `Clippings/emails/dailydoseofds/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md` -> `raw/articles/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md` -> `wiki/sources/2026-08-31_WebMCP-by-Google,-clearly-explained!_1a0580f9aa7f67f1.md`（新建概念 `[[wiki/concepts/概念_WebMCP_浏览器原生工具协议|概念_WebMCP]]`，系统收录 Chrome/Edge 团队提出的浏览器端原生 Agent 工具声明规范、Agent 触达应用的六种方式全景对比、零配置/天然会话绑定/动态能力下发优势及 JS/HTML 声明接入范式；增量更新已有概念 `[[wiki/concepts/概念_MCP协议|概念_MCP协议]]`，扩展 WebMCP 浏览器客户端原生传输与交互范式）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
 ## [2026-09-09] ingest | raw/articles/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md & 2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md -> wiki/sources/
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
   - `Clippings/emails/dailydoseofds/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md` -> `raw/articles/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md` -> `wiki/sources/2026-08-13_Continuous-batching-in-LLMs_19ffcb7da4673b07.md`（增量更新已有概念 `[[wiki/concepts/概念_连续批处理|概念_连续批处理]]`，系统解构选择性批处理、vLLM V1 调度器四步算法与抢占重算机制）
-  - `Clippings/emails/dailydoseofds/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` -> `raw/articles/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` -> `wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md`（增量更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，系统解构四种缓存层次、Prefix Caching 块哈希链机制与五大静默失效陷阱）
+  - `Clippings/emails/dailydoseofds/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` -> `raw/articles/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md` -> `wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md`（增量更新已有概念 `[[wiki/concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]`，系统解构四种缓存层次、Prefix Caching 块哈希链机制与五大静默失效陷阱）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
 ## [2026-09-09] ingest | raw/articles/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md & 2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md -> wiki/sources/ (+ 实体_LongHorizon-Harness)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md` -> `raw/articles/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md` -> `wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md`（新建实体 `[[wiki/entities/实体_LongHorizon-Harness|实体_LongHorizon-Harness]]`，系统收录阿里高德开源的 MEA 审计状态机长时 Agent 编排框架；增量更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]` 与 `[[wiki/concepts/概念_Agent内存与状态管理|概念_Agent内存与状态管理]]`，详述三角色解耦、任务账本三元组与外层事务协调定位）
+  - `Clippings/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md` -> `raw/articles/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md` -> `wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md`（新建实体 `[[wiki/entities/实体_LongHorizon-Harness|实体_LongHorizon-Harness]]`，系统收录阿里高德开源的 MEA 审计状态机长时 Agent 编排框架；增量更新已有概念 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]` 与 `[[wiki/concepts/概念_Agent内存与状态管理|概念_Agent内存与状态管理]]`，详述三角色解耦、任务账本三元组与外层事务协调定位）
   - `Clippings/emails/dailydoseofds/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md` -> `raw/articles/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md` -> `wiki/sources/2026-08-25_5-context-compaction-strategies-for-LLM-agents_1a03a9b5c46e28a5.md`（增量更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充五种上下文压缩策略全景对比及前缀编辑破坏 Prefix Caching 导致成本倒挂的反直觉物理机制，结合 LMCache CacheBlend 任意位置缓存复用技术）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Entity 实体。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
@@ -173,22 +199,22 @@
 
 ## [2026-09-07] ingest | raw/articles/Manus团队测模型一点微小的经验.md & 模型答错事实题，先分清是没存进去，还是这次没取出来.md -> wiki/sources/ (+ 概念_事实性存储与提取分离诊断范式)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/Manus团队测模型一点微小的经验.md` -> `raw/articles/Manus团队测模型一点微小的经验.md` -> `wiki/sources/Manus团队测模型一点微小的经验.md`（增量更新已有实体 `[[wiki/entities/实体_Manus|实体_Manus]]`，系统收录 Research Bench 深度研究评估实践与过程笔记驱动 Harness 调优；增量更新已有概念 `[[wiki/concepts/概念_LLM应用评估体系|概念_LLM应用评估体系]]`，补充信息量与隐喻率两大可量化信号；增量更新已有概念 `[[wiki/concepts/概念_Deep-Research四大挑战|概念_Deep-Research四大挑战]]`，补充端到端复杂长文研究质量评测破解方案）
+  - `Clippings/Manus团队测模型一点微小的经验.md` -> `raw/articles/Manus团队测模型一点微小的经验.md` -> `wiki/sources/Manus团队测模型一点微小的经验.md`（增量更新已有实体 `[[wiki/entities/实体_Manus|实体_Manus]]`，系统收录 Research Bench 深度研究评估实践与过程笔记驱动 Harness 调优；增量更新已有概念 `[[wiki/concepts/概念_LLM应用评估体系|概念_LLM应用评估体系]]`，补充信息量与隐喻率两大可量化信号；增量更新已有概念 `[[wiki/concepts/概念_Deep_Research_四大挑战|概念_Deep-Research四大挑战]]`，补充端到端复杂长文研究质量评测破解方案）
   - `Clippings/模型答错事实题，先分清是没存进去，还是这次没取出来.md` -> `raw/articles/模型答错事实题，先分清是没存进去，还是这次没取出来.md` -> `wiki/sources/模型答错事实题，先分清是没存进去，还是这次没取出来.md`（新建核心概念 `[[wiki/concepts/概念_事实性存储与提取分离诊断范式|概念_事实性存储与提取分离诊断范式]]`，系统建立存储失败 vs 访问失败诊断框架、松严双尺测试法与四阶工程排查阶梯；增量更新已有概念 `[[wiki/concepts/概念_LLM外在幻觉与上下文内幻觉|概念_LLM外在幻觉与上下文内幻觉]]`，解构外在幻觉中访问受阻的本质病因；增量更新已有概念 `[[wiki/concepts/概念_自适应快慢思考|概念_自适应快慢思考]]`，补充 Thinking to Recall 参数记忆翻找机理）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要与 1 篇新建 Concept 概念。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
 ## [2026-09-07] ingest | raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md & 美团AI全栈Agent一面，笑着聊完挂了！！！.md -> wiki/sources/ (+ 实体_DeepSeek, 实体_美团, 概念_Agent工具调用沙箱)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/DeepSeek AI Infra 一面，面爽了！！！.md` -> `raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md` -> `wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md`（+ 新建实体 `[[wiki/entities/实体_DeepSeek|实体_DeepSeek]]`，全面梳理基础模型、Harness 微内核生态、原生 Agent 决策化路线与工程安全体系；更新已有实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`，补强组合优先 vs 框架优先哲学及 Meta-Harness 协调调度；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]`，补充分层早停、硬信号锚定、FailureMemory 防震荡及无人值守权限熔断；更新 `[[wiki/concepts/概念_Agentic_RAG|概念_Agentic_RAG]]`、`[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`、`[[wiki/concepts/概念_Agent完整轨迹评估|概念_Agent完整轨迹评估]]`、`[[wiki/concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]`）
-  - `Clippings/美团AI全栈Agent一面，笑着聊完挂了！！！.md` -> `raw/articles/美团AI全栈Agent一面，笑着聊完挂了！！！.md` -> `wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md`（+ 新建实体 `[[wiki/entities/实体_美团|实体_美团]]`，系统整合本地生活搜索理解、全栈 Agent 编排、推荐模型与三道代码安全防线；更新已有实体 `[[wiki/entities/实体_美团搜索|实体_美团搜索]]`；新建概念 `[[wiki/concepts/概念_Agent工具调用沙箱|概念_Agent工具调用沙箱]]`，跨篇沉淀文件系统隔离、网络白名单、cgroup 资源配额、受限运行时及 seccomp 系统调用拦截；增量更新 `[[wiki/concepts/概念_Agentic_RAG|概念_Agentic_RAG]]` 多轮澄清与短 query 扩写、`[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]` 决策信息压缩、`[[wiki/concepts/概念_Agent完整轨迹评估|概念_Agent完整轨迹评估]]` 逐步加压与客观验证标准、`[[wiki/concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]` 大规模路由与 MCP/Skill 分层）
+  - `Clippings/DeepSeek AI Infra 一面，面爽了！！！.md` -> `raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md` -> `wiki/sources/DeepSeek AI Infra 一面，面爽了！！！.md`（+ 新建实体 `[[wiki/entities/实体_DeepSeek|实体_DeepSeek]]`，全面梳理基础模型、Harness 微内核生态、原生 Agent 决策化路线与工程安全体系；更新已有实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`，补强组合优先 vs 框架优先哲学及 Meta-Harness 协调调度；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]`，补充分层早停、硬信号锚定、FailureMemory 防震荡及无人值守权限熔断；更新 `[[wiki/concepts/概念_Agentic_RAG_智能体检索增强生成|概念_Agentic_RAG]]`、`[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]`、`[[wiki/concepts/概念_Agent完整轨迹评估|概念_Agent完整轨迹评估]]`、`[[wiki/concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]`）
+  - `Clippings/美团AI全栈Agent一面，笑着聊完挂了！！！.md` -> `raw/articles/美团AI全栈Agent一面，笑着聊完挂了！！！.md` -> `wiki/sources/美团AI全栈Agent一面，笑着聊完挂了！！！.md`（+ 新建实体 `[[wiki/entities/实体_美团|实体_美团]]`，系统整合本地生活搜索理解、全栈 Agent 编排、推荐模型与三道代码安全防线；更新已有实体 `[[wiki/entities/实体_美团搜索|实体_美团搜索]]`；新建概念 `[[wiki/concepts/概念_Agent工具调用沙箱|概念_Agent工具调用沙箱]]`，跨篇沉淀文件系统隔离、网络白名单、cgroup 资源配额、受限运行时及 seccomp 系统调用拦截；增量更新 `[[wiki/concepts/概念_Agentic_RAG_智能体检索增强生成|概念_Agentic_RAG]]` 多轮澄清与短 query 扩写、`[[wiki/concepts/概念_Agent三层记忆体系|概念_Agent三层记忆体系]]` 决策信息压缩、`[[wiki/concepts/概念_Agent完整轨迹评估|概念_Agent完整轨迹评估]]` 逐步加压与客观验证标准、`[[wiki/concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]` 大规模路由与 MCP/Skill 分层）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要、1 篇新建 Concept 概念与 2 篇新建 Entity 实体。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
 ## [2026-09-07] ingest | raw/articles/Anthropic 重磅发布：AI Native 软件开发方法论.md & 阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md -> wiki/sources/ (+ 实体_zvec-grep, 概念_AI-Native_SDLC)
 - **深度阅读与物理归档 (Clippings -> raw/articles/)**：
-  - `Clippings/Anthropic 重磅发布：AI Native 软件开发方法论.md` -> `raw/articles/Anthropic 重磅发布：AI Native 软件开发方法论.md` -> `wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md`（+ 新建概念 `[[wiki/concepts/概念_AI-Native_SDLC|概念_AI-Native_SDLC]]`，详述六阶段产物驱动闭环、CLAUDE.md/Skill/Hook 三层规则防线与五层落地路线；更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]` 与 `[[wiki/entities/实体_Claude_Code|实体_Claude_Code]]`；更新已有概念 `[[wiki/concepts/概念_CLAUDE.md最佳实践|概念_CLAUDE.md最佳实践]]`）
-  - `Clippings/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md` -> `raw/articles/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md` -> `wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md`（+ 新建实体 `[[wiki/entities/实体_zvec-grep|实体_zvec-grep]]`，解构阿里开源 local-first 代码搜索基础设施与 CLI/MCP 架构；更新已有概念 `[[wiki/concepts/概念_混合检索|概念_混合检索]]`、`[[wiki/concepts/概念_Reciprocal_Rank_Fusion|概念_Reciprocal_Rank_Fusion]]`、`[[wiki/concepts/概念_BM25|概念_BM25]]`、`[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充代码语义检索与 Agent Context Acquisition 机制；更新已有实体 `[[wiki/entities/实体_Coggle|实体_Coggle]]` 与 `[[wiki/entities/实体_Claude_Code|实体_Claude_Code]]`）
+  - `Clippings/Anthropic 重磅发布：AI Native 软件开发方法论.md` -> `raw/articles/Anthropic 重磅发布：AI Native 软件开发方法论.md` -> `wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md`（+ 新建概念 `[[wiki/concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期|概念_AI-Native_SDLC]]`，详述六阶段产物驱动闭环、CLAUDE.md/Skill/Hook 三层规则防线与五层落地路线；更新已有实体 `[[wiki/entities/实体_Anthropic|实体_Anthropic]]` 与 `[[wiki/entities/实体_Claude_Code|实体_Claude_Code]]`；更新已有概念 `[[wiki/concepts/概念_CLAUDE.md最佳实践|概念_CLAUDE.md最佳实践]]`）
+  - `Clippings/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md` -> `raw/articles/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md` -> `wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md`（+ 新建实体 `[[wiki/entities/实体_zvec-grep|实体_zvec-grep]]`，解构阿里开源 local-first 代码搜索基础设施与 CLI/MCP 架构；更新已有概念 `[[wiki/concepts/概念_混合检索|概念_混合检索]]`、`[[wiki/concepts/概念_RRF_互易秩融合|概念_Reciprocal_Rank_Fusion]]`、`[[wiki/concepts/概念_BM25_最佳匹配25算法|概念_BM25]]`、`[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`，补充代码语义检索与 Agent Context Acquisition 机制；更新已有实体 `[[wiki/entities/实体_Coggle|实体_Coggle]]` 与 `[[wiki/entities/实体_Claude_Code|实体_Claude_Code]]`）
 - **总索引同步挂载**：在 `wiki/index.md` 中全量登记 2 篇新建 Source 摘要、1 篇新建 Concept 概念与 1 篇新建 Entity 实体。
 - **健康门禁验收**：执行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，图谱双链、Frontmatter 约束与索引一致性全部合格。
 
@@ -234,15 +260,15 @@
 ## [2026-08-20] ingest | raw/articles/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md & 深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md -> wiki/sources/ (+ 实体_Tavily, 实体_Exa, 概念_Agentic_Web_Search, 实体_DeepSeek_Harness, 实体_Cordis, 实体_Codex, 实体_鸭哥, 概念_Self-Harness, 概念_Harness_Engineering)
 - **深度阅读与语法净化**：深度阅读 `Clippings/` 下 Batch 2 的 2 篇剪藏文章，在 `tmp/sanitized/` 生成临时安全阅读视图，排查并确保语法纯净且无越级链接。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md` -> `raw/articles/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md` -> `wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md`（+ 新建概念 `[[wiki/concepts/概念_Agentic_Web_Search|概念_Agentic_Web_Search]]`，定义搜索 Stack 四层解耦与排序反馈信号重构；新建实体 `[[wiki/entities/实体_Tavily|实体_Tavily]]` 与 `[[wiki/entities/实体_Exa|实体_Exa]]`；更新已有实体 `[[wiki/entities/实体_鸭哥|实体_鸭哥]]`）
-  - `Clippings/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md` -> `raw/articles/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md` -> `wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md`（+ 更新已有实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`、`[[wiki/entities/实体_Cordis|实体_Cordis]]` 与 `[[wiki/entities/实体_Codex|实体_Codex]]`，系统性对比 DSH 命令式微内核与 Codex 声明式插件架构；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]` 与 `[[wiki/concepts/概念_Self-Harness|概念_Self-Harness]]`，深入解构 Agent Loop 插件化解耦对运行时自进化的底层支撑；更新已有实体 `[[wiki/entities/实体_鸭哥|实体_鸭哥]]`）
+  - `Clippings/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md` -> `raw/articles/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md` -> `wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md`（+ 新建概念 `[[wiki/concepts/概念_Agentic_Web_Search_智能体网络搜索|概念_Agentic_Web_Search]]`，定义搜索 Stack 四层解耦与排序反馈信号重构；新建实体 `[[wiki/entities/实体_Tavily|实体_Tavily]]` 与 `[[wiki/entities/实体_Exa|实体_Exa]]`；更新已有实体 `[[wiki/entities/实体_鸭哥|实体_鸭哥]]`）
+  - `Clippings/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md` -> `raw/articles/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md` -> `wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md`（+ 更新已有实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`、`[[wiki/entities/实体_Cordis|实体_Cordis]]` 与 `[[wiki/entities/实体_Codex|实体_Codex]]`，系统性对比 DSH 命令式微内核与 Codex 声明式插件架构；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]` 与 `[[wiki/concepts/概念_Self_Harness_自主进化宿主系统|概念_Self-Harness]]`，深入解构 Agent Loop 插件化解耦对运行时自进化的底层支撑；更新已有实体 `[[wiki/entities/实体_鸭哥|实体_鸭哥]]`）
 - **索引更新**：将新建的 2 篇 Source 摘要页、1 篇 Concept 概念页和 2 篇 Entity 实体页全量注册挂载至 `wiki/index.md` 对应列表中。
 
 ## [2026-08-20] ingest | raw/articles/Firecrawl 新工具开源，anydoc，将各种输入转换为md.md & 刚刚，DeepSeek Harness震撼开源：一切皆插件.md -> wiki/sources/ (+ 实体_anydoc, 实体_Firecrawl, 实体_DeepSeek_Harness, 实体_Cordis, 概念_Harness_Engineering, 概念_Self-Harness, 概念_文档结构切分)
 - **深度阅读与语法净化**：深度阅读 `Clippings/` 下的 2 篇剪藏文章，在 `tmp/sanitized/` 生成临时安全阅读视图，排查并确保语法纯净且无越级链接。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
   - `Clippings/Firecrawl 新工具开源，anydoc，将各种输入转换为md.md` -> `raw/articles/Firecrawl 新工具开源，anydoc，将各种输入转换为md.md` -> `wiki/sources/Firecrawl 新工具开源，anydoc，将各种输入转换为md.md`（+ 新建实体 `[[wiki/entities/实体_anydoc|实体_anydoc]]`、`[[wiki/entities/实体_Firecrawl|实体_Firecrawl]]`；更新已有概念 `[[wiki/concepts/概念_文档结构切分|概念_文档结构切分]]`，补充中间稿两阶段解析与 Rust 高性能数据提取范式）
-  - `Clippings/刚刚，DeepSeek Harness震撼开源：一切皆插件.md` -> `raw/articles/刚刚，DeepSeek Harness震撼开源：一切皆插件.md` -> `wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md`（+ 新建实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`、`[[wiki/entities/实体_Cordis|实体_Cordis]]`；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]`，补充微内核插件化、Session Log 权威事件源、生命周期交通规则与 PTC 模式；更新已有概念 `[[wiki/concepts/概念_Self-Harness|概念_Self-Harness]]`，补充自指 Cordis 运行时动态插件热插拔）
+  - `Clippings/刚刚，DeepSeek Harness震撼开源：一切皆插件.md` -> `raw/articles/刚刚，DeepSeek Harness震撼开源：一切皆插件.md` -> `wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md`（+ 新建实体 `[[wiki/entities/实体_DeepSeek_Harness|实体_DeepSeek_Harness]]`、`[[wiki/entities/实体_Cordis|实体_Cordis]]`；更新已有概念 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]`，补充微内核插件化、Session Log 权威事件源、生命周期交通规则与 PTC 模式；更新已有概念 `[[wiki/concepts/概念_Self_Harness_自主进化宿主系统|概念_Self-Harness]]`，补充自指 Cordis 运行时动态插件热插拔）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 4 篇 Entity 实体页全量注册挂载至 `wiki/index.md` 对应列表中。
 
 ## [2026-08-10] ingest | raw/articles/2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38.md -> wiki/sources/2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38.md (+ 实体_Superlinked_Inference_Engine, 实体_vLLM)
@@ -281,14 +307,14 @@
 ## [2026-08-04] ingest | raw/articles/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md & 2026-07-28_Technical-LLM-interview-question!_19faa9.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确认无行内伪 tag 和伪双链，确保语法纯净并兼容 Obsidian 双链图谱。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md` -> `raw/articles/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md` -> `wiki/sources/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md`（+ 新建概念 `[[wiki/concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]`，定义五大硬件架构的物理特征与存储层级，对比其动态/静态调度机制，深入分析存储带宽瓶颈，并交叉链入 `[[wiki/concepts/概念_FlashAttention|概念_FlashAttention]]` 阐述软硬件协同优化）
+  - `Clippings/DailyDoseOfDS/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md` -> `raw/articles/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md` -> `wiki/sources/2026-07-28_CPU-vs-GPU-vs-TPU-vs-NPU-vs-LPU_19faa9.md`（+ 新建概念 `[[wiki/concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]`，定义五大硬件架构的物理特征与存储层级，对比其动态/静态调度机制，深入分析存储带宽瓶颈，并交叉链入 `[[wiki/concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]` 阐述软硬件协同优化）
   - `Clippings/DailyDoseOfDS/2026-07-28_Technical-LLM-interview-question!_19faa9.md` -> `raw/articles/2026-07-28_Technical-LLM-interview-question!_19faa9.md` -> `wiki/sources/2026-07-28_Technical-LLM-interview-question!_19faa9.md`（+ 更新已有概念 `[[wiki/concepts/概念_LLM应用评估体系|概念_LLM应用评估体系]]`，在“Agent 完整交互轨迹评估”下追加“轨迹样本的轻量化过滤：基于轻量行为信号的采样策略”子小节，解构 DigitalOcean 的 3 类轻量行为信号以及隐性缺陷筛选的业务收益；追加 sources 关联）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 1 篇新建 Concept 概念页挂载到 `wiki/index.md`。
 
 ## [2026-08-04] ingest | raw/articles/2026-07-27_Graph-engineering-clearly-explained_19fa57.md & 2026-07-27_The-anatomy-of-diffusion-LLMs_19fa57.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确认无冲突字符，确保兼容 Obsidian 双链图谱。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-07-27_Graph-engineering-clearly-explained_19fa57.md` -> `raw/articles/2026-07-27_Graph-engineering-clearly-explained_19fa57.md` -> `wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md`（+ 新建概念 `[[concepts/概念_Loop_Engineering循环工程|概念_Graph_Engineering图工程]]`，定义图工程内涵与物理三要素，展示嵌套同轴系统，系统拆解四大痛点设计准则，并交叉链入 `[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]` 与 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]`）
+  - `Clippings/DailyDoseOfDS/2026-07-27_Graph-engineering-clearly-explained_19fa57.md` -> `raw/articles/2026-07-27_Graph-engineering-clearly-explained_19fa57.md` -> `wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md`（+ 新建概念 `[[concepts/概念_Loop_Engineering循环工程|概念_Graph_Engineering图工程]]`，定义图工程内涵与物理三要素，展示嵌套同轴系统，系统拆解四大痛点设计准则，并交叉链入 `[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]` 与 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]`）
   - `Clippings/DailyDoseOfDS/2026-07-27_The-anatomy-of-diffusion-LLMs_19fa57.md` -> `raw/articles/2026-07-27_The-anatomy-of-diffusion-LLMs_19fa57.md` -> `wiki/sources/2026-07-27_The-anatomy-of-diffusion-LLMs_19fa57.md`（+ 新建概念 `[[concepts/概念_扩散模型|概念_扩散大语言模型_dLLMs]]`，定义其物理架构，对比自回归计算特征与 memory-bound/compute-bound，剖析离散掩码扩散机制、Block Diffusion、注意力掩码退火与推理加速技术，交叉链入 `[[wiki/concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]`）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 2 篇 Concept 页面挂载到 `wiki/index.md` 对应列表分类中。
 
@@ -316,14 +342,14 @@
 ## [2026-08-04] ingest | raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md & 2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确认无冲突字符，确保兼容 Obsidian 双链图谱。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md` -> `raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md` -> `wiki/sources/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md`（+ 新建概念 `[[wiki/concepts/概念_解耦式KV缓存与LMCache|概念_解耦式KV缓存与LMCache]]`，深刻剖析 LMCache 的解耦独立旁路进程、多 GPU 零拷贝和多层并行异步加载机制，以及 CacheBlend 基于选择性重计算复用 KV Cache 提速 2-4x 的原理；更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`，追加智能体推理 62% 重复 token 浪费的斯坦福调研背景与交叉引用）
-  - `Clippings/DailyDoseOfDS/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md` -> `raw/articles/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md` -> `wiki/sources/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md`（+ 新建概念 `[[wiki/concepts/概念_SparDA预测式KV缓存预取|概念_SparDA预测式KV缓存预取]]`，剖析 SparDA 利用 Forecast 投影异步预取下一层 KV 块从而实现数据传输与计算重叠（Overlap）的机制，及分组级廉价选择器提速原理，总结 1.7x 解码加速、5.3x 吞吐量增幅与 +6.5 长推理准确率物理收益，交叉链入 `[[概念_LLM推理两阶段]]`；更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]` 建立双向链入与 sources 关联）
+  - `Clippings/DailyDoseOfDS/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md` -> `raw/articles/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md` -> `wiki/sources/2026-07-07_Rethinking-KV-caching-for-production-inference_19f3d7.md`（+ 新建概念 `[[wiki/concepts/概念_LMCache_解耦式KV缓存|概念_解耦式KV缓存与LMCache]]`，深刻剖析 LMCache 的解耦独立旁路进程、多 GPU 零拷贝和多层并行异步加载机制，以及 CacheBlend 基于选择性重计算复用 KV Cache 提速 2-4x 的原理；更新已有概念 `[[wiki/concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]`，追加智能体推理 62% 重复 token 浪费的斯坦福调研背景与交叉引用）
+  - `Clippings/DailyDoseOfDS/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md` -> `raw/articles/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md` -> `wiki/sources/2026-07-14_NVIDIA-researchers-built-a-new-transformer-variant_19f617.md`（+ 新建概念 `[[wiki/concepts/概念_SparDA预测式KV缓存预取|概念_SparDA预测式KV缓存预取]]`，剖析 SparDA 利用 Forecast 投影异步预取下一层 KV 块从而实现数据传输与计算重叠（Overlap）的机制，及分组级廉价选择器提速原理，总结 1.7x 解码加速、5.3x 吞吐量增幅与 +6.5 长推理准确率物理收益，交叉链入 `[[概念_LLM推理两阶段]]`；更新已有概念 `[[wiki/concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]` 建立双向链入与 sources 关联）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 2 篇 Concept 页面挂载到 `wiki/index.md` 对应列表中。
 
 ## [2026-08-04] ingest | raw/articles/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md & 2026-07-07_4-LLM-text-generation-strategies_19f3d7.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确保语法兼容 Obsidian 双链图谱。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md` -> `raw/articles/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md` -> `wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md`（+ 更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]`、`[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]` 与 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`。其中在 `概念_上下文工程` 中新增四层工程抽象阶梯的由内而外嵌套 Mermaid 关系图）
+  - `Clippings/DailyDoseOfDS/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md` -> `raw/articles/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md` -> `wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md`（+ 更新已有概念 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]`、`[[wiki/concepts/概念_Loop_Engineering循环工程|概念_Loop_Engineering循环工程]]` 与 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`。其中在 `概念_上下文工程` 中新增四层工程抽象阶梯的由内而外嵌套 Mermaid 关系图）
   - `Clippings/DailyDoseOfDS/2026-07-07_4-LLM-text-generation-strategies_19f3d7.md` -> `raw/articles/2026-07-07_4-LLM-text-generation-strategies_19f3d7.md` -> `wiki/sources/2026-07-07_4-LLM-text-generation-strategies_19f3d7.md`（+ 新建概念 `[[wiki/concepts/概念_LLM文本生成解码策略|概念_LLM文本生成解码策略]]`，详尽对比贪婪搜索、多项式采样、束搜索与对比搜索四大解码策略的特征与计算资源权衡，并交叉链接到 `LLM文本生成解码参数`）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 1 篇 Concept 页面挂载到 `wiki/index.md` 对应列表中。
 
@@ -337,7 +363,7 @@
 ## [2026-08-04] ingest | raw/articles/2026-06-24_Recursive-language-models_19ef72.md & 2026-06-25_6-components-of-context-engineering_19f00c.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确保语法纯净并兼容 Obsidian 双链图谱。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-06-24_Recursive-language-models_19ef72.md` -> `raw/articles/2026-06-24_Recursive-language-models_19ef72.md` -> `wiki/sources/2026-06-24_Recursive-language-models_19ef72.md`（+ 新建概念 `[[wiki/concepts/概念_RLM递归语言模型|概念_RLM递归语言模型]]`；更新已有概念 `[[wiki/concepts/概念_Context_Rot|概念_Context_Rot]]`）
+  - `Clippings/DailyDoseOfDS/2026-06-24_Recursive-language-models_19ef72.md` -> `raw/articles/2026-06-24_Recursive-language-models_19ef72.md` -> `wiki/sources/2026-06-24_Recursive-language-models_19ef72.md`（+ 新建概念 `[[wiki/concepts/概念_RLM递归语言模型|概念_RLM递归语言模型]]`；更新已有概念 `[[wiki/concepts/概念_Context_Rot_上下文衰退|概念_Context_Rot]]`）
   - `Clippings/DailyDoseOfDS/2026-06-25_6-components-of-context-engineering_19f00c.md` -> `raw/articles/2026-06-25_6-components-of-context-engineering_19f00c.md` -> `wiki/sources/2026-06-25_6-components-of-context-engineering_19f00c.md`（+ 更新已有概念 `[[wiki/concepts/概念_上下文工程|概念_上下文工程]]`）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 1 篇 Concept 页面挂载到 `wiki/index.md` 对应列表分类中。
 
@@ -372,7 +398,7 @@
 ## [2026-08-04] ingest | raw/articles/2026-05-03_How-LLM-inference-works-internally_19deee.md & 2026-05-05_How-does-BM25-ranking-algorithm-work_19dfa2.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确保语法纯净并兼容 Obsidian 双链图谱。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-05-03_How-LLM-inference-works-internally_19deee.md` -> `raw/articles/2026-05-03_How-LLM-inference-works-internally_19deee.md` -> `wiki/sources/2026-05-03_How-LLM-inference-works-internally_19deee.md`（+ 新建概念 `[[wiki/concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]`；更新已有概念 `[[wiki/concepts/概念_KV_Cache|概念_KV_Cache]]`）
+  - `Clippings/DailyDoseOfDS/2026-05-03_How-LLM-inference-works-internally_19deee.md` -> `raw/articles/2026-05-03_How-LLM-inference-works-internally_19deee.md` -> `wiki/sources/2026-05-03_How-LLM-inference-works-internally_19deee.md`（+ 新建概念 `[[wiki/concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]`；更新已有概念 `[[wiki/concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]`）
   - `Clippings/DailyDoseOfDS/2026-05-05_How-does-BM25-ranking-algorithm-work_19dfa2.md` -> `raw/articles/2026-05-05_How-does-BM25-ranking-algorithm-work_19dfa2.md` -> `wiki/sources/2026-05-05_How-does-BM25-ranking-algorithm-work_19dfa2.md`（+ 新建概念 `概念_BM25检索算法`）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 2 篇 Concept 页面挂载到 `wiki/index.md` 对应列表分类中。
 
@@ -387,13 +413,13 @@
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，对行内伪 tag 和伪双链进行排查，确认无需转义，保障 Obsidian 兼容。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
   - `Clippings/DailyDoseOfDS/2026-04-23_Cyclical-feature-encoding_19dbca.md` -> `raw/articles/2026-04-23_Cyclical-feature-encoding_19dbca.md` -> `wiki/sources/2026-04-23_Cyclical-feature-encoding_19dbca.md`（+ 新建概念 `概念_周期性特征编码`）
-  - `Clippings/DailyDoseOfDS/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md` -> `raw/articles/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md` -> `wiki/sources/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md`（+ 新建概念 `[[concepts/概念_LoRA低秩适应微调|概念_LoRA与QLoRA微调]]`）
+  - `Clippings/DailyDoseOfDS/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md` -> `raw/articles/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md` -> `wiki/sources/2026-04-23_LoRAQLoRA-explained-from-a-business-lens_19dbca.md`（+ 新建概念 `[[concepts/概念_LoRA_低秩适应微调|概念_LoRA与QLoRA微调]]`）
 - **索引更新**：将新建的 2 篇 Source 摘要页和 2 篇 Concept 页面挂载到 `wiki/index.md` 对应列表分类中。
 
 ## [2026-08-04] ingest | raw/articles/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md & 2026-04-12_20-most-common-magic-methods_19d838.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 和伪双链排查，确认无需要转义的内容。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md` -> `raw/articles/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md` -> `wiki/sources/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md`（+ 更新已有概念 `[[wiki/concepts/概念_Harness_Engineering|概念_Harness_Engineering]]` 和 `[[wiki/concepts/概念_Harness优化阶梯|概念_Harness优化阶梯]]`）
+  - `Clippings/DailyDoseOfDS/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md` -> `raw/articles/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md` -> `wiki/sources/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a.md`（+ 更新已有概念 `[[wiki/concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]` 和 `[[wiki/concepts/概念_Harness优化阶梯|概念_Harness优化阶梯]]`）
   - `Clippings/DailyDoseOfDS/2026-04-12_20-most-common-magic-methods_19d838.md` -> `raw/articles/2026-04-12_20-most-common-magic-methods_19d838.md` -> `wiki/sources/2026-04-12_20-most-common-magic-methods_19d838.md`（+ 新建概念 `[[concepts/概念_Python描述符|概念_Python魔术方法]]`）
 - **索引更新**：将新建 the 2 篇 Source 摘要页和 1 篇 Concept 页面挂载到 `wiki/index.md` 对应列表分类中。
 
@@ -450,7 +476,7 @@
 - **深度阅读与语法净化**：对 `Clippings/DailyDoseOfDS/` 下的 2 篇文章进行深度阅读与净化。确认行内无伪 tag 且无非 Obsidian 伪双链，保障图谱纯净与双链兼容。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
   - `Clippings/DailyDoseOfDS/2025-11-28_How-to-use-kNNs-for-imbalanced-datasets_19acc3.md` -> `raw/articles/2025-11-28_How-to-use-kNNs-for-imbalanced-datasets_19acc3.md` -> `wiki/sources/2025-11-28_How-to-use-kNNs-for-imbalanced-datasets_19acc3.md`（+ 新建概念 `不平衡数据的kNN优化`，详细剖析传统 kNN 的大类支配瓶颈，对比距离权重 kNN 与动态调整 $k$ 算法的工作原理与防淹没优势）
-  - `Clippings/DailyDoseOfDS/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md` -> `raw/articles/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md` -> `wiki/sources/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md`（+ 新建概念 `稀疏注意力`，阐明打破注意力二次方计算瓶颈的物理定位，详述局部窗口注意力与自适应学习注意力两种模式；并更新已有概念 `[[概念_FlashAttention]]` 与 `[[概念_自注意力复杂度]]`，在 `概念_FlashAttention.md` 中补充 SRAM 与 HBM 之间 I/O 搬运限制的硬件瓶颈背景）
+  - `Clippings/DailyDoseOfDS/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md` -> `raw/articles/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md` -> `wiki/sources/2025-11-28_Two-techniques-to-extend-the-context-length-of-LLMs_19acc3.md`（+ 新建概念 `稀疏注意力`，阐明打破注意力二次方计算瓶颈的物理定位，详述局部窗口注意力与自适应学习注意力两种模式；并更新已有概念 `[[概念_FlashAttention_快速注意力]]` 与 `[[概念_自注意力复杂度]]`，在 `概念_FlashAttention.md` 中补充 SRAM 与 HBM 之间 I/O 搬运限制的硬件瓶颈背景）
 - **索引更新**：将新生成的 2 篇 Source 摘要页和 2 篇 Concept 页面挂载至 `wiki/index.md`。
 
 ## [2026-08-03] ingest | raw/articles/ 2025-11-20_Descriptors-in-Python_19aa2d.md & 2025-11-20_Should-you-gather-more-data_19aa2d.md -> wiki/sources/ (+ affected pages)
@@ -463,14 +489,14 @@
 ## [2026-08-03] ingest | raw/articles/ 2025-10-27_ANN-search-using-inverted-file-index_19a274.md & 2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 与伪链接检查，确认无需转义，保障 Obsidian 双链与图谱兼容。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2025-10-27_ANN-search-using-inverted-file-index_19a274.md` -> `raw/articles/2025-10-27_ANN-search-using-inverted-file-index_19a274.md` -> `wiki/sources/2025-10-27_ANN-search-using-inverted-file-index_19a274.md`（+ 新建概念 `[[概念_倒排文件索引_IVF]]`，阐明其 K-Means 聚类和两阶段检索机制与复杂度推导，并客观分析边界点遗漏的精度折中；同时将此 Source 关联更新至已有概念 `[[概念_向量索引方法]]` 和 `[[概念_近似最近邻搜索]]` 中）
-  - `Clippings/DailyDoseOfDS/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md` -> `raw/articles/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md` -> `wiki/sources/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md`（+ 新建概念 `数据科学核心数学定义`，系统梳理 MLE、Z-score、OLS、信息熵、特征值与特征向量、R方系数、KL散度、SVD 和拉格朗日乘子法等数学工具与定义，并编织关联 `[[概念_t-SNE算法]]`、`[[概念_奇异值分解SVD]]` 和 `[[概念_主成分分析_PCA]]` 等丰富双链）
+  - `Clippings/DailyDoseOfDS/2025-10-27_ANN-search-using-inverted-file-index_19a274.md` -> `raw/articles/2025-10-27_ANN-search-using-inverted-file-index_19a274.md` -> `wiki/sources/2025-10-27_ANN-search-using-inverted-file-index_19a274.md`（+ 新建概念 `[[概念_IVF_倒排索引]]`，阐明其 K-Means 聚类和两阶段检索机制与复杂度推导，并客观分析边界点遗漏的精度折中；同时将此 Source 关联更新至已有概念 `[[概念_向量索引方法]]` 和 `[[概念_近似最近邻搜索]]` 中）
+  - `Clippings/DailyDoseOfDS/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md` -> `raw/articles/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md` -> `wiki/sources/2025-11-12_25-most-important-mathematical-definitions-in-DS_19a79c.md`（+ 新建概念 `数据科学核心数学定义`，系统梳理 MLE、Z-score、OLS、信息熵、特征值与特征向量、R方系数、KL散度、SVD 和拉格朗日乘子法等数学工具与定义，并编织关联 `[[概念_t_SNE_降维算法]]`、`[[概念_SVD_奇异值分解]]` 和 `[[概念_PCA_主成分分析]]` 等丰富双链）
 - **索引更新**：将新生成的 2 篇 Source 摘要页和 2 篇 Concept 页面全量挂载至 `wiki/index.md`。
 
 ## [2026-08-03] ingest | raw/articles/ 2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md & 2025-10-24_Top-Gradient-Boosting-Methods_19a177.md -> wiki/sources/ (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，进行行内伪 tag 与伪链接检查，确认无需转义，保障 Obsidian 双链与图谱兼容。
 - **物理文件归档与 Ingest 闭环 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md` -> `raw/articles/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md` -> `wiki/sources/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md`（+ 新建概念 `[[概念_主成分分析_PCA]]`，阐明数学原理、2D 可视化局限性及 CEV 曲线的工程应用，并以双向链接引出 `[[概念_t-SNE算法]]`）
+  - `Clippings/DailyDoseOfDS/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md` -> `raw/articles/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md` -> `wiki/sources/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md`（+ 新建概念 `[[概念_PCA_主成分分析]]`，阐明数学原理、2D 可视化局限性及 CEV 曲线的工程应用，并以双向链接引出 `[[概念_t_SNE_降维算法]]`）
   - `Clippings/DailyDoseOfDS/2025-10-24_Top-Gradient-Boosting-Methods_19a177.md` -> `raw/articles/2025-10-24_Top-Gradient-Boosting-Methods_19a177.md` -> `wiki/sources/2025-10-24_Top-Gradient-Boosting-Methods_19a177.md`（+ 新建概念 `梯度提升决策树_GBDT`，详细对比 XGBoost、LightGBM、CatBoost、NGBoost 四大框架在树生长、类别特征、采样机制及概率预测维度的异同与选型逻辑）
 - **索引更新**：将新生成的 2 篇 Source 摘要页和 2 篇 Concept 页面全量挂载至 `wiki/index.md`。
 
@@ -484,7 +510,7 @@
 ## [2026-08-03] ingest | Clippings -> raw/articles/ PyTorch DataLoader 与 Python 显式包管理 2 篇文章 Ingest 入库 (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，检查并确认无需要转义的行内伪 tag 和伪双链，保障 Obsidian 兼容。
 - **完成 2 篇文章 Ingest 闭环与物理文件归档 (Clippings -> raw/articles/)**：
-  - `Clippings/DailyDoseOfDS/2025-08-25_PyTorch-Dataloader-has-two-terrible-default-settings_198e2e.md` -> `raw/articles/2025-08-25_PyTorch-Dataloader-has-two-terrible-default-settings_198e2e.md` -> `wiki/sources/2025-08-25_PyTorch-Dataloader-has-two-terrible-default-settings_198e2e.md` (+ 更新已存在概念 `[[概念_固定内存_Memory_Pinning]]` 和 `[[概念_神经网络训练优化综述]]`，并在“固定内存”中补充 MNIST 43s 到 9s (4.7x 加速) 的实验对比数据，建立单向推导关联)
+  - `Clippings/DailyDoseOfDS/2025-08-25_PyTorch-Dataloader-has-two-terrible-default-settings_198e2e.md` -> `raw/articles/2025-08-25_PyTorch-Dataloader-has-two-terrible-default-settings_198e2e.md` -> `wiki/sources/2025-08-25_PyTorch-Dataloader-has-two-terrible-default-settings_198e2e.md` (+ 更新已存在概念 `[[概念_Memory_Pinning_固定内存]]` 和 `[[概念_神经网络训练优化综述]]`，并在“固定内存”中补充 MNIST 43s 到 9s (4.7x 加速) 的实验对比数据，建立单向推导关联)
   - `Clippings/DailyDoseOfDS/2025-08-30_Simplify-Python-imports-with-explicit-packaging_198fc6.md` -> `raw/articles/2025-08-30_Simplify-Python-imports-with-explicit-packaging_198fc6.md` -> `wiki/sources/2025-08-30_Simplify-Python-imports-with-explicit-packaging_198fc6.md` (+ 新建概念 `Python模块与包管理`，阐述 Module/Package/Library 定义、隐式命名空间包特性以及显式 `__init__.py` 的工程设计优势与实践，建立单向推导关联)
 - **全量同步索引**：将新建的 2 篇 Source 摘要页、1 篇新建 Concept 概念页全量挂载至 `wiki/index.md`。
 
@@ -499,21 +525,21 @@
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，转义行内伪 tag 与非 Obsidian 伪链接，确保 Markdown 图谱兼容。
 - **完成 2 篇文章 Ingest 闭环与物理文件归档 (Clippings -> raw/articles/)**：
   - `Clippings/DailyDoseOfDS/2025-06-30_4-strategies-for-multi-GPU-training_197c27.md` -> `raw/articles/2025-06-30_4-strategies-for-multi-GPU-training_197c27.md` -> `wiki/sources/2025-06-30_4-strategies-for-multi-GPU-training_197c27.md` (+ 更新已有概念 `[[概念_训练并行策略]]` 和 `[[概念_模型并行]]` 并追加此文中的流水线并行 micro-batch 重叠与通信瓶颈细节，建立单向推导关联)
-  - `Clippings/DailyDoseOfDS/2025-07-01_Accelerate-tSNE-with-GPU_197c7a.md` -> `raw/articles/2025-07-01_Accelerate-tSNE-with-GPU_197c7a.md` -> `wiki/sources/2025-07-01_Accelerate-tSNE-with-GPU_197c7a.md` (+ 新建概念 `[[概念_t-SNE算法]]` 并阐述其二次方复杂度瓶颈与 GPU 700x 速度提升及二维投影限制，建立单向推导关联)
+  - `Clippings/DailyDoseOfDS/2025-07-01_Accelerate-tSNE-with-GPU_197c7a.md` -> `raw/articles/2025-07-01_Accelerate-tSNE-with-GPU_197c7a.md` -> `wiki/sources/2025-07-01_Accelerate-tSNE-with-GPU_197c7a.md` (+ 新建概念 `[[概念_t_SNE_降维算法]]` 并阐述其二次方复杂度瓶颈与 GPU 700x 速度提升及二维投影限制，建立单向推导关联)
 - **全量同步索引**：将新建的 2 篇 Source 摘要页、1 篇新建 Concept 概念页全量挂载至 `wiki/index.md`。
 
 ## [2026-08-03] ingest | Clippings -> raw/articles/ RAG切分策略与网络训练优化 2 篇文章 Ingest 入库 (+ affected pages)
 - **深度阅读与语法净化**：深度阅读 `Clippings/DailyDoseOfDS/` 下的 2 篇文章，转义行内伪 tag，转义伪双链（此批次无直接受累行内 tag 或伪双链，但已确认兼容）。
 - **完成 2 篇文章 Ingest 闭环与物理文件归档 (Clippings -> raw/articles/)**：
   - `Clippings/DailyDoseOfDS/2025-05-29_5-chunking-strategies-for-RAG_1971dc.md` -> `raw/articles/2025-05-29_5-chunking-strategies-for-RAG_1971dc.md` -> `wiki/sources/2025-05-29_5-chunking-strategies-for-RAG_1971dc.md` (+ 关联 `[[概念_文本切分五层级]]` 等 5 篇已有概念页，追加 sources 并微调其正文，其中在“文本切分五层级”中添加了结构化对比矩阵以及 LLM-based chunking 原理优缺点)
-  - `Clippings/DailyDoseOfDS/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md` -> `raw/articles/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md` -> `wiki/sources/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md` (+ 新建 `[[概念_梯度累积_Gradient_Accumulation]]`、`[[概念_神经网络训练优化综述]]`；更新 `[[概念_固定内存_Memory_Pinning]]`、`[[概念_激活值重计算]]` 并追加此文中的性能数据点)
+  - `Clippings/DailyDoseOfDS/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md` -> `raw/articles/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md` -> `wiki/sources/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md` (+ 新建 `[[概念_Gradient_Accumulation_梯度累积]]`、`[[概念_神经网络训练优化综述]]`；更新 `[[概念_Memory_Pinning_固定内存]]`、`[[概念_激活值重计算]]` 并追加此文中的性能数据点)
 - **全量同步索引**：将新建的 2 篇 Source 摘要页、2 篇新建 Concept 概念页全量挂载至 `wiki/index.md`。
 
 ## [2026-08-03] ingest | Clippings -> raw/articles/ 2 篇新文章 Ingest 入库与归档 (+ affected pages)
 - **深度阅读与语法净化**：对 `Clippings/DailyDoseOfDS/` 下的 2 篇文章进行净化，确保行内伪 tag 和伪双链全部转义，保障图谱兼容。
 - **完成 2 篇文章 Ingest 闭环与物理文件归档 (Clippings -> raw/articles/)**：
   - `Clippings/DailyDoseOfDS/2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md` -> `raw/articles/2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md` -> `wiki/sources/2025-04-23_11-Types-of-Variables-in-a-Dataset_196640.md` (+ 新建 `数据集变量分类`)
-  - `Clippings/DailyDoseOfDS/2025-05-07_Memory-Pinning-to-accelerate-model-training_196ac3.md` -> `raw/articles/2025-05-07_Memory-Pinning-to-accelerate-model-training_196ac3.md` -> `wiki/sources/2025-05-07_Memory-Pinning-to-accelerate-model-training_196ac3.md` (+ 新建 `[[概念_固定内存_Memory_Pinning]]`)
+  - `Clippings/DailyDoseOfDS/2025-05-07_Memory-Pinning-to-accelerate-model-training_196ac3.md` -> `raw/articles/2025-05-07_Memory-Pinning-to-accelerate-model-training_196ac3.md` -> `wiki/sources/2025-05-07_Memory-Pinning-to-accelerate-model-training_196ac3.md` (+ 新建 `[[概念_Memory_Pinning_固定内存]]`)
 - **全量同步索引**：将新建的 2 篇 Source 摘要页、2 篇 Concept 概念页挂载至 `wiki/index.md`。
 
 ## [2026-08-03] ingest | Clippings -> raw Batch 任务 2 篇新文章 Ingest 入库与归档 (+ affected pages)
@@ -528,7 +554,7 @@
 ## [2026-07-22] ingest | Clippings -> raw Batch 4 任务 2 篇新文章 Ingest 入库与归档 (+ affected pages)
 - **深度阅读与语法净化**：对 `Clippings/` 下 2 篇文章进行阅读与语法净化，转义伪 Tag 与伪链接，确保 Markdown 图谱兼容。
 - **完成 2 篇文章 Ingest 闭环与归档移动 (Clippings -> raw/articles/)**：
-  - `Clippings/代码强化学习的双刃剑：前沿模型为何集体走向作弊.md` -> `raw/articles/代码强化学习的双刃剑：前沿模型为何集体走向作弊.md` -> `wiki/sources/代码强化学习的双刃剑_前沿模型为何集体走向作弊.md` (+ 新建 `[[概念_代码强化学习]]`、`[[概念_Verifiable_Reward]]`、`[[概念_Hardened_Sandbox]]`、`[[概念_Inoculation_Prompting]]`、`[[实体_鸭哥]]`、`[[实体_METR]]`、`[[实体_Cursor]]`、`[[实体_SWE-bench_Pro]]`、`[[实体_GLM-5.2]]`、`[[实体_GPT-5.6]]`、`[[实体_AI2_Tmax]]`；更新 `[[概念_Reward_Hacking]]`)
+  - `Clippings/代码强化学习的双刃剑：前沿模型为何集体走向作弊.md` -> `raw/articles/代码强化学习的双刃剑：前沿模型为何集体走向作弊.md` -> `wiki/sources/代码强化学习的双刃剑_前沿模型为何集体走向作弊.md` (+ 新建 `[[概念_代码强化学习]]`、`[[概念_Verifiable_Reward_可验证奖励机制]]`、`[[概念_Hardened_Sandbox_强化隔离沙盒]]`、`[[概念_Inoculation_Prompting_接种提示词]]`、`[[实体_鸭哥]]`、`[[实体_METR]]`、`[[实体_Cursor]]`、`[[实体_SWE-bench_Pro]]`、`[[实体_GLM-5.2]]`、`[[实体_GPT-5.6]]`、`[[实体_AI2_Tmax]]`；更新 `[[概念_Reward_Hacking_奖励攻陷与作弊]]`)
   - `Clippings/如何系统评价一个 Agent Skill？.md` -> `raw/articles/如何系统评价一个 Agent Skill？.md` -> `wiki/sources/如何系统评价一个_Agent_Skill.md` (+ 新建 `[[概念_Agent_Skill系统化评价框架]]`、`[[概念_Skill增量收益评估]]`、`[[概念_Skill误触发与漏触发评价]]`、`[[实体_Coggle]]`；更新 `[[概念_Agent完整轨迹评估]]`)
 - **全量同步索引**：将新建/更新的 2 篇 Source 摘要页、7 篇 Concept 概念页、8 篇 Entity 实体页全量挂载至 `wiki/index.md`。
 
@@ -542,7 +568,7 @@
 ## [2026-07-22] ingest | Clippings -> raw Batch 2 任务 2 篇新文章 Ingest 入库与归档 (+ affected pages)
 - **深度阅读与语法净化**：对 `Clippings/` 下 2 篇文章进行阅读与语法净化，转义行内伪 Tag 与非 Obsidian 伪链接，确保 Markdown 图谱兼容。
 - **完成 2 篇文章 Ingest 闭环与归档移动 (Clippings -> raw/articles/)**：
-  - `Clippings/OpenAI前VP Lilian Weng 新长文：AI 自自我改进的近路，不是改权重.md` -> `raw/articles/OpenAI前VP Lilian Weng 新长文：AI 自我改进的近路，不是改权重.md` -> `wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md` (+ 新建 `[[概念_Harness_Engineering]]`、`[[概念_RSI递归自我改进]]`、`[[概念_Harness优化阶梯]]`、`[[概念_Self-Harness]]`、`[[实体_Thinking_Machines_Lab]]`、`[[实体_Codex]]`；更新 `[[实体_翁荔_Lilian_Weng]]`)
+  - `Clippings/OpenAI前VP Lilian Weng 新长文：AI 自自我改进的近路，不是改权重.md` -> `raw/articles/OpenAI前VP Lilian Weng 新长文：AI 自我改进的近路，不是改权重.md` -> `wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md` (+ 新建 `[[概念_Harness_Engineering_宿主编排工程]]`、`[[概念_RSI递归自我改进]]`、`[[概念_Harness优化阶梯]]`、`[[概念_Self_Harness_自主进化宿主系统]]`、`[[实体_Thinking_Machines_Lab]]`、`[[实体_Codex]]`；更新 `[[实体_翁荔_Lilian_Weng]]`)
   - `Clippings/Vault死链治理与单向推导架构维护复盘.md` -> `raw/articles/Vault死链治理与单向推导架构维护复盘.md` -> `wiki/sources/Vault死链治理与单向推导架构维护复盘.md` (+ 新建 `[[概念_假性死链鉴别]]`、`[[概念_级联清理安全边界]]`、`[[概念_单向推导数据管线]]`、`[[实体_Hugo_Yang]]`、`[[实体_vault_lint]]`；更新 `[[概念_Ingest入库闭环]]`)
 - **全量同步索引**：将新建/更新的 2 篇 Source 摘要页、7 篇 Concept 概念页、5 篇 Entity 实体页全量挂载至 `wiki/index.md`。
 
@@ -550,8 +576,8 @@
 ## [2026-07-22] ingest | Clippings -> raw 2 篇新文章 Ingest 入库与归档 (+ affected pages)
 - **深度阅读与语法净化**：完成对 `Clippings/` 下 2 篇文章的全面阅读与语法净化（处理 frontmatter 格式与非 Obsidian 链接格式）。
 - **完成 2 篇文章 Ingest 闭环与归档移动 (Clippings -> raw)**：
-  - `Clippings/2026 程序员必读的向量数据库原理与选型指南 1.md` -> `raw/articles/2026 程序员必读的向量数据库原理与选型指南 1.md` -> `wiki/sources/2026程序员必读的向量数据库原理与选型指南.md` (+ 新建 `[[概念_标量过滤]]`、`[[概念_DiskANN]]`、`[[概念_IVF倒排索引]]`、`[[实体_Milvus]]`、`[[实体_pgvector]]`、`[[实体_Redis]]`、`[[实体_Chroma]]`、`[[实体_Pinecone]]`、`[[实体_Weaviate]]`；更新 `[[概念_向量数据库]]`、`[[实体_Qdrant]]`、`[[实体_Elasticsearch]]`)
-  - `Clippings/Karpathy发了一条推文2000万人看了，我照着他的方法搭了个知识库.md` -> `raw/articles/Karpathy发了一条推文2000万人看了，我照着他的方法搭了个知识库.md` -> `wiki/sources/Karpathy推文引发的LLM_Wiki知识库搭建实践.md` (+ 新建 `[[概念_Memex]]`、`[[概念_卡片盒笔记法]]`、`[[概念_Ingest入库闭环]]`、`[[实体_Vannevar_Bush]]`、`[[实体_Niklas_Luhmann]]`、`[[实体_qmd]]`；更新 `[[概念_LLM_Wiki范式]]`、`[[实体_Andrej_Karpathy]]`)
+  - `Clippings/2026 程序员必读的向量数据库原理与选型指南 1.md` -> `raw/articles/2026 程序员必读的向量数据库原理与选型指南 1.md` -> `wiki/sources/2026程序员必读的向量数据库原理与选型指南.md` (+ 新建 `[[概念_标量过滤]]`、`[[概念_DiskANN_磁盘图向量索引]]`、`[[概念_IVF_倒排索引]]`、`[[实体_Milvus]]`、`[[实体_pgvector]]`、`[[实体_Redis]]`、`[[实体_Chroma]]`、`[[实体_Pinecone]]`、`[[实体_Weaviate]]`；更新 `[[概念_向量数据库]]`、`[[实体_Qdrant]]`、`[[实体_Elasticsearch]]`)
+  - `Clippings/Karpathy发了一条推文2000万人看了，我照着他的方法搭了个知识库.md` -> `raw/articles/Karpathy发了一条推文2000万人看了，我照着他的方法搭了个知识库.md` -> `wiki/sources/Karpathy推文引发的LLM_Wiki知识库搭建实践.md` (+ 新建 `[[概念_Memex_个人机电知识扩展系统]]`、`[[概念_卡片盒笔记法]]`、`[[概念_Ingest入库闭环]]`、`[[实体_Vannevar_Bush]]`、`[[实体_Niklas_Luhmann]]`、`[[实体_qmd]]`；更新 `[[概念_LLM_Wiki范式]]`、`[[实体_Andrej_Karpathy]]`)
 - **全量同步索引**：将新建的 2 篇 Source 摘要页、6 篇 Concept 概念页、9 篇 Entity 实体页全量挂载至 `wiki/index.md`。
 
 ## [2026-07-08] chore/restructure-raw | 智能分类重构 raw/ 目录结构
@@ -597,8 +623,8 @@
   - 修复 `wiki/sources/RAG基础_索引检索生成.md` 与 `wiki/sources/PyTorch训练代码模板.md` 中的 `sources:` 字段及物理文献链接错位问题。
   - 移除 2 篇由错位引起的冗余短摘要页（`RAG从入门到精通系列1_基础RAG.md`、`PyTorch标准深度学习训练代码模板.md`）及对应的总索引条目。
 - **孤立文献 Ingest 补齐闭环 (raw/ -> wiki/sources/)**：
-  - `raw/articles/How we built our multi-agent research system.md` -> `wiki/sources/Anthropic多智能体研究系统构建.md` (+ 关联 `[[概念_orchestrator-worker模式]]` 等，修复历史死链)
-  - `raw/articles/LLM output eval in RL.md` -> `wiki/sources/GPT5通用验证器与RL探索.md` (+ 新建 `[[概念_Reward_Hacking]]`、`[[实体_OpenAI]]`、`[[实体_DeepMind]]`)
+  - `raw/articles/How we built our multi-agent research system.md` -> `wiki/sources/Anthropic多智能体研究系统构建.md` (+ 关联 `[[概念_Orchestrator_Worker_编排工模式]]` 等，修复历史死链)
+  - `raw/articles/LLM output eval in RL.md` -> `wiki/sources/GPT5通用验证器与RL探索.md` (+ 新建 `[[概念_Reward_Hacking_奖励攻陷与作弊]]`、`[[实体_OpenAI]]`、`[[实体_DeepMind]]`)
   - `raw/articles/[LLM]大模型显存计算公式与优化 - 知乎.md` -> `wiki/sources/大模型显存计算公式与优化.md` (+ 新建 `[[实体_NVIDIA]]`，关联并收敛至 `[[概念_激活值重计算]]`)
 - **全量同步索引**：将本次入库和新建的 3 篇 Source 摘要页、1 篇 Concept 概念页与 3 篇 Entity 实体页完整挂载至 `wiki/index.md`，实现 `sources/` 与 `raw/` 各 163 篇的 100% 1对1精准映射。
 
@@ -615,7 +641,7 @@
 - **删除处理**：根据用户指令删除 `Clippings/Mac 外接 2k 显示器攻略.md`。
 - **正文 Tag 净化**：深度转义 `raw/*.md` 正文中未加反斜杠转义的行内 `#xxx` 伪标签（共处理 207 篇、转义 5900 处伪标签），彻底解决合并至 raw 后正文注释/十六进制颜色码引发的全局 Tag 污染。
 - **完成 4 篇待入库文章 Ingest 闭环**：
-  - `raw/articles/Agent Loop使用语义早停比max_iterations硬截断节省38% Token 且质量不降.md` -> `wiki/sources/Agent Loop使用语义早停比max_iterations硬截断节省38% Token 且质量不降.md` (+ 补充更新 `[[概念_早停EarlyStopping]]`)
+  - `raw/articles/Agent Loop使用语义早停比max_iterations硬截断节省38% Token 且质量不降.md` -> `wiki/sources/Agent Loop使用语义早停比max_iterations硬截断节省38% Token 且质量不降.md` (+ 补充更新 `[[概念_Early_Stopping_早停机制]]`)
   - `raw/articles/Anthropic x ClaudeCode 官方插件：AI Agent 的领域知识插件——鸟窝.md` -> `wiki/sources/Anthropic x ClaudeCode 官方插件：AI Agent 的领域知识插件——鸟窝.md` (+ 关联 `[[概念_私域知识工程]]`、`[[概念_上下文工程]]`)
   - `raw/articles/从提示员到系统架构师：Loop Engineering 的范式跃迁.md` -> `wiki/sources/从提示员到系统架构师：Loop Engineering 的范式跃迁.md` (+ 补充更新 `[[概念_上下文工程]]` 演进阶梯)
   - `raw/articles/实测腾讯开源的 BrowserSkill：让 AI 直接用你登录好的浏览器.md` -> `wiki/sources/实测腾讯开源的 BrowserSkill：让 AI 直接用你登录好的浏览器.md` (+ 关联 `[[概念_智能体能力金字塔]]`)

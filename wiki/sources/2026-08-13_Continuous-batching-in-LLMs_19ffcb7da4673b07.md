@@ -41,7 +41,7 @@ updated: "2026-09-09"
 
 - **关联概念**：
   - [[concepts/概念_连续批处理|概念_连续批处理]]：动态拼车式推理调度核心范式。
-  - [[concepts/概念_KV_Cache|概念_KV_Cache]]：自回归自注意力缓存与显存块分配底座。
+  - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]：自回归自注意力缓存与显存块分配底座。
   - [[concepts/概念_LLM推理两阶段|概念_LLM推理两阶段]]：Prefill 与 Decode 阶段特征及其在调度预算中的统一处理。
 - **关联实体**：
   - [[entities/实体_vLLM|实体_vLLM]]：连续批处理与 V1 迭代调度器的行业标杆实现。

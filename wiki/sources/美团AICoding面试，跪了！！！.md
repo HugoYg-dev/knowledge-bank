@@ -30,9 +30,9 @@ updated: '2026-08-03'
 
 ## 关联概念
 
-- [[concepts/概念_HITL_MCP]]
+- [[concepts/概念_HITL_MCP_人机协同协议架构]]
 - [[concepts/概念_Agent完整轨迹评估]]
-- [[concepts/概念_Harness_Engineering]]
-- [[concepts/概念_Inoculation_Prompting]]
+- [[concepts/概念_Harness_Engineering_宿主编排工程]]
+- [[concepts/概念_Inoculation_Prompting_接种提示词]]
 
 > 📎 **物理文献**：[[raw/articles/美团AICoding面试，跪了！！！.md]]

@@ -33,7 +33,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 概念：[[概念_RAG_Routing]]
+- 概念：[[概念_RAG_Routing_检索智能路由]]
 - 实体：[[实体_LangChain]]
 - 系列上一篇：[[RAG查询翻译_Query_Translation]]
 - 系列下一篇：[[RAG查询构造_Query_Construction]]

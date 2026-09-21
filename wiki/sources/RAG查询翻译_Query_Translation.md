@@ -47,7 +47,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 概念：[[概念_Query_Translation]]、[[概念_RAG_Fusion]]、[[概念_HyDE]]
+- 概念：[[概念_Query_Translation_查询改写与翻译]]、[[概念_RAG_Fusion_多查询融合生成]]、[[概念_HyDE_假设文档嵌入]]
 - 实体：[[实体_LangChain]]
 - 系列上一篇：[[RAG基础_索引检索生成]]
 - 系列下一篇：[[RAG路由_Routing]]

@@ -24,10 +24,10 @@ Agent 系统的优化对象呈现由浅入深、自动化程度递增的五级�
 
 ## 阶梯演进意义
 
-到达 Level 4 与 Level 5 意味着系统具备了修改自身[[concepts/概念_Harness_Engineering|Harness]]与优化算法的能力，形成了完整的[[concepts/概念_RSI递归自我改进|递归自我改进（RSI）]]工程落地路径。
+到达 Level 4 与 Level 5 意味着系统具备了修改自身[[concepts/概念_Harness_Engineering_宿主编排工程|Harness]]与优化算法的能力，形成了完整的[[concepts/概念_RSI递归自我改进|递归自我改进（RSI）]]工程落地路径。
 
 ## 来源与参考
 
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
-- [[concepts/概念_Harness_Engineering]]
+- [[concepts/概念_Harness_Engineering_宿主编排工程]]
 - [[sources/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a|The Anatomy of an Agent Harness]]

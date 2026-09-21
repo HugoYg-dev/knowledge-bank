@@ -55,7 +55,7 @@ updated: "2026-09-09"
 
 ## 关联实体与概念
 
-- 关联概念：[[concepts/概念_WebMCP|概念_WebMCP]]、[[concepts/概念_MCP协议|概念_MCP协议]]、[[concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]、[[concepts/概念_MCP代码执行模式|概念_MCP代码执行模式]]
+- 关联概念：[[concepts/概念_WebMCP_浏览器原生工具协议|概念_WebMCP]]、[[concepts/概念_MCP协议|概念_MCP协议]]、[[concepts/概念_Agent_Skills元工具架构|概念_Agent_Skills元工具架构]]、[[concepts/概念_MCP代码执行模式|概念_MCP代码执行模式]]
 
 ---
 

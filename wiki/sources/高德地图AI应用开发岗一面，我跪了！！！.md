@@ -27,10 +27,10 @@ updated: "2026-08-03"
 
 ## 关联概念
 
-- [[concepts/概念_Reciprocal_Rank_Fusion]]
-- [[concepts/概念_重排序Rerank]]
+- [[concepts/概念_RRF_互易秩融合]]
+- [[concepts/概念_Rerank_重排序]]
 - [[concepts/概念_文档结构切分]]
 - [[concepts/概念_Agent三层记忆体系]]
-- [[concepts/概念_Harness_Engineering]]
+- [[concepts/概念_Harness_Engineering_宿主编排工程]]
 
 > 📎 **物理文献**：[[raw/articles/高德地图AI应用开发岗一面，我跪了！！！.md]]

@@ -28,8 +28,8 @@ updated: '2026-07-01'
 ## 关联
 
 - [[概念_Mamba选择机制]] — 选择机制原理
-- [[概念_状态空间模型SSM]] — SSM 基础
-- [[概念_线性时不变LTI]] — LTI 局限，motivates 选择机制
+- [[概念_SSM_状态空间模型]] — SSM 基础
+- [[概念_LTI_线性时不变]] — LTI 局限，motivates 选择机制
 - [[实体_Mamba]] — Mamba 模型
 - [[实体_Albert_Gu]] — Mamba 第一作者
 - [[实体_Tri_Dao]] — Mamba 第二作者，FlashAttention 作者

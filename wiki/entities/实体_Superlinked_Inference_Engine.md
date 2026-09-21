@@ -29,7 +29,7 @@ Superlinked Inference Engine（SIE）是由 Superlinked 团队开源的统一 AI
 
 - [[entities/实体_vLLM|实体_vLLM]]：单大模型高性能 Serving 引擎与多小模型协调服务层的对比选型。
 - [[concepts/概念_连续批处理|概念_连续批处理]]：推理服务中的动态调度与请求批处理机制。
-- [[concepts/概念_KV_Cache|概念_KV_Cache]]：大模型推理时的显存占用与管理。
+- [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]：大模型推理时的显存占用与管理。
 
 ## 来源
 

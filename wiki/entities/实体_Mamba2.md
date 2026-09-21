@@ -21,7 +21,7 @@ Albert Gu 和 Tri Dao 于 2024 年提出，在 Mamba1 基础上引入 SSD（状�
 
 ## 核心改进
 
-- SSD 框架：证明 SSM 与线性 Attention 等价，见 [[概念_状态空间对偶SSD]]
+- SSD 框架：证明 SSM 与线性 Attention 等价，见 [[概念_SSD_状态空间对偶]]
 - 并行参数投影：A/B/C/X 一次投影并行产生（类似 QKV），减少参数，支持张量并行
 - 额外归一化层：块末加 RMSNorm/GroupNorm，防止大模型不稳定
 - 多头模式：MHS/MCS/MIS/GIS（对应 Attention 的 MHA/MQA/MVA/GQA）
@@ -36,7 +36,7 @@ Albert Gu 和 Tri Dao 于 2024 年提出，在 Mamba1 基础上引入 SSD（状�
 ## 架构关系
 
 - 前置：[[实体_Mamba]]
-- 理论基础：[[概念_状态空间对偶SSD]]、[[概念_半可分离矩阵]]
+- 理论基础：[[概念_SSD_状态空间对偶]]、[[概念_半可分离矩阵]]
 
 ## 来源
 

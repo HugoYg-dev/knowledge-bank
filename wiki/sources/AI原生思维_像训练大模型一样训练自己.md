@@ -75,7 +75,7 @@ updated: "2026-09-15"
 
 - [[entities/实体_宝玉]]
 - [[concepts/概念_AI原生思维]]
-- [[concepts/概念_AI-Native_SDLC]]
+- [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期]]
 - [[concepts/概念_CLAUDE.md最佳实践]]
 - [[concepts/概念_Agent系统化工程]]
 - [[concepts/概念_Agent_Skills元工具架构]]

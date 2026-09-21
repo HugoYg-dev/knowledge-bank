@@ -27,7 +27,7 @@ Anthropic 官方为 Claude Code 提供了 13 个深度集成的第一方插件�
 
 ## 关联实体与概念
 
-- 概念关联：[[概念_私域知识工程]]、[[概念_上下文工程]]、[[概念_Spec_Driven_Development]]
+- 概念关联：[[概念_私域知识工程]]、[[概念_上下文工程]]、[[概念_Spec_Driven_Development_规范驱动开发]]
 - 实体关联：[[实体_Anthropic_Research系统]]
 
 ---

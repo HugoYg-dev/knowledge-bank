@@ -28,7 +28,7 @@ updated: "2026-08-03"
 ## 关联概念
 
 - [[concepts/概念_上下文工程]]
-- [[concepts/概念_Harness_Engineering]]
+- [[concepts/概念_Harness_Engineering_宿主编排工程]]
 - [[concepts/概念_Agent三层记忆体系]]
 - [[concepts/概念_多智能体协调]]
 

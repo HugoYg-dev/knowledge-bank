@@ -21,7 +21,7 @@ updated: '2026-08-03'
 2. **2D 可视化的局限性**：只有当前两个主成分（PC1 和 PC2）能够解释原始数据中绝大部分的方差时，2D PCA 可视化才有实际意义。如果前两主成分的累计解释方差比例过低（例如仅有 55%），降维后的可视化图像将具有极大的误导性，无法准确反映原始数据的分布。
 3. **累计解释方差（CEV）曲线**：可以使用累计解释方差（Cumulative Explained Variance）曲线来校验 PCA 可视化的可信度。在 Scikit-Learn 中，可以通过 `explained_variance_ratio_` 属性来获取各主成分的方差占比，并绘制累积图。
 4. **降维维度的确定**：CEV 曲线除了校验 2D 可视化，更重要的用途是帮助确定降维时应该保留的主成分数量（例如，在方差损失容忍范围内保留 5 个维度）。
-5. **专用可视化算法的推荐**：对于高维数据的可视化，PCA 往往表现不佳，应当使用专门为此设计的非线性降维可视化技术，例如 [[wiki/concepts/概念_t-SNE算法]]、UMAP 等。
+5. **专用可视化算法的推荐**：对于高维数据的可视化，PCA 往往表现不佳，应当使用专门为此设计的非线性降维可视化技术，例如 [[wiki/concepts/概念_t_SNE_降维算法]]、UMAP 等。
 
 ## 关键引文
 - "Thus, using PCA for visualization by projecting the data to 2-dimensions only makes sense if the first two principal components collectively capture most of the original data variance. This is rarely true in practice."
@@ -29,7 +29,7 @@ updated: '2026-08-03'
 
 ---
 关联概念：
-- [[wiki/concepts/概念_主成分分析_PCA]]
-- [[wiki/concepts/概念_t-SNE算法]]
+- [[wiki/concepts/概念_PCA_主成分分析]]
+- [[wiki/concepts/概念_t_SNE_降维算法]]
 
 > 📎 **物理文献**：[[raw/articles/2025-10-18_Avoid-Using-PCA-for-Visualization-Unless..._199f91.md]]

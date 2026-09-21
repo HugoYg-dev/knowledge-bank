@@ -33,7 +33,7 @@ lh-harness web --workspace-root .
 
 ## 核心架构：Manage-Execute-Audit (MEA) 三角色解耦
 
-传统 Agent 往往将执行（Tool Use）、状态维护（History Summary）与终局判断（Self Evaluation）全部耦合在同一个逐渐膨胀的会话中，导致 Compounding Errors、Goal Drift 与 [[concepts/概念_Context_Rot|Context Rot]]。LongHorizon-Harness 将长任务重新定义为**任务状态管理问题**，把系统解耦为三个结构隔离的角色：
+传统 Agent 往往将执行（Tool Use）、状态维护（History Summary）与终局判断（Self Evaluation）全部耦合在同一个逐渐膨胀的会话中，导致 Compounding Errors、Goal Drift 与 [[concepts/概念_Context_Rot_上下文衰退|Context Rot]]。LongHorizon-Harness 将长任务重新定义为**任务状态管理问题**，把系统解耦为三个结构隔离的角色：
 
 ```mermaid
 flowchart LR
@@ -85,9 +85,9 @@ LongHorizon-Harness 并非 Claude Code 或 Codex 的替代品，而是处于外�
 ## 关联概念与来源
 
 - **关联概念**：
-  - [[concepts/概念_Harness_Engineering|概念_Harness_Engineering]]
+  - [[concepts/概念_Harness_Engineering_宿主编排工程|概念_Harness_Engineering]]
   - [[concepts/概念_Agent内存与状态管理|概念_Agent内存与状态管理]]
-  - [[concepts/概念_Context_Rot|概念_Context_Rot]]
+  - [[concepts/概念_Context_Rot_上下文衰退|概念_Context_Rot]]
   - [[concepts/概念_上下文工程|概念_上下文工程]]
 - **支撑来源**：
   - [[wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md]]

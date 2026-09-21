@@ -34,7 +34,7 @@ report.show_browser()
 ## 关联
 
 - [[实体_Pandas]]
-- [[概念_自动EDA工具]]
+- [[概念_EDA_自动化分析工具]]
 
 ## 来源
 

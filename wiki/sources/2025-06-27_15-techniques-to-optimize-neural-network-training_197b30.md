@@ -35,8 +35,8 @@ updated: '2026-08-03'
 
 ## 联动概念
 - [[wiki/concepts/概念_神经网络训练优化综述]]
-- [[wiki/concepts/概念_梯度累积_Gradient_Accumulation]]
-- [[wiki/concepts/概念_固定内存_Memory_Pinning]]
+- [[wiki/concepts/概念_Gradient_Accumulation_梯度累积]]
+- [[wiki/concepts/概念_Memory_Pinning_固定内存]]
 - [[wiki/concepts/概念_激活值重计算]]
 
 > 📎 **物理文献**：[[raw/articles/2025-06-27_15-techniques-to-optimize-neural-network-training_197b30.md]]

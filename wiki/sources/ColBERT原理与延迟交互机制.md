@@ -13,9 +13,9 @@ updated: '2026-07-01'
 
 ## 三种向量表示方法
 
-- **稠密向量（Dense Vector）**：低维，由 BERT / [[概念_Sentence-BERT|Sentence-BERT]] 将整个句子编码为单个向量。
-- **稀疏向量（Sparse Vector）**：高维，由 [[概念_BM25|BM25]] / TF-IDF 产生。
-- **多向量（Multi-Vector）**：每段文本对应一组向量，每个 token 拥有自己的向量，[[概念_ColBERT|ColBERT]] 是其代表。
+- **稠密向量（Dense Vector）**：低维，由 BERT / [[概念_Sentence_BERT_孪生网络句向量|Sentence-BERT]] 将整个句子编码为单个向量。
+- **稀疏向量（Sparse Vector）**：高维，由 [[概念_BM25_最佳匹配25算法|BM25]] / TF-IDF 产生。
+- **多向量（Multi-Vector）**：每段文本对应一组向量，每个 token 拥有自己的向量，[[概念_ColBERT_多向量延迟交互检索|ColBERT]] 是其代表。
 
 ## ColBERT 核心
 
@@ -33,7 +33,7 @@ updated: '2026-07-01'
 
 ## 与稠密向量的对比
 
-| 维度 | 稠密向量（[[概念_Sentence-BERT|Sentence-BERT]]） | ColBERT（多向量） |
+| 维度 | 稠密向量（[[概念_Sentence_BERT_孪生网络句向量|Sentence-BERT]]） | ColBERT（多向量） |
 |------|------------------------------|--------------------|
 | 表示 | 单个向量 | 多向量（每 token 一个） |
 | 相似度复杂度 | O(1) | O(n·m)（可用矩阵运算优化） |
@@ -62,7 +62,7 @@ ColBERT 因逐 token 选取最大相似度而给出更高的相似度。相关�
 
 ## 关联
 
-- 相关概念：[[概念_ColBERT]]、[[概念_ColBERTv2残差压缩]]、[[概念_Dense_Embedding]]、[[概念_Sentence-BERT]]
+- 相关概念：[[概念_ColBERT_多向量延迟交互检索]]、[[概念_ColBERTv2残差压缩]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Sentence_BERT_孪生网络句向量]]
 - 实体：[[实体_ColBERT]]、[[实体_BGE-M3]]
 - 来源：[[ColBERTv2残差压缩演进]]
 

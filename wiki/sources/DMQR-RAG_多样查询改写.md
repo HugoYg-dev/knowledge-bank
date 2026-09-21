@@ -71,7 +71,7 @@ DMQR-RAG（Diverse Multi-Query Rewriting for RAG）提出一种多样化多查�
 
 ## 关联
 
-- 相关概念：[[概念_DMQR-RAG]]、[[概念_Query_Translation]]、[[概念_RAG_Fusion]]、[[概念_HyDE]]、[[概念_查询重写]]、[[概念_子查询分解]]
+- 相关概念：[[概念_DMQR_RAG_动态多查询改写检索]]、[[概念_Query_Translation_查询改写与翻译]]、[[概念_RAG_Fusion_多查询融合生成]]、[[概念_HyDE_假设文档嵌入]]、[[概念_查询重写]]、[[概念_子查询分解]]
 - 相关来源：[[RAG查询翻译_Query_Translation]]、[[RAG高级优化_query转换之路]]
 
 ---

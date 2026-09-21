@@ -42,8 +42,8 @@ vLLM 是一个开源 LLM 推理框架（UC Berkeley），以高吞吐量和低�
 - [[入局AI_Infra系统设计与挑战]]（来源）
 - [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]（来源）
 - [[sources/KV_Cache_Engineering_for_LLM_Serving]]（来源）
-- [[概念_KV_Cache]]
+- [[概念_KV_Cache_键值缓存]]
 - [[概念_连续批处理]]
-- [[concepts/概念_FlashAttention]]
+- [[concepts/概念_FlashAttention_快速注意力]]
 
 

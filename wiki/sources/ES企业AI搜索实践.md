@@ -31,7 +31,7 @@ updated: '2026-07-01'
 
 ### 混合检索（Hybrid Search）
 
-- 结合传统 [[概念_BM25|BM25]] + 稀疏向量 + 稠密向量。
+- 结合传统 [[概念_BM25_最佳匹配25算法|BM25]] + 稀疏向量 + 稠密向量。
 - 当数据特征未知时，使用 **RRF（Reciprocal Rank Fusion，倒数排名融合）** 做多路召回融合。
 - 当数据被充分理解时，使用加权线性组合（weighted linear combination）。
 
@@ -69,12 +69,12 @@ updated: '2026-07-01'
 - 流程：多路召回 → 重排序 → LLM 生成。
 - 混合检索消除幻觉（eliminate hallucination）。
 - Agentic RAG：通过工具调用实现日期过滤等能力。
-- [[概念_HyDE|HyDE]] 用于提升召回。
+- [[概念_HyDE_假设文档嵌入|HyDE]] 用于提升召回。
 - 关键短语 + 实体抽取 + 潜在问题生成，用于丰富索引内容。
 
 ## 关联
 
-- 相关概念：[[概念_向量数据库]]、[[概念_混合检索]]、[[概念_Agentic_RAG]]、[[概念_向量量化]]、[[概念_Embedding与向量检索]]、[[概念_BM25]]、[[概念_Reciprocal_Rank_Fusion]]、[[概念_Sparse_Embedding]]、[[概念_Dense_Embedding]]、[[概念_Quantized_Embedding]]、[[概念_重排序Rerank]]、[[概念_HyDE]]、[[概念_Chunk_Size与Overlap]]、[[概念_RAG_Fusion]]、[[概念_问题生成检索增强]]
+- 相关概念：[[概念_向量数据库]]、[[概念_混合检索]]、[[概念_Agentic_RAG_智能体检索增强生成]]、[[概念_向量量化]]、[[概念_Embedding与向量检索]]、[[概念_BM25_最佳匹配25算法]]、[[概念_RRF_互易秩融合]]、[[概念_Sparse_Embedding_稀疏向量嵌入]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Quantized_Embedding_量化向量嵌入]]、[[概念_Rerank_重排序]]、[[概念_HyDE_假设文档嵌入]]、[[概念_Chunk_Size_分块大小与重叠]]、[[概念_RAG_Fusion_多查询融合生成]]、[[概念_问题生成检索增强]]
 - 实体：[[实体_Elasticsearch]]、[[实体_HNSW]]
 - 相关来源：[[向量数据库原理与应用全解析]]、[[从BM25到Multi-Vector_6种Embedding演进路线]]
 

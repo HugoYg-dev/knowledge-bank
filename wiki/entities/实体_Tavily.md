@@ -24,7 +24,7 @@ updated: '2026-08-20'
    - 在 [[entities/实体_Codex|Codex]] 等声明式 Harness 中，Tavily 常作为标准网络搜索 MCP 工具或 API 插件配置使用，支持单次交互与多步调研任务。
 
 ## 关联页面
-- **核心概念**：[[concepts/概念_Agentic_Web_Search|Agentic Web Search（Agent 网络搜索架构）]]、[[concepts/概念_上下文工程|上下文工程]]、[[concepts/概念_Harness_Engineering|Harness Engineering]]
+- **核心概念**：[[concepts/概念_Agentic_Web_Search_智能体网络搜索|Agentic Web Search（Agent 网络搜索架构）]]、[[concepts/概念_上下文工程|上下文工程]]、[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
 - **同类搜索服务**：[[entities/实体_Exa|Exa]]
 - **相关系统**：[[entities/实体_Codex|Codex]]
 

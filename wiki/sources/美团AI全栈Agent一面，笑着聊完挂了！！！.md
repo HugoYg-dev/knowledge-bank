@@ -158,10 +158,10 @@ private int quickSelect(int[] nums, int left, int right, int k) {
   - [[entities/实体_美团|美团]]
   - [[entities/实体_美团搜索|美团搜索]]
 - 关联概念：
-  - [[concepts/概念_Agentic_RAG|Agentic RAG]]
+  - [[concepts/概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]
   - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
   - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]
   - [[concepts/概念_Agent_Skills元工具架构|Agent Skills元工具架构]]
-  - [[concepts/概念_Harness_Engineering|Harness Engineering]]
+  - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
 
 > 📎 **物理文献**：[[raw/articles/美团AI全栈Agent一面，笑着聊完挂了！！！.md]]
