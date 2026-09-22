@@ -11,8 +11,10 @@ aliases:
   - "Choice API"
   - "无生成判断接口"
   - "概念_Decision_Model"
-sources: ["wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md"]
-updated: "2026-09-21"
+sources: 
+  - "wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md"
+  - "wiki/sources/Laya开源_421M参数33毫秒System1决策.md"
+updated: "2026-09-22"
 ---
 
 # 概念：Decision Model (专用判断模型)
@@ -60,7 +62,7 @@ flowchart LR
 | **第二轮 (2021)** | [[entities/实体_OpenAI|OpenAI]] 的 `/classifications` 端点 | 允许通过少样本做标签分类与判定 | 2022 年官方主动下线，大厂认为通用生成更灵活 |
 | **第三轮 (2022)** | Cohere 的 Classify API | 输入文本与候选标签返回置信度分布 | 需每标签提供少样本，依赖上一代嵌入模型，2025 年进入半退役 |
 | **第四轮 (2025)** | fastino 的 GLiNER2 | 单次前向同时实现零样本动态分类、实体识别与提取 | 受限于 512 tokens 输入长度，缺少下游 Agent 应用带动，未出圈 |
-| **第五轮 (2026)** | TypeSafe 的 [[entities/实体_Jev|Jev]] 与本地读取 Logits 方案 | 零样本、百毫秒级确定性分布输出，深度融入 Agent 基础设施 | 伴随 Agent 长调用链需求与前沿模型（如 GPT-6/Claude Fable）蒸馏红利而爆发 |
+| **第五轮 (2026)** | TypeSafe 的 [[entities/实体_Jev|Jev]]、开源 [[entities/实体_Laya|Laya]] (421M) 与本地 Logits 提取方案 | 零样本、数十至百毫秒级确定性分布输出，基于 RLCD 强化学习严格校准，深度融入 Agent 基础设施 | 伴随 Agent 长调用链高频路由需求爆发，从闭源 API 快速向端侧开源高吞吐演进 |
 
 ---
 
@@ -86,10 +88,12 @@ flowchart LR
 ## 5. 关联概念与实体
 
 - **核心实体**：
+  - [[entities/实体_Laya|实体_Laya]]：421M Apache 2.0 开源 System 1 决策模型，33ms 极低延迟与严格概率校准。
   - [[entities/实体_Jev|实体_Jev]]：商业化云端判断模型接口代表。
   - [[entities/实体_Claude_Code|实体_Claude_Code]]、[[entities/实体_Codex|实体_Codex]]：内部深度集成工具命令拦截与前置分类步的 Agent。
   - [[entities/实体_LangChain|实体_LangChain]]：集成判断模型开发开源安全与路由中间件。
 - **核心概念**：
+  - [[concepts/概念_RLCD校准决策强化学习|概念_RLCD校准决策强化学习]]：采用严格适当评分规则复合奖励与策略梯度的强化学习决策校准范式。
   - [[concepts/概念_分类模型校准|概念_分类模型校准]]：Platt 缩放与温度缩放校准概率分布。
   - [[concepts/概念_LLM模型路由|概念_LLM模型路由]]：基于分类判断进行动态请求与模型分流。
   - [[concepts/概念_WebMCP_浏览器原生工具协议|概念_WebMCP_浏览器原生工具协议]]：UI Agent 中前端感知表征优化的关键协议。
@@ -98,4 +102,5 @@ flowchart LR
 
 ## 6. 支撑来源
 
-- [[sources/更好的替代品早已存在，Jev 留给研究的只剩时机|更好的替代品早已存在，Jev 留给研究的只剩时机]]
+- [[wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机|更好的替代品早已存在，Jev 留给研究的只剩时机]]
+- [[wiki/sources/Laya开源_421M参数33毫秒System1决策|Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策]]

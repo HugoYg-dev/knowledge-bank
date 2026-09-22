@@ -1546,3 +1546,5 @@
 - Merged & deduplicated: 实体_uv.md -> 概念_uv包管理器.md, 实体_gpt-oss.md -> 实体_OpenAI.md
 - Enhanced backlinks: 实体_FastAPI, 实体_OpenAI, 实体_Gemini
 - Synchronized wiki/index.md and updated link graph
+
+## [2026-09-22] ingest | raw/articles/Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策.md -> wiki/sources/Laya开源_421M参数33毫秒System1决策.md (+ entities/实体_Laya, entities/实体_Jev, concepts/概念_RLCD校准决策强化学习, concepts/概念_Decision_Model_专用判断模型)

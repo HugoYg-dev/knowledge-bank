@@ -3,6 +3,8 @@
 > 内容索引，每次 ingest 后更新。按类型分组。
 
 ## Sources
+
+- [[Laya开源_421M参数33毫秒System1决策]] — Convai Innovations 开源 421M 非自回归 System 1 决策模型 Laya，基于 ModernBERT 与 RLCD 强化学习实现 33ms 极低延迟与严格概率校准（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[更好的替代品早已存在，Jev 留给研究的只剩时机]] — 深度剖析 TypeSafe 推出的无生成判断接口 Jev，对比开源小模型本地提取 Logits 的工程表现，梳理判断 API 的五次浪潮演进史与智能体高频状态机解耦动因（LLM/inference, AI-Agent/tool-calling）
 - [[Everyone is building LLM routers, we deprecated ours]] — Manifest 团队反思并废弃其 LLM 模型路由器的实践经验：复杂度无法单凭 Prompt 判断、前缀缓存收益远高于路由分流，且不可预测性增加了 Agent 系统的维护代价（LLM/inference, Infra/serving）
 - [[新模型Jev_爆红一周_不生成文字只输出概率却被玩出了花]] — TypeSafe AI 推出非自回归概率决策模型 Jev 与 RLCD 范式（AI-Agent/tool-calling, LLM/inference）
@@ -588,6 +590,7 @@
 
 ## Entities
 
+- [[entities/实体_Laya]] — Convai Innovations 开源的 421M 非自回归 System 1 决策模型，采用 ModernBERT 与 RLCD 算法，以 33ms 延迟输出经过严格校准的决策概率与置信度（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[entities/实体_Jev]] — TypeSafe 推出的无生成文本概率分布输出接口，将分类判断从通用大模型中解耦，主打百毫秒级确定性选择与 Agent 状态路由（LLM/inference, AI-Agent/tool-calling）
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
