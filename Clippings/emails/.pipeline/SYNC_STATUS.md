@@ -1,6 +1,6 @@
 # Gmail 星标邮件同步状态
 
-> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-23T01:00:14+00:00`。
+> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-23T13:00:37+00:00`。
 
 ## 汇总
 
@@ -8,15 +8,15 @@
 | --- | --- | ---: |
 | 邮件 | discovered | 0 |
 | 邮件 | failed | 0 |
-| 邮件 | review | 0 |
+| 邮件 | review | 1 |
 | 邮件 | ingested | 58 |
 | 邮件 | ignored | 12 |
 | 邮件 | unhandled | 0 |
 | 路由 | pending | 11 |
-| 路由 | parsed | 59 |
+| 路由 | parsed | 60 |
 | 路由 | unhandled | 0 |
 | 路由 | failed | 0 |
-| 文章 | review | 0 |
+| 文章 | review | 2 |
 | 文章 | ingested | 88 |
 | 文章 | rejected | 20 |
 
@@ -24,10 +24,11 @@
 
 | Gmail ID | 来源 | 状态 | 主题 | 原因 |
 | --- | --- | --- | --- | --- |
-| - | - | - | 当前没有待处理邮件 | - |
+| `1a0ca86e233289fe` | dailydoseofds | review | Build your own Jev (100% local) |  |
 
 ## 待审文章
 
 | 文章 ID | Gmail ID | 来源 | 标题 | 文件 |
 | --- | --- | --- | --- | --- |
-| - | - | - | 当前没有待审文章 | - |
+| `1a0ca86e233289fe:1` | `1a0ca86e233289fe` | dailydoseofds |  Finally, an OpenRouter for agent harnesses  | [`2026-09-22_Finally,-an-OpenRouter-for-agent-harnesses_1a0ca86e233289fe.md`](../dailydoseofds/2026-09-22_Finally,-an-OpenRouter-for-agent-harnesses_1a0ca86e233289fe.md) |
+| `1a0ca86e233289fe:2` | `1a0ca86e233289fe` | dailydoseofds |  Build your own Jev (100% local)  | [`2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md`](../dailydoseofds/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md) |
