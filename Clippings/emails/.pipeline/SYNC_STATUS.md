@@ -1,6 +1,6 @@
 # Gmail 星标邮件同步状态
 
-> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-24T01:00:08+00:00`。
+> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-09-25T01:00:07+00:00`。
 
 ## 汇总
 
@@ -16,9 +16,9 @@
 | 路由 | parsed | 60 |
 | 路由 | unhandled | 0 |
 | 路由 | failed | 0 |
-| 文章 | review | 2 |
+| 文章 | review | 1 |
 | 文章 | ingested | 88 |
-| 文章 | rejected | 20 |
+| 文章 | rejected | 21 |
 
 ## 待处理邮件
 
@@ -30,5 +30,4 @@
 
 | 文章 ID | Gmail ID | 来源 | 标题 | 文件 |
 | --- | --- | --- | --- | --- |
-| `1a0ca86e233289fe:1` | `1a0ca86e233289fe` | dailydoseofds |  Finally, an OpenRouter for agent harnesses  | [`2026-09-22_Finally,-an-OpenRouter-for-agent-harnesses_1a0ca86e233289fe.md`](../dailydoseofds/2026-09-22_Finally,-an-OpenRouter-for-agent-harnesses_1a0ca86e233289fe.md) |
 | `1a0ca86e233289fe:2` | `1a0ca86e233289fe` | dailydoseofds |  Build your own Jev (100% local)  | [`2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md`](../dailydoseofds/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md) |

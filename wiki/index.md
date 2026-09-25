@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[Agent时代，RAG怎么选？这份指南一次讲清！]] — 系统梳理面向 Agent 的 RAG 技术选型指南：解构 Naive/Advanced/Modular 演进脉络，对比 GraphRAG、Agentic RAG、LLM Wiki 与上下文压缩，并建立检索与生成解耦的评估闭环及非 RAG 适用边界（RAG/retrieval, RAG/eval, AI-Agent/context-engineering）
 - [[Laya开源_421M参数33毫秒System1决策]] — Convai Innovations 开源 421M 非自回归 System 1 决策模型 Laya，基于 ModernBERT 与 RLCD 强化学习实现 33ms 极低延迟与严格概率校准（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[更好的替代品早已存在，Jev 留给研究的只剩时机]] — 深度剖析 TypeSafe 推出的无生成判断接口 Jev，对比开源小模型本地提取 Logits 的工程表现，梳理判断 API 的五次浪潮演进史与智能体高频状态机解耦动因（LLM/inference, AI-Agent/tool-calling）
 - [[Everyone is building LLM routers, we deprecated ours]] — Manifest 团队反思并废弃其 LLM 模型路由器的实践经验：复杂度无法单凭 Prompt 判断、前缀缓存收益远高于路由分流，且不可预测性增加了 Agent 系统的维护代价（LLM/inference, Infra/serving）
@@ -300,6 +301,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Modular_RAG_模块化检索增强生成]] — 将 RAG 拆解为可替换、可路由、可组合独立功能模块的架构范式，突破线性流程，支持条件分支、动态调度与循环迭代（RAG/retrieval）
 - [[concepts/概念_Decision_Model_专用判断模型]] — 将分类选择与概率估计从自回归生成中解耦的轻量级模型或接口，通过单次前向提取选项 Logits 映射概率分布，服务于 Agent 高频状态机跳转与动作决策（LLM/inference, AI-Agent/tool-calling）
 - [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
 - [[概念_RLCD校准决策强化学习]] — 面向判别式决策的置信度校准强化学习范式（LLM/training, AI-Agent/tool-calling）

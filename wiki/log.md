@@ -1,3 +1,16 @@
+## [2026-09-25] ingest | raw/articles/Agent时代，RAG怎么选？这份指南一次讲清！.md -> wiki/sources/Agent时代，RAG怎么选？这份指南一次讲清！.md (+ 概念_Modular_RAG_模块化检索增强生成, 概念_RAG基础流程, 概念_RAGAS_RAG评估框架, 概念_Agentic_RAG_智能体检索增强生成, 概念_文本切分五层级, 实体_RAGAS)
+- **深度阅读与要点提炼**：深度阅读剪藏文章《Agent时代，RAG怎么选？这份指南一次讲清！》，系统梳理 Agent 语境下 RAG 核心定位从单纯检索向上下文构建系统的范式演进，提炼五大场景技术选型、解耦评估闭环及五大非 RAG 适用边界。
+- **构建 Source 摘要页**：创建 `[[sources/Agent时代，RAG怎么选？这份指南一次讲清！]]`，全面收拢 Naive/Advanced/Modular 演进、GraphRAG vs LightRAG、Agentic RAG 检索记忆与引用校验、LLM Wiki 预编译、上下文硬/软压缩及 RAGAS 评估指标，文末完整附带物理文献插链。
+- **概念沉淀与联动**：
+  - 新建概念 `[[concepts/概念_Modular_RAG_模块化检索增强生成]]`：系统化沉淀十大核心独立模块（Loader/Splitter/Embedder/Retriever/Reranker/Query Rewriter/Fusion/Compressor/Generator/Evaluator）、条件分支/动态路由/循环编排机制及 AutoRAG/QuIM-RAG/OpenViking 等工程实践。
+  - 联动既有概念与实体：
+    - `[[concepts/概念_RAG基础流程]]`：增补上下文构建系统本质跃迁、三代演进主线与五大非 RAG 适用边界；
+    - `[[concepts/概念_RAGAS_RAG评估框架]]`：增补系统抗噪能力指标 Noise Sensitivity、指标异常定向工程调优映射表与测试集四象限构建法则；
+    - `[[concepts/概念_Agentic_RAG_智能体检索增强生成]]`：增补上下文充分性判别（Sufficient Context Agent）、Session 级 `consumed_ids` 过滤与 VimRAG 记忆 DAG、Citation Resolver 三层引用校验及全局量词验证边界；
+    - `[[concepts/概念_文本切分五层级]]`：增补 Late Chunking、Small-to-Big 与意图驱动切分三大进阶切分范式；
+    - `[[entities/实体_RAGAS]]`：更新指标体系与来源引用。
+- **归档移动与全量索引**：将原始剪藏文件从 `Clippings/` 安全移动至 `raw/articles/` 归档；同步在 `wiki/index.md` 挂载对应 Source 与新建 Concept。
+
 ## [2026-09-21] ingest | raw/articles/更好的替代品早已存在，Jev 留给研究的只剩时机.md -> wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md (+ 实体_Jev, 概念_Decision_Model_专用判断模型, 实体_鸭哥, 概念_分类模型校准, 概念_WebMCP_浏览器原生工具协议, 概念_LLM模型路由)
 - **深度阅读与语法净化**：深度阅读剪藏文章《更好的替代品早已存在，Jev 留给研究的只剩时机》，派生并审计临时只读净化视图，提炼 5 项结构化核心要点。
 - **构建 Source 摘要页**：创建 `[[sources/更好的替代品早已存在，Jev 留给研究的只剩时机]]`，系统梳理 Jev 概率接口本质、本地读 Logits 与云端四个工程指标对照、五轮判断 API 演进史与智能体高频状态机解耦动因，文末完整附带物理文献插链。

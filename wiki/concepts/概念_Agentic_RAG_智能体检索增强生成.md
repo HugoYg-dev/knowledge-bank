@@ -8,7 +8,8 @@ sources:
 - wiki/sources/Anthropic多智能体研究系统构建.md
 - wiki/sources/ES企业AI搜索实践.md
 - wiki/sources/优图RAG技术详解.md
-updated: '2026-09-21'
+- wiki/sources/Agent时代，RAG怎么选？这份指南一次讲清！.md
+updated: '2026-09-25'
 aliases:
 - Agentic RAG
 - Agentic-RAG
@@ -53,6 +54,15 @@ Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策
 - **双索引架构**：维护当前在线服务索引与后台正在构建的增量索引，构建完成通过指针原子切换；
 - **时间衰减加权**：检索评分引入指数衰减函数 $score = 	ext{similarity} 	imes \exp(-\lambda 	imes \Delta t)$，使高时效性内容获得自适应加权。
 
+### 4. 充分上下文评估与检索记忆治理
+- **Sufficient Context Agent（上下文充分性评估）**：在生成最终回答前，引入专用判别机制对比召回片段与任务目标，判断“当前信息是否足够支撑无幻觉回答”。若存在关键事实缺失，驱动智能体带着明确线索缺口发起二次定向检索。
+- **检索状态记忆与去重（Consumed IDs & VimRAG Memory DAG）**：多轮追问下避免重复召回相同片段。轻量方案通过维持 Session 级的 `consumed_ids` 过滤已用文档并做单次 doc 级去重；深度多模态长程推理则采用类似 VimRAG 的记忆有向无环图（DAG），跟踪已探索分支与证据路径。
+- **Citation Resolver（引用真实性三层防御）**：防范“正规引用标签下掩盖伪造事实”的高阶幻觉：
+  1. **规则校验**：检查 Citation ID 是否在召回列表中合法存在；
+  2. **Hash 校验**：核对 Chunk 内容哈希，防止因索引重建或文档更新产生漂移；
+  3. **语义蕴含校验**：对高风险断言通过 NLI 或 LLM-as-a-Judge 检验上下文是否严格蕴含该主张。
+- **能力边界（路径完成 vs 全局验证）**：Agentic RAG 核心解决“查 A 后才能知道去哪里查 B”的多跳路径发现，但无法可靠应对“全量统计与全局量词”（如“是否所有门店无差评”），后者应交由语义查询编译引擎（如 Evergreen）处理。
+
 ## 实践案例（ES）
 
 - 通过 LLM 提取日期等关键信息生成查询，添加时间过滤器（如准确找到 2025 年财务报告）
@@ -60,5 +70,5 @@ Agentic RAG 将自主智能体与 RAG 技术结合，通过动态管理检索策
 
 ## 关联
 
-- 相关概念：[[概念_RAG基础流程]]、[[概念_Memory_RAG_显式记忆增强检索]]、[[概念_HyDE_假设文档嵌入]]、[[概念_混合检索]]、迭代式检索、[[概念_Graph_RAG_知识图谱增强检索]]、[[概念_Graph_RAG_知识图谱增强检索]]
-- 来源：RAG综述_中科院2025、[[ES企业AI搜索实践]]、阿里RAG技术演进、[[优图RAG技术详解]]
+- 相关概念：[[概念_RAG基础流程]]、[[concepts/概念_Modular_RAG_模块化检索增强生成]]、[[概念_Memory_RAG_显式记忆增强检索]]、[[概念_HyDE_假设文档嵌入]]、[[概念_混合检索]]、[[概念_Rerank_重排序]]、[[概念_Graph_RAG_知识图谱增强检索]]、[[concepts/概念_RAGAS_RAG评估框架]]
+- 来源：RAG综述_中科院2025、[[ES企业AI搜索实践]]、阿里RAG技术演进、[[优图RAG技术详解]]、[[wiki/sources/Agent时代，RAG怎么选？这份指南一次讲清！.md]]

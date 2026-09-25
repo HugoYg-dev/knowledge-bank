@@ -7,7 +7,8 @@ sources:
 - wiki/sources/Agent Loop使用语义早停比max_iterations硬截断节省38% Token 且质量不降.md
 - wiki/sources/OpenAI_LLM应用最佳实践.md
 - wiki/sources/RAGAS评估RAG系统.md
-updated: '2026-07-01'
+- wiki/sources/Agent时代，RAG怎么选？这份指南一次讲清！.md
+updated: '2026-09-25'
 ---
 
 ## 简介
@@ -23,6 +24,7 @@ RAGAS 是专为 RAG（检索增强生成）系统设计的开源评估框架，�
 - 回答相关性（Answer Relevance）
 - 忠实性（Faithfulness）
 - 答案正确性（Answer Correctness）
+- 噪声敏感度（Noise Sensitivity）
 
 ## 技术特点
 
@@ -33,5 +35,5 @@ RAGAS 是专为 RAG（检索增强生成）系统设计的开源评估框架，�
 
 ## 关联
 
-- 相关概念：[[概念_RAGAS_RAG评估框架]]
-- 来源：[[RAGAS评估RAG系统]]、[[OpenAI_LLM应用最佳实践]]
+- 相关概念：[[概念_RAGAS_RAG评估框架]]、[[concepts/概念_Modular_RAG_模块化检索增强生成]]
+- 来源：[[RAGAS评估RAG系统]]、[[OpenAI_LLM应用最佳实践]]、[[wiki/sources/Agent时代，RAG怎么选？这份指南一次讲清！.md]]
