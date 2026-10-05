@@ -377,7 +377,6 @@
 - [[概念_Reward_Hacking_奖励攻陷与作弊]] — 奖励黑客：利用奖励模型漏洞取高分而非真正满足意图
 - [[概念_SFT数据三维度]] — 规模/质量/多样性三维度评估与数据选型配比
 - alignment_tax — 对齐税：安全与偏好对齐导致的模型通用能力或基础性能下降
-- [[概念_On_Policy_与_Off_Policy_策略数据]] — 强化学习训练中采样模型与目标优化策略的同源匹配关系
 - [[概念_多阶段训练策略]] — 从通用领域到垂直任务能力的退火精调流转路径
 - [[概念_灾难性遗忘]] — 微调新任务时导致原有预训练通用知识与能力退化
 - [[概念_智能体能力金字塔]] — 工具/规划/适应/接地气/常识推理五层能力
@@ -467,7 +466,6 @@
 - [[概念_Text2SQL_自然语言转SQL]] — 自然语言转 SQL，MAC-SQL 多智能体框架
 - [[概念_Graph_RAG_知识图谱增强检索]] — 图/树结构组织知识的检索增强生成
 - [[概念_知识树结构]] — 融合图与树优点的四级知识粒度树型图谱
-- [[概念_S2Dual社区检测]] — Structure+Semantics 双感知社区检测，超越 Leiden
 
 #### 语义搜索/系统设计/评估概念（批次8）
 - [[概念_Semantic_Search本质]] — metric embedding，document as index，无结构即灵活
@@ -546,7 +544,7 @@
 - [[概念_幻觉检测方法]] — FActScore/SAFE/SelfCheckGPT/TruthfulQA 检测体系（LLM/hallucination）
 - [[概念_LLM幻觉消除技术分类]] — 32 种技术两大分类：提示工程（RAG/反馈/提示微调）vs 模型开发（LLM/hallucination）
 - [[概念_抗幻觉方法]] — RARR/FAVA/Self-RAG/CoVe/FLAME/WebGPT 抵抗方法体系（LLM/hallucination）
-- [[concepts/概念_LLM文本生成解码策略|]] — 温度参数控制输出分布平滑度，高温增创意增幻觉，低温保准确减创意（LLM/hallucination, LLM/inference）
+- [[概念_LLM文本生成解码策略]] — 贪婪搜索/多项式采样/束搜索/对比搜索四大解码策略，结合温度参数与核采样平衡创造力与事实性（LLM/inference, LLM/hallucination）
 
 ### LLM/面试/训练/RL（批次9）
 - [[概念_Scaling_Law_AI团队扩展律]] — AI 团队规模与产出效率的悖论：小而精 vs 规模扩张（创业）
@@ -730,9 +728,8 @@
 - [[概念_uv包管理器]] — Rust 编写 pip 替代品，pyproject.toml+uv.lock，Docker 集成 10x 提速（Skill/python）
 - [[概念_Python循环优化技巧]] — 12 种 for 循环优化方法与提速比，map/set/lru_cache/filterfalse（Skill/python）
 - [[概念_Python函数式工具]] — map/lru_cache/filterfalse/Generator，C 实现替代显式循环（Skill/python）
-- [[概念_Python进阶特性]] — suppress/setrecursionlimit/Literal/__missing__/__subclasshook__（Skill/python）
+- [[概念_Python进阶特性]] — contextlib异常抑制/Literal类型/鸭子类型/描述符底层属性代理与对象魔术方法协议（Skill/python）
 - [[概念_Python并发与并行机制]] — 未分类概念摘要（python, concurrency, parallelism, gil, programming）
-- [[概念_Python描述符]] — Python 描述符（Descriptors）是实现底层属性代理的核心机制。通过控制属性的获取、修改和名称绑定，它能有效解决传统 @property getter/setter 机制在多属性校验时的代码冗余，并能在对象初始化时直接进行拦截校验。（python, oop, descriptor）
 - Python模块与包管理 — 未分类概念摘要（python, engineeringpractices, moduleandpackage）
 
 ### Skill/data-analysis（Phase 5 Batch 2）
@@ -943,7 +940,6 @@
 - [[概念_Claude_Code核心配置与原语]] — 未分类概念摘要（ClaudeCode, AITools, ConfigArchitecture）
 - 周期性特征编码 — 周期性特征在时序中的表现，传统线性编码的边界缺陷，Sine/Cosine 双通道单位圆投影映射及其等距几何优势推导。
 - 大模型蒸馏的容量匹配法则 — 在微调/蒸馏小模型时，使用顶级大模型作为教师生成合成数据，其效果反而可能比不上中等教师模型这一“反直觉”容量匹配法则。（distillation, knowledge-transfer, fine-tuning）
-- [[概念_GEPA提示词进化算法]] — 详细定义 GEPA 无梯度提示词进化算法，阐述其如何通过自然语言反思与 Pareto 采样避免强化学习的标量信号压缩瓶颈，并横向对比其他提示词优化技术。（gepa, prompt-tuning, rl, dspy）
 
 ### 机器学习与数据科学基础（Batch Ingest）
 - [[概念_Breathing_KMeans算法]] — Breathing KMeans 是一种解决传统 KMeans 初始化敏感和重训高耗时的聚类算法。它通过动态的“吸气”（在误差大的质心附近分裂出新质心）和“呼气”（合并并删除低效用的紧邻质心）循环，实现速度和准确性的双重提升。（MachineLearning, Clustering, KMeans, BreathingKMeans）

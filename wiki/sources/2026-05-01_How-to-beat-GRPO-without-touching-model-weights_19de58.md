@@ -29,7 +29,7 @@ updated: '2026-08-04'
   - GEPA 适用于有具体文本反馈的复杂管道，而 GRPO 适用于拥有海量便宜 Rollout、开放权重和明确终态评估的场景。
 
 ## 关联概念
-- [[wiki/concepts/概念_GEPA提示词进化算法]]
+- [[concepts/概念_Agent系统自动优化闭环|概念_Agent系统自动优化闭环 (GEPA提示词进化算法)]]
 
 ## 关键引文
 > "GRPO needs tens of thousands of rollouts to converge... So we end up backpropagating on one bit per trajectory while throwing away thousands of bits of structured signal."

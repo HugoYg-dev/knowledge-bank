@@ -8,8 +8,16 @@ tags:
 summary: LLM 文本生成解码策略定义了从模型预测的 Logits 概率分布中选择 token 的方法。本页系统整合了贪婪搜索、多项式采样、束搜索与对比搜索四大核心解码策略，以及温度参数（Temperature）调节平滑度与幻觉/创造力权衡的底层机制。
 sources:
 - wiki/sources/2026-07-07_4-LLM-text-generation-strategies_19f3d7.md
+- wiki/sources/2026-06-14_7-LLM-generation-parameters_19ec7f.md
 - wiki/sources/大模型幻觉陷阱_AGI之路04期.md
-updated: "2026-09-21"
+aliases:
+- 解码策略
+- Decoding Strategies
+- LLM解码策略
+- 文本生成解码策略
+- LLM文本生成解码参数
+- 概念_温度参数与幻觉创造力权衡
+updated: "2026-10-05"
 ---
 
 # 概念：LLM 文本生成解码策略

@@ -1,3 +1,16 @@
+## [2026-10-05] refactor/governance | 周度图谱治理：4组低频概念深度合并与大模型生成基石概念双链激活
+- **双链激活与自愈**：
+  - `[[concepts/概念_LLM文本生成解码策略]]`：在 3 篇上游文献（`4-LLM-text-generation-strategies`、`7-LLM-generation-parameters`、`大模型幻觉陷阱`）中补齐双链出链，激活为核心概念，入度自愈为 3；同步修复 `wiki/index.md` 管道符损坏双链。
+- **成熟概念深度合并与清理 (4 组)**：
+  1. `概念_GEPA提示词进化算法` -> 深度并入 `[[concepts/概念_Agent系统自动优化闭环]]`（增补标量压缩瓶颈、混合反馈函数、6步进化主循环、Pareto 采样与黄金样本律），全库引用安全重定向并清理原文件与索引。
+  2. `概念_S2Dual社区检测` -> 深度并入 `[[concepts/概念_Graph_RAG_知识图谱增强检索]]`（增补 Leiden 缺陷、结构+语义双重感知机制与提升近 100% 效率数据），更新 `概念_知识树结构` 引用并清理原文件与索引。
+  3. `概念_On_Policy_与_Off_Policy_策略数据` -> 深度并入 `[[concepts/概念_灾难性遗忘]]`（增补大模型后训练遗忘机理、陈丹琦团队 off-policy 数据分布错位实验发现及 Iterative-SFT 实践），全库引用重定向并清理原文件与索引。
+  4. `概念_Python描述符` -> 深度并入 `[[concepts/概念_Python进阶特性]]`（增补描述符底层协议生命周期、对比 @property、正数校验完整代码及 20 种常用对象协议与魔术方法全景），全库引用重定向并清理原文件与索引。
+- **基石概念确认保留**：
+  - 确认保留 `[[concepts/概念_Scaling_Law三大规律]]` 作为大模型技术扩展律唯一基石理论概念。
+- **确定性验收**：
+  - 运行 `vault_lint.py lint` 100% 绿灯通过（0 错误、0 死链、100% 索引挂载）。
+
 ## [2026-09-25] ingest | raw/articles/Agent时代，RAG怎么选？这份指南一次讲清！.md -> wiki/sources/Agent时代，RAG怎么选？这份指南一次讲清！.md (+ 概念_Modular_RAG_模块化检索增强生成, 概念_RAG基础流程, 概念_RAGAS_RAG评估框架, 概念_Agentic_RAG_智能体检索增强生成, 概念_文本切分五层级, 实体_RAGAS)
 - **深度阅读与要点提炼**：深度阅读剪藏文章《Agent时代，RAG怎么选？这份指南一次讲清！》，系统梳理 Agent 语境下 RAG 核心定位从单纯检索向上下文构建系统的范式演进，提炼五大场景技术选型、解耦评估闭环及五大非 RAG 适用边界。
 - **构建 Source 摘要页**：创建 `[[sources/Agent时代，RAG怎么选？这份指南一次讲清！]]`，全面收拢 Naive/Advanced/Modular 演进、GraphRAG vs LightRAG、Agentic RAG 检索记忆与引用校验、LLM Wiki 预编译、上下文硬/软压缩及 RAGAS 评估指标，文末完整附带物理文献插链。

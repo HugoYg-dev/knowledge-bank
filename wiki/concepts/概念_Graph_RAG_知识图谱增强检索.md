@@ -9,7 +9,7 @@ sources:
 - wiki/sources/跨模态知识联邦与统一语义推理RAG.md
 - wiki/sources/再见RAG！AI知识库还得是SAG，又快又准～.md
 - wiki/sources/优图RAG技术详解.md
-updated: '2026-09-21'
+updated: '2026-10-05'
 aliases:
 - Graph RAG
 - Knowledge Graph RAG
@@ -17,6 +17,9 @@ aliases:
 - 知识图谱RAG
 - 概念_知识图谱RAG
 - 概念_GraphRAG
+- S2Dual
+- S2Dual社区检测
+- S2Dual-perception
 ---
 
 # 概念_Graph_RAG_知识图谱增强检索
@@ -58,6 +61,15 @@ aliases:
 - 将文档/图片/视频/关系型数据库的元素统一纳入图谱
 - Graph RAG Light 提取文档实体关系（指定关注实体/关系降低成本）
 - 图谱检索：向量匹配实体→N度扩展查询→提取含多模态信息子图
+
+## 社区检测演进：Leiden 缺陷与 S2Dual 双重感知
+
+在分层知识图谱与全局摘要构建中，社区检测（Community Detection）用于将密集的实体/关系划分为语义聚合的主题簇：
+- **传统 Leiden 算法局限**：强制完全依据图拓扑连通性划分社区，对前端实体抽取与构图质量极度敏感；且全图遍历计算合并导致大规模图处理效率低下。
+- **S2Dual 双重感知（优图提出）**：
+  - **Structure（结构）感知**：通过稀疏邻接矩阵计算 Jaccard 相似度，量化锚节点与社区子图间的拓扑重合度与连接强度；
+  - **Semantics（语义）感知**：编码锚节点特征与候选社区子图特征向量，捕捉文本语义重合度；
+  - **工程效益**：突破单纯拓扑刚性连接限制，相比经典 Leiden 社区检测算法运行效率提升近 100%。
 
 ## 两大类框架
 

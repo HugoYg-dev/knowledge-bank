@@ -15,7 +15,7 @@ updated: 2026-08-03
 - **链接**: [Daily Dose of DS](https://www.dailydoseofds.com/object-oriented-programming-with-python-for-data-scientists/)
 
 # 关联概念与实体
-- [[wiki/concepts/概念_Python描述符|Python 描述符]]
+- [[concepts/概念_Python进阶特性|概念_Python进阶特性 (Python 描述符)]]
 
 # 核心要点
 1. **传统 Getter/Setter 机制的冗余**: 当类中存在多个需要验证的属性时，使用普通的 `@property` 装饰器会导致代码量随属性数量成倍增加（每一个属性都需要定义对应的 getter 和 setter），存在大量重复的验证逻辑和返回语句。

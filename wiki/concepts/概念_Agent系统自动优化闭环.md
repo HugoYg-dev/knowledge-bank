@@ -8,7 +8,14 @@ summary: Agent与大模型系统自动优化闭环（Automated Agent System Opti
 sources:
 - wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md
 - wiki/sources/2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md
-updated: "2026-09-21"
+- wiki/sources/2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md
+aliases:
+- GEPA
+- GEPA提示词进化算法
+- 无梯度提示词进化算法
+- 提示词自动优化闭环
+- LLM系统自动优化方法论
+updated: "2026-10-05"
 ---
 
 # 概念：Agent系统自动优化闭环
@@ -44,6 +51,26 @@ updated: "2026-09-21"
 
 ---
 
+## GEPA 无梯度提示词进化算法深度剖析
+
+**GEPA (Gradient-free Evolutionary Prompt Algorithm)** 是复合 AI 系统中免微调权重的典型提示词自进化框架，其核心在于突破传统强化学习（如 GRPO/PPO）的**标量信号压缩/稀疏瓶颈**：
+
+### 1. 突破传统 RL 标量压缩瓶颈
+传统 RL 算法将数千 Token 丰富的推理轨迹、编译器报错和多步工具调用粗暴压缩为一个单标量数值奖励（Scalar Reward），丢弃了大部分高维结构化诊断信息，导致收敛极其缓慢（通常需要数万次 Rollout）。GEPA 采用**混合反馈函数 $\mu_f$**，直接输出包含数值与自然语言诊断描述的结构化反馈（如特定指令违规步、缺失检索文档、编译器详细报错 trace）。
+
+### 2. 六步进化主循环与 Pareto 采样
+1. **采样 (Selection)**：从当前 Prompt 种群中根据 Pareto 采样策略选择候选集合；
+2. **突变 (Mutate)**：轮询选择一个需要突变优化的模块；
+3. **Rollout (运行)**：从训练集中随机采样少量（如 3 个）样本进行前向运行；
+4. **获取反馈 ($\mu_f$ Feedback)**：收集完整的运行轨迹（Traces）以及反馈函数 $\mu_f$ 产生的自然语言诊断信息；
+5. **反思重写 (Reflection)**：将 Prompt、Trace 及 $\mu_f$ 诊断信息交由 Reflection LLM 找出错误归因并重写生成新 Prompt；
+6. **验证抉择 (Validation)**：在相同运行样本上进行回测，表现优于旧版本则予以保留（Accept），否则丢弃（Discard）。
+
+- **Pareto 采样 (Quality-Diversity)**：传统贪心优化只保留平均得分最高的候选，易陷入向均值收敛的局部崩溃。GEPA 采用 Pareto 采样，只要某个候选在哪怕一个子任务上取得最优即可保留在种群中，突变时按胜出频率加权采样，保持特化策略多样性。
+- **黄金样本律**：生产环境实测（如 Decagon 消融实验）表明，**20 到 100 个样本** 往往击败 500+ 大样本。训练集过大时，随机噪声会分散 Reflection 模型注意力，诱导其针对偶发噪声过度拟合与反复修改，反而破坏了 Prompt 的通用泛化性。
+
+---
+
 ## 业务价值与工业落地
 
 - **研发迭代效率指数级提升**：如 Dropbox 在 Dash Chat 上落地 DSPy 闭环，两周产出 6 版高质量候选，研发效率翻倍。
@@ -55,6 +82,7 @@ updated: "2026-09-21"
 
 - [[wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md|Dropbox基于DSPy优化Dash Chat评估与提示词]]
 - [[wiki/sources/2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md|6 automatic optimization methods for LLM systems]]
+- [[wiki/sources/2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md|How to beat GRPO without touching model weights (GEPA)]]
 - [[concepts/概念_LLM应用评估体系]]
 - [[concepts/概念_Loop_Engineering循环工程]]
 - [[concepts/概念_Self_Harness_自主进化宿主系统]]
