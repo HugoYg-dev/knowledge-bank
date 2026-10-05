@@ -7,7 +7,6 @@ published: 2026-09-07
 created: 2026-09-07
 description: 点击下方卡片，关注“AIGC小白入门记”公众号AI/CV重磅干货，第一时间送达👇 2026年面试交流群成立(
 tags:
-  - clippings
   - 面试
 ---
 AIGC小白入门记 AIGC小白入门记 *2026年9月7日 00:00*

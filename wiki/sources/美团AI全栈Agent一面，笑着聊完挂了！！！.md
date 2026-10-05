@@ -1,8 +1,6 @@
 ---
 type: source
 tags:
-- AI-Agent/coding
-- AI-Agent/tool-calling
 - 面试
 summary: 美团 AI 全栈 Agent 一面面经深度复盘，覆盖智能行程规划、多轮需求澄清、Query 改写、JSON Schema 强制校验、记忆压缩、商品推荐评分公式、并发安全终止与分布式锁、MCP 与 Skill 对比及多模态图文融合。
 sources:

@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["面试", "AI-Agent/coding", "AI-Agent/tool-calling"]
+tags: ["面试"]
 summary: "阿里巴巴淘天 AI 应用研发一面复盘，涵盖 28 道高频考题：代码审查 Agent 架构、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 运行时、长任务链路追踪及并发与缓存一致性。"
 sources: ["raw/articles/阿里巴巴淘天AI应用研发一面，凉了！！！.md"]
 updated: "2026-10-05"

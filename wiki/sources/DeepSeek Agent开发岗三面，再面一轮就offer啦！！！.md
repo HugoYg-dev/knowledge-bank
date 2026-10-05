@@ -1,8 +1,6 @@
 ---
 type: source
 tags:
-- AI-Agent/coding
-- AI-Agent/memory
 - 面试
 summary: 一篇 Agent 开发岗面试复盘，覆盖私人助理架构、幻觉与代码安全、记忆分层、轨迹评测、Badcase 回流及 RAG 检索优化。
 sources:

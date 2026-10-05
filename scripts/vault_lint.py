@@ -274,6 +274,12 @@ def cmd_lint(workspace):
                     print(f"  ❌ [Tag 错误] {rel}: {err_msg}")
                     has_fatal_errors = True
 
+            # 检查面经文章标签独占性 (AGENTS.md §5 铁律3)
+            is_debrief = any(k in os.path.basename(rel) for k in ['一面', '二面', '三面', '凉了', '凉凉', '跪了', '裂开了', '面爽了', '挂了'])
+            if is_debrief and tags != ['面试']:
+                print(f"  ❌ [Tag 错误] {rel}: 属于面经文章，根据 AGENTS.md §5 铁律3，其 tags 必须且只能为 ['面试'] 独占标签 (当前: {tags})")
+                has_fatal_errors = True
+
         # Check forbidden fields (confidence, created, etc.)
         forbidden_fields = ['confidence', 'created', 'ai-first']
         for ff in forbidden_fields:

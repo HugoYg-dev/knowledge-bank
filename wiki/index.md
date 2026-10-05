@@ -4,7 +4,7 @@
 
 ## Sources
 
-- [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试, AI-Agent/coding, AI-Agent/tool-calling）
+- [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试）
 - [[面试第一句 "请做个自我介绍"，别急着背简历！这样做才加分]] — HRD 视角下的求职面试自我介绍方法论：强调自我介绍是简历导读而非背诵，拆解“你是谁/做成过什么/为什么来”三段论与开放式结尾引导提问技巧（面试）
 
 - [[Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要]] — 系统阐释为什么管理上下文比单纯扩大窗口更重要：厘清 Context 与 Session/Scratchpad/Memory/Context Window 边界，剖析 Context Rot 与 Lost in the Middle 失效机理，归纳 Write/Select/Compress/Isolate 四大核心操作及四种上下文失效模式（AI-Agent/context-engineering）
@@ -223,13 +223,13 @@
 - [[不用title你怎么介绍自己]] — 反思职业 Title 与 Ego 绑定，用动词定义自己与探索核心问题（Life）
 - [[代码强化学习的双刃剑_前沿模型为何集体走向作弊]] — 解析代码 RL 可验证奖励如何激活推理元能力，又因代理奖励漏洞导致模型集群发生 Reward Hacking 作弊现象及防范（LLM/training/RL, LLM/reasoning）
 - [[如何系统评价一个_Agent_Skill]] — 系统拆解 Agent Skill 的六大评估维度（触发、轨迹、产物、效率、安全、复用）与对比实验设计范式（AI-Agent/skill, AI-Agent/eval）
-- [[DeepSeek Agent开发岗三面，再面一轮就offer啦！！！]] — Agent 开发岗面试复盘：私人助理架构、幻觉与代码安全、记忆、评测闭环及 RAG 优化（AI-Agent/coding, AI-Agent/eval, 面试）
-- [[快手data agent一面，我裂开了！！！]] — Data Agent 面试复盘：工具、记忆、ReAct、权限重试、循环控制与 Subagent 设计（AI-Agent/coding, AI-Agent/context-engineering, 面试）
-- [[月之暗面 Agent开发岗，凉凉！！！]] — Agent 面试复盘：上下文摘要触发、长期记忆召回、工具渐进披露与 RAG 可观测性（AI-Agent/memory, AI-Agent/context-engineering, 面试）
-- [[高德地图AI应用开发岗一面，我跪了！！！]] — AI 应用面试复盘：多轮 RAG、RRF、粗排精排、结构切分、记忆冲突与 Agent Loop（RAG/retrieval, RAG/chunking, 面试）
-- [[美团AICoding面试，跪了！！！]] — AI Coding 面试复盘：将高风险评论审核拆为规则、输入输出、权限和测试四层系统（AI-Agent/coding, AI-Agent/eval, 面试）
-- [[DeepSeek AI Infra 一面，面爽了！！！]] — DeepSeek AI Infra 面试复盘：Harness 插件哲学、早停与防震荡机制、工具沙箱、大小模型协同及多 Agent 协作平台（Infra/platform, AI-Agent/coding, 面试）
-- [[美团AI全栈Agent一面，笑着聊完挂了！！！]] — 美团 AI 全栈 Agent 面试复盘：行程规划工具编排、多轮澄清、Query 改写、Schema 校验、记忆压缩、分布式锁与并发终止（AI-Agent/coding, AI-Agent/tool-calling, 面试）
+- [[DeepSeek Agent开发岗三面，再面一轮就offer啦！！！]] — Agent 开发岗面试复盘：私人助理架构、幻觉与代码安全、记忆、评测闭环及 RAG 优化（面试）
+- [[快手data agent一面，我裂开了！！！]] — Data Agent 面试复盘：工具、记忆、ReAct、权限重试、循环控制与 Subagent 设计（面试）
+- [[月之暗面 Agent开发岗，凉凉！！！]] — Agent 面试复盘：上下文摘要触发、长期记忆召回、工具渐进披露与 RAG 可观测性（面试）
+- [[高德地图AI应用开发岗一面，我跪了！！！]] — AI 应用面试复盘：多轮 RAG、RRF、粗排精排、结构切分、记忆冲突与 Agent Loop（面试）
+- [[美团AICoding面试，跪了！！！]] — AI Coding 面试复盘：将高风险评论审核拆为规则、输入输出、权限和测试四层系统（面试）
+- [[DeepSeek AI Infra 一面，面爽了！！！]] — DeepSeek AI Infra 面试复盘：Harness 插件哲学、早停与防震荡机制、工具沙箱、大小模型协同及多 Agent 协作平台（面试）
+- [[美团AI全栈Agent一面，笑着聊完挂了！！！]] — 美团 AI 全栈 Agent 面试复盘：行程规划工具编排、多轮澄清、Query 改写、Schema 校验、记忆压缩、分布式锁与并发终止（面试）
 - [[读：读代码前先跑的五个 git 命令 - 暗无天日]] — 用 Git 历史识别变更热点、关键维护者、缺陷聚集、提交趋势和救火信号（Skill/linux, AI-Agent/coding）
 - [[2025-01-31_7-Uses-of-Underscore-in-Python_194be0]] — 本文介绍了 Python 中下划线（_）的 7 种主要使用场景，包括获取最后计算值、循环占位符、大数字分隔符以及四种用于命名对象的下划线规范（单前导、单后缀、双前导和双前后导）。（python, python/syntax）
 - [[2025-02-03_4-ways-to-test-ML-models-in-production_194cd4]] — 本文介绍了在生产环境中测试机器学习模型的 4 种经典方法，即 A/B 测试、金丝雀测试、交叉测试（Interleaved）以及影子测试（Shadow），并在其扩展阅读中提及了多臂强盗部署（MAB）。（machinelearning, MLOps, modeltesting）

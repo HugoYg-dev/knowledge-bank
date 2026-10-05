@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["AI-Agent/memory", "AI-Agent/context-engineering", "RAG/retrieval", "面试"]
+tags: ["面试"]
 summary: "一篇 Agent 开发岗面试复盘，重点讨论短期上下文压缩、长期记忆召回、工具渐进式披露、RAG 链路与检索可观测性。"
 sources: ["raw/articles/月之暗面 Agent开发岗，凉凉！！！.md"]
 updated: "2026-08-03"

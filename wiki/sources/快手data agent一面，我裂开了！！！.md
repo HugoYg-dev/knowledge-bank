@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["AI-Agent/coding", "AI-Agent/context-engineering", "AI-Agent/memory", "面试"]
+tags: ["面试"]
 summary: "一篇 Data Agent 一面复盘，从 miniclaude 项目延伸到工具、记忆、幻觉、ReAct、权限重试、死循环防护与 Subagent 设计。"
 sources: ["raw/articles/快手data agent一面，我裂开了！！！.md"]
 updated: "2026-08-03"

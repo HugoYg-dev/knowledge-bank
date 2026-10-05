@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["RAG/retrieval", "RAG/chunking", "AI-Agent/memory", "面试"]
+tags: ["面试"]
 summary: "一篇 AI 应用开发岗面试复盘，覆盖多轮 RAG、RRF、粗排精排、结构化文档切分、记忆管理与 Agent Loop。"
 sources: ["raw/articles/高德地图AI应用开发岗一面，我跪了！！！.md"]
 updated: "2026-08-03"

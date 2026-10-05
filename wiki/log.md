@@ -1,3 +1,17 @@
+## [2026-10-05] governance | 面经文章标签独占性治理规范落地与存量面经 Tag 修正
+- **治理纪律入宪（`AGENTS.md`）**：
+  - 在 `AGENTS.md` §5 追加铁律 3：明确区分「面经文章」与「技术概念/面试题解文」的标签边界。
+  - **面经文章（Interview Experience / Debrief）**：凡是特定公司/岗位面试实录复盘文章，其 `tags:` 必须且只能为 `["面试"]` 独占标签，严禁出现任何技术分支标签（如 `AI-Agent/*`、`RAG/*`、`LLM/*` 等），确保面经主观内容与技术知识库物理隔离。
+  - **技术概念/题解文章（Technical Concepts & Q&A）**：标题与内容为技术概念体系化推导或成体系题解的文章（如《RAG夺命10连问》、《Normalization方法总结》等），允许保留 `面试` 标签的同时使用对应技术分支标签。
+  - 在 `AGENTS.md` §2.2 来源约束处补充交叉索引。
+- **全库面经文章 Tag 修正**：
+  - `raw/articles/`：纠正 `DeepSeek AI Infra 一面，面爽了！！！.md` 与 `美团AI全栈Agent一面，笑着聊完挂了！！！.md`，移除 `clippings` 保留唯一 `面试` 标签。全库 8 篇物理面经原文 100% 保持唯一 `面试` 标签。
+  - `wiki/sources/`：全面修正 8 篇面经 Source 摘要页（淘天一面、快手一面、月之暗面一面、美团AICoding、美团全栈Agent、高德地图一面、DeepSeek Infra一面、DeepSeek Agent三面），移除混杂的技术分支标签，统一规范为 `tags: ["面试"]`。
+  - `wiki/index.md`：同步更新 8 篇面经 Source 的标签标注为 `(面试)`。
+- **确定性工程门禁固化**：
+  - 在 `scripts/vault_lint.py` 中注入面经文章标签独占性自动化检查（AGENTS.md §5 铁律3），确保持续集成与未来 Ingest 自动拦截。
+  - 运行 `vault_lint.py lint` 100% 绿灯通过，`pytest` 测试 100% 通过。
+
 ## [2026-10-05] ingest | Batch 2: 阿里巴巴淘天AI应用研发一面复盘 & HRD自我介绍加分指南
 - **文章入库与物理归档**：
   - 将 `Clippings/阿里巴巴淘天AI应用研发一面，凉了！！！.md` 物理移动至 `raw/articles/` 归档。

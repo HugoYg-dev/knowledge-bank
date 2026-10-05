@@ -143,7 +143,7 @@ timeline: # 仅限 Entity 页面使用，用于记录可变状态
 ```
 - **内容要求**：基本信息、行为 / 特征 / 状态、相关事件 / 计划 / 实验链接、来自哪些来源（列出 `sources`）。
 - **`timeline:` 字段**：`timeline:` 是可选字段，**只允许用于 Entity 页**中的可变状态（例如职位、所属机构、产品状态或所在地）。只有来源明确给出状态或状态变化时才记录；不得为静态事实、Source、Concept、Comparison 或 Overview 机械添加。时间不确定时使用 `null`，禁止从发布时间臆测状态生效时间。
-- **面试/面经来源约束（No Interview Sources for Downstream Pages）**：带有 `面试` tag 的文章（尤其是面经文章）**严禁作为任何末端产物页面（`wiki/entities/`、`wiki/concepts/`、`wiki/comparisons/`、`wiki/overview/`）的信息来源（sources）**。面试问答中的零散表达、个人回忆或特定场景方案具有主观性与局限性，不得外推沉淀为实体的正式属性或概念的权威定义。面经类文章**只用于聚合生成专题面经总结文档（`wiki/overview/` 中带 `面试` tag 的综述页）**，该综述页本身的 `sources:` 可指向面试类 `wiki/sources/`，但其他末端页面一律禁止。
+- **面试/面经来源约束（No Interview Sources for Downstream Pages）**：带有 `面试` tag 的文章（尤其是面经文章）**严禁作为任何末端产物页面（`wiki/entities/`、`wiki/concepts/`、`wiki/comparisons/`、`wiki/overview/`）的信息来源（sources）**。面试问答中的零散表达、个人回忆或特定场景方案具有主观性与局限性，不得外推沉淀为实体的正式属性或概念的权威定义。面经类文章**只用于聚合生成专题面经总结文档（`wiki/overview/` 中带 `面试` tag 的综述页）**，该综述页本身的 `sources:` 可指向面试类 `wiki/sources/`，但其他末端页面一律禁止。（面经文章的 Tag 独占纪律详见 §5 铁律3）。
 
 ### 2.3 Concept Page（概念页）
 - **路径与命名规范**：`wiki/concepts/概念_xxx.md`。全库所有概念页物理前缀一律为 `概念_`，使用**下划线 `_` 作为天然语义分界符**，并严格遵守以下**概念命名三分层权威规范**：
@@ -399,6 +399,11 @@ Reconcile 可以自动发现和报告矛盾，但严禁无人值守选边。真�
 > 2. **细分叶子优先纪律（禁止顶层池化）**：
 >    - 在 `RAG/`、`LLM/`、`AI-Agent/` 等分层体系下，**必须优先精准锚定末端细分叶子**（如 `RAG/chunking`、`LLM/arch`）；
 >    - 严禁出于省事笼统丢入顶层单分类（如 `RAG`、`LLM`），顶层主分支仅限 `wiki/overview/` 宏观综述页特权使用。
+> 
+> 3. **面经文章标签独占纪律 vs 技术概念题解文标签共存原则**：
+>    - **面经文章（Interview Experience / Debrief）**：凡是以特定公司/岗位求职面试实录、场景复盘为主的文章（如包含“XX一面/二面/三面”、“凉了/跪了/裂开了”等实录复盘），其 `tags:` **必须且只能为 `["面试"]` 独占标签，绝对不允许出现除 `面试` 以外的任何其他 Tag**（如严禁混入 `AI-Agent/*`、`RAG/*`、`LLM/*` 等技术分支）。
+>      - *治理意图*：杜绝将零散的主观面经打上专业技术标签，确保面经文章在标签维度与体系化技术知识库物理隔离。
+>    - **技术概念/题解文章（Technical Concepts & Q&A）**：凡是标题和核心内容为具体技术概念推导、算法原理深度剖析或体系化面试题解的文章（如《RAG夺命10连问》、《大模型算法岗面试百问百答》、《Normalization方法总结》等），**允许保留 `面试` 标签的同时，正常打上对应的专业技术分支标签**（如 `RAG/retrieval`、`DeepLearning`、`LLM/arch` 等）。
 
 ### 5.1 Tag 治理与 Agent CRUD 授权纪律
 全库标签受 [`scripts/tag_manager.py`](file:///Users/ZHao/WorkSpace/knowledge-bank/scripts/tag_manager.py) 与 `tags.json` 强约束，AI Agent **严禁擅自造词**，具体操作流如下：

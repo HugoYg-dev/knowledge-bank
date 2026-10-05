@@ -1,8 +1,6 @@
 ---
 type: source
 tags:
-- AI-Agent/coding
-- AI-Agent/prompt-engineering
 - 面试
 summary: 一篇 AI Coding 面试题复盘，以评论违规检测为例说明如何把模糊高风险需求拆为规则、输入输出、权限和测试四层系统。
 sources:
