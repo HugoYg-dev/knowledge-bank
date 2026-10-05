@@ -5,7 +5,17 @@ tags:
 summary: 大模型的三大缩放定律描述了计算资源的不同使用方式如何影响模型性能，分别对应预训练、后训练、推理三个阶段。
 sources:
 - wiki/sources/大规模神经网络优化_超参实践与规模律.md
-updated: '2026-07-06'
+- wiki/sources/GPT5通用验证器与RL探索.md
+- wiki/sources/MiniMax_vs_Kimi_注意力路线之争.md
+aliases:
+- Scaling Law
+- 缩放定律
+- 规模律
+- 扩展律
+- 推理Scaling Law
+- 预训练Scaling Law
+- 概念_Scaling_Law三大规律
+updated: '2026-10-05'
 ---
 
 

@@ -137,7 +137,7 @@ updated: '2026-07-01'
 
 ## 关联
 
-- 相关概念：[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Rerank_重排序]]、[[概念_分层知识蒸馏]]、[[概念_Embedding训练管线]]、[[概念_Text2SQL_自然语言转SQL]]、[[概念_Graph_RAG_知识图谱增强检索]]、[[概念_Agentic_RAG_智能体检索增强生成]]、[[概念_知识树结构]]
+- 相关概念：[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Rerank_重排序]]、[[概念_分层知识蒸馏]]、[[概念_Embedding训练管线]]、[[概念_Text2SQL_自然语言转SQL]]、[[概念_Graph_RAG_知识图谱增强检索|概念_Graph_RAG_知识图谱增强检索 (知识树结构 & S2Dual)]]、[[概念_Agentic_RAG_智能体检索增强生成]]
 - 实体：[[实体_优图实验室]]、[[实体_MAC-SQL]]
 
 ---

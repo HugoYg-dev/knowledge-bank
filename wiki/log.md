@@ -1,3 +1,13 @@
+## [2026-10-05] refactor/governance | 周度图谱治理 (阶段2)：低频概念清零、知识树结构吸收合并与Scaling Law基石自愈激活
+- **基石概念双链激活与自愈**：
+  - `[[concepts/概念_Scaling_Law三大规律]]`：在 3 篇核心页面（`实体_DeepSeek-R1`、`GPT5通用验证器与RL探索`、`MiniMax_vs_Kimi_注意力路线之争`）中补齐推理阶段 Scaling Law 与预训练计算扩展出链，完善 Frontmatter sources 与 aliases 别名矩阵，**入度自愈提升为 4**，彻底退出低频候选名单。
+- **成熟概念深度合并与清理**：
+  - `概念_知识树结构` -> 深度并入 `[[concepts/概念_Graph_RAG_知识图谱增强检索]]`（增补优图知识树四级知识粒度架构：属性、三元组、关键词、社区及自适应 Schema 构图机制），全库引用重定向至上位概念，物理删除原文件并从 `wiki/index.md` 剔除。
+- **全库低频概念清零达成**：
+  - 运行 `vault_lint.py prune-low-freq-concepts --threshold 1` 结果为 0 篇候选，全库低频孤立概念彻底清零！
+- **确定性门禁验收**：
+  - 运行 `vault_lint.py lint` 100% 绿灯通过（0 错误、0 死链、100% 索引挂载）。
+
 ## [2026-10-05] refactor/governance | 周度图谱治理：4组低频概念深度合并与大模型生成基石概念双链激活
 - **双链激活与自愈**：
   - `[[concepts/概念_LLM文本生成解码策略]]`：在 3 篇上游文献（`4-LLM-text-generation-strategies`、`7-LLM-generation-parameters`、`大模型幻觉陷阱`）中补齐双链出链，激活为核心概念，入度自愈为 3；同步修复 `wiki/index.md` 管道符损坏双链。

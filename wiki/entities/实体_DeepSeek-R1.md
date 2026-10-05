@@ -63,3 +63,4 @@ DeepSeek-R1 是深度求索（DeepSeek）发布的推理模型，通过大规模
 - [[实体_DeepSeek-V3]] — 基础模型
 - [[概念_GRPO_群组相对策略优化]] — 训练算法
 - [[概念_DeepSeek_R1_训练管道]] — 训练细节
+- [[概念_Scaling_Law三大规律]] — 推理阶段 Scaling Law（Long Thinking 测试期算力扩展）代表模型

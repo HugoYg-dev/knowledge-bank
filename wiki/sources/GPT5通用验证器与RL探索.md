@@ -44,7 +44,7 @@ updated: '2026-07-06'
 
 ## 关联概念与实体
 
-- **概念**：[[概念_LLM_as_a_Judge校准|LLM-as-a-Judge]]、[[概念_RLVR_可验证奖励强化学习|RLVR]]、[[概念_GRPO_群组相对策略优化|GRPO]]、[[概念_Reward_Hacking_奖励攻陷与作弊|Reward Hacking]]
+- **概念**：[[概念_LLM_as_a_Judge校准|LLM-as-a-Judge]]、[[概念_RLVR_可验证奖励强化学习|RLVR]]、[[概念_GRPO_群组相对策略优化|GRPO]]、[[概念_Reward_Hacking_奖励攻陷与作弊|Reward Hacking]]、[[concepts/概念_Scaling_Law三大规律]]
 - **实体**：[[实体_OpenAI|OpenAI]]、[[实体_DeepMind|DeepMind]]
 
 ---

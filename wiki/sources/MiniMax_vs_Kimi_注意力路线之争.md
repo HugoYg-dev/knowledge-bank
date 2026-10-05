@@ -71,6 +71,7 @@ updated: '2026-07-01'
 - [[实体_Kimi_Linear]] — 月之暗面开源混合注意力模型
 - [[concepts/概念_Kimi_Delta_Attention_增量注意力|Kimi Delta Attention]] — KDA：channel-wise gate 线性注意力
 - [[Attention复杂度解析与改进方向]]
+- [[concepts/概念_Scaling_Law三大规律]] — 预训练与结构创新计算效率规模律
 
 ---
 > 📎 **物理文献**：[[raw/articles/MiniMax和Kimi为了“注意力”，隔空交手.md]]
