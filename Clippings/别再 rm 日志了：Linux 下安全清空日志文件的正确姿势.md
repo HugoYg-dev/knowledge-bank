@@ -1,13 +1,13 @@
 ---
-title: "别再 rm 日志了：Linux 下安全清空日志文件的正确姿势"
-source: "https://www.cnblogs.com/jyzhao/p/23200588"
+title: 别再 rm 日志了：Linux 下安全清空日志文件的正确姿势
+source: https://www.cnblogs.com/jyzhao/p/23200588
 author:
   - "[[AlfredZhao]]"
 published: 2026-10-05
 created: 2026-10-05
-description: "日志文件越滚越大，磁盘告警一响，很多人的第一反应是 rm *.log 再 touch *.log。这个操作看起来干净利落，实际上埋着两个大坑。笔者在本文里把底层原因和两种安全做法讲清楚。 01 | 为什么 rm 加 touch 是危险操作 后台服务（比如 FastAPI、Nginx、MySQL）启动"
+description: 日志文件越滚越大，磁盘告警一响，很多人的第一反应是 rm *.log 再 touch *.log。这个操作看起来干净利落，实际上埋着两个大坑。笔者在本文里把底层原因和两种安全做法讲清楚。 01 | 为什么 rm 加 touch 是危险操作 后台服务（比如 FastAPI、Nginx、MySQL）启动
 tags:
-  - "clippings"
+  - Skill
 ---
 [AlfredZhao](https://www.cnblogs.com/jyzhao) 阅读(85) 评论(0) 收藏 [举报](https://report.cnblogs.com/?targetLink=https%3A%2F%2Fwww.cnblogs.com%2Fjyzhao%2Fp%2F23200588&targetId=23200588&targetType=0)
 
