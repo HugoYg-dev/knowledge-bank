@@ -1,3 +1,31 @@
+## [2026-10-05] ingest | Batch 2: 阿里巴巴淘天AI应用研发一面复盘 & HRD自我介绍加分指南
+- **文章入库与物理归档**：
+  - 将 `Clippings/阿里巴巴淘天AI应用研发一面，凉了！！！.md` 物理移动至 `raw/articles/` 归档。
+  - 将 `Clippings/面试第一句 "请做个自我介绍"，别急着背简历！这样做才加分.md` 物理移动至 `raw/articles/` 归档。
+- **构建 Source 摘要页**：
+  - 创建 `[[sources/阿里巴巴淘天AI应用研发一面，凉了！！！]]`：系统提炼阿里淘天 AI 研发一面 28 道高频考题精要，涵盖算法手撕（最长有效括号/岛屿数量）、CR Agent 落地与增量提效、Workflow vs 自治 Agent 权衡选型、ReAct vs Plan-and-Execute 混合模式、Skill/MCP/Function Calling 关系与契约演化、海量工具两阶段渐进式加载与路由、Harness 宿主运行时架构（DeepSeek Harness vs Claude Code）、上下文工程解耦结构化摘要、工具调用三层重试与幂等防风暴、多 Agent 乐观锁写入一致性、长任务决策链路追踪与延迟排查、高并发令牌桶限流与熔断降级、RAG 排查诊断与 RRF 融合精排，以及线程池/ThreadLocal/深分页/Redis三大问题/Cache Aside 一致性等后端高并发基石；正文有机引用上下文工程、MCP协议、Harness Engineering、AI Native SDLC 及 Agent 系统自动优化闭环；文末附物理文献插链。
+  - 创建 `[[sources/面试第一句 "请做个自我介绍"，别急着背简历！这样做才加分]]`：系统提炼资深 HRD 视角下的自我介绍方法论，强调“自我介绍是简历导读而非背诵”，详述“你是谁（岗位标签）/做成过什么（量化成果交付）/为什么来（针对性共鸣）”实战三段论，剖析抛出好奇钩子的开放式结尾以掌握面试节奏，并指明求职考核在于清晰认知解决具体业务痛点能力；文末附物理文献插链。
+- **严格遵循面试来源纪律**：
+  - 严格落实 AGENTS.md §2.2 纪律约束：带有「面试」tag 的文章严禁作为任何末端产物页面（`entities/`, `concepts/`, `comparisons/`, `overview/`）的来源支撑；
+  - 严禁将两篇文章追加到既有概念或实体的 Frontmatter sources 中，严禁无源新建概念或实体（如“朱凤玲”等不达标实体坚决不创建）；仅在 Source 摘要页内通过正文双链融入图谱网络。
+- **总索引挂载与健康验收**：
+  - 在 `wiki/index.md` 的 `## Sources` 顶端登记两篇新 Source 摘要；
+  - 运行 `vault_lint.py lint` 确保 100% 绿灯通过（0 语法错误、0 来源链违规、0 死链、100% 索引挂载）。
+
+## [2026-10-05] ingest | Batch 1: Context Engineering 完整指南 & Linux 安全清空日志 (+ 概念_上下文工程, 概念_Context_Rot_上下文衰退)
+- **文章入库与物理归档**：
+  - 将 `Clippings/Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要.md` 物理移动至 `raw/articles/` 归档。
+  - 将 `Clippings/别再 rm 日志了：Linux 下安全清空日志文件的正确姿势.md` 物理移动至 `raw/articles/` 归档。
+- **构建 Source 摘要页**：
+  - 创建 `[[sources/Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要]]`：系统梳理管理上下文优于盲目扩展窗口的底层逻辑，厘清 Context 与 Session/Scratchpad/Memory/Context Window 五大术语边界，剖析 Context Rot 与 Lost in the Middle 两大失效机理，归纳 Write/Select/Compress/Isolate 四大核心操作及四种上下文失效模式；文末附物理文献插链。
+  - 创建 `[[sources/别再 rm 日志了：Linux 下安全清空日志文件的正确姿势]]`：深度解析常驻后台进程持有的 inode 与文件描述符 FD 关系，剖析 rm+touch 导致磁盘空间锁死与新日志丢失的错位根因，详解 `true > 1.log` 触发 open(O_TRUNC) 原地截断单文件与 `truncate -s 0 *.log` 批量清空机理；遵循单一实操技巧不新建孤立概念门槛；文末附物理文献插链。
+- **概念图谱联动与知识增补**：
+  - `[[concepts/概念_上下文工程]]`：Frontmatter sources 追加本篇，updated 更新为 "2026-10-05"；正文增补 Context 与 Session/Scratchpad/Memory/Context Window 核心术语边界表格、动态系统四操作（Write/Select/Compress/Isolate）及四大上下文失效模式（Poisoning, Distraction, Confusion, Clash）；文末追加来源双链。
+  - `[[concepts/概念_Context_Rot_上下文衰退]]`：Frontmatter sources 追加本篇，updated 更新为 "2026-10-05"；正文增补 Chroma 实证研究关于上下文收益递减曲线与膨胀导致的推理能力退化机理；文末追加来源双链。
+- **总索引挂载与健康验收**：
+  - 在 `wiki/index.md` 的 `## Sources` 顶端挂载两篇新 Source 摘要；
+  - 运行 `vault_lint.py lint` 确保 100% 通过（0 错误、0 死链、100% 挂载）。
+
 ## [2026-10-05] refactor/governance | 周度图谱治理 (阶段2)：低频概念清零、知识树结构吸收合并与Scaling Law基石自愈激活
 - **基石概念双链激活与自愈**：
   - `[[concepts/概念_Scaling_Law三大规律]]`：在 3 篇核心页面（`实体_DeepSeek-R1`、`GPT5通用验证器与RL探索`、`MiniMax_vs_Kimi_注意力路线之争`）中补齐推理阶段 Scaling Law 与预训练计算扩展出链，完善 Frontmatter sources 与 aliases 别名矩阵，**入度自愈提升为 4**，彻底退出低频候选名单。

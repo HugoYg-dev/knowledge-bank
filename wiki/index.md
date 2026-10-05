@@ -4,6 +4,12 @@
 
 ## Sources
 
+- [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试, AI-Agent/coding, AI-Agent/tool-calling）
+- [[面试第一句 "请做个自我介绍"，别急着背简历！这样做才加分]] — HRD 视角下的求职面试自我介绍方法论：强调自我介绍是简历导读而非背诵，拆解“你是谁/做成过什么/为什么来”三段论与开放式结尾引导提问技巧（面试）
+
+- [[Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要]] — 系统阐释为什么管理上下文比单纯扩大窗口更重要：厘清 Context 与 Session/Scratchpad/Memory/Context Window 边界，剖析 Context Rot 与 Lost in the Middle 失效机理，归纳 Write/Select/Compress/Isolate 四大核心操作及四种上下文失效模式（AI-Agent/context-engineering）
+- [[别再 rm 日志了：Linux 下安全清空日志文件的正确姿势]] — 深入解析 Linux 日志清空的底层机制与高危陷阱：剖析 rm+touch 导致磁盘空间锁死与新日志丢失的根因（inode 与 FD 错位），详解使用 true > 1.log 原地截断单文件与 truncate -s 0 *.log 批量清空的安全实践（Skill/linux）
+
 - [[Agent时代，RAG怎么选？这份指南一次讲清！]] — 系统梳理面向 Agent 的 RAG 技术选型指南：解构 Naive/Advanced/Modular 演进脉络，对比 GraphRAG、Agentic RAG、LLM Wiki 与上下文压缩，并建立检索与生成解耦的评估闭环及非 RAG 适用边界（RAG/retrieval, RAG/eval, AI-Agent/context-engineering）
 - [[Laya开源_421M参数33毫秒System1决策]] — Convai Innovations 开源 421M 非自回归 System 1 决策模型 Laya，基于 ModernBERT 与 RLCD 强化学习实现 33ms 极低延迟与严格概率校准（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[更好的替代品早已存在，Jev 留给研究的只剩时机]] — 深度剖析 TypeSafe 推出的无生成判断接口 Jev，对比开源小模型本地提取 Logits 的工程表现，梳理判断 API 的五次浪潮演进史与智能体高频状态机解耦动因（LLM/inference, AI-Agent/tool-calling）
