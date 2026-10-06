@@ -3,6 +3,7 @@
 - [x] wiki/下的entities、sources的tag需要整理（已完成 191 篇 sources 与 137 篇 entities 全量合规检查与补全）
 - [x] 全库 Tag 体系合规性治理：门禁加固 (vault_lint)、存量 830 篇清洗 (normalize_tags)、单一权威规则同步、Fallback 策略改造与 36 组单元测试 100% 通过
 - [x] raw/articles/ 历史 76 篇邮件拆分裸文本批量回溯注入标准 Frontmatter (scripts/backfill_raw_frontmatter.py)
+- [ ] [ref](https://antigravity.google/blog/custom-agents-in-google-plugins) 配置ingest/batch ingest agy自定义agents
 
 ## wiki
 - [x] frontmatter不一致（已全量深度重构与清洗，sources/entities/concepts 共 652 篇全部达成字段一致与内容齐全）
