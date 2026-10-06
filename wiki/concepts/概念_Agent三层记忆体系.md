@@ -2,12 +2,19 @@
 type: concept
 tags:
 - AI-Agent/coding
-summary: 来源：从代码生成到自主决策Coding驱动的自我编程Agent
+- AI-Agent/memory
+summary: 基于感知/短期/长期三层模型构建 Agent 持久化记忆，涵盖 Anthropic 商业智能体异步数据库抽取与 Meta Muse 夜里学习透明记忆工程实践。
+aliases:
+- Agent三层记忆体系
+- 智能体三层记忆
+- Three-Tier Agent Memory
+- 概念_Agent三层记忆体系
 sources:
 - wiki/sources/AI智能体8种Memory策略与技术实现.md
 - wiki/sources/LLM Agent记忆进化路径三阶段研究综述.md
 - wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md
-updated: '2026-09-15'
+- wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md
+updated: '2026-10-06'
 ---
 
 
@@ -55,6 +62,18 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
    - **按轮次预取（Pre-fetched per turn）**：依据本轮请求特征动态匹配预取（如搜鞋时预取鞋码与品牌偏好）；
    - **工具按需查询（Behind a lookup tool）**：低频冷数据保存在数据库中，由智能体在必要时通过工具精准检索。
 
+## 个人智能体长程在线记忆实践（Meta Muse 方案）
+
+在面向个人复杂生活与多任务长期推进的 Personal Agent（如 [[entities/实体_Muse|Muse]]）中，长期记忆进一步演化为兼具自动化沉淀与隐私自决的系统机制：
+
+1. **夜里学习（Nightly Learning）**：
+   - 避免在白天的实时对话交互中频繁进行记忆总结操作引发前台延迟与注意力干扰；
+   - 在夜间空闲时段自动回溯一整天的交互反思与任务推进成果，将洞察与新发现蒸馏沉淀至长期记忆库，并自动拓展未完结项目的下一阶段行动计划。
+2. **记忆完全透明与自决（User-Editable Memory Files）**：
+   - 用户的记忆文件完全对用户开放，用户可在专有界面直接查阅、微调修改或物理删除错误/过期的记忆条目，消除黑盒失控担忧。
+3. **受训的分寸感（Discretion）**：
+   - 长期记忆承载了大量高度私密的用户背景（健康、家庭、财务），模型专门接受信息敏感度训练，在代表用户进行外部工具交互（如对外订餐、预约）时代办任务但主动隐藏不必要的私密属性。
+
 ## 与上下文窗口的关系
 
 纯上下文拼接的局限：长度有固定 token 限制；无法有效组织检索历史；无法动态更新；计算成本高。三层记忆体系解决这些问题。
@@ -64,7 +83,9 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
 - [[概念_Agent感知记忆推理三能力]]
 - [[concepts/概念_电商智能体架构]]
 - [[concepts/概念_上下文工程]]
+- [[concepts/概念_Personal_Agent_个人智能体]]
 - [[entities/实体_Anthropic]]
+- [[entities/实体_Muse]]
 - [[概念_Context_Rot_上下文衰退]]
 
 ---
@@ -73,3 +94,4 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
 > - [[wiki/sources/AI智能体8种Memory策略与技术实现.md]]
 > - [[wiki/sources/LLM Agent记忆进化路径三阶段研究综述.md]]
 > - [[wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md]]
+> - [[wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md]]

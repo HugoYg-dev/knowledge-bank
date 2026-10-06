@@ -1,3 +1,24 @@
+## [2026-10-06] ingest | Batch 1: Meta 复盘 Muse (Personal Agent) & 100% 本地复现 Jev (+ 实体_Muse, 实体_Meta, 概念_Personal_Agent_个人智能体)
+- **文章入库与物理归档**：
+  - 将 `Clippings/Meta 复盘 Muse：Agent 怎么才能像「一个人」长期存在？.md` 物理移动至 `raw/articles/` 归档。
+  - 将 `Clippings/emails/dailydoseofds/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md` 物理移动至 `raw/articles/` 归档。
+  - 执行 `uv run scripts/mail_pipeline.py reconcile`，完成邮件订阅状态自动对账（`ingested` 计数自增至 89，`manifest.json` 与 `SYNC_STATUS.md` 同步回写）。
+- **构建 Source 摘要页**：
+  - 创建 `[[sources/Meta复盘Muse_Agent怎么才能像一个人长期存在]]`：系统提炼 Meta 个人智能体（Personal Agent）Muse 产品复盘与扎克伯格专访精要，剖析单会长对话、侧边隔离、富交互 Artifacts（开支仪表盘/行程单）超越 Chat 范式，解构专属云端电脑双安全域强隔离架构（运行单元 Harness 预设受攻击无 Root/凭证 vs 宿主哨兵 Sentinel 唯一出站审批）、结构化审批卡片防横幅盲视、致命三要素纵深防御（OTP/重置链接确定性清洗、一次性虚拟卡号），以及夜里学习（Nightly Learning）记忆工程与分寸感（Discretion）训练；文末附物理文献插链。
+  - 创建 `[[sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe]]`：系统解构 100% 本地复现 Jev 确定性决策推理路径，对比常规自回归生成、结构化输出（JSON Schema 底层仍逐 Token 解码）与固定候选项打分（Fixed-Answer Scoring）三种计算范式，详解单 Token 标签对齐校验、首 Token 向量 Logits 提取与受限 Softmax（Restricted Softmax）归一化、非穷尽逃逸通道（OTHER/ESCALATE）及基于 SGLang `/v1/score` 端点的极简落地与连续批处理并发评测；文末附物理文献插链。
+- **概念与实体图谱新建与联动**：
+  - 新建 `[[entities/实体_Muse]]`：Meta 个人智能体旗舰产品，系统记录产品定位、单会长对话与 Artifacts 交互设计、双安全域隔离架构、致命三要素防御及夜里学习机制。
+  - 新建 `[[entities/实体_Meta]]`：全球科技巨头与 AI 创新机构，汇总 LLaMA 系列、PyTorch、Faiss、SAM、REFRAG 等开源基建与 Muse 个人智能体/机密虚拟机战略；关联来源包含 REFRAG 与 Muse 复盘。
+  - 新建 `[[concepts/概念_Personal_Agent_个人智能体]]`：确立面向个人生活场景、长程在线自主推进任务的智能体新范式，严格遵循三分层命名规范与 aliases 别名矩阵，梳理单会长对话、富交互产物、双安全域强隔离（Harness vs Sentinel）、致命三要素防御与夜里学习/分寸感体系。
+  - 增补 `[[entities/实体_Jev]]`：Frontmatter sources 追加本地复现来源，updated 更新为 "2026-10-06"；正文增补 SGLang `/v1/score` 本地打分机制、受限 Softmax、单 Token 校验、逃逸通道及连续批处理并发调度；更新关联与来源引用。
+  - 增补 `[[concepts/概念_Decision_Model_专用判断模型]]`：Frontmatter sources 追加本篇，aliases 扩充 Fixed-Answer Scoring / 固定候选项打分矩阵，updated 更新为 "2026-10-06"；正文增补计算层解耦对比（自回归生成 vs 结构化输出 vs 固定候选项打分）及 SGLang `/v1/score` 落地管道；文末追加来源双链。
+  - 增补 `[[concepts/概念_Agent三层记忆体系]]`：Frontmatter sources 追加 Muse 来源，tags 补齐 memory，updated 更新为 "2026-10-06"；正文增补 Meta Muse 个人智能体方案（夜里学习、用户可编辑透明记忆文件、受训分寸感）；文末追加来源双链。
+  - 增补 `[[sources/2026-03-24_RAG-vs-MetaAI's-REFRAG_19d21b]]`：在关联实体中打通 `[[entities/实体_Meta]]` 双链。
+- **总索引挂载与确定性自检**：
+  - 在 `wiki/index.md` 顶端全量注册 2 篇新 Source 摘要、1 个新 Concept 页面及 2 个新 Entity 页面；
+  - 确保 `tmp/sanitized/` 派生视图即用即清（彻底清空）；
+  - 运行 `uv run scripts/vault_lint.py lint` 100% 绿灯通过（0 错误、0 警告死链、100% 挂载）。
+
 ## [2026-10-05] governance | 面经文章标签独占性治理规范落地与存量面经 Tag 修正
 - **治理纪律入宪（`AGENTS.md`）**：
   - 在 `AGENTS.md` §5 追加铁律 3：明确区分「面经文章」与「技术概念/面试题解文」的标签边界。

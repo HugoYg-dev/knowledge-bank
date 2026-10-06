@@ -10,11 +10,16 @@ aliases:
   - "快思考判断模型"
   - "Choice API"
   - "无生成判断接口"
+  - "Fixed-Answer Scoring"
+  - "固定候选项打分"
+  - "受限Softmax打分"
+  - "Restricted Softmax Scoring"
   - "概念_Decision_Model"
 sources: 
   - "wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md"
   - "wiki/sources/Laya开源_421M参数33毫秒System1决策.md"
-updated: "2026-09-22"
+  - "wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md"
+updated: "2026-10-06"
 ---
 
 # 概念：Decision Model (专用判断模型)
@@ -49,6 +54,14 @@ flowchart LR
    - 关键指标不仅包括各项概率，还包括胜者与第二名的差值或形状指标（Margin），反映模型对当前判定的真实确信程度，留存“两可”的真实语义。
 3. **概率校准（Calibration）**：
    - 原始提取的概率若存在过度自信，可通过标准的后处理技术（如 [[concepts/概念_分类模型校准|Platt 缩放]] 或温度缩放 Temperature Scaling）将输出对齐到实际频率空间。
+4. **固定候选项打分 vs 结构化输出的计算层解耦**：
+   - **结构化输出（Structured Output）**：使用 JSON Schema 强制模型输出合规格式（如 `{"team": "billing"}`）。但在推理服务端底层，解码器仍逐 Token 自回归生成大括号、键名、取值和闭合符号，存在逐步访存与解码延迟；
+   - **固定候选项打分（Fixed-Answer Scoring）**：在选项集合推理前完全已知的场景下，直接在 Prompt 末尾针对下一个位置的候选 Token 读取 Logits，**完全消除逐 Token 解码循环**，实现百毫秒内的零生成确定性输出。
+5. **本地极简工程落地与 SGLang `/v1/score` 管道**：
+   - **单 Token 标签对齐**：为消除多词短语（如 `technical support`）多 Token 序列打分失真，将候选项映射为单字符标签（A/B/C），并调用 `/tokenize` 校验其在特定分词器和 Chat Template（需严格关注前置空格及特殊标记）下确属单个整数 Token ID；
+   - **受限 Softmax（Restricted Softmax）**：向 `/v1/score` 传入 prompt 与候选 `label_token_ids`，服务端仅对这几个词表位置计算 Softmax，得到纯粹反映相对偏好的概率分布；
+   - **逃逸通道（Escape Route）**：当输入无法被预设选项穷尽时（如安全漏洞误入普通路由），受限 Softmax 仍会将全概率分摊至预设选项。系统必须引入 `OTHER` 或 `ESCALATE` 标签作为安全兜底；
+   - **连续批处理（Continuous Batching）协同**：在并发调度场景下，固定打分请求与普通生成请求可在同一服务进程中共享 GPU 显存与 Prefill 计算，大幅提升状态机路由吞吐。
 
 ---
 
@@ -96,11 +109,13 @@ flowchart LR
   - [[concepts/概念_RLCD校准决策强化学习|概念_RLCD校准决策强化学习]]：采用严格适当评分规则复合奖励与策略梯度的强化学习决策校准范式。
   - [[concepts/概念_分类模型校准|概念_分类模型校准]]：Platt 缩放与温度缩放校准概率分布。
   - [[concepts/概念_LLM模型路由|概念_LLM模型路由]]：基于分类判断进行动态请求与模型分流。
+  - [[concepts/概念_连续批处理|概念_连续批处理]]：推理服务引擎中高并发请求的动态调度基石。
   - [[concepts/概念_WebMCP_浏览器原生工具协议|概念_WebMCP_浏览器原生工具协议]]：UI Agent 中前端感知表征优化的关键协议。
 
 ---
 
 ## 6. 支撑来源
 
-- [[wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机|更好的替代品早已存在，Jev 留给研究的只剩时机]]
-- [[wiki/sources/Laya开源_421M参数33毫秒System1决策|Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策]]
+- [[wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md|更好的替代品早已存在，Jev 留给研究的只剩时机]]
+- [[wiki/sources/Laya开源_421M参数33毫秒System1决策.md|Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策]]
+- [[wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md|Build your own Jev (100% local)]]

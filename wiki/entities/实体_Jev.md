@@ -5,7 +5,8 @@ summary: "TypeSafe 推出的无生成文本概率分布输出接口，将分类�
 sources: 
   - "wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md"
   - "wiki/sources/Laya开源_421M参数33毫秒System1决策.md"
-updated: "2026-09-22"
+  - "wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md"
+updated: "2026-10-06"
 ---
 
 # 实体：Jev
@@ -24,6 +25,11 @@ updated: "2026-09-22"
 3. **生态与分发整合**：
    - 团队创始人具有 InstructGPT 核心论文共同作者背景；
    - 发布后迅速接入 Vercel AI Gateway、Cloudflare 与 OpenRouter 等云平台，主打百毫秒级的确定性云端决策能力。
+4. **100% 本地确定性打分复现（SGLang /v1/score 机制）**：
+   - Daily Dose of DS 验证了在本地环境中 100% 复现 Jev 推理机制的可行性：利用 SGLang 原生 `/v1/score` 接口搭配开源基座（如 Qwen2.5/Qwen3），将候选选项映射为经 `/tokenize` 校验的单 Token 标签（A/B/C），直接读取首个 Next-token 向量对应 Logits 并应用受限 Softmax 归一化；
+   - 彻底消除逐 Token 解码开销，与结构化输出（Structured Output，底层仍自回归生成 JSON 键值字符）形成本质计算层解耦；
+   - 设立 `OTHER` 或 `ESCALATE` 逃逸通道，防范非穷尽选项下概率强行归一化的误判风险；
+   - 在 100 例分类任务的连续批处理（Continuous Batching）基准实测中，打分泳道较自回归生成泳道展现出显著的吞吐与延迟优势。
 
 ## 工程评测与开源替代方案对比
 
@@ -39,9 +45,11 @@ updated: "2026-09-22"
 
 - **归属机构/产品**：TypeSafe
 - **开源对标实体**：[[entities/实体_Laya|实体_Laya]]（421M 开源端到端非自回归决策模型）
-- **核心概念**：[[concepts/概念_Decision_Model_专用判断模型|Decision Model (专用判断模型)]]、[[concepts/概念_RLCD校准决策强化学习|RLCD校准决策强化学习]]、[[concepts/概念_分类模型校准|分类模型校准]]、[[concepts/概念_LLM模型路由|LLM 模型路由]]
+- **核心概念**：[[concepts/概念_Decision_Model_专用判断模型|Decision Model (专用判断模型)]]、[[concepts/概念_RLCD校准决策强化学习|RLCD校准决策强化学习]]、[[concepts/概念_分类模型校准|分类模型校准]]、[[concepts/概念_LLM模型路由|LLM 模型路由]]、[[concepts/概念_连续批处理|概念_连续批处理]]
 - **应用场景**：[[entities/实体_Claude_Code|Claude Code]] 与 [[entities/实体_Codex|Codex]] 工具执行前置拦截、[[entities/实体_LangChain|LangChain]] 路由中间件
 
 ## 来源与参考
 
-- [[sources/更好的替代品早已存在，Jev 留给研究的只剩时机|更好的替代品早已存在，Jev 留给研究的只剩时机]]
+- [[wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md|更好的替代品早已存在，Jev 留给研究的只剩时机]]
+- [[wiki/sources/Laya开源_421M参数33毫秒System1决策.md|Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策]]
+- [[wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md|Build your own Jev (100% local)]]

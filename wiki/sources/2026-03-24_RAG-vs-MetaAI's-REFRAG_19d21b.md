@@ -21,6 +21,7 @@ updated: 2026-08-04
 - **原始归档**: [[raw/articles/2026-03-24_RAG-vs-MetaAI's-REFRAG_19d21b.md]]
 
 ## 关联概念/实体
+- **实体**: [[entities/实体_Meta]]
 - **概念**: [[wiki/concepts/概念_REFRAG_RAG压缩与过滤]]
 
 ## 核心要点

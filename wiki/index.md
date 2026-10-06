@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[Meta复盘Muse_Agent怎么才能像一个人长期存在]] — Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制（AI-Agent/UI, AI-Agent/memory）
+- [[2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe]] — 解析 100% 本地复现 Jev 确定性决策推理路径：利用 SGLang /v1/score 直接提取首 Token Logits 进行受限 Softmax 归一化，对比结构化输出与自回归生成（LLM/inference, AI-Agent/tool-calling）
+
 - [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试）
 - [[面试第一句 "请做个自我介绍"，别急着背简历！这样做才加分]] — HRD 视角下的求职面试自我介绍方法论：强调自我介绍是简历导读而非背诵，拆解“你是谁/做成过什么/为什么来”三段论与开放式结尾引导提问技巧（面试）
 
@@ -307,6 +310,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Personal_Agent_个人智能体]] — 从单轮被动问答演进为长程在线、替用户主动执行跨场景复杂任务的个人智能体范式，依托专属沙盒计算环境、富交互产物、双安全域隔离与分寸感记忆协同（AI-Agent/UI, AI-Agent/memory）
 - [[concepts/概念_Modular_RAG_模块化检索增强生成]] — 将 RAG 拆解为可替换、可路由、可组合独立功能模块的架构范式，突破线性流程，支持条件分支、动态调度与循环迭代（RAG/retrieval）
 - [[concepts/概念_Decision_Model_专用判断模型]] — 将分类选择与概率估计从自回归生成中解耦的轻量级模型或接口，通过单次前向提取选项 Logits 映射概率分布，服务于 Agent 高频状态机跳转与动作决策（LLM/inference, AI-Agent/tool-calling）
 - [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
@@ -595,6 +599,8 @@
 
 ## Entities
 
+- [[entities/实体_Muse]] — Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力（AI-Agent/UI, AI-Agent/memory）
+- [[entities/实体_Meta]] — 全球科技巨头与 AI 核心创新机构，主导 LLaMA 开源大模型家族、PyTorch 深度学习框架、FAISS 向量检索库、REFRAG 向量压缩架构与 Muse 个人智能体生态（LLM/arch, AI-Agent/UI）
 - [[entities/实体_Laya]] — Convai Innovations 开源的 421M 非自回归 System 1 决策模型，采用 ModernBERT 与 RLCD 算法，以 33ms 延迟输出经过严格校准的决策概率与置信度（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[entities/实体_Jev]] — TypeSafe 推出的无生成文本概率分布输出接口，将分类判断从通用大模型中解耦，主打百毫秒级确定性选择与 Agent 状态路由（LLM/inference, AI-Agent/tool-calling）
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
