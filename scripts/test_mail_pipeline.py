@@ -159,8 +159,10 @@ class MailPipelineTest(unittest.TestCase):
                 [],
             ),
         )
-        with patch.object(mail_pipeline, "SOURCES_BY_KEY", {"test": source}):
-            self.assertEqual(mail_pipeline.route(data, FakeClient(raw_map={"mail": {"raw": ""}})), (1, 0))
+        with tempfile.TemporaryDirectory() as temporary:
+            staging = Path(temporary)
+            with patch.object(mail_pipeline, "SOURCES_BY_KEY", {"test": source}), patch.object(mail_pipeline, "EMAILS_DIR", staging):
+                self.assertEqual(mail_pipeline.route(data, FakeClient(raw_map={"mail": {"raw": ""}})), (1, 0))
 
         self.assertEqual(record["attempts"], 2)
         self.assertEqual(record["routing"], "parsed")
