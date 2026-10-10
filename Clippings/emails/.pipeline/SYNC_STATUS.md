@@ -1,6 +1,6 @@
 # Gmail 星标邮件同步状态
 
-> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-10-10T01:02:04+00:00`。
+> 此文件由 Pipeline 生成，请勿手工编辑。机器事实来源为 [`manifest.json`](./manifest.json)。更新时间：`2026-10-10T13:00:17+00:00`。
 
 ## 汇总
 
