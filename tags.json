@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated_at": "2026-09-20",
+  "updated_at": "2026-10-12",
   "governance": {
     "allow_branch_root_in_overview": true,
     "enforce_leaf_for_sources": true
@@ -14,7 +14,8 @@
     "Life",
     "Recommendation",
     "TTS",
-    "RSI"
+    "RSI",
+    "CaseStudy"
   ],
   "branches": {
     "LLM": {
@@ -43,12 +44,12 @@
         "tool-calling",
         "context-engineering",
         "deep-research",
-        "AI-BI",
         "skill",
         "prompt-engineering",
         "multi-agent",
         "memory",
-        "UI"
+        "UI",
+        "data-agent"
       ]
     },
     "RAG": {

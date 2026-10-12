@@ -8,12 +8,13 @@ sources:
 - wiki/sources/2026-07-03_Prompt,-context,-harness-&-loop-engineering_19f29f.md
 - wiki/sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57.md
 - wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md
+- wiki/sources/Brownfield_Agentic_Engineering.md
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md
-updated: '2026-09-21'
+updated: '2026-10-12'
 aliases:
 - Harness Engineering
 - 宿主系统工程
@@ -50,6 +51,12 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 ## 可靠执行控制
 
 生产级 Harness 必须明确将**状态（State）与记忆（Memory）解耦管理**。状态绑定于当前 Run，通过在每个超级步骤（Superstep）后写入 Checkpoint 记录执行进度以防意外崩溃，支持中断恢复和新分支分叉（Fork）；而记忆则跨 Runs 留存，多智能体协同下需通过 Scope 机制进行隔离（如 `memory.scope("/agent")`）以防认知冲突。详见 [[概念_Agent内存与状态管理]]。
+
+### 棕地系统的纠偏沉淀法则（Harness as Accumulated Defenses）
+
+在老旧遗留代码库的智能体工程中（详见 [[concepts/概念_Brownfield_Agentic_Engineering_棕地智能体工程]]），Addy Osmani 提出：**“每一次重复出现的人工 Review 纠偏，都是 Harness 缺失的一块拼图（Every repeated correction is a missing piece of the harness）”**。
+- **职责清晰分层**：Instructions（指令）记录仓库特有反直觉事实与历史约束；Skills（技能）封装可复用操作流程（如爆炸半径检查、Schema 校验）；Harness（宿主）提供工具、权限、门禁与恢复环境。
+- **机制机械化下沉**：反复出现的人工审查意见不应寄希望于大模型在长上下文中自发记忆，而应及时下沉为 Lint 规则、Git Hook、类型契约、CI 测试或确定性阻断逻辑，使 Harness 成为团队决定不再为相同错误支付二次代价的沉淀集合。
 
 ### 分层早停与防路径震荡控制
 
@@ -134,4 +141,5 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]
 - [[sources/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a|The Anatomy of an Agent Harness]]
 - [[sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57|Agent memory and state are not the same thing!]]
+- [[wiki/sources/Brownfield_Agentic_Engineering.md|Brownfield Agentic Engineering]]
 - [[wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md]]

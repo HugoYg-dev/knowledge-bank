@@ -1,3 +1,63 @@
+## [2026-10-12] governance | 标签正交性重构：AI-Agent/AI-BI 级联重命名为 AI-Agent/data-agent
+- **标签重命名与白名单更新**：
+  - 用户明确授权发起 L3 级联重命名：将垂直业务属性标签 `AI-Agent/AI-BI` 重构更名为技术范式标签 `AI-Agent/data-agent`；
+  - 调用 `scripts/tag_manager.py rename AI-Agent/AI-BI AI-Agent/data-agent --apply` 原子级联更新全库 12 篇文档 Frontmatter 及白名单 `tags.json`。
+- **涉及文档全量更新清单**：
+  - Concepts (3 篇)：`[[concepts/概念_AI_Ready_Data_AI就绪数据]]`、`[[concepts/概念_M_Schema_增强元数据模式]]`、`[[concepts/概念_Schema_Linking_数据库模式联接]]`
+  - Sources (3 篇)：`[[sources/企业落地NL2SQL_AI-ready_data与小模型]]`、`[[sources/腾讯ABI工程架构探索与实践]]`、`[[sources/腾讯OlaChat_LLM智能数据分析平台实践]]`
+  - Entities (2 篇)：`[[entities/实体_Qwen2.5-Coder]]`、`[[entities/实体_腾讯OlaChat]]`
+  - Raw 归档 (4 篇)：对应 4 篇底座文献同步更新。
+- **总索引同步与健康度自检**：
+  - 同步更新 `wiki/index.md` 中所有相关 Source、Concept、Entity 及分类标题的标签标注；
+  - 运行 `scripts/tag_manager.py validate AI-Agent/data-agent` 校验通过；
+  - 运行 `scripts/vault_lint.py lint` 100% 绿灯通过（0 死链、100% 索引挂载）。
+
+## [2026-10-12] governance | 新增标准横切标签 CaseStudy 与典型企业工业落地文献标签治理
+- **新增审批标签入库**：
+  - 用户明确审批通过：新增顶层横切标准标签 `CaseStudy`（描述："企业或组织在特定业务场景中的系统设计、架构演进与工业落地经验分享"），已通过 `scripts/tag_manager.py add` 写入权威白名单 `tags.json`。
+- **全库首批工业落地经验文献打标**：
+  - 更新 9 篇高价值企业真实场景落地 Source 摘要页 frontmatter 中的 `tags` 数组，增补 `CaseStudy` 标签：
+    1. `[[sources/MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践]]` (`Recommendation`, `Infra/serving`, `CaseStudy`)
+    2. `[[sources/美团搜索查询改写实践]]` (`RAG/query`, `CaseStudy`)
+    3. `[[sources/腾讯ABI工程架构探索与实践]]` (`AI-Agent/AI-BI`, `CaseStudy`)
+    4. `[[sources/腾讯OlaChat_LLM智能数据分析平台实践]]` (`AI-Agent/AI-BI`, `CaseStudy`)
+    5. `[[sources/企业落地NL2SQL_AI-ready_data与小模型]]` (`AI-Agent/AI-BI`, `CaseStudy`)
+    6. `[[sources/ES企业AI搜索实践]]` (`RAG/retrieval`, `CaseStudy`)
+    7. `[[sources/淘宝直播数字人_LLM文案生成技术]]` (`LLM/arch`, `CaseStudy`)
+    8. `[[sources/淘宝直播数字人_TTS语音合成技术]]` (`TTS`, `CaseStudy`)
+    9. `[[sources/Dropbox基于DSPy优化Dash Chat评估与提示词]]` (`AI-Agent/coding`, `AI-Agent/prompt-engineering`, `CaseStudy`)
+- **总索引同步与健康度自检**：
+  - 在 `wiki/index.md` 中同步更新上述 9 篇文献的标签标注。
+  - 运行 `tag_manager.py validate CaseStudy` 验证通过；
+  - 运行 `vault_lint.py lint` 100% 绿灯通过（0 死链、100% 挂载）。
+
+## [2026-10-12] ingest | Batch 2: MTFM 美团统一推荐基座大模型在外卖多业务场景的落地实践 (+ 实体_MTFM, 概念_Target_Attention_目标注意力)
+- **文章入库与物理归档**：
+  - 将 `Clippings/MTFM：美团统一推荐基座大模型在外卖多业务场景的落地实践  美团 · 技术团队.md` 物理移动至 `raw/articles/` 归档。
+- **构建 Source 摘要页**：
+  - 创建 `[[sources/MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践]]`：系统提炼美团技术团队 KDD 2026 收录的统一推荐基座大模型 MTFM 落地实践，解构异构 Tokenizer、动态因果掩码、混合注意力（Target:Full=3:1）、Target Scale-Up、User-Level 算力复用及定制 Triton 算子，剖析外卖多场景统一精排与 192 GFLOPs 下降低 24% 推理成本的架构演进；文末附物理文献插链。
+- **概念与实体图谱新建与联动**：
+  - 新建 `[[entities/实体_MTFM]]`：美团外卖多业务统一推荐精排基座大模型（KDD 2026），详细记录架构特性、混合注意力、User-Level 训练范式与业务增益指标。
+  - 新建 `[[concepts/概念_Target_Attention_目标注意力]]`：确立工业推荐长序列精排核心机制，梳理 DIN 到 STCA 与 MTFM 混合注意力演进、Target Scale-Up 与表征防坍缩策略，严格落实三分层命名与 aliases 矩阵。
+  - 增补 `[[entities/实体_美团]]`：Frontmatter sources 追加 MTFM 来源，正文增补统一推荐基座大模型（MTFM）与外卖多业务落地实践；关联模块打通 `[[entities/实体_MTFM]]` 双链。
+  - 增补 `[[concepts/概念_Muon优化器]]`：Frontmatter sources 追加 MTFM 来源，aliases 补齐别名矩阵，正文增补 Newton-Schulz 迭代正交化数学机理与美团 MTFM 针对小矩阵的批处理并行加速（加速 241%、吞吐提升 19%）实战；文末追加来源双链。
+- **总索引挂载与确定性自检**：
+  - 在 `wiki/index.md` 顶端全量注册 1 篇新 Source 摘要、1 个新 Concept 页面及 1 个新 Entity 页面。
+
+## [2026-10-12] ingest | Batch 1: Token科普级综述 & Brownfield Agentic Engineering (+ 概念_BPE_字节对编码, 概念_Brownfield_Agentic_Engineering_棕地智能体工程)
+- **文章入库与物理归档**：
+  - 将 `Clippings/这是一篇把"Token"讲明白的科普级综述！.md` 物理移动至 `raw/articles/` 归档。
+  - 将 `Clippings/Brownfield Agentic Engineering.md` 物理移动至 `raw/articles/` 归档。
+- **构建 Source 摘要页**：
+  - 创建 `[[sources/这是一篇把Token讲明白的科普级综述]]`：系统提炼谷歌牵头32位学者154页Token化综述精要，解构Token编号机制、BPE高频相邻字符对贪心合并与非全局最优、数位切割破坏算术与字母计数受损根因、跨语言Token膨胀与计费不平等、94%模型复制分词器现状、Glitch Tokens/同形字符安全注入及无分词（字节级/视觉化）替代路线；文末附物理文献插链。
+  - 创建 `[[sources/Brownfield_Agentic_Engineering]]`：系统提炼 Addy Osmani 针对遗留代码库的棕地智能体工程方法论，剖析红黄绿三色分区治理（Zones）、特征化测试（Characterization Tests）机械化锁定旧行为、持久化调研备忘录（Comprehension Memo）防止会话考古浪费、每一次纠偏都是 Harness 缺失组件的沉淀法则，以及端到端完整迁移单元与度量指标；文末附物理文献插链。
+- **概念与实体图谱新建与联动**：
+  - 新建 `[[concepts/概念_BPE_字节对编码]]`：大模型主流子词分词范式，建立算法流程、与 WordPiece/Unigram 选型对比及四大系统性代价分析；严格落实三分层命名与 aliases 矩阵。
+  - 新建 `[[concepts/概念_Brownfield_Agentic_Engineering_棕地智能体工程]]`：确立在老旧遗留代码库中运行 AI 编码智能体的工程规范，涵盖三色分区铁律、特征化测试作者隔离、持久化调研备忘录与 Harness 约束沉淀。
+  - 增补 `[[concepts/概念_Harness_Engineering_宿主编排工程]]`：Frontmatter sources 追加 Brownfield 来源，正文补充棕地系统中的纠偏沉淀法则（Harness as Accumulated Defenses）；文末追加来源双链。
+- **总索引挂载与确定性自检**：
+  - 在 `wiki/index.md` 顶端全量注册 2 篇新 Source 摘要及 2 个新 Concept 页面。
+
 ## [2026-10-06] ingest | Batch 1: Meta 复盘 Muse (Personal Agent) & 100% 本地复现 Jev (+ 实体_Muse, 实体_Meta, 概念_Personal_Agent_个人智能体)
 - **文章入库与物理归档**：
   - 将 `Clippings/Meta 复盘 Muse：Agent 怎么才能像「一个人」长期存在？.md` 物理移动至 `raw/articles/` 归档。

@@ -4,6 +4,10 @@
 
 ## Sources
 
+- [[MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践]] — 美团外卖统一推荐精排基座大模型 MTFM（KDD 2026）：异构 Tokenizer、动态因果掩码、混合注意力（Target:Full=3:1）、Target Scale-Up、Muon 优化器批处理加速与 User-Level 算力复用（Recommendation, Infra/serving, CaseStudy）
+- [[这是一篇把Token讲明白的科普级综述]] — 谷歌牵头32位学者154页分词综述科普：解构大模型底层Token编号机制、BPE高频合并算法、算术与字母计数缺陷根因，以及语言成本不平等与词表安全隐患（LLM/tokenization）
+- [[Brownfield_Agentic_Engineering]] — Addy Osmani 阐述在老旧遗留代码库中运行 AI 智能体的棕地工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物、Harness 约束沉淀及端到端完整迁移单元（AI-Agent/coding）
+
 - [[Meta复盘Muse_Agent怎么才能像一个人长期存在]] — Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制（AI-Agent/UI, AI-Agent/memory）
 - [[2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe]] — 解析 100% 本地复现 Jev 确定性决策推理路径：利用 SGLang /v1/score 直接提取首 Token Logits 进行受限 Softmax 归一化，对比结构化输出与自回归生成（LLM/inference, AI-Agent/tool-calling）
 
@@ -99,14 +103,14 @@
 - [[为什么用Qwen3_embedding和rerank]] — Qwen3 Embedding/Rerank 原理：[EOS] 池化、Instruct 机制、LLM 化重排（RAG/embedding, RAG）
 - [[ColBERT原理与延迟交互机制]] — ColBERT 多向量表示、延迟交互(MaxSim)与稠密向量对比，BGE-M3 实验（RAG/embedding, RAG）
 - [[ColBERTv2残差压缩演进]] — 早期/延迟交互、ColBERT→ColBERTv2 残差压缩(聚类+量化)，BGE-M3 4x 压缩实验（RAG/embedding, RAG）
-- [[ES企业AI搜索实践]] — Elasticsearch 向量搜索/混合检索/RRF/量化/Serverless 构建企业 RAG（RAG）
+- [[ES企业AI搜索实践]] — Elasticsearch 向量搜索/混合检索/RRF/量化/Serverless 构建企业 RAG（RAG/retrieval, CaseStudy）
 - [[向量数据库原理与应用全解析]] — 向量化演进、索引方法、相似度度量、主流向量数据库对比（RAG/embedding）
 - [[RAG_12痛点与解决方案]] — 12 个 RAG 痛点及解决方案：重排序/Prompt压缩/查询转换/PDF提取/安全（RAG）
 - [[斯坦福RAG新基线_DOS_RAG]] — DOS RAG：检索后按原文顺序排列，持平或超越 RAPTOR/ReadAgent（RAG）
 - [[DMQR-RAG_多样查询改写]] — DMQR-RAG 四种改写策略 + 自适应选择，P@5 提升 14.46%（RAG, RAG/query）
 - [[RAG挑战赛冠军方案]] — 企业年报 RAG 冠军：Docling 解析/FAISS/LLM重排序/多路由器/CoT+SO（RAG）
 - [[提升RAG问答质量的技术路线]] — RAG 技术路线总览：Query Translation/Routing/Construction/Indexing/CRAG/Self-RAG（RAG）
-- [[美团搜索查询改写实践]] — 美团查询改写全栈：离线挖掘/BERT判别/SMT/NMT强化学习/向量化召回（RAG/query）
+- [[美团搜索查询改写实践]] — 美团查询改写全栈：离线挖掘/BERT判别/SMT/NMT强化学习/向量化召回（RAG/query, CaseStudy）
 - [[优图RAG技术详解]] — 腾讯优图RAG全栈：2B Embedding/Reranker蒸馏/Text2SQL/GraphRAG知识树（RAG）
 - [[RAG检索_Retrieval入门到精通]] — RAG系列6：Re-Rank/CRAG/Self-RAG 检索优化（RAG, RAG/retrieval）
 - [[RAG系统设计_语义搜索与KG驱动选型]] — 语义搜索本质/Loss/距离/Embedding/向量库选型 + KG-RAG/Lazy Graph RAG（RAG/embedding, RAG）
@@ -145,7 +149,7 @@
 - [[LLM面试50题_MIT_CSAIL]] — MIT CSAIL 工程师 Hao Hoang 整理的 50 个 LLM 核心面试题（LLM, 面试）
 - [[大模型算法岗面试百问百答]] — 大模型算法岗面试知识点：RAG 体系/LLaMA 架构/SFT 方法/幻觉复读机（LLM, 面试）
 - [[Jina_AI创业复盘]] — Jina AI 创始人肖涵六年复盘：两次 Pivot、AI 团队 Scaling Law 困惑、被 Elastic 收购（创业）
-- [[淘宝直播数字人_LLM文案生成技术]] — 淘宝直播数字人口语化改写(DPO 97%)、多源信息单步蒸馏、素材图文一致（LLM, LLM/arch/VLM）
+- [[淘宝直播数字人_LLM文案生成技术]] — 淘宝直播数字人口语化改写(DPO 97%)、多源信息单步蒸馏、素材图文一致（LLM/arch, CaseStudy）
 - [[别再误会MCP了辟谣指南]] — 阿里云工程师以 SDK 源码法证 MCP CHS 三组件，Host 是 AI 智能唯一承载者（AI-Agent/tool-calling）
 - [[MCP遇上代码执行]] — Anthropic：CodeAgent 模式调用 MCP，Token 减少 98.7%，隐私保护与 Skills 沉淀（AI-Agent/tool-calling）
 - [[MCP五大原语与Web化]] — MCP 联合创建者 David 解构五大原语，Web 化方向 OAuth 2.1 + Streamable HTTP（AI-Agent/tool-calling）
@@ -171,11 +175,11 @@
 - [[AI智能体8种Memory策略与技术实现]] — 8 种记忆策略原理+模拟代码：全量/滑动窗口/相关性过滤/摘要/向量DB/知识图谱/分层/类OS内存管理（AI-Agent/memory）
 - [[OpenAI_构建AI智能体实用指南]] — OpenAI 官方指南（宝玉译）：Agent 三大基石/单一+主管+去中心化编排/分层安全护栏/HITL（AI-Agent/multi-agent）
 - [[用系统架构思维告别意大利面条式系统提示词]] — 系统提示词四层架构（核心定义/交互接口/内部处理/全局约束）替代扁平规则堆砌（AI-Agent/prompt-engineering）
-- [[腾讯OlaChat_LLM智能数据分析平台实践]] — 腾讯 OlaChat：FlattenedRAG/StructuredRAG 元数据检索 + Text2SQL 微调+Agent + 多任务对话编排（AI-Agent/AI-BI）
-- [[腾讯ABI工程架构探索与实践]] — OlaChat 工程架构：原子 Agent + DAG 编排 + 统一协议 + Text2DSL 中间层方案（AI-Agent/AI-BI）
+- [[腾讯OlaChat_LLM智能数据分析平台实践]] — 腾讯 OlaChat：FlattenedRAG/StructuredRAG 元数据检索 + Text2SQL 微调+Agent + 多任务对话编排（AI-Agent/data-agent, CaseStudy）
+- [[腾讯ABI工程架构探索与实践]] — OlaChat 工程架构：原子 Agent + DAG 编排 + 统一协议 + Text2DSL 中间层方案（AI-Agent/data-agent, CaseStudy）
 - [[AI_Agent与AI_Workflow的区别和深度解析]] — AI Agent 自主决策 vs AI Workflow 预定义流程：四类 Agent + 五大 Workflow 优势（AI-Agent）
 - [[Agent系统开发经验]] — 三种复杂性幻觉+三层复杂度（可运行/可复现/可进化）+LLM放大效应+系统化工程原则（AI-Agent）
-- [[企业落地NL2SQL_AI-ready_data与小模型]] — NL2SQL生产落地：AI-ready data + 小模型（3B/7B LoRA）+ 两级Schema Linking，幻觉率7.9%→1.3%（AI-Agent/AI-BI）
+- [[企业落地NL2SQL_AI-ready_data与小模型]] — NL2SQL生产落地：AI-ready data + 小模型（3B/7B LoRA）+ 两级Schema Linking，幻觉率7.9%→1.3%（AI-Agent/data-agent, CaseStudy）
 - [[FastAPI架构指南_项目模板与实战经验]] — 生产级 FastAPI 项目结构：Routers/Schemas/Services 三层分离 + 安全中间件 + Makefile（Skill/python）
 - [[Python并发_async_await与FastAPI]] — FastAPI 官方文档：async/await 协程、并发 vs 并行、路径函数 def/async def 选择（Skill/python）
 - [[Docker化Flask_Django应用从pip切换到uv]] — Nick Janetakis：Docker 项目 pip→uv，约 10x 提速，pyproject.toml/uv.lock/非 root（Skill/python）
@@ -194,7 +198,7 @@
 - [[Nano-Banana_Pro论文绘图教程]] — 「架构师→渲染器→编辑器」三步工作流，VISUAL SCHEMA 驱动 Gemini 2.5 Flash Image 生成 CVPR/NeurIPS 学术插图（AIGC）
 - [[关于Nano_Banana的一些浅思]] — Gemini 2.5 Flash Image 功能/提示词模板全解析+普通人与大模型协作哲学/Vibe Coding 三阶段实践（AIGC）
 - [[超详细提示词教程_玩转Wan2.2]] — 通义万相 2.2 文生视频提示词完整词典：基础/进阶/图生视频公式 + 9大维度美学控制（AIGC）
-- [[淘宝直播数字人_TTS语音合成技术]] — 淘天直播 AIGC 团队：TTS 数据管线 + V1→V4 四代模型演进（CosyVoice2+vLLM）（TTS）
+- [[淘宝直播数字人_TTS语音合成技术]] — 淘天直播 AIGC 团队：TTS 数据管线 + V1→V4 四代模型演进（CosyVoice2+vLLM）（TTS, CaseStudy）
 - [[Foundation_Sprint产品验证完全指南]] — 谷歌 Jake Knapp 的 Foundation Sprint：10 小时奠定战略基础，基础/差异化2x2/Magic Lenses 三阶段 + 创始假设（创业）
 - [[Superhuman_PMF引擎方法论]] — Superhuman 把 PMF 量化为可优化指标的四步引擎，22%→58%，ARR 3500 万美元（创业）
 - [[Bundle_Unbundle视角看AI时代机会]] — 42章经：Grammarly 案例 + Shishir Bundle 理论(MCC/2x2) + 集装箱历史类比 AI（创业）
@@ -215,7 +219,7 @@
 - [[大模型显存计算公式与优化]] — 系统梳理 Transformer 大模型在训练与推理场景下的显存消耗公式，深入探讨 3D 并行、重计算及 ZeRO 优化显存核心路径（LLM/inference, Infra/gpu）
 - [[Claude Code与Obsidian飞书知识库搭建实践]] — 基于 Karpathy 的 LLM Wiki 理念，结合 Claude Code（大脑）、Obsidian（眼睛）与飞书机器人（手），实现知识库入库与复利积累（Skill/knowledge-bank, AI-Agent/coding）
 - [[LLM Agent记忆进化路径三阶段研究综述]] — 港中深与上海 AI 实验室综述，提出 Storage -> Reflection -> Experience 三阶段演进框架及主动探索机制（AI-Agent/memory）
-- [[Dropbox基于DSPy优化Dash Chat评估与提示词]] — Dropbox Dash Chat 评估驱动实践：人工标注校准 LLM-as-a-Judge + DSPy GEPA 自动迭代系统提示词（AI-Agent/eval, AI-Agent/prompt-engineering）
+- [[Dropbox基于DSPy优化Dash Chat评估与提示词]] — Dropbox Dash Chat 评估驱动实践：人工标注校准 LLM-as-a-Judge + DSPy GEPA 自动迭代系统提示词（AI-Agent/coding, AI-Agent/prompt-engineering, CaseStudy）
 - [[MiniMax_vs_Kimi_注意力路线之争]] — MiniMax M2 回归 Full Attention，Kimi 发布开源混合注意力模型 Kimi Linear（KDA+MLA 3:1），两条技术路线的工程视角对比（LLM/arch/attention）
 - [[后训练认知_SFT_vs_RL_记忆与遗忘机制]] — 普林斯顿陈丹琦团队发现 RL 抗遗忘优于 SFT，根源在于 on-policy 数据分布，而非算法形式（LLM/training/post-train）
 - [[2026程序员必读的向量数据库原理与选型指南]] — 系统剖析 ANN 算法（HNSW/IVF/DiskANN）与标量过滤，横向对比 8 大向量数据库选型决策树（RAG/embedding, Infra/storage）
@@ -310,6 +314,9 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Target_Attention_目标注意力]] — 在推荐长序列与精排建模中，使候选目标单向聚合用户长序列上下文、省去历史序列间全自注意力的高效注意力机制（LLM/arch/attention, Recommendation）
+- [[concepts/概念_BPE_字节对编码]] — 从单个字符或字节出发，通过统计迭代合并最高频相邻字符对构建词表的分词算法，是当代大语言模型最主流的文本分词标准（LLM/tokenization）
+- [[concepts/概念_Brownfield_Agentic_Engineering_棕地智能体工程]] — 在老旧遗留代码库中规范化运行 AI 编码智能体的系统工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物与 Harness 约束沉淀（AI-Agent/coding）
 - [[concepts/概念_Personal_Agent_个人智能体]] — 从单轮被动问答演进为长程在线、替用户主动执行跨场景复杂任务的个人智能体范式，依托专属沙盒计算环境、富交互产物、双安全域隔离与分寸感记忆协同（AI-Agent/UI, AI-Agent/memory）
 - [[concepts/概念_Modular_RAG_模块化检索增强生成]] — 将 RAG 拆解为可替换、可路由、可组合独立功能模块的架构范式，突破线性流程，支持条件分支、动态调度与循环迭代（RAG/retrieval）
 - [[concepts/概念_Decision_Model_专用判断模型]] — 将分类选择与概率估计从自回归生成中解耦的轻量级模型或接口，通过单次前向提取选项 Logits 映射概率分布，服务于 Agent 高频状态机跳转与动作决策（LLM/inference, AI-Agent/tool-calling）
@@ -599,6 +606,7 @@
 
 ## Entities
 
+- [[entities/实体_MTFM]] — 美团外卖多业务场景统一推荐精排基座大模型（KDD 2026），首次在外卖核心场景全量推全，基于 HSTU/Transformer 骨干、异构 Tokenizer、动态因果掩码与混合注意力架构（Recommendation, Infra/serving）
 - [[entities/实体_Muse]] — Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力（AI-Agent/UI, AI-Agent/memory）
 - [[entities/实体_Meta]] — 全球科技巨头与 AI 核心创新机构，主导 LLaMA 开源大模型家族、PyTorch 深度学习框架、FAISS 向量检索库、REFRAG 向量压缩架构与 Muse 个人智能体生态（LLM/arch, AI-Agent/UI）
 - [[entities/实体_Laya]] — Convai Innovations 开源的 421M 非自回归 System 1 决策模型，采用 ModernBERT 与 RLCD 算法，以 33ms 延迟输出经过严格校准的决策概率与置信度（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
@@ -724,14 +732,14 @@
 ### AI-Agent/prompt-engineering（Phase 4 Batch 7）
 - 编程提示工程实战 — 程序员向 10 种技巧+7 条基础原则+调试/重构/功能三场景策略+常见反模式（AI-Agent/prompt-engineering）
 
-### AI-Agent/AI-BI（Phase 4 Batch 8）
+### AI-Agent/data-agent（Phase 4 Batch 8）
 
-### AI-Agent 综合 + AI-BI（Phase 4 Batch 9）
+### AI-Agent 综合 + data-agent（Phase 4 Batch 9）
 - [[概念_Agent系统化工程]] — 三层复杂度+LLM放大效应+Level 0-4认知演化+系统化方法论（AI-Agent）
 - [[概念_LLM不确定性放大]] — 多步调用的指数级错误放大数学模型及三类放大维度（AI-Agent）
-- [[概念_AI_Ready_Data_AI就绪数据]] — NL2SQL落地第一性问题：元数据/业务语义/权限/样例SQL的系统化准备（AI-Agent/AI-BI）
-- [[概念_M_Schema_增强元数据模式]] — NL2SQL增强Schema表示：补充类型/中文释义/真实值示例+约束池（AI-Agent/AI-BI）
-- [[概念_Schema_Linking_数据库模式联接]] — BM25粗排+SIC精排两级联接，从全量Schema筛选相关表列，幻觉率-78%（AI-Agent/AI-BI）
+- [[概念_AI_Ready_Data_AI就绪数据]] — NL2SQL落地第一性问题：元数据/业务语义/权限/样例SQL的系统化准备（AI-Agent/data-agent）
+- [[概念_M_Schema_增强元数据模式]] — NL2SQL增强Schema表示：补充类型/中文释义/真实值示例+约束池（AI-Agent/data-agent）
+- [[概念_Schema_Linking_数据库模式联接]] — BM25粗排+SIC精排两级联接，从全量Schema筛选相关表列，幻觉率-78%（AI-Agent/data-agent）
 
 ### Skill/python（Phase 5 Batch 1）
 - [[概念_FastAPI项目结构模式]] — Routers/Schemas/Services 三层分离 + 安全中间件 + pydantic-settings（Skill/python）
@@ -851,12 +859,12 @@
 
 ### AI-Agent/memory（Phase 4 Batch 7）
 
-### AI-Agent/AI-BI（Phase 4 Batch 8）
-- [[实体_腾讯OlaChat]] — 腾讯 PCG 智能数据分析平台，多任务对话+DAG编排+Text2SQL(70B)+元数据RAG（AI-Agent/AI-BI）
+### AI-Agent/data-agent（Phase 4 Batch 8）
+- [[实体_腾讯OlaChat]] — 腾讯 PCG 智能数据分析平台，多任务对话+DAG编排+Text2SQL(70B)+元数据RAG（AI-Agent/data-agent）
 
-### AI-Agent 综合 + AI-BI（Phase 4 Batch 9）
+### AI-Agent 综合 + data-agent（Phase 4 Batch 9）
 - [[实体_LangSmith]] — LangChain 可观测性平台：可视化 Trace/调试/测试评估，Agent 复现性关键工具（AI-Agent）
-- [[实体_Qwen2.5-Coder]] — 阿里代码专用模型3B/7B，NL2SQL LoRA 精调基座，实测EX提升+6.4%（AI-Agent/AI-BI）
+- [[实体_Qwen2.5-Coder]] — 阿里代码专用模型3B/7B，NL2SQL LoRA 精调基座，实测EX提升+6.4%（AI-Agent/data-agent）
 
 
 ### Skill/python（Phase 5 Batch 1）

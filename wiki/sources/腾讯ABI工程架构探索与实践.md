@@ -1,7 +1,8 @@
 ---
 type: source
 tags:
-- AI-Agent/AI-BI
+- AI-Agent/data-agent
+- CaseStudy
 summary: 腾讯 OlaChat ABI 工程架构：原子 Agent + DAG 编排 + 统一协议 + Text2DSL 中间层，解决 AI 能力复用、长文本幻觉、自然语言到
   BI 指令转换三大挑战
 sources:

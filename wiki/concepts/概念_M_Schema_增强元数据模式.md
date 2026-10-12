@@ -1,7 +1,7 @@
 ---
 type: concept
 tags:
-- AI-Agent/AI-BI
+- AI-Agent/data-agent
 summary: M-Schema 是一种面向 NL2SQL 的增强型数据库 Schema 表示格式，在传统表/列清单基础上补充多维语义信息，显著提升字段语义可读性与模型可对齐性。
 sources:
 - wiki/sources/企业落地NL2SQL_AI-ready_data与小模型.md

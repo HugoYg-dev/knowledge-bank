@@ -2,6 +2,7 @@
 type: source
 tags:
 - RAG/retrieval
+- CaseStudy
 summary: 刘晓国（Elastic 中国社区首席布道师）QCon 演讲：基于 Elasticsearch 构建企业 AI 搜索应用，涵盖稠密/稀疏向量、混合检索
   RRF、量化、HNSW+GPU 加速、Serverless 架构与 Agentic RAG 落地实践
 sources:

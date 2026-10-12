@@ -1,7 +1,7 @@
 ---
 type: entity
 tags:
-- AI-Agent/AI-BI
+- AI-Agent/data-agent
 summary: '- 类型：智能数据分析平台（ABI 平台）'
 sources:
 - wiki/sources/腾讯ABI工程架构探索与实践.md

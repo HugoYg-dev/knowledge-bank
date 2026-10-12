@@ -2,6 +2,7 @@
 type: source
 tags:
 - LLM/arch
+- CaseStudy
 summary: 淘宝直播数字人LLM文案生成实践：口语化改写（DPO+难样本增强97%准确率）、多源信息多步→单步蒸馏、素材OCR+文案图文一致、多维度测评体系
 sources:
 - raw/articles/淘宝直播数字人：LLM文案生成技术.md

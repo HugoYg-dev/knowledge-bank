@@ -1,9 +1,9 @@
 ---
-id: "7360983816103528392"
+id: '7360983816103528392'
 cubox_url: https://cubox.pro/web/card/7360983816103528392
 url: https://mp.weixin.qq.com/s/zQeMXSTKhvHMl-BR9JSNag
 tags:
-  - AI-Agent/AI-BI
+- AI-Agent/data-agent
 published: 2024-12-07
 ---
 # 腾讯在 ABI 工程领域的探索与实践
