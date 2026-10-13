@@ -58,6 +58,7 @@
 
 - [[Firecrawl 新工具开源，anydoc，将各种输入转换为md]] — Firecrawl 开源纯 Rust 多格式文档转 Markdown 工具 anydoc，中间稿两阶段解析与 Agent Skill 集成（AI-Agent/tool-calling, RAG/chunking）
 - [[刚刚，DeepSeek Harness震撼开源：一切皆插件]] — DeepSeek 开源基于 Cordis 微内核的智能体框架 DeepSeek Harness，主张一切皆插件、权威 Session Log 事件源与生命周期调度管控（AI-Agent/harness, AI-Agent/coding）
+- [[DeepSeek_Harness_插件生态解析]] — DeepSeek Harness (dsh) 插件生态全景解析：基于 Cordis 微内核的声明式插件装配、4,349 仓库生态热度分布与侧边栏扩展总线趋势（AI-Agent/coding, AI-Agent/skill）
 
 - [[2026-08-05_How-to-serve-5-models-on-one-GPU_19fd38]] — 多模型 AI 流水线以统一服务层、共享 GPU 池、按需加载和成本感知分批降低闲置资源（Infra/serving, LLM/inference）
 - [[2026-08-07_8-LLM-precision-formats_19fddf]] — FP32/TF32/BF16/FP16/FP8/INT8/INT4/NF4 八种 LLM 精度格式的显存、数值范围与训练推理权衡（LLM/inference, LLM/training, Infra/gpu）

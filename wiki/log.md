@@ -1,3 +1,15 @@
+## [2026-10-13] ingest | raw/articles/DeepSeek Harness 插件生态解析.md -> wiki/sources/DeepSeek_Harness_插件生态解析.md (+ affected entities/concepts)
+- **剪藏归档与摘要构建**：
+  - 原始剪藏从 `Clippings/DeepSeek Harness 插件生态解析.md` 物理归档移动至 `raw/articles/DeepSeek Harness 插件生态解析.md`；
+  - 创建一级产物 `wiki/sources/DeepSeek_Harness_插件生态解析.md`，提炼基于 Cordis 微内核的声明式插件机制、4,349 个仓库生态数据与四大演进趋势；
+  - 标签选用权威白名单 `tags: ["AI-Agent/coding", "AI-Agent/skill"]`。
+- **知识图谱联动更新**：
+  - 增量更新实体 `[[entities/实体_DeepSeek_Harness]]`：补充插件生态规模、manifest 规范、右侧边栏总线演进及文末支撑来源；
+  - 增量更新实体 `[[entities/实体_Cordis]]`：补充 `cordis.patch.yml` 声明式能力织入与 npm 插件包分发模型及文末支撑来源；
+  - 增量更新概念 `[[concepts/概念_Harness_Engineering_宿主编排工程]]`：补充宿主外壳扩展范式（从单体工具到二级总线与远程审批管道）及插件权限隔离思考，追加溯源。
+- **总索引挂载**：
+  - 在 `wiki/index.md` 中挂载 `[[DeepSeek_Harness_插件生态解析]]`。
+
 ## [2026-10-12] governance | 标签正交性重构：AI-Agent/AI-BI 级联重命名为 AI-Agent/data-agent
 - **标签重命名与白名单更新**：
   - 用户明确授权发起 L3 级联重命名：将垂直业务属性标签 `AI-Agent/AI-BI` 重构更名为技术范式标签 `AI-Agent/data-agent`；

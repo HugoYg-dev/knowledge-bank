@@ -9,12 +9,13 @@ sources:
 - wiki/sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57.md
 - wiki/sources/2026-07-27_Graph-engineering-clearly-explained_19fa57.md
 - wiki/sources/Brownfield_Agentic_Engineering.md
+- wiki/sources/DeepSeek_Harness_插件生态解析.md
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md
-updated: '2026-10-12'
+updated: '2026-10-13'
 aliases:
 - Harness Engineering
 - 宿主系统工程
@@ -107,11 +108,14 @@ Beren Millidge 将其进行了精确的硬件系统类比：
    - 调度器允许连续只读调用并行，写操作自动成为独占屏障（Barrier）；支持运行中消息排队与带回执的实时转向（Steering）。
 5. **PTC 模式（Programmatic Tool Calling）**：
    - 通过 Code Mode SDK 向模型暴露代码运行环境，模型可编写 TypeScript/Python 脚本在单次 `run_code` 中批处理多步工具调用，显著削减多轮往返的 Token 与延迟开销。
-6. **Fail-Closed 默认安全原则**：
-   - 默认采用 `workspace-write` 沙箱并配合审批机制；当系统无法确认隔离策略完全生效时，主动拒绝执行（Fail-Closed）而非静默降级为无保护运行。
-
-
-## MEA 循环与审计驱动状态转换（LongHorizon-Harness 范式）
+111	6. **Fail-Closed 默认安全原则与插件权限隔离**：
+112	   - 默认采用 `workspace-write` 沙箱并配合审批机制；当系统无法确认隔离策略完全生效时，主动拒绝执行（Fail-Closed）而非静默降级为无保护运行。在插件化微内核中，工具审批机制无法自动等同于插件代码沙箱，需配备可插拔权限门禁（如能力锁与静态审计）防范凭据泄露。
+113	7. **宿主外壳扩展范式（从单体工具到二级总线与远程管道）**：
+114	   - 现代 Harness 的 UI 与交互层正向“扩展总线”演进（如侧边栏作为插件挂载中心，承载文档预览、任务看板与子 Agent 管理）；
+115	   - 面对长时程无人值守任务，审批通道从本地交互向多端远程（如移动端/IM 审批卡片）延伸，使 Harness 具备长链路脱机运行的管控能力。
+116	
+117	
+118	## MEA 循环与审计驱动状态转换（LongHorizon-Harness 范式）
 
 针对长时跨界面/长链路复杂任务，[[entities/实体_LongHorizon-Harness|LongHorizon-Harness]] 提出了突破传统单会话轨迹中心模型的 **Manage-Execute-Audit (MEA)** 状态机范式：
 
@@ -135,6 +139,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 
 - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
+- [[sources/DeepSeek_Harness_插件生态解析|DeepSeek Harness 插件生态解析]]
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[concepts/概念_RSI递归自我改进]]
 - [[concepts/概念_Harness优化阶梯]]
