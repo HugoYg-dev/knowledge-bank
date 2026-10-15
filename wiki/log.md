@@ -1,3 +1,51 @@
+## [2026-10-15] ingest | raw/articles/腾讯15年资深后台工程师，转战大模型推理的抉择.md -> wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md (+ 实体_SGLang, 概念_LLM推理两阶段, 概念_AI_Native_Infra_AI原生基建, 概念_KV_Cache_键值缓存)
+- **剪藏归档与摘要构建**：
+  - 原始剪藏从 `Clippings/腾讯15年资深后台工程师，转战大模型推理的抉择.md` 物理归档移动至 `raw/articles/腾讯15年资深后台工程师，转战大模型推理的抉择.md`；
+  - 创建一级产物 `wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md`，提炼资深工程师归零抉择、大模型推理工程三层架构（业务/调度/算子）、算力显存通信权衡、PD 分离架构、同批次共享前缀与 Beam Search 实战、传统通用 Infra 向 AI 与 Agent Infra 迁移（小卖部模式 vs 旅馆模式）；
+  - 标签选用权威白名单：`tags: ["Infra/serving", "LLM/inference", "CaseStudy"]`；
+  - 文末精准建立物理文献插链：`> 📎 **物理文献**：[[raw/articles/腾讯15年资深后台工程师，转战大模型推理的抉择.md]]`。
+- **实体与概念图谱联动更新**：
+  - 新建实体 `[[entities/实体_SGLang]]`：补充 LMSYS 团队开源的高性能推理框架定位、RadixAttention 树状前缀缓存、调度运行时及作者落地高性能 Beam Search（合入 v0.5.19）等实证信息；
+  - 增量更新概念 `[[concepts/概念_LLM推理两阶段]]`：在 sources 中追加溯源，补充 Prefill / Decode (PD) 分离解耦架构以及大模型推理系统工程三层架构与指标体系；
+  - 增量更新概念 `[[concepts/概念_AI_Native_Infra_AI原生基建]]`：在 sources 中追加溯源，系统补充通用 Infra 与 AI Infra 的同源与分野（系统设计思想同源，资源模型迥异），以及 Agent 服务范式跃迁（小卖部模式 vs 旅馆模式）；
+  - 增量更新概念 `[[concepts/概念_KV_Cache_键值缓存]]`：在 sources 中追加溯源，补充同批次共享前缀注意力优化（Shared Prefix Attention in Batch）与 Beam Search 束搜索下的树状 KV Cache 复用挑战。
+- **总索引挂载**：
+  - 在 `wiki/index.md` 中的 Sources 章节挂载 `[[腾讯15年资深后台工程师_转战大模型推理的抉择]]`；
+  - 在 `wiki/index.md` 中的 Entities 章节挂载 `[[entities/实体_SGLang]]`。
+
+## [2026-10-15] ingest | raw/articles/一文拆解Jev架构：一个判断模型是怎么被拼出来的.md -> wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md (+ 实体_Jev, 概念_Decision_Model_专用判断模型, 概念_RLCD校准决策强化学习)
+- **剪藏归档与摘要构建**：
+  - 原始剪藏从 `Clippings/一文拆解Jev架构：一个判断模型是怎么被拼出来的.md` 物理归档移动至 `raw/articles/一文拆解Jev架构：一个判断模型是怎么被拼出来的.md`；
+  - 创建一级产物 `wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md`，深度解密 Jev 专用判断模型的接口形态（State/Questions/三大原语与推测性并发）、反向解密架构四部曲（KV Cache 冻结共享、注意力掩码/独立分支物理隔离、指针头与候选间注意力交互、无自回归首位 Logits 提取）、RLCD 训练与成对陷阱题，以及两大约束边界（困难多步任务跛足与呈现位置脆弱性）与 Agent 端到端延迟倒挂经济账；
+  - 标签选用权威白名单：`tags: ["LLM/inference", "AI-Agent/tool-calling", "LLM/arch"]`；
+  - 文末精准建立物理文献插链：`> 📎 **物理文献**：[[raw/articles/一文拆解Jev架构：一个判断模型是怎么被拼出来的.md]]`。
+- **实体与概念图谱联动更新**：
+  - 增量更新实体 `[[entities/实体_Jev]]`：追加来源溯源，系统补充 State/Questions 接口与三大原语（Noul/Choice/Score）、反向解密架构四部曲机制、困难多步与算术推理局限、位置敏感度与泛化脆弱性，以及 Agent 前置拦截的总延迟倒挂风险；
+  - 增量更新概念 `[[concepts/概念_Decision_Model_专用判断模型]]`：追加来源溯源，补充选项交互机制（指针头 vs 候选间注意力模块）、状态单次 Prefill 冻结与题目物理隔离，以及适用选型权衡边界与端到端延迟陷阱；
+  - 增量更新概念 `[[concepts/概念_RLCD校准决策强化学习]]`：追加来源溯源，补充成对陷阱题设计（防 Reward Hacking）、LoRA 教师蒸馏与客观事实概率的理论鸿沟，以及温度缩放仅下调全局自信无法提升自知分辨力的局限。
+- **总索引挂载**：
+  - 在 `wiki/index.md` 中的 Sources 章节挂载 `[[一文拆解Jev架构_一个判断模型是怎么被拼出来的]]`。
+
+## [2026-10-15] ingest | raw/articles/秋招AI岗面试心得：从准备到上岸的完整方法论.md -> wiki/sources/秋招AI岗面试心得_从准备到上岸的完整方法论.md
+- **剪藏归档与摘要构建**：
+  - 原始剪藏从 `Clippings/秋招AI岗面试心得：从准备到上岸的完整方法论.md` 物理归档移动至 `raw/articles/秋招AI岗面试心得：从准备到上岸的完整方法论.md`；
+  - 派生临时只读净化视图 `tmp/sanitized/` 阅读提炼，完成后立即物理删除净化视图，严格遵守即用即清纪律；
+  - 创建一级产物 `wiki/sources/秋招AI岗面试心得_从准备到上岸的完整方法论.md`，提炼面试考察逻辑演进（从背诵八股到项目深挖与开放设计）、AI Coding 业务笔试心法、简历 STAR 量化、高频追问防线与复盘 SOP；
+  - 严格遵守 §5 CAUTION 3 铁律，打独占标签 `tags: ["面试"]`；严格遵守 §2.7 隔离约束，严禁作为任何实体或概念页面的 sources。
+- **总索引挂载**：
+  - 在 `wiki/index.md` 中的 Sources 章节挂载 `[[秋招AI岗面试心得_从准备到上岸的完整方法论]]`。
+
+## [2026-10-15] ingest | raw/articles/从循环到向量化：NumPy提速的7个关键思维.md -> wiki/sources/从循环到向量化_NumPy提速的7个关键思维.md (+ 概念_Python循环优化技巧)
+- **剪藏归档与摘要构建**：
+  - 原始剪藏从 `Clippings/从循环到向量化：NumPy提速的7个关键思维.md` 物理归档移动至 `raw/articles/从循环到向量化：NumPy提速的7个关键思维.md`；
+  - 派生临时只读净化视图 `tmp/sanitized/` 阅读提炼，完成后立即物理删除净化视图，严格遵守即用即清纪律；
+  - 创建一级产物 `wiki/sources/从循环到向量化_NumPy提速的7个关键思维.md`，系统提炼从逐个遍历到向量化变换的 7 大关键思维（布尔掩码、广播对齐与 keepdims、np.select/where 分支、花式索引查表、np.einsum 张量运算及 np.vectorize/apply_along_axis 伪向量化陷阱）；
+  - 标签选用权威白名单 `tags: ["Skill/python"]`。
+- **概念知识图谱联动更新**：
+  - 增量更新既有概念 `[[concepts/概念_Python循环优化技巧]]`：补全 Frontmatter `aliases` 别名矩阵，在 `sources:` 中追加本篇摘要溯源，增量沉淀“NumPy 向量化进阶思维（从遍历到变换）”章节及选型优先级法则。
+- **总索引挂载**：
+  - 在 `wiki/index.md` 中的 Sources 章节挂载 `[[从循环到向量化_NumPy提速的7个关键思维]]`；同步更新 `[[概念_Python循环优化技巧]]` 的条目描述。
+
 ## [2026-10-13] ingest | raw/articles/DeepSeek Harness 插件生态解析.md -> wiki/sources/DeepSeek_Harness_插件生态解析.md (+ affected entities/concepts)
 - **剪藏归档与摘要构建**：
   - 原始剪藏从 `Clippings/DeepSeek Harness 插件生态解析.md` 物理归档移动至 `raw/articles/DeepSeek Harness 插件生态解析.md`；

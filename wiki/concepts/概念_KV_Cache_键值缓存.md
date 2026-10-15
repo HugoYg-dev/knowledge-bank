@@ -26,7 +26,8 @@ sources:
 - wiki/sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de.md
 - wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
 - wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md
-updated: '2026-09-21'
+- wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md
+updated: '2026-10-15'
 aliases:
 - KV Cache
 - KV-Cache
@@ -101,6 +102,8 @@ $$\text{KV Cache 容量} = 2 \times \text{layers} \times \text{kv\_heads} \times
 随着大模型在 Agent（智能体）与超长上下文（RAG）场景的落地，传统的 KV Cache 机制暴露出新的痛点：
 - **Agent 推理中的冗余传输与计算**：斯坦福大学调研表明，在多轮交互的智能体工作流中，由于每一步都是从头计算，导致每次发送给模型的 Token 有约 **62%** 是重复的系统 Prompt、工具定义和历史文档。这不仅浪费带宽，也造成了极大的 Token 推理开销。为了突破这一瓶颈，采用 `[[概念_LMCache_解耦式KV缓存]]` 的架构应运而生，其将缓存管理从推理引擎中剥离为旁路进程，并结合 CacheBlend 算法在合并多文档时执行选择性重计算以复用已有缓存，实现高效加速。
 - **长文本 CPU 卸载下的 I/O 延迟**：在超长上下文推理下，大体积的 KV Cache 需 Offload（卸载）到 CPU 内存。然而在解码时，GPU 等待所需块从 CPU 拷贝回显存的过程（I/O 传输延迟）会产生严重 stall。对此，NVIDIA 与 MIT 联合提出 `[[概念_SparDA预测式KV缓存预取]]` 架构，利用 Forecast 投影预测并异步预取下一层所需的 KV 块，实现数据传输与推理计算的重叠（Overlap）。
+- **同批次共享前缀注意力优化（Shared Prefix Attention in Batch）**：在搜广推等业务（如个性化推荐 `user_info + doc_N`）中，同一 Batch 内的大量请求携带完全一致的用户上下文公共前缀。传统 Prefix Cache 侧重跨请求/跨批次复用，而同批次共享前缀优化需在内核算子层与调度层协同：构造共享因果掩码（Causal Mask）、在同一显存块中共享只读 KV Cache，结合 [[concepts/概念_FlashAttention_快速注意力|FlashAttention]] / FlashInfer Kernel 接口与 GPU Thread Block 调度，彻底消除 Batch 内部冗余的前缀 Prefill 与 KV Cache 重复写显存。
+- **Beam Search 束搜索下的树状 KV Cache 复用**：在推荐大模型（如 OneRec）或受限生成中，Beam Search 维护 $B$ 条并行推导路径。各候选分支共享前置祖先节点的生成历史，需要推理引擎（如 [[entities/实体_SGLang|SGLang]]）在 KV Cache 管理中支持动态分支树（Tree-structured KV Cache）的高效共享与垃圾回收；并结合大 Beam 宽度大词表的高并发剪枝与业务 DocID 约束解码，避免分支膨胀打崩显存。
 
 ### 跨模型路由的缓存失效
 
@@ -142,3 +145,5 @@ $$\text{KV Cache 容量} = 2 \times \text{layers} \times \text{kv\_heads} \times
 - [[概念_GQA_分组查询注意力]]
 - [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]
 - [[wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md]]
+- [[wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md]]
+- [[entities/实体_SGLang]]

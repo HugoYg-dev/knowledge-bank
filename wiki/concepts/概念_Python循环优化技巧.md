@@ -2,10 +2,15 @@
 type: concept
 tags:
 - Skill/python
-summary: 通过选择正确的数据结构、内置函数和编程范式，将 Python for 循环的性能提升 1.3x 到 970x。
+summary: 通过选择正确的数据结构、内置函数和编程范式，将 Python for 循环的性能提升 1.3x 到 970x；并依托 NumPy 向量化实现从逐个遍历到批量变换的思维演进。
+aliases:
+  - "Python循环优化技巧"
+  - "Python循环优化"
+  - "NumPy向量化优化"
 sources:
 - wiki/sources/加速Python循环的12种方法.md
-updated: '2026-07-06'
+- wiki/sources/从循环到向量化_NumPy提速的7个关键思维.md
+updated: '2026-10-15'
 ---
 
 
@@ -40,9 +45,21 @@ updated: '2026-07-06'
 - **缓存**：functools.lru_cache 装饰器，LRU 策略，maxsize=None 无限增长
 - **字符串**：`+=` 每次创建新对象 O(n²)，`join` 一次性分配 O(n)
 
+## NumPy 向量化进阶思维（从遍历到变换）
+
+NumPy 高性能源于调用底层 C/Fortran 优化库，能借助 SIMD 并行指令与连续内存一次性处理整个数组。改写循环的核心是从“逐个遍历判断”转向“描述对数据做批量变换”：
+
+1. **布尔索引替代条件分支**：直接生成布尔掩码就地筛选赋值（如 `arr[arr > 0] *= 2`），彻底消除 `if` 分支与循环。
+2. **广播机制（Broadcasting）自动对齐**：数组维度要么相等，要么其中一个为 1。在行/列标准化中，配合 `keepdims=True` 维持虚拟维度，实现零内存复制的向量化相减。
+3. **分支逻辑向量化**：二分支用 `np.where(condition, x, y)`；多分支复杂区间分类使用 `np.select(condlist, choicelist, default)`，避免链式循环。
+4. **花式索引（Fancy Indexing）一步查表**：用整数数组索引（如 `table[indices]`）实现批量查表映射与多维抽取。
+5. **张量运算统合（np.einsum）**：利用爱因斯坦求和约定描述批量矩阵乘法（`'bij,bjk->bik'`）、转置与内积，消除多层嵌套循环。
+6. **伪向量化陷阱与选型优先级**：`np.vectorize` 与 `np.apply_along_axis` 仅是代码可读性层面的语法糖包装，底层仍为 Python 逐行循环，无法提速。工程选型优先级：**纯 NumPy 原生操作 > apply_along_axis > 手写 Python 循环**。
+
 ## 来源
 
 - [[加速Python循环的12种方法]]
+- [[从循环到向量化_NumPy提速的7个关键思维]]
 
 ## 关联
 

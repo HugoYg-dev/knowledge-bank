@@ -12,7 +12,8 @@ sources:
 - wiki/sources/2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814.md
 - wiki/sources/How_a_GPU_Actually_Works.md
 - wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md
-updated: '2026-09-15'
+- wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md
+updated: '2026-10-15'
 ---
 # 概念：LLM 推理两阶段
 
@@ -48,6 +49,26 @@ updated: '2026-09-15'
 - **PagedAttention 分页管理**：以固定大小物理块分配显存，消除内部碎片，支持更大并发 Batch Size。
 - **[[concepts/概念_FlashAttention_快速注意力|FlashAttention]]**：利用 SRAM Tiling 分块与在线增量 Softmax，避免频繁存取 HBM $N \times N$ 矩阵。
 
+### 3. 架构级解耦：Prefill / Decode (PD) 分离架构
+- **解耦部署**：在单实例或混部模式下，突发长输入 Prefill 会严重打断持续自回归的 Decode，导致词间延迟（TPOT）发生严重抖动与停顿。PD 分离将计算密集型节点（Prefill Pool）与访存带宽密集型节点（Decode Pool）物理隔离，独立弹性扩缩容。
+- **KV 传输与状态移交**：Prefill 节点完成计算后，将 KV Cache 通过高速网络（RDMA / PCIe / 共享显存）异步转移至 Decode 节点开始逐字生成，消除了异构计算特征间的互相干扰，极大优化了整机吞吐与 TTFT / TPOT 平衡。
+
+---
+
+## 大模型推理系统工程三层架构与指标体系
+
+在端到端系统工程落地中，LLM 推理系统可严格拆解为三层架构与多维评估体系：
+
+1. **业务层**：负责推理系统与上层业务的对接，包含推理服务 SDK、推理中台/平台、服务部署监控及面向业务的流量负载调度。
+2. **调度层**：作为模型推理运行时载体，直接决定系统核心性能。落地分布式并行（TP/PP/CP）、Prefix Cache、重叠调度（Overlap Scheduler）、连续批处理（Continuous Batching）、Chunked Prefill 与推测解码（Speculative Decoding）等核心机制（代表框架如 [[entities/实体_vLLM|vLLM]]、[[entities/实体_SGLang|SGLang]]）。
+3. **算子层**：负责底层高性能基础计算单元的实现，聚焦单点计算性能极致优化（QKV 投影、Normalize 归一化、FlashAttention、GEMM 矩阵乘等）。
+
+**核心量化评估体系**：
+- **TTFT (Time to First Token)**：首字延迟（Prefill 性能体现）
+- **TPOT (Time Per Output Token)**：每个输出 Token 的词间延迟（Decode 性能体现）
+- **吞吐与并发**：QPS（每秒请求数）、TPS（每秒输出 Token 数）、Concurrency（并发承载数）
+- **成本指标**：单卡 Token 产出成本、显存利用率（MBU）与模型算力利用率（MFU）
+
 ---
 
 ## 关联
@@ -55,6 +76,7 @@ updated: '2026-09-15'
 - [[2026-05-03_How-LLM-inference-works-internally_19deee]] （来源）
 - [[sources/How_a_GPU_Actually_Works]]（来源）
 - [[sources/KV_Cache_Engineering_for_LLM_Serving]]（来源）
+- [[wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md]]（来源）
 - [[concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]
 - [[concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]
 - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
@@ -63,3 +85,4 @@ updated: '2026-09-15'
 - [[concepts/概念_FlashAttention_快速注意力|概念_FlashAttention]]
 - [[entities/实体_NVIDIA|实体_NVIDIA]]
 - [[entities/实体_vLLM|实体_vLLM]]
+- [[entities/实体_SGLang|实体_SGLang]]

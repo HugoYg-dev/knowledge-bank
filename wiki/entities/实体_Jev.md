@@ -6,7 +6,8 @@ sources:
   - "wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md"
   - "wiki/sources/Laya开源_421M参数33毫秒System1决策.md"
   - "wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md"
-updated: "2026-10-06"
+  - "wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md"
+updated: "2026-10-15"
 ---
 
 # 实体：Jev
@@ -30,22 +31,44 @@ updated: "2026-10-06"
    - 彻底消除逐 Token 解码开销，与结构化输出（Structured Output，底层仍自回归生成 JSON 键值字符）形成本质计算层解耦；
    - 设立 `OTHER` 或 `ESCALATE` 逃逸通道，防范非穷尽选项下概率强行归一化的误判风险；
    - 在 100 例分类任务的连续批处理（Continuous Batching）基准实测中，打分泳道较自回归生成泳道展现出显著的吞吐与延迟优势。
+5. **接口规范与三大判断原语**：
+   - **输入形态**：支持传入共享状态背景 `State` 与若干独立问题 `Questions`（单请求上限 250 道题）。
+   - **三大原语**：
+     - `Noul`（是非题）：输出 0~1 之间的单一置信概率；
+     - `Choice`（选择题）：输出候选项的归一化概率分布；
+     - `Score`（打分题）：输出分级概率与最终加权期望分。
+   - **推测性并发（Speculative Fan-out）**：鼓励客户端将多维可能相关的判断全量并发提交，服务端并行评估后，下游业务逻辑按需消费并丢弃无效分支。
+
+## 架构反向工程解密（基于黑盒探测与开源复刻 Kev / NanoJev）
+
+根据 Archer Hume 等外部黑盒测试及社区开源复刻实现，Jev 内部的计算流可还原为四大关键机制：
+
+1. **共享状态单次读取（KV Cache 冻结）**：State 文本仅执行一次 Prefill 计算，其中间状态被冻结在 [[concepts/概念_KV_Cache_键值缓存|KV Cache]] 中，后续数十上百道题目共享同一套 KV 缓存，避免重复 Prefill 开销。
+2. **题目物理隔离**：外部暗号穿透实验表明题目间严格互不可见。底层通过**注意力掩码（Attention Masking）**强行遮蔽相邻题目 Token，或在循环/混合架构基座（如 Qwen3.5）上采用**独立分支复用（Forking KV Cache）**分叉并行计算。
+3. **选项相互比较（破除独立线性头假设）**：测试表明塞入无关干扰项会改变已有选项的相对赔率，推翻了“独立线性头 + Softmax”的黑屋盲审假说。开源实现给出了两种化学反应机制：
+   - **指针头（Pointer Head，如 Kev）**：在看完整体选项后，以末尾向量作为全局指针指回各候选打分；
+   - **候选间注意力模块（Inter-candidate Attention Module，如 NanoJev）**：各选项抽取特征向量后，投入专用跨候选注意力小网络集中权衡，使选项自身构成题意线索。
+4. **无自回归提取**：在首个预测位置直接提取词表候选 Logits 或通过专用评分头输出，跳过自回归循环。
 
 ## 工程评测与开源替代方案对比
 
-根据社区与独立机构（如 sgnt.ai、truestandard.ai）的对照基准评测：
+根据社区与独立机构（如 sgnt.ai、truestandard.ai、JevBench 等）的对照基准评测：
 
 - **质量表现**：在重构官方评测材料的 102 个判断任务中，SemIf（基于冻结的 Qwen3.5-4B 基座，零微调）与标准答案一致率为 84.5%，Jev 为 88.3%，差距仅 3.8 个百分点；在依赖记忆的边缘任务（MMLU-Pro，Jev 83% vs 27B 开源 60%）中，一旦缺少必要背景，Jev 亦会在 0.90 高置信度下给出典型的错误事实；
 - **推理延迟**：Browser Use 实际航旅查询实测中 Jev 云端 API 中位延迟为 178 毫秒；而本地开源方案（如 jev-fire 在浏览器 WebGPU 运行 0.8B Qwen）在马里奥游戏中单步仅需 71.26 毫秒且省去网络往返；
 - **输出一致性**：Jev 在云端生产 API 上重复测试 15 次，部分问题概率在 0.43 到 0.53 之间摆动横穿 0.5 决策临界点（Bud-ro 迷宫测试中求解率甚至直接归零）；而本地直接提取 Logits 在数学上具备完全确定性；
-- **校准曲线**：truestandard.ai 跨 6 领域 108 命题测试显示 Jev 的 ECE 为 0.066，与通用模型 Gemini 3.1 Flash Lite (0.061)、Claude Haiku 4.5 (0.067) 水平相当，通过合理提示词或两三百条样本的 Platt/温度缩放即可在本地拉平；仅在第 4 级对抗小样本（108 条）中以 91.7%（vs 83.3% / 80.6%）领先，但该测试曾反转三次，属于未独立复现的孤证。
-- **与完全开源方案 Laya 的正面对比**：Convai Innovations 开源的 421M 端到端决策模型 [[entities/实体_Laya|Laya]]（基于 ModernBERT-large 与 RLCD 训练）实测单问题 P50 延迟仅 38.4 ms，较 Jev 最佳 150 ms 快 4 倍、较平均 400 ms 快 10.4 倍；在 23,024 任务内问题宏平均准确率达 83.8%（Jev 为 67.8%），且提供 100% 本地自托管与 Apache 2.0 协议支持。
+- **校准曲线**：truestandard.ai 跨 6 领域 108 命题测试显示 Jev 的 ECE 为 0.066，与通用模型 Gemini 3.1 Flash Lite (0.061)、Claude Haiku 4.5 (0.067) 水平相当，通过合理提示词或两三百条样本的 Platt/温度缩放即可在本地拉平；仅在第 4 级对抗小样本（108 条）中以 91.7%（vs 83.3% / 80.6%）领先，但该测试曾反转三次，属于未独立复现的孤证；
+- **与完全开源方案 Laya 的正面对比**：Convai Innovations 开源的 421M 端到端决策模型 [[entities/实体_Laya|Laya]]（基于 ModernBERT-large 与 RLCD 训练）实测单问题 P50 延迟仅 38.4 ms，较 Jev 最佳 150 ms 快 4倍、较平均 400 ms 快 10.4 倍；在 23,024 任务内问题宏平均准确率达 83.8%（Jev 为 67.8%），且提供 100% 本地自托管与 Apache 2.0 协议支持；
+- **核心局限与两道坎**：
+  1. **困难多步与算术推理严重跛足**：JevBench 困难题综合正确率仅 74.1%（DeepSeek V4.1 Flash 为 95.0%），两步应用题正确率暴跌至 32%，多步依赖判断易前错后错；
+  2. **呈现位置敏感与跨域泛化脆弱**：关键信息从文本开头移至中间，正确率从 80.5% 腰斩至 40.9%；跨领域（如软件更新安全检测）AUROC 从 0.851 骤降至 0.605；
+  3. **延迟与成本倒挂风险**：若前置 Jev 后仍需无条件调用通用主模型，端到端总延迟将从 649ms 激增至 1087ms，且调用成本翻倍。
 
 ## 关联页面
 
 - **归属机构/产品**：TypeSafe
 - **开源对标实体**：[[entities/实体_Laya|实体_Laya]]（421M 开源端到端非自回归决策模型）
-- **核心概念**：[[concepts/概念_Decision_Model_专用判断模型|Decision Model (专用判断模型)]]、[[concepts/概念_RLCD校准决策强化学习|RLCD校准决策强化学习]]、[[concepts/概念_分类模型校准|分类模型校准]]、[[concepts/概念_LLM模型路由|LLM 模型路由]]、[[concepts/概念_连续批处理|概念_连续批处理]]
+- **核心概念**：[[concepts/概念_Decision_Model_专用判断模型|Decision Model (专用判断模型)]]、[[concepts/概念_RLCD校准决策强化学习|RLCD校准决策强化学习]]、[[concepts/概念_分类模型校准|分类模型校准]]、[[concepts/概念_LLM模型路由|LLM 模型路由]]、[[concepts/概念_连续批处理|概念_连续批处理]]、[[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
 - **应用场景**：[[entities/实体_Claude_Code|Claude Code]] 与 [[entities/实体_Codex|Codex]] 工具执行前置拦截、[[entities/实体_LangChain|LangChain]] 路由中间件
 
 ## 来源与参考
@@ -53,3 +76,4 @@ updated: "2026-10-06"
 - [[wiki/sources/更好的替代品早已存在，Jev 留给研究的只剩时机.md|更好的替代品早已存在，Jev 留给研究的只剩时机]]
 - [[wiki/sources/Laya开源_421M参数33毫秒System1决策.md|Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策]]
 - [[wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md|Build your own Jev (100% local)]]
+- [[wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md|一文拆解Jev架构：一个判断模型是怎么被拼出来的]]

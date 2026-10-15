@@ -4,6 +4,8 @@
 
 ## Sources
 
+- [[腾讯15年资深后台工程师_转战大模型推理的抉择]] — 腾讯15年资深搜索后台T12工程师转战大模型推理工程的心路抉择、入门学习路径、推理三层架构及传统Infra向AI与Agent Infra迁移演进思考（Infra/serving, LLM/inference, CaseStudy）
+- [[一文拆解Jev架构_一个判断模型是怎么被拼出来的]] — 腾讯云开发者深度反向解密Jev专用判断模型：拆解State/Questions/三原语接口、KV Cache冻结共享、指针头与跨候选注意力交互、RLCD后训练数据合成及困难任务与泛化脆弱两大边界（LLM/inference, AI-Agent/tool-calling, LLM/arch）
 - [[MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践]] — 美团外卖统一推荐精排基座大模型 MTFM（KDD 2026）：异构 Tokenizer、动态因果掩码、混合注意力（Target:Full=3:1）、Target Scale-Up、Muon 优化器批处理加速与 User-Level 算力复用（Recommendation, Infra/serving, CaseStudy）
 - [[这是一篇把Token讲明白的科普级综述]] — 谷歌牵头32位学者154页分词综述科普：解构大模型底层Token编号机制、BPE高频合并算法、算术与字母计数缺陷根因，以及语言成本不平等与词表安全隐患（LLM/tokenization）
 - [[Brownfield_Agentic_Engineering]] — Addy Osmani 阐述在老旧遗留代码库中运行 AI 智能体的棕地工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物、Harness 约束沉淀及端到端完整迁移单元（AI-Agent/coding）
@@ -13,6 +15,7 @@
 
 - [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试）
 - [[面试第一句 "请做个自我介绍"，别急着背简历！这样做才加分]] — HRD 视角下的求职面试自我介绍方法论：强调自我介绍是简历导读而非背诵，拆解“你是谁/做成过什么/为什么来”三段论与开放式结尾引导提问技巧（面试）
+- [[秋招AI岗面试心得_从准备到上岸的完整方法论]] — 26届秋招AI岗求职复盘与方法论：面试逻辑演进（从八股到项目深挖与开放设计）、AI Coding业务笔试心法、简历STAR量化、高频追问防线与复盘SOP（面试）
 
 - [[Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要]] — 系统阐释为什么管理上下文比单纯扩大窗口更重要：厘清 Context 与 Session/Scratchpad/Memory/Context Window 边界，剖析 Context Rot 与 Lost in the Middle 失效机理，归纳 Write/Select/Compress/Isolate 四大核心操作及四种上下文失效模式（AI-Agent/context-engineering）
 - [[别再 rm 日志了：Linux 下安全清空日志文件的正确姿势]] — 深入解析 Linux 日志清空的底层机制与高危陷阱：剖析 rm+touch 导致磁盘空间锁死与新日志丢失的根因（inode 与 FD 错位），详解使用 true > 1.log 原地截断单文件与 truncate -s 0 *.log 批量清空的安全实践（Skill/linux）
@@ -185,6 +188,7 @@
 - [[Python并发_async_await与FastAPI]] — FastAPI 官方文档：async/await 协程、并发 vs 并行、路径函数 def/async def 选择（Skill/python）
 - [[Docker化Flask_Django应用从pip切换到uv]] — Nick Janetakis：Docker 项目 pip→uv，约 10x 提速，pyproject.toml/uv.lock/非 root（Skill/python）
 - [[加速Python循环的12种方法]] — 12 种 for 循环优化：map 970x/set 498x/filterfalse 131x/lru_cache 57x（Skill/python）
+- [[从循环到向量化_NumPy提速的7个关键思维]] — 系统剖析从逐个遍历到向量化变换的7大NumPy提速关键思维：布尔索引、广播机制对齐、分支逻辑向量化、花式索引查表、einsum张量运算及避免伪向量化陷阱（Skill/python）
 - [[五个鲜为人知的Python功能]] — contextlib.suppress/setrecursionlimit/typing.Literal/__missing__/__subclasshook__（Skill/python）
 - [[自动探索性数据分析EDA_10个Python包]] — D-Tale/Pandas-Profiling/Sweetviz/AutoViz/Dataprep 等 10 个自动 EDA 包对比与选型（Skill/python, Skill/data-analysis）
 - [[Pandas一行代码绘制25种美图]] — DataFrame.plot/Series.plot 一行代码绘制 25 种图表（Skill/data-analysis）
@@ -607,6 +611,7 @@
 
 ## Entities
 
+- [[entities/实体_SGLang]] — LMSYS 团队开源的高性能大语言模型推理与服务引擎，以 RadixAttention 树状前缀缓存、高效的调度运行时与灵活的结构化生成见长（Infra/serving, LLM/inference）
 - [[entities/实体_MTFM]] — 美团外卖多业务场景统一推荐精排基座大模型（KDD 2026），首次在外卖核心场景全量推全，基于 HSTU/Transformer 骨干、异构 Tokenizer、动态因果掩码与混合注意力架构（Recommendation, Infra/serving）
 - [[entities/实体_Muse]] — Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力（AI-Agent/UI, AI-Agent/memory）
 - [[entities/实体_Meta]] — 全球科技巨头与 AI 核心创新机构，主导 LLaMA 开源大模型家族、PyTorch 深度学习框架、FAISS 向量检索库、REFRAG 向量压缩架构与 Muse 个人智能体生态（LLM/arch, AI-Agent/UI）
@@ -746,7 +751,7 @@
 - [[概念_FastAPI项目结构模式]] — Routers/Schemas/Services 三层分离 + 安全中间件 + pydantic-settings（Skill/python）
 - [[概念_Python_async_await并发]] — 协程/并发vs并行（汉堡比喻）/FastAPI def vs async def 选择（Skill/python）
 - [[概念_uv包管理器]] — Rust 编写 pip 替代品，pyproject.toml+uv.lock，Docker 集成 10x 提速（Skill/python）
-- [[概念_Python循环优化技巧]] — 12 种 for 循环优化方法与提速比，map/set/lru_cache/filterfalse（Skill/python）
+- [[概念_Python循环优化技巧]] — 12 种 for 循环优化方法与提速比，结合 NumPy 向量化（布尔索引/广播/select/einsum）从遍历到变换的思维演进（Skill/python）
 - [[概念_Python函数式工具]] — map/lru_cache/filterfalse/Generator，C 实现替代显式循环（Skill/python）
 - [[概念_Python进阶特性]] — contextlib异常抑制/Literal类型/鸭子类型/描述符底层属性代理与对象魔术方法协议（Skill/python）
 - [[概念_Python并发与并行机制]] — 未分类概念摘要（python, concurrency, parallelism, gil, programming）
