@@ -451,15 +451,14 @@ Reconcile 可以自动发现和报告矛盾，但严禁无人值守选边。真�
 
 ## 7. Git 与跨端同步约定
 > [!tip] 操作原则
-> 不确定时，先提议再执行，不做大规模自动改动。每次完成 Ingest 后建议建立 Git 提交，便于历史回溯。
+> 不确定时，先提议再执行，不做大规模自动改动。
+> 每次完成 Ingest 后建议建立 Git 提交，便于历史回溯。
 
-- **跨平台与同步说明**：桌面端（Mac/Linux/Windows）与移动端（iOS/iPadOS）通过 Obsidian + Obsidian Git 插件定时自动 commit & push/pull；`.obsidian/` 目录下的配置、插件和主题随仓库跨端同步；`workspace.json` 等设备绑定缓存已在 `.gitignore` 中排除。
+- **跨平台与同步说明**：桌面端与移动端通过 Obsidian + Obsidian Git 插件定时自动 commit & push/pull；`.obsidian/` 目录下的配置、插件和主题随仓库跨端同步；`workspace.json` 等设备绑定缓存已在 `.gitignore` 中排除。
 - **Git User**：`Hugo Yang <hugoyang1229@gmail.com>`
-- **提交信息**：中英文均可，建议带规范类型前缀（如 `docs:`, `chore:`, `feat:` 等）。
 - **Obsidian Git 插件自动提交格式**：`vault backup: {{date}}`
 - **安全红线**：永远不要提交 MCP 配置文件（`.mcp.json`、`.agents/mcp_config.json`、`.codex/config.toml`，内含 API Token，均已在 `.gitignore` 中排除）。
 - **高危动刀防护**：大规模批量修改或清理前，确保 Git 工作区已 commit 干净。影响页面 $\ge 5$ 篇时须强制执行 `--dry-run` 审批。
-- **Git 绝对红线**：严格遵守 [§0.2 Git 操作绝对红线](#02-agent-操作风险与权限分级-l0l3)，永久禁止 Agent 自动执行 `git stash`、`git checkout`、`git reset`、`git commit` 或 `git push` 等写操作及自动恢复操作。一旦误改立即停止并报告精确 diff，由用户决定恢复方式。
 
 ## 8. 关键文件与子模块索引 (Index & Submodules Map)
 
