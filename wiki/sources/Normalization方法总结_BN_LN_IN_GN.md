@@ -57,10 +57,6 @@ updated: '2026-07-01'
 - LN：γ、β 是维度等于 normalized_shape 的矩阵
 - BN、IN 可设 momentum / track_running_stats 获得整体数据更准的均值方差；LN、GN 只能算当前 batch 内真实均值方差
 
-## 关联概念
-
-- [[概念_Normalization方法对比]]
-- [[概念_Batch_Normalization_批归一化]]
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/常用 Normalization 方法的总结与思考：BN、LN、IN、GN.md]]

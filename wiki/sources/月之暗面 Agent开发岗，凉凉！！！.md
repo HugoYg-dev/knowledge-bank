@@ -25,12 +25,5 @@ updated: "2026-08-03"
 - 工具过多时使用“意图识别 + 渐进式披露”：先加载工具名称与一句话描述，选中类别后再加载少量完整 Schema。文中示例称 50 个工具由完整加载的 20,000 Token 降至两阶段共 2,200 Token，但该数据来自作者示例计算。
 - RAG 实现采用语义切分、BGE-large-zh-v1.5、Milvus IVF_FLAT、Top-20 向量召回与 BGE-reranker-v2 Top-5 精排；检索审计日志记录召回和精排前后的文档、分数及最终上下文，以区分召回、排序与生成问题。
 
-## 关联概念
-
-- [[concepts/概念_Agent三层记忆体系]]
-- [[concepts/概念_上下文工程]]
-- [[concepts/概念_渐进式披露]]
-- [[concepts/概念_Rerank_重排序]]
-- [[concepts/概念_Agent完整轨迹评估]]
 
 > 📎 **物理文献**：[[raw/articles/月之暗面 Agent开发岗，凉凉！！！.md]]

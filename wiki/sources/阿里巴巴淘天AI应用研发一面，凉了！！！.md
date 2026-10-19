@@ -24,18 +24,18 @@ updated: "2026-10-05"
 - **手撕二：岛屿数量**：DFS（递归扩散沉岛）与 BFS（队列层序遍历）双解法。针对超大规模矩阵，DFS 存在深层递归调用栈溢出（Stack Overflow）风险，工程实践中必须选用 BFS 或显式栈迭代式 DFS。
 
 ### 2. 代码审查 Agent 与 SDLC 实践（Q1-Q5）
-- **CR Agent 落地与增量提效**：作为 [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期]] 的关键质检环节，CR Agent 监听 Git Webhook 拉取 Diff，结合 AST 静态分析与 LLM 深度审查，生成规范/安全/漏洞报告推送到 PR。初期全量扫描大仓耗时 30 分钟，改用增量 Diff 与高风险变更加焦后降至 3 分钟。
+- **CR Agent 落地与增量提效**：作为 AI_Native_SDLC_AI原生软件开发生命周期 的关键质检环节，CR Agent 监听 Git Webhook 拉取 Diff，结合 AST 静态分析与 LLM 深度审查，生成规范/安全/漏洞报告推送到 PR。初期全量扫描大仓耗时 30 分钟，改用增量 Diff 与高风险变更加焦后降至 3 分钟。
 - **Agent vs 固定 Workflow 权衡**：
   - **边界区分**：Workflow 适用于流程标准化、无动态推理的场景（如数据 ETL、定时报表、CI/CD 流水线），确定且成本低；自治 Agent 适用于任务复杂多变、工具组合未知的动态推理场景（如深层代码审计、复杂排错、动态规划）。
   - **业务取舍**：固定规则对不同漏洞（SQL 注入需审 DB 操作、XSS 需审前端渲染、并发需审锁机制）覆盖不均，Workflow 漏检率是 Agent 的 2 倍以上；但 Agent 延迟和 Token 成本高。实践采用**混合架构**：浅层简单规则走确定性 Workflow，深层复杂语义审查走 Agent 动态决策。
 - **执行模式选型（ReAct vs Plan-and-Execute）**：
   - 纯 ReAct 边想边做容易陷入死循环与路径震荡；Plan-and-Execute 先行规划但缺乏现场应变。
-  - **分层混合模式**：Planner 先行生成粗粒度计划，步骤内部使用 ReAct 闭环执行，若单步执行受阻则回退触发重规划（Re-planning），结合 [[concepts/概念_Agent系统自动优化闭环]] 的评估反馈机制保障收敛。
+  - **分层混合模式**：Planner 先行生成粗粒度计划，步骤内部使用 ReAct 闭环执行，若单步执行受阻则回退触发重规划（Re-planning），结合 Agent系统自动优化闭环 的评估反馈机制保障收敛。
 
 ### 3. 工具协议与能力封装（Q6-Q10）
 - **Skill / MCP / Function Calling 三层关系**：
   - **Function Calling**：底层模型原生能力，输出符合 JSON Schema 的结构化调用参数，不涉及工具发现与管理。
-  - **[[concepts/概念_MCP协议]]**：标准化通信协议，定义跨平台工具/资源/Prompt 的发现、参数契约与通信生命周期。2026 年演进为无状态核心，通过标准 HTTP Header 路由支持云原生水平扩展。
+  - **MCP协议**：标准化通信协议，定义跨平台工具/资源/Prompt 的发现、参数契约与通信生命周期。2026 年演进为无状态核心，通过标准 HTTP Header 路由支持云原生水平扩展。
   - **Skill**：面向业务场景的高级封装，聚合多个 Tool、System Prompt 模板与业务流程逻辑（如 Agent Plugins 1.0.0 规范中的 `plugin.json` 标准化打包）。
 - **Skill 契约与版本演进**：使用 JSON Schema 严格声明输入参数、类型与必填项；输出统一标准化结构（`status`, `data`, `error`, `metadata`）。严防参数破坏性变更，工程上必须引入参数兼容适配层与版本控制（Semantic Versioning）。
 - **工具渐进式加载与海量路由**：面对 100+ 工具时，不能全量注入 Prompt（避免上下文击穿与选择漂移）：
@@ -43,9 +43,9 @@ updated: "2026-10-05"
   - **分层路由与稳定性兜底**：粗粒度分类筛选 + 向量语义检索 Top-5；调用前参数 Schema 硬拦截，调用后结果结构校验与重试，设置连续失败熔断器（Circuit Breaker）隔离异常工具。
 
 ### 4. Harness 运行时与上下文治理（Q11-Q15）
-- **[[concepts/概念_Harness_Engineering_宿主编排工程]]**：Harness 是 Agent 的运行时操作系统，负责调度执行循环、拦截工具调用、维护会话状态、管理安全沙箱与异常恢复。与 LangChain 等框架优先架构不同，现代 Harness（如 DeepSeek Harness）推崇“一切皆插件”理念，解耦模型、协议与业务状态机。
+- **Harness_Engineering_宿主编排工程**：Harness 是 Agent 的运行时操作系统，负责调度执行循环、拦截工具调用、维护会话状态、管理安全沙箱与异常恢复。与 LangChain 等框架优先架构不同，现代 Harness（如 DeepSeek Harness）推崇“一切皆插件”理念，解耦模型、协议与业务状态机。
 - **DeepSeek Harness vs Claude Code**：前者是基于微内核架构（如 Cordis 元框架）的开源可定制运行时，支持 SQLite 会话恢复；后者是针对代码场景高度垂直闭环的商业应用。
-- **[[concepts/概念_上下文工程]] 与压缩策略**：
+- **上下文工程 与压缩策略**：
   - 滑动窗口丢弃早期历史，保持最新但易丢失全局设定；全文摘要压缩保留脉络但丢失关键数字与细节，且消耗二次生成 Token。
   - **解耦结构化摘要**：滑动窗口保留最近 $N$ 轮完整对话；溢出历史按“实体、关键指标、事件、结论、待办”分槽提炼结构化摘要，实体与关键数字强制保留原文，按需向量召回。
 - **工具容错与重试防风暴**：三层防御机制：
@@ -71,12 +71,5 @@ updated: "2026-10-05"
   - **缓存一致性**：Cache Aside 模式下，更新 DB 后异步 MQ 重试删缓存或监听 Canal/Binlog 保证最终一致；并发旧值回写采用延迟双删与版本号校验。
   - **AI Coding 架构**：电商计价系统采用策略模式 + 配置中心 + 规则引擎；AI 仅用于辅助生成具体策略类，计算链路与边界测试由强类型规则保障。
 
-## 关联概念
-
-- [[concepts/概念_上下文工程]]
-- [[concepts/概念_MCP协议]]
-- [[concepts/概念_Harness_Engineering_宿主编排工程]]
-- [[concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期]]
-- [[concepts/概念_Agent系统自动优化闭环]]
 
 > 📎 **物理文献**：[[raw/articles/阿里巴巴淘天AI应用研发一面，凉了！！！.md]]

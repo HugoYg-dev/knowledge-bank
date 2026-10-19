@@ -27,13 +27,5 @@ updated: '2026-08-03'
 - 文章把 Prompt Engineering、Context Engineering、Harness Engineering 与 Loop Engineering 视为逐层扩展的工程关注点，并区分面向流程编排的 Graph Engineering 与面向单 Agent 迭代控制的 Loop Engineering。
 - RAG 部分建议以 Query Rewrite、BM25 与向量多路召回、RRF 融合及 Rerank 组成检索链路；效率侧使用 TopN 精排、上下文预算、模型路由、缓存、异步队列和批量推理进行权衡。
 
-## 关联概念
-
-- [[concepts/概念_上下文工程]]
-- [[concepts/概念_Harness_Engineering_宿主编排工程]]
-- [[concepts/概念_Agent三层记忆体系]]
-- [[concepts/概念_Agent完整轨迹评估]]
-- [[concepts/概念_多智能体协调]]
-- [[concepts/概念_混合检索]]
 
 > 📎 **物理文献**：[[raw/articles/DeepSeek Agent开发岗三面，再面一轮就offer啦！！！.md]]

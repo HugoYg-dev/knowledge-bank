@@ -26,11 +26,5 @@ updated: '2026-08-03'
 - 测试覆盖正常评论、谐音变体、反讽引用、边界误伤、Prompt 注入和超长或异常输入六类场景，同时观察误删率、漏判率、转人工率和 P95 延迟。
 - 文中给出的示例目标是误删率低于 0.1%、漏判率低于 1%、转人工率低于 5%、P95 延迟低于 500ms；这些是面试复盘中的设计目标，并非已上线系统的实测结果。
 
-## 关联概念
-
-- [[concepts/概念_HITL_MCP_人机协同协议架构]]
-- [[concepts/概念_Agent完整轨迹评估]]
-- [[concepts/概念_Harness_Engineering_宿主编排工程]]
-- [[concepts/概念_Inoculation_Prompting_接种提示词]]
 
 > 📎 **物理文献**：[[raw/articles/美团AICoding面试，跪了！！！.md]]

@@ -144,15 +144,10 @@ Pandas 相对 NumPy 的 7 大优势：
 - `swaplevel()` / `reorder_levels()`：调整层级顺序
 - MultiIndex 与 GroupBy 天然配合：分组后结果常产生 MultiIndex
 
-## 关联概念
-
-- [[概念_Pandas核心操作图解]]
-- [[概念_Pandas可视化]]
-- [[概念_EDA_自动化分析工具]]
 
 ## 关联实体
 
-- [[实体_Pandas]]
+- Pandas
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/一图胜千言｜图解Pandas常用操作！.md]]

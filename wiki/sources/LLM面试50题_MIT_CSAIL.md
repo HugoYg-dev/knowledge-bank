@@ -67,7 +67,6 @@ updated: '2026-07-01'
 - **基础模型分类**：语言（BERT/GPT-4）、视觉（ResNet）、生成（DALL-E）、多模态（CLIP）
 - **LLM 部署挑战**：资源密集、偏见延续、可解释性差、隐私安全
 
-## 关联论文清单（文章提供）
 
 - Attention Is All You Need（Transformer 基础）
 - LoRA: Low-Rank Adaptation of Large Language Models
@@ -77,21 +76,6 @@ updated: '2026-07-01'
 - Chain-of-Thought Prompting Elicits Reasoning in LLMs
 - Retrieval-Augmented Generation for Knowledge-Intensive NLP
 
-## 关联
-
-- [[概念_Transformer架构]]
-- [[概念_自注意力复杂度]]
-- [[概念_FlashAttention_快速注意力]]
-- [[概念_KV_Cache_键值缓存]]
-- [[概念_LoRA_低秩适应微调]]
-- [[概念_大模型训练三阶段]]
-- [[概念_RLHF_基于人类反馈的强化学习]]
-- [[概念_RAG基础流程]]
-- [[概念_CoT_高级思维链方法]]
-- [[概念_MoE混合专家]]
-- [[概念_Fine_Tuning_模型微调]]
-- [[实体_DeepSeek-R1]]
-- [[实体_Qwen3]]
 
 ---
 > 📎 **物理文献**：[[raw/articles/信息过载时代，如何真正「懂」LLM？从MIT分享的50个面试题开始 ｜ 机器之心.md]]

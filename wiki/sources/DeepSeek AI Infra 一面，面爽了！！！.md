@@ -19,7 +19,7 @@ updated: "2026-09-07"
 
 ## 核心要点
 
-1. **框架哲学与插件生态**：[[entities/实体_DeepSeek_Harness|DeepSeek-Harness]] 坚持“组合优先”与“一切皆插件”的微内核哲学，模型适配器、工具注册表、会话管理乃至 Agent Loop 本身均基于 [[entities/实体_Cordis|Cordis]] 运行时实现解耦，避免了传统 LangChain 高层抽象导致的问题排查困难与版本脆弱性。
+1. **框架哲学与插件生态**：DeepSeek-Harness 坚持“组合优先”与“一切皆插件”的微内核哲学，模型适配器、工具注册表、会话管理乃至 Agent Loop 本身均基于 Cordis 运行时实现解耦，避免了传统 LangChain 高层抽象导致的问题排查困难与版本脆弱性。
 2. **循环早停与防震荡机制**：Agent Loop 采用“置信度阈值 + 信息增益（Embedding相似度）+ 任务感知”的分层早停方案，并以工具返回的确定性“硬信号”（明确答案、非空数据、测试通过）作为终极判断依据；引入 `FailureMemory` 记录操作与参数哈希，在时间窗口内阻断重复失败调用，解决路径震荡问题。
 3. **工具调用沙箱安全防御**：建立包含文件系统临时工作区（Docker/chroot）、网络流量白名单（严禁内网 IP）和资源硬配额（cgroup 限制 CPU 与内存）的三层沙箱；对 Python 等脚本执行采用受限环境（RestrictedPython/容器）与 seccomp 系统调用拦截（禁止 `execve`、`fork` 等）。
 4. **小模型协同与分层工具路由**：遵循“小模型筛选信息，大模型处理信息”分工原则，利用 7B 小模型执行对话历史压缩（成本降低 90%、延迟降至 200ms）及 Query 改写重排；面对 100+ Skill 采用“类别路由粗排 -> Embedding 相似度精排 Top-k -> 描述缓存”的分层路由机制，控制上下文 Token 膨胀。
@@ -128,17 +128,16 @@ class FailureMemory:
 ### 20. 技术路线展望
 - 模型内部决策能力的内生化（后训练 SFT/RL）是关键跃迁，由“工具外部编排”过渡至“模型原生懂得何时调工具、何时早停、何时追问”；技术挑战从单纯“能做事”提升至有分寸、懂边界的“会做人”。
 
-## 关联实体与概念
 
 - 关联实体：
-  - [[entities/实体_DeepSeek|DeepSeek]]
-  - [[entities/实体_DeepSeek_Harness|DeepSeek Harness]]
-  - [[entities/实体_Cordis|Cordis]]
+  - DeepSeek
+  - DeepSeek Harness
+  - Cordis
 - 关联概念：
-  - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
-  - [[concepts/概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]
-  - [[concepts/概念_Agent三层记忆体系|Agent三层记忆体系]]
-  - [[concepts/概念_Agent完整轨迹评估|Agent完整轨迹评估]]
-  - [[concepts/概念_Agent_Skills元工具架构|Agent Skills元工具架构]]
+  - Harness Engineering
+  - Agentic RAG
+  - Agent三层记忆体系
+  - Agent完整轨迹评估
+  - Agent Skills元工具架构
 
 > 📎 **物理文献**：[[raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md]]

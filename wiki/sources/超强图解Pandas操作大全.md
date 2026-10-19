@@ -28,7 +28,7 @@ updated: '2026-07-01'
 - **sort_values**：按指定列的值排序
 - **selecting**：选择一列或多列
 
-### 分组聚合 [[概念_Pandas核心操作图解]]
+### 分组聚合 Pandas核心操作图解
 
 - **groupby + mean**：按某列分组并求均值
 - **groupby 多列分组**：按多个列组合分组
@@ -39,7 +39,7 @@ updated: '2026-07-01'
 - **filtering**：用 `loc` 布尔索引过滤行列
 - **dropping columns**：删除指定列
 
-### 连接与合并 [[概念_Pandas核心操作图解]]
+### 连接与合并 Pandas核心操作图解
 
 - **joining**：基于索引连接，如 `ppl.join(dogs)`
 - **merging**：基于列连接，指定 `left_on` / `right_on` / `how`
@@ -57,14 +57,10 @@ updated: '2026-07-01'
 - **resetting index**：重置索引
 - **setting index**：设置索引
 
-## 关联概念
-
-- [[概念_Pandas核心操作图解]]
-- [[概念_Pandas可视化]]
 
 ## 关联实体
 
-- [[实体_Pandas]]
+- Pandas
 
 ---
 > 📎 **物理文献**：[[raw/playbooks/超强图解 Pandas，建议收藏.md]]

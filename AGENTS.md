@@ -1,6 +1,6 @@
 # 个人知识库系统总纲与 Agent 操作指南
 
-> 文档版本：v1.3.0 (2026-10) | 修改本文件属于 **L3 高危变更**，必须经过人工明确确认，严禁 Agent 自行隐式修改。
+> 文档版本：v1.4.0 (2026-10) | 修改本文件属于 **L3 高危变更**，必须经过人工明确确认，严禁 Agent 自行隐式修改。
 
 ## 0. 项目定位与核心目标
 - **项目定位**：基于 Obsidian 的个人知识库（vault），通过 Git 同步到 GitHub（`Parsonlee/knowledge-bank`，私有仓库）。本仓库本质上是专门为 AI Agent 进行知识管理、结构化治理与自动化运维设计的工作空间。
@@ -245,10 +245,18 @@ Frontmatter 的 `sources:` 负责页面级溯源；正文中的重要主张还�
 > [!CAUTION] 可信度标注不能替代来源
 > 不得通过添加 `confidence`、`ai-first`、`status` 等字段掩盖来源不足。任何末端页面仍必须由合规 `wiki/sources/` 支撑；无 Source 支撑的 `[Agent 推断]` 只能保留在对话或 `tmp/` 分析中，不得写入末端 Wiki 页面。
 
-### 2.7 面试与面经来源隔离约束 (No Interview Sources for Downstream Pages)
-带有 `面试` tag 的文章（尤其是面经文章）**严禁作为任何末端产物页面（`wiki/entities/`、`wiki/concepts/`、`wiki/comparisons/`、`wiki/overview/`）的信息来源（sources）**。
-- **治理原因**：面试问答中的零散表达、个人回忆或特定场景方案具有主观性与局限性，不得外推沉淀为实体的正式属性或概念的权威定义。
-- **允许用途**：面经类文章**只用于聚合生成专题面经总结文档（`wiki/overview/` 中带 `面试` tag 的综述页）**，该综述页自身的 `sources:` 可指向面试类 `wiki/sources/`，但其他末端页面一律禁止。（面经文章的 Tag 独占纪律详见 §5 CAUTION 框第 3 条）。
+### 2.7 面试与面经来源隔离与图谱防污染约束 (Interview Sources & Graph Isolation)
+带有 `面试` tag 的文章（含求职实录面经与面试题解等）与全库核心概念/实体知识网络执行严格的**隔离防污染纪律**：
+
+1. **严禁作为概念/实体的下游来源（No Interview Sources for Downstream Concepts/Entities）**：
+   - 带有 `面试` tag 的文章**严禁作为任何实体页（`wiki/entities/`）、概念页（`wiki/concepts/`）及横向对比页（`wiki/comparisons/`）的信息来源（sources）**。
+   - **治理原因**：面试问答、求职回忆、特定业务场景或临场问答具有主观性、碎片化与局限性，绝不得外推沉淀为实体的正式属性或概念的权威定义。
+2. **严禁对概念/实体产生双向链接渗透（No In/Out Links to Concepts/Entities）**：
+   - **禁止出链（No Outlinks to Graph）**：带有 `面试` tag 的 Source 摘要页正文中，**严禁产生任何指向实体 `[[entities/实体_xxx]]` 或概念 `[[concepts/概念_yyy]]` 的双向链接**。正文中提及任何技术术语、算法专名、人物或工具时，必须**直接使用普通纯文本**（例如直接书写 `Transformer`、`LoRA`、`DeepSeek`），严禁包裹 `[[]]` 语法，杜绝向核心概念与实体反向注入 Backlinks，杜绝虚高概念入度或污染图谱网络。正文末尾仅允许保留指向自身物理文献的物理链接（`> 📎 **物理文献**：[[raw/articles/xxx.md]]`）。
+   - **禁止入链（No Inlinks from Concepts/Entities）**：任何概念页（`wiki/concepts/`）和实体页（`wiki/entities/`）正文严禁通过 `[[...]]` 反向链接到带 `面试` 标签的文章。
+3. **允许用途（面经问题集/面试专题综述的单向聚合特权）**：
+   - 知识库允许整理**面经问题集、企业面试真题盘点或求职方法论专题**（即位于 `wiki/overview/` 中且自身带有 `面试` tag 的综述页，如 `综述_大模型算法岗面试题全集.md`）。
+   - **单向聚合特权**：此类带 `面试` tag 的专题综述页，**允许在其 Frontmatter `sources:` 字段及正文中通过 `[[wiki/sources/xxx]]` 双链引用带 `面试` tag 的 Source 文章**，进行横向归纳与高频考点梳理。但该专题综述页本身也必须服从本节约束，绝不得反向推导沉淀实体与概念。
 
 ## 3. MCP 集成与工具选择
 Vault 内运行了 **Local REST API with MCP** 插件。桌面端 Obsidian 打开且插件启用时，AI Agent 可通过 MCP 工具（`mcp__obsidian__*`）直接读写与搜索 vault。三个 AI Coding 工具的 MCP 配置格式**互不兼容**，分别维护（均已 `.gitignore` 排除）：
@@ -291,7 +299,9 @@ AI Agent 在处理日常任务时，必须遵守以下核心操作闭环：
    - **邮件暂存前置检查**：若原文位于 `Clippings/emails/<source_key>/`，必须先阅读 [`Clippings/emails/.pipeline/README.md`](Clippings/emails/.pipeline/README.md)，并确认用户已在 Review 后明确指令对该指定文章执行 Ingest。严禁自行选择文章、因同封邮件中其他文章入库而整体 Ingest，或仅因状态为 `review` 即启动本 SOP。
 2. **生成 Source 摘要页**：在 `wiki/sources/` 目录下创建对应的 `.md` 摘要页（严格遵循 §2.1 规范及文末物理文献插链格式）。
 3. **构建双向维基网络**：在 Source 摘要页正文中，凡提及重要技术概念、人物、机构或项目，一律使用 Obsidian 链接格式 `[[entities/实体_xxx]]` 或 `[[concepts/概念_yyy]]` 与知识库产生关联。
+   - **面试文章例外拦截**：若当前文章带有 `面试` tag（如求职实录面经、面试题解等），**强制跳过本步骤的双链构建**。正文提及概念、实体或项目时一律保持普通纯文本（如直接写 `Transformer`、`vLLM`），严禁生成任何 `[[entities/...]]` 或 `[[concepts/...]]` 出链，杜绝污染概念与实体图谱。
 4. **联动 Entities & Concepts**：检查被引用的 `wiki/entities/` 或 `wiki/concepts/` 页面是否存在：
+   - **面试文章例外拦截**：若当前文章带有 `面试` tag，**强制跳过本步骤**！严禁打开概念或实体页增量更新要点，严禁将面试文章登记为概念/实体的来源（sources），严禁新建任何概念或实体页。
    - 若存在：打开该实体 / 概念页，增量更新要点与进展，并在正文或来源中补充关联。
    - 若不存在：严格执行 §2.3 Search-Before-Create 查重与准入门槛；确需新建时按 §2.3 规范创建，不满足门槛的使用普通文本提及。
 5. **剪藏文章归档移动（Clippings → raw）**：

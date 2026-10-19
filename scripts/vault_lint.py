@@ -346,11 +346,15 @@ def cmd_lint(workspace):
                         elif src not in sources_files_rel:
                             print(f"  ❌ [来源 错误] {rel}: 引用的 Source 摘要不存在 ({src})")
                             has_fatal_errors = True
-                        elif ptype == 'entity':
+                        else:
                             s_tags = source_tags_map.get(src, set())
                             if '面试' in s_tags:
-                                print(f"  ❌ [来源 错误] {rel}: 实体严禁以带'面试'tag的文章作为信息来源 (当前: {src})")
-                                has_fatal_errors = True
+                                # 仅允许自身带有 '面试' tag 的综述页引用面试类 Source
+                                if ptype == 'overview' and '面试' in (fm.get('tags') or []):
+                                    pass
+                                else:
+                                    print(f"  ❌ [来源 错误] {rel}: {ptype}严禁以带'面试'tag的文章作为信息来源 (当前: {src})")
+                                    has_fatal_errors = True
 
         # Check timeline (only in entity)
         timeline = fm.get('timeline')
@@ -458,6 +462,50 @@ def cmd_lint(workspace):
         has_fatal_errors = True
     else:
         print("✅ 维基层未发现任何死链引用！")
+
+    # 2.5 Interview Graph Isolation Audit
+    print(f"\n📊 【检查 2.5：面试文章图谱隔离与双向链接审计 (Interview Graph Isolation)】")
+    interview_isolation_errors = []
+    interview_source_basenames = set()
+    for s_rel, s_t in source_tags_map.items():
+        if '面试' in s_t:
+            interview_source_basenames.add(os.path.basename(s_rel)[:-3])
+
+    for rel, abs_p in all_md_files.items():
+        if rel.startswith('raw/') or rel == 'wiki/index.md' or rel == 'wiki/log.md' or rel.startswith('Clippings/'):
+            continue
+        content = load_file(abs_p)
+        fm, _ = parse_frontmatter(content, rel)
+        ptype = fm.get('type') if fm else None
+        tags = fm.get('tags', []) if fm and isinstance(fm.get('tags'), list) else []
+
+        # 1. 检查面试文章的出链（严禁链接至概念/实体）
+        if ptype == 'source' and '面试' in tags:
+            for target in link_regex.findall(content):
+                t_clean = target.strip()
+                t_name = os.path.basename(t_clean)
+                if t_clean.startswith('raw/'):
+                    continue
+                if t_clean.startswith('entities/') or t_clean.startswith('concepts/') or t_name.startswith('实体_') or t_name.startswith('概念_'):
+                    interview_isolation_errors.append((rel, f"出链违规：面试文章严禁链接到概念/实体 [[{target}]]，正文必须使用普通纯文本"))
+
+        # 2. 检查概念和实体页面的入链（严禁反向链接至面试文章）
+        if ptype in ('concept', 'entity'):
+            for target in link_regex.findall(content):
+                t_clean = target.strip()
+                t_name = os.path.basename(t_clean)
+                if t_name.endswith('.md'):
+                    t_name = t_name[:-3]
+                if t_name in interview_source_basenames:
+                    interview_isolation_errors.append((rel, f"入链违规：概念/实体严禁反向链接到面试文章 [[{target}]]"))
+
+    if interview_isolation_errors:
+        print(f"❌ 发现 {len(interview_isolation_errors)} 处面试文章图谱隔离违规：")
+        for f_rel, msg in interview_isolation_errors[:20]:
+            print(f"    - [{f_rel}] {msg}")
+        has_fatal_errors = True
+    else:
+        print("✅ 面试文章图谱隔离审计通过（无违规出入链）！")
 
     # 3. Low-Frequency Entities (Warning only)
     print(f"\n📊 【检查 3：低频实体审计 (Low-Frequency Entities, In-degree <= 1)】")
