@@ -150,15 +150,4 @@ private int quickSelect(int[] nums, int left, int right, int k) {
 }
 ```
 
-
-- 关联实体：
-  - 美团
-  - 美团搜索
-- 关联概念：
-  - Agentic RAG
-  - Agent三层记忆体系
-  - Agent完整轨迹评估
-  - Agent Skills元工具架构
-  - Harness Engineering
-
 > 📎 **物理文献**：[[raw/articles/美团AI全栈Agent一面，笑着聊完挂了！！！.md]]

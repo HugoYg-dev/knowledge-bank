@@ -128,16 +128,4 @@ class FailureMemory:
 ### 20. 技术路线展望
 - 模型内部决策能力的内生化（后训练 SFT/RL）是关键跃迁，由“工具外部编排”过渡至“模型原生懂得何时调工具、何时早停、何时追问”；技术挑战从单纯“能做事”提升至有分寸、懂边界的“会做人”。
 
-
-- 关联实体：
-  - DeepSeek
-  - DeepSeek Harness
-  - Cordis
-- 关联概念：
-  - Harness Engineering
-  - Agentic RAG
-  - Agent三层记忆体系
-  - Agent完整轨迹评估
-  - Agent Skills元工具架构
-
 > 📎 **物理文献**：[[raw/articles/DeepSeek AI Infra 一面，面爽了！！！.md]]
