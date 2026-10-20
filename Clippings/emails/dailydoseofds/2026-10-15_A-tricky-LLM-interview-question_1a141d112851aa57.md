@@ -1,14 +1,15 @@
 ---
 title: " A tricky LLM interview question: "
-source_key: "dailydoseofds"
-email_subject: "A Full Walkthrough on Multimodal Jev"
-email_sender: "Daily Dose of DS <avi@dailydoseofds.com>"
-email_date: "Thu, 15 Oct 2026 23:06:22 +0000"
-email_id: "1a141d112851aa57"
-article_id: "1a141d112851aa57:3"
-published: "2026-10-15"
-content_tier: "email_fallback"
-tags: []
+source_key: dailydoseofds
+email_subject: A Full Walkthrough on Multimodal Jev
+email_sender: Daily Dose of DS <avi@dailydoseofds.com>
+email_date: Thu, 15 Oct 2026 23:06:22 +0000
+email_id: 1a141d112851aa57
+article_id: 1a141d112851aa57:3
+published: 2026-10-15
+content_tier: email_fallback
+tags:
+  - 面试
 ---
 
 #  A tricky LLM interview question: 
