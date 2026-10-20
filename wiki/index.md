@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得]] — 深度剖析 Matt Pocock 面向 AI 编码智能体设计的成套 Skill 工程化体系，提炼其以文档驱动为核心、上下文轻量化隔离的工程化实施路径（对齐共识 → 落实 Spec → 拆分 Ticket → TDD 实现 → 双 Subagent 审查）（Skill/claude-code, AI-Agent/coding）
+- [[How to Build Wealth as a Career Person]] — 解构“唯有创业才能积累财富”的神话，提出职场不仅是谋生手段更是高可靠的财富引擎；通过积累职业资本、跨职能系统贡献、克制生活方式通胀并将工资现金流自动化转化为生息资产，实现从职场打工人到资产所有者的跃迁（Life）
+
 - [[腾讯15年资深后台工程师_转战大模型推理的抉择]] — 腾讯15年资深搜索后台T12工程师转战大模型推理工程的心路抉择、入门学习路径、推理三层架构及传统Infra向AI与Agent Infra迁移演进思考（Infra/serving, LLM/inference, CaseStudy）
 - [[一文拆解Jev架构_一个判断模型是怎么被拼出来的]] — 腾讯云开发者深度反向解密Jev专用判断模型：拆解State/Questions/三原语接口、KV Cache冻结共享、指针头与跨候选注意力交互、RLCD后训练数据合成及困难任务与泛化脆弱两大边界（LLM/inference, AI-Agent/tool-calling, LLM/arch）
 - [[MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践]] — 美团外卖统一推荐精排基座大模型 MTFM（KDD 2026）：异构 Tokenizer、动态因果掩码、混合注意力（Target:Full=3:1）、Target Scale-Up、Muon 优化器批处理加速与 User-Level 算力复用（Recommendation, Infra/serving, CaseStudy）
@@ -319,6 +322,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Career_Capital_职业资本]] — 由 Cal Newport 提出的职业发展核心概念，指在劳动市场中稀缺且具有高度价值的专业技能、交付声誉与人脉网络；它是职场人获取自主权、高议价能力与将薪资现金流跃迁为资产所有权的根本基石（Life）
 - [[concepts/概念_Target_Attention_目标注意力]] — 在推荐长序列与精排建模中，使候选目标单向聚合用户长序列上下文、省去历史序列间全自注意力的高效注意力机制（LLM/arch/attention, Recommendation）
 - [[concepts/概念_BPE_字节对编码]] — 从单个字符或字节出发，通过统计迭代合并最高频相邻字符对构建词表的分词算法，是当代大语言模型最主流的文本分词标准（LLM/tokenization）
 - [[concepts/概念_Brownfield_Agentic_Engineering_棕地智能体工程]] — 在老旧遗留代码库中规范化运行 AI 编码智能体的系统工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物与 Harness 约束沉淀（AI-Agent/coding）
@@ -610,6 +614,8 @@
 - [[概念_Agent内存与状态管理]] — 深度对比 State 与 Memory 两个维度的定义与作用边界，构建在宿主系统（Harness Engineering）中单步 Checkpoint 与 Scope 隔离的协作逻辑。（AI-Agent/harness, AI-Agent/memory, state-management）
 
 ## Entities
+
+- [[entities/实体_Matt_Pocock]] — 知名 TypeScript 专家与 AI Coding Agent 工作流设计者，构建了以文档驱动、任务拆分与 Smart Zone 控制为核心的开源 Agent Skill 体系（mattpocock/skills）（AI-Agent/coding, Skill/claude-code）
 
 - [[entities/实体_SGLang]] — LMSYS 团队开源的高性能大语言模型推理与服务引擎，以 RadixAttention 树状前缀缓存、高效的调度运行时与灵活的结构化生成见长（Infra/serving, LLM/inference）
 - [[entities/实体_MTFM]] — 美团外卖多业务场景统一推荐精排基座大模型（KDD 2026），首次在外卖核心场景全量推全，基于 HSTU/Transformer 骨干、异构 Tokenizer、动态因果掩码与混合注意力架构（Recommendation, Infra/serving）

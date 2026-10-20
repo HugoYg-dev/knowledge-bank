@@ -10,12 +10,15 @@ sources:
 - wiki/sources/浅谈上下文工程_Claude_Code_Manus_Kiro.md
 - wiki/sources/2026-06-24_Recursive-language-models_19ef72.md
 - wiki/sources/Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要.md
-updated: '2026-10-05'
+- wiki/sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md
+updated: '2026-10-20'
 aliases:
 - Context Rot
 - 上下文衰退
 - 上下文腐烂
 - 概念_Context_Rot
+- Smart Zone
+- 有效注意力工作区
 ---
 
 # 概念：Context Rot（上下文腐化）
@@ -48,6 +51,7 @@ Manus 实践中通常在 **128K-200K token** 之间，通过大量评估确定�
 
 - 见 [[概念_上下文工程]] 核心操作（Write/Select/Compress/Isolate 与 Offload/Retrieve/Reduce/Isolate）
 - 结合 [[概念_Long_Text_Reorder_长文本位置重排序]] 缓解长文本“迷失在中间（Lost in the Middle）”现象
+- 结合 [[entities/实体_Matt_Pocock|Matt Pocock]] 的 Smart Zone 工程实践：将系统设计拆解为独立 Ticket，每个工单在新 Session 中以干净上下文执行，严格将单次会话 Token 锁定在 200K 黄金推理区间内，避免长程会话导致的注意力衰退与行为漂移。
 - 采用 MIT 提出的 [[概念_RLM递归语言模型]] 架构，通过在外部 REPL 环境缓存上下文数据，并用工具进行 Peek/Grep/Partition 分治与递归调用，使模型在 10M+ 极端超长文本下避免上下文腐化。
 
 ## 来源
@@ -57,3 +61,4 @@ Manus 实践中通常在 **128K-200K token** 之间，通过大量评估确定�
 - [[浅谈上下文工程_Claude_Code_Manus_Kiro]]
 - [[2026-06-24_Recursive-language-models_19ef72]]
 - [[sources/Context Engineering 完整指南：为什么管理上下文比堆大窗口更重要]]
+- [[sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得]]

@@ -1,3 +1,19 @@
+## [2026-10-20] ingest | 批量剪藏入库 (+ wiki/sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md, wiki/sources/How to Build Wealth as a Career Person.md, 实体_Matt_Pocock, 概念_Career_Capital_职业资本)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md` 归档移动至 `raw/articles/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md`；
+  - 创建来源摘要 `wiki/sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md`，标签选用权威白名单 `tags: ["Skill/claude-code", "AI-Agent/coding"]`，提炼六阶段工程化路径（0-5 阶段）、Smart Zone 上下文有效区控制、文档驱动会话解耦及双 Subagent 对抗审查；
+  - `Clippings/How to Build Wealth as a Career Person.md` 归档移动至 `raw/articles/How to Build Wealth as a Career Person.md`；
+  - 创建来源摘要 `wiki/sources/How to Build Wealth as a Career Person.md`，标签选用权威白名单 `tags: ["Life"]`，提炼职场作为财富引擎、文凭到结果的交付演进、五维资本模型、所有权思维与自动化资产转化系统。
+- **实体与概念图谱联动**：
+  - 新建实体 `[[entities/实体_Matt_Pocock]]`：记录其作为 TypeScript 专家与 AI Coding Agent 工作流设计者，构建的规范驱动开发与 Smart Zone 工具链；
+  - 新建概念 `[[concepts/概念_Career_Capital_职业资本]]`：系统化沉淀 Cal Newport 提出的职业资本理论，展开五维资本（技能、声誉、关系、知识、财务）协同模型与资本兑换跃迁机制；
+  - 增量更新概念 `[[concepts/概念_Context_Rot_上下文衰退]]`：在 sources 中追加溯源，补充 Smart Zone 别名及 Matt Pocock 将任务拆分至 200K 黄金区间内由新 Session 独立执行的工程实践；
+  - 增量更新概念 `[[concepts/概念_Spec_Driven_Development_规范驱动开发]]`：在 sources 中追加溯源，补充 Matt Pocock 的五步工程化落地实践（setup -> grill-with-docs -> to-spec -> to-ticket -> implement -> code-review）。
+- **总索引同步挂载**：
+  - 在 `wiki/index.md` 的 Sources 分类挂载 2 篇新增摘要页；
+  - 在 Concepts 分类挂载 `[[concepts/概念_Career_Capital_职业资本]]`；
+  - 在 Entities 分类挂载 `[[entities/实体_Matt_Pocock]]`。
+
 ## [2026-10-19] governance | 面试文章图谱防污染与来源隔离纪律落地 (+ AGENTS.md v1.4.0, scripts/vault_lint.py, 16 篇面试文章清洗)
 - **总纲规范修订 (AGENTS.md v1.4.0)**：
   - 修订 §2.7，升级为《面试与面经来源隔离与图谱防污染约束》，严禁带有 `面试` 标签的文章作为任何实体、概念或对比页的信息来源（sources），严禁向概念/实体产生任何正文出链（WikiLinks Outlinks），正文必须使用普通纯文本；

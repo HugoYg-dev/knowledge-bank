@@ -6,7 +6,8 @@ summary: 相对于 Vibe Coding（Prompt → Code），规范驱动开发先生�
 sources:
 - wiki/sources/Anthropic x ClaudeCode 官方插件：AI Agent 的领域知识插件——鸟窝.md
 - wiki/sources/浅谈上下文工程_Claude_Code_Manus_Kiro.md
-updated: '2026-09-21'
+- wiki/sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md
+updated: '2026-10-20'
 aliases:
 - Spec-Driven Development
 - SDD
@@ -41,6 +42,17 @@ aliases:
 - **design.md**：架构设计/模块拆分/接口/数据库表结构/前端实现
 - **tasks.md**：开发过程分解为TODO列表，点击按钮启动Task开发，实时更新回溯状态
 
+## Matt Pocock 的工程化实现路径
+
+在开源的 `mattpocock/skills` 体系中，[[entities/实体_Matt_Pocock|Matt Pocock]] 设计了一套标准化的工程化路径，将规范驱动开发与会话隔离解耦结合：
+
+1. **步骤 0（设置标准 `/setup-matt-pocock-skills`）**：项目初始化时固化术语库、文档布局与 Issue 规范；
+2. **步骤 1（对齐共识 `/grill-with-docs`）**：通过苏格拉底式提问拷问用户意图，生成共识记录；
+3. **步骤 2（落实设计 `/to-spec`）**：把分散的共识整理为正式的设计架构文档（Spec）；
+4. **步骤 3（任务拆分 `/to-ticket`）**：将 Spec 拆分成为可独立完成且带依赖拓扑的 Tickets；
+5. **步骤 4（TDD 实现 `/implement`）**：在干净的 New Session 中驱动测试先行开发；
+6. **步骤 5（双智能体审查 `/code-review`）**：拉起 2 个 Subagent 分别检查代码规范与设计契合度。
+
 ## 与上下文工程的关系
 
 规范文档作为长期记忆注入上下文，确保Agent在整个开发过程中保持对需求和架构的一致理解。
@@ -48,3 +60,4 @@ aliases:
 ## 来源
 
 - [[浅谈上下文工程_Claude_Code_Manus_Kiro]]
+- [[sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得]]
