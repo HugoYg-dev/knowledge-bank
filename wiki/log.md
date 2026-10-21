@@ -1,3 +1,14 @@
+## [2026-10-21] migration | 面试材料与项目复习文档结构化迁移至 find-jobs (- 综述_大模型算法岗面试题全集, - 综述_大模型算法与AI系统面试全景图谱)
+- **迁移背景与意图**：
+  - 响应用户求职与简历重构需求，将针对面试准备构建的过往工作项目材料（`workdocs/interview/` 下 6 篇专项深度解析 + 1 篇总纲 + 1 篇 Handoff）以及 `wiki/overview/` 下的 2 篇面试综述材料迁移至 `find-jobs` 仓库中的 `documents/` 统一管理。
+- **目标目录与分类布局**：
+  - `find-jobs/documents/projects/`：收拢 6 个核心项目 STAR 深度指南、总览总纲与虎鲸 AI Handoff；
+  - `find-jobs/documents/interview-prep/`：收拢《综述_大模型算法岗面试题全集.md》与《综述_大模型算法与AI系统面试全景图谱.md》；
+  - `find-jobs/documents/README.md`：建立求职文档中心全景索引。
+- **图谱索引更新与健康度验证**：
+  - 从 `wiki/index.md` 的 Overview 章节移除被迁移的两篇面试综述挂载；
+  - 运行 `uv run --with pyyaml python scripts/vault_lint.py lint` 验证，100% 通过图谱健康检查与死链审计（零死链）。
+
 ## [2026-10-20] ingest | 批量剪藏入库 (+ wiki/sources/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md, wiki/sources/How to Build Wealth as a Career Person.md, 实体_Matt_Pocock, 概念_Career_Capital_职业资本)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md` 归档移动至 `raw/articles/强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得.md`；
