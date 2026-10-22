@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[AI 搜索是怎么做出来的]] — 深度拆解面向 Agent 的 AI 搜索系统工程落地：解构检索词双向反馈闭环、信源真伪三级把关、垂直插件秒级时效补齐、Gist Token 与千亿级混合索引低延迟优化，以及 API/MCP/Skill 原子化交付范式（AI-Agent/tool-calling, RAG/retrieval）
 - [[强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得]] — 深度剖析 Matt Pocock 面向 AI 编码智能体设计的成套 Skill 工程化体系，提炼其以文档驱动为核心、上下文轻量化隔离的工程化实施路径（对齐共识 → 落实 Spec → 拆分 Ticket → TDD 实现 → 双 Subagent 审查）（Skill/claude-code, AI-Agent/coding）
 - [[How to Build Wealth as a Career Person]] — 解构“唯有创业才能积累财富”的神话，提出职场不仅是谋生手段更是高可靠的财富引擎；通过积累职业资本、跨职能系统贡献、克制生活方式通胀并将工资现金流自动化转化为生息资产，实现从职场打工人到资产所有者的跃迁（Life）
 
@@ -615,6 +616,7 @@
 
 ## Entities
 
+- [[entities/实体_腾讯元宝]] — 腾讯推出的 AI 智能助手与企业级 AI 搜索开放平台，提供千亿级混合索引检索、Gist Token 缓存加速、垂类插件系统及标准 API/MCP/Skill 接入体系（AI-Agent/tool-calling, RAG/retrieval）
 - [[entities/实体_Matt_Pocock]] — 知名 TypeScript 专家与 AI Coding Agent 工作流设计者，构建了以文档驱动、任务拆分与 Smart Zone 控制为核心的开源 Agent Skill 体系（mattpocock/skills）（AI-Agent/coding, Skill/claude-code）
 
 - [[entities/实体_SGLang]] — LMSYS 团队开源的高性能大语言模型推理与服务引擎，以 RadixAttention 树状前缀缓存、高效的调度运行时与灵活的结构化生成见长（Infra/serving, LLM/inference）

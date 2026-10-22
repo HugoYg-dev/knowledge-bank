@@ -8,7 +8,8 @@ summary: 面向大模型智能体的网络搜索架构与供应链解耦范式�
   任务信号替代人类点击。
 sources:
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
-updated: '2026-09-21'
+- wiki/sources/AI 搜索是怎么做出来的.md
+updated: '2026-10-22'
 aliases:
 - Agentic Web Search
 - 智能体网页搜索
@@ -73,6 +74,26 @@ Agent 时代的搜索不仅是技术 Stack 的解耦，更带来了分发入口�
 
 ---
 
+## 工业级落地四大工程挑战与方案（以元宝搜索为例）
+
+随着 AI 搜索落地为面向 Agent 的原子化基础设施，工业界（如[[entities/实体_腾讯元宝|腾讯元宝]]）在底层工程实现上沉淀了关键解法：
+
+1. **检索词理解与双向反馈闭环**：
+   - **双向信号互喂**：搜索侧向 Agent 输出每条结果的权威等级、发布时间与排序满意度；Agent 侧向搜索反馈最终引用的条目、模型思考过程与答案打分（Answer Reward）。
+   - **Teacher-Student 蒸馏与天级迭代**：Label 模型产出海量自动标注信号，训练 Teacher 排序模型学习复杂偏好，再蒸馏成轻量 Student 模型上线保证毫秒级推理；线上不满意 Case 自动提取交由智能体标注，实现天级增量训练。
+2. **信源真伪三级打分与 AIGC/GEO 攻防**：
+   - **三级质量评分**：在收录阶段即按“站点、账号、页面”建立质量分级，反向加权权威高信誉来源；
+   - **AIGC 与 GEO 专项防御**：针对低质水文与针对大模型引用优化的 GEO 内容，按账号发布规律与专门识别模型动态拦截；高壁垒垂直站点则通过官方 API 合作引入。
+3. **垂类插件系统与秒级时效补齐**：
+   - 针对股票、天气、航班等动态秒级数据，构建垂类插件生态（直连 13 个行业 157 个头部信源），直接调取合作方接口封装为中文结构化卡片与网页结果合并返回，弥补网页爬虫与模型预训练时效滞后。
+4. **延迟压缩与 Gist Token 算力优化**：
+   - **千亿级混合索引**：倒排索引与向量索引合入统一千亿索引库，实现 8ms 极速检索与 94%+ 高召回；
+   - **Gist Token 缓存解耦**：索引期预先将网页压缩为 100 维 Gist Token 存入 [[concepts/概念_KV_Cache_键值缓存|KV Cache]]；在线精排时 Gist Token 前置、检索词后置，精排计算量仅与检索词长度相关，降低 30% 在线推理成本；单次搜索延迟压缩至 300ms 以内。
+5. **原子化检索与多跳推理规划解耦**：
+   - 搜索被严格限制为原子能力（一次请求只搜一件事，返回摘录与元数据），不替代模型下定论；多跳复杂问题（如跨实体关系推理）由上层 Agent 编排多轮 `tools/call` 自主解决。
+
+---
+
 ## 架构选型与权衡准则
 
 在为智能体系统（如 Deep Research Agent、编码 Agent）选型网络检索方案时，架构师应依据以下维度权衡：
@@ -87,10 +108,11 @@ Agent 时代的搜索不仅是技术 Stack 的解耦，更带来了分发入口�
 ---
 
 ## 关联实体与概念
-- **代表性实体**：[[entities/实体_Exa|Exa]]、[[entities/实体_Tavily|Tavily]]、[[entities/实体_鸭哥|鸭哥]]
-- **核心关联概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_上下文工程|上下文工程]]、[[concepts/概念_Agent_Skills元工具架构|Agent Skills 元工具架构]]、[[concepts/概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]
+- **代表性实体**：[[entities/实体_腾讯元宝|腾讯元宝]]、[[entities/实体_Exa|Exa]]、[[entities/实体_Tavily|Tavily]]、[[entities/实体_鸭哥|鸭哥]]
+- **核心关联概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_上下文工程|上下文工程]]、[[concepts/概念_Agent_Skills元工具架构|Agent Skills 元工具架构]]、[[concepts/概念_Agentic_RAG_智能体检索增强生成|Agentic RAG]]、[[concepts/概念_KV_Cache_键值缓存|KV Cache]]、[[concepts/概念_MCP协议|MCP 协议]]
 
 ---
 
 ## 来源与参考
 - [[sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链|搜索没有变便宜，但 Agent 把它拆成了新的供应链]]
+- [[sources/AI 搜索是怎么做出来的|AI 搜索是怎么做出来的]]

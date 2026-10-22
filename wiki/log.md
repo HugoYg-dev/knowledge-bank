@@ -1,3 +1,15 @@
+## [2026-10-22] ingest | Clippings/AI 搜索是怎么做出来的.md -> raw/articles/AI 搜索是怎么做出来的.md -> wiki/sources/AI 搜索是怎么做出来的.md (+ 实体_腾讯元宝; 更新 概念_Agentic_Web_Search_智能体网络搜索)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/AI 搜索是怎么做出来的.md` 物理归档移动至 `raw/articles/AI 搜索是怎么做出来的.md`；
+  - 派生临时只读净化视图 `tmp/sanitized/` 阅读提炼，提炼完成后立即物理删除，严格遵守即用即清纪律；
+  - 创建来源摘要 `wiki/sources/AI 搜索是怎么做出来的.md`，标签选用白名单 `tags: ["AI-Agent/tool-calling", "RAG/retrieval"]`，深度提炼面向 Agent 时代 AI 搜索的四大工程挑战（检索词双向反馈闭环、信源真伪三级打分与 AIGC/GEO 攻防、垂类插件系统秒级时效补齐、千亿混合索引与 Gist Token 算力压缩）及 API/MCP/Skill 原子化交付范式。
+- **实体与概念图谱联动**：
+  - 新建实体 `[[entities/实体_腾讯元宝]]`：记录腾讯元宝作为 AI 智能助手与企业级 AI 搜索开放平台，其核心技术创新（千亿级混合索引、Gist Token 缓存解耦、双向反馈闭环、垂类插件系统）与接入形态（API、MCP、Skill）；
+  - 增量更新概念 `[[concepts/概念_Agentic_Web_Search_智能体网络搜索]]`：在 sources 中追加溯源，补充元宝搜索工业级落地的四大工程解法与原子化检索与多跳规划解耦机制。
+- **总索引同步挂载**：
+  - 在 `wiki/index.md` 中的 Sources 章节挂载 `[[AI 搜索是怎么做出来的]]`；
+  - 在 Entities 章节挂载 `[[entities/实体_腾讯元宝]]`。
+
 ## [2026-10-21] migration | 面试材料与项目复习文档结构化迁移至 find-jobs (- 综述_大模型算法岗面试题全集, - 综述_大模型算法与AI系统面试全景图谱)
 - **迁移背景与意图**：
   - 响应用户求职与简历重构需求，将针对面试准备构建的过往工作项目材料（`workdocs/interview/` 下 6 篇专项深度解析 + 1 篇总纲 + 1 篇 Handoff）以及 `wiki/overview/` 下的 2 篇面试综述材料迁移至 `find-jobs` 仓库中的 `documents/` 统一管理。
