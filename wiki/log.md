@@ -1,3 +1,12 @@
+## [2026-10-22] ingest | Clippings/AI Agent工程师字节二面，通过.md -> raw/articles/ -> wiki/sources/ (+ wiki/sources/AI Agent工程师字节二面，通过.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/AI Agent工程师字节二面，通过.md` 物理移动至 `raw/articles/AI Agent工程师字节二面，通过.md`；
+  - 创建来源摘要 `wiki/sources/AI Agent工程师字节二面，通过.md`，规范化 Frontmatter `tags: ["面试"]`；
+  - 核心提炼 Text-to-SQL 准确率可用性与数据知识治理、问题改写与 Schema 选表前置解耦、通用任务智能体 Agent Loop 与长任务稳定性、以 MCP/Skill 为核心的平台化演进、有状态 Agent 与无状态 Web 服务协调的部署运维状态机，以及面试复盘反思（职责边界先讲、可用性防线、前置条件明确、架构拒绝口号化）；
+  - **面试图谱隔离铁律落地**：打上 `tags: ["面试"]`，正文中所有技术专名与框架工具（Text-to-SQL、Agent Loop、MCP、Skill、CLI、SQL、大模型）均保持纯文本，严格禁止向实体与概念出链，严禁联动或新建实体/概念，正文末尾仅保留物理文献链接；
+- **总索引挂载**：
+  - 在 `wiki/index.md` 的 Sources 分类挂载 `[[AI Agent工程师字节二面，通过]]`。
+
 ## [2026-10-22] ingest | 面试文章批量入库与图谱隔离 (+ wiki/sources/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md, wiki/sources/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md)
 - **剪藏与邮件物理归档**：
   - `Clippings/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md` 物理移动至 `raw/articles/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md`，规范化 Frontmatter `tags: ["面试"]`；
