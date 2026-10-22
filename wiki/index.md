@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[字节大模型算法三面，扒到最后我发现简历是自己挖的坑]] — 字节跳动大模型算法岗三面硬核复盘：深入拆解简历指标深挖40分钟的高压质询、项目真实性因果归因防线、硬核理论推导与递进手撕算法（面试）
+- [[2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57]] — Daily Dose of DS 经典 LLM 面试题：更换更快 GPU 后 Kernel 执行变快但 Token 生成延迟几乎不变的根因，以及 CUDA Graphs 如何消除 CPU 算子发射开销与权衡（面试）
+
 - [[AI 搜索是怎么做出来的]] — 深度拆解面向 Agent 的 AI 搜索系统工程落地：解构检索词双向反馈闭环、信源真伪三级把关、垂直插件秒级时效补齐、Gist Token 与千亿级混合索引低延迟优化，以及 API/MCP/Skill 原子化交付范式（AI-Agent/tool-calling, RAG/retrieval）
 - [[强烈推荐mattpocock(grill-me)系列skill，分享下我的使用心得]] — 深度剖析 Matt Pocock 面向 AI 编码智能体设计的成套 Skill 工程化体系，提炼其以文档驱动为核心、上下文轻量化隔离的工程化实施路径（对齐共识 → 落实 Spec → 拆分 Ticket → TDD 实现 → 双 Subagent 审查）（Skill/claude-code, AI-Agent/coding）
 - [[How to Build Wealth as a Career Person]] — 解构“唯有创业才能积累财富”的神话，提出职场不仅是谋生手段更是高可靠的财富引擎；通过积累职业资本、跨职能系统贡献、克制生活方式通胀并将工资现金流自动化转化为生息资产，实现从职场打工人到资产所有者的跃迁（Life）

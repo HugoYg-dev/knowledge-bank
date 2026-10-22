@@ -1,3 +1,16 @@
+## [2026-10-22] ingest | 面试文章批量入库与图谱隔离 (+ wiki/sources/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md, wiki/sources/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md)
+- **剪藏与邮件物理归档**：
+  - `Clippings/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md` 物理移动至 `raw/articles/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md`，规范化 Frontmatter `tags: ["面试"]`；
+  - `Clippings/emails/dailydoseofds/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md` 物理移动至 `raw/articles/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md`，规范化 Frontmatter `tags: ["面试"]`；
+  - 运行 `uv run scripts/mail_pipeline.py reconcile`，完成邮件管线对账与状态同步（reconciled_articles=1）；
+  - 严格执行即用即清纪律，确认 `tmp/sanitized/` 无任何残留。
+- **来源摘要创建与面试隔离铁律落实**：
+  - 创建 `wiki/sources/字节大模型算法三面，扒到最后我发现简历是自己挖的坑.md`：提炼三面高压深度质询本质、项目因果归因防线（简历指标提升 12% 深挖 40 分钟）、底层算力复杂度推导与损失函数手写、递进代码手撕及“宁薄勿假”的简历逆向工程原则；
+  - 创建 `wiki/sources/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md`：提炼迁移高速 GPU 后 Kernel 变快但 Token 生成延迟几乎不变的经典反直觉面试题，深度剖析自回归解码阶段 CPU 算子发射开销（Launch Overhead）与空闲等待间隙，详解 CUDA Graphs 批捕获与重放机制及其显存/预热权衡；
+  - **面试图谱隔离铁律落地**：两篇摘要均打上 `tags: ["面试"]`，正文提及的技术专名、算法模型、框架工具（如 Transformer、VAE、SFT、RL、CUDA Graphs、vLLM、TensorRT-LLM 等）全部保持纯文本，严禁向概念/实体出链，严禁联动或新建任何概念与实体，正文末尾仅保留物理文献链接。
+- **总索引挂载**：
+  - 在 `wiki/index.md` 的 Sources 分类挂载 2 篇新增摘要页。
+
 ## [2026-10-22] ingest | Clippings/AI 搜索是怎么做出来的.md -> raw/articles/AI 搜索是怎么做出来的.md -> wiki/sources/AI 搜索是怎么做出来的.md (+ 实体_腾讯元宝; 更新 概念_Agentic_Web_Search_智能体网络搜索)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/AI 搜索是怎么做出来的.md` 物理归档移动至 `raw/articles/AI 搜索是怎么做出来的.md`；

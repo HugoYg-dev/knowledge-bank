@@ -8,8 +8,7 @@ email_id: 1a141d112851aa57
 article_id: 1a141d112851aa57:3
 published: 2026-10-15
 content_tier: email_fallback
-tags:
-  - 面试
+tags: ["面试"]
 ---
 
 #  A tricky LLM interview question: 

@@ -2283,7 +2283,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md",
-          "status": "review",
+          "status": "ingested",
           "title": " A tricky LLM interview question: "
         }
       ],
@@ -2293,7 +2293,7 @@
       "id": "1a141d112851aa57",
       "last_error": null,
       "last_seen_at": "2026-10-21T13:00:13+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2304,5 +2304,5 @@
   },
   "last_sync_at": "2026-10-21T13:00:13+00:00",
   "schema_version": 2,
-  "updated_at": "2026-10-21T13:00:14+00:00"
+  "updated_at": "2026-10-22T07:28:18+00:00"
 }
