@@ -1,3 +1,12 @@
+## [2026-10-23] ingest | Clippings/腾讯WXG一面挂了，挂在一道大数乘法上  ！！！.md -> raw/articles/ -> wiki/sources/ (+ wiki/sources/腾讯WXG一面挂了，挂在一道大数乘法上  ！！！.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/腾讯WXG一面挂了，挂在一道大数乘法上  ！！！.md` 物理移动至 `raw/articles/腾讯WXG一面挂了，挂在一道大数乘法上  ！！！.md`；
+  - 创建来源摘要 `wiki/sources/腾讯WXG一面挂了，挂在一道大数乘法上  ！！！.md`，规范化 Frontmatter `tags: ["面试"]`；
+  - 核心提炼大数乘法手撕与脏题拆解、“AI 写业务代码越顺手撕脏题越重要”的本质剖析、C++ 原子计数与无锁并发、Coding Agent 记忆体系与模型选型、Claude Code 架构对比、Agent 评测体系、云端容器迁移与上下文状态恢复、长任务 Goal 防漂移、模型强弱下的工程补偿策略，以及“简历借产物”必被问穿的挂面教训；
+  - **面试图谱隔离铁律落地**：打上 `tags: ["面试"]`，正文中所有技术专名与框架工具（大数乘法、C++、std::atomic、Coding Agent、Claude Code、Codex、AST、Checkpoint 等）均保持纯文本，严禁向实体与概念出链，严禁联动或新建实体/概念，正文末尾仅保留物理文献链接；
+- **总索引挂载**：
+  - 在 `wiki/index.md` 的 Sources 分类挂载 `[[腾讯WXG一面挂了，挂在一道大数乘法上  ！！！]]`。
+
 ## [2026-10-22] ingest | Clippings/AI Agent工程师字节二面，通过.md -> raw/articles/ -> wiki/sources/ (+ wiki/sources/AI Agent工程师字节二面，通过.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/AI Agent工程师字节二面，通过.md` 物理移动至 `raw/articles/AI Agent工程师字节二面，通过.md`；
