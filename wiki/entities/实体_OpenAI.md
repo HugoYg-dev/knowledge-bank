@@ -24,7 +24,8 @@ sources:
 - wiki/sources/一篇95页最新80种Deep Research系统全面综述.md
 - wiki/sources/强化学习入门指南_RLHF到GRPO.md
 - wiki/sources/翁荔_LLM外在幻觉_原因检测抵抗.md
-updated: '2026-07-06'
+- wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md
+updated: '2026-10-25'
 ---
 # 实体_OpenAI
 

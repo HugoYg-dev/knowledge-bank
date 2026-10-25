@@ -23,7 +23,8 @@ sources:
 - wiki/sources/浅谈上下文工程_Claude_Code_Manus_Kiro.md
 - wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md
 - wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md
-updated: "2026-09-07"
+- wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md
+updated: "2026-10-25"
 ---
 # 实体：Claude Code
 
@@ -50,6 +51,10 @@ updated: "2026-09-07"
 - **计划模式（Plan Mode）**：深入代码库分析改动并生成 `plan.md`，经人类审批后方可动工，严格遵循“计划未过不写代码”纪律。
 - **三层规则落地**：会话初始化加载项目根目录 `CLAUDE.md`（项目宪法），按需装配 `.agents/skills/`（专项操作规程），并受操作触发的 `Hook` 脚本硬性阻断保护。
 - **本地搜索基建接入**：除内置文件搜索外，可接入如 [[entities/实体_zvec-grep|zvec-grep (zg)]] 等本地优先混合检索层，高效桥接自然语言意图与代码标识符，减少无效 Tool Calls 与 Token 浪费。
+
+### 4. 发布时点与本地优先的先发优势（Codex 视角的竞争基准）
+- **发布时点**：2025-02-24 随 Claude 3.7 Sonnet 同步推出研究预览版，是首批跑通「终端 + 本地文件直操 + 沿用既有工具与上下文」形态的 Coding Agent，开发者接受速度快（Every 团队 2025-03 即评价「在 Agent 这件事上，Claude Code 比我用过的任何东西都好」）。
+- **作为竞品的对照价值**：[2026-10-21 来源] 的 Codex 万字复盘显示，Claude Code 的本地优先形态是 [[entities/实体_Codex|Codex]] 全程追赶的基准——OpenAI 先押注 Codex Cloud 失败，2025 年中转回本地并用 Rust 重写底层 Agent 后才追平；至 2026 年夏风向再变，不少团队把主力工具切到 Codex（其桌面端周活 2026-06 突破 500 万）。这段拉锯是「产品形态与模型能力代际匹配」的典型样本。
 
 ## 来源与参考
 

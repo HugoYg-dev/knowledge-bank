@@ -20,7 +20,11 @@
 - [[这是一篇把Token讲明白的科普级综述]] — 谷歌牵头32位学者154页分词综述科普：解构大模型底层Token编号机制、BPE高频合并算法、算术与字母计数缺陷根因，以及语言成本不平等与词表安全隐患（LLM/tokenization）
 - [[Brownfield_Agentic_Engineering]] — Addy Osmani 阐述在老旧遗留代码库中运行 AI 智能体的棕地工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物、Harness 约束沉淀及端到端完整迁移单元（AI-Agent/coding）
 
+- [[万字复盘Codex_模型公司如何做产品的典型故事]] — Every CEO Dan Shipper 深访核心成员万字复盘 OpenAI Codex 产品史：内部多线赛马合流、Codex Cloud 过早押注云端折戟（外部配置门槛高且无法中途打断）、Tibo 转向本地并用 Rust 重写底层 Agent 与界面解耦、桌面 App 取消代码编辑器的冒险决定、Codex 专属模型线独立快速迭代，直至 2026-07 桌面 App 反转为新 ChatGPT 底座，并以「创新者的窘境」视角沉淀模型公司做产品方法论（AI-Agent/coding, AI-Agent/UI, CaseStudy, 创业）
+
 - [[Meta复盘Muse_Agent怎么才能像一个人长期存在]] — Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制（AI-Agent/UI, AI-Agent/memory, CaseStudy/personal-agent）
+- [[深度讨论Personal_Agent_最互联网的AI命题]] — 海外独角兽 Best Ideas 对 Personal Agent 品类的系统性讨论：主动性对 Chatbot 的"推荐 vs 搜索"式范式跃迁、Muse 需求验证数据（约300万 DAU）与第 14 天留存反转、生态接入摩擦与 Personal Agent Protocol、单用户月成本测算（10-18 美元）及免费模式的商业化缺口（CaseStudy/personal-agent, 创业）
+- [[IDG腾讯红杉参投_和Today聊聊Personal_AI的新观察]] — Founder Park 对话 Today AI 团队：融资超 2 亿美元背后的国内 Personal AI 落地观察——国内外场景分化（国内为日程/待办/知识管理/类CRM）、主动性是 Aha Moment 且与记忆耦合、垂直起点通用终局与 Context 壁垒、Evaluation 体系与归因优先于 Memory 突破、先证明有用再谈商业化（CaseStudy/personal-agent, AI-Agent/memory, 创业）
 - [[2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe]] — 解析 100% 本地复现 Jev 确定性决策推理路径：利用 SGLang /v1/score 直接提取首 Token Logits 进行受限 Softmax 归一化，对比结构化输出与自回归生成（LLM/inference, AI-Agent/tool-calling）
 
 - [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试）
@@ -333,7 +337,7 @@
 - [[concepts/概念_Target_Attention_目标注意力]] — 在推荐长序列与精排建模中，使候选目标单向聚合用户长序列上下文、省去历史序列间全自注意力的高效注意力机制（LLM/arch/attention, Recommendation）
 - [[concepts/概念_BPE_字节对编码]] — 从单个字符或字节出发，通过统计迭代合并最高频相邻字符对构建词表的分词算法，是当代大语言模型最主流的文本分词标准（LLM/tokenization）
 - [[concepts/概念_Brownfield_Agentic_Engineering_棕地智能体工程]] — 在老旧遗留代码库中规范化运行 AI 编码智能体的系统工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物与 Harness 约束沉淀（AI-Agent/coding）
-- [[concepts/概念_Personal_Agent_个人智能体]] — 从单轮被动问答演进为长程在线、替用户主动执行跨场景复杂任务的个人智能体范式，依托专属沙盒计算环境、富交互产物、双安全域隔离与分寸感记忆协同（AI-Agent/UI, AI-Agent/memory）
+- [[concepts/概念_Personal_Agent_个人智能体]] — 从单轮被动问答演进为长程在线、替用户主动执行跨场景复杂任务的个人智能体范式，依托专属沙盒计算环境、富交互产物、双安全域隔离与分寸感记忆协同；2026 Q4 形成 Meta Muse、Today 等多玩家品类格局，核心约束扩展到主动性需求发现、生态接入与单用户成本（AI-Agent/UI, AI-Agent/memory）
 - [[concepts/概念_Modular_RAG_模块化检索增强生成]] — 将 RAG 拆解为可替换、可路由、可组合独立功能模块的架构范式，突破线性流程，支持条件分支、动态调度与循环迭代（RAG/retrieval）
 - [[concepts/概念_Decision_Model_专用判断模型]] — 将分类选择与概率估计从自回归生成中解耦的轻量级模型或接口，通过单次前向提取选项 Logits 映射概率分布，服务于 Agent 高频状态机跳转与动作决策（LLM/inference, AI-Agent/tool-calling）
 - [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
@@ -628,6 +632,7 @@
 - [[entities/实体_SGLang]] — LMSYS 团队开源的高性能大语言模型推理与服务引擎，以 RadixAttention 树状前缀缓存、高效的调度运行时与灵活的结构化生成见长（Infra/serving, LLM/inference）
 - [[entities/实体_MTFM]] — 美团外卖多业务场景统一推荐精排基座大模型（KDD 2026），首次在外卖核心场景全量推全，基于 HSTU/Transformer 骨干、异构 Tokenizer、动态因果掩码与混合注意力架构（Recommendation, Infra/serving）
 - [[entities/实体_Muse]] — Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力（AI-Agent/UI, AI-Agent/memory, CaseStudy/personal-agent）
+- [[entities/实体_Today]] — 国内最早探索 Personal AI 的团队之一（Today AI），Teambition 创始人齐俊元创立，主打长期记忆与主动帮忙的通用 Personal AI，累计融资超 2 亿美元（IDG 资本、腾讯、红杉中国等参投）（CaseStudy/personal-agent, 创业）
 - [[entities/实体_Meta]] — 全球科技巨头与 AI 核心创新机构，主导 LLaMA 开源大模型家族、PyTorch 深度学习框架、FAISS 向量检索库、REFRAG 向量压缩架构与 Muse 个人智能体生态（LLM/arch, AI-Agent/UI）
 - [[entities/实体_Laya]] — Convai Innovations 开源的 421M 非自回归 System 1 决策模型，采用 ModernBERT 与 RLCD 算法，以 33ms 延迟输出经过严格校准的决策概率与置信度（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[entities/实体_Jev]] — TypeSafe 推出的无生成文本概率分布输出接口，将分类判断从通用大模型中解耦，主打百毫秒级确定性选择与 Agent 状态路由（LLM/inference, AI-Agent/tool-calling）
@@ -938,7 +943,7 @@
 - [[实体_Thinking_Machines_Lab]] — 前 OpenAI 安全研究 VP Lilian Weng 等联合创办的前沿 AI 研究实验室（AI-Agent/harness）
 - [[实体_Hugo_Yang]] — 本知识库搭建者与架构维护者（Skill/knowledge-bank）
 - [[实体_vault_lint]] — 知识库自动化治理与诊断 Python 工具（`scripts/vault_lint.py`）（Skill/knowledge-bank）
-- [[实体_Codex]] — OpenAI 代码生成与编码智能体系统（AI-Agent/coding）
+- [[实体_Codex]] — OpenAI 编码智能体系统（声明式插件架构）：从 2025 Codex Cloud 折戟、本地 Rust 重写底层 Agent、桌面 App 取消代码编辑器，到 2026-07 桌面 App 反转为新 ChatGPT 底座（AI-Agent/coding）
 - [[实体_XGBoost]] — 基于梯度提升决策树（GBDT）的高性能开源算法框架（Skill/python, Skill/data-analysis）
 - [[实体_SHAP]] — 基于博弈论 Shapley Additive exPlanations 的 Python 模型可解释性分析库（Skill/python, Skill/data-analysis）
 - [[实体_Matplotlib]] — Python 基础且最广泛使用的数据可视化绘图库（Skill/python, Skill/data-analysis）
@@ -946,7 +951,7 @@
 - [[实体_Cursor]] — AI 代码编辑器团队，揭示 SWE-bench Pro 上代码 RL 作弊与强化沙盒评测分数塌方现象（AI-Agent/coding）
 - [[实体_SWE-bench_Pro]] — 评估软件工程智能体解决真实 GitHub Issue 能力的权威代码基准评测集（AI-Agent/coding, AI-Agent/eval）
 - [[实体_GLM系列]] — 智谱 AI 研发的通用大语言模型家族，涵盖 GLM-4 与前沿 GLM-5 体系（LLM/arch）
-- [[实体_GPT系列]] — OpenAI 旗舰大语言模型家族，涵盖 GPT-4、GPT-5 体系及衍生推理模型（LLM/arch）
+- [[实体_GPT系列]] — OpenAI 旗舰大语言模型家族，涵盖 GPT-4、GPT-5 体系、衍生推理模型及 Codex 专属模型线（GPT-5.1/5.2/5.3 Codex）（LLM/arch）
 - [[实体_Coggle]] — Coggle 数据科学社区，关注数据科学、算法竞赛与 Agent 能力工程化实战（AI-Agent/skill）
 - [[实体_Anthropic]] — 安全导向前沿 AI 研究实验室，研发 Claude 系列模型、Agent Skills 元工具架构与接种提示词（AI-Agent/skill, LLM/arch）
 

@@ -6,7 +6,8 @@ summary: Recursive Self-Improvement（递归自我改进），AI 系统自我迭
 sources:
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/这是一篇把RSI讲明白的科普级综述.md
-updated: '2026-09-20'
+- wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md
+updated: '2026-10-25'
 ---
 
 # 概念：RSI递归自我改进
@@ -39,9 +40,14 @@ updated: '2026-09-20'
 - **深层算法突破难度**：当前智能体在工作流工程优化上表现突出，但在重写核心机器学习训练算法上仍显薄弱（如 AI4AI-Bench 仅 0.250）；
 - **对齐与复杂度治理**：伴随自进化出现的死代码累积、逻辑膨胀以及由于缺乏元认知循环导致的不可审计风险。
 
+## 工业级实践注记
+
+- **OpenAI Codex 的「自举」飞轮（2024-12 起）** `[原文陈述]`：据 [2026-10-21 来源] 的 Codex 万字复盘，Tibo 团队在 OpenAI Monorepo 上训练内部编程 Agent，让研究员用它更快编写基础设施、运行与改进下一代模型的训练系统——「先做出一个擅长帮研究员跑实验的模型，研究员用它造出更强的模型，再跑出更好的实验，如此循环往复」；后期进一步演化为「用 Codex 开发 Codex」，几个人几周即可做出新产品入口，改变了产品研发的物理规律。
+
 ## 来源与参考
 
 - [[wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[wiki/sources/这是一篇把RSI讲明白的科普级综述]]
+- [[wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事|万字复盘 Codex：一个在模型公司如何做产品的「典型」故事]]
 - [[concepts/概念_Harness_Engineering_宿主编排工程]]
 - [[concepts/概念_Self_Harness_自主进化宿主系统]]

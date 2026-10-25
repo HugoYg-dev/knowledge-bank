@@ -4,10 +4,11 @@ tags:
   - "AI-Agent/UI"
   - "AI-Agent/memory"
   - "CaseStudy/personal-agent"
-summary: "Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力。"
+summary: "Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力；上线一个多月估算约 300 万 DAU，并以企业版、Muse Wonder 模型与 Personal Agent Protocol 扩展品类边界。"
 sources:
   - "wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md"
-updated: "2026-10-06"
+  - "wiki/sources/深度讨论Personal_Agent_最互联网的AI命题.md"
+updated: "2026-10-25"
 ---
 
 # 实体：Muse
@@ -17,7 +18,7 @@ updated: "2026-10-06"
 - **开发机构**：[[entities/实体_Meta|Meta]]
 - **产品类型**：Personal Agent（个人智能体 / 个人超级智能）
 - **核心定位**：打破单纯问答的 Chatbot 形态，为用户提供一个专属、长程在线、替用户自主办事的数字伙伴。
-- **关键设计者**：Mona Sarantakos（Muse 产品设计负责人）、马克·扎克伯格（Meta 创始人兼 CEO）、Moxie Marlinspike（Signal 创始人，受聘主导 Muse 机密虚拟机安全项目）。
+- **关键设计者**：Mona Sarantakos（Muse 产品设计负责人）、马克·扎克伯格（Meta 创始人兼 CEO）、Moxie Marlinspike（Signal 创始人，受聘主导 Muse 机密虚拟机安全项目）、Nat Friedman（Meta AI 产品负责人，明确表示 Muse 产品设计从 OpenClaw 得到不少启发，截至 2026-10 的来源中）。
 
 ## 交互设计与产品架构
 
@@ -49,6 +50,18 @@ Muse 为每位用户配备专属云端虚拟机环境，并创新性地划分为
 - **记忆完全透明**：用户拥有独立的记忆文件，可随时直接查看、修正与删除；
 - **受训的分寸感 (Discretion)**：模型在预训练与后训练阶段专门强化了信息敏感度识别能力，确保对外代办事务时严格隐去用户非必要的个人隐私。
 
+## 市场表现与品类竞争（截至 2026-10 的来源观察）
+
+以下数据与判断来自海外独角兽 Best Ideas 社区讨论整理（发布于 2026-10-23），均为单源转述口径：
+
+1. **需求验证信号**：估算 Muse 上线一个多月即有约 300 万 DAU，每名日活用户每天发起 10 次以上 prompt；其中 Meta 旗下应用导流贡献约 60%-70%。
+2. **留存与使用瓶颈**：用户可能需 2-3 周才进入重度使用；Sensor Tower 数据显示 9 月 81 国新安装用户中，Muse 第 1 天打开率高于 ChatGPT、第 14 天则低于 ChatGPT；调研估算仅约 10% 交互由 Agent 主动发起。
+3. **需求发现机制**：用 Goals 保存用户长期想完成的目标，再用 ideas 提供新任务建议，让用户在一次任务结束后找到下一件值得交办的事。
+4. **场景与产品边界扩展**：生活场景优化突出（购物、Facebook 议价、保险等任务约 10 分钟内完成）；已推出面向 small business 的企业版（App 内加入经营数据连接器与 skills，定位跨软件执行任务的 AI 经营助手）。
+5. **配套模型**：Meta 的 Agent 模型 Muse Wonder 强调 active memory（跨对话保留重要上下文）与 active focus（长任务中持续围绕目标执行）两项能力。
+6. **生态摩擦与协议布局**：2026 年 9 月 Amazon 屏蔽 Muse 代用户购物；Meta 正与 Sierra、Instinct、Shopify、Stripe、Walmart 等共同开发 Personal Agent Protocol（用户决定授予 Agent 权限、企业决定允许的操作）。
+7. **成本与免费策略**：Morgan Stanley 估算若用户每周用掉 5% 至 10% 的 token 额度，每月服务一名用户约需 10-18 美元（CPU 沙箱约 5-8 美元），从业者估计每天约 1-5 美元；对照 Meta 应用家族 ARPP 每月约 5.62 美元（2026 Q2 财报），有观点认为 Muse 需先将单用户月成本降至 1-2 美元；看好经 Muse Feed 获得广告收入，但 Meta 在发布博客中承诺不把 Muse 用户对话及虚拟机数据共享给广告系统。
+
 ## 关联页面
 
 - **归属机构**：[[entities/实体_Meta|实体_Meta]]
@@ -58,3 +71,4 @@ Muse 为每位用户配备专属云端虚拟机环境，并创新性地划分为
 ## 来源与参考
 
 - [[wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md]]
+- [[wiki/sources/深度讨论Personal_Agent_最互联网的AI命题.md]]

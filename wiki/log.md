@@ -1,3 +1,34 @@
+## [2026-10-25] ingest | Clippings/万字复盘 Codex：一个在模型公司如何做产品的「典型」故事.md -> raw/articles/ -> wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md (+ entities/实体_Codex, 实体_OpenAI, 实体_GPT系列, 实体_Claude_Code, concepts/概念_RSI递归自我改进, wiki/index.md)
+- **执行说明（Batch 2）**：本篇由一次中断的 Subagent 执行完成绝大部分产物（归档、Source 页、实体/概念联动、索引挂载），主 Agent 接手核查既有产物后补全日志登记与 `tmp/sanitized/` 即用即清收尾。
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/万字复盘 Codex：一个在模型公司如何做产品的「典型」故事.md` 物理移动至 `raw/articles/` 同名归档（全角冒号保留原样）；
+  - 创建来源摘要 `wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md`，标签选用权威白名单：`tags: ["AI-Agent/coding", "AI-Agent/UI", "CaseStudy", "创业"]`（编码智能体主线 + 界面形态变革 + 产品案例复盘 + 商业/组织视角）；
+  - 提炼 7 条核心要点：内部多线赛马合流（o1 让编程重回最高优先级、Embiricos/Tibo/Glaese 跨学科团队）、2025-05 Codex Cloud 过早押注云端折戟（外部配置成本与不可打断 vs Claude Code 本地终端先行）、Tibo 转向本地并以 Rust 重写与界面解耦的底层 Agent、桌面 App 取消代码编辑器的冒险决定、Codex 专属模型线独立快速迭代（GPT-5.1/5.2/5.3 Codex）、从边角项目反转为 ChatGPT 桌面底座（2026-07-09 并入）、以《创新者的窘境》视角沉淀模型公司做产品方法论（四条增长曲线、内部创业公司组合、用 AI 开发 AI）。
+- **联动实体与概念**：
+  - `[[entities/实体_Codex]]`：既有实体页大幅增量（产品演化史时间线、Cloud 折戟与本地重写、桌面 App 与 ChatGPT 底座反转），追加本 Source；
+  - `[[entities/实体_OpenAI]]`、`[[entities/实体_GPT系列]]`、`[[entities/实体_Claude_Code]]`：增量更新并追加本 Source；
+  - `[[concepts/概念_RSI递归自我改进]]`：补充 Tibo 团队「自举」（bootstrapping）工业级案例并追加本 Source；
+  - 实体_Cursor、实体_Anthropic、实体_Gemini、实体_DeepMind 为正文双链提及，未单独立项修改。
+- **总索引挂载**：`wiki/index.md` 挂载 Source 条目（AI-Agent 分区）并同步更新 `[[实体_Codex]]`、`[[实体_GPT系列]]` 条目描述。
+
+## [2026-10-25] ingest | Clippings/IDG、腾讯、红杉参投，融资超2亿美元：上线一个月，和Today聊聊Personal AI的新观察.md -> raw/articles/ -> wiki/sources/IDG腾讯红杉参投_和Today聊聊Personal_AI的新观察.md (+ entities/实体_Today, concepts/概念_Personal_Agent_个人智能体, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/IDG、腾讯、红杉参投，融资超2亿美元：上线一个月，和Today聊聊Personal AI的新观察.md` 物理移动至 `raw/articles/` 同名归档（全角冒号保留原样）；
+  - 创建来源摘要 `wiki/sources/IDG腾讯红杉参投_和Today聊聊Personal_AI的新观察.md`，选用标签 `CaseStudy/personal-agent`（品类叶子，本文为该标签国内侧首批适用文章）+ `AI-Agent/memory`（主动性-个性化-记忆耦合与 Evaluation 体系为实质论述对象）+ `创业`（融资超 2 亿美元与商业化模式讨论）；
+  - 核心提炼 7 条要点：Today AI 融资与齐俊元团队背景、国内外落地场景分化（国内日程/待办/知识管理/类CRM 长期任务）、主动性是 Aha Moment 且与记忆耦合、垂直起点通用终局与 Context"化学反应"壁垒、Evaluation 体系与归因优先于 Memory 单点突破（Rubrics 裁判与三状态模拟用户）、自训模型的智能-效果-成本"不可能三角"、"先证明有用再谈赚钱"的商业化原则；
+- **新建实体 `entities/实体_Today`**（准入依据：全文访谈对象、被深入讨论远超 3 句，含融资/团队/产品定位/工程判断等独有事实，预期与 Muse 等 Personal Agent 品类页面交叉引用）：维护 `timeline` 双时态记录 funding（2026-10-21 宣布）与 product_status（海外订阅制 / 国内 9-24 上线暂不收费）；
+- **联动更新**：`concepts/概念_Personal_Agent_个人智能体` 增补第 5 节品类格局第 6 条（国内外场景分化与 Evaluation 工程重心）、追加 sources 与 `Personal AI` 别名；`wiki/index.md` 挂载 Source 与实体_Today 条目。
+
+## [2026-10-25] ingest | Clippings/深度讨论 Personal Agent：“最互联网”的 AI 命题.md -> raw/articles/ -> wiki/sources/深度讨论Personal_Agent_最互联网的AI命题.md (+ entities/实体_Muse, concepts/概念_Personal_Agent_个人智能体, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/深度讨论 Personal Agent：“最互联网”的 AI 命题.md` 物理移动至 `raw/articles/` 同名归档（全角冒号保留原样）；
+  - 创建来源摘要 `wiki/sources/深度讨论Personal_Agent_最互联网的AI命题.md`，选用标签 `CaseStudy/personal-agent`（品类叶子首批适用文章）+ `创业`（成本测算、收费模式与"大厂 vs 独立团队"竞争分析为核心内容之一）；
+  - 核心提炼 7 条要点：品类爆发与"最互联网"命题、主动性对 Chatbot 的"推荐 vs 搜索"范式跃迁、Muse 需求验证（约 300 万 DAU、导流 60%-70%）与第 14 天留存反转及 10% 主动交互瓶颈、最明确场景（定期补货/跨渠道比价/个人财务）与"iPhone 时刻"论断、模型与 Context 分工判断（换 CPU 类比、主 Agent 调用专业 Agent）、生态接入摩擦与 Personal Agent Protocol（Meta、Sierra 联合 Instinct/Shopify/Stripe/Walmart）及瑞幸 MCP、成本测算（Morgan Stanley 月 10-18 美元、团队实测 50-100 美元）与免费模式商业化缺口（ARPP 5.62 美元对照）；
+- **联动更新既有页面（均经 Search-Before-Create 复核，未新建重复页面）**：
+  - `entities/实体_Muse` 追加 sources 并新增"市场表现与品类竞争"小节（单源转述口径标注，含 Nat Friedman/OpenClaw 启发、Goals+ideas、企业版、Muse Wonder、Amazon 屏蔽事件与成本数据）；
+  - `concepts/概念_Personal_Agent_个人智能体` 增补第 5 节"品类格局与商业化约束（2026-10 多源观察）"前 5 条并追加 sources；
+  - `wiki/index.md` 挂载 Source 条目并同步概念条目摘要。
+
 ## [2026-10-25] governance | 产品品类标签体系升级：新增 CaseStudy/personal-agent，AI-Agent/data-agent 级联迁移至 CaseStudy/data-agent
 - **标签结构决策（用户明确批准）**：
   - 用户确认 `CaseStudy` 承担产品品类定位，采用「双轨升级」方案：顶层平铺 `CaseStudy` 保留横切用法（存量 9 篇不受影响），同时新增同名分支 `CaseStudy` 承载产品品类叶子；
