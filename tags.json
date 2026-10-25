@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated_at": "2026-10-12",
+  "updated_at": "2026-10-25",
   "governance": {
     "allow_branch_root_in_overview": true,
     "enforce_leaf_for_sources": true
@@ -48,8 +48,7 @@
         "prompt-engineering",
         "multi-agent",
         "memory",
-        "UI",
-        "data-agent"
+        "UI"
       ]
     },
     "RAG": {
@@ -88,6 +87,13 @@
         "storage",
         "rl",
         "platform"
+      ]
+    },
+    "CaseStudy": {
+      "description": "Personal Agent 产品品类：以个人助理/私人智能体为核心形态的 AI 产品（产品设计、主动性、记忆与长期陪伴）",
+      "leaves": [
+        "personal-agent",
+        "data-agent"
       ]
     }
   }

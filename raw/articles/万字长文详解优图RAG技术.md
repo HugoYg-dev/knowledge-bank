@@ -4,7 +4,7 @@ cubox_url: https://cubox.pro/web/card/7366460328135098714
 url: https://mp.weixin.qq.com/s?__biz=MzU0NjU0ODk2Mg==&mid=2247501175&idx=1&sn=f5dbcbfa21326ab4e6ecd7f2cbb2f30c&chksm=fa33850e7b937994337117b7e0e41ef8ae33916a88243d0b4e171ad4b411a2fcb64872199319&mpshare=1&scene=1&srcid=0913mxhdXINU0klxMQg810mA&sharer_shareinfo=e8eba2a79bf5495dd205b862594c4394&sharer_shareinfo_first=e8eba2a79bf5495dd205b862594c4394
 tags:
 - RAG/retrieval
-- AI-Agent/data-agent
+- CaseStudy/data-agent
 published: 2025-08-28
 ---
 # 万字长文详解优图RAG技术

@@ -3,6 +3,7 @@ type: "entity"
 tags:
   - "AI-Agent/UI"
   - "AI-Agent/memory"
+  - "CaseStudy/personal-agent"
 summary: "Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力。"
 sources:
   - "wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md"

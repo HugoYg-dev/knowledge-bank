@@ -3,6 +3,7 @@ type: "source"
 tags:
   - "AI-Agent/UI"
   - "AI-Agent/memory"
+  - "CaseStudy/personal-agent"
 summary: "Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制"
 sources:
   - "raw/articles/Meta 复盘 Muse：Agent 怎么才能像「一个人」长期存在？.md"

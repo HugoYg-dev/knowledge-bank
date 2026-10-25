@@ -3,7 +3,7 @@ id: '7360983065209866210'
 cubox_url: https://cubox.pro/web/card/7360983065209866210
 url: https://mp.weixin.qq.com/s/m-y-ZvTMQw88uJseYpMyEA
 tags:
-- AI-Agent/data-agent
+- CaseStudy/data-agent
 published: 2025-08-29
 ---
 # 企业落地 NL2SQL，需要的是 AI-ready data 和 小模型

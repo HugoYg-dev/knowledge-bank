@@ -20,7 +20,7 @@
 - [[这是一篇把Token讲明白的科普级综述]] — 谷歌牵头32位学者154页分词综述科普：解构大模型底层Token编号机制、BPE高频合并算法、算术与字母计数缺陷根因，以及语言成本不平等与词表安全隐患（LLM/tokenization）
 - [[Brownfield_Agentic_Engineering]] — Addy Osmani 阐述在老旧遗留代码库中运行 AI 智能体的棕地工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物、Harness 约束沉淀及端到端完整迁移单元（AI-Agent/coding）
 
-- [[Meta复盘Muse_Agent怎么才能像一个人长期存在]] — Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制（AI-Agent/UI, AI-Agent/memory）
+- [[Meta复盘Muse_Agent怎么才能像一个人长期存在]] — Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制（AI-Agent/UI, AI-Agent/memory, CaseStudy/personal-agent）
 - [[2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe]] — 解析 100% 本地复现 Jev 确定性决策推理路径：利用 SGLang /v1/score 直接提取首 Token Logits 进行受限 Softmax 归一化，对比结构化输出与自回归生成（LLM/inference, AI-Agent/tool-calling）
 
 - [[阿里巴巴淘天AI应用研发一面，凉了！！！]] — 阿里淘天 AI 应用研发一面复盘：涵盖 28 道高频题（手撕算法、CR Agent、Workflow vs 自治 Agent、ReAct 与 Plan-and-Execute 选型、Skill/MCP/Function Calling、Harness 架构、长任务链路追踪及并发与缓存一致性）（面试）
@@ -189,11 +189,11 @@
 - [[AI智能体8种Memory策略与技术实现]] — 8 种记忆策略原理+模拟代码：全量/滑动窗口/相关性过滤/摘要/向量DB/知识图谱/分层/类OS内存管理（AI-Agent/memory）
 - [[OpenAI_构建AI智能体实用指南]] — OpenAI 官方指南（宝玉译）：Agent 三大基石/单一+主管+去中心化编排/分层安全护栏/HITL（AI-Agent/multi-agent）
 - [[用系统架构思维告别意大利面条式系统提示词]] — 系统提示词四层架构（核心定义/交互接口/内部处理/全局约束）替代扁平规则堆砌（AI-Agent/prompt-engineering）
-- [[腾讯OlaChat_LLM智能数据分析平台实践]] — 腾讯 OlaChat：FlattenedRAG/StructuredRAG 元数据检索 + Text2SQL 微调+Agent + 多任务对话编排（AI-Agent/data-agent, CaseStudy）
-- [[腾讯ABI工程架构探索与实践]] — OlaChat 工程架构：原子 Agent + DAG 编排 + 统一协议 + Text2DSL 中间层方案（AI-Agent/data-agent, CaseStudy）
+- [[腾讯OlaChat_LLM智能数据分析平台实践]] — 腾讯 OlaChat：FlattenedRAG/StructuredRAG 元数据检索 + Text2SQL 微调+Agent + 多任务对话编排（CaseStudy/data-agent, CaseStudy）
+- [[腾讯ABI工程架构探索与实践]] — OlaChat 工程架构：原子 Agent + DAG 编排 + 统一协议 + Text2DSL 中间层方案（CaseStudy/data-agent, CaseStudy）
 - [[AI_Agent与AI_Workflow的区别和深度解析]] — AI Agent 自主决策 vs AI Workflow 预定义流程：四类 Agent + 五大 Workflow 优势（AI-Agent）
 - [[Agent系统开发经验]] — 三种复杂性幻觉+三层复杂度（可运行/可复现/可进化）+LLM放大效应+系统化工程原则（AI-Agent）
-- [[企业落地NL2SQL_AI-ready_data与小模型]] — NL2SQL生产落地：AI-ready data + 小模型（3B/7B LoRA）+ 两级Schema Linking，幻觉率7.9%→1.3%（AI-Agent/data-agent, CaseStudy）
+- [[企业落地NL2SQL_AI-ready_data与小模型]] — NL2SQL生产落地：AI-ready data + 小模型（3B/7B LoRA）+ 两级Schema Linking，幻觉率7.9%→1.3%（CaseStudy/data-agent, CaseStudy）
 - [[FastAPI架构指南_项目模板与实战经验]] — 生产级 FastAPI 项目结构：Routers/Schemas/Services 三层分离 + 安全中间件 + Makefile（Skill/python）
 - [[Python并发_async_await与FastAPI]] — FastAPI 官方文档：async/await 协程、并发 vs 并行、路径函数 def/async def 选择（Skill/python）
 - [[Docker化Flask_Django应用从pip切换到uv]] — Nick Janetakis：Docker 项目 pip→uv，约 10x 提速，pyproject.toml/uv.lock/非 root（Skill/python）
@@ -627,7 +627,7 @@
 
 - [[entities/实体_SGLang]] — LMSYS 团队开源的高性能大语言模型推理与服务引擎，以 RadixAttention 树状前缀缓存、高效的调度运行时与灵活的结构化生成见长（Infra/serving, LLM/inference）
 - [[entities/实体_MTFM]] — 美团外卖多业务场景统一推荐精排基座大模型（KDD 2026），首次在外卖核心场景全量推全，基于 HSTU/Transformer 骨干、异构 Tokenizer、动态因果掩码与混合注意力架构（Recommendation, Infra/serving）
-- [[entities/实体_Muse]] — Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力（AI-Agent/UI, AI-Agent/memory）
+- [[entities/实体_Muse]] — Meta 推出的 Personal Agent（个人智能体）旗舰产品，具备专属云端沙盒电脑、双安全域隔离架构（Harness 与宿主 Sentinel）、夜里学习与持续目标追踪能力（AI-Agent/UI, AI-Agent/memory, CaseStudy/personal-agent）
 - [[entities/实体_Meta]] — 全球科技巨头与 AI 核心创新机构，主导 LLaMA 开源大模型家族、PyTorch 深度学习框架、FAISS 向量检索库、REFRAG 向量压缩架构与 Muse 个人智能体生态（LLM/arch, AI-Agent/UI）
 - [[entities/实体_Laya]] — Convai Innovations 开源的 421M 非自回归 System 1 决策模型，采用 ModernBERT 与 RLCD 算法，以 33ms 延迟输出经过严格校准的决策概率与置信度（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[entities/实体_Jev]] — TypeSafe 推出的无生成文本概率分布输出接口，将分类判断从通用大模型中解耦，主打百毫秒级确定性选择与 Agent 状态路由（LLM/inference, AI-Agent/tool-calling）
@@ -752,14 +752,14 @@
 ### AI-Agent/prompt-engineering（Phase 4 Batch 7）
 - 编程提示工程实战 — 程序员向 10 种技巧+7 条基础原则+调试/重构/功能三场景策略+常见反模式（AI-Agent/prompt-engineering）
 
-### AI-Agent/data-agent（Phase 4 Batch 8）
+### CaseStudy/data-agent（Phase 4 Batch 8）
 
 ### AI-Agent 综合 + data-agent（Phase 4 Batch 9）
 - [[概念_Agent系统化工程]] — 三层复杂度+LLM放大效应+Level 0-4认知演化+系统化方法论（AI-Agent）
 - [[概念_LLM不确定性放大]] — 多步调用的指数级错误放大数学模型及三类放大维度（AI-Agent）
-- [[概念_AI_Ready_Data_AI就绪数据]] — NL2SQL落地第一性问题：元数据/业务语义/权限/样例SQL的系统化准备（AI-Agent/data-agent）
-- [[概念_M_Schema_增强元数据模式]] — NL2SQL增强Schema表示：补充类型/中文释义/真实值示例+约束池（AI-Agent/data-agent）
-- [[概念_Schema_Linking_数据库模式联接]] — BM25粗排+SIC精排两级联接，从全量Schema筛选相关表列，幻觉率-78%（AI-Agent/data-agent）
+- [[概念_AI_Ready_Data_AI就绪数据]] — NL2SQL落地第一性问题：元数据/业务语义/权限/样例SQL的系统化准备（CaseStudy/data-agent）
+- [[概念_M_Schema_增强元数据模式]] — NL2SQL增强Schema表示：补充类型/中文释义/真实值示例+约束池（CaseStudy/data-agent）
+- [[概念_Schema_Linking_数据库模式联接]] — BM25粗排+SIC精排两级联接，从全量Schema筛选相关表列，幻觉率-78%（CaseStudy/data-agent）
 
 ### Skill/python（Phase 5 Batch 1）
 - [[概念_FastAPI项目结构模式]] — Routers/Schemas/Services 三层分离 + 安全中间件 + pydantic-settings（Skill/python）
@@ -879,12 +879,12 @@
 
 ### AI-Agent/memory（Phase 4 Batch 7）
 
-### AI-Agent/data-agent（Phase 4 Batch 8）
-- [[实体_腾讯OlaChat]] — 腾讯 PCG 智能数据分析平台，多任务对话+DAG编排+Text2SQL(70B)+元数据RAG（AI-Agent/data-agent）
+### CaseStudy/data-agent（Phase 4 Batch 8）
+- [[实体_腾讯OlaChat]] — 腾讯 PCG 智能数据分析平台，多任务对话+DAG编排+Text2SQL(70B)+元数据RAG（CaseStudy/data-agent）
 
 ### AI-Agent 综合 + data-agent（Phase 4 Batch 9）
 - [[实体_LangSmith]] — LangChain 可观测性平台：可视化 Trace/调试/测试评估，Agent 复现性关键工具（AI-Agent）
-- [[实体_Qwen2.5-Coder]] — 阿里代码专用模型3B/7B，NL2SQL LoRA 精调基座，实测EX提升+6.4%（AI-Agent/data-agent）
+- [[实体_Qwen2.5-Coder]] — 阿里代码专用模型3B/7B，NL2SQL LoRA 精调基座，实测EX提升+6.4%（CaseStudy/data-agent）
 
 
 ### Skill/python（Phase 5 Batch 1）

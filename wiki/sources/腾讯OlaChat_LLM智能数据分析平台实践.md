@@ -1,7 +1,7 @@
 ---
 type: source
 tags:
-- AI-Agent/data-agent
+- CaseStudy/data-agent
 - CaseStudy
 summary: 腾讯 OlaChat 智能 BI 平台实践：多任务对话系统 + 任务编排引擎 + FlattenedRAG/StructuredRAG 结构化元数据检索
   + Text2SQL 微调+Agent 方案

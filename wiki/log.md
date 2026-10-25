@@ -1,3 +1,20 @@
+## [2026-10-25] governance | 产品品类标签体系升级：新增 CaseStudy/personal-agent，AI-Agent/data-agent 级联迁移至 CaseStudy/data-agent
+- **标签结构决策（用户明确批准）**：
+  - 用户确认 `CaseStudy` 承担产品品类定位，采用「双轨升级」方案：顶层平铺 `CaseStudy` 保留横切用法（存量 9 篇不受影响），同时新增同名分支 `CaseStudy` 承载产品品类叶子；
+  - 新增分支叶子 `CaseStudy/personal-agent`（描述："Personal Agent 产品品类：以个人助理/私人智能体为核心形态的 AI 产品（产品设计、主动性、记忆与长期陪伴）"）；
+  - 用户指示 `data-agent` 不应挂在 AI-Agent 技术分支下，应归入产品品类：L3 级联重命名 `AI-Agent/data-agent → CaseStudy/data-agent`，Dry-run 预演 12 篇与方案一致后 `--apply` 执行。
+- **涉及文档全量更新清单（12 篇）**：
+  - Concepts (3 篇)：`[[concepts/概念_AI_Ready_Data_AI就绪数据]]`、`[[concepts/概念_M_Schema_增强元数据模式]]`、`[[concepts/概念_Schema_Linking_数据库模式联接]]`
+  - Sources (3 篇)：`[[sources/企业落地NL2SQL_AI-ready_data与小模型]]`、`[[sources/腾讯ABI工程架构探索与实践]]`、`[[sources/腾讯OlaChat_LLM智能数据分析平台实践]]`
+  - Entities (2 篇)：`[[entities/实体_Qwen2.5-Coder]]`、`[[entities/实体_腾讯OlaChat]]`
+  - Raw 归档 (4 篇)：对应 4 篇底座文献同步更新。
+- **Personal Agent 品类首批打标**：
+  - `[[sources/Meta复盘Muse_Agent怎么才能像一个人长期存在]]` 与 `[[entities/实体_Muse]]` 增补 `CaseStudy/personal-agent` 标签（保留原 AI-Agent/UI、AI-Agent/memory 技术叶子）。
+- **总索引同步与健康度自检**：
+  - `wiki/index.md` 全量同步 10 处 `CaseStudy/data-agent` 标注与 2 处 Muse 条目标注；
+  - 运行 `tag_manager.py validate CaseStudy/data-agent`、`validate CaseStudy/personal-agent` 校验通过；
+  - 运行 `vault_lint.py lint` 强制检查全部合格（100% 索引挂载、0 死链、面试隔离审计通过）。
+
 ## [2026-10-23] ingest | Clippings/面试不管问你啥，就记住一个话术原则.md -> raw/articles/ -> wiki/sources/ (+ wiki/sources/面试不管问你啥，就记住一个话术原则.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/面试不管问你啥，就记住一个话术原则.md` 物理移动至 `raw/articles/面试不管问你啥，就记住一个话术原则.md`；
