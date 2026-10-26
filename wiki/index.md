@@ -21,6 +21,8 @@
 - [[Brownfield_Agentic_Engineering]] — Addy Osmani 阐述在老旧遗留代码库中运行 AI 智能体的棕地工程方法论：分区治理、特征化测试锁定旧行为、持久化调研产物、Harness 约束沉淀及端到端完整迁移单元（AI-Agent/coding）
 
 - [[万字复盘Codex_模型公司如何做产品的典型故事]] — Every CEO Dan Shipper 深访核心成员万字复盘 OpenAI Codex 产品史：内部多线赛马合流、Codex Cloud 过早押注云端折戟（外部配置门槛高且无法中途打断）、Tibo 转向本地并用 Rust 重写底层 Agent 与界面解耦、桌面 App 取消代码编辑器的冒险决定、Codex 专属模型线独立快速迭代，直至 2026-07 桌面 App 反转为新 ChatGPT 底座，并以「创新者的窘境」视角沉淀模型公司做产品方法论（AI-Agent/coding, AI-Agent/UI, CaseStudy, 创业）
+- [[从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]] — 美团算法团队基于 Karpathy AutoResearch 经三次架构重构（V1 LOOP → V2 状态机 → V3 CyclicGraph Engine），搭建出企业级算法研究自进化系统，通过 Spawn-Converge 图探索、业务知识库与真实大闭环、二级人机校验 Skill 草稿机制，实现算法研发提效与系统自进化（AI-Agent/multi-agent, AI-Agent/coding, Infra/platform）
+- [[告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness]] — 淘天集团方舟 AI 会场团队构建生产级 Agent Harness：以会场域三维认知环境（视觉/数据/生码解耦与 Skill 渐进注入）、OSS 虚拟工作区与任务型 SubAgent、自迭代环境（确定性质检与五层可观测体系），实现“想法即生成，生成即可投放”的 C 端商业化闭环（AI-Agent/UI, AI-Agent/context-engineering, AI-Agent/skill）
 
 - [[Meta复盘Muse_Agent怎么才能像一个人长期存在]] — Meta 复盘 Personal Agent 产品 Muse 的设计实践：解构单会长对话与交互卡片、主动性分寸感与后台异步推进、双安全域隔离架构（Harness 与宿主 Sentinel）及夜里学习记忆机制（AI-Agent/UI, AI-Agent/memory, CaseStudy/personal-agent）
 - [[深度讨论Personal_Agent_最互联网的AI命题]] — 海外独角兽 Best Ideas 对 Personal Agent 品类的系统性讨论：主动性对 Chatbot 的"推荐 vs 搜索"式范式跃迁、Muse 需求验证数据（约300万 DAU）与第 14 天留存反转、生态接入摩擦与 Personal Agent Protocol、单用户月成本测算（10-18 美元）及免费模式的商业化缺口（CaseStudy/personal-agent, 创业）
@@ -639,9 +641,12 @@
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
 - [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/platform, LLM/arch）
-- [[实体_美团]] — 中国领先的科技零售与本地生活平台，在搜索理解、推荐系统、AI Coding 与全栈生活服务智能体具有深厚积累（AI-Agent/coding, Recommendation）
+- [[实体_美团]] — 中国领先的科技零售与本地生活平台，在搜索理解、推荐系统、算法自进化（AutoResearch/图探索）与全栈生活服务智能体具有深厚积累（AI-Agent/coding, AI-Agent/multi-agent, Recommendation）
+- [[entities/实体_AutoResearch]] — Andrej Karpathy 开源的算法研究自进化实验原型系统（2025），以 program.md + train.py + prepare.py 三文件和 keep/reset 棘轮机制为核心，后被美团演进为工业级图探索自进化系统（AI-Agent/coding, AI-Agent/multi-agent）
 
 - [[实体_LongHorizon-Harness]] — 阿里高德团队开源的长时 Agent 编排框架，通过 Manage-Execute-Audit (MEA) 循环将长任务重构为审计状态机，包裹原生 Coding Agent 以防状态腐化与虚假完成（AI-Agent/coding, AI-Agent/context-engineering）
+- [[entities/实体_大淘宝技术]] — 阿里巴巴淘天集团官方技术团队，负责淘宝、天猫核心电商营销与交易技术、AI 原生技术研发与生产级智能体工程体系构建（AI-Agent/coding, AI-Agent/UI）
+- [[entities/实体_方舟AI会场_Harness]] — 淘天集团大淘宝技术团队研发的生产级会场智能体宿主环境（Agent Harness），支持淘内真实货品运营与 C 端直接投放，通过会场域三维认知、业务工作区与自迭代质检环境实现业务闭环（AI-Agent/UI, AI-Agent/context-engineering, AI-Agent/skill）
 - [[实体_zvec-grep]] — 阿里 Zvec 团队开源的 local-first 代码搜索基础设施，结合 BM25 词法检索、局部向量语义检索与 RRF 排名融合，为人类与 Agent 提供高效上下文获取（AI-Agent/coding, AI-Agent/tool-calling, RAG/retrieval）
 
 - [[实体_Tavily]] — 专注于面向 LLM 与 RAG 的 Web Search 搜索引擎供应商，主打网页降噪、正文抽取与高信息密度文本片段压缩（AI-Agent/deep-research, RAG/retrieval）

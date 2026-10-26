@@ -9,7 +9,8 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
-updated: '2026-09-21'
+- wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
+updated: '2026-10-26'
 aliases:
 - Self-Harness
 - Self Harness
@@ -45,6 +46,7 @@ aliases:
 ## 代表工作与技术演进
 
 - **DeepSeek Harness DSH (2026)**：通过 Cordis 命令式微内核将 Agent Loop 本身作为插件解耦，提供事务性 HMR 与依赖响应，为 Agent 运行中自我演化提供底层基础设施。
+- **美团 AutoResearch 自进化系统 (2026)**：在算法模型自进化场景中，通过“业务知识库 + 真实 A/B 大闭环 + 经验自动沉淀”实现系统越用越好用；踩坑经验自动提炼为 Skill 草稿，经“系统初筛 + 人工审核”两级校验后反哺系统工具集，形成高防幻觉的经验晋升链。
 - **Self-Harness (Zhang et al. 2026)**：标准弱点-提议-保留集验证闭环。
 - **Darwin Gödel Machine (2025)**：Agent 进化自身代码库，SWE-bench Verified 达 50%。
 - **AlphaEvolve (2025)**：进化搜索 + 冻结 LLM 生成 diff，优化 GPU kernel 与矩阵乘法。

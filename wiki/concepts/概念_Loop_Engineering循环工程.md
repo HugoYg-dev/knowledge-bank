@@ -7,12 +7,13 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md
-summary: Loop Engineering（循环工程）是将大语言模型驱动的智能体系统从简单单次执行提升为自主闭环的核心方法论；涵盖单循环五大组件固化、自收敛两大杠杆，以及多
-  Agent 协同中的图工程（Graph Engineering）拓扑编排架构。
+- wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
+summary: Loop Engineering（循环工程）是将大语言模型驱动的智能体系统从简单单次执行提升为自主闭环的核心方法论；涵盖单循环五大组件固化、自收敛两大杠杆，以及多 Agent 协同中的图工程（Graph Engineering）拓扑编排架构。
 tags:
 - AI-Agent/coding
+- AI-Agent/multi-agent
 type: concept
-updated: '2026-09-21'
+updated: '2026-10-26'
 ---
 # 循环工程 (Loop Engineering)
 
@@ -151,3 +152,10 @@ Loop Engineering 的核心演进不仅是调度机制的自动化，更是**管�
 ### 工程设计准则
 - **非必要勿建图**：仅在存在明确的“角色专业分工（Specialization）”或“故障爆炸半径隔离（Failure Isolation）”时才引入图拓扑；简单的线性步骤严禁过度图工程化。
 - **循环自收敛前置**：每个子节点必须首先是自收敛（Self-converging）的稳定闭环，避免发散错误沿着拓扑边放大。
+
+### 工业实践案例：美团 AutoResearch 的图探索跃迁（CyclicGraph Engine）
+- **从单线程 LOOP 到图探索**：Karpathy 经典的 AutoResearch 原型本质为基于 Git keep/reset 棘轮的单线程串行 LOOP，同一时刻仅维护单条探索线。美团算法团队在真实业务场景演进出 **CyclicGraph Engine** 图探索架构，其核心是 **Spawn-Converge** 机制：
+  1. **Spawn 假设拆解**：主 Agent 将大方向拆解为 3~4 个正交互斥的假设（如“特征不足”与“结构不足”）；
+  2. **上下文隔离执行**：子 Agent 各自在独立沙箱内修改代码并异步提交云端训练，互不知情，避免中间结论带偏；
+  3. **Converge 决策收拢**：训练完成后由主 Agent 集中对比多份独立指标与代码 diff 证据，决策下一轮方向组合。
+- **效率跃升**：在同建模任务中，单线程 LOOP 10 次迭代耗时 3 天未突破，图探索架构 12 次迭代仅耗时 4.7 小时即达标，单位时间迭代提速 18 倍。证明图编排的核心价值在于通过正交并行大幅提升单位时间有效决策密度。

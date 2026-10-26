@@ -1,3 +1,32 @@
+## [2026-10-26] ingest | Clippings/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md -> raw/articles/ -> wiki/sources/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md (+ entities/实体_大淘宝技术, 实体_方舟AI会场_Harness, concepts/概念_电商智能体架构, 概念_上下文工程, 概念_Harness_Engineering_宿主编排工程, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md`，标签选用白名单：`tags: ["AI-Agent/UI", "AI-Agent/context-engineering", "AI-Agent/skill"]`；
+  - 核心提炼 6 条要点：AI 静态 Demo 与真实 C 端投放的四大鸿沟（渲染不兼容/假数据/无视觉规范/二次编辑难）、会场域三维认知与核心产物 `page.html` 的三维约束解耦（视觉软约束、货品数据认知约束、Ark 生码硬约束，DOM 属性解耦视觉与供给分组）、业务工作区（OSS 虚拟文件系统与 `page-data.json` 收敛后端关系）、任务型 SubAgent 委派与“结论 + 执行记录文件”交接、上下文重要性四层划分（P0-P3）与 Prompt Cache 冷却期微压缩策略、确定性质检工具与五层 LLM Trace 观测；
+- **新建实体**：
+  - `entities/实体_大淘宝技术`：淘天官方技术团队与品牌，营销交易技术与 AI 原生实践；
+  - `entities/实体_方舟AI会场_Harness`：生产级会场智能体宿主环境，三类环境构建与 C 端投放闭环；
+- **联动更新既有页面**：
+  - `concepts/概念_电商智能体架构`：新增第 7 节方舟 AI 会场案例（三维约束解耦、OSS 虚拟工作区、SubAgent 任务委派、确定性质检）并追加 sources；
+  - `concepts/概念_上下文工程`：新增方舟会场上下文治理小节（P0-P3 分层、Prompt Cache 冷却微压缩）并追加 sources；
+  - `concepts/概念_Harness_Engineering_宿主编排工程`：在代表实践中补充淘天方舟 AI 会场 Harness 并追加 sources；
+  - `wiki/index.md` 挂载 Source 条目与新建实体条目。
+
+## [2026-10-26] ingest | Clippings/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md -> raw/articles/ -> wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md (+ entities/实体_AutoResearch, 实体_美团, 实体_Andrej_Karpathy, concepts/概念_Loop_Engineering循环工程, 概念_Self_Harness_自主进化宿主系统, 概念_Harness_Engineering_宿主编排工程, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md`，标签选用白名单：`tags: ["AI-Agent/multi-agent", "AI-Agent/coding", "Infra/platform"]`；
+  - 核心提炼 7 条要点：算法工程师日常切换痛点与 Karpathy AutoResearch 原型的落地局限（Prompt 幻觉、异步训练环境、单线程串行 LOOP）、五大设计理念与 Harness 决定系统上限定位、三次架构演进（V1 云端 LOOP → V2 异步状态机 → V3 CyclicGraph Engine 与 Spawn-Converge 机制）、图探索带来的 18 倍迭代效率跃升与单变量控制、业务知识库与强制调研逃逸机制及真实 A/B 大闭环、全链路可信度防线（硬约束屏蔽、原始证据优先、二级人机校验 Skill 草稿机制）、业务效果验证（耗时降 83-85%、线上真实增益）与超越传统 AutoML 预设搜索空间；
+- **新建实体**：
+  - `entities/实体_AutoResearch`：Karpathy 2025 开源原型（三文件架构、冻结裁判不可篡改、Git 棘轮机制）与美团工业演进；
+- **联动更新既有页面**：
+  - `entities/实体_美团`：新增算法模型自进化系统（AutoResearch 工业演进）技术实践小节，更新 sources 与 updated；
+  - `entities/实体_Andrej_Karpathy`：新增开创 AutoResearch 算法自主研究范式贡献小节，更新 sources 与 updated；
+  - `concepts/概念_Loop_Engineering循环工程`：新增图探索工业实践小节（美团 CyclicGraph Engine 与 Spawn-Converge 机制），更新 sources 与 updated；
+  - `concepts/概念_Self_Harness_自主进化宿主系统`：新增美团 AutoResearch 自进化实践（业务知识库 + 真实 A/B 大闭环 + 二级人机校验 Skill 草稿），更新 sources 与 updated；
+  - `concepts/概念_Harness_Engineering_宿主编排工程`：补充美团 AutoResearch 实践，更新 sources 与 updated；
+  - `wiki/index.md` 挂载 Source 条目与实体_AutoResearch 条目，同步更新实体_美团描述。
+
 ## [2026-10-25] ingest | Clippings/万字复盘 Codex：一个在模型公司如何做产品的「典型」故事.md -> raw/articles/ -> wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md (+ entities/实体_Codex, 实体_OpenAI, 实体_GPT系列, 实体_Claude_Code, concepts/概念_RSI递归自我改进, wiki/index.md)
 - **执行说明（Batch 2）**：本篇由一次中断的 Subagent 执行完成绝大部分产物（归档、Source 页、实体/概念联动、索引挂载），主 Agent 接手核查既有产物后补全日志登记与 `tmp/sanitized/` 即用即清收尾。
 - **剪藏归档与来源摘要创建**：

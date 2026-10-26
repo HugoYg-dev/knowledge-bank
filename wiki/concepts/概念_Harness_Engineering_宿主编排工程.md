@@ -15,7 +15,9 @@ sources:
 - wiki/sources/搜索没有变便宜，但 Agent 把它拆成了新的供应链.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md
-updated: '2026-10-13'
+- wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
+- wiki/sources/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md
+updated: '2026-10-26'
 aliases:
 - Harness Engineering
 - 宿主系统工程
@@ -134,12 +136,16 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[entities/实体_Codex|Codex]]：OpenAI 编码智能体系统，代表了经典的声明式插件模型。
 - [[entities/实体_DeepSeek_Harness|DeepSeek Harness (DSH)]]：DeepSeek 开源的命令式微内核智能体框架。
 - [[entities/实体_LongHorizon-Harness|LongHorizon-Harness]]：阿里高德开源的审计状态机长时 Agent 编排框架，通过 MEA 三角色解耦与外层契约包裹底层 Coding Agent。
+- [[entities/实体_AutoResearch|美团 AutoResearch Harness]]：算法模型自主研究系统，通过无状态触发+有状态文件、Spawn-Converge 图探索与二级人机校验 Skill 草稿机制，解决长周期异步训练与可信度防线。
+- [[entities/实体_方舟AI会场_Harness|淘天方舟 AI 会场 Harness]]：支持 C 端投放与真实货品运营的业务 Harness，通过会场域三维认知、OSS 虚拟工作区与确定性质检自迭代环境，突破 AI 生成仅停留在静态 Demo 页面的局限。
 
 ## 来源与参考
 
 - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
 - [[sources/DeepSeek_Harness_插件生态解析|DeepSeek Harness 插件生态解析]]
+- [[从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]]
+- [[告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness]]
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[concepts/概念_RSI递归自我改进]]
 - [[concepts/概念_Harness优化阶梯]]
