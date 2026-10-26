@@ -152,6 +152,8 @@
 - [[2025年七大顶流大模型架构]] — 7 大旗舰开源 LLM 架构创新点综述（LLM/arch, LLM/arch/MoE）
 - [[从LLaVA到Qwen3-VL_多模态架构演进]] — LLaVA AnyRes vs Qwen3-VL DeepStack，MLLM 两大演进路线全景（LLM/arch/VLM）
 - [[DeepSeek_MLA矩阵吸收原理]] — MLA 矩阵吸收图解：K/V 升维矩阵吸收进 Q，三处广播优化（LLM/arch/attention）
+- [[DeepSeek开源FlashMLA从原理到代码详解]] — 深入剖析 DeepSeek 开源 FlashMLA 计算内核、低秩 KV 压缩维度推导与 RoPE 解耦方案（LLM/arch/attention, LLM/inference）
+- [[从代码角度彻底理解DeepSeek_MLA算法]] — 从 PyTorch 代码实现视角手撕 DeepSeek MLA 算法：Q/KV 低秩投影、RoPE 维度拆分与打分计算全流程（LLM/arch/attention, LLM/inference）
 - [[KV_Cache原理图解]] — KV Cache 图解：自回归推理缓存 K/V，显存估算，仅适用 Decoder（LLM/inference/kv-cache）
 - [[推测解码Speculative_Decoding综述]] — Draft-then-Verify 无损推理加速：Independent/Self Drafting + 验证策略（LLM/inference）
 - [[大模型显存占用单卡分析]] — 混合精度训练/KV Cache/LoRA/QLoRA 四场景单卡显存估算公式（LLM/inference, Infra/gpu, 面试）
@@ -715,6 +717,7 @@
 - [[实体_MiniMax_M2]] — MiniMax 2025 旗舰，回归 Full Attention，Agent/代码定位（LLM/arch/attention）
 - [[实体_Kimi_Linear]] — 月之暗面开源 48B 混合注意力：KDA+MLA 3:1，KV Cache 减少 75%（LLM/arch/attention）
 - [[实体_DeepSeek_V2]] — DeepSeek MLA 首发模型（LLM/arch/attention）
+- [[实体_FlashMLA]] — DeepSeek 开源的针对 Hopper 架构 GPU 的高性能 MLA 解码计算内核库（Infra/serving, LLM/inference）
 - [[实体_Medusa]] — Medusa 推测解码框架：多 FFN Head 并行预测与树状注意力验证（LLM/inference）
 - [[实体_EAGLE]] — 基于倒数第二层特征隐状态预测的高效推测解码推理加速框架（LLM/inference）
 - [[实体_Qwen3]] — 阿里 Qwen3：SFT 混合思考 + Thinking Budget 涌现（LLM/reasoning）

@@ -1,3 +1,16 @@
+## [2026-10-26] ingest | Clippings/DeepSeek开源FlashMLA之际从原理到代码详解MLA.md & Clippings/MLA(1)：从代码角度学习和彻底理解 DeepSeek MLA 算法.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_FlashMLA, concepts/概念_MLA_多头潜在注意力, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/DeepSeek开源FlashMLA之际从原理到代码详解MLA.md` 移动至 `raw/articles/` 同名归档，创建来源摘要 `wiki/sources/DeepSeek开源FlashMLA从原理到代码详解.md`，标签选用白名单：`tags: ["LLM/arch/attention", "LLM/inference"]`；
+  - `Clippings/MLA(1)：从代码角度学习和彻底理解 DeepSeek MLA 算法.md` 移动至 `raw/articles/` 同名归档，创建来源摘要 `wiki/sources/从代码角度彻底理解DeepSeek_MLA算法.md`，标签选用白名单：`tags: ["LLM/arch/attention", "LLM/inference"]`；
+- **新建实体**：
+  - `entities/实体_FlashMLA`：DeepSeek 开源的专为 Hopper 架构 GPU（SM90、BF16、CUTLASS）设计的高性能 MLA 解码计算内核；
+- **核心维基页面更新**：
+  - `concepts/概念_MLA_多头潜在注意力`：
+    1. 嵌入用户指定的 MLA 核心架构与矩阵吸收流程图谱；
+    2. 深度整合两篇入库文献：系统展开低秩潜在向量投影（Q/KV 维度拆分）、解耦 RoPE 机制（解决旋转矩阵与投影矩阵不可吸收冲突）、推理阶段矩阵吸收数学公式与计算图谱（广播优化）、以及 FlashMLA 算子落地与注意力变体横向权衡对比表；
+    3. 同步追加新来源（sources）与更新日期。
+- **总索引挂载**：`wiki/index.md` 挂载两篇新 Source 条目与 `实体_FlashMLA` 条目。
+
 ## [2026-10-26] ingest | Clippings/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md -> raw/articles/ -> wiki/sources/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md (+ entities/实体_大淘宝技术, 实体_方舟AI会场_Harness, concepts/概念_电商智能体架构, 概念_上下文工程, 概念_Harness_Engineering_宿主编排工程, wiki/index.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md` 物理移动至 `raw/articles/` 同名归档；
