@@ -9,9 +9,9 @@
 | 技能目录 | 定位与核心作用 | 规范入口 |
 | :--- | :--- | :--- |
 | [`human-writing/`](human-writing/) | **自然中文活人感创作技能**：用于知乎回答、长文博客、技术复盘与深度评测，规避 AI 腔、陈词滥调与机械转折，保持自然生动的活人表达。 | [`human-writing/SKILL.md`](human-writing/SKILL.md) |
-| [`obsidian-markdown/`](obsidian-markdown/) | **Obsidian Flavored Markdown 规范技能**：指导 Agent 编写合规的 Obsidian 专有语法，包括双向链接 `[[]]`、嵌入 Embeds `![[]]`、Callouts 标注块及 YAML Frontmatter 属性。 | [`obsidian-markdown/SKILL.md`](obsidian-markdown/SKILL.md) |
 | [`obsidian-bases/`](obsidian-bases/) | **Obsidian Bases 数据库视图技能**：用于创建与编辑 `.base` 文件，提供类数据库的多维表格、卡片看板、动态过滤与公式聚合能力。 | [`obsidian-bases/SKILL.md`](obsidian-bases/SKILL.md) |
 | [`json-canvas/`](json-canvas/) | **JSON Canvas 可视化画板技能**：用于解析、创建与维护 `.canvas` 画板文件，管理思维导图节点、文本块、分组及关联连线。 | [`json-canvas/SKILL.md`](json-canvas/SKILL.md) |
+| [`obsidian-excalidraw-cli/`](obsidian-excalidraw-cli/) | **Obsidian Excalidraw 原生 CLI 绘图技能**：通过 Obsidian 原生命令行控制 Excalidraw 插件，支持白板创建、增量更新、图谱布局与多格式图像导出。 | [`obsidian-excalidraw-cli/SKILL.md`](obsidian-excalidraw-cli/SKILL.md) |
 
 ---
 
