@@ -14,7 +14,11 @@
 - [x] 治理历史遗留的 26 个来源死链错误（恢复 23 篇 raw/playbooks 物理文献，清理 2 篇废弃概念与实体，Vault Lint 100% 绿灯通过）
 - [ ] 面经文章汇总：全库带有「面试」tag 的面经文章仅用于生成一篇体系化的面经总结文档（Overview），不作为实体（entities）的信息来源；需完成全库面经梳理并生成专题总结。
 - [x] 概念命名标准化迁移：参考 [[docs/plans/concept_naming_migration_plan.md]] 已全量完成存量概念规范化治理（Phase 1 倒置纠偏 26 篇、Phase 2 纯英文补全 69 篇、Phase 3 分界符标准化 20 篇全部完成，0 错误 0 死链通过门禁）
-- [ ] 检索的部分，还需要工程化，现有方案（grep/ mcp/ sed 等）
+- [ ] 知识库检索流程工程化与最佳实践探索：
+  - [ ] 探索标准化检索流水线（MCP-First Pipeline）：构建结合 `search_simple`（关键词与相关度评分排序）+ `search_query`（标签/路径多条件结构化过滤）+ `aliases` 别名展开的复合检索工作流
+  - [ ] 制定 Agent 知识发现与深挖 SOP：规范在不同任务场景下的检索分级策略（先查 Frontmatter Summary / Index 粗排 ➔ 再查 Concepts / Entities 核心图谱 ➔ 最终深入 Sources / Raw 精读与引用）
+  - [ ] 探索长上下文与检索召回效率平衡：评测大规模文档库下的检索上下文开销与命中率，沉淀标准化 Prompt 模板与中间过滤策略
+  - [ ] 完善 MCP 离线应急降级与本地轻量级检索方案对比（MCP 实时索引 vs 本地 AST/BM25/向量脚本）
 
 ## others
 - [ ] workdocs/ 存放了工作期间的项目文档docx，需要解析并入库
