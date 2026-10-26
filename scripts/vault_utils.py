@@ -80,7 +80,7 @@ class UniqueKeyLoader(yaml.SafeLoader):
 
 
 _FRONTMATTER_PATTERN = re.compile(r"^---\r?\n(?:(.*?)\r?\n)?---\r?\n?", re.DOTALL)
-_WIKILINK_PATTERN = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]")
+_WIKILINK_PATTERN = re.compile(r"\[\[([^\]\\|#]+)(?:#[^\]\\|]+)?(?:\\?\|[^\]]+)?\]\]")
 
 
 def extract_frontmatter(content: str) -> tuple[dict[str, Any] | None, str, str, str | None]:

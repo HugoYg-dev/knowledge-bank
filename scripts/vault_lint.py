@@ -438,7 +438,7 @@ def cmd_lint(workspace):
         known_nodes.add(os.path.basename(rel)[:-3])
 
     broken_links = []
-    link_regex = re.compile(r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
+    link_regex = re.compile(r'\[\[([^\]\\|#]+)(?:#[^\]\\|]+)?(?:\\?\|[^\]]+)?\]\]')
 
     for rel, abs_p in all_md_files.items():
         if rel.startswith('raw/') or 'verify-' in rel or rel == 'wiki/log.md' or rel.startswith('Clippings/'):
@@ -741,7 +741,7 @@ def cmd_prune(workspace, target_raw, apply=False):
         if rel.startswith('wiki/concepts/') or rel.startswith('wiki/entities/'):
             in_degree[rel] = 0
 
-    link_regex = re.compile(r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
+    link_regex = re.compile(r'\[\[([^\]\\|#]+)(?:#[^\]\\|]+)?(?:\\?\|[^\]]+)?\]\]')
     for rel, abs_p in all_md_files.items():
         if rel.startswith('raw/'):
             continue
@@ -1260,7 +1260,7 @@ def _prune_low_freq_pages(workspace, page_type="entities", threshold=1, apply=Fa
     page_files = [f for f in os.listdir(target_dir) if f.endswith('.md')]
     in_degrees = {f: 0 for f in page_files}
     referrers = {f: [] for f in page_files}
-    link_regex = re.compile(r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
+    link_regex = re.compile(r'\[\[([^\]\\|#]+)(?:#[^\]\\|]+)?(?:\\?\|[^\]]+)?\]\]')
 
     for rel, abs_p in all_md_files.items():
         if rel.startswith('raw/') or rel == 'wiki/index.md' or rel == 'wiki/log.md':

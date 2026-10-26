@@ -43,12 +43,12 @@ updated: "2026-09-15"
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **模型架构** | **MHA** | 每个 Head 独立 $W_Q, W_K, W_V$ | 基准开销（最大） | 显存爆炸，长文本扩展受限 | 原生 Transformer, GPT-3 |
 | **模型架构** | **MQA** | 所有 Query Head 共享 1 组 $K, V$ | KV Cache 缩减 $1/H$（如 32x） | 表达能力下降，复杂任务掉点 | Falcon, PaLM |
-| **模型架构** | **[[concepts/概念_GQA_分组查询注意力|GQA]]** | Query 分组，组内共享 1 组 $K, V$ | KV Cache 缩减至组数比例（如 4x） | 质量几乎无损，显存大幅降低 | Llama 2/3, Mistral, Qwen |
-| **模型架构** | **[[concepts/概念_MLA_多头潜在注意力|MLA]]** | 低秩潜空间压缩 KV，解码时动态投影恢复 | KV Cache 降至 MHA 的 5%–13% | 增加少量解压计算 FLOPs | DeepSeek-V2/V3/R1 |
-| **计算内核** | **[[concepts/概念_FlashAttention_快速注意力|FlashAttention]]** | 片上 SRAM 分块 (Tiling) + 在线 Softmax | 显存 IO 访问减少数倍，速度提升 2-4x | 无数学近似，需专用 GPU Kernel | 工业界所有主流推理框架 |
+| **模型架构** | **[[concepts/概念_GQA_分组查询注意力\|GQA]]** | Query 分组，组内共享 1 组 $K, V$ | KV Cache 缩减至组数比例（如 4x） | 质量几乎无损，显存大幅降低 | Llama 2/3, Mistral, Qwen |
+| **模型架构** | **[[concepts/概念_MLA_多头潜在注意力\|MLA]]** | 低秩潜空间压缩 KV，解码时动态投影恢复 | KV Cache 降至 MHA 的 5%–13% | 增加少量解压计算 FLOPs | DeepSeek-V2/V3/R1 |
+| **计算内核** | **[[concepts/概念_FlashAttention_快速注意力\|FlashAttention]]** | 片上 SRAM 分块 (Tiling) + 在线 Softmax | 显存 IO 访问减少数倍，速度提升 2-4x | 无数学近似，需专用 GPU Kernel | 工业界所有主流推理框架 |
 | **稀疏计算** | **SWA** | 限制只对局部 $W$ 个 token 交互 | 降低长序列计算量至 $O(N \times W)$ | 截断长距离上下文依赖 | Mistral |
 | **稀疏计算** | **NSA** | 预训练多分支稀疏（粗粒度+细粒度+局部） | 支持百万级 Token 高效前向计算 | 需在预训练阶段原生训练 | DeepSeek (2025) |
-| **推理引擎** | **PagedAttention** | 虚拟内存分页映射，离散块分配 | 碎片率从 60%-80% 降至 <4% | 引擎调度与页表维护 | [[entities/实体_vLLM|vLLM]] |
+| **推理引擎** | **PagedAttention** | 虚拟内存分页映射，离散块分配 | 碎片率从 60%-80% 降至 <4% | 引擎调度与页表维护 | [[entities/实体_vLLM\|vLLM]] |
 | **推理引擎** | **RadixAttention** | 基数树前缀匹配与 KV 显存块跨请求复用 | 多轮请求命中率 75%–95% | 维护树结构与 LRU 淘汰逻辑 | SGLang |
 
 ---

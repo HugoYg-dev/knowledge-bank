@@ -76,7 +76,7 @@ def scan_sources_and_raw(workspace):
 
 def extract_wikilinks(text):
     """提取文本中的所有 [[link]] 目标"""
-    link_regex = re.compile(r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
+    link_regex = re.compile(r'\[\[([^\]\\|#]+)(?:#[^\]\\|]+)?(?:\\?\|[^\]]+)?\]\]')
     return [m.strip() for m in link_regex.findall(text)]
 
 def analyze_all_concepts(workspace):
