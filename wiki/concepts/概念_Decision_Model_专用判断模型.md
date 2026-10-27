@@ -20,7 +20,8 @@ sources:
   - "wiki/sources/Laya开源_421M参数33毫秒System1决策.md"
   - "wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md"
   - "wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md"
-updated: "2026-10-15"
+  - "wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md"
+updated: "2026-10-27"
 ---
 
 # 概念：Decision Model (专用判断模型)
@@ -70,6 +71,27 @@ flowchart LR
 7. **共享状态单次读取与题目物理隔离**：
    - 针对长背景材料（State）的批量并行判断，模型一次性完成材料 Prefill 并冻结在 [[concepts/概念_KV_Cache_键值缓存|KV Cache]] 中，后续数十道题目直接共享复用该缓存；
    - 题目间通过**注意力掩码（Attention Masking）**或**独立分支复用（Forking KV Cache）**实现严格物理隔离，杜绝信息串扰，实现推测性并发（Speculative Fan-out）。
+8. **开源决策模型的五种架构类型划分**：
+   - 随着开源生态发展，决策模型的结构根据评分头信号来源、候选项序列化方式、候选间交互机制与多问题建模策略，演化出五大架构类型：
+     - **token 读出型**（如 JEV-27B-VL）：保留通用大模型的输出层，在输出分布上按 verbalizer 读出各选项的对数概率，几乎不引入新参数，直接支持 [[concepts/概念_LoRA_低秩适应微调|LoRA]] 微调与 vLLM 等高吞吐引擎部署；
+     - **隐状态读出型**：直接对骨干网络提取的隐向量添加专用标量打分头，模型底座选择自由，适配无自然语言输出层的轻量骨干；
+     - **联合解码器型**（如 Cloudflare Clef）：引入专用联合解码头建模跨问题依赖，单次前向同时回答一整组结构化问题并直接建模联合分布，极适合表单与清单式批量判定；
+     - **逐候选显式交互型**（如 NanoJev）：每个选项与上下文独立拼接后分别送入模型编码打分再归一化，实现最精细的候选间交互，但计算成本随候选数线性增加；
+     - **多模态专用型**（如 OmniJev）：基于混合架构对图像、视频及有序分级评分进行端到端联合设计。
+9. **严格适当评分规则（Strict Proper Scoring Rules）与损失函数谱系**：
+   - 决策模型训练损失函数均服从适当评分规则（在真实分布处取得极小值），通常组织为“共享基础项 + 专用校准项”：
+     - **共享基础项：掩码软交叉熵（Masked Soft Cross-Entropy）**：数学本质为对数得分（Log Score），独热硬标签时退化为标准交叉熵，软分布时等价于最小化 KL 散度；必须采用全精度单精度掩码计算且严禁截断概率，确保高置信度错误仍具备强梯度回传；
+     - **专用校准项**：
+       - **有序概率得分（RPS, Rank Probability Score）**：针对有序打分题型，计算预测分布与真实标签在有序档位上的累积分布函数（CDF）差值平方和；
+       - **Brier 得分**：全题型适用的均方概率误差 $\frac{1}{K}\sum (p_k - y_k)^2$；
+       - **序数交叉熵**：为分级打分任务保留严格的档位相对顺序；
+     - **工程预设组合**（如 ms-swift 框架）：`distill_rps`（蒸馏 + RPS）、`smooth_brier`（平滑交叉熵 + Brier）、`ce_rps`（软交叉熵 + RPS）及基准 `scoring`。
+10. **两级温度标定机制（Two-Level Temperature Calibration）**：
+    - 针对决策模型在不同题型上的系统性置信度偏差，采用级联相乘温度：$\tau_{effective} = \tau_{global} \times \tau_{task\_relative}$。
+    - **全局温度**捕捉模型整体的置信度偏差，**题型相对温度**分别纠正是非题（常见欠自信）与分级打分题（常见过自信）；
+    - 采用样本外两折交叉验证（记录按奇偶对半划分拟合）求解温度参数；温度缩放作为 logits 的单调变换，严格不改变预测答案与准确率，实测可使期望校准误差（ECE）降低 46.7%（从 0.00268 降至 0.00143）。
+11. **generic_decision 通用模型转换路径**：
+    - 无需更换基座模型架构，通过将普通因果自回归模型配置为 `generic_decision` 任务模式，结合 LoRA 轻量微调与 `distill_rps` 等专属损失函数，即可将通用对话模型一键转换为零生成文本、仅输出选项概率分布的决策模型，大幅降低工业界定制自研决策模型的工程门槛。
 
 ---
 
@@ -115,6 +137,7 @@ flowchart LR
 ## 5. 关联概念与实体
 
 - **核心实体**：
+  - [[entities/实体_ms-swift|实体_ms-swift]]：开源微调与推理框架，提供决策模型全套专属 loss、精度管理与两级温度标定工程闭环。
   - [[entities/实体_Laya|实体_Laya]]：421M Apache 2.0 开源 System 1 决策模型，33ms 极低延迟与严格概率校准。
   - [[entities/实体_Jev|实体_Jev]]：商业化云端判断模型接口代表。
   - [[entities/实体_Claude_Code|实体_Claude_Code]]、[[entities/实体_Codex|实体_Codex]]：内部深度集成工具命令拦截与前置分类步的 Agent。
@@ -135,3 +158,4 @@ flowchart LR
 - [[wiki/sources/Laya开源_421M参数33毫秒System1决策.md|Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策]]
 - [[wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md|Build your own Jev (100% local)]]
 - [[wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md|一文拆解Jev架构：一个判断模型是怎么被拼出来的]]
+- [[wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md|ms-swift倾情奉献：决策模型的从原理到上手定制]]

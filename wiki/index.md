@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[ms-swift倾情奉献_决策模型从原理到上手定制]] — ModelScope ms-swift 框架全面支持开源决策模型训练与推理：专属损失函数谱系、两级温度标定机制与 generic_decision 生成模型转换路径（LLM/inference, LLM/training/post-train, Infra/training）
 - [[面试不管问你啥，就记住一个话术原则]] — 求职面试核心话术方法论：提出“用过程代替结果、用细节撑住可信度”的唯一底层原则，拆解自我介绍（起点-转折-沉淀成长线）、求职动机（业务观察+精准补位）、优缺点（可迁移行为模式+自我修复机制）及把答案装进经历而非形容词的通用表达法则（面试）
 - [[腾讯WXG一面挂了，挂在一道大数乘法上  ！！！]] — 腾讯 WXG（微信读书）AI Agent 工程师一面实录：深入考查大数乘法手撕与脏题拆解、C++ 原子计数与并发、Coding Agent 记忆与模型选型、Claude Code 架构对比、评测体系与云端容器迁移上下文恢复、Goal 任务推进防行为漂移，以及模型能力不足时的工程补偿方案与“简历借产物”复盘教训（面试）
 - [[AI Agent工程师字节二面，通过]] — 字节跳动 AI Agent 工程师二面实录：深入考查 Text-to-SQL（准确率统计、数据与知识治理、问题改写与意图识别、选表与底层加速）、通用任务智能体（Agent Loop 与长任务稳定性）、平台能力演化（MCP/Skill 工具化）及 Agent 部署运维（有状态 Agent 与无状态 Web 服务协调）与复盘反思（面试）
@@ -630,6 +631,7 @@
 
 ## Entities
 
+- [[entities/实体_ms-swift]] — 魔搭 ModelScope 团队开源的大模型轻量微调与推理框架，提供决策模型全套损失函数、精度管理与两级温度标定闭环（LLM/training/post-train, Infra/training, Skill/python）
 - [[entities/实体_腾讯元宝]] — 腾讯推出的 AI 智能助手与企业级 AI 搜索开放平台，提供千亿级混合索引检索、Gist Token 缓存加速、垂类插件系统及标准 API/MCP/Skill 接入体系（AI-Agent/tool-calling, RAG/retrieval）
 - [[entities/实体_Matt_Pocock]] — 知名 TypeScript 专家与 AI Coding Agent 工作流设计者，构建了以文档驱动、任务拆分与 Smart Zone 控制为核心的开源 Agent Skill 体系（mattpocock/skills）（AI-Agent/coding, Skill/claude-code）
 

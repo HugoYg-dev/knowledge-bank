@@ -1,3 +1,16 @@
+## [2026-10-27] ingest | Clippings/ms-swift倾情奉献：决策模型的从原理到上手定制.md -> raw/articles/ -> wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md (+ entities/实体_ms-swift, concepts/概念_Decision_Model_专用判断模型, concepts/概念_分类模型校准, entities/实体_Jev, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/ms-swift倾情奉献：决策模型的从原理到上手定制.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md`，标签选用白名单：`tags: ["LLM/inference", "LLM/training/post-train", "Infra/training"]`；
+  - 深度提炼 7 条要点与架构解析；
+- **新建实体**：
+  - `entities/实体_ms-swift`：魔搭 ModelScope 开源大模型微调推理框架，支持决策模型 `--task_type decision`；
+- **联动更新既有页面**：
+  - `concepts/概念_Decision_Model_专用判断模型`：增补决策模型五大架构类型、严格适当评分规则损失函数谱系、两级温度标定与 generic_decision 转换路径；
+  - `concepts/概念_分类模型校准`：增补两级温度标定与 ECE 降低 46.7% 实测；
+  - `entities/实体_Jev`：增补两级温度标定数据与医学执照考试对比数据；
+- **总索引挂载**：`wiki/index.md` 同步挂载新建 Source 与 Entity 条目。
+
 ## [2026-10-26] ingest | Clippings/DeepSeek开源FlashMLA之际从原理到代码详解MLA.md & Clippings/MLA(1)：从代码角度学习和彻底理解 DeepSeek MLA 算法.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_FlashMLA, concepts/概念_MLA_多头潜在注意力, wiki/index.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/DeepSeek开源FlashMLA之际从原理到代码详解MLA.md` 移动至 `raw/articles/` 同名归档，创建来源摘要 `wiki/sources/DeepSeek开源FlashMLA从原理到代码详解.md`，标签选用白名单：`tags: ["LLM/arch/attention", "LLM/inference"]`；
