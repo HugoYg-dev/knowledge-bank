@@ -1,3 +1,15 @@
+## [2026-10-29] ingest | raw/articles/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md -> wiki/sources/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md (+ concepts/概念_RSI递归自我改进, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 抓取公众号 AI-Frontiers 微信长文，物理文件写入 `raw/articles/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md`；
+  - 创建来源摘要 `wiki/sources/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md`，标签选用白名单：`tags: ["RSI", "AI-Agent/coding", "LLM/training"]`；
+  - 深度提炼 RSI 三层演进层级（Self-Refinement vs Persistent vs Recursive）、适用与避坑场景、落地五步法、五大技术路线（模型权重、脚手架、记忆技能库、代码自修改、多智能体协同）及开源选型矩阵；
+- **核心维基概念联动增补**：
+  - `concepts/概念_RSI递归自我改进`：
+    1. Frontmatter 补齐标准 `aliases` 别名数组与新来源 `wiki/sources/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md`；
+    2. 正文增补“五大技术路线分类架构”（模型权重层、提示词/脚手架层、记忆与技能库层、代码自修改层、多智能体与自动 AI 研发层）及其代表工作；
+    3. 正文增补“工程落地判据与实施闭环”（客观反馈场景、主观/无沙箱严禁避坑点、落地标准五步法）；
+- **总索引挂载**：`wiki/index.md` 同步挂载新建 Source 摘要页条目。
+
 ## [2026-10-27] ingest | Clippings/ms-swift倾情奉献：决策模型的从原理到上手定制.md -> raw/articles/ -> wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md (+ entities/实体_ms-swift, concepts/概念_Decision_Model_专用判断模型, concepts/概念_分类模型校准, entities/实体_Jev, wiki/index.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/ms-swift倾情奉献：决策模型的从原理到上手定制.md` 物理移动至 `raw/articles/` 同名归档；

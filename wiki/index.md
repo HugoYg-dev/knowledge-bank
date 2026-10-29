@@ -43,6 +43,7 @@
 - [[Everyone is building LLM routers, we deprecated ours]] — Manifest 团队反思并废弃其 LLM 模型路由器的实践经验：复杂度无法单凭 Prompt 判断、前缀缓存收益远高于路由分流，且不可预测性增加了 Agent 系统的维护代价（LLM/inference, Infra/serving）
 - [[新模型Jev_爆红一周_不生成文字只输出概率却被玩出了花]] — TypeSafe AI 推出非自回归概率决策模型 Jev 与 RLCD 范式（AI-Agent/tool-calling, LLM/inference）
 - [[这是一篇把RSI讲明白的科普级综述]] — 递归自我改进（RSI）从 EURISKO 到元研究系统的四层标准与四大安全门禁（RSI）
+- [[一文读懂_RSI_大模型递归自进化五大技术路线全景解析]] — 大模型递归自进化（RSI）系统全景：三层演进层级、适用与不适用场景判据、落地五步法、五大技术路线与开源选型决策（RSI, AI-Agent/coding, LLM/training）
 
 - [[RAG夺命10连问，你能抗住第几问？]] — 全面总结大厂大模型应用方向高频考点：RAG核心原理、与SFT选型对比、切块与检索优化、评估指标体系、高阶纠错机制及Spring AI Alibaba工程落地方案（面试, RAG/retrieval）
 - [[Loop Engineering 详解：从管理执行到设计自收敛的循环]] — 深度剖析 Loop Engineering 从一阶 AI Manager 到二阶 Senior Manager 的范式升维：将 evaluation harness、observability、SOP、maker/checker 与 data flywheel 固化为系统组件，并阐明边界约束优于 TDD 路径约束以及任务自动发现的发散性局限（AI-Agent/coding, AI-Agent/context-engineering, AI-Agent/tool-calling）
