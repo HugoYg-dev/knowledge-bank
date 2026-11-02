@@ -2,7 +2,7 @@
 type: concept
 tags:
 - RSI
-summary: Recursive Self-Improvement（递归自我改进），AI 系统自我迭代优化的机制。在现代 Agent 工程中涵盖从提示词、驾具代码自修改到元研究闭环的多层阶梯。
+summary: Recursive Self-Improvement（递归自我改进），AI 系统自我迭代优化的机制。在现代 Agent 工程中涵盖从提示词、驾具代码自修改（Self-Harness）到元研究闭环的多层阶梯。
 aliases:
 - RSI
 - Recursive Self-Improvement
@@ -10,12 +10,21 @@ aliases:
 - 递归自进化
 - 自进化
 - 概念_RSI递归自我改进
+- Self-Harness
+- Self Harness
+- 自主进化宿主
+- 自进化工程闭环
+- 概念_Self_Harness_自主进化宿主系统
+- 概念_Self-Harness
 sources:
 - wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md
 - wiki/sources/这是一篇把RSI讲明白的科普级综述.md
 - wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事.md
 - wiki/sources/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md
-updated: '2026-10-29'
+- wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
+- wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
+- wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
+updated: '2026-11-02'
 ---
 
 # 概念：RSI递归自我改进
@@ -37,7 +46,7 @@ updated: '2026-10-29'
 1. **推理与记忆反思（2022-2023）**：以 Reflexion 为代表，模型参数冻结，通过自然语言事后复盘构建外部情景记忆（错题本）；
 2. **自生成数据与参数微调（2022-2024）**：以 STaR（推理链自举）与 SPIN（与历史策略自博弈微调）为代表，将改进信号固化写入模型权重；
 3. **评判权移交与元评判（2022-2025）**：从 Constitutional AI 到 Self-Rewarding 与 Meta-Rewarding，逐步将打分权交由模型自身，但伴随严重的“尺子变弯”与评判标准漂移挑战；
-4. **驾具代码自修改（2023-2026）**：通过 [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]] 与代码生成，以 [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]、达尔文哥德尔机（DGM）及工业级 AgentX 为代表，让智能体在固定底座模型上搜索优化运行代码与工具编排；
+4. **驾具代码自修改（2023-2026）**：通过 [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]] 与代码生成，以 Self-Harness（自主外壳进化闭环）、达尔文哥德尔机（DGM）及工业级 AgentX 为代表，让智能体在固定底座模型上搜索优化运行代码与工具编排；
 5. **学习与研究过程闭环（2025-2026）**：涵盖自适应学习（SEAL）、环境沙盘（WebEvolver）、真实物理控制（Motus2）乃至双层元研究架构（Bilevel Autoresearch、AIDE²），使科研流程本身成为优化对象。
 
 ## 核心挑战与四道安全门禁
@@ -96,11 +105,38 @@ updated: '2026-10-29'
 4. **建立版本档案馆**：维护多样性变体树或帕累托前沿，避免早熟收敛至局部最优；
 5. **设定安全死线与熔断**：资源、Token 与迭代轮数硬性封顶，异常时自动 Git 回滚。
 
+## 核心工程范式：Self-Harness（自主外壳进化闭环）
+
+**Self-Harness（自主外壳进化系统）** 是 RSI 在现代 Agent 体系中的核心工程落地范式。正如 Lilian Weng 在《Harness Engineering for Self-Improvement》中所指出的：自我改进近期的近路不是改模型权重，而是围绕模型搭建的外壳（Harness）。在模型权重冻结（视作通用 CPU）的前提下，通过对智能体长程任务弱点的自动化挖掘与代码重构，使系统持续进化且无性能回归。
+
+### 1. 两种核心实现路径
+
+#### 路径 A：离线/静态三步工程闭环（Standard Holdout Loop，Zhang et al. 2026）
+1. **弱点挖掘（Weakness Mining）**：自动化聚合分析历史失败轨迹与报错日志，精准定位 Harness 宿主系统在机制、状态流与提示词上的缺陷；
+2. **修改提议（Modification Proposal）**：由元智能体针对缺陷提出具有严格范围限制的 Harness 代码修改（diff 补丁）；
+3. **保留集验证（Holdout Verification）**：在保留的独立验证集上运行严格测试——必须**既解决弱点模式，又不产生全局能力回归**，才允许通过 Git 棘轮机制自动合并进生产代码库。
+
+#### 路径 B：运行时动态插件热插拔范式（Runtime Self-Evolution）
+- **微内核物理插槽**：以 [[entities/实体_DeepSeek_Harness|DeepSeek Harness (DSH)]] 为代表，依托 [[entities/实体_Cordis|Cordis]] 微内核将 Agent Loop 自身解耦为可插拔插件（`ctx.agentLoop`），对外声明依赖 `ctx.systemPrompt` 与 `ctx.tools`；
+- **运行中自改装机制**：
+  1. 智能体在执行任务时，可直接感知暴露在外的 TypeScript 插件接口与生命周期契约；
+  2. 针对特定任务动态生成数十行工具插件，或自主重写数百行全新调度 Loop 代码；
+  3. 框架利用撤销条（Disposer）管理副作用、依赖变动通知与事务性 HMR 进行进程内平滑热装载，若新代码出错则自动回滚至稳定版本，实现零停机、无残留的自适应演化。
+
+### 2. 代表实践与系统
+- **DeepSeek Harness DSH (2026)**：通过 Cordis 命令式微内核将 Agent Loop 本身作为插件解耦，提供事务性 HMR 与依赖响应，为 Agent 运行中自我演化提供底层基础设施。
+- **美团 AutoResearch 自进化系统 (2026)**：在算法模型自进化场景中，通过“业务知识库 + 真实 A/B 大闭环 + 经验自动沉淀”实现系统越用越好用；踩坑经验自动提炼为 Skill 草稿，经“系统初筛 + 人工审核”两级校验后反哺系统工具集，形成高防幻觉的经验晋升链。
+- **Darwin Gödel Machine (2025)**：Agent 进化自身代码库，SWE-bench Verified 达 50%。
+- **AlphaEvolve (2025)**：进化搜索 + 冻结 LLM 生成 diff，优化 GPU kernel 与矩阵乘法。
+
 ## 来源与参考
 
 - [[wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[wiki/sources/这是一篇把RSI讲明白的科普级综述]]
 - [[wiki/sources/万字复盘Codex_模型公司如何做产品的典型故事|万字复盘 Codex：一个在模型公司如何做产品的「典型」故事]]
 - [[wiki/sources/一文读懂_RSI_大模型递归自进化五大技术路线全景解析]]
-- [[concepts/概念_Harness_Engineering_宿主编排工程]]
-- [[concepts/概念_Self_Harness_自主进化宿主系统]]
+- [[wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件]]
+- [[wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
+- [[wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]]
+- 关联概念：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Loop_Engineering循环工程]]、[[concepts/概念_Agent系统自动优化闭环]]
+- 关联实体：[[entities/实体_DeepSeek_Harness]]、[[entities/实体_Cordis]]、[[entities/实体_AutoResearch]]、[[entities/实体_美团]]、[[entities/实体_Codex]]

@@ -860,9 +860,8 @@
 
 ### AI-Agent/harness & Skill/knowledge-bank（Batch 2）
 - [[概念_Harness_Engineering_宿主编排工程]] — 围绕基础模型构建的宿主与编排系统工程，编排执行/思考/工具/上下文/产物与评估（AI-Agent/harness, AI-Agent/coding）
-- [[概念_RSI递归自我改进]] — AI 系统自我迭代优化机制，现代 Agent 范式通过 Harness 优化而非直接改写权重（RSI）
+- [[概念_RSI递归自我改进]] — AI 系统自我迭代优化机制，整合 Self-Harness 自主外壳工程闭环与微内核运行时热插拔等自进化范式（RSI, AI-Agent/coding）
 - [[概念_Harness优化阶梯]] — Agent 系统优化对象五级演进：Prompt -> 结构化上下文 -> 工作流 -> Harness 代码 -> 优化器代码（RSI, AI-Agent/context-engineering）
-- [[概念_Self_Harness_自主进化宿主系统]] — AI 自我改进工程闭环，通过“弱点挖掘—修改提议—保留集验证”确保 Harness 代码持续进化（RSI, AI-Agent/coding）
 - [[概念_假性死链鉴别]] — 图谱审计中死链三维甄别法：命名不匹配重定向、多余路径前缀去前缀化、待建节点按需生长（Skill/knowledge-bank）
 - [[概念_级联清理安全边界]] — 物理底座删除时的级联清理红线，包含上下文半衰期解耦与行内安全感知（Inline Safety Sensing）（Skill/knowledge-bank）
 - [[概念_单向推导数据管线]] — LLM Wiki 数据流向纪律：raw/ -> wiki/sources/ -> wiki/entities|concepts，严禁末端产物越级直连 raw/（Skill/knowledge-bank）

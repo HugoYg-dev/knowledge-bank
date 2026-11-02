@@ -1,3 +1,12 @@
+## [2026-11-02] merge | concepts/概念_Self_Harness_自主进化宿主系统 -> concepts/概念_RSI递归自我改进 (+ index, 全库双链替换)
+- **概念合并与去重治理**：
+  - 将 `concepts/概念_Self_Harness_自主进化宿主系统` 完整合并至核心保留页 `concepts/概念_RSI递归自我改进`；
+  - **来源无损合并**：保留页 Frontmatter `sources:` 列表扩充迁入 3 篇独立来源（`刚刚，DeepSeek Harness震撼开源：一切皆插件.md`、`深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md`、`从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md`），去重后总计 7 篇来源无损链接；
+  - **别名矩阵兼容**：吸纳 `Self-Harness`、`Self Harness`、`自主进化宿主`、`自进化工程闭环`、`概念_Self_Harness_自主进化宿主系统`、`概念_Self-Harness` 等别名至保留页 `aliases:`；
+  - **正文知识整合**：在 `概念_RSI递归自我改进` 中新增《核心工程范式：Self-Harness（自主外壳进化闭环）》专章，系统整合离线三步闭环（Holdout Loop）与运行时微内核热插拔（Runtime Self-Evolution / DSH）两大工程路径；
+  - **全库双链平滑替换**：对全库 15 处指向原概念页的引用统一重定向至 `[[concepts/概念_RSI递归自我改进]]`；
+  - **被并页清理与总索引同步**：物理删除 `wiki/concepts/概念_Self_Harness_自主进化宿主系统.md`，并在 `wiki/index.md` 剔除该条目，更新保留概念描述。
+
 ## [2026-10-29] ingest | raw/articles/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md -> wiki/sources/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md (+ concepts/概念_RSI递归自我改进, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 抓取公众号 AI-Frontiers 微信长文，物理文件写入 `raw/articles/一文读懂_RSI_大模型递归自进化五大技术路线全景解析.md`；

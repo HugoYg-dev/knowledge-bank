@@ -101,7 +101,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
    - **命令式微内核模型（如 DSH / Cordis）**：插件直接运行在 Harness 进程中，持有内部状态并支持跨插件直接函数调用与依赖注入。依托 [[entities/实体_Cordis|Cordis]] 运行时的副作用跟踪、撤销条（Disposer）与事务性 HMR（热模块替换），保障进程内热更新不留悬空引用。
 2. **一切皆插件与 Agent Loop 控制流解耦**：
    - 将能力严格拆分为**接口（Interface）**、**实现（Implementation）**与**消费者（Model Tool）**三层；
-   - 传统 Harness（如 Codex）将 `run_turn()` 控制流硬编码在核心二进制中，仅提供固定 Hook 插槽；而现代微内核 Harness 将 Agent Loop 自身解耦为可插拔插件（如 DSH `ctx.agentLoop`），允许在运行时动态将控制流替换为多 Agent 协作循环或并行流式调度，为 [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness（外壳自进化）]] 提供了物理插槽。
+   - 传统 Harness（如 Codex）将 `run_turn()` 控制流硬编码在核心二进制中，仅提供固定 Hook 插槽；而现代微内核 Harness 将 Agent Loop 自身解耦为可插拔插件（如 DSH `ctx.agentLoop`），允许在运行时动态将控制流替换为多 Agent 协作循环或并行流式调度，为 [[concepts/概念_RSI递归自我改进|Self-Harness（外壳自进化）]] 提供了物理插槽。
 3. **权威会话流（Session Log 即唯一事实源）**：
    - 坚持“凡是模型看见的内容，都必须能从日志中重建”原则。系统提示词组装、环境变量、流式 Chunk、工具调用与结果、权限切换全量写入追加式事件流，作为界面回放、持久化（JSONL/SQLite）、Resume 和 Fork 的统一事实基础，彻底解决调试与审计黑盒难题。
 4. **运行时交通规则与单调安全守卫**：
@@ -149,7 +149,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[concepts/概念_RSI递归自我改进]]
 - [[concepts/概念_Harness优化阶梯]]
-- [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]
+- [[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自主外壳进化)]]
 - [[sources/2026-04-06_The-Anatomy-of-an-Agent-Harness_19d64a|The Anatomy of an Agent Harness]]
 - [[sources/2026-07-27_Agent-memory-and-state-are-not-the-same-thing!_19fa57|Agent memory and state are not the same thing!]]
 - [[wiki/sources/Brownfield_Agentic_Engineering.md|Brownfield Agentic Engineering]]

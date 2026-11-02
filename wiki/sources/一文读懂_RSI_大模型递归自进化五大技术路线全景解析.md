@@ -47,7 +47,7 @@ updated: "2026-10-29"
 ## 关联概念与实体
 
 - 核心概念：[[concepts/概念_RSI递归自我改进]]
-- 宿主与编排：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Self_Harness_自主进化宿主系统]]、[[concepts/概念_Agent系统自动优化闭环]]
+- 宿主与编排：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Agent系统自动优化闭环]]
 - 方法与算法：[[concepts/概念_DPO_直接偏好优化]]、[[concepts/概念_卡片盒笔记法]]、[[concepts/概念_GRPO_群组相对策略优化]]、[[concepts/概念_Reward_Hacking_奖励攻陷与作弊]]
 
 ---

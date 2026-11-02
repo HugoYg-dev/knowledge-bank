@@ -72,7 +72,7 @@ updated: "2026-10-26"
 - **核心概念**：
   - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]] — 支撑自主研究系统稳定运行的外部宿主工程
   - [[concepts/概念_Loop_Engineering循环工程|Loop Engineering]] — 从单线程串行 LOOP 到图探索拓扑架构的演进
-  - [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]] — 业务知识库、真实大闭环与 Skill 草稿自进化机制
+  - [[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自主外壳进化)]] — 业务知识库、真实大闭环与 Skill 草稿自进化机制
   - [[concepts/概念_Orchestrator_Worker_编排工模式|Orchestrator-Worker 编排模式]] — 主 Agent 拆解与子 Agent 并行验证的 Spawn-Converge 结构
 
 ---

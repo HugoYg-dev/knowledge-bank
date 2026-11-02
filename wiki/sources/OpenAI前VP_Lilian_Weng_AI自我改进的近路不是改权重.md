@@ -33,7 +33,7 @@ updated: '2026-07-22'
    优化对象由浅入深层层递进：**优化提示词 $\rightarrow$ 优化结构化上下文 $\rightarrow$ 优化工作流 $\rightarrow$ 优化 Harness 代码 $\rightarrow$ 优化“优化器”代码**。到达阶梯尽头即系统自己修改自身 Harness。
 5. **自我改进的 Harness 工程闭环**：
    - **STOP (2023)**：让改进器改进自身，自动涌现遗传算法与模拟退火，但也揭示了**基座模型能力的底线要求**（弱模型如 GPT-3.5 越改越差）。
-   - **[[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness (2026)]]**：形成“弱点挖掘—修改提议—保留集验证”工程闭环，确保解决弱点且不出现性能回归。
+   - **[[concepts/概念_RSI递归自我改进|Self-Harness (2026)]]**：形成“弱点挖掘—修改提议—保留集验证”工程闭环，确保解决弱点且不出现性能回归。
    - **Darwin Gödel Machine & AlphaEvolve (2025)**：让 Agent 进化自身代码库或生成代码 diff，在 SWE-bench Verified 与矩阵乘法/GPU kernel 优化中超越人类手工打造的 Agent。
 6. **自我改进面向的七大硬骨头**：
    - 弱/模糊评估器（难以评估研究品味与长期价值）；
@@ -57,7 +57,7 @@ updated: '2026-07-22'
 - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]] — 围绕大模型的宿主与编排系统工程
 - [[concepts/概念_RSI递归自我改进|RSI 递归自我改进]] — 系统自动优化机制
 - [[concepts/概念_Harness优化阶梯|Harness 优化阶梯]] — Prompt 到 Optimizer 代码的五级演进
-- [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]] — 弱点挖掘与保留集验证的自我改进闭环
+- [[concepts/概念_RSI递归自我改进|Self-Harness]] — 弱点挖掘与保留集验证的自我改进闭环（整合入 RSI 概念）
 
 ---
 

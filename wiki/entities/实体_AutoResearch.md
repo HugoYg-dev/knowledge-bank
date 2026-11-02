@@ -52,5 +52,5 @@ Karpathy 的开源原型以极简的三文件结构和刻意的“信任机制�
 - **核心概念**：
   - [[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]
   - [[concepts/概念_Loop_Engineering循环工程|Loop Engineering]]
-  - [[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]
+  - [[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自主外壳进化)]]
   - [[concepts/概念_Orchestrator_Worker_编排工模式|Orchestrator-Worker 编排模式]]

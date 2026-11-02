@@ -60,7 +60,7 @@ updated: '2026-10-13'
 59	- **微内核底座**：[[entities/实体_Cordis|Cordis]]
 60	- **所属团队**：[[entities/实体_DeepSeek|DeepSeek]]
 61	- **同类智能体系统**：[[entities/实体_Claude_Code|Claude Code]]、[[entities/实体_Codex|Codex]]
-62	- **核心概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
+62	- **核心概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自进化)]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
 63	- **支撑来源**：
 64	  - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 65	  - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]

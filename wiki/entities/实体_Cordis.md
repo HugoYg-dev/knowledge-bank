@@ -35,7 +35,7 @@ updated: '2026-10-13'
 34	
 35	## 关联页面
 36	- **典型应用**：[[entities/实体_DeepSeek_Harness|DeepSeek Harness]]
-37	- **相关概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_Self_Harness_自主进化宿主系统|Self-Harness]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
+37	- **相关概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自进化)]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
 38	- **支撑来源**：
 39	  - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 40	  - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]

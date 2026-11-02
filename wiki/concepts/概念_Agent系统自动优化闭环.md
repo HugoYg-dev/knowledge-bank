@@ -85,4 +85,4 @@ updated: "2026-10-05"
 - [[wiki/sources/2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md|How to beat GRPO without touching model weights (GEPA)]]
 - [[concepts/概念_LLM应用评估体系]]
 - [[concepts/概念_Loop_Engineering循环工程]]
-- [[concepts/概念_Self_Harness_自主进化宿主系统]]
+- [[concepts/概念_RSI递归自我改进|概念_RSI递归自我改进 (含 Self-Harness)]]
