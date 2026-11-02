@@ -13,6 +13,9 @@
       "mcp__obsidian__search_query",
       "mcp__obsidian__vault_patch",
       "mcp__obsidian__vault_get_document_map"
+    ],
+    "additionalDirectories": [
+      "/Users/ZHao/WorkSpace"
     ]
   },
   "enableAllProjectMcpServers": true,
