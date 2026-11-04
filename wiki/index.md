@@ -4,6 +4,10 @@
 
 ## Sources
 
+- [[近6年的大模型架构，我挨个试了个遍]] — Cohere 预训练工程师 Nikita Pavlichenko 基于自研框架 bux 开展 1000+ 超级消融实验，全面评估 6 年大模型架构改动：细粒度 MoE 与线性注意力混合排第一档；KV Cache 压缩注意力（GQA/MLA/SWA）以质换省；小修小补仅小模型有效，唯 QK-norm 稳定提升 1%；指出 DeepSeek-V3 已基本吃完架构红利，Muon 优化器与数据影响远超架构微调（LLM/arch, LLM/arch/MoE, LLM/arch/attention）
+- [[从OpenClaw，怎么走到了Super Agent？]] — 腾讯游戏数据团队负责人 spike 复盘 Agent 产品从 Bot 到 Working Agent 再到双向奔赴的演进逻辑，解构 Agent Coach、环境共建与 Super Agent 架构（AI-Agent/UI, AI-Agent/context-engineering, AI-Agent/multi-agent）
+- [[便宜的模型越来越多，怎么判断它能不能胜任我的 Agent 工作]] — 阿里云 AgentCore 澄潭结合开源本地路由项目 HiRoute 阐述提升 Agent 智价比的工程方法论：场景定候选与验收标准、每步动态评估难度、前缀缓存保护纪律、System One 三问拆解复合决策与自适应信任度放手机制（LLM/inference, AI-Agent/tool-calling, Infra/serving）
+
 - [[ms-swift倾情奉献_决策模型从原理到上手定制]] — ModelScope ms-swift 框架全面支持开源决策模型训练与推理：专属损失函数谱系、两级温度标定机制与 generic_decision 生成模型转换路径（LLM/inference, LLM/training/post-train, Infra/training）
 - [[面试不管问你啥，就记住一个话术原则]] — 求职面试核心话术方法论：提出“用过程代替结果、用细节撑住可信度”的唯一底层原则，拆解自我介绍（起点-转折-沉淀成长线）、求职动机（业务观察+精准补位）、优缺点（可迁移行为模式+自我修复机制）及把答案装进经历而非形容词的通用表达法则（面试）
 - [[腾讯WXG一面挂了，挂在一道大数乘法上  ！！！]] — 腾讯 WXG（微信读书）AI Agent 工程师一面实录：深入考查大数乘法手撕与脏题拆解、C++ 原子计数与并发、Coding Agent 记忆与模型选型、Claude Code 架构对比、评测体系与云端容器迁移上下文恢复、Goal 任务推进防行为漂移，以及模型能力不足时的工程补偿方案与“简历借产物”复盘教训（面试）
@@ -339,6 +343,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Super_Agent_超级智能体]] — 常驻 Router 协调分派与独立 Worker 执行解耦、跨入口跨工作环境且能代表用户持续推进复杂长程任务的智能体架构形态与产品范式（AI-Agent/multi-agent, AI-Agent/UI）
 - [[concepts/概念_Career_Capital_职业资本]] — 由 Cal Newport 提出的职业发展核心概念，指在劳动市场中稀缺且具有高度价值的专业技能、交付声誉与人脉网络；它是职场人获取自主权、高议价能力与将薪资现金流跃迁为资产所有权的根本基石（Life）
 - [[concepts/概念_Target_Attention_目标注意力]] — 在推荐长序列与精排建模中，使候选目标单向聚合用户长序列上下文、省去历史序列间全自注意力的高效注意力机制（LLM/arch/attention, Recommendation）
 - [[concepts/概念_BPE_字节对编码]] — 从单个字符或字节出发，通过统计迭代合并最高频相邻字符对构建词表的分词算法，是当代大语言模型最主流的文本分词标准（LLM/tokenization）
@@ -632,6 +637,7 @@
 
 ## Entities
 
+- [[entities/实体_HiRoute]] — 阿里云开源的运行在本地的 Agent 智能路由器，支持多场景路由计划、System One 三问决策、缓存感知与自适应信任度调整（LLM/inference, AI-Agent/tool-calling）
 - [[entities/实体_ms-swift]] — 魔搭 ModelScope 团队开源的大模型轻量微调与推理框架，提供决策模型全套损失函数、精度管理与两级温度标定闭环（LLM/training/post-train, Infra/training, Skill/python）
 - [[entities/实体_腾讯元宝]] — 腾讯推出的 AI 智能助手与企业级 AI 搜索开放平台，提供千亿级混合索引检索、Gist Token 缓存加速、垂类插件系统及标准 API/MCP/Skill 接入体系（AI-Agent/tool-calling, RAG/retrieval）
 - [[entities/实体_Matt_Pocock]] — 知名 TypeScript 专家与 AI Coding Agent 工作流设计者，构建了以文档驱动、任务拆分与 Smart Zone 控制为核心的开源 Agent Skill 体系（mattpocock/skills）（AI-Agent/coding, Skill/claude-code）

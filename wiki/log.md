@@ -1,3 +1,27 @@
+## [2026-11-04] ingest | Batch 2: Clippings/近6年的大模型架构，我挨个试了个遍.md -> raw/articles/ -> wiki/sources/ (+ concepts/概念_线性注意力与混合注意力, concepts/概念_QK_Norm_注意力查询键归一化, concepts/概念_MoE混合专家, entities/实体_DeepSeek-V3, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/近6年的大模型架构，我挨个试了个遍.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/近6年的大模型架构，我挨个试了个遍.md`，标签选用白名单：`tags: ["LLM/arch", "LLM/arch/MoE", "LLM/arch/attention"]`；
+- **联动更新既有概念与实体**：
+  - `concepts/概念_线性注意力与混合注意力`：Frontmatter `sources:` 追加新来源，增补 1000+ 消融实验实证（线性注意力带来 2-7 倍推理成本降低、2026 混合模型 3:1 最优比例验证及叠加 MoE/QK-norm 后的平抑效应）；
+  - `concepts/概念_QK_Norm_注意力查询键归一化`：Frontmatter `sources:` 追加新来源，增补消融实证（所有归一化变体中唯一在大尺寸稳定提升 1% 的改动，本质是自适应注意力熵调节）；
+  - `concepts/概念_MoE混合专家`：Frontmatter `sources:` 追加新来源，增补消融实证（细粒度 MoE 越大越强、1 激活参数等效稠密 4-5 参数、计入推理开销净收益 5.5%、路由细节不敏感）；
+  - `entities/实体_DeepSeek-V3`：Frontmatter `sources:` 追加新来源，增补注记（现代开源大模型架构红利在 DeepSeek-V3 时代基本释放完毕，后续微调逼近物理边际极限）；
+- **总索引挂载**：`wiki/index.md` 挂载 `[[近6年的大模型架构，我挨个试了个遍]]` 来源摘要条目。
+
+## [2026-11-04] ingest | Batch 1: Clippings/从OpenClaw，怎么走到了Super Agent？.md & Clippings/便宜的模型越来越多，怎么判断它能不能胜任我的 Agent 工作.md -> raw/articles/ -> wiki/sources/ (+ concepts/概念_Super_Agent_超级智能体, entities/实体_HiRoute, concepts/概念_LLM模型路由, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/从OpenClaw，怎么走到了Super Agent？.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/从OpenClaw，怎么走到了Super Agent？.md`，标签选用白名单：`tags: ["AI-Agent/UI", "AI-Agent/context-engineering", "AI-Agent/multi-agent"]`；
+  - `Clippings/便宜的模型越来越多，怎么判断它能不能胜任我的 Agent 工作.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/便宜的模型越来越多，怎么判断它能不能胜任我的 Agent 工作.md`，标签选用白名单：`tags: ["LLM/inference", "AI-Agent/tool-calling", "Infra/serving"]`；
+- **新建概念与实体**：
+  - `concepts/概念_Super_Agent_超级智能体`：遵循三分层命名规范与 aliases 别名矩阵，解构常驻 Router 协调分派与独立 Worker 执行解耦、跨入口跨工作环境、Harness 与上下文共建及 Mature Agent Coach 辅导机制；
+  - `entities/实体_HiRoute`：阿里云 AgentCore 团队开源的本地 Agent 智能路由器，解构场景路由计划、轮内锁定缓存友好调度、System One 三问拆解决策与统计驱动自适应放手机制；
+- **联动更新既有概念**：
+  - `concepts/概念_LLM模型路由`：Frontmatter `sources:` 追加新来源，正文增补专节《前沿演进：HiRoute 每步动态评估与前缀缓存协同范式》，阐述场景粗筛与单步动态评估结合、轮内锁定 90% 前缀缓存命中、三问拆解程序化裁决及观测驱动自适应放手；
+- **总索引挂载**：`wiki/index.md` 挂载两个新建 Source 条目、`概念_Super_Agent_超级智能体` 与 `实体_HiRoute`。
+
 ## [2026-11-02] merge | concepts/概念_Self_Harness_自主进化宿主系统 -> concepts/概念_RSI递归自我改进 (+ index, 全库双链替换)
 - **概念合并与去重治理**：
   - 将 `concepts/概念_Self_Harness_自主进化宿主系统` 完整合并至核心保留页 `concepts/概念_RSI递归自我改进`；
