@@ -12,7 +12,8 @@ sources:
 - wiki/sources/2025年七大顶流大模型架构.md
 - wiki/sources/从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较.md
 - wiki/sources/MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践.md
-updated: '2026-10-12'
+- wiki/sources/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md
+updated: '2026-11-04'
 ---
 
 
@@ -25,6 +26,12 @@ Muon 是一种主要面向二维矩阵参数的高性能深度学习优化器，
 - **AdamW 的局限**：AdamW 长期是大模型训练的标准优化器，结合权重衰减修正 Adam 的 L2 正则化行为，但对高维深层矩阵参数的梯度尺度各向异性敏感。
 - **Newton-Schulz 迭代正交化**：Muon 使用 Newton-Schulz（NS）多项式迭代算法，在线对 2D 权重矩阵的动量梯度进行谱范数归一化与正交化逼近，使参数更新方向更加均衡稳定。
 - **稳定性工程调优**：在工业前沿实践（如月之暗面与美团）中，通常在标准 Muon 基础上额外注入 **Weight Decay** 与 **Update RMS Scale**，防止更新步长过大导致的数值发散。
+
+### 参数覆盖选择（Parameter Selection）与混合配置
+
+Muon 优化器在模型参数上的应用具有明确的选择性：
+- **二维隐藏层权重矩阵**：Muon 通常专门应用于 Transformer 等深层网络的二维隐藏层（Hidden Weight Matrices）。通过 Newton-Schulz 多项式迭代正交化更新矩阵，均衡奇异值谱范数（Even out singular values），从而改变矩阵更新的几何流形，提升超大规模模型深层残差网络的训练稳定性。
+- **嵌入层与输出层保持 AdamW**：对于 Embedding 词嵌入层、输出层（Output Layer / LM Head）以及向量形式的一维参数（如 LayerNorm / RMSNorm 缩放因子、Bias 等），Muon 并不适用，工程实践中必须由 AdamW（或类似标量自适应优化器）协同处理，形成两路分工的混合优化器配置。
 
 ## 工业实践与代表模型
 
@@ -47,6 +54,7 @@ Muon 在 LLM 与大规模工业推荐模型中的双重成功验证了：优化�
 - [[从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较]]
 - [[2025年七大顶流大模型架构]]
 - [[wiki/sources/MTFM_美团统一推荐基座大模型在外卖多业务场景的落地实践.md|MTFM：美团统一推荐基座大模型在外卖多业务场景的落地实践]]
+- [[wiki/sources/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md|12 optimizers for training neural networks]]
 
 ## 关联实体
 

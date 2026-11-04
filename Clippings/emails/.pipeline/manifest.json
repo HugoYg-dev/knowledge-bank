@@ -2322,7 +2322,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md",
-          "status": "review",
+          "status": "ingested",
           "title": " 6 KV cache quantization approaches, explained visually: "
         },
         {
@@ -2343,7 +2343,7 @@
       "id": "1a16b008a2158dca",
       "last_error": null,
       "last_seen_at": "2026-11-04T01:00:08+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2358,10 +2358,10 @@
           "content_tier": "email_fallback",
           "file": "2026-11-02_Your-AI-coding-agents-should-get-smarter-every-time-you-use-them_1a19e2c67284daff.md",
           "id": "1a19e2c67284daff:1",
-          "reason": null,
+          "reason": "manual_delete",
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-11-02_Your-AI-coding-agents-should-get-smarter-every-time-you-use-them_1a19e2c67284daff.md",
-          "status": "review",
+          "status": "rejected",
           "title": " Your AI coding agents should get smarter every time you use them "
         },
         {
@@ -2372,7 +2372,7 @@
           "reason": null,
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md",
-          "status": "review",
+          "status": "ingested",
           "title": " 12 optimizers for training neural networks "
         },
         {
@@ -2380,10 +2380,10 @@
           "content_tier": "email_fallback",
           "file": "2026-11-02_6-steps-to-build-an-ML-model_1a19e2c67284daff.md",
           "id": "1a19e2c67284daff:3",
-          "reason": null,
+          "reason": "manual_delete",
           "source_key": "dailydoseofds",
           "staging_file": "dailydoseofds/2026-11-02_6-steps-to-build-an-ML-model_1a19e2c67284daff.md",
-          "status": "review",
+          "status": "rejected",
           "title": " 6 steps to build an ML model "
         }
       ],
@@ -2393,7 +2393,7 @@
       "id": "1a19e2c67284daff",
       "last_error": null,
       "last_seen_at": "2026-11-04T01:00:08+00:00",
-      "lifecycle": "review",
+      "lifecycle": "ingested",
       "reason": null,
       "remote_starred": true,
       "routing": "parsed",
@@ -2404,5 +2404,5 @@
   },
   "last_sync_at": "2026-11-04T01:00:08+00:00",
   "schema_version": 2,
-  "updated_at": "2026-11-04T01:00:08+00:00"
+  "updated_at": "2026-11-04T03:45:15+00:00"
 }

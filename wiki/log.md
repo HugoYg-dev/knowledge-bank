@@ -1,3 +1,17 @@
+## [2026-11-04] ingest | email batch: Clippings/emails/dailydoseofds/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md & Clippings/emails/dailydoseofds/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md -> raw/articles/ -> wiki/sources/ (+ concepts/概念_Muon优化器, concepts/概念_梯度下降优化器, concepts/概念_KV_Cache_键值缓存, wiki/index.md, mail_pipeline reconcile)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/emails/dailydoseofds/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md`，标签选用白名单：`tags: ["LLM/inference", "Infra/serving"]`；
+  - `Clippings/emails/dailydoseofds/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md`，标签选用白名单：`tags: ["DeepLearning", "LLM/training"]`；
+- **联动更新既有概念**：
+  - `concepts/概念_Muon优化器`：Frontmatter `sources:` 追加新来源，正文增补参数覆盖选择（Parameter Selection）与混合配置（二维隐藏层矩阵应用 Newton-Schulz 正交化均衡奇异值，嵌入层、输出层与向量参数保持 AdamW）；
+  - `concepts/概念_梯度下降优化器`：Frontmatter `sources:` 追加新来源并规范 `aliases` 矩阵，正文增补现代深度学习 12 种主流优化器全景分类表（涵盖 SGD、AdaGrad、RMSprop、Adam、AdamW、Adafactor、Lion、AdEMAMix、Shampoo、SOAP、Muon、Sophia）与“步数减少 vs 单步耗时”工程权衡陷阱（减少 20% 步数但慢 30% 单步耗时反致总耗时增加 4%）；
+  - `concepts/概念_KV_Cache_键值缓存`：Frontmatter `sources:` 追加新来源与文末关联双链；
+- **邮件管线对账回写**：
+  - 运行 `uv run scripts/mail_pipeline.py reconcile`，成功对账 2 篇文章，同步更新 `manifest.json` 与 `SYNC_STATUS.md` 为 `ingested` 状态；
+- **总索引挂载**：`wiki/index.md` 挂载两个新建 Source 摘要页条目。
+
 ## [2026-11-04] ingest | Batch 2: Clippings/近6年的大模型架构，我挨个试了个遍.md -> raw/articles/ -> wiki/sources/ (+ concepts/概念_线性注意力与混合注意力, concepts/概念_QK_Norm_注意力查询键归一化, concepts/概念_MoE混合专家, entities/实体_DeepSeek-V3, wiki/index.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/近6年的大模型架构，我挨个试了个遍.md` 物理移动至 `raw/articles/` 同名归档；
