@@ -1,3 +1,10 @@
+## [2026-11-04] merge | sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md -> sources/KV_Cache_Engineering_for_LLM_Serving.md (+ manifest, index, concepts/概念_KV_Cache_键值缓存)
+- **同源文章合并与冗余清理**：
+  - 将同源重复的 `wiki/sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md` 完整合并至核心保留摘要页 `wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md`；
+  - **物理底座与账本对账**：物理清理重复的 `raw/articles/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md`，将 `manifest.json` 中 `1a16b008a2158dca:2` 的归档映射重定向至 `raw/articles/KV Cache Engineering for LLM Serving.md`，执行 `mail_pipeline.py reconcile` 同步更新 `ARCHIVE_INDEX.md`；
+  - **概念层引用清理**：在 `concepts/概念_KV_Cache_键值缓存.md` 中剔除被并页 sources 与正文双链引用，保留核心规范页引用；
+  - **总索引同步**：从 `wiki/index.md` 中剔除被并 Source 摘要页条目，消除图谱冗余。
+
 ## [2026-11-04] ingest | email batch: Clippings/emails/dailydoseofds/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md & Clippings/emails/dailydoseofds/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md -> raw/articles/ -> wiki/sources/ (+ concepts/概念_Muon优化器, concepts/概念_梯度下降优化器, concepts/概念_KV_Cache_键值缓存, wiki/index.md, mail_pipeline reconcile)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/emails/dailydoseofds/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md` 物理移动至 `raw/articles/` 同名归档；

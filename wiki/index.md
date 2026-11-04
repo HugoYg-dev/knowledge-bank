@@ -4,7 +4,6 @@
 
 ## Sources
 
-- [[2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca]] — Daily Dose of DS 视觉图解 KV Cache 显存容量公式与 6 类压缩/量化技术路径：Llama 3.1 70B 显存基线、GQA/MQA 减头数、CLA 减层数、滑动窗口/淘汰减 Token、MLA 压缩维度及 FP8/INT8 量化压缩每个值字节数（LLM/inference, Infra/serving）
 - [[2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff]] — Daily Dose of DS 系统拆解神经网络训练的 12 种主流优化器（SGD、AdaGrad、RMSprop、Adam、AdamW、Adafactor、Lion、AdEMAMix、Shampoo、SOAP、Muon、Sophia），对比梯度平滑、步长自适应、正则化解耦、显存占用、矩阵结构与曲率估计维度的工程权衡，指出步数减少 20% 但单步慢 30% 反致更慢的性能陷阱（DeepLearning, LLM/training）
 
 - [[近6年的大模型架构，我挨个试了个遍]] — Cohere 预训练工程师 Nikita Pavlichenko 基于自研框架 bux 开展 1000+ 超级消融实验，全面评估 6 年大模型架构改动：细粒度 MoE 与线性注意力混合排第一档；KV Cache 压缩注意力（GQA/MLA/SWA）以质换省；小修小补仅小模型有效，唯 QK-norm 稳定提升 1%；指出 DeepSeek-V3 已基本吃完架构红利，Muon 优化器与数据影响远超架构微调（LLM/arch, LLM/arch/MoE, LLM/arch/attention）

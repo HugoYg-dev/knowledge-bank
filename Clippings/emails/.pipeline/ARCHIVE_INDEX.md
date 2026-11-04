@@ -4,8 +4,8 @@
 
 | 序号 | 来源 | 文章标题 | 发送人 | 日期 | 链接 |
 | --- | --- | --- | --- | --- | --- |
-| 1 | dailydoseofds |  12 optimizers for training neural networks  | Daily Dose of DS <avi@dailydoseofds.com> | Mon, 02 Nov 2026 21:31:12 +0000 | [查看文章](../../../raw/articles/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md) |
-| 2 | dailydoseofds |  6 KV cache quantization approaches, explained visually:  | Daily Dose of DS <avi@dailydoseofds.com> | Fri, 23 Oct 2026 23:02:39 +0000 | [查看文章](../../../raw/articles/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md) |
+| 1 | dailydoseofds |  6 KV cache quantization approaches, explained visually:  | Daily Dose of DS <avi@dailydoseofds.com> | Fri, 23 Oct 2026 23:02:39 +0000 | [查看文章](../../../raw/articles/KV Cache Engineering for LLM Serving.md) |
+| 2 | dailydoseofds |  12 optimizers for training neural networks  | Daily Dose of DS <avi@dailydoseofds.com> | Mon, 02 Nov 2026 21:31:12 +0000 | [查看文章](../../../raw/articles/2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff.md) |
 | 3 | dailydoseofds |  A tricky LLM interview question:  | Daily Dose of DS <avi@dailydoseofds.com> | Thu, 15 Oct 2026 23:06:22 +0000 | [查看文章](../../../raw/articles/2026-10-15_A-tricky-LLM-interview-question_1a141d112851aa57.md) |
 | 4 | dailydoseofds |  Build your own Jev (100% local)  | Daily Dose of DS <avi@dailydoseofds.com> | Tue, 22 Sep 2026 19:10:31 +0000 | [查看文章](../../../raw/articles/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md) |
 | 5 | dailydoseofds |  4 speculative decoding variants  | Daily Dose of DS <avi@dailydoseofds.com> | Sat, 12 Sep 2026 20:03:35 +0000 | [查看文章](../../../raw/articles/2026-09-12_4-speculative-decoding-variants_1a09737e364224e2.md) |

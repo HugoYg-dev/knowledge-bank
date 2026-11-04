@@ -27,7 +27,6 @@ sources:
 - wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
 - wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md
 - wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md
-- wiki/sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md
 updated: '2026-11-04'
 aliases:
 - KV Cache
@@ -147,5 +146,4 @@ $$\text{KV Cache 容量} = 2 \times \text{layers} \times \text{kv\_heads} \times
 - [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]
 - [[wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md]]
 - [[wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md]]
-- [[wiki/sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md]]
 - [[entities/实体_SGLang]]
