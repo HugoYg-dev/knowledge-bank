@@ -1,3 +1,20 @@
+## [2026-11-06] ingest | Clippings/Piccolo：递归自我进化的决策模型.md & Clippings/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_Piccolo, concepts/概念_RSI递归自我改进, concepts/概念_Harness_Engineering_宿主编排工程, entities/实体_Jev, entities/实体_Codex, concepts/概念_上下文工程, concepts/概念_Decision_Model_专用判断模型, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/Piccolo：递归自我进化的决策模型.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/Piccolo：递归自我进化的决策模型.md`，标签选用白名单：`tags: ["RSI", "AI-Agent/tool-calling"]`；
+  - `Clippings/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md`，标签选用白名单：`tags: ["AI-Agent/coding", "AI-Agent/memory", "AI-Agent/context-engineering"]`；
+- **新建实体**：
+  - `entities/实体_Piccolo`：基于 RSI 研发框架的专用决策模型，规范四元组输入输出接口，覆盖 Game 连续动作决策、Harness 六类子场景与 Data 数据流全链路决策，在 JevBench Public (92.21%)、HarnessJevBench Hard (84.41%)、DataJevBench (82.60%) 等基准上全面位列第一，开源场景基准并实证了 RSI 数据闭环与 Context Evolving 输入演化搜索；
+- **联动更新既有实体与概念**：
+  - `concepts/概念_RSI递归自我改进`：Frontmatter `sources:` 追加新来源，正文增补 Piccolo 结合 RSI 自进化框架的落地实证（研究 Agent 调度 Agentic Data Engineering 与 DataJuicer-Sandbox 反馈 LOOP，逐题 KL 损失与 13 维语义切片诊断，多轮探索实验与模型合并）；
+  - `concepts/概念_Harness_Engineering_宿主编排工程`：Frontmatter `sources:` 追加两个新来源，正文增补专用决策模型嵌入 Harness 六类子场景决策控制（工具选择、模型路由、上下文与记忆、权限与信任、完成验收、失败恢复）及量化基准 HarnessJevBench；深度增补 Codex Harness 118 个 Rust Crate 模块化解耦与“禁止往 codex-core 写代码”的强制解耦工程实践；
+  - `entities/实体_Jev`：Frontmatter `sources:` 追加新来源，正文增补与自进化决策模型 Piccolo 的评测对比实证（Piccolo 在 JevBench Public 及场景基准上超越 Jev 原生接口，有效缓解多步与工作流决策瓶颈）；
+  - `entities/实体_Codex`：Frontmatter `sources:` 追加新来源，深度增补 118 个 Rust Crate 模块化解耦与“Resist adding code to codex-core”法则、核心 Crate 职责矩阵、Op/Event 双向事件驱动通信、Task/Turn/Sampling 三层嵌套循环、`FuturesOrdered` 工具并发与时序回写拼装、World State 增量 Diff 补丁、SubAgent 派生与 Mailbox 异步协同，以及从 Handover Document（交接文档）压缩到全新 Token Budget 跨窗口短期记忆（Thread Hint + Notes 虚拟文件系统 + History）体系；
+  - `concepts/概念_上下文工程`：Frontmatter `sources:` 追加新来源，正文增补 Codex Handover Document 交接文档提示词压缩策略与全新 Token Budget 跨窗口短期记忆机制（清爽新窗口、Thread Hint 便签、Notes 虚拟文件系统渐进式读取与 History 轨迹展开）；
+  - `concepts/概念_Decision_Model_专用判断模型`：Frontmatter `sources:` 追加新来源，正文演进表格增补第五轮自进化决策模型 Piccolo（4B/9B/27B）与关联实体引用；
+- **总索引同步挂载**：`wiki/index.md` 同步挂载新建的两个 Source 摘要页条目与新建实体 `[[entities/实体_Piccolo]]`。
+
 ## [2026-11-04] merge | sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md -> sources/KV_Cache_Engineering_for_LLM_Serving.md (+ manifest, index, concepts/概念_KV_Cache_键值缓存)
 - **同源文章合并与冗余清理**：
   - 将同源重复的 `wiki/sources/2026-10-23_6-KV-cache-quantization-approaches,-explained-visually_1a16b008a2158dca.md` 完整合并至核心保留摘要页 `wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md`；

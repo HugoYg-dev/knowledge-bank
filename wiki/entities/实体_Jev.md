@@ -8,7 +8,8 @@ sources:
   - "wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md"
   - "wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md"
   - "wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md"
-updated: "2026-10-27"
+  - "wiki/sources/Piccolo：递归自我进化的决策模型.md"
+updated: "2026-11-06"
 ---
 
 # 实体：Jev
@@ -61,6 +62,7 @@ updated: "2026-10-27"
 - **校准曲线与两级温度标定消融**：truestandard.ai 跨 6 领域 108 命题测试显示 Jev 的 ECE 为 0.066，与通用模型 Gemini 3.1 Flash Lite (0.061)、Claude Haiku 4.5 (0.067) 水平相当，通过合理提示词或两三百条样本的 Platt/温度缩放即可在本地拉平；仅在第 4 级对抗小样本（108 条）中以 91.7%（vs 83.3% / 80.6%）领先，但该测试曾反转三次，属于未独立复现的孤证。在 ModelScope [[entities/实体_ms-swift|ms-swift]] 的温度标定实验中，针对 JEV 官方出厂温度施加两级温度标定（全局温度 × 题型相对温度），ECE 从 0.00268 大幅降至 0.00143（降幅达 46.7%）；80 条留出消融显示 Brier 分下降 9.5%，且预测答案与准确率严格保持不变；
 - **医学执照考试错误检出实测（对比 OpenAI Decisions 与 Clef）**：2026 年 10 月韩美医学执照考试对照实测显示，传统生成模型预测概率普遍饱和于 1.0（严重过度自信）；而 Jev、[[entities/实体_OpenAI|OpenAI]] Decisions 与 Clef 三款决策模型不仅保持高准确率（韩文 83.4%–92.0%，英文 84.8%–87.7%），且错误检出能力（AUROC）达到 0.856–0.935（韩文）与 0.864–0.903（英文）。置信度最低的 20% 答案覆盖了超过一半的错误案例（韩文 56%–91%，英文 62%–72%）；若将这些低置信度样本路由至更强主模型复核，整体准确率可提升 6–9 个百分点，且推理成本仅为全量大模型方案的 25%–33%；
 - **与完全开源方案 Laya 的正面对比**：Convai Innovations 开源的 421M 端到端决策模型 [[entities/实体_Laya|Laya]]（基于 ModernBERT-large 与 RLCD 训练）实测单问题 P50 延迟仅 38.4 ms，较 Jev 最佳 150 ms 快 4倍、较平均 400 ms 快 10.4 倍；在 23,024 任务内问题宏平均准确率达 83.8%（Jev 为 67.8%），且提供 100% 本地自托管与 Apache 2.0 协议支持；
+- **与自进化决策模型 Piccolo 的对比**：2026 年 11 月 AgentScope 与 Data-Juicer 团队推出的专用决策模型 [[entities/实体_Piccolo|Piccolo]]（27B/9B/4B）在 JevBench Public 评测中以 92.21% 的准确率位列 11 款参评模型第一，显著超越 Jev 原生接口；且在专门针对复杂长程任务的基准 HarnessJevBench Hard（84.41%）与 DataJevBench（82.60%）上均居榜首。实证表明通过 RSI（递归自改进）与 Agentic Data Engineering 构建的专用决策模型，能有效缓解 Jev 在困难多步、算术推理和深层工作流决策上的性能跳水瓶颈；
 - **核心局限与两道坎**：
   1. **困难多步与算术推理严重跛足**：JevBench 困难题综合正确率仅 74.1%（DeepSeek V4.1 Flash 为 95.0%），两步应用题正确率暴跌至 32%，多步依赖判断易前错后错；
   2. **呈现位置敏感与跨域泛化脆弱**：关键信息从文本开头移至中间，正确率从 80.5% 腰斩至 40.9%；跨领域（如软件更新安全检测）AUROC 从 0.851 骤降至 0.605；
@@ -70,7 +72,7 @@ updated: "2026-10-27"
 
 - **归属机构/产品**：TypeSafe
 - **开源微调框架**：[[entities/实体_ms-swift|实体_ms-swift]]（提供开源决策模型全流程微调与两级温度标定支持）
-- **开源对标实体**：[[entities/实体_Laya|实体_Laya]]（421M 开源端到端非自回归决策模型）
+- **开源对标实体**：[[entities/实体_Laya|实体_Laya]]（421M 开源端到端非自回归决策模型）、[[entities/实体_Piccolo|实体_Piccolo]]（基于 RSI 框架的自进化决策模型）
 - **商业竞争实体**：[[entities/实体_OpenAI|实体_OpenAI]]（Decisions 接口）
 - **核心概念**：[[concepts/概念_Decision_Model_专用判断模型|Decision Model (专用判断模型)]]、[[concepts/概念_RLCD校准决策强化学习|RLCD校准决策强化学习]]、[[concepts/概念_分类模型校准|分类模型校准]]、[[concepts/概念_LLM模型路由|LLM 模型路由]]、[[concepts/概念_连续批处理|概念_连续批处理]]、[[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
 - **应用场景**：[[entities/实体_Claude_Code|Claude Code]] 与 [[entities/实体_Codex|Codex]] 工具执行前置拦截、[[entities/实体_LangChain|LangChain]] 路由中间件
@@ -82,3 +84,4 @@ updated: "2026-10-27"
 - [[wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md|Build your own Jev (100% local)]]
 - [[wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md|一文拆解Jev架构：一个判断模型是怎么被拼出来的]]
 - [[wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md|ms-swift倾情奉献：决策模型的从原理到上手定制]]
+- [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]

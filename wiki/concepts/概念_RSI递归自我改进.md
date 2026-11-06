@@ -24,7 +24,8 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
-updated: '2026-11-02'
+- wiki/sources/Piccolo：递归自我进化的决策模型.md
+updated: '2026-11-06'
 ---
 
 # 概念：RSI递归自我改进
@@ -126,6 +127,7 @@ updated: '2026-11-02'
 ### 2. 代表实践与系统
 - **DeepSeek Harness DSH (2026)**：通过 Cordis 命令式微内核将 Agent Loop 本身作为插件解耦，提供事务性 HMR 与依赖响应，为 Agent 运行中自我演化提供底层基础设施。
 - **美团 AutoResearch 自进化系统 (2026)**：在算法模型自进化场景中，通过“业务知识库 + 真实 A/B 大闭环 + 经验自动沉淀”实现系统越用越好用；踩坑经验自动提炼为 Skill 草稿，经“系统初筛 + 人工审核”两级校验后反哺系统工具集，形成高防幻觉的经验晋升链。
+- **Piccolo 决策模型自进化研发框架 (2026)**：AgentScope 与 Data-Juicer 团队在专用决策模型领域实践了基于 RSI 的自动化研发演化闭环。通过研究 Agent 调度 Agentic Data Engineering 与 DataJuicer-Sandbox，构建“方案设计 $\to$ 构建与实验 $\to$ 结果反馈（逐题 KL 散度与 13 维语义画像切片诊断） $\to$ 诊断与更新”的反馈 LOOP。通过 10+ 轮、150+ 项探索实验（耗费 6,300 GPU hours）与 Context Evolving 输入演化搜索，驱动 [[entities/实体_Piccolo|Piccolo-27B]] 在 JevBench Public（92.21%）、HarnessJevBench Hard（84.41%）及 DataJevBench（82.60%）等基准上领跑第一，验证了在客观判断分布锚点支撑下的模型与数据协同 RSI 自进化路径。
 - **Darwin Gödel Machine (2025)**：Agent 进化自身代码库，SWE-bench Verified 达 50%。
 - **AlphaEvolve (2025)**：进化搜索 + 冻结 LLM 生成 diff，优化 GPU kernel 与矩阵乘法。
 
@@ -138,5 +140,6 @@ updated: '2026-11-02'
 - [[wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件]]
 - [[wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
 - [[wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]]
+- [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]
 - 关联概念：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Loop_Engineering循环工程]]、[[concepts/概念_Agent系统自动优化闭环]]
-- 关联实体：[[entities/实体_DeepSeek_Harness]]、[[entities/实体_Cordis]]、[[entities/实体_AutoResearch]]、[[entities/实体_美团]]、[[entities/实体_Codex]]
+- 关联实体：[[entities/实体_DeepSeek_Harness]]、[[entities/实体_Cordis]]、[[entities/实体_AutoResearch]]、[[entities/实体_美团]]、[[entities/实体_Codex]]、[[entities/实体_Piccolo]]

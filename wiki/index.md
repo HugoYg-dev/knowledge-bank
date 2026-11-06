@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[Piccolo：递归自我进化的决策模型]] — AgentScope 与 Data-Juicer 团队在 ModelScope 社区发布基于 RSI 框架的自进化决策模型 Piccolo（4B/9B/27B），通过统一四元组接口覆盖 Game 连续动作控制、Harness 六类子场景与 Data 数据流全链路决策，在 JevBench Public (92.21%)、HarnessJevBench Hard (84.41%)、DataJevBench (82.60%) 领跑第一，开源两大真实场景基准并实证了以客观分布为锚点的 RSI 研发闭环（RSI, AI-Agent/tool-calling）
+- [[深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路]] — 飞樰深度解析 OpenAI Codex Harness 架构：118 个 Rust Crate 模块化解耦与“禁止往 codex-core 写代码”工程铁律、Op 与 Event 双向事件驱动、三层嵌套循环（Task/Turn/Sampling）、World State 增量 Diff 补丁，以及从交接文档（Handover Document）压缩到全新 Token Budget 跨窗口短期记忆（Thread Hint + Notes 虚拟文件系统 + History）体系的设计思路（AI-Agent/coding, AI-Agent/memory, AI-Agent/context-engineering）
+
 - [[2026-11-02_12-optimizers-for-training-neural-networks_1a19e2c67284daff]] — Daily Dose of DS 系统拆解神经网络训练的 12 种主流优化器（SGD、AdaGrad、RMSprop、Adam、AdamW、Adafactor、Lion、AdEMAMix、Shampoo、SOAP、Muon、Sophia），对比梯度平滑、步长自适应、正则化解耦、显存占用、矩阵结构与曲率估计维度的工程权衡，指出步数减少 20% 但单步慢 30% 反致更慢的性能陷阱（DeepLearning, LLM/training）
 
 - [[近6年的大模型架构，我挨个试了个遍]] — Cohere 预训练工程师 Nikita Pavlichenko 基于自研框架 bux 开展 1000+ 超级消融实验，全面评估 6 年大模型架构改动：细粒度 MoE 与线性注意力混合排第一档；KV Cache 压缩注意力（GQA/MLA/SWA）以质换省；小修小补仅小模型有效，唯 QK-norm 稳定提升 1%；指出 DeepSeek-V3 已基本吃完架构红利，Muon 优化器与数据影响远超架构微调（LLM/arch, LLM/arch/MoE, LLM/arch/attention）
@@ -651,6 +654,7 @@
 - [[entities/实体_Meta]] — 全球科技巨头与 AI 核心创新机构，主导 LLaMA 开源大模型家族、PyTorch 深度学习框架、FAISS 向量检索库、REFRAG 向量压缩架构与 Muse 个人智能体生态（LLM/arch, AI-Agent/UI）
 - [[entities/实体_Laya]] — Convai Innovations 开源的 421M 非自回归 System 1 决策模型，采用 ModernBERT 与 RLCD 算法，以 33ms 延迟输出经过严格校准的决策概率与置信度（LLM/inference, AI-Agent/tool-calling, LLM/training/RL）
 - [[entities/实体_Jev]] — TypeSafe 推出的无生成文本概率分布输出接口，将分类判断从通用大模型中解耦，主打百毫秒级确定性选择与 Agent 状态路由（LLM/inference, AI-Agent/tool-calling）
+- [[entities/实体_Piccolo]] — 基于递归自改进（RSI）框架的专用决策模型（AgentScope & Data-Juicer 团队研发），覆盖 Game 连续动作控制、Harness 六类子场景与 Data 数据流全链路决策，在 JevBench Public 等评测中位列第一（RSI, AI-Agent/tool-calling）
 - [[实体_宝玉]] — 资深技术专家、AI 自媒体博主、《软件工程之美》专栏作者，Nano Banana 提示词作者，BaoCut 字幕工具开发者，倡导 AI 原生思维与开发者角色重构（AI-Agent/coding, AI-Agent/skill）
 
 - [[实体_DeepSeek]] — 专注于 AGI 研发的中国 AI 创新机构，代表作包括 DeepSeek 系列基础大模型与微内核智能体生态（Infra/platform, LLM/arch）

@@ -17,7 +17,9 @@ sources:
 - wiki/sources/阿里高德 LongHorizon-Harness 框架：使用审计状态机重构Agent执行流程.md
 - wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
 - wiki/sources/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md
-updated: '2026-10-26'
+- wiki/sources/Piccolo：递归自我进化的决策模型.md
+- wiki/sources/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md
+updated: '2026-11-06'
 aliases:
 - Harness Engineering
 - 宿主系统工程
@@ -68,6 +70,17 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 2. **失败记忆（Failure Memory）遏制路径震荡**：针对反复调用相同失败 Action 的问题，Harness 在内存中维护带滑动时间窗口（TTL）的 `(tool_name, params_hash)` 失败字典；当窗口期内相同工具及参数连续失败达阈值（如 $\ge 2$ 次），强行阻断执行并注入反思提示词，驱动 Agent 探索替代分支。
 3. **无人值守安全审批矩阵**：将操作分级为只读（自动执行）、低风险（异步报告与事后复核）与高风险（阻断等待人工确认），配合全局 Token/资金预算限额与高危模式自动熔断。
 
+### 专用决策模型嵌入与六类子场景控制（Piccolo 范式）
+
+针对高频状态机流转与策略判断，将通用大模型与专用判断模型（System 1 Decision Model）解耦成为主流趋势。以 [[entities/实体_Piccolo|Piccolo]] 为代表，专用决策模型深度嵌入 Harness 编排流，在六类子场景提供百毫秒级的确定性判断与校准概率：
+1. **工具选择**：结合任务意图与参数依赖，在候选工具池中选择最佳 API（如查交付日期调用订单系统）；
+2. **模型路由**：结合任务复杂性与成本预算分配基座模型；
+3. **上下文与记忆**：过滤噪声与过期事实（如历史天气），持久化关键用户偏好与状态（如食物过敏史）；
+4. **权限与信任**：安全策略门禁拦截（如仅允许保存草稿，阻止直接对外发布）；
+5. **完成验收**：评估工具产物与事实证据是否达成目标终止条件；
+6. **失败恢复**：面对执行异常或超时，判断是否触发重试、回退或人工介入。
+配套开源的场景基准 **HarnessJevBench** 为评测 Harness 内部各环节的决策质量提供了标准化量化工具。
+
 ## 生产级 Harness 的 11 大核心组件
 
 根据业界前沿实践（如 Anthropic Claude Code、OpenAI Agents SDK 等），一个生产级的 Harness 包含以下 11 个核心模块：
@@ -110,14 +123,17 @@ Beren Millidge 将其进行了精确的硬件系统类比：
    - 调度器允许连续只读调用并行，写操作自动成为独占屏障（Barrier）；支持运行中消息排队与带回执的实时转向（Steering）。
 5. **PTC 模式（Programmatic Tool Calling）**：
    - 通过 Code Mode SDK 向模型暴露代码运行环境，模型可编写 TypeScript/Python 脚本在单次 `run_code` 中批处理多步工具调用，显著削减多轮往返的 Token 与延迟开销。
-111	6. **Fail-Closed 默认安全原则与插件权限隔离**：
-112	   - 默认采用 `workspace-write` 沙箱并配合审批机制；当系统无法确认隔离策略完全生效时，主动拒绝执行（Fail-Closed）而非静默降级为无保护运行。在插件化微内核中，工具审批机制无法自动等同于插件代码沙箱，需配备可插拔权限门禁（如能力锁与静态审计）防范凭据泄露。
-113	7. **宿主外壳扩展范式（从单体工具到二级总线与远程管道）**：
-114	   - 现代 Harness 的 UI 与交互层正向“扩展总线”演进（如侧边栏作为插件挂载中心，承载文档预览、任务看板与子 Agent 管理）；
-115	   - 面对长时程无人值守任务，审批通道从本地交互向多端远程（如移动端/IM 审批卡片）延伸，使 Harness 具备长链路脱机运行的管控能力。
-116	
-117	
-118	## MEA 循环与审计驱动状态转换（LongHorizon-Harness 范式）
+6. **Fail-Closed 默认安全原则与插件权限隔离**：
+   - 默认采用 `workspace-write` 沙箱并配合审批机制；当系统无法确认隔离策略完全生效时，主动拒绝执行（Fail-Closed）而非静默降级为无保护运行。在插件化微内核中，工具审批机制无法自动等同于插件代码沙箱，需配备可插拔权限门禁（如能力锁与静态审计）防范凭据泄露。
+7. **宿主外壳扩展范式（从单体工具到二级总线与远程管道）**：
+   - 现代 Harness 的 UI 与交互层正向“扩展总线”演进（如侧边栏作为插件挂载中心，承载文档预览、任务看板与子 Agent 管理）；
+   - 面对长时程无人值守任务，审批通道从本地交互向多端远程（如移动端/IM 审批卡片）延伸，使 Harness 具备长链路脱机运行的管控能力。
+8. **强制模块化解耦与 Crate 隔离（Codex Harness 实践）**：
+   - [[entities/实体_Codex|Codex Harness]] 将底层源码解耦为约 118 个独立的 Rust Crate，并在 `AGENTS.md` 中立下“**Resist adding code to codex-core**”（禁止往 codex-core 里面写代码）的防膨胀工程铁律；
+   - 将最易恶性膨胀的 Core 逻辑与数据协议层（`codex-protocol` 规范 Op/Event）、服务层（`codex-app-server` 暴露标准 JSON-RPC 接口抹平 TUI 终端与 Desktop 桌面端差异）、会话持久层（`codex-rollout` 存为 Trace 文件或 SQLite）彻底解耦，改动局部仅局部增量编译；
+   - 在执行流上建立 Task $\to$ Turn $\to$ Sampling 三层嵌套循环与 `FuturesOrdered` 并发执行+时序回写拼装机制；同时引入 World State 增量 Diff 补丁保护 Prefix KV Cache，并以跨窗口 **Token Budget**（Thread Hint 便签 + Notes 虚拟文件系统 + History 轨迹回溯）替代传统破坏性 Compaction，为超大型生产级 Harness 树立了高内聚、低耦合与高确定性的架构典范。
+
+## MEA 循环与审计驱动状态转换（LongHorizon-Harness 范式）
 
 针对长时跨界面/长链路复杂任务，[[entities/实体_LongHorizon-Harness|LongHorizon-Harness]] 提出了突破传统单会话轨迹中心模型的 **Manage-Execute-Audit (MEA)** 状态机范式：
 
@@ -138,6 +154,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[entities/实体_LongHorizon-Harness|LongHorizon-Harness]]：阿里高德开源的审计状态机长时 Agent 编排框架，通过 MEA 三角色解耦与外层契约包裹底层 Coding Agent。
 - [[entities/实体_AutoResearch|美团 AutoResearch Harness]]：算法模型自主研究系统，通过无状态触发+有状态文件、Spawn-Converge 图探索与二级人机校验 Skill 草稿机制，解决长周期异步训练与可信度防线。
 - [[entities/实体_方舟AI会场_Harness|淘天方舟 AI 会场 Harness]]：支持 C 端投放与真实货品运营的业务 Harness，通过会场域三维认知、OSS 虚拟工作区与确定性质检自迭代环境，突破 AI 生成仅停留在静态 Demo 页面的局限。
+- [[entities/实体_Piccolo|Piccolo]]：专为 Harness 六类子场景与游戏/数据流提供快速确定性判断的专用决策模型。
 
 ## 来源与参考
 
@@ -147,6 +164,8 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]]
 - [[告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness]]
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
+- [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]
+- [[wiki/sources/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md|深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路]]
 - [[concepts/概念_RSI递归自我改进]]
 - [[concepts/概念_Harness优化阶梯]]
 - [[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自主外壳进化)]]

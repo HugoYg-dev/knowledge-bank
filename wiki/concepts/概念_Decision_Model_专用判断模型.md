@@ -21,7 +21,8 @@ sources:
   - "wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md"
   - "wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md"
   - "wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md"
-updated: "2026-10-27"
+  - "wiki/sources/Piccolo：递归自我进化的决策模型.md"
+updated: "2026-11-06"
 ---
 
 # 概念：Decision Model (专用判断模型)
@@ -105,7 +106,7 @@ flowchart LR
 | **第二轮 (2021)** | [[entities/实体_OpenAI|OpenAI]] 的 `/classifications` 端点 | 允许通过少样本做标签分类与判定 | 2022 年官方主动下线，大厂认为通用生成更灵活 |
 | **第三轮 (2022)** | Cohere 的 Classify API | 输入文本与候选标签返回置信度分布 | 需每标签提供少样本，依赖上一代嵌入模型，2025 年进入半退役 |
 | **第四轮 (2025)** | fastino 的 GLiNER2 | 单次前向同时实现零样本动态分类、实体识别与提取 | 受限于 512 tokens 输入长度，缺少下游 Agent 应用带动，未出圈 |
-| **第五轮 (2026)** | TypeSafe 的 [[entities/实体_Jev|Jev]]、开源 [[entities/实体_Laya|Laya]] (421M) 与本地 Logits 提取方案 | 零样本、数十至百毫秒级确定性分布输出，基于 RLCD 强化学习严格校准，深度融入 Agent 基础设施 | 伴随 Agent 长调用链高频路由需求爆发，从闭源 API 快速向端侧开源高吞吐演进 |
+| **第五轮 (2026)** | TypeSafe 的 [[entities/实体_Jev|Jev]]、开源 [[entities/实体_Laya|Laya]] (421M)、自进化 [[entities/实体_Piccolo|Piccolo]] (4B/9B/27B) 与本地 Logits 提取方案 | 零样本、数十至百毫秒级确定性分布输出，基于 RLCD 与 RSI 自进化框架严格校准，深度融入 Agent 基础设施 | 伴随 Agent 长调用链高频路由需求爆发，从闭源 API 快速向端侧开源高吞吐与自进化闭环演进 |
 
 ---
 
@@ -139,6 +140,7 @@ flowchart LR
 - **核心实体**：
   - [[entities/实体_ms-swift|实体_ms-swift]]：开源微调与推理框架，提供决策模型全套专属 loss、精度管理与两级温度标定工程闭环。
   - [[entities/实体_Laya|实体_Laya]]：421M Apache 2.0 开源 System 1 决策模型，33ms 极低延迟与严格概率校准。
+  - [[entities/实体_Piccolo|实体_Piccolo]]：基于 RSI 自进化框架的专用决策模型（AgentScope & Data-Juicer 团队），领跑 JevBench 与场景基准。
   - [[entities/实体_Jev|实体_Jev]]：商业化云端判断模型接口代表。
   - [[entities/实体_Claude_Code|实体_Claude_Code]]、[[entities/实体_Codex|实体_Codex]]：内部深度集成工具命令拦截与前置分类步的 Agent。
   - [[entities/实体_LangChain|实体_LangChain]]：集成判断模型开发开源安全与路由中间件。
@@ -159,3 +161,4 @@ flowchart LR
 - [[wiki/sources/2026-09-22_Build-your-own-Jev-(100%-local)_1a0ca86e233289fe.md|Build your own Jev (100% local)]]
 - [[wiki/sources/一文拆解Jev架构_一个判断模型是怎么被拼出来的.md|一文拆解Jev架构：一个判断模型是怎么被拼出来的]]
 - [[wiki/sources/ms-swift倾情奉献_决策模型从原理到上手定制.md|ms-swift倾情奉献：决策模型的从原理到上手定制]]
+- [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]
