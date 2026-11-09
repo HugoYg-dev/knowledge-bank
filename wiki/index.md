@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[yetone 的魔法：magpie 是怎么让 AI 自己维护项目的]] — 深度解析 yetone 维护的本地 LLM 网关 magpie 全 AI 自动化研发闭环：路由表（AGENTS.md）与错题本（LESSONS.md）双核架构、夜审复盘、Seen 3× 经验升级硬规则机制、严格 PR 验收门禁（回退测试、真机实测、显式未跑、防并发）与人机边界切分（AI-Agent/coding）
+- [[A software engineering interview question I like-computing the median]] — Kris Shamloo 阐述其青睐的中位数计算面试题设计：以简单的表象承载深层次工程考量，涵盖防御性基础校验、排序副作用与 API 权衡、差一错误（Off-by-one）排错、统计鲁棒性及从标准库到快速选择（Quickselect）算法复杂度优化的进阶考察（面试, Skill/python）
+
 - [[Piccolo：递归自我进化的决策模型]] — AgentScope 与 Data-Juicer 团队在 ModelScope 社区发布基于 RSI 框架的自进化决策模型 Piccolo（4B/9B/27B），通过统一四元组接口覆盖 Game 连续动作控制、Harness 六类子场景与 Data 数据流全链路决策，在 JevBench Public (92.21%)、HarnessJevBench Hard (84.41%)、DataJevBench (82.60%) 领跑第一，开源两大真实场景基准并实证了以客观分布为锚点的 RSI 研发闭环（RSI, AI-Agent/tool-calling）
 - [[深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路]] — 飞樰深度解析 OpenAI Codex Harness 架构：118 个 Rust Crate 模块化解耦与“禁止往 codex-core 写代码”工程铁律、Op 与 Event 双向事件驱动、三层嵌套循环（Task/Turn/Sampling）、World State 增量 Diff 补丁，以及从交接文档（Handover Document）压缩到全新 Token Budget 跨窗口短期记忆（Thread Hint + Notes 虚拟文件系统 + History）体系的设计思路（AI-Agent/coding, AI-Agent/memory, AI-Agent/context-engineering）
 
@@ -642,6 +645,7 @@
 
 ## Entities
 
+- [[entities/实体_magpie]] — yetone 发起的开源本地 LLM 网关项目，以全 AI Agent 编写、审查、合并与发版闭环及错题本硬规则晋升机制为核心特征（AI-Agent/coding）
 - [[entities/实体_HiRoute]] — 阿里云开源的运行在本地的 Agent 智能路由器，支持多场景路由计划、System One 三问决策、缓存感知与自适应信任度调整（LLM/inference, AI-Agent/tool-calling）
 - [[entities/实体_ms-swift]] — 魔搭 ModelScope 团队开源的大模型轻量微调与推理框架，提供决策模型全套损失函数、精度管理与两级温度标定闭环（LLM/training/post-train, Infra/training, Skill/python）
 - [[entities/实体_腾讯元宝]] — 腾讯推出的 AI 智能助手与企业级 AI 搜索开放平台，提供千亿级混合索引检索、Gist Token 缓存加速、垂类插件系统及标准 API/MCP/Skill 接入体系（AI-Agent/tool-calling, RAG/retrieval）

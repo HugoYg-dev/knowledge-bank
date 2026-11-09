@@ -1,3 +1,15 @@
+## [2026-11-09] ingest | Clippings/A software engineering interview question I like-computing the median.md & Clippings/yetone 的魔法：magpie 是怎么让 AI 自己维护项目的.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_magpie, concepts/概念_Loop_Engineering循环工程, wiki/index.md)
+- **剪藏归档与来源摘要创建**：
+  - `Clippings/A software engineering interview question I like-computing the median.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/A software engineering interview question I like-computing the median.md`，标签选用白名单：`tags: ["面试", "Skill/python"]`，正文遵循面试文章图谱隔离约束（无实体/概念出链）；
+  - `Clippings/yetone 的魔法：magpie 是怎么让 AI 自己维护项目的.md` 物理移动至 `raw/articles/` 同名归档；
+  - 创建来源摘要 `wiki/sources/yetone 的魔法：magpie 是怎么让 AI 自己维护项目的.md`，标签选用白名单：`tags: ["AI-Agent/coding"]`；
+- **新建实体**：
+  - `entities/实体_magpie`：由 yetone 发起的开源本地 LLM 网关，连接 Claude Code、Codex 等编程 Agent 至任意模型，以全 AI Agent 编写、审查、合并与发版闭环、路由表（AGENTS.md）+ 错题本（LESSONS.md）双核架构、Seen 3× 经验升级硬规则及确定性 PR 验收门禁为核心特征；
+- **联动更新既有概念**：
+  - `concepts/概念_Loop_Engineering循环工程`：Frontmatter `sources:` 追加新来源，补齐 aliases 别名矩阵，正文增补工业实践案例：magpie 的自收敛循环维护闭环（路由表 + 错题本 + Seen 3× 机制 + 回退测试/真机实测/显式 Not run 验收门禁）；
+- **总索引同步挂载**：`wiki/index.md` 同步挂载新建的两个 Source 摘要页条目与新建实体 `[[entities/实体_magpie]]`。
+
 ## [2026-11-06] ingest | Clippings/Piccolo：递归自我进化的决策模型.md & Clippings/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_Piccolo, concepts/概念_RSI递归自我改进, concepts/概念_Harness_Engineering_宿主编排工程, entities/实体_Jev, entities/实体_Codex, concepts/概念_上下文工程, concepts/概念_Decision_Model_专用判断模型, wiki/index.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/Piccolo：递归自我进化的决策模型.md` 物理移动至 `raw/articles/` 同名归档；

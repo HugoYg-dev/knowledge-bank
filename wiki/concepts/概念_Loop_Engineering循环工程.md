@@ -8,12 +8,18 @@ sources:
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md
 - wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
+- wiki/sources/yetone 的魔法：magpie 是怎么让 AI 自己维护项目的.md
 summary: Loop Engineering（循环工程）是将大语言模型驱动的智能体系统从简单单次执行提升为自主闭环的核心方法论；涵盖单循环五大组件固化、自收敛两大杠杆，以及多 Agent 协同中的图工程（Graph Engineering）拓扑编排架构。
 tags:
 - AI-Agent/coding
 - AI-Agent/multi-agent
 type: concept
-updated: '2026-10-26'
+updated: '2026-11-09'
+aliases:
+- Loop Engineering
+- LoopEngineering
+- 循环工程
+- 概念_Loop_Engineering循环工程
 ---
 # 循环工程 (Loop Engineering)
 
@@ -136,6 +142,7 @@ Loop Engineering 的核心演进不仅是调度机制的自动化，更是**管�
 - [[wiki/sources/2026-06-24_Loop-engineering,-clearly-explained!_19ef72.md|Loop engineering, clearly explained! (Source 摘要)]]
 - [[wiki/sources/2026-07-14_The-four-types-of-agent-loops_19f617.md|The four types of agent loops (Source 摘要)]]
 - [[wiki/sources/Loop Engineering 详解：从管理执行到设计自收敛的循环.md|Loop Engineering 详解：从管理执行到设计自收敛的循环 (Source 摘要)]]
+- [[wiki/sources/yetone 的魔法：magpie 是怎么让 AI 自己维护项目的.md|yetone 的魔法：magpie 是怎么让 AI 自己维护项目的 (Source 摘要)]]
 
 
 ---
@@ -159,3 +166,11 @@ Loop Engineering 的核心演进不仅是调度机制的自动化，更是**管�
   2. **上下文隔离执行**：子 Agent 各自在独立沙箱内修改代码并异步提交云端训练，互不知情，避免中间结论带偏；
   3. **Converge 决策收拢**：训练完成后由主 Agent 集中对比多份独立指标与代码 diff 证据，决策下一轮方向组合。
 - **效率跃升**：在同建模任务中，单线程 LOOP 10 次迭代耗时 3 天未突破，图探索架构 12 次迭代仅耗时 4.7 小时即达标，单位时间迭代提速 18 倍。证明图编排的核心价值在于通过正交并行大幅提升单位时间有效决策密度。
+
+### 工业实践案例：magpie 的自收敛循环维护闭环（路由表 + 错题本 + Seen 3×）
+- **项目背景**：开发者 yetone 维护的本地大模型网关 [[entities/实体_magpie|magpie]]，在 19 天内发布 1,204 个版本并合并 383 个社区 PR，代码编写、审查、合并和发版完全由 Agent 自主闭环。
+- **自收敛双核体系（AGENTS.md + LESSONS.md）**：
+  1. **路由表（AGENTS.md）**：顶层仅提供索引，指示 Agent 面向不同子系统翻阅独立标准；
+  2. **错题本（LESSONS.md）与夜审复盘**：Agent 每晚自动分析当日 commit，定位返工、误合与弱验证三类问题，沉淀教训并关联 commit/issue 凭据；
+  3. **Seen 3× 经验升级硬规则机制**：同一经验在 3 个不同日期的复盘中重复出现，即从软性错题本迁入 `code-standards.md`，成为后续 PR 审查强制核验的硬门禁，有效阻断经验流失与同类故障复发；
+  4. **确定性验收门禁与防并发**：强制回退测试（Red check，旧代码测试必须真挂）、真环境真账号实测、未跑项目显式声明（Not run），以及合并指令绑定 `--match-head-commit` 防并发，形成稳定可预测的代码进化闭环。
