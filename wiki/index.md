@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[Super-agent 设计探索：迈向更自主的 Agent 系统]] — DeepSeek Harness 团队系统阐述 Super-agent 架构：以双层架构（Router/Worker）兼顾连续交互与高效并发，事件驱动两级过滤与 Thread 直通，Inline & Spill 与链式召回，全双工异步 ReAct，存算分离（BYOM）与外部 Watchdog 自愈回路（AI-Agent/multi-agent, AI-Agent/context-engineering, AI-Agent/coding）
 - [[yetone 的魔法：magpie 是怎么让 AI 自己维护项目的]] — 深度解析 yetone 维护的本地 LLM 网关 magpie 全 AI 自动化研发闭环：路由表（AGENTS.md）与错题本（LESSONS.md）双核架构、夜审复盘、Seen 3× 经验升级硬规则机制、严格 PR 验收门禁（回退测试、真机实测、显式未跑、防并发）与人机边界切分（AI-Agent/coding）
 - [[A software engineering interview question I like-computing the median]] — Kris Shamloo 阐述其青睐的中位数计算面试题设计：以简单的表象承载深层次工程考量，涵盖防御性基础校验、排序副作用与 API 权衡、差一错误（Off-by-one）排错、统计鲁棒性及从标准库到快速选择（Quickselect）算法复杂度优化的进阶考察（面试, Skill/python）
 

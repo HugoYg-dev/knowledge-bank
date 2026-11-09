@@ -1,3 +1,15 @@
+## [2026-11-09] ingest | raw/articles/Super-agent 设计探索：迈向更自主的 Agent 系统.md -> wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md (+ concepts/概念_Super_Agent_超级智能体, concepts/概念_Harness_Engineering_宿主编排工程, concepts/概念_上下文工程, entities/实体_DeepSeek_Harness, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 抓取 DeepSeek Harness 团队（Yujia Qiao 等）官方技术长文，物理文件归档至 `raw/articles/Super-agent 设计探索：迈向更自主的 Agent 系统.md`；
+  - 创建来源摘要 `wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md`，标签选用白名单：`tags: ["AI-Agent/multi-agent", "AI-Agent/context-engineering", "AI-Agent/coding"]`；
+  - 深度提炼 Super-agent 四大基础特征（连续、高效、主动、持久）、五大架构模块（双层架构、事件驱动、面向人的交互、存算分离与 BYOM、外部 Watchdog Control Loop）及端到端消融实验实证；
+- **联动深化既有概念与实体**：
+  - `concepts/概念_Super_Agent_超级智能体`：Frontmatter `sources:` 追加新来源，正文深度系统化重构，增补四大基础特征、Router 并发批处理机制（Prefill 摊薄决策耗时从 6.4s 降至 1.6s）、Thread 订阅直通（节约 37% 读缓存 Token）、Inline & Spill 与链式召回（Chain of Recall）、异步 ReAct Loop 全双工、BYOM 存算分离、外部 Watchdog 自愈以及落地原型表格；
+  - `concepts/概念_Harness_Engineering_宿主编排工程`：Frontmatter `sources:` 追加新来源，正文现代演进章节增补第 9 项《Super-agent 架构：存算分离、BYOM 与外部自愈回路（DeepSeek Harness 实践）》；
+  - `concepts/概念_上下文工程`：Frontmatter `sources:` 追加新来源，正文增补专节《事件驱动与长程上下文组织（Super-agent：Inline & Spill 与链式召回）》；
+  - `entities/实体_DeepSeek_Harness`：Frontmatter `sources:` 追加新来源，正文核心架构章节增补第 12 项《Super-agent 架构探索与开源原型 (`dsh-superagent-prototype`)》，涵盖跨 IM 与 GitHub 连续推进、群聊主动提 PR 与外部自愈；
+- **总索引挂载**：`wiki/index.md` 挂载 `[[Super-agent 设计探索：迈向更自主的 Agent 系统]]` 来源条目。
+
 ## [2026-11-09] ingest | Clippings/A software engineering interview question I like-computing the median.md & Clippings/yetone 的魔法：magpie 是怎么让 AI 自己维护项目的.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_magpie, concepts/概念_Loop_Engineering循环工程, wiki/index.md)
 - **剪藏归档与来源摘要创建**：
   - `Clippings/A software engineering interview question I like-computing the median.md` 物理移动至 `raw/articles/` 同名归档；

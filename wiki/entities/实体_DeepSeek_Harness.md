@@ -8,7 +8,8 @@ sources:
 - wiki/sources/刚刚，DeepSeek Harness震撼开源：一切皆插件.md
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/DeepSeek_Harness_插件生态解析.md
-updated: '2026-10-13'
+- wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md
+updated: '2026-11-09'
 ---
 
 # 实体：DeepSeek Harness
@@ -49,19 +50,24 @@ updated: '2026-10-13'
 9. **组合优先与生态解耦（vs LangChain）**：
    - LangChain 采用“框架优先”理念，高层抽象沉重且升级容易破坏兼容性；DSH 采用“组合优先”理念，依托 Cordis 元框架将适配器、注册表、循环逻辑全量插件化，无特权核心，模块可独立测试与热插拔。
 10. **Meta-Harness 分布式调度**：
-51	   - Harness 负责单个智能体实例内的模型交互、工具执行与会话状态；上层通过 **Meta-Harness** 统一管理多个 Harness 实例，执行算力资源调度、任务分发与跨实例状态同步。
-52	11. **插件生态与社区扩展范式（Cordis Patch & Profile）**：
-53	   - **声明式 Patch 分发**：插件作为 npm 包分发，以 `package.json` 中的 `dsh.bundle.patch`（指向 `cordis.patch.yml`）为唯一凭据，按声明织入宿主上下文；
-54	   - **多环境 Profile 隔离**：支持 Web GUI、Headless、TUI 等多套独立 profile；
-55	   - **生态演化态势**：全网超过 4,300 个插件仓库，Memory 与 Docs & Rendering 占据近半关注度，主流 Agent 工具链（WeKnora、BrowserSkill 等）普遍将 dsh 作为分发渠道；
-56	   - **二级总线与协同趋势**：右侧边栏（`dsh-client-ui-sidebar-right`）演进为插件挂载的工作台总线，社区开始形成插件间横向依赖，并衍生出移动端远程审批卡片等长任务运维基础设施。
-57	
-58	## 关联页面
-59	- **微内核底座**：[[entities/实体_Cordis|Cordis]]
-60	- **所属团队**：[[entities/实体_DeepSeek|DeepSeek]]
-61	- **同类智能体系统**：[[entities/实体_Claude_Code|Claude Code]]、[[entities/实体_Codex|Codex]]
-62	- **核心概念**：[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自进化)]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
-63	- **支撑来源**：
-64	  - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
-65	  - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
-66	  - [[sources/DeepSeek_Harness_插件生态解析|DeepSeek Harness 插件生态解析]]
+   - Harness 负责单个智能体实例内的模型交互、工具执行与会话状态；上层通过 **Meta-Harness** 统一管理多个 Harness 实例，执行算力资源调度、任务分发与跨实例状态同步。
+11. **插件生态与社区扩展范式（Cordis Patch & Profile）**：
+   - **声明式 Patch 分发**：插件作为 npm 包分发，以 `package.json` 中的 `dsh.bundle.patch`（指向 `cordis.patch.yml`）为唯一凭据，按声明织入宿主上下文；
+   - **多环境 Profile 隔离**：支持 Web GUI、Headless、TUI 等多套独立 profile；
+   - **生态演化态势**：全网超过 4,300 个插件仓库，Memory 与 Docs & Rendering 占据近半关注度，主流 Agent 工具链（WeKnora、BrowserSkill 等）普遍将 dsh 作为分发渠道；
+   - **二级总线与协同趋势**：右侧边栏（`dsh-client-ui-sidebar-right`）演进为插件挂载的工作台总线，社区开始形成插件间横向依赖，并衍生出移动端远程审批卡片等长任务运维基础设施。
+12. **Super-agent 架构探索与开源原型 (`dsh-superagent-prototype`)**：
+   - 基于 DSH 微内核运行 Super-agent 原型，打破单会话绑定，实现跨 IM（群聊）与 GitHub 连续推进开发任务；
+   - 支持持续监听公共群聊事件（Trigger），在无人 @ 的情况下主动在后台静默复现缺陷并提交修复 PR；
+   - 系统级集成双层架构（常驻 Router 批处理 + 隔离 Worker）、Thread 订阅直通（节约 37% 读缓存 Token）、全双工异步 ReAct（`start()` / `stop()`）、存算分离与端侧 daemon 执行环境（BYOM），以及独立的外部 Watchdog Session 自愈回路。
+
+## 关联页面
+- **微内核底座**：[[entities/实体_Cordis|Cordis]]
+- **所属团队**：[[entities/实体_DeepSeek|DeepSeek]]
+- **同类智能体系统**：[[entities/实体_Claude_Code|Claude Code]]、[[entities/实体_Codex|Codex]]
+- **核心概念**：[[concepts/概念_Super_Agent_超级智能体|Super Agent 超级智能体]]、[[concepts/概念_Harness_Engineering_宿主编排工程|Harness Engineering]]、[[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自进化)]]、[[concepts/概念_Agent内存与状态管理|Agent 内存与状态管理]]、[[concepts/概念_Loop_Engineering循环工程|Loop Engineering 循环工程]]
+- **支撑来源**：
+  - [[sources/刚刚，DeepSeek Harness震撼开源：一切皆插件|刚刚，DeepSeek Harness震撼开源：一切皆插件]]
+  - [[sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子|深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
+  - [[sources/DeepSeek_Harness_插件生态解析|DeepSeek Harness 插件生态解析]]
+  - [[wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md|Super-agent 设计探索：迈向更自主的 Agent 系统]]

@@ -19,7 +19,8 @@ sources:
 - wiki/sources/告别 AI Demo 页面：构建支持淘内货品运营、可C端投放的会场 Agent Harness.md
 - wiki/sources/Piccolo：递归自我进化的决策模型.md
 - wiki/sources/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md
-updated: '2026-11-06'
+- wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md
+updated: '2026-11-09'
 aliases:
 - Harness Engineering
 - 宿主系统工程
@@ -132,6 +133,10 @@ Beren Millidge 将其进行了精确的硬件系统类比：
    - [[entities/实体_Codex|Codex Harness]] 将底层源码解耦为约 118 个独立的 Rust Crate，并在 `AGENTS.md` 中立下“**Resist adding code to codex-core**”（禁止往 codex-core 里面写代码）的防膨胀工程铁律；
    - 将最易恶性膨胀的 Core 逻辑与数据协议层（`codex-protocol` 规范 Op/Event）、服务层（`codex-app-server` 暴露标准 JSON-RPC 接口抹平 TUI 终端与 Desktop 桌面端差异）、会话持久层（`codex-rollout` 存为 Trace 文件或 SQLite）彻底解耦，改动局部仅局部增量编译；
    - 在执行流上建立 Task $\to$ Turn $\to$ Sampling 三层嵌套循环与 `FuturesOrdered` 并发执行+时序回写拼装机制；同时引入 World State 增量 Diff 补丁保护 Prefix KV Cache，并以跨窗口 **Token Budget**（Thread Hint 便签 + Notes 虚拟文件系统 + History 轨迹回溯）替代传统破坏性 Compaction，为超大型生产级 Harness 树立了高内聚、低耦合与高确定性的架构典范。
+9. **Super-agent 架构：存算分离、BYOM 与外部自愈回路（DeepSeek Harness 实践）**：
+   - **两层解耦实现存算分离与 Bring Your Own Machine（BYOM）**：第一层将推进 Agent Loop 的计算（云端无状态弹性容器）与会话状态（持久化数据库）解耦，摆脱单机生命周期限制；第二层将云端 Agent Loop 与用户重状态物理执行环境（未提交修改、内网凭据、本地工具链）解耦，端侧仅需部署轻量无状态 daemon（手）负责执行命令与回传结果，支持日常个人电脑接入及间歇在线设备任务自动唤醒；
+   - **双层架构与 Thread 订阅直通**：常驻 Router 层负责跨信道全局交互与分派（支持 Prefill 并行批处理），独立 Worker 层专注单任务高质量执行；同一 Thread 连续事件由程序建立**直接直通（Fast Path）**发往 Worker，避免 Router 中心节点性能拥堵（实证减少 30% 路由决策并节约 37% 读缓存 Token）；
+   - **全双工异步 ReAct 与外部 Watchdog Control Loop**：以异步 `start()` / `stop()` 消除前台对话阻塞；在主系统外配置独立的 **Watchdog Session** 作为外部控制回路，兼顾基础设施状态与任务语义进展监控，并支持自然语言在线热修提示词与规则。
 
 ## MEA 循环与审计驱动状态转换（LongHorizon-Harness 范式）
 
@@ -166,6 +171,7 @@ Beren Millidge 将其进行了精确的硬件系统类比：
 - [[OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重]]
 - [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]
 - [[wiki/sources/深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路.md|深度解析 Codex Harness 架构及其全新上下文压缩记忆体系的设计思路]]
+- [[wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md|Super-agent 设计探索：迈向更自主的 Agent 系统]]
 - [[concepts/概念_RSI递归自我改进]]
 - [[concepts/概念_Harness优化阶梯]]
 - [[concepts/概念_RSI递归自我改进|Self-Harness (RSI 自主外壳进化)]]
