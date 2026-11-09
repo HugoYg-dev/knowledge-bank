@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[AI编程的加速陷阱]] — 腾讯技术工程公众号分享：剖析 AI 编程中提交量暴增数十倍带来的加速陷阱，指出 AI 缺乏组织隐性知识与妥协能力导致状态空间无度膨胀，呼吁建立工程减速带与生成前收敛约束（AI-Agent/coding）
 - [[Super-agent 设计探索：迈向更自主的 Agent 系统]] — DeepSeek Harness 团队系统阐述 Super-agent 架构：以双层架构（Router/Worker）兼顾连续交互与高效并发，事件驱动两级过滤与 Thread 直通，Inline & Spill 与链式召回，全双工异步 ReAct，存算分离（BYOM）与外部 Watchdog 自愈回路（AI-Agent/multi-agent, AI-Agent/context-engineering, AI-Agent/coding）
 - [[yetone 的魔法：magpie 是怎么让 AI 自己维护项目的]] — 深度解析 yetone 维护的本地 LLM 网关 magpie 全 AI 自动化研发闭环：路由表（AGENTS.md）与错题本（LESSONS.md）双核架构、夜审复盘、Seen 3× 经验升级硬规则机制、严格 PR 验收门禁（回退测试、真机实测、显式未跑、防并发）与人机边界切分（AI-Agent/coding）
 - [[A software engineering interview question I like-computing the median]] — Kris Shamloo 阐述其青睐的中位数计算面试题设计：以简单的表象承载深层次工程考量，涵盖防御性基础校验、排序副作用与 API 权衡、差一错误（Off-by-one）排错、统计鲁棒性及从标准库到快速选择（Quickselect）算法复杂度优化的进阶考察（面试, Skill/python）
@@ -610,7 +611,7 @@
 
 ### AI-Agent/tool-calling MCP系列（Phase 4 Batch 1）
 - [[概念_WebMCP_浏览器原生工具协议]] — Chrome 与 Edge 团队提出的浏览器原生 Agent 工具声明规范，允许前端网页通过 JS API 或 HTML 扩展属性直接暴露强类型动作与输入 Schema（AI-Agent/tool-calling, AI-Agent/UI）
-- [[概念_AI_Native_SDLC_AI原生软件开发生命周期]] — Anthropic 提出的 AI Native 软件开发生命周期方法论，以产物驱动闭环循环（Loop）重构研发流程，融合 CLAUDE.md/Skill/Hook 三层规则防线与五层落地路径（AI-Agent/coding）
+- [[概念_AI_Native_SDLC_AI原生软件开发生命周期]] — AI Native 软件开发生命周期方法论，以产物驱动闭环循环（Loop）重构研发流程，融合 CLAUDE.md/Skill/Hook 三层规则防线、五层落地路径，以及针对 AI 编程加速陷阱的组织隐性知识显性化、减速带与生成前收敛约束（AI-Agent/coding）
 - [[概念_CLAUDE.md最佳实践]] — 编写 CLAUDE.md 工程宪法以约束 Agent 行为的高级指南与规范范式 (AI-Agent/coding)
 - [[概念_MCP协议]] — MCP 定义、CHS 架构、五大原语、传输方式、与 Function Call 关系全景（AI-Agent/tool-calling）
 - [[概念_MCP_CHS架构]] — Client-Host-Server 三组件精确界定：Host 是 AI 智能唯一承载者，Server/Client 是模型无关 RPC 管道（AI-Agent/tool-calling）

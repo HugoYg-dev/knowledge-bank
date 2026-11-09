@@ -1,3 +1,12 @@
+## [2026-11-09] ingest | raw/articles/AI编程的加速陷阱.md -> wiki/sources/AI编程的加速陷阱.md (+ concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入腾讯技术工程公众号分享文章（作者 maple，腾讯 Agent 相关开发业务工程师），物理文件归档至 `raw/articles/AI编程的加速陷阱.md`；
+  - 创建来源摘要 `wiki/sources/AI编程的加速陷阱.md`，标签选用白名单：`tags: ["AI-Agent/coding"]`；
+  - 深度提炼 AI 编程落地中的五大核心洞察：提交量暴增数十倍与全链可控性滑坡、组织隐性知识真空与保守过度展开、后置审查与测试退化循环（从“判断对不对”退化为“看着像不像”）、工程减速带（Speed Bumps）被冲毁、以及治理方向从“事后 Review 更多”转向“生成前约束更多”（强负向约束与收敛能力）；
+- **联动深化既有概念**：
+  - `concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期`：Frontmatter `sources:` 追加新来源，`aliases:` 补齐别名矩阵（AI编程加速陷阱、软件工程减速带、生成前收敛约束），正文增设落地反思专节《落地反思：AI 编程的“加速陷阱”与收敛困境》，系统补充隐性知识真空、审查退化死循环与工程减速带收敛机制；
+- **总索引挂载**：`wiki/index.md` Sources 章节挂载 `[[AI编程的加速陷阱]]` 来源条目，并同步更新 `[[概念_AI_Native_SDLC_AI原生软件开发生命周期]]` 索引描述。
+
 ## [2026-11-09] ingest | raw/articles/Super-agent 设计探索：迈向更自主的 Agent 系统.md -> wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md (+ concepts/概念_Super_Agent_超级智能体, concepts/概念_Harness_Engineering_宿主编排工程, concepts/概念_上下文工程, entities/实体_DeepSeek_Harness, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 抓取 DeepSeek Harness 团队（Yujia Qiao 等）官方技术长文，物理文件归档至 `raw/articles/Super-agent 设计探索：迈向更自主的 Agent 系统.md`；
