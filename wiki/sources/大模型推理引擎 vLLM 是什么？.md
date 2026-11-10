@@ -1,7 +1,7 @@
 ---
 type: "source"
 tags: ["Infra/serving", "LLM/inference"]
-summary: "系统科普大模型推理引擎 vLLM 的核心架构与性能优化机制：剖析 KV Cache 显存占用根因，详解 PagedAttention 虚拟内存分页与块表寻址、前缀缓存复用、连续批处理与 Chunked Prefill 动态调度、FP8 权重量化与多卡切分，以及线上推理瓶颈指标与针对性调优策略"
+summary: "系统科普大模型推理引擎 vLLM 的核心架构与性能优化机制：剖析 KV Cache 显存占用根因，详解 PagedAttention 虚拟内存分页与块表寻址、前缀缓存复用、连续批处理与 Chunked Prefill 动态调度、FP8 权重量化与多卡切分（TP/PP/DP），以及线上推理瓶颈指标、常用参数速查与针对性调优排错策略"
 sources: ["raw/articles/大模型推理引擎 vLLM 是什么？.md"]
 updated: "2026-11-10"
 ---
@@ -23,6 +23,7 @@ updated: "2026-11-10"
 4. **[[concepts/概念_连续批处理|连续批处理]]与分块预填充（Chunked Prefill）**：静态批处理受制于木桶效应，短请求无法提前离场；vLLM 采用迭代级（Iteration-level）连续批处理，每个 token 生成步重新调度，已完成请求立即离场释放显存，新请求无缝插入。针对超长 Prompt 在预填充（Prefill）阶段长时霸占 GPU 算力导致解码停顿的问题，引入分块预填充（Chunked Prefill）将长输入切段分批推进，在首字延迟（TTFT）、吞吐量与输出流畅度之间取得灵活权衡。
 5. **模型超限应对：量化、卸载与多卡切分**：显存不足时，采用 [[concepts/概念_量化|FP8 权重量化]]与 FP8 KV Cache 可使参数和缓存显存减半、并发承载翻倍；CPU 内存卸载因受限于 PCIe 带宽仅适合个人尝鲜；企业生产环境主要依赖多卡并行——高速互联（NVLink）下单机首选张量并行（Tensor Parallelism），跨机或带宽受限环境采用流水线并行（Pipeline Parallelism）。
 6. **三层执行架构与指标驱动调优**：系统由 API Server（协议兼容）、Engine Core（调度、显存池、块表与抢占管理）与 GPU Worker（算子执行）分层协作。当监控指标出现 KV Cache 使用率逼近 1.0、请求持续排队或频繁触发抢占时，应针对性调整 `gpu_memory_utilization`、`max_model_len`、`kv_cache_dtype`，或优化提示词结构与 Chunked Prefill 预算。
+7. **生产落地参数速查与运维避坑**：标准化启动 `vllm serve` 时需注意：① 单卡放得下且纯并发高时使用数据并行（`--data-parallel-size`）起多副本分摊；② 对外暴露（`--host 0.0.0.0`）务必加上 `--api-key` 鉴权；③ 启动显存不足报错时看末尾预估数字直接限定 `--max-model-len`；④ CUDA Graphs 录图提速但多占显存，显存极端紧张可开 `--enforce-eager`；⑤ 老旧显卡不支持 bfloat16 时 `--dtype auto` 自动安全退回 float16；⑥ 通过 `/metrics` 监控 `vllm:kv_cache_usage_perc`，并计算前缀命中率 `prefix_cache_hits_total / prefix_cache_queries_total`。
 
 ---
 

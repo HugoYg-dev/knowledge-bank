@@ -117,6 +117,14 @@ vLLM 引入了**前缀缓存（Prefix Caching）**机制：
 | **张量并行 (Tensor Parallelism, TP)** | 将模型内部每一层的计算和权重矩阵按切片分摊给多张 GPU 卡，各卡并行计算一部分。 | 每一层计算完毕后，多卡之间需要执行频繁的高频卡间同步通信（如 All-Reduce）。**适用于具备高速互联环境（如单机多卡 NVLink、NVSwitch）的物理节点**。 |
 | **流水线并行 (Pipeline Parallelism, PP)** | 将整个模型的网络层按层切段（例如 80 层的模型平均切为 4 段，每段 20 层分别放置在 4 张卡上），请求像流水线一样依次流经各卡。 | 仅在不同阶段交接处需要传递隐层激活值，节点间通信量较小；但请求必须依次经过各个计算段，且流水线前后存在“气泡”，**单请求端到端延迟通常会更高一些**，更适合跨节点或缺乏高速互联的多机环境。 |
 
+### 4.4 只是请求太多？果断采用数据并行（Data Parallelism, DP）
+
+若单张 GPU 显存已经能够完整容纳整个模型权重与适量上下文，但线上并发请求数巨大导致排队严重，此时**无需对模型进行切分**（切分反而引入跨卡通信开销）。
+
+直接配置 `--data-parallel-size` 启动多个模型副本：
+- 例如配置 `--data-parallel-size 4`，系统会在 4 张卡（GPU 0、GPU 1、GPU 2、GPU 3）上分别加载一个完整模型独立运行；
+- 外部并发请求通过内部路由自动负载均衡到各个副本，线性扩展系统的整体吞吐量。
+
 ---
 
 ## 5. 一个请求如何穿过 vLLM（09:13 - 12:07）
@@ -190,10 +198,115 @@ vLLM 引入了**前缀缓存（Prefix Caching）**机制：
 
 ---
 
+## 7. vLLM Serve 核心参数速查与生产实战运维
+
+在工业界落地中，通常使用 `vllm serve` 命令启动 OpenAI 兼容的服务端。以下基于 **vLLM v0.31.0** 标准，系统梳理常用参数与生产运维调优实践。
+
+### 7.1 标准生产启动命令范式
+
+```bash
+vllm serve \
+  --model Qwen/Qwen3-14B \
+  --served-model-name qwen3 \
+  --gpu-memory-utilization 0.92 \
+  --host 0.0.0.0 --port 8000 \
+  --api-key sk-xxxxxx
+```
+
+### 7.2 核心参数分类速查表
+
+#### 1. 必知核心参数（大多数场景必须配置）
+| 参数 | 管的是什么 | 默认值 | 生产建议 |
+| :--- | :--- | :--- | :--- |
+| `--model` | 实际加载的模型路径或 HuggingFace/ModelScope 模型名称 | 无（**必填**） | 填写绝对路径或官方模型标识符 |
+| `--served-model-name` | 接口对外暴露的模型名称 | 与 `--model` 一致 | 简化对外名称（如 `qwen3`），需与客户端请求的 `model` 字段严格一致 |
+| `--max-model-len` | 上下文长度（Prompt + 输出的最大上限） | 模型自身最大长度 | 若业务场景不需要极长上下文，主动调低（如 4096/8192）以节省显存 |
+| `--gpu-memory-utilization` | 给当前 vLLM 实例分配多少显存比例 | 0.92 | 单卡独占通常设 0.90～0.95；多卡或存在常驻进程时需按需降低 |
+| `--tensor-parallel-size` | 几张卡一起分摊每一层（张量并行 TP） | 1 | 模型大于单卡显存时使用（如 2、4、8 卡），需配合 NVLink 高速互联 |
+| `--max-num-seqs` | 一步最多同时计算几个请求并发序列 | 按显卡 256 或 1024 | 配合显存与 Token 预算防止过载崩溃 |
+| `--max-num-batched-tokens` | 一步最多处理多少个 Token | 按显卡与用法自动定 | 吞吐优先场景可调大至 8192 以上 |
+
+#### 2. 日常推荐参数（大部分场景用默认值即可）
+| 参数 | 管的是什么 | 默认值 | 说明与建议 |
+| :--- | :--- | :--- | :--- |
+| `--quantization` | 权重显存量化方式（如 awq, gptq, fp8） | 读模型配置 | 已量化模型自动识别；原版权重也可指定 fp8 在线量化 |
+| `--kv-cache-dtype` | KV Cache 存储精度格式 | 跟随模型（默认 auto） | 显存告急时可指定 `fp8`（如 `fp8_e4m3`），单 token 缓存减半 |
+| `--dtype` | 权重加载与执行计算的数据类型 | auto | 默认跟随模型（支持 bfloat16/float16）；老卡（如 V100/T4）自动安全回退至 float16 |
+| `--enable-prefix-caching` | 是否开启前缀缓存（Prefix Caching） | 模型支持就开 | 强烈建议开启，显著提升共享系统提示词的复用率 |
+| `--enable-chunked-prefill` | 是否开启分块预填充（长 Prompt 切段） | 模型支持就开 | 长短混合请求并发时建议开启，防止长输入打断解码 |
+| `--block-size` | 一个 PagedAttention 显存块放几个 Token | 按显卡与模型自动选 | 常用 16 或 32 |
+
+#### 3. 场景按需调整（多卡、显存不足与特殊功能）
+| 参数 | 管的是什么 | 默认值 | 说明与建议 |
+| :--- | :--- | :--- | :--- |
+| `--data-parallel-size` | 启动几份完整模型副本分摊请求（数据并行 DP） | 1 | 单卡放得下且单纯高并发请求过多时使用 |
+| `--pipeline-parallel-size` | 模型按层切分成几段流水线（流水线并行 PP） | 1 | 跨机节点缺乏 NVLink 互联时使用 |
+| `--cpu-offload-gb` | 借用多少 GB 的 CPU 主机内存存放权重 | 0 | 显存不够且预算有限时尝试（个人尝鲜为主，通信较慢） |
+| `--kv-cache-memory-bytes` | 直接以字节数指定 KV Cache 显存容量 | 不设（自动算） | 特殊固定显存分配场景使用 |
+| `--enforce-eager` | 是否禁用 CUDA Graphs 录图（强制 Eager 模式） | 关（默认录图） | 开启后**不录图，能省少量显存**，但推理吞吐会变慢 |
+| `--trust-remote-code` | 是否允许执行模型仓库自定义 Python 代码 | 关 | 加载部分第三方新架构模型时需开启 |
+
+#### 4. 对外服务与协议适配参数
+| 参数 | 管的是什么 | 默认值 | 说明与建议 |
+| :--- | :--- | :--- | :--- |
+| `--host` | 服务的监听网卡地址 | 所有网卡（0.0.0.0） | 容器化部署或公网暴露使用 |
+| `--port` | 服务的监听端口 | 8000 | 常用默认端口 |
+| `--api-key` | API 鉴权访问密钥 | 无 | **对外开放时必须配置密钥**（如 `sk-xxxxxx`），防止未授权调用 |
+| `--enable-auto-tool-choice`| 允许服务端代模型决策工具调用参数 | 关 | 结合 Agent Tool Calling 场景开启 |
+| `--tool-call-parser` | 工具调用解析器 | 不设 | 指定如 `hermes`、`mistral` 等解析器适配模型工具输出 |
+| `--reasoning-parser` | 思考模型（如 DeepSeek-R1 等）思维过程提取 | 不设 | 将 `<think>` 思维链单独拆分至 reasoning_content 字段 |
+
+> ⚠️ **已废弃参数提示**：早期版本中的 `--swap-space`（管理换出至 CPU 的内存大小）在新版本中**已被完全删除**，显存换出改由专用分离缓存层接管。
+
+---
+
+### 7.3 六大高频部署实战避坑指南
+
+1. **模型名必须对齐**：`--model` 是本地权重目录或标识，`--served-model-name` 是 API 接口里对外展示的名字；客户端请求里的 `model` 必须与 `--served-model-name` 完全一致，否则接口直接返回 404 Model Not Found。
+2. **对外暴露切记加密钥**：当使用 `--host 0.0.0.0` 开放局域网或公网访问时，必须同步加上 `--api-key sk-xxxxxx`，否则任何能触达该 IP 的客户端均可直接无限制消耗 GPU 算力。
+3. **单卡放得下且请求太多用数据并行**：若单卡显存能装下完整模型，瓶颈只是排队请求过多，不要使用张量并行，直接用 `--data-parallel-size`（起多份完整模型副本分摊并发流量）。
+4. **显存不足启动报错时“看末尾数字”**：当启动遇到如下经典报错：
+   ```text
+   ValueError: To serve at least one request with the model's max seq len (32768), ... the estimated maximum model length is 8192.
+   ```
+   直接查看报错末尾的数字（如 8192），将 `--max-model-len 8192`（或略小值）显式写入启动命令，即可在当前显存条件下成功启动。
+5. **CUDA Graphs 录图与 `--enforce-eager` 权衡**：
+   - 默认（录图）：先把模型前向图录制成静态图，显著降低 CPU 算子发射开销，推理速度最快，但会额外多占用数百 MB 显存；
+   - 开启 `--enforce-eager`：跳过录图直接前向，能省下这一小部分显存，代价是推理吞吐下降。
+6. **数据类型 `--dtype` 自动降级机制**：默认 `auto` 会自动读取并适配模型权重精度；当遇到 V100、T4 等不支持 `bfloat16` 硬件指令的老显卡时，vLLM 会自动回退至 `float16`，通常无需人工手动强制指定。
+
+---
+
+### 7.4 关键监控指标（`/metrics`）与前缀命中率计算
+
+vLLM 原生提供 Prometheus 监控端点（`GET /metrics`），线上可通过以下指标实时掌握运行水位：
+
+- `vllm:kv_cache_usage_perc`：当前 GPU KV Cache 显存使用率（逼近 100% 意味着显存饱和）；
+- `vllm:num_requests_waiting`：当前排队等待调度的请求数量；
+- `vllm:num_preemptions_total`：累计发生的请求抢占（Preemption）次数；
+- `vllm:prefix_cache_hits_total`：累计命中的前缀缓存次数；
+- `vllm:prefix_cache_queries_total`：累计发生的前缀缓存查询总数。
+
+$$ \text{前缀缓存命中率} = \frac{\text{prefix\_cache\_hits\_total}}{\text{prefix\_cache\_queries\_total}} $$
+
+---
+
 ## 附录：原图参考
 
-> 本文基于以下 Bilibili 知识科普视频精读长图转述整理而成。原图长图如下所示：
+> 本文基于以下 Bilibili 知识科普视频精读与实操指南长图转述整理而成。原图长图如下所示：
 
+### 1. 架构与原理精读长图
 ![大模型推理引擎 vLLM 是什么？](../../assets/大模型推理引擎%20vLLM%20是什么？.png)
 
 ![[assets/大模型推理引擎 vLLM 是什么？.png]]
+
+### 2. 服务部署与排错调优指南
+![服务部署与排错调优指南](../../assets/大模型推理引擎%20vLLM%20是什么？_服务部署与排错调优指南.png)
+
+![[assets/大模型推理引擎 vLLM 是什么？_服务部署与排错调优指南.png]]
+
+### 3. vLLM Serve 参数速查表
+![vLLM Serve 参数速查表](../../assets/大模型推理引擎%20vLLM%20是什么？_Serve参数速查表.png)
+
+![[assets/大模型推理引擎 vLLM 是什么？_Serve参数速查表.png]]
+
