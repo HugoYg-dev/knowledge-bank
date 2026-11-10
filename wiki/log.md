@@ -1,3 +1,16 @@
+## [2026-11-10] ingest | raw/articles/大模型推理引擎 vLLM 是什么？.md -> wiki/sources/大模型推理引擎 vLLM 是什么？.md (+ concepts/概念_PagedAttention_分页注意力, entities/实体_vLLM, concepts/概念_KV_Cache_键值缓存, concepts/概念_连续批处理, wiki/index.md)
+- **长图转述归档与来源摘要创建**：
+  - 基于 Bilibili 科普视频精读长图（小白debug《Vibe知识大赏 | 大模型推理引擎vLLM 是什么？》），转述整理并物理归档至 `raw/articles/大模型推理引擎 vLLM 是什么？.md`，长图原图归档至 `assets/大模型推理引擎 vLLM 是什么？.png` 并贴在文末；
+  - 创建来源摘要 `wiki/sources/大模型推理引擎 vLLM 是什么？.md`，标签选用合规白名单：`tags: ["Infra/serving", "LLM/inference"]`；
+  - 系统提炼 vLLM 核心原理：KV Cache 显存线性膨胀与预留碎片痛点、PagedAttention 虚拟内存分页与块表寻址、前缀缓存（Prefix Caching）复用、连续批处理（Continuous Batching）与 Chunked Prefill 动态调度、FP8 权重量化与多卡并行（TP vs PP）、以及三层协作架构与生产调优指标；
+- **新建核心概念**：
+  - `concepts/概念_PagedAttention_分页注意力`：新建概念页，系统阐述借鉴操作系统虚拟内存页表的分页管理机制，详解逻辑块与物理块解耦映射、块表（Block Table）动态分配寻址、显存浪费率从 60%-80% 降至 <4%、前缀缓存指纹复用、统一显存池与抢占容错机制；
+- **联动深化既有实体与概念**：
+  - `entities/实体_vLLM`：Frontmatter `sources:` 追加新来源，`## 在本文语境中的角色` 增补专节，详细记录三层系统架构（API Server / Engine Core / GPU Worker）、端到端请求流转四部曲、Chunked Prefill 分块预填充动态调度与指标驱动的针对性调优策略；
+  - `concepts/概念_KV_Cache_键值缓存`：Frontmatter `sources:` 追加新来源，关联补充 PagedAttention 与新来源；
+  - `concepts/概念_连续批处理`：Frontmatter `sources:` 追加新来源，调度机理增补分块预填充（Chunked Prefill 动态调度），关联补充 PagedAttention 与新来源；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[大模型推理引擎 vLLM 是什么？]]` 来源页与 `[[concepts/概念_PagedAttention_分页注意力]]` 概念页。
+
 ## [2026-11-09] ingest | raw/articles/AI编程的加速陷阱.md -> wiki/sources/AI编程的加速陷阱.md (+ concepts/概念_AI_Native_SDLC_AI原生软件开发生命周期, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 录入腾讯技术工程公众号分享文章（作者 maple，腾讯 Agent 相关开发业务工程师），物理文件归档至 `raw/articles/AI编程的加速陷阱.md`；
