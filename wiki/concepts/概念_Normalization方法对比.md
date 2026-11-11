@@ -1,13 +1,12 @@
 ---
 type: concept
 tags:
-- DeepLearning
-- 面试
-summary: BN/LN/IN/GN 四种归一化在 [N,C,H,W] 不同维度上计算均值方差——BN(N,H,W)、LN(C,H,W)、IN(H,W)、GN(分组)；用途、batch
-  依赖性、参数维度各不同。
+  - DeepLearning
+  - 面试
+summary: BN/LN/IN/GN 四种归一化在 [N,C,H,W] 不同维度上计算均值方差——BN(N,H,W)、LN(C,H,W)、IN(H,W)、GN(分组)；用途、batch 依赖性、参数维度各不同。
 sources:
-- wiki/sources/Transformer大模型3D可视化_NanoGPT.md
-updated: '2026-09-07'
+  - wiki/sources/Transformer大模型3D可视化_NanoGPT.md
+updated: 2026-09-07
 ---
 
 

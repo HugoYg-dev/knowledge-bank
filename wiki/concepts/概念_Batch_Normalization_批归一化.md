@@ -1,19 +1,17 @@
 ---
 type: concept
 tags:
-- DeepLearning
-- 面试
-summary: Batch Normalization 沿通道在 batch 维度（N,H,W）计算均值方差，强迫数据为均值0方差1分布，缓解 Internal
-  Covariate Shift 与梯度消失；用于激活函数之前。
+  - DeepLearning
+summary: Batch Normalization 沿通道在 batch 维度（N,H,W）计算均值方差，强迫数据为均值0方差1分布，缓解 Internal Covariate Shift 与梯度消失；用于激活函数之前。
 sources:
-- wiki/sources/PyTorch常用代码段合集.md
-updated: '2026-09-21'
+  - wiki/sources/PyTorch常用代码段合集.md
+updated: 2026-09-21
 aliases:
-- Batch Normalization
-- BatchNorm
-- BN
-- 批归一化
-- 概念_Batch_Normalization
+  - Batch Normalization
+  - BatchNorm
+  - BN
+  - 批归一化
+  - 概念_Batch_Normalization
 ---
 
 # 概念：Batch Normalization（BN）

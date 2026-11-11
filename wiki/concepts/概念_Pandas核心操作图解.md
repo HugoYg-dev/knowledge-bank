@@ -1,13 +1,12 @@
 ---
 type: concept
 tags:
-- Skill/data-analysis
-- Skill/python
-- 面试
+  - Skill/data-analysis
+  - Skill/python
 summary: Pandas 核心操作的图解总结——涵盖选择过滤、排序、分组聚合、连接合并、变形与索引管理，以及与 NumPy 的关键差异。
 sources:
-- wiki/sources/Pandas一行代码绘制25种美图.md
-updated: '2026-09-07'
+  - wiki/sources/Pandas一行代码绘制25种美图.md
+updated: 2026-09-07
 ---
 
 
