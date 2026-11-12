@@ -4,13 +4,15 @@ tags:
   - "AI-Agent/skill"
   - "LLM/arch"
   - "AI-Agent/coding"
-summary: "Anthropic 为由前 OpenAI 研究员创立的安全导向前沿 AI 研究实验室，研发 Claude 系列模型、Agent Skills 元工具架构、AI-Native SDLC 方法论与三层安全规则防护体系。"
+  - "AI-Agent/memory"
+summary: "Anthropic 为由前 OpenAI 研究员创立的安全导向前沿 AI 研究实验室，研发 Claude 系列模型、Agent Skills 元工具架构、AI-Native SDLC 方法论、智能体四层记忆与 Dreaming 离线整理机制。"
 sources:
   - "wiki/sources/代码强化学习的双刃剑_前沿模型为何集体走向作弊.md"
   - "wiki/sources/Claude_Agent_Skills_从第一性原理深入剖析.md"
   - "wiki/sources/Anthropic 重磅发布：AI Native 软件开发方法论.md"
   - "wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md"
-updated: "2026-09-15"
+  - "wiki/sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md"
+updated: "2026-11-12"
 ---
 # 实体：Anthropic
 
@@ -25,6 +27,7 @@ updated: "2026-09-15"
 - **接种提示词（Inoculation Prompting）**：针对强化学习 Reward Hacking 提出在训练数据中嵌入接种提示词重构语义，防范作弊与对齐假象。
 - **AI-Native SDLC 方法论与三层规则体系**：提出以版本控制产物驱动的闭环自转（The Loop）重构研发流程，确立 `CLAUDE.md`（项目总则）、`Skill`（任务规程）与 `Hook`（确定性硬门禁）的三层防御体系，倡导计划先行（Plan Mode）与子智能体（Subagents）上下文解耦。
 - **电商智能体系统工程与表现层工具化**：针对高耦合长程交易场景，系统化确立了单模型结合技能架构（Skills over Subagents）、表现层工具化（[[concepts/概念_Presentation_Tools_表现层工具化|Presentation Tools]]）、三段式 Prompt Caching、异步三层记忆与 Harness 确定性安全门禁（Staging 机制与服务端白名单 ID）的完整落地规范。
+- **四层智能体记忆架构与 Dreaming 机制（2026-11）**：在《The components of agent memory》中提出 Transcripts（日志）→ Memory notes（笔记）→ Memory representations（Wiki）→ Injected context（注入上下文）的四层拓扑，并推出离线记忆整理机制 [[concepts/概念_Dreaming_智能体离线记忆整理|Dreaming]]（原生 Dreams 与 Dynamic Workflow），在存储层通过 `content_sha256` 乐观锁前置检查与不可变 memory version 防范并发覆盖。
 
 ## 来源
 
@@ -32,3 +35,4 @@ updated: "2026-09-15"
 - [[sources/Claude_Agent_Skills_从第一性原理深入剖析]]
 - [[sources/Anthropic 重磅发布：AI Native 软件开发方法论]]
 - [[sources/A_guide_to_the_anatomy_of_effective_commerce_agents]]
+- [[sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现]]

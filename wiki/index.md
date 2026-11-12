@@ -4,6 +4,8 @@
 
 ## Sources
 
+- [[Claude 的记忆怎么维护：Anthropic dreaming 机制与实现]] — Anthropic dreaming 机制深度解析：四层智能体记忆结构（Transcripts/Notes/Wiki/Injected Context）、Managed Agents 原生 Dreams 与 Dynamic Workflow 编排、评测证据及并发记忆防护工程实践（AI-Agent/memory）
+- [[谈一谈最近对于Data Agent的学习]] — Data Agent 落地经验与系统设计取舍总结：1.0版本范围定界、语义层资产化治理、受约束业务语义中间态、确定性引擎硬拦截与全链路可归因评测（CaseStudy/data-agent, AI-Agent/tool-calling）
 - [[大模型推理引擎 vLLM 是什么？]] — 系统科普大模型推理引擎 vLLM 的核心架构与性能优化机制：剖析 KV Cache 显存占用根因，详解 PagedAttention 虚拟内存分页与块表寻址、前缀缓存复用、连续批处理与 Chunked Prefill 动态调度、FP8 权重量化与多卡切分，以及线上推理瓶颈指标与针对性调优策略（Infra/serving, LLM/inference）
 - [[AI编程的加速陷阱]] — 腾讯技术工程公众号分享：剖析 AI 编程中提交量暴增数十倍带来的加速陷阱，指出 AI 缺乏组织隐性知识与妥协能力导致状态空间无度膨胀，呼吁建立工程减速带与生成前收敛约束（AI-Agent/coding）
 - [[Super-agent 设计探索：迈向更自主的 Agent 系统]] — DeepSeek Harness 团队系统阐述 Super-agent 架构：以双层架构（Router/Worker）兼顾连续交互与高效并发，事件驱动两级过滤与 Thread 直通，Inline & Spill 与链式召回，全双工异步 ReAct，存算分离（BYOM）与外部 Watchdog 自愈回路（AI-Agent/multi-agent, AI-Agent/context-engineering, AI-Agent/coding）
@@ -354,6 +356,8 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Dreaming_智能体离线记忆整理]] — Anthropic 提出的智能体离线记忆整理机制，通过后台回看日志与笔记修正错误并提炼结构化记忆（Wiki），改变后续任务的上下文注入而不修改模型权重（AI-Agent/memory）
+- [[concepts/概念_Data_Agent_数据智能体]] — 面向企业指标问数、经营分析与数据探索的 AI 智能体范式，核心在于业务语义资产化、自然语言至受约束中间态受控翻译、确定性执行引擎硬兜底与全链路可归因评测（CaseStudy/data-agent, AI-Agent/tool-calling）
 - [[concepts/概念_PagedAttention_分页注意力]] — 借鉴操作系统虚拟内存分页思想的大模型显存管理机制，通过块表将连续逻辑 KV Cache 映射至离散物理块，彻底消除显存碎片与预留浪费（Infra/serving, LLM/inference）
 - [[concepts/概念_Super_Agent_超级智能体]] — 常驻 Router 协调分派与独立 Worker 执行解耦、跨入口跨工作环境且能代表用户持续推进复杂长程任务的智能体架构形态与产品范式（AI-Agent/multi-agent, AI-Agent/UI）
 - [[concepts/概念_Career_Capital_职业资本]] — 由 Cal Newport 提出的职业发展核心概念，指在劳动市场中稀缺且具有高度价值的专业技能、交付声誉与人脉网络；它是职场人获取自主权、高议价能力与将薪资现金流跃迁为资产所有权的根本基石（Life）

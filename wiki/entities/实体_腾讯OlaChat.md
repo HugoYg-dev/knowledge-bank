@@ -2,11 +2,11 @@
 type: entity
 tags:
 - CaseStudy/data-agent
-summary: '- 类型：智能数据分析平台（ABI 平台）'
+summary: "腾讯 PCG 大数据平台部研发的智能数据分析平台（ABI / Data Agent），支持多任务对话系统、DAG 编排、Text2SQL/Text2DSL 与结构化元数据 RAG。"
 sources:
 - wiki/sources/腾讯ABI工程架构探索与实践.md
 - wiki/sources/腾讯OlaChat_LLM智能数据分析平台实践.md
-updated: '2026-06-29'
+updated: '2026-11-12'
 ---
 
 # 实体：腾讯 OlaChat
@@ -15,7 +15,7 @@ updated: '2026-06-29'
 
 - **类型**：智能数据分析平台（ABI 平台）
 - **归属**：腾讯 PCG 大数据平台部
-- **定位**：基于大语言模型的智能数据助手，可灵活集成到各种数据分析产品中
+- **定位**：基于大语言模型的智能数据分析助手（[[concepts/概念_Data_Agent_数据智能体|Data Agent]]），可灵活集成到各种数据分析产品中
 
 ## 核心能力
 
@@ -34,7 +34,9 @@ updated: '2026-06-29'
 - **数据服务**：SQL 类服务 + HeadlessBI + 图表服务 + RAG
 - **接入方式**：SaaS / 页面组件 / API / 独立部署 / 云原生
 
-## 相关文章
+## 关联概念与文章
 
-- [[腾讯OlaChat_LLM智能数据分析平台实践]] — 算法侧（谭云志）
-- [[腾讯ABI工程架构探索与实践]] — 工程架构侧（霍琦）
+- 关联概念：[[concepts/概念_Data_Agent_数据智能体]]、[[concepts/概念_Text2SQL_自然语言转SQL]]
+- 来源文章：
+  - [[腾讯OlaChat_LLM智能数据分析平台实践]] — 算法侧（谭云志）
+  - [[腾讯ABI工程架构探索与实践]] — 工程架构侧（霍琦）

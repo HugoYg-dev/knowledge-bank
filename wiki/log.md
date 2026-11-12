@@ -1,3 +1,27 @@
+## [2026-11-12] ingest | raw/articles/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md -> wiki/sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md (+ concepts/概念_Dreaming_智能体离线记忆整理, concepts/概念_Agent三层记忆体系, entities/实体_Anthropic, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入老潘（oldpan博客）对 Anthropic 研究《The components of agent memory》的深度解析，物理剪藏从 `Clippings/` 移动至 `raw/articles/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md` 归档；
+  - 创建来源摘要 `wiki/sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md`，标签选用白名单：`tags: ["AI-Agent/memory"]`；
+  - 核心提炼：四层记忆架构（Transcripts/Memory notes/Wiki/Injected context）、后台异步 Dreaming 机制、CL-Bench 强弱模型利用率对比与过度约束副作用、官方 Managed Agents 原生 Dreams 与 Dynamic Workflow 实现路径、Stainless 4.2 亿 Token 语料 Wiki 协同与成本摊销公式、以及多 Agent 存储层乐观并发锁（`content_sha256`）与不可变版本控制；
+- **新建核心概念**：
+  - `concepts/概念_Dreaming_智能体离线记忆整理`：新建概念页，系统阐述智能体离线记忆维护范式、四层记忆模型、CL-Bench 与 Stainless 实验证据、两种工程落地范式与存储层乐观并发防覆盖控制；
+- **联动深化既有实体与概念**：
+  - `entities/实体_Anthropic`：Frontmatter `sources:` 追加新来源，技术贡献中增补四层记忆架构与 Dreaming 机制（《The components of agent memory》）；
+  - `concepts/概念_Agent三层记忆体系`：Frontmatter `sources:` 追加新来源，正文增补专节《离线重构与四层记忆扩展（Anthropic Dreaming 范式）》；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[Claude 的记忆怎么维护：Anthropic dreaming 机制与实现]]` 与 `[[concepts/概念_Dreaming_智能体离线记忆整理]]`。
+
+## [2026-11-12] ingest | raw/articles/谈一谈最近对于Data Agent的学习.md -> wiki/sources/谈一谈最近对于Data Agent的学习.md (+ concepts/概念_Data_Agent_数据智能体, concepts/概念_Text2SQL_自然语言转SQL, entities/实体_腾讯OlaChat, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入“一包惆怅的辣条”关于企业级 Data Agent 从 0 到 1 落地架构权衡的心得，物理剪藏从 `Clippings/` 移动至 `raw/articles/谈一谈最近对于Data Agent的学习.md` 归档；
+  - 创建来源摘要 `wiki/sources/谈一谈最近对于Data Agent的学习.md`，标签选用白名单：`tags: ["CaseStudy/data-agent", "AI-Agent/tool-calling"]`；
+  - 核心提炼：1.0 版本的定界取舍（明确不做什么，聚焦高频经营分析并复用 BI 能力）、语义层作为具备 Git 版本管理与 CI 门禁的工程资产、拒绝端到端直写 SQL 而采用业务语义中间态（IR）、工具极简与职责正交、提示词引导 vs 确定性引擎硬拦截两道防线、拒答作为合法生产终态、以及全链路分层可归因评测；
+- **新建核心概念**：
+  - `concepts/概念_Data_Agent_数据智能体`：新建概念页，系统阐述数据智能体架构设计六大核心原则（系统定界、语义资产化、受约束中间态翻译、工具正交性、确定性引擎硬拦截、全链路可归因评测）；
+- **联动深化既有概念与实体**：
+  - `concepts/概念_Text2SQL_自然语言转SQL`：Frontmatter `sources:` 追加新来源，正文增补专节《在 Data Agent 中的范式跃迁：从端到端直写到受约束业务语义中间态》；
+  - `entities/实体_腾讯OlaChat`：定位补充 Data Agent 角色并双向链接至新概念；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[谈一谈最近对于Data Agent的学习]]` 与 `[[concepts/概念_Data_Agent_数据智能体]]`。
+
 ## [2026-11-10] ingest | raw/articles/大模型推理引擎 vLLM 是什么？.md -> wiki/sources/大模型推理引擎 vLLM 是什么？.md (+ concepts/概念_PagedAttention_分页注意力, entities/实体_vLLM, concepts/概念_KV_Cache_键值缓存, concepts/概念_连续批处理, wiki/index.md)
 - **长图转述归档与来源摘要创建**：
   - 基于 Bilibili 科普视频精读长图（小白debug《Vibe知识大赏 | 大模型推理引擎vLLM 是什么？》），转述整理并物理归档至 `raw/articles/大模型推理引擎 vLLM 是什么？.md`，长图原图归档至 `assets/大模型推理引擎 vLLM 是什么？.png` 并贴在文末；

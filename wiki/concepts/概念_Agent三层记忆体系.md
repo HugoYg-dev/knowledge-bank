@@ -3,7 +3,7 @@ type: concept
 tags:
 - AI-Agent/coding
 - AI-Agent/memory
-summary: 基于感知/短期/长期三层模型构建 Agent 持久化记忆，涵盖 Anthropic 商业智能体异步数据库抽取与 Meta Muse 夜里学习透明记忆工程实践。
+summary: 基于感知/短期/长期三层模型构建 Agent 持久化记忆，涵盖 Anthropic 商业智能体异步数据库抽取、Meta Muse 夜里学习透明记忆与 Anthropic Dreaming 四层离线重构工程实践。
 aliases:
 - Agent三层记忆体系
 - 智能体三层记忆
@@ -14,7 +14,8 @@ sources:
 - wiki/sources/LLM Agent记忆进化路径三阶段研究综述.md
 - wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md
 - wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md
-updated: '2026-10-06'
+- wiki/sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md
+updated: '2026-11-12'
 ---
 
 
@@ -74,6 +75,18 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
 3. **受训的分寸感（Discretion）**：
    - 长期记忆承载了大量高度私密的用户背景（健康、家庭、财务），模型专门接受信息敏感度训练，在代表用户进行外部工具交互（如对外订餐、预约）时代办任务但主动隐藏不必要的私密属性。
 
+## 离线重构与四层记忆扩展（Anthropic Dreaming 范式）
+
+Anthropic 在《The components of agent memory》（2026-11）中对记忆分层进行了进一步扩展与形式化定义，提出了四层结构与 [[concepts/概念_Dreaming_智能体离线记忆整理|Dreaming]] 离线整理机制：
+1. **四层拓扑**：
+   - **Transcripts（日志底座）**：完整事件日志，供审计溯源；
+   - **Memory notes（会话笔记）**：沉淀关键观察与规避规则，减少重复试错；
+   - **Memory representations（Wiki 知识网）**：主题组织、网状链接结构，支撑跨任务检索与多跳推理；
+   - **Injected context（注入上下文）**：会话初始化加载的常驻索引（如 200 行以内的 `MEMORY.md` 索引）。
+2. **后台异步维护与防并发覆盖**：
+   - Dreaming 在后台离线回看日志与笔记，修正失效结论并提炼结构；
+   - 存储层通过 `content_sha256` 乐观锁前置检查与不可变 memory version 防范多 Agent 写入冲突。
+
 ## 与上下文窗口的关系
 
 纯上下文拼接的局限：长度有固定 token 限制；无法有效组织检索历史；无法动态更新；计算成本高。三层记忆体系解决这些问题。
@@ -84,6 +97,7 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
 - [[concepts/概念_电商智能体架构]]
 - [[concepts/概念_上下文工程]]
 - [[concepts/概念_Personal_Agent_个人智能体]]
+- [[concepts/概念_Dreaming_智能体离线记忆整理]]
 - [[entities/实体_Anthropic]]
 - [[entities/实体_Muse]]
 - [[概念_Context_Rot_上下文衰退]]
@@ -95,3 +109,4 @@ Anthropic 在《A guide to the anatomy of effective commerce agents》中进一�
 > - [[wiki/sources/LLM Agent记忆进化路径三阶段研究综述.md]]
 > - [[wiki/sources/A_guide_to_the_anatomy_of_effective_commerce_agents.md]]
 > - [[wiki/sources/Meta复盘Muse_Agent怎么才能像一个人长期存在.md]]
+> - [[wiki/sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md]]
