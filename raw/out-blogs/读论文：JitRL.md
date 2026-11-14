@@ -51,4 +51,8 @@ JitRL 把测试时策略优化拆成了推理与回写两步。推理阶段，�
 
 ## 参考来源
 
-1. 论文原文，[Just-In-Time Reinforcement Learning, Continual Learning in LLM Agents Without Gradient Updates](https://arxiv.org/abs/2601.18510)（ICML 2026 Spotlight）
+1. JitRL 论文原文，[Just-In-Time Reinforcement Learning, Continual Learning in LLM Agents Without Gradient Updates](https://arxiv.org/abs/2601.18510)（ICML 2026 Spotlight）
+2. WebRL，Z. Qi et al. (ICLR 2025), [WebRL, Training LLM Web Agents via Self-Evolving Online Curriculum Reinforcement Learning](https://openreview.net/forum?id=oVKEAFjEqv)
+3. EvolveR，[EvolveR, Self-Evolving LLM Agents through an Experience-Driven Lifecycle](https://arxiv.org/abs/2510.16079)（arXiv 2510.16079）
+4. ProcMEM，Qirui Mi et al. (ICML 2026), [ProcMEM, Learning Reusable Procedural Memory from Experience via Non-Parametric PPO for LLM Agents](https://arxiv.org/abs/2602.01869)（arXiv 2602.01869）
+5. GAM，B.Y. Yan et al. (2025), [General Agentic Memory Via Deep Research](https://arxiv.org/abs/2511.18423)（arXiv 2511.18423）
