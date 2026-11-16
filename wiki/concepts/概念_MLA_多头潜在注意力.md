@@ -55,11 +55,12 @@ MLA（Multi-Head Latent Attention，多头潜在注意力）是 DeepSeek 在 Dee
   计算时 Key 不含多头维度 $H$，退化为矩阵广播计算，大幅节省了显存访问开销。
 - **Value 侧吸收**：计算输出时，直接将注意力权重与压缩潜向量相乘后，再经由 Value 升维矩阵 $W^{UV}$ 与输出矩阵 $W^O$ 联合变换。
 - **三处核心广播优化**：
-  | 计算位置 | 张量运算 | 广播优化原理 |
-  | :--- | :--- | :--- |
-  | 注意力权重 1 | `Q_rope @ K_rope^T` | `k_rope` 头维度 $H=1$，触发广播 |
-  | 注意力权重 2 | `Q_nope @ compressed_kv^T` | `compressed_kv` 不含头维度，触发广播 |
-  | 注意力输出 | `attn_weights @ compressed_kv` | `compressed_kv` 不含头维度，再吸收 $W^{UV}$ |
+
+| 计算位置 | 张量运算 | 广播优化原理 |
+| :--- | :--- | :--- |
+| 注意力权重 1 | `Q_rope @ K_rope^T` | `k_rope` 头维度 $H=1$，触发广播 |
+| 注意力权重 2 | `Q_nope @ compressed_kv^T` | `compressed_kv` 不含头维度，触发广播 |
+| 注意力输出 | `attn_weights @ compressed_kv` | `compressed_kv` 不含头维度，再吸收 $W^{UV}$ |
 
 ---
 
