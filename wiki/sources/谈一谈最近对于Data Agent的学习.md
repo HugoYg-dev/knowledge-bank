@@ -1,6 +1,6 @@
 ---
 type: "source"
-tags: ["CaseStudy/data-agent", "AI-Agent/tool-calling"]
+tags: ["CaseStudy/data-agent"]
 summary: "Data Agent 落地经验与系统设计取舍总结：1.0版本范围定界、语义层资产化治理、受约束业务语义中间态、确定性引擎硬拦截与全链路可归因评测"
 sources: ["raw/articles/谈一谈最近对于Data Agent的学习.md"]
 updated: "2026-11-12"

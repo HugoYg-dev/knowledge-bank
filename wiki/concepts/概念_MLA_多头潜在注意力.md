@@ -11,12 +11,16 @@ sources:
   - wiki/sources/DeepSeek开源FlashMLA从原理到代码详解.md
   - wiki/sources/从代码角度彻底理解DeepSeek_MLA算法.md
   - wiki/sources/DeepSeek_MLA矩阵吸收原理.md
-updated: '2026-10-26'
+  - wiki/sources/KV_Cache原理图解.md
+  - wiki/sources/MiniMax_vs_Kimi_注意力路线之争.md
+updated: '2026-11-16'
 aliases:
   - MLA
   - Multi-head Latent Attention
   - 多头潜在注意力
   - 概念_MLA多头潜在注意力
+  - 概念_MLA低秩KV压缩
+  - MLA低秩KV压缩
 ---
 
 # 概念_MLA_多头潜在注意力
@@ -50,6 +54,12 @@ MLA（Multi-Head Latent Attention，多头潜在注意力）是 DeepSeek 在 Dee
   $$\text{Score} = q'_{nope} \cdot (c_t^{KV})^T + q_{pe} \cdot (k_{pe})^T$$
   计算时 Key 不含多头维度 $H$，退化为矩阵广播计算，大幅节省了显存访问开销。
 - **Value 侧吸收**：计算输出时，直接将注意力权重与压缩潜向量相乘后，再经由 Value 升维矩阵 $W^{UV}$ 与输出矩阵 $W^O$ 联合变换。
+- **三处核心广播优化**：
+  | 计算位置 | 张量运算 | 广播优化原理 |
+  | :--- | :--- | :--- |
+  | 注意力权重 1 | `Q_rope @ K_rope^T` | `k_rope` 头维度 $H=1$，触发广播 |
+  | 注意力权重 2 | `Q_nope @ compressed_kv^T` | `compressed_kv` 不含头维度，触发广播 |
+  | 注意力输出 | `attn_weights @ compressed_kv` | `compressed_kv` 不含头维度，再吸收 $W^{UV}$ |
 
 ---
 
@@ -97,3 +107,5 @@ MLA（Multi-Head Latent Attention，多头潜在注意力）是 DeepSeek 在 Dee
   - [[sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe|来源：Attention Mechanisms in LLMs, clearly explained]]
   - [[sources/从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较|来源：从DeepSeek-V3到Kimi K2：八种现代 LLM 架构大比较]]
   - [[sources/2025年七大顶流大模型架构|来源：2025年七大顶流大模型架构]]
+  - [[sources/KV_Cache原理图解|来源：KV_Cache原理图解]]
+  - [[sources/MiniMax_vs_Kimi_注意力路线之争|来源：MiniMax_vs_Kimi_注意力路线之争]]

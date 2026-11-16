@@ -1,3 +1,20 @@
+## [2026-11-16] merge | 批量合并 5 组同义/重复概念页 (+ wiki/concepts/, wiki/entities/, wiki/sources/, wiki/index.md)
+- **Pair 1（MLA 注意力）**：`概念_MLA_多头潜在注意力` + `概念_MLA低秩KV压缩` → `概念_MLA_多头潜在注意力`
+  - 无损合并 `sources:`（追加 `KV_Cache原理图解.md`、`MiniMax_vs_Kimi_注意力路线之争.md`）、`aliases` 与三处广播优化表；全库 7 处双链替换完毕，删除被并页并剔除 `wiki/index.md` 冗余条目；
+- **Pair 2（MRL 套娃表示学习）**：`概念_Matryoshka表示学习` + `概念_MRL套娃表示学习` → `概念_Matryoshka表示学习`
+  - 无损合并 `sources:`（追加 `2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md`）、嵌套损失公式 $\mathcal{L}_{MRL}$、OpenAI `text-embedding-3-large` MTEB 对比及 SQ/BQ 正交压缩组合；补齐 `aliases`，全库 5 处双链替换完毕，删除被并页并同步 `wiki/index.md`；
+- **Pair 3（混合检索 / 融合检索）**：`概念_混合检索` + `概念_Fusion_Retrieval_融合检索` → `概念_混合检索`
+  - 无损合并 `sources:`（追加 `RAG高级优化_检索策略Fusion_HyDE.md`）、`alpha` 加权归一化规则与 RAG-Fusion 区分，补齐 `aliases`；全库 4 处引用页双链替换/去重完毕，删除被并页并同步 `wiki/index.md`；
+- **Pair 4（自适应快慢思考）**：`概念_自适应快慢思考` + `概念_CoT_自适应长短思考` → `概念_自适应快慢思考`
+  - 无损合并 `sources:`（追加 `腾讯混元TurboS技术报告.md`）、混元 TurboS 两阶段自适应 SFT 与 GRPO 奖励实证（Token 降为 R1 的 52.8%）；全库 6 处双链替换/去重完毕，删除被并页并同步 `wiki/index.md`；
+- **Pair 5（Delta Attention 增量注意力）**：`概念_Kimi_Delta_Attention_增量注意力` + `概念_Delta_Attention与增量矩阵缓存` → `概念_Kimi_Delta_Attention_增量注意力`
+  - 无损合并 `sources:`（追加 `2026-07-24_Delta-attention-in-Kimi-K3-to-fix-growing-KV-cache_19f962.md`）及 Kimi K3 Delta Rule（先读后写、只写差值）与混合交替架构，并修正原被并页直连 `raw/` 的越级链接问题；全库 2 处双链替换完毕，删除被并页并同步 `wiki/index.md`。
+
+## [2026-11-16] fix | 剥离 CaseStudy/data-agent 页面的冗余 AI-Agent/tool-calling 标签并完善 tags.json 描述
+- 移除 `wiki/sources/谈一谈最近对于Data Agent的学习.md` 与 `wiki/concepts/概念_Data_Agent_数据智能体.md` 中的 `AI-Agent/tool-calling` 标签，仅保留 `CaseStudy/data-agent`，保持场景案例与底层调用协议分支的正交隔离；
+- 同步更新 `wiki/index.md` 对应条目的标签标注；
+- 更新 `tags.json` 中 `CaseStudy` 分支的 `description`，补全 `personal-agent` 与 `data-agent` 双子域说明。
+
 ## [2026-11-16] ingest | raw/articles/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md -> wiki/sources/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md (+ concepts/概念_Agent_Skills元工具架构, concepts/概念_Skill误触发与漏触发评价, concepts/概念_Context_Rot_上下文衰退, entities/实体_通义千问, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 录入千问AI平台岳元关于投研智能体落地 37 个技能从“能跑”到“能用”的工程实战复盘，物理剪藏从 `Clippings/` 移动至 `raw/articles/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md` 归档；

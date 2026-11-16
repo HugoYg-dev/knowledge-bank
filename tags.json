@@ -90,7 +90,7 @@
       ]
     },
     "CaseStudy": {
-      "description": "Personal Agent 产品品类：以个人助理/私人智能体为核心形态的 AI 产品（产品设计、主动性、记忆与长期陪伴）",
+      "description": "行业与业务落地案例研究体系（涵盖 Personal Agent 私人智能体、Data Agent 数据智能体等实际应用复盘）",
       "leaves": [
         "personal-agent",
         "data-agent"

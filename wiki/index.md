@@ -7,7 +7,7 @@
 - [[智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手]] — 千问AI平台在AI投研平台落地37个Skill的工程实践：剖析平铺技能的三宗罪，提出三层专家套件架构（1+6+19）、范式式意图树切分、路由负样本机制及bad case驱动的规则代码化调优（AI-Agent/skill）
 - [[Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案]] — 面向 Antigravity CLI 的零侵入 PreInvocation Hook 方案：从 transcript_full.jsonl 逐字提取时间线与最近对话，重读活跃技能与源码，实现长会话压缩后无损状态回水（Rehydration）与跨 /fork 分支祖先历史溯源（AI-Agent/context-engineering）
 - [[Claude 的记忆怎么维护：Anthropic dreaming 机制与实现]] — Anthropic dreaming 机制深度解析：四层智能体记忆结构（Transcripts/Notes/Wiki/Injected Context）、Managed Agents 原生 Dreams 与 Dynamic Workflow 编排、评测证据及并发记忆防护工程实践（AI-Agent/memory）
-- [[谈一谈最近对于Data Agent的学习]] — Data Agent 落地经验与系统设计取舍总结：1.0版本范围定界、语义层资产化治理、受约束业务语义中间态、确定性引擎硬拦截与全链路可归因评测（CaseStudy/data-agent, AI-Agent/tool-calling）
+- [[谈一谈最近对于Data Agent的学习]] — Data Agent 落地经验与系统设计取舍总结：1.0版本范围定界、语义层资产化治理、受约束业务语义中间态、确定性引擎硬拦截与全链路可归因评测（CaseStudy/data-agent）
 - [[大模型推理引擎 vLLM 是什么？]] — 系统科普大模型推理引擎 vLLM 的核心架构与性能优化机制：剖析 KV Cache 显存占用根因，详解 PagedAttention 虚拟内存分页与块表寻址、前缀缓存复用、连续批处理与 Chunked Prefill 动态调度、FP8 权重量化与多卡切分，以及线上推理瓶颈指标与针对性调优策略（Infra/serving, LLM/inference）
 - [[AI编程的加速陷阱]] — 腾讯技术工程公众号分享：剖析 AI 编程中提交量暴增数十倍带来的加速陷阱，指出 AI 缺乏组织隐性知识与妥协能力导致状态空间无度膨胀，呼吁建立工程减速带与生成前收敛约束（AI-Agent/coding）
 - [[Super-agent 设计探索：迈向更自主的 Agent 系统]] — DeepSeek Harness 团队系统阐述 Super-agent 架构：以双层架构（Router/Worker）兼顾连续交互与高效并发，事件驱动两级过滤与 Thread 直通，Inline & Spill 与链式召回，全双工异步 ReAct，存算分离（BYOM）与外部 Watchdog 自愈回路（AI-Agent/multi-agent, AI-Agent/context-engineering, AI-Agent/coding）
@@ -360,7 +360,7 @@
 ## Concepts
 - [[concepts/概念_Post_Compact_Rehydration_压缩后状态回水]] — 智能体长会话上下文压缩后，通过外挂 Hook 或系统附件将真实历史请求、源码切片与活跃技能等关键 Ground Truth 自动回填至上下文的工程机制（AI-Agent/context-engineering）
 - [[concepts/概念_Dreaming_智能体离线记忆整理]] — Anthropic 提出的智能体离线记忆整理机制，通过后台回看日志与笔记修正错误并提炼结构化记忆（Wiki），改变后续任务的上下文注入而不修改模型权重（AI-Agent/memory）
-- [[concepts/概念_Data_Agent_数据智能体]] — 面向企业指标问数、经营分析与数据探索的 AI 智能体范式，核心在于业务语义资产化、自然语言至受约束中间态受控翻译、确定性执行引擎硬兜底与全链路可归因评测（CaseStudy/data-agent, AI-Agent/tool-calling）
+- [[concepts/概念_Data_Agent_数据智能体]] — 面向企业指标问数、经营分析与数据探索的 AI 智能体范式，核心在于业务语义资产化、自然语言至受约束中间态受控翻译、确定性执行引擎硬兜底与全链路可归因评测（CaseStudy/data-agent）
 - [[concepts/概念_PagedAttention_分页注意力]] — 借鉴操作系统虚拟内存分页思想的大模型显存管理机制，通过块表将连续逻辑 KV Cache 映射至离散物理块，彻底消除显存碎片与预留浪费（Infra/serving, LLM/inference）
 - [[concepts/概念_Super_Agent_超级智能体]] — 常驻 Router 协调分派与独立 Worker 执行解耦、跨入口跨工作环境且能代表用户持续推进复杂长程任务的智能体架构形态与产品范式（AI-Agent/multi-agent, AI-Agent/UI）
 - [[concepts/概念_Career_Capital_职业资本]] — 由 Cal Newport 提出的职业发展核心概念，指在劳动市场中稀缺且具有高度价值的专业技能、交付声誉与人脉网络；它是职场人获取自主权、高议价能力与将薪资现金流跃迁为资产所有权的根本基石（Life）
@@ -372,7 +372,7 @@
 - [[concepts/概念_Decision_Model_专用判断模型]] — 将分类选择与概率估计从自回归生成中解耦的轻量级模型或接口，通过单次前向提取选项 Logits 映射概率分布，服务于 Agent 高频状态机跳转与动作决策（LLM/inference, AI-Agent/tool-calling）
 - [[概念_LLM模型路由]] — 在 LLM 网关层依据输入复杂度动态分流请求的机制及其与 Prefix Cache、Agent 维护成本间的权衡（LLM/inference, Infra/serving）
 - [[概念_RLCD校准决策强化学习]] — 面向判别式决策的置信度校准强化学习范式（LLM/training, AI-Agent/tool-calling）
-- [[concepts/概念_Kimi_Delta_Attention_增量注意力|概念_Kimi_Delta_Attention]] — KDA：channel-wise gate 线性注意力机制（LLM/arch/attention）
+- [[concepts/概念_Kimi_Delta_Attention_增量注意力|概念_Kimi_Delta_Attention]] — KDA 通道级门控线性注意力与 Kimi K3 固定矩阵增量缓存（Delta Rule 先读后写只写差值）（LLM/arch/attention, LLM/inference）
 
 - [[概念_SAG_动态超边结构化检索增强生成]] — 基于查询时动态超边的 SQL 检索增强生成架构（SAG），通过入库时抽取事项与实体存入关系型数据库并在查询时利用 SQL JOIN 动态激活局部多跳关联，克服传统向量 RAG 多跳断链与 GraphRAG 离线建图成本高昂的痛点（RAG/retrieval, RAG/query）
 
@@ -382,7 +382,6 @@
 - [[概念_AI原生思维]] — 以模型能力边界为锚点、围绕 Agent 特性重构研发流程并建立个体持续自收敛反馈循环的系统化方法论（AI-Agent/coding, AI-Agent/skill）
 
 - [[概念_GQA_分组查询注意力]] — GQA（Grouped-Query Attention）分组共享单组 Key/Value 头，在大幅缩减 KV Cache 显存开销的同时保留接近 MHA 的建模表达力，是现代开源 LLM 的基准注意力架构（LLM/arch/attention, LLM/inference）
-- [[概念_MRL套娃表示学习]] — MRL（Matryoshka Representation Learning）在训练阶段优化多粒度前缀嵌套损失，使向量前 n 维天然保持独立高质量语义，支持推理期免微调按需物理截断维度（RAG/embedding）
 
 - [[概念_事实性存储与提取分离诊断范式]] — 区分大模型事实性错误中存储失败（知识未编码进权重）与访问失败（权重已存但提问无法取出）的诊断范式，提供两把尺子测评方法与四阶工程排查阶梯（LLM/hallucination, LLM/reasoning）
 
@@ -480,7 +479,6 @@
 - [[概念_文档结构切分]] — Level 3 适配 JSON/Markdown/代码等格式
 - [[概念_语义切分]] — Level 4 向量差异超阈值切分，四种阈值方法
 - [[概念_问题生成检索增强]] — LLM 为文本片段生成问题，增强向量检索匹配
-- [[概念_Fusion_Retrieval_融合检索]] — 稀疏(BM25)+稠密(向量)双路检索融合
 - [[概念_RRF_互易秩融合]] — RRF 排序融合多路检索结果
 - [[概念_BM25_最佳匹配25算法]] — 经典稀疏检索算法，词频+文档长度惩罚
 - BM25检索算法 — 定义 BM25 基石地位，数学公式拆解（IDF/TF饱和度/文档长度惩罚）与混合检索架构（RAG）
@@ -491,7 +489,7 @@
 - [[概念_子查询分解]] — 复杂查询拆为子查询分别检索再合并
 - [[概念_Step_Back_回退提示]] — 退一步生成更抽象的查询获取更广泛上下文
 - Markdown标题切分 — 按 Markdown 标题层级结构化切分文档
-- [[概念_Matryoshka表示学习]] — MRL 嵌套学习多粒度表征，可截断维度保留语义
+- [[概念_Matryoshka表示学习]] — MRL 嵌套前缀损失训练多粒度表征，支持推理期免微调截断与 SQ/BQ 正交压缩（RAG/embedding, RAG/retrieval）
 - [[概念_Sparse_Embedding_稀疏向量嵌入]] — 关键词式稀疏向量（TF-IDF/BM25/SPLADE）
 - [[概念_Dense_Embedding_稠密向量嵌入]] — 语义级稠密向量，通用语义搜索首选
 - [[概念_Quantized_Embedding_量化向量嵌入]] — float32→int8 压缩，省内存磁盘
@@ -568,8 +566,7 @@
 - [[概念_MoE_Router_专家路由门控网络]] — Top-k 门控网络/路由机制，决定 Token 路由到哪些专家（LLM/arch/MoE）
 - [[概念_MoE负载均衡]] — 噪声 Top-k / 辅助损失 / 专家容量限制防止专家坍塌（LLM/arch/MoE）
 - [[概念_Mamba_混合架构]] — Hybrid Transformer-Mamba：AMF/MF 交错模块，O(n) 长序列处理（LLM/arch/Mamba, LLM/arch/MoE）
-- [[概念_CoT_自适应长短思考]] — 根据问题复杂度自动切换快速/深度推理模式（LLM/arch）
-- [[概念_MLA_多头潜在注意力]] — K/V 压缩进低维潜在空间，KV Cache 最小化（LLM/arch）
+- [[概念_MLA_多头潜在注意力]] — K/V 压缩进低维潜在空间与矩阵吸收，KV Cache 压缩至 MHA 的 5%–13%（LLM/arch/attention, LLM/inference）
 - [[概念_滑动窗口注意力]] — 局部注意力机制，大幅降低 KV Cache 内存（LLM/arch）
 - [[概念_QK_Norm_注意力查询键归一化]] — Q/K 在 RoPE 前各加 RMSNorm，稳定大模型训练（LLM/arch）
 - [[概念_NoPE无位置嵌入]] — 不使用位置编码，因果掩码隐式学习序列顺序（LLM/arch）
@@ -584,7 +581,6 @@
 
 ### LLM/arch/attention + inference（批次3）
 - [[概念_线性注意力与混合注意力]] — Linear Attention O(N)、Hybrid 3:1 路线及行业现状（LLM/arch/attention）
-- [[概念_MLA低秩KV压缩]] — DeepSeek MLA：低秩压缩 + 矩阵吸收广播优化（LLM/arch/attention）
 
 ### LLM/inference + reasoning（批次4）
 - [[概念_量化]] — 通过降低权重和激活值的数据位宽以显著减少模型显存占用及加速推理的技术 (LLM/inference)
@@ -592,7 +588,7 @@
 - [[概念_混合精度训练]] — BF16/FP32混合训练流程，16 bytes/参数显存估算（LLM/inference）
 - [[概念_LoRA与QLoRA显存]] — LoRA 2Φ、QLoRA 0.5Φ显存估算原理（LLM/inference, 面试）
 - [[概念_CoT_高级思维链方法]] — CoT/CoT-SC/Decoding CoT/ToT+MCTS 及成本权衡（LLM/reasoning）
-- [[概念_自适应快慢思考]] — 三方案：Qwen3 SFT、AdaCoT Pareto、AdaThinking 约束优化（LLM/reasoning）
+- [[概念_自适应快慢思考]] — Qwen3 SFT、AdaCoT Pareto、AdaThinking 约束优化与混元 TurboS 自适应长短 CoT（LLM/reasoning, LLM/training/RL）
 - [[概念_LLM推理两阶段]] — 对比 Prefill 与 Decode 硬件瓶颈，详细介绍 Continuous Batching、Speculative Decoding、PagedAttention 三大优化方案。（LLM/inference）
 
 ### LLM/reasoning + training/RL（批次5）
@@ -650,7 +646,6 @@
 - [[概念_Ingest入库闭环]] — LLM Wiki 范式中的标准化入库 SOP 操作（阅读/摘要/实体概念联动/索引日志）（Skill/knowledge-bank, AI-Agent/coding）
 - Wiki健康检查 — LLM Wiki 范式中的 Lint 体检与图谱垃圾回收（Skill/knowledge-bank, AI-Agent/coding）
 - [[概念_Claude_Code多智能体协同机制]] — 拆解并对比 Claude Code 的三大协同原语（Subagents、Agent Teams、Dynamic Workflows），详述动态工作流在 JS 编排执行、并发扇出、上下文解耦和抗灾恢复力方面的机制，并阐述对抗性验证（Adversarial Verification）的收敛逻辑。（ClaudeCode, Multi-Agent, Orchestration）
-- [[概念_Delta_Attention与增量矩阵缓存]] — Kimi K3 采用的注意力优化机制，使用固定大小矩阵与 Delta 规则更新，实现线性计算与 $O(1)$ 空间开销
 - [[概念_Pinball_Loss_分位数回归]] — 弹球损失（Pinball Loss）的定义与不对称几何拉伸推导，及多 percentile 回归与 LightGBM 区间估算的工程价值。（machine-learning, regression, loss-function）
 - [[概念_Agent内存与状态管理]] — 深度对比 State 与 Memory 两个维度的定义与作用边界，构建在宿主系统（Harness Engineering）中单步 Checkpoint 与 Scope 隔离的协作逻辑。（AI-Agent/harness, AI-Agent/memory, state-management）
 

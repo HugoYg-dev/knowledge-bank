@@ -35,9 +35,9 @@ Quantized Embedding（量化嵌入，主要指标量量化 Scalar Quantization, 
 
 ## 与正交技术的组合范式
 
-- **与 MRL 串联**：可先利用 [[concepts/概念_MRL套娃表示学习|MRL]] 将高维嵌入在推理期截断（如 1536 维截断至 256 维），再对前缀向量进行 Int8 标量量化，同时在“维度数量”与“单维比特数”两个维度实现复合压缩。
+- **与 MRL 串联**：可先利用 [[concepts/概念_Matryoshka表示学习|MRL]] 将高维嵌入在推理期截断（如 1536 维截断至 256 维），再对前缀向量进行 Int8 标量量化，同时在“维度数量”与“单维比特数”两个维度实现复合压缩。
 
 ## 关联
 
-- 相关概念：[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Binary_Embedding_二进制向量嵌入]]、[[concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]、[[概念_向量量化]]
+- 相关概念：[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Binary_Embedding_二进制向量嵌入]]、[[concepts/概念_Matryoshka表示学习|概念_Matryoshka表示学习]]、[[概念_向量量化]]
 - 来源：[[从BM25到Multi-Vector_6种Embedding演进路线]]、[[ES企业AI搜索实践]]、[[向量数据库原理与应用全解析]]、[[wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md]]

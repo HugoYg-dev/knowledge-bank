@@ -72,7 +72,7 @@ GRPO（Group Relative Policy Optimization，组相对策略优化）是 DeepSeek
 
 ## 关联概念
 
-- [[概念_CoT_自适应长短思考]] — GRPO 的应用之一
+- [[概念_自适应快慢思考]] — GRPO 的应用之一
 - [[概念_RLVR_可验证奖励强化学习]] — 可自动验证奖励的 RL
 - [[概念_PPO_近端策略优化]] — GRPO 的前身
 - [[实体_腾讯混元TurboS]] — 应用模型

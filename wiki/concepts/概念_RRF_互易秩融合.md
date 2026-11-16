@@ -56,6 +56,6 @@ score(d) = Σ 1 / (k + rank_i(d) + 1)
 
 ## 关联
 
-- 相关概念：[[概念_RAG_Fusion_多查询融合生成]]、[[概念_Fusion_Retrieval_融合检索]]、[[概念_混合检索]]
+- 相关概念：[[概念_RAG_Fusion_多查询融合生成]]、[[概念_混合检索]]
 - 实体：[[实体_Elasticsearch]]、[[entities/实体_zvec-grep|实体_zvec-grep]]
 - 来源：[[sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施]]、[[RAG高级优化_检索策略Fusion_HyDE]]、[[ES企业AI搜索实践]]

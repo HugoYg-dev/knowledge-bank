@@ -39,5 +39,5 @@ Binary Embedding（二值量化嵌入，BQ）将连续浮点向量二值化为 0
 
 ## 关联
 
-- 相关概念：[[概念_Quantized_Embedding_量化向量嵌入]]、[[concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]、[[概念_PCA_主成分分析|概念_主成分分析_PCA]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_向量量化]]
+- 相关概念：[[概念_Quantized_Embedding_量化向量嵌入]]、[[concepts/概念_Matryoshka表示学习|概念_Matryoshka表示学习]]、[[概念_PCA_主成分分析|概念_主成分分析_PCA]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_向量量化]]
 - 来源：[[从BM25到Multi-Vector_6种Embedding演进路线]]、[[wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md]]

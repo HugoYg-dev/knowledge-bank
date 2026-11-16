@@ -75,7 +75,7 @@ aliases:
 ## 关联
 
 - [[概念_Prompt工程方法]]
-- [[概念_CoT_自适应长短思考]]
+- [[概念_自适应快慢思考]]
 - Decoding_CoT
 - ToT树状推理
 - Agent推理规划

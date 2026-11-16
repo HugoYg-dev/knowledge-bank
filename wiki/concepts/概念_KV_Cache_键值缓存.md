@@ -133,7 +133,7 @@ $$\text{KV Cache 容量} = 2 \times \text{layers} \times \text{kv\_heads} \times
 - [[入局AI_Infra系统设计与挑战]]（来源）
 - [[KV_Cache原理图解]]（详细图解来源）
 - [[sources/2026-08-27_KV-vs-Prefix-vs-Prompt-vs-Semantic-Caching_1a044d0b132124de]]（来源）
-- [[概念_MLA低秩KV压缩]]
+- [[概念_MLA_多头潜在注意力]]
 - [[MiniMax_vs_Kimi_注意力路线之争]]
 - [[entities/实体_vLLM]]
 - [[概念_自注意力复杂度]]
@@ -141,7 +141,7 @@ $$\text{KV Cache 容量} = 2 \times \text{layers} \times \text{kv\_heads} \times
 - [[概念_LMCache_解耦式KV缓存]]
 - [[概念_SparDA预测式KV缓存预取]]
 - [[2026-05-03_How-LLM-inference-works-internally_19deee]]
-- [[概念_Delta_Attention与增量矩阵缓存]]
+- [[concepts/概念_Kimi_Delta_Attention_增量注意力]]
 - [[概念_KV_跨模型缓存转换]]
 - [[概念_GQA_分组查询注意力]]
 - [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]

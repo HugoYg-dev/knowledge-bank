@@ -65,7 +65,7 @@ updated: '2026-07-01'
 ## 关联
 
 - [[概念_线性注意力与混合注意力]] — Linear Attention、Hybrid Attention 架构原理
-- [[概念_MLA低秩KV压缩]] — DeepSeek MLA 技术
+- [[概念_MLA_多头潜在注意力]] — DeepSeek MLA 技术
 - [[概念_KV_Cache_键值缓存]] — KV Cache 原理与内存占用
 - [[实体_MiniMax_M2]] — MiniMax 回归 Full Attention 的 Agent 模型
 - [[实体_Kimi_Linear]] — 月之暗面开源混合注意力模型

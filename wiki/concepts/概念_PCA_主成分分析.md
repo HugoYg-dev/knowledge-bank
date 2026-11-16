@@ -92,11 +92,11 @@ plt.show()
 在 RAG 与大规模向量检索中，PCA 常被用作训练后（Post-training）的线性降维压缩技术：
 - **维度削减与显存收益**：从代表性语料的向量集合中拟合出方差最大的主成分方向，将 1536 维等稠密向量投影到更低维度（如 256 或 512 维），降低向量数据库内存开销 3x–6x；
 - **强一致性要求**：PCA 投影矩阵必须**严格且一致地同时应用于已建索引的库内向量与在线查询（Query）向量**，否则相似度度量完全失效；
-- **与 MRL 的范式对比**：PCA 属于训练后线性近似，可直接作用于任何现成的黑盒 Embedding 模型；而 [[concepts/概念_MRL套娃表示学习|MRL（套娃表示学习）]] 属于训练期内生优化目标，截断时不损失非线性深层语义，综合检索精度通常显著优于后处理 PCA。
+- **与 MRL 的范式对比**：PCA 属于训练后线性近似，可直接作用于任何现成的黑盒 Embedding 模型；而 [[concepts/概念_Matryoshka表示学习|MRL（套娃表示学习）]] 属于训练期内生优化目标，截断时不损失非线性深层语义，综合检索精度通常显著优于后处理 PCA。
 
 ---
 
 ## 关联
 
-- **相关概念**: [[concepts/概念_MRL套娃表示学习|概念_MRL套娃表示学习]]、[[concepts/概念_Quantized_Embedding_量化向量嵌入|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding_二进制向量嵌入|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
+- **相关概念**: [[concepts/概念_Matryoshka表示学习|概念_Matryoshka表示学习]]、[[concepts/概念_Quantized_Embedding_量化向量嵌入|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding_二进制向量嵌入|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
 - **相关来源**: [[wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md]]

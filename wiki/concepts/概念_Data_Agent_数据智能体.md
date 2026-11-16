@@ -2,7 +2,6 @@
 type: "concept"
 tags:
   - "CaseStudy/data-agent"
-  - "AI-Agent/tool-calling"
 summary: "数据智能体（Data Agent）是面向企业指标问数、经营分析与数据探索的 AI 智能体范式，核心在于业务语义资产化、自然语言至中间受约束表达的受控翻译、确定性执行引擎硬兜底与全链路可归因评测。"
 aliases:
   - "Data Agent"

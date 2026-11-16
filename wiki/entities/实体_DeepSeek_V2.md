@@ -32,7 +32,7 @@ updated: '2026-06-29'
 
 ## 参见
 
-- [[概念_MLA低秩KV压缩]]
+- [[概念_MLA_多头潜在注意力]]
 - [[DeepSeek_MLA矩阵吸收原理]]
 - [[实体_Kimi_Linear]]
 - [[从DeepSeek-V3到Kimi_K2_八种现代LLM架构大比较]]

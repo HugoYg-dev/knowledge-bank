@@ -37,5 +37,5 @@ Sparse Embedding（关键词式稀疏向量）将文本表示为高维稀疏向�
 
 ## 关联
 
-- 相关概念：[[概念_BM25_最佳匹配25算法]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_Fusion_Retrieval_融合检索]]
+- 相关概念：[[概念_BM25_最佳匹配25算法]]、[[概念_Dense_Embedding_稠密向量嵌入]]、[[概念_混合检索]]
 - 来源：[[从BM25到Multi-Vector_6种Embedding演进路线]]
