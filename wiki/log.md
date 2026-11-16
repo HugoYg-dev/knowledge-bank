@@ -1,3 +1,28 @@
+## [2026-11-16] ingest | raw/articles/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md -> wiki/sources/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md (+ concepts/概念_Agent_Skills元工具架构, concepts/概念_Skill误触发与漏触发评价, concepts/概念_Context_Rot_上下文衰退, entities/实体_通义千问, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入千问AI平台岳元关于投研智能体落地 37 个技能从“能跑”到“能用”的工程实战复盘，物理剪藏从 `Clippings/` 移动至 `raw/articles/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md` 归档；
+  - 创建来源摘要 `wiki/sources/智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手.md`，标签选用白名单：`tags: ["AI-Agent/skill"]`；
+  - 核心提炼：运行时组件视角（常驻索引/按需知识/外部代码护栏）、意图层范式切分消除黑洞意图、映射配置与 Few-shot 确定性收益、三层专家套件（1+6+19）DRY 架构（节省 80% Token 并保障高 KV Cache 复用）、Description 负样本（不适用场景）路由铁律、bad case 驱动五步法与“约束代码化”、以及三层评测闭环（L0 用例过滤、Pass^k 门禁与端到端 CLI 工具）；
+- **联动深化既有概念与实体**：
+  - `concepts/概念_Agent_Skills元工具架构`：Frontmatter `sources:` 追加新来源，正文增补专节《生产级三层套件架构与调优范式（阿里千问实践）》；
+  - `concepts/概念_Skill误触发与漏触发评价`：Frontmatter `sources:` 追加新来源，正文增补专节《负样本机制与路由调优实证（阿里千问实践）》；
+  - `concepts/概念_Context_Rot_上下文衰退`：Frontmatter `sources:` 追加新来源，解决策略增补三层套件解耦削减 80% 上下文防衰退机制；
+  - `entities/实体_通义千问`：Frontmatter `sources:` 追加新来源，增补专节《智能体 Skill 工程体系实践（千问AI平台）》；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手]]`。
+
+## [2026-11-16] ingest | raw/articles/Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案.md -> wiki/sources/Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案.md (+ concepts/概念_Post_Compact_Rehydration_压缩后状态回水, entities/实体_Antigravity, concepts/概念_上下文工程, concepts/概念_Context_Rot_上下文衰退, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入面向 Antigravity CLI 的零侵入 PreInvocation Hook 方案，物理剪藏从 `Clippings/` 移动至 `raw/articles/Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案.md` 归档；
+  - 创建来源摘要 `wiki/sources/Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案.md`，标签选用白名单：`tags: ["AI-Agent/context-engineering"]`；
+  - 核心提炼：原生压缩失忆根因与 Claude Code 对标（`<CONTEXT_SUMMARY>` 是有损的，但底层 transcript_full.jsonl 和源码是 100% 无损 Ground Truth）、PreInvocation 增量尾扫毫秒级短路与存量会话守卫（FRESH_CHECKPOINT_MAX_GAP=8）、跨 /fork 祖先会话链自动溯源与分叉隔离、四层无损回水结构与严格 Token 预算（85K–130K 字符，仅占 256K 窗口约 12%–15%）、以及 protojson 类型避坑与 Fail-Open 安全边界；
+- **新建核心概念与实体**：
+  - `concepts/概念_Post_Compact_Rehydration_压缩后状态回水`：新建概念页，系统阐述状态回水定义、Ground Truth 设计哲学、Claude Code vs Antigravity 工业方案对比、四层回水预算与工程防护纪律；
+  - `entities/实体_Antigravity`：新建实体页，介绍 Google AI Coding Agent CLI 工具 agy、运行时会话组织、Hooks 扩展机制与上下文压缩机制；
+- **联动深化既有概念**：
+  - `concepts/概念_上下文工程`：Frontmatter `sources:` 追加新来源，正文增补专节《压缩后状态回水范式（Post-Compact Rehydration：Claude Code 与 Antigravity 实践）》；
+  - `concepts/概念_Context_Rot_上下文衰退`：Frontmatter `sources:` 追加新来源，解决策略增补压缩后状态回水机制；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案]]`、`[[concepts/概念_Post_Compact_Rehydration_压缩后状态回水]]` 与 `[[entities/实体_Antigravity]]`。
+
 ## [2026-11-12] ingest | raw/articles/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md -> wiki/sources/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md (+ concepts/概念_Dreaming_智能体离线记忆整理, concepts/概念_Agent三层记忆体系, entities/实体_Anthropic, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 录入老潘（oldpan博客）对 Anthropic 研究《The components of agent memory》的深度解析，物理剪藏从 `Clippings/` 移动至 `raw/articles/Claude 的记忆怎么维护：Anthropic dreaming 机制与实现.md` 归档；

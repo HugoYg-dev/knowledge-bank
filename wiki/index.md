@@ -4,6 +4,8 @@
 
 ## Sources
 
+- [[智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手]] — 千问AI平台在AI投研平台落地37个Skill的工程实践：剖析平铺技能的三宗罪，提出三层专家套件架构（1+6+19）、范式式意图树切分、路由负样本机制及bad case驱动的规则代码化调优（AI-Agent/skill）
+- [[Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案]] — 面向 Antigravity CLI 的零侵入 PreInvocation Hook 方案：从 transcript_full.jsonl 逐字提取时间线与最近对话，重读活跃技能与源码，实现长会话压缩后无损状态回水（Rehydration）与跨 /fork 分支祖先历史溯源（AI-Agent/context-engineering）
 - [[Claude 的记忆怎么维护：Anthropic dreaming 机制与实现]] — Anthropic dreaming 机制深度解析：四层智能体记忆结构（Transcripts/Notes/Wiki/Injected Context）、Managed Agents 原生 Dreams 与 Dynamic Workflow 编排、评测证据及并发记忆防护工程实践（AI-Agent/memory）
 - [[谈一谈最近对于Data Agent的学习]] — Data Agent 落地经验与系统设计取舍总结：1.0版本范围定界、语义层资产化治理、受约束业务语义中间态、确定性引擎硬拦截与全链路可归因评测（CaseStudy/data-agent, AI-Agent/tool-calling）
 - [[大模型推理引擎 vLLM 是什么？]] — 系统科普大模型推理引擎 vLLM 的核心架构与性能优化机制：剖析 KV Cache 显存占用根因，详解 PagedAttention 虚拟内存分页与块表寻址、前缀缓存复用、连续批处理与 Chunked Prefill 动态调度、FP8 权重量化与多卡切分，以及线上推理瓶颈指标与针对性调优策略（Infra/serving, LLM/inference）
@@ -356,6 +358,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Post_Compact_Rehydration_压缩后状态回水]] — 智能体长会话上下文压缩后，通过外挂 Hook 或系统附件将真实历史请求、源码切片与活跃技能等关键 Ground Truth 自动回填至上下文的工程机制（AI-Agent/context-engineering）
 - [[concepts/概念_Dreaming_智能体离线记忆整理]] — Anthropic 提出的智能体离线记忆整理机制，通过后台回看日志与笔记修正错误并提炼结构化记忆（Wiki），改变后续任务的上下文注入而不修改模型权重（AI-Agent/memory）
 - [[concepts/概念_Data_Agent_数据智能体]] — 面向企业指标问数、经营分析与数据探索的 AI 智能体范式，核心在于业务语义资产化、自然语言至受约束中间态受控翻译、确定性执行引擎硬兜底与全链路可归因评测（CaseStudy/data-agent, AI-Agent/tool-calling）
 - [[concepts/概念_PagedAttention_分页注意力]] — 借鉴操作系统虚拟内存分页思想的大模型显存管理机制，通过块表将连续逻辑 KV Cache 映射至离散物理块，彻底消除显存碎片与预留浪费（Infra/serving, LLM/inference）
@@ -653,6 +656,7 @@
 
 ## Entities
 
+- [[entities/实体_Antigravity]] — Google 推出的专业级 AI Coding Agent 与开发环境（CLI 工具 agy），支持深度项目编排、Hooks 扩展机制与长程会话管理（AI-Agent/coding, AI-Agent/context-engineering）
 - [[entities/实体_magpie]] — yetone 发起的开源本地 LLM 网关项目，以全 AI Agent 编写、审查、合并与发版闭环及错题本硬规则晋升机制为核心特征（AI-Agent/coding）
 - [[entities/实体_HiRoute]] — 阿里云开源的运行在本地的 Agent 智能路由器，支持多场景路由计划、System One 三问决策、缓存感知与自适应信任度调整（LLM/inference, AI-Agent/tool-calling）
 - [[entities/实体_ms-swift]] — 魔搭 ModelScope 团队开源的大模型轻量微调与推理框架，提供决策模型全套损失函数、精度管理与两级温度标定闭环（LLM/training/post-train, Infra/training, Skill/python）
