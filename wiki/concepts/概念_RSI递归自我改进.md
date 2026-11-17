@@ -25,7 +25,8 @@ sources:
 - wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子.md
 - wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
 - wiki/sources/Piccolo：递归自我进化的决策模型.md
-updated: '2026-11-06'
+- wiki/sources/RSI，先会verify的模型先享受.md
+updated: '2026-11-17'
 ---
 
 # 概念：RSI递归自我改进
@@ -56,7 +57,8 @@ updated: '2026-11-06'
 - **外部验证锚（External Verifier Anchor）**：评估器、编译器及安全权限必须独立于可进化系统之外，严禁系统篡改自身裁判标准；
 - **防分布坍缩（Anti-Collapse）**：防止自生成数据循环迭代导致的表征多样性衰减与自我确认偏见；
 - **深层算法突破难度**：当前智能体在工作流工程优化上表现突出，但在重写核心机器学习训练算法上仍显薄弱（如 AI4AI-Bench 仅 0.250）；
-- **对齐与复杂度治理**：伴随自进化出现的死代码累积、逻辑膨胀以及由于缺乏元认知循环导致的不可审计风险。
+- **对齐与复杂度治理**：伴随自进化出现的死代码累积、逻辑膨胀以及由于缺乏元认知循环导致的不可审计风险；
+- **验证能力与生成能力解耦**：在缺乏客观外部裁判的开放任务中，模型的验证能力不会随生成能力自动提升（生成 $\ne$ 验证），需要通过独立的 [[concepts/概念_Self_Verification_模型自验证|Self-Verification]] 与多轮验证闭环（如 ReVeal 奖励测试验证、SCoRe 两阶段自纠错 RL、RepExp 多样性探索）专项训练（见 DeepSeek-V4.1-Flash-1017 自反馈 RL 与 Gemini 4 Carbon Extended Verification Loops）。
 
 ## 工业级实践注记
 
@@ -141,5 +143,6 @@ updated: '2026-11-06'
 - [[wiki/sources/深度剖析 DeepSeek 最新的 Harness DSH：为了自进化这盘醋包了一整盘饺子]]
 - [[wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]]
 - [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]
-- 关联概念：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Loop_Engineering循环工程]]、[[concepts/概念_Agent系统自动优化闭环]]
+- [[wiki/sources/RSI，先会verify的模型先享受|RSI，先会 verify 的模型先享受]]
+- 关联概念：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Loop_Engineering循环工程]]、[[concepts/概念_Agent系统自动优化闭环]]、[[concepts/概念_Self_Verification_模型自验证]]
 - 关联实体：[[entities/实体_DeepSeek_Harness]]、[[entities/实体_Cordis]]、[[entities/实体_AutoResearch]]、[[entities/实体_美团]]、[[entities/实体_Codex]]、[[entities/实体_Piccolo]]

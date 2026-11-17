@@ -1,3 +1,14 @@
+## [2026-11-17] ingest | raw/articles/RSI，先会verify的模型先享受.md -> wiki/sources/RSI，先会verify的模型先享受.md (+ concepts/概念_Self_Verification_模型自验证, concepts/概念_RSI递归自我改进, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入李rumor关于 RSI 时代模型自验证与验证闭环 RL 训练的综述分析，物理剪藏从 `Clippings/` 移动至 `raw/articles/RSI，先会verify的模型先享受.md` 归档；
+  - 创建来源摘要 `wiki/sources/RSI，先会verify的模型先享受.md`，标签选用白名单：`tags: ["RSI", "LLM/training/RL"]`；
+  - 核心提炼：生成能力不等于验证能力（ICML 2026 Math RL 对比实验与 1,545 题错误前缀续写实验）、验证闭环三类 RL 奖励设计（ReVeal 奖励测试与改进归因、SCoRe 两阶段自纠错 RL、RepExp 隐藏表示多样性探索），以及从单轮 LLM-as-Judge 向多轮交互 Trajectory 优化的演进趋势；
+- **新建核心概念**：
+  - `concepts/概念_Self_Verification_模型自验证`：新建概念页，系统阐述模型自验证与验证闭环（Verification Loop）定义、生成与验证分离规律及 ReVeal / SCoRe / RepExp 三类 RL 训练机制；
+- **联动深化既有概念**：
+  - `concepts/概念_RSI递归自我改进`：Frontmatter `sources:` 追加新来源，核心挑战部分增补“验证能力与生成能力解耦”要点；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[RSI，先会verify的模型先享受]]` 与 `[[concepts/概念_Self_Verification_模型自验证]]`。
+
 ## [2026-11-16] merge | 批量合并 5 组同义/重复概念页 (+ wiki/concepts/, wiki/entities/, wiki/sources/, wiki/index.md)
 - **Pair 1（MLA 注意力）**：`概念_MLA_多头潜在注意力` + `概念_MLA低秩KV压缩` → `概念_MLA_多头潜在注意力`
   - 无损合并 `sources:`（追加 `KV_Cache原理图解.md`、`MiniMax_vs_Kimi_注意力路线之争.md`）、`aliases` 与三处广播优化表；全库 7 处双链替换完毕，删除被并页并剔除 `wiki/index.md` 冗余条目；

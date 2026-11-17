@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[RSI，先会verify的模型先享受]] — 李rumor探讨 RSI 时代模型自验证（Self-Verification）与多轮验证闭环（Verification Loop）的必要性及 RL 训练方法：剖析“生成 != 验证”实验与错误前缀恢复能力，系统拆解 ReVeal（奖励测试验证）、SCoRe（两阶段自纠错 RL）与 RepExp（表征差异探索奖励）三类闭环奖励设计（RSI, LLM/training/RL）
 - [[智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手]] — 千问AI平台在AI投研平台落地37个Skill的工程实践：剖析平铺技能的三宗罪，提出三层专家套件架构（1+6+19）、范式式意图树切分、路由负样本机制及bad case驱动的规则代码化调优（AI-Agent/skill）
 - [[Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案]] — 面向 Antigravity CLI 的零侵入 PreInvocation Hook 方案：从 transcript_full.jsonl 逐字提取时间线与最近对话，重读活跃技能与源码，实现长会话压缩后无损状态回水（Rehydration）与跨 /fork 分支祖先历史溯源（AI-Agent/context-engineering）
 - [[Claude 的记忆怎么维护：Anthropic dreaming 机制与实现]] — Anthropic dreaming 机制深度解析：四层智能体记忆结构（Transcripts/Notes/Wiki/Injected Context）、Managed Agents 原生 Dreams 与 Dynamic Workflow 编排、评测证据及并发记忆防护工程实践（AI-Agent/memory）
@@ -358,6 +359,7 @@
 - [[2026-08-10_Cross-model-KV-cache-transfer-in-LLM-families_19febef2c6003814]] — 介绍同一模型家族内的 KV Cache 跨模型转换：通过跨层线性映射复用既有 Prefill 计算，并明确其跨家族与异构 KV 配置尚未验证。（LLM/inference, Infra/serving）
 
 ## Concepts
+- [[concepts/概念_Self_Verification_模型自验证]] — 大模型在不依赖外部标准答案时自主检验产物正误并驱动多轮纠错改进（Verification Loop）的能力与强化学习训练范式，涵盖生成与验证分离规律及 ReVeal、SCoRe、RepExp 三类奖励机制（LLM/training/RL, RSI）
 - [[concepts/概念_Post_Compact_Rehydration_压缩后状态回水]] — 智能体长会话上下文压缩后，通过外挂 Hook 或系统附件将真实历史请求、源码切片与活跃技能等关键 Ground Truth 自动回填至上下文的工程机制（AI-Agent/context-engineering）
 - [[concepts/概念_Dreaming_智能体离线记忆整理]] — Anthropic 提出的智能体离线记忆整理机制，通过后台回看日志与笔记修正错误并提炼结构化记忆（Wiki），改变后续任务的上下文注入而不修改模型权重（AI-Agent/memory）
 - [[concepts/概念_Data_Agent_数据智能体]] — 面向企业指标问数、经营分析与数据探索的 AI 智能体范式，核心在于业务语义资产化、自然语言至受约束中间态受控翻译、确定性执行引擎硬兜底与全链路可归因评测（CaseStudy/data-agent）
