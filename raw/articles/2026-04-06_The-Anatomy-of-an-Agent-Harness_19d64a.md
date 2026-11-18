@@ -43,7 +43,7 @@ That infrastructure has a name now: the agent harness.
 
 The term was formalized in early 2026, but the concept existed long before.
 
-The harness is the complete software infrastructure wrapping an LLM, including the orchestration loop, tools, memory, context management, state persistence, error handling, and guardrails.
+**==🟡The harness is the complete software infrastructure wrapping an LLM, including the orchestration loop, tools, memory, context management, state persistence, error handling, and guardrails.==**
 
 Anthropic’s Claude Code documentation puts it simply: the SDK is “the agent harness that powers Claude Code.“
 
