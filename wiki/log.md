@@ -1,3 +1,12 @@
+## [2026-11-19] ingest | Clippings/手把手教你：相似度全是 0.9？向量没归一化的量纲灾难｜AI工程师踩坑实录&183;第10篇.md -> raw/articles/ -> wiki/sources/向量没归一化的量纲灾难_相似度全是0.9排查与修法.md (+ concepts/概念_向量相似度度量, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入大雾的小屋《AI工程师踩坑实录·第10篇》，将物理剪藏从 `Clippings/` 移动至 `raw/articles/手把手教你：相似度全是 0.9？向量没归一化的量纲灾难｜AI工程师踩坑实录&183;第10篇.md` 归档；
+  - 创建来源摘要 `wiki/sources/向量没归一化的量纲灾难_相似度全是0.9排查与修法.md`，标签选用白名单：`tags: ["RAG/retrieval", "RAG/embedding"]`；
+  - 核心提炼：复现 `bge-small-zh-v1.5` 原始 CLS 向量未归一化点积量纲爆炸（`11.7~36.2`）与归一化后回落（`0.232~0.734`），剖析点积 = 余弦 × 两不受控范数的劫持机制、“相似度全是 0.9”成因、入库与查询双侧归一化配合 FAISS IP 索引及文本余弦 `0.2~0.8` 分布特征；
+- **联动深化既有概念**：
+  - `concepts/概念_向量相似度度量`：Frontmatter 补充 `aliases` 与新来源，正文增补《未归一化点积的量纲灾难与工程避坑》专节；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[向量没归一化的量纲灾难_相似度全是0.9排查与修法]]`。
+
 ## [2026-11-17] ingest | raw/articles/RSI，先会verify的模型先享受.md -> wiki/sources/RSI，先会verify的模型先享受.md (+ concepts/概念_Self_Verification_模型自验证, concepts/概念_RSI递归自我改进, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 录入李rumor关于 RSI 时代模型自验证与验证闭环 RL 训练的综述分析，物理剪藏从 `Clippings/` 移动至 `raw/articles/RSI，先会verify的模型先享受.md` 归档；

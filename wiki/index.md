@@ -4,6 +4,7 @@
 
 ## Sources
 
+- [[sources/向量没归一化的量纲灾难_相似度全是0.9排查与修法]] — 复现未归一化向量点积导致相似度分数量纲爆炸或挤在 0.9 附近的失真问题，剖析点积含不受控范数因子的根因，并给出入库与查询双侧归一化配合 FAISS IP 索引的工程修法（RAG/retrieval, RAG/embedding）
 - [[RSI，先会verify的模型先享受]] — 李rumor探讨 RSI 时代模型自验证（Self-Verification）与多轮验证闭环（Verification Loop）的必要性及 RL 训练方法：剖析“生成 != 验证”实验与错误前缀恢复能力，系统拆解 ReVeal（奖励测试验证）、SCoRe（两阶段自纠错 RL）与 RepExp（表征差异探索奖励）三类闭环奖励设计（RSI, LLM/training/RL）
 - [[智能体 Skill 调优“焚诀”——业务逻辑之外的胜负手]] — 千问AI平台在AI投研平台落地37个Skill的工程实践：剖析平铺技能的三宗罪，提出三层专家套件架构（1+6+19）、范式式意图树切分、路由负样本机制及bad case驱动的规则代码化调优（AI-Agent/skill）
 - [[Antigravity CLI 压缩后无损回水（Post-Compact Rehydration）与跨 fork 溯源方案]] — 面向 Antigravity CLI 的零侵入 PreInvocation Hook 方案：从 transcript_full.jsonl 逐字提取时间线与最近对话，重读活跃技能与源码，实现长会话压缩后无损状态回水（Rehydration）与跨 /fork 分支祖先历史溯源（AI-Agent/context-engineering）
