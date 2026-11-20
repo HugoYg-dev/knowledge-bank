@@ -17,7 +17,8 @@ sources:
 - wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md
 - wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md
 - wiki/sources/大模型推理引擎 vLLM 是什么？.md
-updated: '2026-11-10'
+- wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md
+updated: '2026-11-20'
 ---
 
 # 实体：vLLM
@@ -43,6 +44,10 @@ vLLM 是一个开源 LLM 推理框架（UC Berkeley），以高吞吐量和低�
   3. **分块预填充（Chunked Prefill）**：将超长 Prompt 切分为固定 token 分块并在多轮迭代中穿插其他请求的解码，避免 Prefill 阶段长时间霸占 GPU 造成输出停顿，在吞吐优先场景下支持将单轮预算调至 8192 以上；
   4. **指标驱动的针对性调优**：以 API 暴露的 KV Cache 使用率接近 1.0、请求持续排队、抢占次数（Preemption）上升为容量告警信号，结合调优 `--gpu-memory-utilization`、`--max-model-len`、`--kv-cache-dtype fp8` 及前置静态系统提示词等策略解除瓶颈；
   5. **生产服务运维与参数范式**：单卡放得下高并发场景支持 `--data-parallel-size` 多副本横向扩展；对外服务严格要求绑定 `--api-key`；启动显存不足时依据报错末尾预估值显式压减 `--max-model-len`；提供 CUDA Graphs 录图与 `--enforce-eager` 显存速度权衡，老旧卡自动回退 `float16`，并废弃历史 `--swap-space`。
+- [原文陈述] 在 2026-10-21 的推理框架演进来源中，vLLM 被作为学术向工业基建转化的行业基础设施：
+  1. 2023 年 6 月由 UC Berkeley Sky Computing Lab 首次公开提出 PagedAttention，2025 年 5 月正式成为 PyTorch 基金会托管项目，GitHub 星标约 9.4 万；
+  2. 架构上推出硬件插件机制，芯片厂商可在主项目外独立维护后端（如华为昇腾 vllm-ascend、昆仑芯 vLLM-Kunlun、沐曦等），成为国产芯片异构部署的关键适配基座；
+  3. 建立“发布即部署”的模型厂商协同机制（如 DeepSeek V3.2-Exp、阿里 Qwen3-Next 均在发布当日或次日即由社区提供原生支持）。
 
 ## 关联
 
@@ -50,7 +55,9 @@ vLLM 是一个开源 LLM 推理框架（UC Berkeley），以高吞吐量和低�
 - [[wiki/sources/2026-09-03_Attention-Mechanisms-in-LLMs,-clearly-explained_1a068e0f112668fe.md]]（来源）
 - [[sources/KV_Cache_Engineering_for_LLM_Serving]]（来源）
 - [[wiki/sources/大模型推理引擎 vLLM 是什么？.md]]（来源）
+- [[wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md]]（来源）
 - [[concepts/概念_PagedAttention_分页注意力]]
+- [[concepts/概念_PD_预填充解码分离]]
 - [[概念_KV_Cache_键值缓存]]
 - [[概念_连续批处理]]
 - [[concepts/概念_FlashAttention_快速注意力]]

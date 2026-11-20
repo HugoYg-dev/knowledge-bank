@@ -1,3 +1,15 @@
+## [2026-11-20] ingest | Clippings/非算法工程师也能看懂，推理框架的来龙去脉.md -> raw/articles/ -> wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md (+ concepts/概念_PD_预填充解码分离, concepts/概念_LLM推理两阶段, entities/实体_vLLM, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入阿里云 AgentCore 望宸《非算法工程师也能看懂，推理框架的来龙去脉》，将物理剪藏从 `Clippings/` 移动至 `raw/articles/非算法工程师也能看懂，推理框架的来龙去脉.md` 归档；
+  - 创建来源摘要 `wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md`，标签选用白名单：`tags: ["LLM/inference", "Infra/serving"]`；
+  - 核心提炼：推理框架定位与“五维权衡”（快多省稳准）、Prefill 算力受限与 Decode 显存带宽受限的本质物理对立、智能体长输入短输出高重复负载对缓存命中的倒逼、端到端请求六大处理环节（入口模板、连续批处理与分块调度、算子执行、前缀缓存、PD 分离集群、结构化输出与投机解码）及开源生态发展趋势；
+- **新建核心概念**：
+  - `concepts/概念_PD_预填充解码分离`：新建概念页，系统阐述 Prefill-Decode Disaggregation 架构原理、传统同机混合部署冲突、两阶段物理拆分、异构算力配比（TP vs EP+DP）、KV Cache 跨机高速流转网络及工业落地项目（Mooncake、Dynamo、PAI-EAS）；
+- **联动深化既有概念与实体**：
+  - `entities/实体_vLLM`：Frontmatter 追加新来源，增补 2025 年 5 月入驻 PyTorch 基金会、硬件插件机制多芯片支持（昇腾、昆仑芯、沐曦）及模型厂商“发布即部署”协同演进；
+  - `concepts/概念_LLM推理两阶段`：Frontmatter 追加新来源，建立与 `概念_PD_预填充解码分离` 的双向链接；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[非算法工程师也能看懂_推理框架的来龙去脉]]` 与 `[[concepts/概念_PD_预填充解码分离]]`。
+
 ## [2026-11-19] ingest | Clippings/手把手教你：相似度全是 0.9？向量没归一化的量纲灾难｜AI工程师踩坑实录&183;第10篇.md -> raw/articles/ -> wiki/sources/向量没归一化的量纲灾难_相似度全是0.9排查与修法.md (+ concepts/概念_向量相似度度量, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 录入大雾的小屋《AI工程师踩坑实录·第10篇》，将物理剪藏从 `Clippings/` 移动至 `raw/articles/手把手教你：相似度全是 0.9？向量没归一化的量纲灾难｜AI工程师踩坑实录&183;第10篇.md` 归档；

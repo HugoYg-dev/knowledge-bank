@@ -13,7 +13,8 @@ sources:
 - wiki/sources/How_a_GPU_Actually_Works.md
 - wiki/sources/KV_Cache_Engineering_for_LLM_Serving.md
 - wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md
-updated: '2026-10-15'
+- wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md
+updated: '2026-11-20'
 ---
 # 概念：LLM 推理两阶段
 
@@ -77,6 +78,8 @@ updated: '2026-10-15'
 - [[sources/How_a_GPU_Actually_Works]]（来源）
 - [[sources/KV_Cache_Engineering_for_LLM_Serving]]（来源）
 - [[wiki/sources/腾讯15年资深后台工程师_转战大模型推理的抉择.md]]（来源）
+- [[wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md]]（来源）
+- [[concepts/概念_PD_预填充解码分离|概念_PD_预填充解码分离]]
 - [[concepts/概念_Roofline模型与算力强度|概念_Roofline模型与算力强度]]
 - [[concepts/概念_AI硬件加速芯片架构|概念_AI硬件加速芯片架构]]
 - [[concepts/概念_KV_Cache_键值缓存|概念_KV_Cache]]
