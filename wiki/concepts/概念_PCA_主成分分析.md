@@ -24,7 +24,7 @@ aliases:
 **主成分分析 (PCA)** 是一种最经典的线性降维方法。其基本思想是通过正交变换，将原始高维空间中可能存在线性相关的变量，投影到一组新的正交且线性无关的综合变量上，这组新变量被称为**主成分 (Principal Components, PCs)**。
 
 ### 数学原理与解释方差
-在数学上，PCA 可以通过对协方差矩阵进行**特征值分解 (Eigenvalue Decomposition)** 或对数据矩阵进行**奇异值分解 (Singular Value Decomposition, SVD)** 来实现：
+在数学上，PCA 可以通过对协方差矩阵进行**特征值分解 (Eigenvalue Decomposition)** 或对数据矩阵进行**[[concepts/概念_SVD_奇异值分解|奇异值分解 (Singular Value Decomposition, SVD)]]** 来实现：
 1. **方向选择**：投影后的第一主成分 $PC_1$ 指向数据方差最大的方向，第二主成分 $PC_2$ 在与 $PC_1$ 正交的超平面中指向方差最大的方向，依此类推。
 2. **解释方差 (Explained Variance)**：每个特征向量对应的特征值 $\lambda_i$ 大小代表了该主成分所解释的原始数据方差的多寡。主成分 $i$ 的**解释方差占比 (Explained Variance Ratio)** 定义为：
    $$Ratio_i = \frac{\lambda_i}{\sum_{j=1}^{D} \lambda_j}$$
@@ -98,5 +98,5 @@ plt.show()
 
 ## 关联
 
-- **相关概念**: [[concepts/概念_Matryoshka表示学习|概念_Matryoshka表示学习]]、[[concepts/概念_Quantized_Embedding_量化向量嵌入|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding_二进制向量嵌入|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
+- **相关概念**: [[concepts/概念_SVD_奇异值分解|概念_SVD_奇异值分解]]、[[concepts/概念_Matryoshka表示学习|概念_Matryoshka表示学习]]、[[concepts/概念_Quantized_Embedding_量化向量嵌入|概念_Quantized_Embedding]]、[[concepts/概念_Binary_Embedding_二进制向量嵌入|概念_Binary_Embedding]]、[[concepts/概念_向量量化|概念_向量量化]]
 - **相关来源**: [[wiki/sources/2026-09-04_5-embedding-compression-techniques_1a06e32ac6088201.md]]

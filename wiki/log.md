@@ -1,3 +1,13 @@
+## [2026-11-23] lint/prune | 低频实体语义降级与核心基石补链 (+ wiki/entities/, wiki/concepts/, wiki/sources/, wiki/index.md)
+- **低频实体降级清理**：
+  - 将单篇弱关联实体 `entities/实体_Thinking_Machines_Lab.md` 降级清理，在引用页 `wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md` 中降级还原为纯文本 `'Thinking_Machines_Lab'`；
+  - 物理删除实体文件并从 `wiki/index.md` 同步剔除对应条目；
+- **核心基石实体与概念补链保护**：
+  - `entities/实体_LangSmith`：在 `wiki/sources/RAG基础_索引检索生成.md` 中补齐 `[[entities/实体_LangSmith]]` 双链，入度提升至 2+，稳固作为主流 Agent 观测基建地位；
+  - `entities/实体_Unsloth`：在 `wiki/sources/2026-03-13_What-are-RL-environments,-and-how-to-build-them_19ce93.md` 中补齐 `[[entities/实体_Unsloth]]` 双链，入度提升至 2+，稳固作为高效微调与 GRPO 框架地位；
+  - `concepts/概念_SVD_奇异值分解`：在 `wiki/concepts/概念_PCA_主成分分析.md` 中补齐 `[[concepts/概念_SVD_奇异值分解]]` 双向链接，稳固基础数学底座地位；
+  - `concepts/概念_渐进式披露`：在 `wiki/sources/从第一性原理深度拆解_Claude_Agent_Skill_宝玉.md` 与 `wiki/sources/写好CLAUDE.md_HumanLayer最佳实践.md` 中补齐 `[[concepts/概念_渐进式披露]]` 双链，入度提升至 3+。
+
 ## [2026-11-20] ingest | Clippings/非算法工程师也能看懂，推理框架的来龙去脉.md -> raw/articles/ -> wiki/sources/非算法工程师也能看懂_推理框架的来龙去脉.md (+ concepts/概念_PD_预填充解码分离, concepts/概念_LLM推理两阶段, entities/实体_vLLM, wiki/index.md)
 - **原始文献归档与来源摘要创建**：
   - 录入阿里云 AgentCore 望宸《非算法工程师也能看懂，推理框架的来龙去脉》，将物理剪藏从 `Clippings/` 移动至 `raw/articles/非算法工程师也能看懂，推理框架的来龙去脉.md` 归档；

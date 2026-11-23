@@ -28,7 +28,7 @@ updated: '2026-08-03'
    - **Agent Servers**：负责编排 rollouts。
    - **Resource Servers**：负责维护多轮会话状态（session state）。
    - **Verification Logic**：用于计算奖励（rewards）。
-   - **Unsloth**：作为训练后端，消费 rollout 轨迹并使用 GRPO 算法高效更新模型权重。
+   - **[[entities/实体_Unsloth|Unsloth]]**：作为训练后端，消费 rollout 轨迹并使用 GRPO 算法高效更新模型权重。
 
 ## 关键引文
 > "The real bottleneck in building AI agents that need to reason across multiple steps isn’t the training algorithm. It’s the environment your agent trains in."
@@ -36,6 +36,7 @@ updated: '2026-08-03'
 
 ## 关联概念与实体
 - 概念: Agentic RL 环境与 GRPO
+- 实体: [[entities/实体_Unsloth]]
 
 ---
 > 📎 **物理文献**：[[raw/articles/2026-03-13_What-are-RL-environments,-and-how-to-build-them_19ce93.md]]

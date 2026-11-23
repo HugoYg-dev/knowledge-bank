@@ -47,7 +47,7 @@ HumanLayer 团队发布的 CLAUDE.md 编写最佳实践指南，基于上下文�
 - LLM 倾向处理提示信息**边缘**的指令（开头和结尾）
 - 建议：300 行以内最佳，越短越好；HumanLayer 自己的根 CLAUDE.md 不到 60 行
 
-### 渐进式披露（Progressive Disclosure）
+### [[concepts/概念_渐进式披露|渐进式披露（Progressive Disclosure）]]
 - 将特定任务指令保存在单独 Markdown 文件中，自描述性命名
 - 示例目录结构：`agent_docs/building_the_project.md`、`running_tests.md`、`code_conventions.md` 等
 - CLAUDE.md 中列出文件+简要描述，指示 Claude 按需阅读
@@ -70,7 +70,7 @@ HumanLayer 团队发布的 CLAUDE.md 编写最佳实践指南，基于上下文�
 1. 定义项目的 Why/What/How
 2. 少即是多，减少指令数量
 3. 内容简洁且具有普遍适用性
-4. 渐进式披露——告诉 Claude 如何找到信息而非全部展示
+4. [[concepts/概念_渐进式披露|渐进式披露]]——告诉 Claude 如何找到信息而非全部展示
 5. 用确定性工具处理代码格式
 6. CLAUDE.md 是最高杠杆点，不要自动生成
 
@@ -78,6 +78,7 @@ HumanLayer 团队发布的 CLAUDE.md 编写最佳实践指南，基于上下文�
 
 - [[概念_CLAUDE.md最佳实践]]
 - [[概念_上下文工程]]
+- [[concepts/概念_渐进式披露]]
 - [[概念_Agent_Skills元工具架构]]
 - Claude_Code工作流
 

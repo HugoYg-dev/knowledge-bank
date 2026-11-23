@@ -49,7 +49,7 @@ updated: '2026-07-22'
 
 ### 关键实体
 - [[entities/实体_翁荔_Lilian_Weng|Lilian Weng]] — 前 OpenAI 安全研究 VP，Thinking Machines Lab 联合创始人，Lil'Log 作者
-- [[entities/实体_Thinking_Machines_Lab|Thinking Machines Lab]] — Lilian Weng 联合创办的 AI 实验室
+- Thinking Machines Lab — Lilian Weng 联合创办的 AI 实验室
 - [[entities/实体_Claude_Code|Claude Code]] — Anthropic 推出的 CLI 编码智能体，Harness 典范
 - [[entities/实体_Codex|Codex]] — OpenAI 推出的编码智能体系统
 

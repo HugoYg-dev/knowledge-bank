@@ -22,7 +22,7 @@ Skills = 提示词模板 + 对话上下文注入 + 执行上下文修改 + 可�
 
 技能不是可执行代码，不运行任何程序，不在系统提示词中。它们存在于 API 请求的 `tools` 数组中，作为 `Skill` 元工具的描述字段。
 
-### 渐进式披露（Progressive Disclosure）
+### [[concepts/概念_渐进式披露|渐进式披露（Progressive Disclosure）]]
 
 构建技能最重要的概念：
 1. 首次披露 Frontmatter（最少信息：name/description/license）
@@ -97,6 +97,7 @@ Skills = 提示词模板 + 对话上下文注入 + 执行上下文修改 + 可�
 - [[Claude_Agent_Skills_从第一性原理深入剖析]]
 - [[概念_MCP代码执行模式]]
 - [[概念_上下文工程]]
+- [[概念_渐进式披露]]
 - [[概念_Agent思考工具]]
 - [[实体_David_Soria_Parra]]
 

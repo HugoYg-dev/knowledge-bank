@@ -979,7 +979,6 @@
 - [[实体_Weaviate]] — 开源一体化向量搜索引擎，基于 HNSW 索引与 GraphQL 查询（RAG/retrieval, Infra/storage）
 - [[实体_Vannevar_Bush]] — 美国工程师，1945 年提出 Memex 个人知识设备构想，关联性路径鼻祖（Skill/knowledge-bank, DeepLearning）
 - [[实体_Niklas_Luhmann]] — 德国社会学家，卡片盒笔记法 (Zettelkasten) 集大成者，9万张索引卡（Skill/knowledge-bank）
-- [[实体_Thinking_Machines_Lab]] — 前 OpenAI 安全研究 VP Lilian Weng 等联合创办的前沿 AI 研究实验室（AI-Agent/harness）
 - [[实体_Hugo_Yang]] — 本知识库搭建者与架构维护者（Skill/knowledge-bank）
 - [[实体_vault_lint]] — 知识库自动化治理与诊断 Python 工具（`scripts/vault_lint.py`）（Skill/knowledge-bank）
 - [[实体_Codex]] — OpenAI 编码智能体系统（声明式插件架构）：从 2025 Codex Cloud 折戟、本地 Rust 重写底层 Agent、桌面 App 取消代码编辑器，到 2026-07 桌面 App 反转为新 ChatGPT 底座（AI-Agent/coding）

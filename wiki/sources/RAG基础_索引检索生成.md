@@ -33,7 +33,7 @@ updated: '2026-07-01'
 - LLM 根据有事实依据的知识片段生成回答
 - LangChain 将检索和生成链（Chain）在一起
 
-### LangSmith
+### [[entities/实体_LangSmith|LangSmith]]
 - 用于构建生产级 LLM 应用的监控平台
 - 可跟踪 LLM 调用和应用逻辑
 
@@ -44,7 +44,7 @@ updated: '2026-07-01'
 ## 关联
 
 - 概念：[[概念_RAG基础流程]]、[[概念_Embedding与向量检索]]、[[概念_向量数据库]]
-- 实体：[[实体_LangChain]]、[[实体_Qdrant]]
+- 实体：[[实体_LangChain]]、[[entities/实体_LangSmith]]、[[实体_Qdrant]]
 - 系列下一篇：[[RAG查询翻译_Query_Translation]]
 
 ---
