@@ -10,7 +10,8 @@ sources:
 - wiki/sources/RAG高级优化_检索策略Fusion_HyDE.md
 - wiki/sources/提升RAG问答质量的技术路线.md
 - wiki/sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施.md
-updated: '2026-09-21'
+- wiki/sources/淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识.md
+updated: '2026-11-24'
 aliases:
 - RRF
 - Reciprocal Rank Fusion
@@ -53,9 +54,10 @@ score(d) = Σ 1 / (k + rank_i(d) + 1)
 - RAG-Fusion：多个查询变体的检索结果用 RRF 融合
 - 混合检索：向量 + 关键字检索结果融合
 - **代码搜索与 Agent 检索基础设施**：在 [[entities/实体_zvec-grep|zvec-grep (zg)]] 中，RRF 用于融合 BM25 词法检索排名与 Dense Vector 语义检索排名。由于 BM25 分数与余弦相似度分数来自不同度量体系无法直接线性加权，RRF 通过对文档在各列表中的位置取倒数累加（`1 / (k + rank)`），使兼具高语义相关度与确切关键字标识符的代码片段稳定排在最前列。
+- **企业本体三路多模协同检索（淘宝闪购实践）**：在 [[sources/淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识|淘宝闪购本体平台]] 中，BM25（无上限、随长度漂移）、HNSW 余弦相似度（`[0,1]`）与图扩展分（按跳数衰减）处于不同尺度，采用 RRF 无需针对特定问法标定权重即可稳定融合三路候选，并在 9,511 条真实生产回放中将页面 Top-1 字面命中率从 42.8% 提升至 54.2%（空结果率降至 0）。
 
 ## 关联
 
 - 相关概念：[[概念_RAG_Fusion_多查询融合生成]]、[[概念_混合检索]]
 - 实体：[[实体_Elasticsearch]]、[[entities/实体_zvec-grep|实体_zvec-grep]]
-- 来源：[[sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施]]、[[RAG高级优化_检索策略Fusion_HyDE]]、[[ES企业AI搜索实践]]
+- 来源：[[sources/阿里千问 zvec-grep：让代码搜索变成 AI Agent 基础设施]]、[[sources/淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识]]、[[RAG高级优化_检索策略Fusion_HyDE]]、[[ES企业AI搜索实践]]

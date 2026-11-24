@@ -1,3 +1,25 @@
+## [2026-11-24] ingest | Clippings/腾讯开源 LoopForge.md -> raw/articles/腾讯开源 LoopForge.md -> wiki/sources/腾讯开源 LoopForge.md (+ entities/实体_LoopForge, concepts/概念_RSI递归自我改进, concepts/概念_Super_Agent_超级智能体, wiki/index.md)
+- **原始文献归档与来源摘要创建**：
+  - 录入腾讯技术工程《登上GitHub Trending｜腾讯开源 LoopForge》，将物理剪藏从 `Clippings/` 移动至 `raw/articles/腾讯开源 LoopForge.md` 归档；
+  - 创建来源摘要 `wiki/sources/腾讯开源 LoopForge.md`（`tags: ["AI-Agent/coding", "AI-Agent/multi-agent", "RSI"]`），保留原文 5 幅核心架构与演进外链图示；
+- **新建核心实体**：
+  - `entities/实体_LoopForge`：新建实体页，系统梳理 LoopForge 云端 7×24 三层底座、共享会话与独立审查三挡权限、五层解耦 SOP 与三层主副驾、工程级 RSI 内外双环、定时与 Issue 全链路自动化及与 DSH Super-agent 原型对比；
+- **联动深化既有概念**：
+  - `concepts/概念_RSI递归自我改进`：Frontmatter `sources:` 追加新来源，正文增补腾讯 LoopForge 工程级 RSI 双环实践；
+  - `concepts/概念_Super_Agent_超级智能体`：Frontmatter `sources:` 追加新来源，代表系统对比表增补 LoopForge 团队级落地实践；
+- **总索引挂载**：`wiki/index.md` 同步挂载 `[[腾讯开源 LoopForge]]` 与 `[[entities/实体_LoopForge]]`。
+
+## [2026-11-24] ingest | Clippings/How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models.md & Clippings/淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识.md -> raw/articles/ -> wiki/sources/ (+ entities/实体_Meta, concepts/概念_Agent系统自动优化闭环, concepts/概念_Data_Agent_数据智能体, concepts/概念_RRF_互易秩融合, concepts/概念_混合检索, wiki/index.md)
+- **Batch 1 原始文献归档与来源摘要创建**：
+  - 录入 Meta 工程团队《How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models》，归档至 `raw/articles/How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models.md`，创建 `wiki/sources/How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models.md`（`tags: ["Recommendation", "AI-Agent/multi-agent", "Infra/training"]`），保留原文 2 幅核心架构外链图示；
+  - 录入阿里技术《淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识》，归档至 `raw/articles/淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识.md`，创建 `wiki/sources/淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识.md`（`tags: ["CaseStudy/data-agent", "RAG/retrieval", "Infra/storage", "AI-Agent/context-engineering"]`），保留原文 3 幅核心架构外链图示；
+- **联动深化既有实体与概念**：
+  - `entities/实体_Meta`：增补广告排序模型 Technique Propagation 三阶段 Agent 协同与工程成效；
+  - `concepts/概念_Agent系统自动优化闭环`：增补 Meta 广告排序模型迁移闭环与分阶段评测门禁案例；
+  - `concepts/概念_Data_Agent_数据智能体`：增补淘宝闪购本体平台三层元模型、单一事实源与“只提供定义不承担计算”边界实践；
+  - `concepts/概念_RRF_互易秩融合` & `concepts/概念_混合检索`：增补 NeuG 单实例多模同源（BM25 + HNSW + 图遍历）与 RRF 三路融合检索的 9,511 条真实回放评测结果；
+- **总索引挂载**：`wiki/index.md` 同步挂载两篇新增 Source 摘要页。
+
 ## [2026-11-23] lint/prune | 低频实体语义降级与核心基石补链 (+ wiki/entities/, wiki/concepts/, wiki/sources/, wiki/index.md)
 - **低频实体降级清理**：
   - 将单篇弱关联实体 `entities/实体_Thinking_Machines_Lab.md` 降级清理，在引用页 `wiki/sources/OpenAI前VP_Lilian_Weng_AI自我改进的近路不是改权重.md` 中降级还原为纯文本 `'Thinking_Machines_Lab'`；

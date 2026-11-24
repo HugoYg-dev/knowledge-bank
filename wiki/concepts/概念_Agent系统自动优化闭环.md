@@ -9,13 +9,14 @@ sources:
 - wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md
 - wiki/sources/2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md
 - wiki/sources/2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md
+- wiki/sources/How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models.md
 aliases:
 - GEPA
 - GEPA提示词进化算法
 - 无梯度提示词进化算法
 - 提示词自动优化闭环
 - LLM系统自动优化方法论
-updated: "2026-10-05"
+updated: "2026-11-24"
 ---
 
 # 概念：Agent系统自动优化闭环
@@ -75,6 +76,7 @@ updated: "2026-10-05"
 
 - **研发迭代效率指数级提升**：如 Dropbox 在 Dash Chat 上落地 DSPy 闭环，两周产出 6 版高质量候选，研发效率翻倍。
 - **质量与推理成本双赢**：在显著降低任务错误率的同时，通过算法剪除冗余思维链与废话，系统 Token 消耗反降 5%~10%。
+- **大规模工业 ML 技术迁移闭环**：[[entities/实体_Meta|Meta]] 在广告排序模型集群中落地 Discovery–Generalization–Adoption 三阶段 Agent 迁移闭环，依托共享知识库与模板之上的 auto-research loop 自动微调，分阶段设置独立评测门禁（Recall/Precision、缩微模型筛选 + NE 护栏、人工介入次数与自愈率），实现 60%+ 技术迁移自动化、3 倍工程提效与中位 4 倍训练算力缩减（[[wiki/sources/How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models.md|Meta 实践]]）。
 
 ---
 
@@ -83,6 +85,7 @@ updated: "2026-10-05"
 - [[wiki/sources/Dropbox基于DSPy优化Dash Chat评估与提示词.md|Dropbox基于DSPy优化Dash Chat评估与提示词]]
 - [[wiki/sources/2026-07-31_6-automatic-optimization-methods-for-LLM-systems_19fb9f.md|6 automatic optimization methods for LLM systems]]
 - [[wiki/sources/2026-05-01_How-to-beat-GRPO-without-touching-model-weights_19de58.md|How to beat GRPO without touching model weights (GEPA)]]
+- [[wiki/sources/How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models.md|How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models]]
 - [[concepts/概念_LLM应用评估体系]]
 - [[concepts/概念_Loop_Engineering循环工程]]
 - [[concepts/概念_RSI递归自我改进|概念_RSI递归自我改进 (含 Self-Harness)]]

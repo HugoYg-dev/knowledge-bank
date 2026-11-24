@@ -4,6 +4,9 @@
 
 ## Sources
 
+- [[腾讯开源 LoopForge]] — 腾讯轻量云团队开源云端自进化研发平台 LoopForge：集 7×24 小时云端隔离工作区、共享会话与 Main Bot、无工具独立审查模型三挡权限代批、五层解耦 SOP 流水线与主副驾接管、定时与 Issue 全链路无人值守自动化及工程级 RSI 内外双环于一体，服务内部 20+ 业务、单月自动交付 200+ 需求与单据（AI-Agent/coding, AI-Agent/multi-agent, RSI）
+- [[How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models]] — Meta 工程团队利用 AI Agents 规模化推进广告排序模型技术迁移扩散（Technique Propagation）：通过 Discovery、Generalization（模板/定制双路径）与 Adoption（auto-research loop 微调与全局 GPU 算力调度）三阶段协同及分阶段评测护栏，实现超 60% 迁移由 Agent 驱动、3 倍工程提效与中位 4 倍训练算力缩减（Recommendation, AI-Agent/multi-agent, Infra/training）
+- [[淘宝闪购本体平台：让人与 AI Agent 共用一份实时可信的业务知识]] — 淘宝闪购本体平台工程实践：构建实体/关系/策略三层元模型与公理边界，以 MySQL 单一事实源与三方字段级合并治理链路保障“谁确认过”的可追溯性，并将查询架构演进至 NeuG 实时多模图库 + RRF 三路融合检索 + 子图快照圈选，实现人与 Agent 共用实时可信的业务口径（CaseStudy/data-agent, RAG/retrieval, Infra/storage, AI-Agent/context-engineering）
 - [[非算法工程师也能看懂_推理框架的来龙去脉]] — 阿里云 AgentCore 望宸系统解析大模型推理框架的底层逻辑：解构快多省稳准五维目标、Prefill算力密集与Decode带宽密集的物理对立、从API接入到连续批处理/前缀缓存/PD分离/结构化输出的端到端请求旅程，以及智能体长上下文高重复负载下的推理优化演进（LLM/inference, Infra/serving）
 
 - [[sources/向量没归一化的量纲灾难_相似度全是0.9排查与修法]] — 复现未归一化向量点积导致相似度分数量纲爆炸或挤在 0.9 附近的失真问题，剖析点积含不受控范数因子的根因，并给出入库与查询双侧归一化配合 FAISS IP 索引的工程修法（RAG/retrieval, RAG/embedding）
@@ -915,6 +918,7 @@
 - [[实体_Manus]] — 通用AI Agent，上下文工程实践标杆，KV缓存/分层行动空间/文件系统记忆（AI-Agent/context-engineering）
 
 ### AI-Agent/coding（Phase 4 Batch 4）
+- [[entities/实体_LoopForge]] — 腾讯轻量云团队开源的云端自进化研发平台，集 7×24 小时云端工作区、多角色共享会话、五层解耦 SOP、Issue 无人值守自动化与工程级 RSI 自进化于一体（AI-Agent/coding, AI-Agent/multi-agent, RSI）
 
 ### AI-Agent/skill（Phase 4 Batch 5）
 

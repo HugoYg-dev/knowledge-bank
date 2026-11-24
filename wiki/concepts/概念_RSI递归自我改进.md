@@ -26,7 +26,8 @@ sources:
 - wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队.md
 - wiki/sources/Piccolo：递归自我进化的决策模型.md
 - wiki/sources/RSI，先会verify的模型先享受.md
-updated: '2026-11-17'
+- wiki/sources/腾讯开源 LoopForge.md
+updated: '2026-11-24'
 ---
 
 # 概念：RSI递归自我改进
@@ -132,6 +133,7 @@ updated: '2026-11-17'
 - **Piccolo 决策模型自进化研发框架 (2026)**：AgentScope 与 Data-Juicer 团队在专用决策模型领域实践了基于 RSI 的自动化研发演化闭环。通过研究 Agent 调度 Agentic Data Engineering 与 DataJuicer-Sandbox，构建“方案设计 $\to$ 构建与实验 $\to$ 结果反馈（逐题 KL 散度与 13 维语义画像切片诊断） $\to$ 诊断与更新”的反馈 LOOP。通过 10+ 轮、150+ 项探索实验（耗费 6,300 GPU hours）与 Context Evolving 输入演化搜索，驱动 [[entities/实体_Piccolo|Piccolo-27B]] 在 JevBench Public（92.21%）、HarnessJevBench Hard（84.41%）及 DataJevBench（82.60%）等基准上领跑第一，验证了在客观判断分布锚点支撑下的模型与数据协同 RSI 自进化路径。
 - **Darwin Gödel Machine (2025)**：Agent 进化自身代码库，SWE-bench Verified 达 50%。
 - **AlphaEvolve (2025)**：进化搜索 + 冻结 LLM 生成 diff，优化 GPU kernel 与矩阵乘法。
+- **腾讯 [[entities/实体_LoopForge|LoopForge]] 工程级 RSI 双环 (2026)** `[原文陈述]`：在研发团队 SOP 流水线中落地“内环门禁自愈 + 外环轨迹复盘改写 SOP”双闭环——单次运行内环依托编译、单测与代码规范等客观门禁当场纠错自愈；跨运行外环自动回溯全链路轨迹、给出 0~100 分健康度评分并生成改写 SOP 拓扑、岗位角色规范与质量门禁的“改进处方”，经人工审阅一键应用后生成新版本资产。
 
 ## 来源与参考
 
@@ -144,5 +146,6 @@ updated: '2026-11-17'
 - [[wiki/sources/从 LOOP 到图探索 —— 算法模型的 AutoResearch 自进化系统架构演进之路  美团 · 技术团队]]
 - [[wiki/sources/Piccolo：递归自我进化的决策模型.md|Piccolo：递归自我进化的决策模型]]
 - [[wiki/sources/RSI，先会verify的模型先享受|RSI，先会 verify 的模型先享受]]
+- [[wiki/sources/腾讯开源 LoopForge]]
 - 关联概念：[[concepts/概念_Harness_Engineering_宿主编排工程]]、[[concepts/概念_Loop_Engineering循环工程]]、[[concepts/概念_Agent系统自动优化闭环]]、[[concepts/概念_Self_Verification_模型自验证]]
-- 关联实体：[[entities/实体_DeepSeek_Harness]]、[[entities/实体_Cordis]]、[[entities/实体_AutoResearch]]、[[entities/实体_美团]]、[[entities/实体_Codex]]、[[entities/实体_Piccolo]]
+- 关联实体：[[entities/实体_DeepSeek_Harness]]、[[entities/实体_Cordis]]、[[entities/实体_AutoResearch]]、[[entities/实体_美团]]、[[entities/实体_Codex]]、[[entities/实体_Piccolo]]、[[entities/实体_LoopForge]]

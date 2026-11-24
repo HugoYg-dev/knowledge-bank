@@ -10,7 +10,8 @@ sources:
   - "wiki/sources/从OpenClaw，怎么走到了Super Agent？.md"
   - "wiki/sources/便宜的模型越来越多，怎么判断它能不能胜任我的 Agent 工作.md"
   - "wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md"
-updated: "2026-11-09"
+  - "wiki/sources/腾讯开源 LoopForge.md"
+updated: "2026-11-24"
 ---
 
 # 概念：Super Agent（超级智能体）
@@ -91,6 +92,7 @@ Super Agent 在系统工程上打破了“单会话大包大揽”的传统模�
 | **DeepSeek Super-agent 原型 (`dsh-superagent-prototype`)** | DeepSeek Harness 团队官方研究原型与落地实践：双层架构（常驻 Router + 隔离 Worker）与事件驱动系统 | 基于 [[entities/实体_DeepSeek_Harness|DeepSeek Harness]] 微内核；支持 IM 与 GitHub 跨信道连续推进、群聊无人 @ 主动识别缺陷提 PR、Thread 订阅直通（节省 37% 读缓存 Token）、异步 ReAct Loop 全双工交互、BYOM 存算分离与外部 Watchdog 自愈 |
 | **[[entities/实体_HiRoute|HiRoute]] + Hermes/OpenCode** | 阿里云开源本地任务路由（Task Routing）与动态调度工程实践 | 通过 `hiroute worker exec` 绑定预设场景计划（如 Pi、Qoder CLI、Codex CLI），实现非阻塞并行执行、单轮锁定 90% 前缀缓存保护与后台唤醒回传 |
 | **WorkBuddy / OpenClaw 演化** | 腾讯内部 iMate 平台与微信生态连接实践 | Working Agent 接入移动端与企业微信群，实现“群聊提出 → 唤起 Agent 补充背景 → 异步执行 → 交付结果”闭环 |
+| **[[entities/实体_LoopForge\|LoopForge]]** | 腾讯轻量云团队开源的团队级云端自进化研发平台 | 单一 Main Bot + 多角色共享会话绑定云端工作区、无工具独立审查模型三挡权限代批、五层解耦 SOP 与主副驾随时接管、Issue 无人值守自动化及工程级 RSI 外环自进化 |
 
 ---
 
@@ -119,6 +121,7 @@ Super Agent 在系统工程上打破了“单会话大包大揽”的传统模�
   - [[entities/实体_HiRoute]]：支持 Super Agent 式任务路由与本地模型动态调度的开源项目
   - [[entities/实体_DeepSeek_Harness]]：提供命令式插件化、Creator mode 与自进化环境支持的智能体底座
   - [[entities/实体_DeepSeek]]：Super-agent 架构与 DeepSeek Harness 开源研发机构
+  - [[entities/实体_LoopForge]]：腾讯轻量云团队开源的云端自进化研发平台（团队级落地实践）
 
 ---
 
@@ -127,3 +130,4 @@ Super Agent 在系统工程上打破了“单会话大包大揽”的传统模�
 - [[wiki/sources/Super-agent 设计探索：迈向更自主的 Agent 系统.md]]
 - [[wiki/sources/从OpenClaw，怎么走到了Super Agent？.md]]
 - [[wiki/sources/便宜的模型越来越多，怎么判断它能不能胜任我的 Agent 工作.md]]
+- [[wiki/sources/腾讯开源 LoopForge.md]]
