@@ -1,5 +1,5 @@
 ---
-title: 既然 Logits 排序与 Softmax 完全一致，为什么我们还需要算 Softmax？
+title: 既然 Logits 排序与 Softmax 完全一致，为什么还需要算 Softmax
 author:
 - '[[Hugo Yang]]'
 published: 2026-09-23
@@ -11,7 +11,7 @@ tags:
 - LLM/arch
 ---
 
-# 既然 Logits 排序与 Softmax 完全一致，为什么我们还需要算 Softmax？
+# 既然 Logits 排序与 Softmax 完全一致，为什么还需要算 Softmax
 
 在深度学习推理引擎里，只要开启的是贪婪解码（greedy decoding），底层代码通常只对最后一层的未归一化分值向量（logits）跑一次 `argmax`，直接把最大值对应的索引捞出来交差，中间根本不计算 Softmax。
 

@@ -6,8 +6,7 @@
   "tag-wrangler",
   "breadcrumbs",
   "colored-tags",
-  "obsidian-local-rest-api",
   "quick-explorer",
-  "obsidian-git",
-  "terminal"
+  "terminal",
+  "obsidian-local-rest-api"
 ]

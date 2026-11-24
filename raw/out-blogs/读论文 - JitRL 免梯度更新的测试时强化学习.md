@@ -1,5 +1,5 @@
 ---
-title: 读论文 JitRL，免梯度更新的 LLM Agent 测试时强化学习
+title: 读论文 - JitRL 免梯度更新的测试时强化学习
 published: 2026-09-01
 draft: false
 description: ICML 2026 Spotlight 论文 JitRL 研读笔记，介绍基于经验记忆检索与非参数优势估计、在冻结模型权重下实现测试时策略优化的做法。
@@ -7,7 +7,7 @@ tags:
 - RSI
 ---
 
-# 读论文 JitRL，免梯度更新的 LLM Agent 测试时强化学习
+# 读论文 - JitRL 免梯度更新的测试时强化学习
 
 这篇笔记读的是新加坡国立大学团队发表在 ICML 2026（Spotlight）的论文 [Just-In-Time Reinforcement Learning (JitRL)](https://arxiv.org/abs/2601.18510)。顺着最近一直在看的「经验库驱动智能体自进化」这条线往下读，JitRL 给出的解法很干脆，**全程冻结模型权重，在测试时检索经验记忆来估计动作优势值，然后直接修改模型输出的 logits，不触发任何梯度更新。**
 

@@ -1,15 +1,15 @@
 ---
 title: 知识库治理（一）Vault 死链治理与单向推导防线
-source: null
+source:
 author:
-- '[[Hugo Yang]]'
+  - "[[Hugo Yang]]"
 published: 2026-07-08
 created: 2026-07-08
 draft: false
 description: 知识库图谱死链深度诊断、分类治理与级联清理安全边界，从假性死链鉴别、行内防误伤红线到单向推导管线，复盘个人知识库的维护经验。
 tags:
-- CaseStudy
-- 知识库
+  - CaseStudy
+  - 知识库治理
 ---
 
 # 知识库治理（一）Vault 死链治理与单向推导防线

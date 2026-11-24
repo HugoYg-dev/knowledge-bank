@@ -30,4 +30,4 @@ updated: '2026-07-22'
 
 - 相关概念：[[concepts/概念_LLM_Wiki范式]]、[[concepts/概念_单向推导数据管线]]、[[concepts/概念_假性死链鉴别]]
 - 实体：[[entities/实体_Claude_Code]]、[[entities/实体_Obsidian]]、[[entities/实体_vault_lint]]
-- 来源：[[Karpathy推文引发的LLM_Wiki知识库搭建实践]]、[[Claude Code与Obsidian飞书知识库搭建实践]]、[[raw/out-blogs/Vault死链治理与单向推导架构维护复盘]]
+- 来源：[[Karpathy推文引发的LLM_Wiki知识库搭建实践]]、[[Claude Code与Obsidian飞书知识库搭建实践]]、[[raw/out-blogs/知识库治理（一）Vault 死链治理与单向推导防线]]

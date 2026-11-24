@@ -22,4 +22,4 @@ updated: '2026-07-22'
 
 ## 来源与参考
 
-- [[raw/out-blogs/Vault死链治理与单向推导架构维护复盘]]
+- [[raw/out-blogs/知识库治理（一）Vault 死链治理与单向推导防线]]
